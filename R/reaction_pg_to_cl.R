@@ -31,7 +31,7 @@ pg_to_cl <- function(PGs, CDPDGs, template = NA, constraints = c("", ""), negate
   CLs$PGs2 <- stringr::str_replace_all(CLs$PGs2, "\\)$", "")
   
   #isolate core from CDPDGs
-  CLs$CDPDGs2 <- stringr::str_replace_all(CLs$CDPDGs, "^CDPDG\\(", "")
+  CLs$CDPDGs2 <- stringr::str_replace_all(CLs$CDPDGs, "^CDP-DG\\(", "")
   CLs$CDPDGs2 <- stringr::str_replace_all(CLs$CDPDGs2, "\\)$", "")
   
   #create CL

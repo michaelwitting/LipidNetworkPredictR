@@ -21,7 +21,7 @@ cdpdg_to_pgp <- function(CDPDGs, template = NA, constraints = c(""), negate = c(
   CDPDGs <- CDPDGs[stringr::str_detect(CDPDGs, constraints, negate = negate)]
   
   # make new list for LPAs
-  PGPs <- stringr::str_replace_all(CDPDGs, "CDPDG", "PGP")
+  PGPs <- stringr::str_replace_all(CDPDGs, "CDP-DG", "PGP")
   
   # make new data frame with reaction template
   reaction_df <- data.frame(Name = character(length(PGPs)),

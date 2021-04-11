@@ -21,7 +21,7 @@ cdpdg_to_pi <- function(CDPDGs, template = NA, constraints = c(""), negate = c(F
   CDPDGs <- CDPDGs[stringr::str_detect(CDPDGs, constraints, negate = negate)]
   
   # make new list for LPAs
-  PIs <- stringr::str_replace_all(CDPDGs, "CDPDG", "PI")
+  PIs <- stringr::str_replace_all(CDPDGs, "CDP-DG", "PI")
   
   # make new data frame with reaction template
   reaction_df <- data.frame(Name = character(length(PIs)),
