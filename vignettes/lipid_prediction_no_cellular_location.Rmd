@@ -36,9 +36,7 @@ lipid_abbrev <- vector()
 lipid_df <- tibble()
 ```
 
-
-Fatty acids used in glycero- and glycerophospholipids are different from the ones used in sphingolipid biosynthesis. The pools are only partially overlapping between the two. Therefore two different files for the two different pools are supplied.
-The following lines read the fatty acids into a data frame and isolates the shorthand notation of the fatty acids, which are further used for downstream processing.
+Fatty acids used in glycero- and glycerophospholipids are different from the ones used in sphingolipid biosynthesis. The pools are only partially overlapping between the two. Therefore two different files for the two different pools are supplied. The following lines read the fatty acids into a data frame and isolates the shorthand notation of the fatty acids, which are further used for downstream processing.
 
 ```{r fatty acids 1, message=FALSE, warning=FALSE}
 # read data frame with fatty acids detected in C. elegans
@@ -88,13 +86,11 @@ lipid_info <- parseLipidNames(FAs_SPH)
 lipid_df <- bind_rows(lipid_df, lipid_info)
 ```
 
-
-
 ## Block 0: Preparation of Acyl-CoAs
 
 ### Biosynthesis of CoAs from FAs
 
-![FA_to_CoA](images/FA_to_CoA.png){width=500px}
+![FA_to_CoA](images/FA_to_CoA.png){width="500px"}
 
 Acyl groups are transfered in their activate form of acyl CoAs (CoAs). Their synthesis requires ATP. <i>C. elegans</i> harbors different Acyl-CoA synthetases and their substrate specificity is not established so far. In order to be able to use all defined acyls they are converted to acyl CoAs. For each reaction, a specific function that converts one lipid into another based on a template reaction have been implemented. The basic reaction is hardcoded in the function itself, but additional information can supplied via a <code>list</code>, e.g. gene associations etc. This information can be obtained from WormJam.
 
@@ -107,8 +103,7 @@ template <- list(reaction_name = "CoA biosynthesis",
                  reaction_pathway = "Acyl-CoA synthetase")
 ```
 
-The first reaction converts fatty acids (FAs) to acyl-CoAs. Each reaction returns a list with multiple elements. The last element contains the new non-generic reactions, whereas the first contain the shorthand notation of all newly generated lipids. Since the shorthand notations are required furhter downstream, they are additionally stored object with the name of the respective lipid class.
-The lines below generate acyl-CoAs for fatty acids found to be present in glycero- and glycerophospholipids.
+The first reaction converts fatty acids (FAs) to acyl-CoAs. Each reaction returns a list with multiple elements. The last element contains the new non-generic reactions, whereas the first contain the shorthand notation of all newly generated lipids. Since the shorthand notations are required furhter downstream, they are additionally stored object with the name of the respective lipid class. The lines below generate acyl-CoAs for fatty acids found to be present in glycero- and glycerophospholipids.
 
 ```{r, message=FALSE, warning=FALSE}
 # convert fatty acids to acyl CoAs ---------------------------------------------
@@ -137,7 +132,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Biosynthesis of CoAs for Ceramide biosynthesis
 
-![Test](images/FA_to_CoA.png){width=500px}
+![Test](images/FA_to_CoA.png){width="500px"}
 
 Likewise, the fatty acyls for the synthesis of sphingolipids are required as acy-CoAs.
 
@@ -172,7 +167,7 @@ Diacylgylcerols (DGs) are an important intermediate for the biosynthesis of diff
 
 ### Biosynthesis of LPAs
 
-![Test](images/CoA_to_LPA.png){width=500px}
+![Test](images/CoA_to_LPA.png){width="500px"}
 
 The first step to obtain DGs is the biosynthesis of lysophophaditic acid from acyl CoAs_GPGL and glycerol 3-phosphate. This reaction takes place in the ER and the mitochondria. In the ER the reaction is catalyzed by acl-5 (WBGene00011106) or acl-6 (WBGene00017261), while in the mitochondria acl-4 (WBGene00018657) is used. No subcellular specificity is currently used, therefore the assignments are merged together to yield a single reaction.
 
@@ -214,7 +209,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 In the next step a second acyl group is transferred to the LPA to produce PA. This reaction is catalyzed by acl-9 (WBGene00022646) or acl-8 (WBGene00020264) or mboa-3 (WBGene00016934) or acl-1 (WBGene00010339) or acl-2 (WBGene00011543) in the ER. For the mitochondrial counterpart no genes are known so far. acl-3 (WBGene00006491) might be a good candidate since it is predicted to locate in the mitochondria.
 
-![LPA_to_PA](images/LPA_to_PA.png){width=500px}
+![LPA_to_PA](images/LPA_to_PA.png){width="500px"}
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -252,8 +247,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Biosynthesis of DGs
 
-Diacylglycerols are produced from PAs by dephosphorylation. DGs are important intermediates for biosynthesis of glycerophospholipids or triacylglycerols. A prominent enzyme catalyzing this reactions is LPIN-1.
-Plasma membrane or ER WBGene00008749 or WBGene00018756 or WBGene00020895 or WBGene00010425
+Diacylglycerols (DGs) are produced from PAs by dephosphorylation. DGs are important intermediates for biosynthesis of glycerophospholipids or triacylglycerols (DGs). A prominent enzyme catalyzing this reactions is LPIN-1. Plasma membrane or ER WBGene00008749 or WBGene00018756 or WBGene00020895 or WBGene00010425
 
 nucleus WBGene00010425
 
@@ -292,8 +286,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### DG Kinase
 
-add reaction
-WBGene00000958 or WBGene00000959 or WBGene00000960 or WBGene00006483 or WBGene00019428
+DGs can be phosphorylated to create PAs, which is the reversal of the reactoin above.
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -347,7 +340,7 @@ Production of 1-MG
 #                                    results[[2]])
 ```
 
-Production of 2-MG
+DGs are degraded by the activity of different lipases yieling mono acylglycerols. In the case of this reaction the fatty acid at sn1 position is removed yieling an sn2-MG. Sn2-MGs can be converted to sn1-MGs, which in turn can be re-acylated at a later stage.
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -382,8 +375,6 @@ lipid_info <- parseLipidNames(sn2MGs)
 lipid_df <- bind_rows(lipid_df, lipid_info)
 ```
 
-sn2MGs to sn1MGs
-
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
 template <- list(reaction_name = "1-Acyl-MG 2-Acyl-MG conversion",
@@ -417,10 +408,9 @@ lipid_info <- parseLipidNames(sn1MGs)
 lipid_df <- bind_rows(lipid_df, lipid_info)
 ```
 
-
 ### Degradation of MGs
 
-sn1MGs to Fa
+Both, sn1- and sn2-MGs, can degraded to free fatty acids and glycerol, which can be used for energy production.
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -446,8 +436,6 @@ if(all(results[[1]] %in% FAs_GPGL)) {
 }
 ```
 
-sn2MGs to FA
-
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
 template <- list(reaction_name = "2-acyl-sn-glycerol acylhydrolase",
@@ -472,10 +460,9 @@ if(all(results[[1]] %in% FAs_GPGL)) {
 }
 ```
 
-
 ### reacylation of MGs
 
-sn1MGs to DG
+Similar to the degradation, all MGs can be reacylated to yields DGs again. Additionally, 1-Acyl-MGs can be also phosphorylated to yield LPAs.
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -501,8 +488,6 @@ if(all(results[[1]] %in% DGs)) {
 }
 ```
 
-sn2MGS to DG
-
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
 template <- list(reaction_name = "Monoacylglycerol-acyl transferase (2-acyl-MG)",
@@ -527,8 +512,6 @@ if(all(results[[1]] %in% DGs)) {
 }
 ```
 
-1-Acyl-MGs can be also phosphorylated to yield LPAs.
-
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
 template <- list(reaction_name = "1-acyl-sn-glycerol kinase",
@@ -552,7 +535,6 @@ if(all(results[[1]] %in% LPAs)) {
 
 }
 ```
-
 
 ## Block 2: Biosynthesis and degradation of TGs
 
@@ -623,10 +605,9 @@ if(all(results[[1]] %in% DGs)) {
 }
 ```
 
-
 ## Block 3: Biosynthesis of Glycerophospholipids (PCs, PEs, PSs)
 
-Glycerophosphlipids are synthesized from DGs by addition of headgroups
+The glycerophospholipids phosphatidylcholine, -ethanolamine and serine are synthesized from DGs by addition of headgroups. Additionally they can be interconverted
 
 ### Biosynthesis of PCs
 
@@ -789,7 +770,6 @@ if(all(results[[1]] %in% PEs)) {
 }
 ```
 
-
 ## Block 4: Remodeling and Degradation of Glycerophospholipids
 
 ### Phospholipase action on PCs
@@ -947,7 +927,7 @@ if(all(results[[1]] %in% FAs_GPGL)) {
 
 ### Reacylation of LPCs to PCs (Remodeling)
 
-Only sn1LPCs get re-acylated --> constraining? = remodeling!
+Only sn1LPCs get re-acylated --\> constraining? = remodeling!
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -1009,7 +989,6 @@ lipid_info <- parseLipidNames(sn2LPEs)
 
 lipid_df <- bind_rows(lipid_df, lipid_info)
 ```
-
 
 PLA2 on PE
 
@@ -1100,8 +1079,6 @@ if(all(results[[1]] %in% FAs_GPGL)) {
 }
 ```
 
-
-
 sn2LPEs to FAs_GPGL
 
 ```{r, message=FALSE, warning=FALSE}
@@ -1112,7 +1089,6 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphoethanolamine lipase
                  reaction_geneAssociation = "WBGene00010915 or WBGene00022718",
                  reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 results <- sn2lpe_to_fa(sn2LPEs, template = template)
@@ -1131,7 +1107,7 @@ if(all(results[[1]] %in% FAs_GPGL)) {
 
 ### Reacylation of LPEs to PEs (Remodeling)
 
-Only sn1LPEs get re-acylated --> constraining? = remodeling!
+Only sn1LPEs get re-acylated --\> constraining? = remodeling!
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -1156,8 +1132,6 @@ if(all(results[[1]] %in% PEs)) {
 
 }
 ```
-
-
 
 ## Block 3: Biosynthesis of Glycerophospholipids (PGs, PIs, CLs)
 
@@ -1346,8 +1320,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Generation of fatty alcohols
 
-Some etherlipids... mostly PE, small amounts in PCs
-This reaction is constrained to 16:0, 18:0, 20:0!
+Some etherlipids... mostly PE, small amounts in PCs This reaction is constrained to 16:0, 18:0, 20:0!
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -1457,7 +1430,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Reduction of Alkyl-DHAP to LPA-O
 
-Enzyme not known so far in C. elegans!!!  EC 1.1.1.101
+Enzyme not known so far in C. elegans!!! EC 1.1.1.101
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -1495,7 +1468,7 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Biosynthesis of PA-O
 
-Same genes as for LPA to PA --> substrate specificity not known yet...
+Same genes as for LPA to PA --\> substrate specificity not known yet...
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -1505,7 +1478,6 @@ template <- list(reaction_name = "2-O-Acyl transferase",
                  reaction_geneAssociation = "WBGene00022646 or WBGene00020264 or WBGene00016934 or WBGene00010339 or WBGene00011543",
                  reaction_pathway = "Biosynthesis of Etherlipids")
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 # biosynthesis of PAs ----------------------------------------------------------
@@ -1731,7 +1703,6 @@ template <- list(reaction_name = "1-alkyl-sn-glycero-3-phosphoethanolamine acylt
                  reaction_pathway = "Remodeling and Degradation of Etherlipids")
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 # biosynthesis of PAs ----------------------------------------------------------
 results <- lpeo_to_peo(LPEOs, CoAs_GPGL, template = template, constraints = c("", ""), negate = c(FALSE, FALSE))
@@ -1849,8 +1820,6 @@ lipid_df <- bind_rows(lipid_df, lipid_info)
 
 ### Remodeling of PC-O???
 
-
-
 ### Degradation of LPEPs
 
 ```{r, message=FALSE, warning=FALSE}
@@ -1861,7 +1830,6 @@ template <- list(reaction_name = "Lysoplasmalogen ethanolamine phosphohydrolase"
                  reaction_geneAssociation = "",
                  reaction_pathway = "Remodeling and Degradation of Etherlipids")
 ```
-
 
 ## Block X: Biosynthesis and degradation of sphingolipids
 
@@ -2061,7 +2029,6 @@ if(all(results[[1]] %in% CERs)) {
 }
 ```
 
-
 ### Biosynthesis of Ceramide-1-Phosphates
 
 ```{r, message=FALSE, warning=FALSE}
@@ -2162,8 +2129,6 @@ lipid_info <- parseLipidNames(GLCCERs)
 lipid_df <- bind_rows(lipid_df, lipid_info)
 ```
 
-
-
 ## Block Y: Biosynthesis and Degradation of N-Acyl-Ethanolamines
 
 This biosynthetic pathway is putative. Only a few enzymes have been found so far.
@@ -2197,6 +2162,15 @@ if(all(results[[2]] %in% sn2LPCs)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(NAPEs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
@@ -2226,10 +2200,18 @@ if(all(results[[2]] %in% sn2LPCs)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(NAPEOs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
-
 
 transfer of Sn1 fatty acyl to PE-P
 
@@ -2256,6 +2238,15 @@ if(all(results[[2]] %in% sn2LPCs)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(NAPEPs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
@@ -2365,6 +2356,15 @@ if(all(results[[2]] %in% PAs)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(NAEs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
@@ -2419,7 +2419,6 @@ template <- list(reaction_name = "",
                  reaction_pathway = "")
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 results <- nape_to_pnae(NAPEs, template = template, constraints = c(""), negate = c(FALSE))
 
@@ -2434,6 +2433,15 @@ if(all(results[[2]] %in% DGs)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(PNAEs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
@@ -2455,7 +2463,6 @@ template <- list(reaction_name = "",
                  reaction_pathway = "")
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 results <- nape_to_lnape(NAPEs, template = template, constraints = c(""), negate = c(FALSE))
 
@@ -2470,6 +2477,15 @@ if(all(results[[2]] %in% FAs_GPGL)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(LNAPEs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
@@ -2485,7 +2501,6 @@ template <- list(reaction_name = "",
                  reaction_pathway = "")
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 results <- lnape_to_gpnae(LNAPEs, template = template, constraints = c(""), negate = c(FALSE))
 
@@ -2500,11 +2515,20 @@ if(all(results[[2]] %in% FAs_GPGL)) {
   # add new reactions to reaction data frame
   lipid_reactions <- rbind.data.frame(lipid_reactions,
                                       results[[3]])
+  
+  lipid_info <- parseLipidNames(GPNAEs)
+
+  # add lipids to data frame
+  # lipid_df <- bind_rows(lipid_df, tibble(class = "FA",
+  #                                        category = "FA01",
+  #                                        shorthand = FAs_GPGL))
+
+  lipid_df <- bind_rows(lipid_df, lipid_info)
 
 }
 ```
 
-### Generation of 
+### Generation of
 
 ### Degradation of N-Acyl-Ethanolamines
 
