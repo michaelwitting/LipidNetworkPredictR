@@ -247,7 +247,8 @@
     
     if (reaction == "tg_to_dg")
         .l <- list(
-            list(sn1Loss_dg = unique(DGs$sn1Loss_dg, sn1Loss_fa = DGs$sn1Loss_fa)), 
+            list(sn1Loss_dg = unique(df_reactions$sn1Loss_dg), 
+                sn1Loss_fa = uniue(df_reactions)), 
             df_template)
             
     ## return the list 
