@@ -104,10 +104,20 @@
             replacement = df_reactions[["LPA"]])
     }
     
-    if (reaction == "dg_to_mg") {
+    if (reaction == "dg_to_sn1mg") {
         .formula <- gsub(x = .formula, pattern = "M_12dag",
             replacement = df_reactions[["DG"]])
         .formula <- gsub(x = .formula, pattern = "M_1magol",
+            replacement = df_reactions[["MG"]])
+        .formula <- gsub(x = .formula, pattern = "M_fatacid",
+            replacement = df_reactions[["FA"]])
+    }
+    
+    if (reaction == "dg_to_sn2mg") {
+        # adjust variable substrates and products
+        .formula <- gsub(x = .formula, pattern = "M_12dag", 
+            replacement = df_reactions[["DG"]])
+        .formula <- gsub(x = .formula, pattern = "M_mag", 
             replacement = df_reactions[["MG"]])
         .formula <- gsub(x = .formula, pattern = "M_fatacid",
             replacement = df_reactions[["FA"]])
@@ -461,7 +471,7 @@
         .formula <- gsub(x = .formula, pattern = "M_2agpe",
             replacement = df_reactions[["sn2LPE"]])
         .formula <- gsub(x = .formula, pattern = "M_fatacid",
-            replacement = df_reactions[["FA"]]
+            replacement = df_reactions[["FA"]])
     }
     
     if (reaction == "pe_to_nape_sn1") {
@@ -613,7 +623,7 @@
         .formula <- gsub(x = .formula, pattern = "M_12dag",
             replacement = c(df_reactions[["sn1Loss_dg"]], df_reactions[["sn3Loss_dg"]]))
         .formula <- gsub(x = .formula, pattern = "M_fatacid", 
-            replacement = c(df_reactions[["sn1Loss_fa"]], df_reactions[["sn3Loss_fa"]]) 
+            replacement = c(df_reactions[["sn1Loss_fa"]], df_reactions[["sn3Loss_fa"]])) 
     }
     
     ## adjust fixed substrates and products
