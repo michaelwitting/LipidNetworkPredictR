@@ -13,19 +13,19 @@ create_reaction <- function(substrates, template = NULL, reaction = "fa_to_coa",
     ## create data.frame of substrates
     df_substrates <- .create_substrates_combinations(substrates = substrates, 
         constraints = constraints, negate = negate)
-    .check_colnames_substrates_combinations(df_substrates, reaction = reaction)
+    .check_colnames_substrates_combinations(df = df_substrates, 
+        reaction = reaction)
     
     ## add products to data.frame
     df_reactions <- .add_products(substrates = df_substrates, reaction = reaction)
-    .check_colnames_substrates_products_df(df_reactions, reaction = reaction)
+    ##.check_colnames_substrates_products_df(df_reactions, reaction = reaction)
     
     
     ## make new data.frame with reaction template
     df <- .create_df_with_template(df_reactions = df_reactions, 
-        template = template)
+        template = template, reaction = reaction)
     
     ## return results
-    
-    list(unique(df_reactions$PAs), df)
-    
+    .create_list_products_df_with_template(df_reactions = df_reactions, 
+        df_template = df, reaction = reaction)
 }
