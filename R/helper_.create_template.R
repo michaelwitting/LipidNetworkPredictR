@@ -4,8 +4,8 @@
         ## check integrity (all names are present in template)
         if (!"reaction_name" %in% names(template)) 
             stop("'template' has to contain the entry 'reaction_name'")
-        if (!"reaction_.formula" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_.formula'")
+        if (!"reaction_formula" %in% names(template)) 
+            stop("'template' has to contain the entry 'reaction_formula'")
         if (!"reaction_isReversible" %in% names(template)) 
             stop("'template' has to contain the entry 'reacton_isReversible'")
         if (!"reaction_geneAssociation" %in% names(template)) 
@@ -16,8 +16,8 @@
         ## all entries are of mode character
         if (!is.vector(template$reaction_name, "character")) 
             stop("entry 'reaction_name' is not of mode 'character'")
-        if (!is.vector(template$reaction_.formula, "character")) 
-            stop("entry 'reaction_.formula' is not of mode 'character'")
+        if (!is.vector(template$reaction_formula, "character")) 
+            stop("entry 'reaction_formula' is not of mode 'character'")
         if (!is.vector(template$reaction_isReversible, "character")) 
             stop("entry 'reaction_isReversible' is not of mode 'character'")
         if (!is.vector(template$reaction_geneAssociation, "character")) 
@@ -74,7 +74,7 @@
         if (reaction == "dg_to_sn1mg")
             .formula <- "M_h2o + M_12dag <=> M_h + M_1magol + M_fatacid"
         
-        if (reaction == "")
+        if (reaction == "dg_to_sn2mg")
             .formula <- "M_h2o + M_12dag <=> M_h + M_mag + M_fatacid"
         
         if (reaction == "dg_to_pa")
@@ -267,75 +267,3 @@
     ## return the template object
     template
 }
-
-
-
-
-
-
-
-acdhap_to_alkyldhap
-alkyldhap_to_lpao
-c1p_to_cer
-cdpdg_to_pgp
-cdpdg_to_pi
-cer_to_c1p
-cer_to_glccer
-cer_to_sm
-coa_to_acdhap
-coa_to_fatoh
-coa_to_lpa
-dg_to_mg
-dg_to_pa
-dg_to_pc
-dg_to_pe
-dg_to_tg
-dgo_to_pco
-dgo_to_peo
-dhcer_to_cer
-dhcer_to_dhsm
-dhsm_to_dhcer
-fa_to_coa
-lnape_to_gpnae
-lpa_to_pa
-lpao_to_pao
-lpc_to_fa
-lpc_to_pc
-lpe_to_fa
-lpe_to_pe
-lpeo_to_peo
-lpep_to_pep
-mg_to_dg
-mg_to_fa
-mg_to_lpa
-mg_to_mg
-nae_to_fa
-nape_to_lnape
-nape_to_nae
-nape_to_pnae
-napeo_to_nae
-pa_to_cdpdg
-pa_to_dg
-pao_t_dgo
-pc_to_dg
-pc_to_lpc
-pc_to_pa
-pc_to_ps
-pco_to_lpco
-pe_to_dg
-pe_to_lpe
-pe_to_nape
-pe_to_pa
-pe_to_ps
-peo_to_lpeo
-peo_to_napeo
-peo_to_pep
-pep_to_lpep
-pep_to_napep
-pg_to_cl
-pgp_to_pg
-ps_to_pe
-sm_to_cer
-sphinga_to_dhcer
-tg_to_dg
-
