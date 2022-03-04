@@ -1,4 +1,39 @@
-.create_template <- function(template = NA, reaction = "lpa_to_pa") {
+#' @name .create_template
+#' 
+#' @title Create template with mininum information or return a given template
+#' 
+#' @description 
+#' Helper function for \code{create_reaction}.
+#' 
+#' The function \code{.create_template} returns a data.frame of the template
+#' of a given \code{reaction}. The returned data.frame is either 
+#' the pass-through of the given \code{template} or will be created and 
+#' filled with minimum information using the information from
+#' \code{reaction}.
+#' 
+#' @details 
+#' The function \code{.create_template} will check the \code{template} object
+#' for the following information:
+#' 
+#' \itemize{
+#'     \item column "reaction_name" with character entry,
+#'     \item column "reaction_formula" with character entry,
+#'     \item column "reaction_isReversible" with character entry, 
+#'     \item column "reaction_geneAssociation" with character entry,
+#'     \item column "reaction_pathway" with character entry.
+#' }    
+#' 
+#' @param template NA or \code{list}
+#' @param reaction \code{character(1)}
+#' 
+#' @return data.frame
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'    and Thomas Naake, \email{thomasnaake@@googlemail.com}
+#' 
+#' @examples 
+#' wormLipidPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
+.create_template <- function(template = NA, reaction = "fa_to_coa") {
     
     if (is.list(template)) {
         ## check integrity (all names are present in template)
@@ -261,9 +296,8 @@
             .formula <- "M_h2o + M_tag <=> M_h + M_fatacid + M_12dag"
             
         template$reaction_formula <- .formula
-    
     }
-    
+
     ## return the template object
     template
 }

@@ -1,9 +1,35 @@
 #' @name .create_substrates_combinations
 #' 
-#' @title 
-#' @param substrates list of character vector
+#' @title Create substrates combinations
+#' 
+#' @description
+#' The function returns a \code{data.frame} with all combinations from
+#' \code{substrates}.
+#' 
+#' @details
+#' The string replacement depend on the \code{reaction} argument.
+#' 
+#' The function will internally \code{expand.grid} to create the combinations.
+#' 
+#' @param substrates list of character vector(s)
 #' @param constraints character vector with same length as \code{length(substrates)}
 #' @param negate logical vector with same length as \code{length(substrates)}
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de} and 
+#'     Thomas Naake, \email{thomasnaake@@googlemail.com}
+#' 
+#' @return data.frame
+#'
+#' @examples 
+#'  FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
+#'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
+#'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
+#' substrates <- list(FA = FA)
+#' 
+#' ## create data.frame of substrates
+#' wormLipidPredictR:::.create_substrates_combinations(
+#'     substrates = substrates, 
+#'     constraints = "", negate = FALSE)
 .create_substrates_combinations <- function(substrates = substrates, 
     constraints = character(length(substrates)), 
     negate = logical(length(substrates))) {
@@ -35,8 +61,43 @@
     substrates_df
 }
 
-#
+#' @name .check_colnames_substrates_combinations
+#' 
+#' @title Check if correct colnames are in \code{substrates_combinations}
+#' 
+#' @description
+#' The helper function checks if the correct columns are in \code{df} 
+#' depending on the \code{reaction}.
+#' 
+#' @details 
+#' The function will throw an error if \code{reaction} is not of length 1 and
+#' is not an implemented method.
+#' 
+#' \code{.check_colnames_substrates_combinations} is a helper function to 
+#' test the integrity of \code{df}.
+#' 
+#' @param df \code{data.frame}
+#' @param reaction \code{character(1)}
+#' 
+#' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
+#'
+#' @examples
+#' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
+#'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
+#'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
+#' substrates <- list(FA = FA)
+#' 
+#' ## create data.frame of substrates
+#' df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+#'     substrates = substrates, 
+#'     constraints = "", negate = FALSE)
+#' wormLipidPredictR:::.check_colnames_substrates_combinations(
+#'     df = df_substrates, reaction = "fa_to_coa")
 .check_colnames_substrates_combinations <- function(df, reaction = "fa_to_coa") {
+    
+    if (length(reaction) != 1)
+        stop("'reaction' has to be of length 1")
+    
     if (reaction == "acdhap_to_alkyldhap")
         .cols <- c("ACDHAP", "FATOH")
     
@@ -260,5 +321,6 @@
         .cols <- c("TG")
     
     if (!all(.cols %in% colnames(df)))
-        stop(paste("columns", paste(sprintf("%s", .cols), collapse = ", "), "not in 'colnames(df)'"))
+        stop(paste("columns", paste(sprintf("%s", .cols), collapse = ", "), 
+            "not in 'colnames(df)'"))
 }

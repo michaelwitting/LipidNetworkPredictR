@@ -18,8 +18,8 @@
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #' 
 #' @examples
-#' .check_reaction("acdhap_to_alkyldhap)
-.check_reaction <- function(reaction) {
+#' .check_reaction(reaction = "fa_to_coa")
+.check_reaction <- function(reaction = "fa_to_coa") {
     
     if (length(reaction) != 1)
         stop("'reaction' has to be of length 1")

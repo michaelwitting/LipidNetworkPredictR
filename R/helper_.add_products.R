@@ -1,4 +1,49 @@
-
+#' @name .add_products
+#' 
+#' @title Produce products by replacing strings of substrates 
+#' 
+#' @description 
+#' Helper function for \code{create_reaction}.
+#' 
+#' The function \code{.add_products} returns a data.frame of substrates and
+#' products. The products are taken and modified from the substrates.
+#' 
+#' @details
+#' The string replacement depend on the \code{reaction} argument.
+#' 
+#' Depending on the \code{argument}, different columns (i.e. substrates)
+#' are required and different columns (i.e. products) are returned.
+#' 
+#' The function calls internally the function
+#' \code{stringi::stri_replace_all_fixed}.
+#' 
+#' @param substrate data.frame
+#' @param reaction \code{character(1)}
+#' 
+#' @return data.frame
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'    and Thomas Naake, \email{thomasnaake@@googlemail.com}
+#' 
+#' @examples 
+#' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
+#'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
+#'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
+#' substrates <- list(FA = FA)
+#' 
+#' ## create template
+#' template <- wormLipidPredictR:::.create_template(template = NA, 
+#'     reaction = "fa_to_coa")
+#' 
+#' ## create data.frame of substrates
+#' df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+#'     substrates = substrates, 
+#'     constraints = "", negate = FALSE)
+#'     
+#' ## add products to data.frame
+#' wormLipidPredictR:::.add_products(substrates = df_substrates, 
+#'     reaction = "fa_to_coa")
+#'  
 #' @importFrom stringi stri_replace_all_fixed
 .add_products <- function(substrates, reaction = "fa_to_coa") {
 
@@ -82,7 +127,7 @@
     if (reaction == "dg_to_sn2mg") {
         .s$MG <- unlist(lapply(.s$DG, function(f) {
             fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("MG(0:0/", fatty_acyl[2], "/0:0)")
+            paste0("MG(0:0/", fatty_acyl[1], "/0:0)")
         }))
         .s$FA <- unlist(lapply(.s$DG, function(f) {
             fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
@@ -545,15 +590,15 @@
             fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
             paste0("DG(", fatty_acyls[3], "/", fatty_acyl[2], "/0:0)")}))
         .s$sn1Loss_fa <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_fatty_acyls(f)
+            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
             paste0("FA(", fatty_acyl[1], ")")}))
         
         ## "sn3 loss"
         .s$sn3Loss_dg <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_fatty_acyls(TG)
+            fatty_acyl <- lipidomicsUtils::isolate_radyls(TG)
             paste0("DG(", fatty_acyl[1], "/", fatty_acyls[2], "/0:0)")}))
         .s$sn3Loss_fa <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(f)
+            fatty_acyls <- lipidomicsUtils::isolate_radyls(f)
             paste0("FA(", fatty_acyls[3], ")")}))
     }
     
