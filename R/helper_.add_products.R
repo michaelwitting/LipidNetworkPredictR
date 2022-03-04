@@ -44,7 +44,7 @@
 #' wormLipidPredictR:::.add_products(substrates = df_substrates, 
 #'     reaction = "fa_to_coa")
 #'  
-#' @importFrom stringi stri_replace_all_fixed
+#' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
 .add_products <- function(substrates, reaction = "fa_to_coa") {
 
     ## make the substrates argument a little bit smaller
@@ -62,7 +62,7 @@
     if (reaction == "alkyldhap_to_lpao") {
         .s$LPAO <- stringi::stri_replace_all_fixed(str = .s$ALKYLDHAP, 
             pattern = "DHAP", replacement = "PA")
-        .s$LPAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, 
+        .s$LPAO <- stringi::stri_replace_all_regex(str = .s$LPAO, 
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
@@ -109,7 +109,7 @@
     if (reaction == "coa_to_lpa") {
         .s$LPA <- stringi::stri_replace_all_fixed(str = .s$CoA, pattern = "CoA", 
             replacement = "PA")
-        .s$LPA <- stringi::stri_replace_all_fixed(str = .s$LPA, 
+        .s$LPA <- stringi::stri_replace_all_regex(str = .s$LPA, 
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
@@ -127,7 +127,7 @@
     if (reaction == "dg_to_sn2mg") {
         .s$MG <- unlist(lapply(.s$DG, function(f) {
             fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("MG(0:0/", fatty_acyl[1], "/0:0)")
+            paste0("MG(0:0/", fatty_acyl[2], "/0:0)")
         }))
         .s$FA <- unlist(lapply(.s$DG, function(f) {
             fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
@@ -317,7 +317,7 @@
     if (reaction == "sn2mg_to_sn1mg") {
         ## "sn2 loss"
         .s$sn1MG <- unlist(lapply(.s$sn2MG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
+            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)[[1]]
             paste0("MG(", fatty_acyl[2], "/0:0/0:0)")
         }))
     }
@@ -367,21 +367,21 @@
     if (reaction == "pa_to_dg") {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PA, pattern = "PA", 
             replacement = "DG")
-        .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "\\)$", 
+        .s$DG <- stringi::stri_replace_all_regex(str = .s$DG, pattern = "\\)$", 
             replacement = "/0:0\\)")
     }
 
     if (reaction == "pao_to_dgo") {
         .s$DGO <- stringi::stri_replace_all_fixed(str = .s$PAO, pattern = "PA", 
             replacement = "DG")
-        .s$DGO <- stringi::stri_replace_all_fixed(str = .s$DGO, 
+        .s$DGO <- stringi::stri_replace_all_regex(str = .s$DGO, 
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
     if (reaction == "pc_to_dg") {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PC, pattern = "PC", 
             replacement = "DG")
-        .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "\\)$", 
+        .s$DG <- stringi::stri_replace_all_regex(str = .s$DG, pattern = "\\)$", 
             replacement = "/0:0\\)")
     }
 
@@ -428,7 +428,7 @@
     if (reaction == "pe_to_dg") {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PE, pattern = "PE",
             replacement = "DG")
-        .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "\\)$",
+        .s$DG <- stringi::stri_replace_all_regex(str = .s$DG, pattern = "\\)$",
             replacement = "/0:0\\)")
     }
     
@@ -454,7 +454,7 @@
     if (reaction == "pe_to_nape_sn1") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
-        .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$PE, 
+        .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
             pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
@@ -464,7 +464,7 @@
     if (reaction == "pe_to_nape_sn2") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
-        .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$PE, pattern = "\\)$", 
+        .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, pattern = "\\)$", 
             replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/",lipidomicsUtils::isolate_radyls(f)[2], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
@@ -494,7 +494,7 @@
     if (reaction == "peo_to_napeo_sn1") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
-        .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$PEO, 
+        .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
@@ -504,7 +504,7 @@
     if (reaction == "peo_to_napeo_sn2") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
-        .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$PEO, 
+        .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/",lipidomicsUtils::isolate_radyls(f)[2], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
@@ -530,7 +530,7 @@
     if (reaction == "pep_to_napep_sn1") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
-        .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$PEP, 
+        .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
             pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP,
@@ -540,7 +540,7 @@
     if (reaction == "pep_to_napep_sn2") {
         .s$LPC <- unlist(lapply(.s$PC, function(f) {
             paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
-        .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$PEP, 
+        .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
             pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
                 paste0("/", lipidomicsUtils::isolate_radyls(f)[2], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP, 
@@ -551,13 +551,13 @@
         ## isolate core from PGs
         .s$PGs2 <- stringi::stri_replace_all_fixed(str = .s$PG, 
             pattern = "^PG\\(", replacement = "")
-        .s$PGs2 <- stringi::stri_replace_all_fixed(str = .s$PGs2, 
+        .s$PGs2 <- stringi::stri_replace_all_regex(str = .s$PGs2, 
             pattern = "\\)$", replacement = "")
          
         ## isolate core from CDPDGs
         .s$CDPDGs2 <- stringi::stri_replace_all_fixed(str = .s$CDPDG, 
             pattern = "^CDP-DG\\(", replacement = "")
-        .s$CDPDGs2 <- stringi::stri_replace_all_fixed(str = .s$CDPDGs2, 
+        .s$CDPDGs2 <- stringi::stri_replace_all_regex(str = .s$CDPDGs2, 
             pattern = "\\)$", replacement = "")
         
         ## create CL
