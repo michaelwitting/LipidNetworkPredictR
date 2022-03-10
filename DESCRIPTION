@@ -1,8 +1,10 @@
 Package: wormLipidPredictR
 Title: Lipid reaction prediction based on WormJam
-Version: 0.1
-Authors@R: person("Michael", "Witting", email = "michael.witting@helmholtz-muenchen.de",
-                  role = c("aut", "cre"))
+Version: 0.99.0
+Authors@R: c(person(given = "Michael", family = "Witting", 
+		email = "michael.witting@helmholtz-muenchen.de", role = c("aut", "cre")),
+	person(given = "Thomas", family = "Naake",
+		email = "thomasnaake@googlemail.com", role = "ctb"))
 Description: The packages uses WormJam related lipid reactions and predicts possible lipids
 Depends: R (>= 3.1.0)
 License: GPL-2
