@@ -59,8 +59,6 @@ create_reaction <- function(substrates, template = NULL, reaction = "fa_to_coa",
     
     ## add products to data.frame
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
-    .check_colnames_substrates_products_df(df_reaction, reaction = reaction)
-    
     
     ## make new data.frame with reaction template
     df <- .create_df_with_template(df_reaction = df_reaction, 
