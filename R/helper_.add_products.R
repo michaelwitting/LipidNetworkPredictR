@@ -27,7 +27,6 @@
 #' 
 #' @examples 
 #' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
-#'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
 #'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 #' substrates <- list(FA = FA)
 #' 
@@ -53,9 +52,9 @@
     ## depending on the reaction type, replace the expressions of the substrates
     ## and products in the reaction
     if (reaction == "acdhap_to_alkyldhap") {
-        .s$FA <- stringi::stri_replace_all_fixed(str = .s$ACDHAP, 
+        .s$FA <- stringi::stri_replace_all_regex(str = .s$ACDHAP, 
             pattern = "DHAP\\(", replacement = "FA(")
-        .s$ALKYLDHAP <- stringi::stri_replace_all_fixed(str = .s$FATOH, 
+        .s$ALKYLDHAP <- stringi::stri_replace_all_regex(str = .s$FATOH, 
             pattern = "FATOH\\(", replacement = "DHAP(O-")
     }
 
@@ -114,25 +113,17 @@
     }
 
     if (reaction == "dg_to_sn1mg") {
-        .s$MG <- unlist(lapply(.s$DG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("MG(", fatty_acyl[1], "/0:0/0:0)")
-        }))
-        .s$FA <- unlist(lapply(.s$DG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")
-        }))
+        .s$sn1MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+            function(f) {paste0("MG(", f[1], "/0:0/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
     
     if (reaction == "dg_to_sn2mg") {
-        .s$MG <- unlist(lapply(.s$DG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("MG(0:0/", fatty_acyl[2], "/0:0)")
-        }))
-        .s$FA <- unlist(lapply(.s$DG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")
-        }))
+        .s$sn2MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+            function(f) {paste0("MG(0:0/", f[2], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
             
     if (reaction == "dg_to_pa") {
@@ -158,16 +149,16 @@
             
     if (reaction == "dg_to_tg") {
         .s$TG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "/0:0", 
-            replacement = paste0("/", unlist(lapply(.s$CoA, 
-                lipidomicsUtils::isolate_radyls))))
+            replacement = paste0("/", 
+                unlist(lipidomicsUtils::isolate_radyls(.s$CoA))))
          .s$TG <- stringi::stri_replace_all_fixed(str = .s$TG, pattern = "^DG", 
             replacement = "TG")
     }
-            
+    
     if (reaction == "dgo_to_pco") {
         .s$PCO <- stringi::stri_replace_all_fixed(str = .s$DGO, pattern = "DG", 
             replacement = "PC")
-        .s$PCO <- stringr::str_replace(.s$PCO, 
+        .s$PCO <- stringi::stri_replace_all_regex(str = .s$PCO, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
@@ -201,83 +192,80 @@
     }
     
     if (reaction == "lnape_to_gpnae") {
-        .s$GPNAE <- unlist(lapply(.s$LNAPE, function(f) {
-            paste0("GPNAE(", lipidomicsUtils::isolate_radyls(f)[3], ")")}))
-        .s$FA <- unlist(lapply(.s$LNAPE, function(f) {
-            paste0("FA(", lipidomicsUtils::isolate_radyls(f)[1], ")")}))   
+        .s$GPNAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
+            function(f) {paste0("GPNAE(", f[3], ")")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
         
     if (reaction == "lpa_to_pa") {
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$LPA, pattern = "/0:0", 
-            replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f)})))
     }
             
     if (reaction == "lpao_to_pao") {
-        .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, pattern = "/0:0", 
-            replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+        .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, 
+            pattern = "/0:0", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f)})))
     }
 
     if (reaction == "sn1lpc_to_fa") {
-        .s$FA <- unlist(lapply(.s$sn1LPC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")
-        }))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPC), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
 
-    if (reaction == "sn21pc_to_fa") {
-        .s$FA <- unlist(lapply(.s$sn2LPC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")
-        }))
+    if (reaction == "sn2lpc_to_fa") {
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2LPC), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "sn1lpc_to_pc") {
         .s$PC <- stringi::stri_replace_all_fixed(str = .s$sn1LPC, 
-            pattern = "/0:0", replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+            pattern = "/0:0", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f)})))
     }
 
     if (reaction == "sn1lpe_to_fa") {
         ## sn2 loss
-        .s$FA <- unlist(lapply(.s$sn1LPE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")
-        }))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPE), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
 
     if (reaction == "sn2lpe_to_fa") {
         ## sn2 loss 
-        .s$FA <- unlist(lapply(.s$sn2LPE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")
-        }))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2LPE), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "sn1lpe_to_pe") {
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$sn1LPE, 
-            pattern = "/0:0", replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+            pattern = "/0:0", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA),
+                function(f) {paste0("/", f)})))
     }
 
     if (reaction == "lpeo_to_peo") {
         .s$PEO <- stringi::stri_replace_all_fixed(str = .s$LPEO, 
-            pattern = "/0:0", replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+            pattern = "/0:0", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f)})))
     }
 
     if (reaction == "lpep_to_pep") {
         .s$PEP <- stringi::stri_replace_all_fixed(str = .s$LPEP, 
-            pattern = "/0:0", replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f))})))
+            pattern = "/0:0", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f)})))
     }
 
     if (reaction == "sn1mg_to_dg") {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$sn1MG, 
             pattern = "/0:0/0:0", 
-            replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f), "/0:0")})))
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("/", f, "/0:0")})))
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "MG",
             replacement = "DG")
     }
@@ -285,26 +273,22 @@
     if (reaction == "sn2mg_to_dg") {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$sn2MG, 
             pattern = "\\(0:0/", 
-            replacement = unlist(lapply(.s$CoA, function(f) {
-                paste0("(", lipidomicsUtils::isolate_radyls(f), "/")})))
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+                function(f) {paste0("(", f, "/")})))
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "MG", 
             replacement = "DG")
     }
     
     if (reaction == "sn1mg_to_fa") {
         ## "sn2 loss"
-        .s$FA <- unlist(lapply(.s$sn1MG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")
-        }))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1MG), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
 
     if (reaction == "sn2mg_to_fa") {
         ## "sn2 loss"
-        .s$FA <- unlist(lapply(.s$sn2MG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")
-        }))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2MG), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "sn1mg_to_lpa") {
@@ -316,10 +300,8 @@
 
     if (reaction == "sn2mg_to_sn1mg") {
         ## "sn2 loss"
-        .s$sn1MG <- unlist(lapply(.s$sn2MG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)[[1]]
-            paste0("MG(", fatty_acyl[2], "/0:0/0:0)")
-        }))
+        .s$sn1MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2MG), 
+            function(f) {paste0("MG(", f[2], "/0:0/0:0)")}))
     }
 
     if (reaction == "nae_to_fa") {
@@ -328,35 +310,31 @@
     }
 
     if (reaction == "nape_to_lnape") {
-        .s$LNAPE <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("NAPE(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0/",
-                lipidomicsUtils::isolate_radyls(f)[3], ")")}))
-        .s$FA <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("FA(", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$LNAPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("NAPE(", f[1], "/0:0/", f[3], ")")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "nape_to_nae") {
-        .s$NAE <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("NAE(", lipidomicsUtils::isolate_radyls(f)[3], ")")}))
-        .s$PA <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("PA(", lipidomicsUtils::isolate_radyls(f)[1], "/",
-                lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$NAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("NAE(", f[3], ")")}))
+        .s$PA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("PA(", f[1], "/", f[2], ")")}))
     }
 
     if (reaction == "nape_to_pnae") {
-        .s$PNAE <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("PNAE(", lipidomicsUtils::isolate_radyls(f)[3], ")")}))
-        .s$DG <- unlist(lapply(.s$NAPE, function(f) {
-            paste0("DG(", lipidomicsUtils::isolate_radyls(f)[1], "/",
-                lipidomicsUtils::isolate_radyls(f)[2], "/0:0)")}))
+        .s$PNAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("PNAE(", f[3], ")")}))
+        .s$DG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+            function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
     }
     
     if (reaction == "napeo_to_nae") {
-        .s$NAE <- unlist(lapply(.s$NAPEO, function(f) {
-            paste0("NAE(", lipidomicsUtils::isolate_radyls(f)[3], ")")}))
-        .s$PAO <- unlist(lapply(.s$NAPEO, function(f) {
-            paste0("PA(", lipidomicsUtils::isolate_radyls(f)[1], "/",
-                lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$NAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPEO), 
+            function(f) {paste0("NAE(", f[3], ")")}))
+        .s$PAO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPEO), 
+            function(f) {paste0("PA(", f[1], "/", f[2], ")")}))
     }
     
     if (reaction == "pa_to_cdpdg") {
@@ -387,22 +365,18 @@
 
     if (reaction == "pc_to_sn1lpc") {
         ## "sn2 loss"
-        .s$sn1LPC <- unlist(lapply(.s$PC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PC(", fatty_acyl[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(.s$PC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyls[2], ")")}))
+        .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(", f[1], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "pc_to_sn2lpc") {
         ## "sn2 loss"
-        .s$sn2LPC <- unlist(lapply(.s$PC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PC(0:0/", fatty_acyl[2], ")")}))
-        .s$FA <- unlist(lapply(.s$PC, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")}))
+        .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(0:0/", f[2], ")")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("FA(", f[1], ")")}))
     }
     
     if (reaction == "pc_to_pa") {
@@ -417,12 +391,10 @@
     
     if (reaction == "pco_to_lpco") {
         ## "sn2 loss"
-        .s$LPCO <- unlist(lapply(.s$PCO, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PC(", fatty_acyl[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(.s$PCO, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")}))
+        .s$LPCO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PCO), 
+            function(f) {paste0("PC(", f[1], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PCO), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
     
     if (reaction == "pe_to_dg") {
@@ -434,39 +406,37 @@
     
     if (reaction == "pe_to_sn1lpe") {
         ## "sn2" loss
-        .s$sn1LPE <- unlist(lapply(.s$PE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PE(", fatty_acyl[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(.s$PE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")}))
+        .s$sn1LPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+            function(f) {paste0("PE(", f[1], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "pe_to_sn2lpe") {
-        .s$sn2LPE <- unlist(lapply(L.s$PE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PE(0:0/", fatty_acyl[1], ")")}))
-        .s$FA <- unlist(lapply(.s$PE, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyls[2], ")")}))
+        .s$sn2LPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+            function(f) {paste0("PE(0:0/", f[1], ")")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
     
     if (reaction == "pe_to_nape_sn1") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
-            pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[1], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
             replacement = "NAPE")
     }
 
     if (reaction == "pe_to_nape_sn2") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
-        .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, pattern = "\\)$", 
-            replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f)[2], ")")})))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(", f[1], "/0:0)")}))
+        .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[2], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
             replacement = "NAPE")
     }
@@ -483,66 +453,65 @@
     
     if (reaction == "peo_to_lpeo") {
         ## "sn2 loss"
-        .s$LPEO <- unlist(lapply(.s$PEO, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PE(", fatty_acyl[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(.s$PEO, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acylf[2], ")")}))
+        .s$LPEO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEO), 
+            function(f) {paste0("PE(", f[1], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEO), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "peo_to_napeo_sn1") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
-            pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[1], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
             pattern = "PE", replacement = "NAPE")
     }
     
     if (reaction == "peo_to_napeo_sn2") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
-            pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f)[2], ")")})))
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[2], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
             pattern = "PE", replacement = "NAPE")
-        
     }
     
     if (reaction == "peo_to_pep") {
-        .s$PEP <- stringi::stri_replace_all_fixed(str = .s$PEO, 
+        .s$PEP <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "PE\\(O-", replacement = "PE(P-")
     }
     
     if (reaction == "pep_to_lpep") {
         ## "sn2 loss"
-        .s$LPEP <- unlist(lapply(.s$PEP, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("PE(", fatty_acyl[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(.s$PEP, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[2], ")")}))
+        .s$LPEP <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEP), 
+            function(f) {paste0("PE(", f[1], "/0:0)")}))
+        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEP), 
+            function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "pep_to_napep_sn1") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(0:0/", lipidomicsUtils::isolate_radyls(f)[2], ")")}))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
-            pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/",lipidomicsUtils::isolate_radyls(f)[1], ")")})))
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[1], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP,
             pattern = "PE", replacement = "NAPE")
     }
 
     if (reaction == "pep_to_napep_sn2") {
-        .s$LPC <- unlist(lapply(.s$PC, function(f) {
-            paste0("PC(", lipidomicsUtils::isolate_radyls(f)[1], "/0:0)")}))
+        .s$LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
-            pattern = "\\)$", replacement = unlist(lapply(.s$PC, function(f) {
-                paste0("/", lipidomicsUtils::isolate_radyls(f)[2], ")")})))
+            pattern = "\\)$", 
+            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+                function(f) {paste0("/", f[2], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP, 
             pattern = "PE", replacement = "NAPE")
     }
@@ -580,26 +549,22 @@
     }
 
     if (reaction == "sphinga_to_dhcer") {
-        .s$DHCER <- stringi::stri_replace_all_fixed(str = .s$CoA, 
+        .s$DHCER <- stringi::stri_replace_all_regex(str = .s$CoA, 
             pattern = "CoA\\(", replacement = "Cer(d16:0(3OH,4OH)(15Me)/")
     }
 
     if (reaction == "tg_to_dg") {
         ## "sn1 loss"
-        .s$sn1Loss_dg <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("DG(", fatty_acyls[3], "/", fatty_acyl[2], "/0:0)")}))
-        .s$sn1Loss_fa <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyl[1], ")")}))
-        
+        .s$sn1Loss_dg <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+            function(f) {paste0("DG(", f[3], "/", f[2], "/0:0)")}))
+        .s$sn1Loss_fa <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+            function(f) {paste0("FA(", f[1], ")")}))
+
         ## "sn3 loss"
-        .s$sn3Loss_dg <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyl <- lipidomicsUtils::isolate_radyls(TG)
-            paste0("DG(", fatty_acyl[1], "/", fatty_acyls[2], "/0:0)")}))
-        .s$sn3Loss_fa <- unlist(lapply(.s$TG, function(f) {
-            fatty_acyls <- lipidomicsUtils::isolate_radyls(f)
-            paste0("FA(", fatty_acyls[3], ")")}))
+        .s$sn3Loss_dg <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+            function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
+        .s$sn3Loss_fa <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+            function(f) {paste0("FA(", f[3], ")")}))
     }
     
     ## end of if statements
