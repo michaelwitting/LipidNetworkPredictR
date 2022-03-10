@@ -52,14 +52,14 @@ create_reaction <- function(substrates, template = NULL, reaction = "fa_to_coa",
     template <- .create_template(template = template, reaction = reaction)
     
     ## create data.frame of substrates
-    df_substrates <- .create_substrates_combinations(substrates = substrates, 
+    df_substrates <- .create_substrates_combinations(substrates = substrates,
         constraints = constraints, negate = negate)
-    .check_colnames_substrates_combinations(df = df_substrates, 
+    .check_colnames_substrates_combinations(df = df_substrates,
         reaction = reaction)
     
     ## add products to data.frame
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
-    ##.check_colnames_substrates_products_df(df_reaction, reaction = reaction)
+    .check_colnames_substrates_products_df(df_reaction, reaction = reaction)
     
     
     ## make new data.frame with reaction template
