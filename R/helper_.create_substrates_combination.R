@@ -179,7 +179,7 @@
     if (reaction == "sn1lpc_to_fa")
         .cols <- c("sn1LPC")
     
-    if (reaction == "sn21pc_to_fa")
+    if (reaction == "sn2lpc_to_fa")
         .cols <- c("sn2LPC")
     
     if (reaction == "sn1lpc_to_pc")
