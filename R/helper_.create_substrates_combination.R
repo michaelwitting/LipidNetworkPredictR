@@ -264,10 +264,10 @@
         .cols <- c("PE")
     
     if (reaction == "pe_to_sn1lpe")
-        .cols <- c("PE", "")
+        .cols <- c("PE")
     
     if (reaction == "pe_to_sn2lpe")
-        .cols <- c("PE", "")
+        .cols <- c("PE")
     
     if (reaction == "pe_to_nape_sn1")
         .cols <- c("PE", "PC")
@@ -294,7 +294,7 @@
         .cols <- c("PEO")
     
     if (reaction == "pep_to_lpep")
-        .cols <- c("PEP", "")
+        .cols <- c("PEP")
     
     if (reaction == "pep_to_napep_sn1")
         .cols <- c("PEP", "PC")
@@ -303,7 +303,7 @@
         .cols <- c("PEP", "PC")
     
     if (reaction == "pg_to_cl")
-        .cols <- c("PG", "CDPDH")
+        .cols <- c("PG", "CDPDG")
     
     if (reaction == "pgp_to_pg")
         .cols <- c("PGP")
