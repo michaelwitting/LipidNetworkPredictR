@@ -77,7 +77,7 @@
             .formula <- "M_adhap + M_alkylR1oh <=> M_h + M_fatacid + M_akdhap"
         
         if (reaction == "alkyldhap_to_lpao")
-            .formula <- "M_h + M_nadph + M_akdhap <=> M_alkgp + M_nadp"
+            .formula <- "M_h + M_nadph + M_akdhap <=> M_alpa_pl + M_nadp"
         
         if (reaction == "c1p_to_cer")
             .formula <- "M_h2o + M_c17isocrmp <=> M_pi + M_c17isocrm"
@@ -149,7 +149,7 @@
             .formula <- "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl"
         
         if (reaction == "lpao_to_pao")
-            .formula <- "M_alkgp + M_fataccoa <=> M_akac2gp + M_coa"
+            .formula <- "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa"
         
         if (reaction == "sn1lpc_to_fa")
             .formula <- "M_h2o + M_ag3pc <=> M_g3pc + M_h + M_fatacid"
@@ -182,7 +182,7 @@
             .formula <- "M_fataccoa + M_mag <=> M_coa + M_12dag"
         
         if (reaction == "sn1mg_to_fa")
-            .formula <- "M_h2o + M_magol <=> M_glyc + M_h + M_fatacid"
+            .formula <- "M_h2o + M_1magol <=> M_glyc + M_h + M_fatacid"
         
         if (reaction == "sn2mg_to_fa")
             .formula <-  "M_h2o + M_mag <=> M_glyc + M_h + M_fatacid"
