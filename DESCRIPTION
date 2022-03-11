@@ -1,4 +1,4 @@
-Package: wormLipidPredictR
+Package: LipidNetworkPredictR
 Title: Lipid reaction prediction based on WormJam
 Version: 0.99.0
 Authors@R: c(person(given = "Michael", family = "Witting", 
