@@ -117,7 +117,7 @@
         .l <- list(list(DHSM = unique(df_reaction$DHSM)), template)
     
     if (reaction == "dhsm_to_dhcer")
-        .l <- list(list(unique(df_reaction$DHCER)), template)
+        .l <- list(list(DHCER = unique(df_reaction$DHCER)), template)
     
     if (reaction == "fa_to_coa")
         .l <- list(list(CoA = unique(df_reaction$CoA)), template)
@@ -153,7 +153,7 @@
         .l <- list(list(PE = unique(df_reaction$PE)), template)
     
     if (reaction == "lpeo_to_peo")
-        .l <- list(list(PO = unique(df_reaction$PEO)), template)
+        .l <- list(list(PEO = unique(df_reaction$PEO)), template)
     
     if (reaction == "lpep_to_pep")
         .l <- list(list(PEP = unique(df_reaction$PEP)), template)
@@ -191,7 +191,7 @@
     
     if (reaction == "nape_to_pnae")
         .l <- list(
-           list(NAE = unique(df_reaction$NAE), DG = unique(df_reaction$DG)), 
+           list(PNAE = unique(df_reaction$PNAE), DG = unique(df_reaction$DG)), 
            template)
     
     if (reaction == "napeo_to_nae")
@@ -286,9 +286,7 @@
     
     if (reaction == "pg_to_cl")
         .l <- list(
-            list(NAPEP = unique(df_reaction$NAPEP), 
-                LPC = unique(df_reaction$LPC)), 
-            template)
+            list(CL = unique(df_reaction$CL)), template)
     
     if (reaction == "pgp_to_pg")
         .l <- list(list(PG = unique(df_reaction$PG)), template)
@@ -305,7 +303,9 @@
     if (reaction == "tg_to_dg")
         .l <- list(
             list(sn1Loss_dg = unique(df_reaction$sn1Loss_dg), 
-                sn1Loss_fa = unique(df_reaction$sn1Loss_fa)), 
+                sn1Loss_fa = unique(df_reaction$sn1Loss_fa),
+                sn3Loss_dg = unique(df_reaction$sn3Loss_dg),
+                sn3Loss_fa = unique(df_reaction$sn3Loss_fa)),
             template)
             
     ## return the list 

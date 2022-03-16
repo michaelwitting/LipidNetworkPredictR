@@ -99,7 +99,7 @@
         
         if (reaction == "coa_to_acdhap")
             .formula <- "M_dhap + M_fataccoa <=> M_coa + M_adhap"
-        
+
         if (reaction == "coa_to_fatoh")
             .formula <- "M_fataccoa + 2 M_nadph + 2 M_h <=> M_alkylR1oh + 2 M_nadp + M_coa"
         
@@ -131,7 +131,7 @@
             .formula <- "M_cdpea + M_akac2g <=> M_h + M_cmp + M_akac2gpe"
         
         if (reaction == "dhcer_to_cer")
-            .formula <- "M_h + M_nadh + M_o2 + M_c17isodhcrm <=> 2.0 M_h2o + M_nad + M_c17isocrm"
+            .formula <- "M_h + M_nadh + M_o2 + M_c17isodhcrm <=> 2 M_h2o + M_nad + M_c17isocrm"
         
         if (reaction == "dhcer_to_dhsm")
             .formula <- "M_pchol + M_c17isodhcrm <=> M_12dag + M_c17isodhsphmyln"
@@ -154,8 +154,8 @@
         if (reaction == "sn1lpc_to_fa")
             .formula <- "M_h2o + M_ag3pc <=> M_g3pc + M_h + M_fatacid"
         
-        if (reaction == "sn21pc_to_fa")
-            .formula <- "M_h2o +  M_2agpc <=> M_g3pc + M_h + M_fatacid"
+        if (reaction == "sn2lpc_to_fa")
+            .formula <- "M_h2o + M_2agpc <=> M_g3pc + M_h + M_fatacid"
         
         if (reaction == "sn1lpc_to_pc")
             .formula <- "M_ag3pc + M_fataccoa <=> M_pchol + M_coa"
@@ -164,7 +164,7 @@
             .formula <- "M_h2o + M_ag3pe <=> M_h + M_fatacid + M_g3pe"
         
         if (reaction == "sn2lpe_to_fa")
-            .formula <- "M_h2o +  M_2agpe <=> M_h + M_fatacid + M_g3pe"
+            .formula <- "M_h2o + M_2agpe <=> M_h + M_fatacid + M_g3pe"
         
         if (reaction == "sn1lpe_to_pe")
             .formula <- "M_fataccoa + M_acg3pe <=> M_coa + M_pe"
@@ -221,7 +221,7 @@
             .formula <- "M_h2o + M_pchol <=> M_cholp + M_12dag"
         
         if (reaction == "pc_to_sn1lpc")
-            .formula <- "M_h2o +  M_pchol <=> M_ag3pc + M_fatacid"
+            .formula <- "M_h2o + M_pchol <=> M_ag3pc + M_fatacid"
         
         if (reaction == "pc_to_sn2lpc")
             .formula <- "M_h2o + M_pchol <=> M_2agpc + M_fatacid"

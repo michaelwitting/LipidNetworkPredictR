@@ -129,21 +129,21 @@
     if (reaction == "dg_to_pa") {
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PA")
-        .s$PA <- stringi::stri_replace_all_fixed(str = .s$PA, 
+        .s$PA <- stringi::stri_replace_all_regex(str = .s$PA, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
     if (reaction == "dg_to_pc") {
         .s$PC <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PC")
-        .s$PC <- stringi::stri_replace_all_fixed(str = .s$PC, 
+        .s$PC <- stringi::stri_replace_all_regex(str = .s$PC, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
     if (reaction == "dg_to_pe") {
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PE")
-        .s$PE <- stringi::stri_replace_all_fixed(str = .s$PE, 
+        .s$PE <- stringi::stri_replace_all_regex(str = .s$PE, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
             
@@ -151,7 +151,7 @@
         .s$TG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "/0:0", 
             replacement = paste0("/", 
                 unlist(lipidomicsUtils::isolate_radyls(.s$CoA))))
-         .s$TG <- stringi::stri_replace_all_fixed(str = .s$TG, pattern = "^DG", 
+         .s$TG <- stringi::stri_replace_all_regex(str = .s$TG, pattern = "^DG", 
             replacement = "TG")
     }
     
@@ -165,7 +165,7 @@
     if (reaction == "dgo_to_peo") {
         .s$PEO <- stringi::stri_replace_all_fixed(str = .s$DGO, pattern = "DG", 
             replacement = "PE")
-        .s$PEO <- stringi::stri_replace_all_fixed(str = .s$PEO, 
+        .s$PEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
             
@@ -271,7 +271,7 @@
     }
     
     if (reaction == "sn2mg_to_dg") {
-        .s$DG <- stringi::stri_replace_all_fixed(str = .s$sn2MG, 
+        .s$DG <- stringi::stri_replace_all_regex(str = .s$sn2MG, 
             pattern = "\\(0:0/", 
             replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
                 function(f) {paste0("(", f, "/")})))
@@ -294,7 +294,7 @@
     if (reaction == "sn1mg_to_lpa") {
         .s$LPA <- stringi::stri_replace_all_fixed(str = .s$sn1MG, 
             pattern = "MG", replacement = "PA")
-        .s$LPA <- stringi::stri_replace_all_fixed(str = .s$LPA, "/0:0\\)$", 
+        .s$LPA <- stringi::stri_replace_all_regex(str = .s$LPA, "/0:0\\)$", 
             replacement = "\\)")
     }
 
@@ -518,13 +518,13 @@
     
     if (reaction == "pg_to_cl") {
         ## isolate core from PGs
-        .s$PGs2 <- stringi::stri_replace_all_fixed(str = .s$PG, 
+        .s$PGs2 <- stringi::stri_replace_all_regex(str = .s$PG, 
             pattern = "^PG\\(", replacement = "")
         .s$PGs2 <- stringi::stri_replace_all_regex(str = .s$PGs2, 
             pattern = "\\)$", replacement = "")
          
         ## isolate core from CDPDGs
-        .s$CDPDGs2 <- stringi::stri_replace_all_fixed(str = .s$CDPDG, 
+        .s$CDPDGs2 <- stringi::stri_replace_all_regex(str = .s$CDPDG, 
             pattern = "^CDP-DG\\(", replacement = "")
         .s$CDPDGs2 <- stringi::stri_replace_all_regex(str = .s$CDPDGs2, 
             pattern = "\\)$", replacement = "")

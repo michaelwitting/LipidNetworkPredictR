@@ -210,7 +210,7 @@
     }
 
     if (reaction == "dgo_to_peo") {
-        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+        .formula <- stringi::stri_replace_first_fixed(str = .formula,
             pattern = "M_akac2g", replacement = df_reaction[["DGO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
             pattern = "M_akac2gpe", replacement = df_reaction[["PEO"]])
@@ -248,7 +248,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_lnape", replacement = df_reaction[["LNAPE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_gpnae", replacement = df_reaction[["LNAPE"]])
+            pattern = "M_gpnae", replacement = df_reaction[["GPNAE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_fatacid", replacement = df_reaction[["FA"]])
     }
@@ -808,8 +808,16 @@
         pattern = "M_ser_L$", replacement = "L-Serine")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_etha ", replacement = "Ethanolamine ")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_etha_c ", replacement = "Ethanolamine_c ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_etha$", replacement = "Ethanolamine")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_etha_c$", replacement = "Ethanolamine_c")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_ethamp ", replacement = "P-Ethanolamine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_ethamp$", replacement = "P-Ethanolamine")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_c17isosphgn ", replacement = "SPH(d16:0(1OH,3OH)(15Me)) ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
