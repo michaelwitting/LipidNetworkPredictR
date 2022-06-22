@@ -1,0 +1,13 @@
+order	rhea	reaction	directed
+1	RHEA:15325	M_glyc3p_c + M_fataccoa_c = M_coa_c + M_1acglyc3p_c	FALSE
+1	RHEA:15326	M_glyc3p_c + M_fataccoa_c => M_coa_c + M_1acglyc3p_c	TRUE
+1	RHEA:15327	M_glyc3p_c + M_fataccoa_c <= M_coa_c + M_1acglyc3p_c	TRUE
+1	RHEA:15328	M_glyc3p_c + M_fataccoa_c <=> M_coa_c + M_1acglyc3p_c	FALSE
+2	RHEA:19709	M_fataccoa_c + M_1acglyc3p_c = M_coa_c + M_1ac2acglyc3p_c	FALSE
+2	RHEA:19710	M_fataccoa_c + M_1acglyc3p_c => M_coa_c + M_1ac2acglyc3p_c	TRUE
+2	RHEA:19711	M_fataccoa_c + M_1acglyc3p_c <= M_coa_c + M_1ac2acglyc3p_c	TRUE
+2	RHEA:19712	M_fataccoa_c + M_1acglyc3p_c <=> M_coa_c + M_1ac2acglyc3p_c	FALSE
+3	RHEA:27429	M_h2o_c + M_1ac2acglyc3p_c = M_pi_c + M_1ac2acglyc_c	FALSE
+3	RHEA:27430	M_h2o_c + M_1ac2acglyc3p_c => M_pi_c + M_1ac2acglyc_c	TRUE
+3	RHEA:27431	M_h2o_c + M_1ac2acglyc3p_c <= M_pi_c + M_1ac2acglyc_c	TRUE
+3	RHEA:27432	M_h2o_c + M_1ac2acglyc3p_c <=> M_pi_c + M_1ac2acglyc_c	FALSE
