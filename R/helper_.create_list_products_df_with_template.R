@@ -53,262 +53,248 @@
     reaction = "fa_to_coa") {
     
     if (reaction == "acdhap_to_alkyldhap")
-        .l <- list(list(ALKYLDHAP = unique(df_reaction$ALKYLDHAP)), 
-            template)
+        .l <- list(ALKYLDHAP = unique(df_reaction$ALKYLDHAP))
     
     if (reaction == "alkyldhap_to_lpao")
-        .l <- list(list(LPAO = unique(df_reaction$LPAO)), template)
+        .l <- list(LPAO = unique(df_reaction$LPAO))
 
     if (reaction == "c1p_to_cer")
-        .l <- list(list(CER = unique(df_reaction$CER)), template)
+        .l <- list(CER = unique(df_reaction$CER))
     
     if (reaction == "cdpdg_to_pgp")
-        .l <- list(list(PGP = unique(df_reaction$PGP)), template)
+        .l <- list(PGP = unique(df_reaction$PGP))
     
     if (reaction == "cdpdg_to_pi")
-        .l <- list(list(PI = unique(df_reaction$PI)), template)
+        .l <- list(PI = unique(df_reaction$PI))
     
     if (reaction == "cer_to_c1p")
-        .l <- list(list(C1P = unique(df_reaction$C1P)), template)
+        .l <- list(C1P = unique(df_reaction$C1P))
     
     if (reaction == "cer_to_glccer")
-        .l <- list(list(GLCCER = unique(df_reaction$GLCCER)), template)
+        .l <- list(GLCCER = unique(df_reaction$GLCCER))
     
     if (reaction == "cer_to_sm")
-        .l <- list(list(SM = unique(df_reaction$SM)), template)
+        .l <- list(SM = unique(df_reaction$SM))
     
     if (reaction == "coa_to_acdhap")
-        .l <- list(list(DHAP = unique(df_reaction$DHAP)), template)
+        .l <- list(DHAP = unique(df_reaction$DHAP))
     
     if (reaction == "coa_to_fatoh")
-        .l <- list(list(FATOH = unique(df_reaction$FATOH)), template)
+        .l <- list(FATOH = unique(df_reaction$FATOH))
     
     if (reaction == "coa_to_lpa")
-        .l <- list(list(LPA = unique(df_reaction$LPA)), template)
+        .l <- list(LPA = unique(df_reaction$LPA))
     
     if (reaction == "dg_to_sn1mg")
-        .l <- list(list(sn1MG = unique(df_reaction$sn1MG)), template)
+        .l <- list(sn1MG = unique(df_reaction$sn1MG))
     
     if (reaction == "dg_to_sn2mg")
-        .l <- list(list(sn2MG = unique(df_reaction$sn2MG)), template)
+        .l <- list(sn2MG = unique(df_reaction$sn2MG))
     
     if (reaction == "dg_to_pa")
-        .l <- list(list(PA = unique(df_reaction$PA)), template)
+        .l <- list(PA = unique(df_reaction$PA))
     
     if (reaction == "dg_to_pc")
-        .l <- list(list(PC = unique(df_reaction$PC)), template)
+        .l <- list(PC = unique(df_reaction$PC))
     
     if (reaction == "dg_to_pe")
-        .l <- list(list(PE = unique(df_reaction$PE)), template)
+        .l <- list(PE = unique(df_reaction$PE))
     
     if (reaction == "dg_to_tg")
-        .l <- list(list(TG = unique(df_reaction$TG)), template)
+        .l <- list(TG = unique(df_reaction$TG))
     
     if (reaction == "dgo_to_pco")
-        .l <- list(list(PCO = unique(df_reaction$PCO)), template)
+        .l <- list(PCO = unique(df_reaction$PCO))
     
     if (reaction == "dgo_to_peo")
-        .l <- list(list(PEO = unique(df_reaction$PEO)), template)
+        .l <- list(PEO = unique(df_reaction$PEO))
     
     if (reaction == "dhcer_to_cer")
-        .l <- list(list(CER = unique(df_reaction$CER)), template)
+        .l <- list(CER = unique(df_reaction$CER))
     
     if (reaction == "dhcer_to_dhsm")
-        .l <- list(list(DHSM = unique(df_reaction$DHSM)), template)
+        .l <- list(DHSM = unique(df_reaction$DHSM))
     
     if (reaction == "dhsm_to_dhcer")
-        .l <- list(list(DHCER = unique(df_reaction$DHCER)), template)
+        .l <- list(DHCER = unique(df_reaction$DHCER))
     
     if (reaction == "fa_to_coa")
-        .l <- list(list(CoA = unique(df_reaction$CoA)), template)
+        .l <- list(CoA = unique(df_reaction$CoA))
     
     if (reaction == "lnape_to_gpnae")
         .l <- list(
-            list(GPNAE = unique(df_reaction$GPNAE), 
-                FA = unique(df_reaction$FA)), 
-            template)
+            GPNAE = unique(df_reaction$GPNAE), 
+            FA = unique(df_reaction$FA))
     
     if (reaction == "lpa_to_pa")
-        .l <- list(list(PA = unique(df_reaction$PA)), template)
+        .l <- list(PA = unique(df_reaction$PA))
     
     if (reaction == "lpao_to_pao")
-        .l <- list(list(PAO = unique(df_reaction$PAO)), template)
+        .l <- list(PAO = unique(df_reaction$PAO))
     
     if (reaction == "sn1lpc_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn2lpc_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn1lpc_to_pc")
-        .l <- list(list(PC = unique(df_reaction$PC)), template)
+        .l <- list(PC = unique(df_reaction$PC))
     
     if (reaction == "sn1lpe_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn2lpe_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn1lpe_to_pe")
-        .l <- list(list(PE = unique(df_reaction$PE)), template)
+        .l <- list(PE = unique(df_reaction$PE))
     
     if (reaction == "lpeo_to_peo")
-        .l <- list(list(PEO = unique(df_reaction$PEO)), template)
+        .l <- list(PEO = unique(df_reaction$PEO))
     
     if (reaction == "lpep_to_pep")
-        .l <- list(list(PEP = unique(df_reaction$PEP)), template)
+        .l <- list(PEP = unique(df_reaction$PEP))
     
     if (reaction == "sn1mg_to_dg")
-        .l <- list(list(DG = unique(df_reaction$DG)), template)
+        .l <- list(DG = unique(df_reaction$DG))
     
     if (reaction == "sn2mg_to_dg")
-        .l <- list(list(DG = unique(df_reaction$DG)), template)
+        .l <- list(DG = unique(df_reaction$DG))
     
     if (reaction == "sn1mg_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn2mg_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn1mg_to_lpa")
-        .l <- list(list(LPA = unique(df_reaction$LPA)), template)
+        .l <- list(LPA = unique(df_reaction$LPA))
     
     if (reaction == "sn2mg_to_sn1mg")
-        .l <- list(list(sn1MG = unique(df_reaction$sn1MG)), template)
+        .l <- list(sn1MG = unique(df_reaction$sn1MG))
     
     if (reaction == "nae_to_fa")
-        .l <- list(list(FA = unique(df_reaction$FA)), template)
+        .l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "nape_to_lnape")
         .l <- list(
-           list(LNAPE = unique(df_reaction$LNAPE), FA = unique(df_reaction$FA)), 
-           template)
+            LNAPE = unique(df_reaction$LNAPE), FA = unique(df_reaction$FA))
     
     if (reaction == "nape_to_nae")
         .l <- list(
-           list(NAE = unique(df_reaction$NAE), PA = unique(df_reaction$PA)), 
-           template)
+            NAE = unique(df_reaction$NAE), PA = unique(df_reaction$PA))
     
     if (reaction == "nape_to_pnae")
         .l <- list(
-           list(PNAE = unique(df_reaction$PNAE), DG = unique(df_reaction$DG)), 
-           template)
+            PNAE = unique(df_reaction$PNAE), DG = unique(df_reaction$DG))
     
     if (reaction == "napeo_to_nae")
         .l <- list(
-           list(NAE = unique(df_reaction$NAE), PAO = unique(df_reaction$PAO)),
-           template)
+            NAE = unique(df_reaction$NAE), PAO = unique(df_reaction$PAO))
     
     if (reaction == "pa_to_cdpdg")
-        .l <- list(list(CDPDG = unique(df_reaction$CDPDG)), template)
+        .l <- list(CDPDG = unique(df_reaction$CDPDG))
     
     if (reaction == "pa_to_dg")
-        .l <- list(list(DG = unique(df_reaction$DG)), template)
+        .l <- list(DG = unique(df_reaction$DG))
     
     if (reaction == "pao_to_dgo")
-        .l <- list(list(DGO = unique(df_reaction$DGO)), template)
+        .l <- list(DGO = unique(df_reaction$DGO))
     
     if (reaction == "pc_to_dg")
-        .l <- list(list(DG = unique(df_reaction$DG)), template)
+        .l <- list(DG = unique(df_reaction$DG))
     
     if (reaction == "pc_to_sn1lpc")
-        .l <- list(list(sn1LPC = unique(df_reaction$sn1LPC)), template)
+        .l <- list(sn1LPC = unique(df_reaction$sn1LPC))
     
     if (reaction == "pc_to_sn2lpc")
-        .l <- list(list(sn2LPC = unique(df_reaction$sn2LPC)), template)
+        .l <- list(sn2LPC = unique(df_reaction$sn2LPC))
     
     if (reaction == "pc_to_pa")
-        .l <- list(list(PA = unique(df_reaction$PA)), template)
+        .l <- list(PA = unique(df_reaction$PA))
     
     if (reaction == "pc_to_ps")
-        .l <- list(list(PS = unique(df_reaction$PS)), template)
+        .l <- list(PS = unique(df_reaction$PS))
     
     if (reaction == "pco_to_lpco")
-        .l <- list(list(LPCO = unique(df_reaction$LPCO)), template)
+        .l <- list(LPCO = unique(df_reaction$LPCO))
     
     if (reaction == "pe_to_dg")
-        .l <- list(list(DG = unique(df_reaction$DG)), template)
+        .l <- list(DG = unique(df_reaction$DG))
     
     if (reaction == "pe_to_sn1lpe")
-        .l <- list(list(sn1LPE = unique(df_reaction$sn1LPE)), template)
+        .l <- list(sn1LPE = unique(df_reaction$sn1LPE))
     
     if (reaction == "pe_to_sn2lpe")
-        .l <- list(list(sn2LPE = unique(df_reaction$sn2LPE)), template)
+        .l <- list(sn2LPE = unique(df_reaction$sn2LPE))
     
     if (reaction == "pe_to_nape_sn1")
         .l <- list(
-           list(NAPE = unique(df_reaction$NAPE), LPC = unique(df_reaction$LPC)), 
-           template)
+            NAPE = unique(df_reaction$NAPE), LPC = unique(df_reaction$LPC))
     
     if (reaction == "pe_to_nape_sn2")
         .l <- list(
-           list(NAPE = unique(df_reaction$NAPE), LPC = unique(df_reaction$LPC)), 
-            template)
+            NAPE = unique(df_reaction$NAPE), LPC = unique(df_reaction$LPC))
     
     if (reaction == "pe_to_pa")
-        .l <- list(list(PA = unique(df_reaction$PA)), template)
+        .l <- list(PA = unique(df_reaction$PA))
     
     if (reaction == "pe_to_ps")
-        .l <- list(list(PS = unique(df_reaction$PS)), template)
+        .l <- list(PS = unique(df_reaction$PS))
     
     if (reaction == "peo_to_lpeo")
-        .l <- list(list(LPEO = unique(df_reaction$LPEO)), template)
+        .l <- list(LPEO = unique(df_reaction$LPEO))
     
     if (reaction == "peo_to_napeo_sn1")
         .l <- list(
-            list(NAPEO = unique(df_reaction$NAPEO), 
-                LPC = unique(df_reaction$LPC)),
-            template)
+            NAPEO = unique(df_reaction$NAPEO), 
+            LPC = unique(df_reaction$LPC))
     
     if (reaction == "peo_to_napeo_sn2")
         .l <- list(
-            list(NAPEO = unique(df_reaction$NAPEO),
-                LPC = unique(df_reaction$LPC)), 
-            template)
+            NAPEO = unique(df_reaction$NAPEO),
+            LPC = unique(df_reaction$LPC))
     
     if (reaction == "peo_to_pep")
-        .l <- list(list(PEP = unique(df_reaction$PEP)), template)
+        .l <- list(PEP = unique(df_reaction$PEP))
     
     if (reaction == "pep_to_lpep")
-        .l <- list(list(LPEP = unique(df_reaction$LPEP)), template)
+        .l <- list(LPEP = unique(df_reaction$LPEP))
     
     if (reaction == "pep_to_napep_sn1")
         .l <- list(
-            list(NAPEP = unique(df_reaction$NAPEP), 
-                LPC = unique(df_reaction$LPC)), 
-            template)
+            NAPEP = unique(df_reaction$NAPEP), 
+            LPC = unique(df_reaction$LPC))
     
     if (reaction == "pep_to_napep_sn2")
         .l <- list(
-            list(NAPEP = unique(df_reaction$NAPEP), 
-                LPC = unique(df_reaction$LPC)),
-            template)
+            NAPEP = unique(df_reaction$NAPEP), 
+            LPC = unique(df_reaction$LPC))
     
     if (reaction == "pg_to_cl")
-        .l <- list(
-            list(CL = unique(df_reaction$CL)), template)
+        .l <- list(CL = unique(df_reaction$CL))
     
     if (reaction == "pgp_to_pg")
-        .l <- list(list(PG = unique(df_reaction$PG)), template)
+        .l <- list(PG = unique(df_reaction$PG))
     
     if (reaction == "ps_to_pe")
-        .l <- list(list(PE = unique(df_reaction$PE)), template)
+        .l <- list(PE = unique(df_reaction$PE))
     
     if (reaction == "sm_to_cer")
-        .l <- list(list(CER = unique(df_reaction$CER)), template)
+        .l <- list(CER = unique(df_reaction$CER))
     
     if (reaction == "sphinga_to_dhcer")
-        .l <- list(list(DHCER = unique(df_reaction$DHCER)), template)
+        .l <- list(DHCER = unique(df_reaction$DHCER))
     
     if (reaction == "tg_to_dg")
         .l <- list(
-            list(sn1Loss_dg = unique(df_reaction$sn1Loss_dg), 
-                sn1Loss_fa = unique(df_reaction$sn1Loss_fa),
-                sn3Loss_dg = unique(df_reaction$sn3Loss_dg),
-                sn3Loss_fa = unique(df_reaction$sn3Loss_fa)),
-            template)
+            sn1Loss_dg = unique(df_reaction$sn1Loss_dg), 
+            sn1Loss_fa = unique(df_reaction$sn1Loss_fa),
+            sn3Loss_dg = unique(df_reaction$sn3Loss_dg),
+            sn3Loss_fa = unique(df_reaction$sn3Loss_fa))
             
-    ## return the list 
-    .l
+    ## return the list together with the template object as a list
+    list(.l, template)
     
 }
