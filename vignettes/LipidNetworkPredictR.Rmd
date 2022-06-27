@@ -51,24 +51,24 @@ The following abbreviations are used (in alphabetical order):
 
  - `ACDHAP`: acyl-dihydroxyacetonephosphate,
  - `ALKYLDHAP`: dihydroxyacetonephosphate,
- - `C1P`: ceramide-1-phosphate,
+ - `C1P`: Ceramide-1-phosphates [SP0205],
  - `CDPDG`:  cytidine diphosphate diacylglycerol,
- - `CER`: ceramide,
- - `CL`: cardiolipin,
- - `CoA`: Acyl-CoA,
- - `DG`: diglyceride,
- - `DGO`: ...
- - `DHCER`: dihydroceramide,
- - `DHSM`: dihydrosphingomyelin,
- - `FA`: fatty acid,
- - `FATOH`: fatty acid alcohol,
- - `GLCCER`: glycosylceramide,
+ - `CER`: N-acylsphingosines (ceramides) [SP0201],
+ - `CL`: Diacylglycerophosphoglycerophosphodiradylglycerols (cardiolipin) [GP1201],
+ - `CoA`: Fatty acyl CoAs [FA0705],
+ - `DG`: Diacylglycerols [GL0201],
+ - `DGO`: 1-alkyl,2-acylglycerols
+ - `DHCER`: N-acylsphinganines (dihydroceramides) [SP0202],
+ - `DHSM`: Dihydrosphingomyelins [SP0301],
+ - `FA`: Fatty acids [FA01],
+ - `FATOH`: Fatty alcohols [FA05],
+ - `GLCCER`: glycosylceramide [SP0501],
  - `GPNAE`: glycerophospho-N-acylethanolamine,
  - `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
- - `LPA`: lysophosphatidic acid,
- - `LPAO`: lyso...
- - `LPCO`: lyso...
- - `LPEP`: lyso...
+ - `LPA`: 1-acylglycerophosphates [GP1005],
+ - `LPAO`: 1-alkylglycerophosphates [GP1006],
+ - `LPCO`: 1-alkylglycerophosphocholine [GP0106],
+ - `LPEP`: 1Z-alkenylglycerophosphocholine [GP0107],
  - `NAE`: N-Acyl-phosphatidylethanolamine
  - `NAPE`: N-Acyl-phosphatidylethanolamine,
  - `NAPE_sn1`: sn1 N-Acyl-phosphatidylethanolamine
@@ -76,27 +76,28 @@ The following abbreviations are used (in alphabetical order):
  - `NAPE_sn2`: sn2 N-Acyl-phosphatidylethanolamine
  - `NAPEP_sn2`: ...
  - `NAPEO`: ...
- - `PA`: phosphatidic acid,
- - `PAO`: ...
- - `PC`: phosphatidylcholine,
- - `PCO`: ...
- - `PE`: phosphatidylethanolamine,
- - `PEP`: ...
- - `PEO`: ...
- - `PG`: phosphatidylglycerol,
- - `PGP`: ...
- - `PI`: phosphatidylinositol,
- - `PNAE`: ...
- - `PS`: phosphatidylserine,
- - `SM`: sphingomyelin,
- - `sn1LPC`: sn1 lysophosphatidylcholine,
- - `sn1LPE`: sn1 lysophosphatidylethanolamine ,
- - `sn1MG`: sn1 monoglyceride,
- - `sn2LPC`: sn2 lysophosphatidylcholine,
- - `sn2LPE`: sn1 lysophosphatidylethanolamine,
- - `sn2MG`: sn2 monoglyceride
- - `SPHINGA`: sphingosine...
- - `TG`: triglyceride
+ - `PA`: Diacylglycerophosphates [GP1001],
+ - `PAO`: 1-alkyl,2-acylglycerophosphates [GP1002]
+ - `PC`: Diacylglycerophosphocholine [GP0101],
+ - `PCO`: 1-alkyl,2-acylglycerophosphocholine [GP0102]
+ - `PE`: Diacylglycerophosphoethanolamines [GP0201],
+ - `PEP`: 1(1Z-alkenyl),2-acylglycerophosphoethanolamines [GP0203],
+ - `PEO`: 1-alkyl,2-acylglyerophosphoethanolamines [GP0202]
+ - `PG`: Diacylglycerophosphoglycerols [GP0401],
+ - `PGP`: Diacylglyerophosphoglycerophosphates [GP0501]
+ - `PI`: Diacylglycerophosphoinositols [GP0601],
+ - `PNAE`: N-acyl ethanolamine phosphates,
+ - `PS`: Diacylglycerophosphoserines [GP0301],
+ - `SM`: Ceramide phosphocholines (sphingomyelins) [SP0301],
+ - `sn1LPC`: 1-acylglycerophosphocholine [GP0105],
+ - `sn1LPE`: 1-acylglycerophosphoethanolamines [GP0205],
+ - `sn1MG`: 1-acylglycerols [GL0101],
+ - `sn2LPC`: 2-acylglycerophosphocholine [GP0105],
+ - `sn2LPE`: 2-acylglycerophosphoethanolamines [GP0205],
+ - `sn2MG`: 2-acylglycerols [GL0101]
+ - `SPHINGA`: Sphinganines [SP0102],
+ - `SPHINGO`: Sphing-4-enines (sphingosines) [SP0101],
+ - `TG`: Triacylglycerols [GL0301]
 
 Fatty acids used in glycero- and glycerophospholipids are different from the 
 ones used in sphingolipid biosynthesis. The pools are only partially 
