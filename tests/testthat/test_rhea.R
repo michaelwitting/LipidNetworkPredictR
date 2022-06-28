@@ -13,5 +13,5 @@ test_that("getRheaIDsFromProteinID works.", {
             "RHEA:36511", "RHEA:36512", "RHEA:36503", "RHEA:36504",
             "RHEA:36523", "RHEA:36524"))
     expect_error(getRheaIDsFromProteinID("Q92"), 
-        "Internet connection problem occured.")
+        "Protein ID not found.")
 })
