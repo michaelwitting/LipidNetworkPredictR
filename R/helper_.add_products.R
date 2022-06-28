@@ -17,7 +17,7 @@
 #' The function calls internally the function
 #' \code{stringi::stri_replace_all_fixed}.
 #' 
-#' @param substrate data.frame
+#' @param substrates \code{data.frame}
 #' @param reaction \code{character(1)}
 #' 
 #' @return data.frame
@@ -31,19 +31,20 @@
 #' substrates <- list(FA = FA)
 #' 
 #' ## create template
-#' template <- wormLipidPredictR:::.create_template(template = NA, 
+#' template <- LipidNetworkPredictR:::.create_template(template = NA, 
 #'     reaction = "fa_to_coa")
 #' 
 #' ## create data.frame of substrates
-#' df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+#' df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
 #'     substrates = substrates, 
 #'     constraints = "", negate = FALSE)
 #'     
 #' ## add products to data.frame
-#' wormLipidPredictR:::.add_products(substrates = df_substrates, 
+#' LipidNetworkPredictR:::.add_products(substrates = df_substrates, 
 #'     reaction = "fa_to_coa")
 #'  
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
+#' @importFrom lipidomicsUtils isolate_radyls
 .add_products <- function(substrates, reaction = "fa_to_coa") {
 
     ## make the substrates argument a little bit smaller
