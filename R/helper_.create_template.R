@@ -31,8 +31,10 @@
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'    and Thomas Naake, \email{thomasnaake@@googlemail.com}
 #' 
+#' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex stri_split
+#' 
 #' @examples 
-#' wormLipidPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
+#' LipidNetworkPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
 .create_template <- function(template = NA, reaction = "fa_to_coa") {
     
     if (is.list(template)) {
@@ -297,7 +299,29 @@
             
         template$reaction_formula <- .formula
     }
+    
+    ## split the template$reaction_formula into substrates and products 
+    .formula_tmp <- template$reaction_formula
+    .formula_tmp <- stringi::stri_replace_all_regex(str = .formula_tmp, 
+        pattern = ">|<", replacement = "")
+    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = "=")[[1]]
+    .formula_substrate <- .formula_tmp[1]
+    .formula_product <- .formula_tmp[2]
+    
+    ## remove the "+" and the trailing spaces for substrates and products
+    .formula_substrate <- stringi::stri_split(str = .formula_substrate, 
+        regex = "[+]")[[1]]
+    .formula_substrate <- stringi::stri_replace_all_fixed(str = .formula_substrate, 
+        pattern = " ", replacement = "")
+    .formula_product <- stringi::stri_split(str = .formula_product, 
+        regex = "[+]")[[1]]
+    .formula_product <- stringi::stri_replace_all_fixed(str = .formula_product, 
+        pattern = " ", replacement = "")
 
+    ## write the substrates and products to the template
+    template$reaction_substrate <- .formula_substrate
+    template$reaction_product <- .formula_product
+    
     ## return the template object
     template
 }
