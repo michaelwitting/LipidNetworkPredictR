@@ -22,28 +22,32 @@
 #' 
 #' @return data.frame
 #' 
+#' @importFrom stringi stri_replace_all_fixed stri_replace_first_fixed
+#' @importFrom stringi stri_replace_all_regex
+#' 
 #' @examples 
 #' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
 #'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
 #'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 #' substrates <- list(FA = FA)
+#' reaction <- "fa_to_coa"
 #' 
 #' ## create template
-#' template <- wormLipidPredictR:::.create_template(template = NA, 
-#'     reaction = "fa_to_coa")
+#' template <- LipidNetworkPredictR:::.create_template(template = NA, 
+#'     reaction = reaction)
 #' 
 #' ## create data.frame of substrates
-#' df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+#' df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
 #'     substrates = substrates, 
 #'     constraints = "", negate = FALSE)
 #'     
 #' ## add products to data.frame
-#' df_reaction <- wormLipidPredictR:::.add_products(
+#' df_reaction <- LipidNetworkPredictR:::.add_products(
 #'     substrates = df_substrates, 
-#'     reaction = "fa_to_coa")
+#'     reaction = reaction)
 #'     
 #' ## make new data.frame with reaction template
-#' wormLipidPredictR:::.create_df_with_template(
+#' LipidNetworkPredictR:::.create_df_with_template(
 #'     df_reaction = df_reaction,
 #'     template = template, reaction = reaction)
 .create_df_with_template <- function(df_reaction, template, 
@@ -56,18 +60,19 @@
     
     if (reaction %in% "tg_to_dg") .char <- c(.char, .char)
     
-    df <- data.frame(Name = .char, ReactionFormula = .char,
-        IsReversible = .char, GeneAssociation = .char, Pathway = .char)
+    df <- data.frame(reaction_name = .char, reaction_formula = .char,
+        reaction_isReversible = .char, reaction_geneAssociation = .char, 
+        reaction_pathway = .char)
     
     ## fill with data
-    df[["Name"]] <- template[["reaction_name"]]
-    df[["ReactionFormula"]] <- template[["reaction_formula"]]
-    df[["IsReversible"]] <- template[["reaction_isReversible"]]
-    df[["GeneAssociation"]] <- template[["reaction_geneAssociation"]]
-    df[["Pathway"]] <- template[["reaction_pathway"]]
+    df[["reaction_name"]] <- template[["reaction_name"]]
+    df[["reaction_formula"]] <- template[["reaction_formula"]]
+    df[["reaction_isReversible"]] <- template[["reaction_isReversible"]]
+    df[["reaction_geneAssociation"]] <- template[["reaction_geneAssociation"]]
+    df[["reaction_pathway"]] <- template[["reaction_pathway"]]
     
-    ## get the ReactionFormula
-    .formula <- df$ReactionFormula
+    ## get the (reaction) formula
+    .formula <- df$reaction_formula
     
     ## depending on the reaction, adjust fixed and variable substrates and 
     ## products
@@ -843,9 +848,29 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_g3pc$", replacement = "Glycerophosphoethanolamine")
 
+    ## write back to entry reaction_formula
+    df$reaction_formula <- .formula
     
-    ## write back to entry ReactionFormula
-    df$ReactionFormula <- .formula
+    ## split the df$reaction_formula into substrates and products 
+    .formula_tmp <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = ">|<", replacement = "")
+    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = "=")
+    .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
+    .formula_product <- unlist(lapply(.formula_tmp, "[", 2))
+    
+    ## remove the trailing spaces for substrates and products
+    #.formula_substrate <- stringi::stri_replace_all_regex(str = .formula_substrate, 
+    #    pattern = "[+]", replacement = ",")
+    .formula_substrate <- stringi::stri_replace_all_fixed(str = .formula_substrate, 
+        pattern = " ", replacement = "")
+    #.formula_product <- stringi::stri_replace_all_regex(str = .formula_product, 
+    #    pattern = "[+]", replacement = ",")
+    .formula_product <- stringi::stri_replace_all_fixed(str = .formula_product, 
+        pattern = " ", replacement = "")
+    
+    ## write the substrates and products to the df
+    df$reaction_substrate <- .formula_substrate
+    df$reaction_product <- .formula_product
     
     ## return the data.frame
     df
