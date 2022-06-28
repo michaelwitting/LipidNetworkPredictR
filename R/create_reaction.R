@@ -65,6 +65,6 @@ create_reaction <- function(substrates, template = NULL, reaction = "fa_to_coa",
         template = template, reaction = reaction)
     
     ## return results
-    .create_list_products_df_with_template(df_reaction= df_reaction, 
+    .create_list_products_df_with_template(df_reaction = df_reaction, 
         template = df, reaction = reaction)
 }
