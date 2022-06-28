@@ -31,23 +31,24 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 substrates <- list(FA = FA)
+reaction <- "fa_to_coa"
 
 ## create template
-template <- wormLipidPredictR:::.create_template(template = NA, 
-    reaction = "fa_to_coa")
+template <- LipidNetworkPredictR:::.create_template(template = NA, 
+    reaction = reaction)
 
 ## create data.frame of substrates
-df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
     substrates = substrates, 
     constraints = "", negate = FALSE)
     
 ## add products to data.frame
-df_reaction <- wormLipidPredictR:::.add_products(
+df_reaction <- LipidNetworkPredictR:::.add_products(
     substrates = df_substrates, 
-    reaction = "fa_to_coa")
+    reaction = reaction)
     
 ## make new data.frame with reaction template
-wormLipidPredictR:::.create_df_with_template(
+LipidNetworkPredictR:::.create_df_with_template(
     df_reaction = df_reaction,
     template = template, reaction = reaction)
 }

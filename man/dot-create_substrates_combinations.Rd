@@ -36,7 +36,7 @@ The function will internally \code{expand.grid} to create the combinations.
 substrates <- list(FA = FA)
 
 ## create data.frame of substrates
-wormLipidPredictR:::.create_substrates_combinations(
+LipidNetworkPredictR:::.create_substrates_combinations(
     substrates = substrates, 
     constraints = "", negate = FALSE)
 }

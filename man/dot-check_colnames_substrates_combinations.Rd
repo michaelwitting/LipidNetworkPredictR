@@ -29,10 +29,10 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
 substrates <- list(FA = FA)
 
 ## create data.frame of substrates
-df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
     substrates = substrates, 
     constraints = "", negate = FALSE)
-wormLipidPredictR:::.check_colnames_substrates_combinations(
+LipidNetworkPredictR:::.check_colnames_substrates_combinations(
     df = df_substrates, reaction = "fa_to_coa")
 }
 \author{

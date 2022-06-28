@@ -7,9 +7,9 @@
 .add_products(substrates, reaction = "fa_to_coa")
 }
 \arguments{
-\item{reaction}{\code{character(1)}}
+\item{substrates}{\code{data.frame}}
 
-\item{substrate}{data.frame}
+\item{reaction}{\code{character(1)}}
 }
 \value{
 data.frame
@@ -31,21 +31,20 @@ The function calls internally the function
 }
 \examples{
 FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
-    "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 substrates <- list(FA = FA)
 
 ## create template
-template <- wormLipidPredictR:::.create_template(template = NA, 
+template <- LipidNetworkPredictR:::.create_template(template = NA, 
     reaction = "fa_to_coa")
 
 ## create data.frame of substrates
-df_substrates <- wormLipidPredictR:::.create_substrates_combinations(
+df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
     substrates = substrates, 
     constraints = "", negate = FALSE)
     
 ## add products to data.frame
-wormLipidPredictR:::.add_products(substrates = df_substrates, 
+LipidNetworkPredictR:::.add_products(substrates = df_substrates, 
     reaction = "fa_to_coa")
  
 }

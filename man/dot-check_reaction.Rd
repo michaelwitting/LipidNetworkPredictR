@@ -21,7 +21,7 @@ is not an implemented method.
 of \code{reaction}.
 }
 \examples{
-.check_reaction(reaction = "fa_to_coa")
+LipidNetworkPredictR:::.check_reaction(reaction = "fa_to_coa")
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}

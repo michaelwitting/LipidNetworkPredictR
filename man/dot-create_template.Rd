@@ -36,7 +36,7 @@ for the following information:
 }
 }
 \examples{
-wormLipidPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
+LipidNetworkPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
 }
 \author{
 Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
