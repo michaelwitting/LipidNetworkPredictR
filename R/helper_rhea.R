@@ -26,7 +26,7 @@
 #' 
 #' @examples
 #' protein_id <- "Q920L6"
-#' LipidNetworkPredictR:::getRheaIDsFromProteinID(protein_id)
+#' \dontrun{LipidNetworkPredictR:::getRheaIDsFromProteinID(protein_id)}
 getRheaIDsFromProteinID <- function(protein_id) {
     
     ## check the protein_id argument for validity
