@@ -26,7 +26,7 @@
 #'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
 #'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 #' substrates <- list(FA = FA)
-#' reaction <- "fa_to_coa"
+#' reaction <- "RHEA:15421"
 #' 
 #' ## create template
 #' template <- LipidNetworkPredictR:::.create_template(template = NA, 
@@ -52,39 +52,39 @@
 #'     template = template,
 #'     reaction = reaction)
 .create_list_products_df_with_template <- function(df_reaction, template, 
-    reaction = "fa_to_coa") {
+    reaction = "RHEA:15421") {
     
-    if (reaction == "acdhap_to_alkyldhap")
+    if (reaction == "RHEA:36171") ## acdhap_to_alkyldhap
         l <- list(ALKYLDHAP = unique(df_reaction$ALKYLDHAP))
     
-    if (reaction == "alkyldhap_to_lpao")
+    if (reaction == "RHEA:36175") ## alkyldhap_to_lpao
         l <- list(LPAO = unique(df_reaction$LPAO))
 
     if (reaction == "c1p_to_cer")
         l <- list(CER = unique(df_reaction$CER))
     
-    if (reaction == "cdpdg_to_pgp")
+    if (reaction == "RHEA:12593") ## cdpdg_to_pgp
         l <- list(PGP = unique(df_reaction$PGP))
     
-    if (reaction == "cdpdg_to_pi")
+    if (reaction == "RHEA:11580") ## cdpdg_to_pi
         l <- list(PI = unique(df_reaction$PI))
     
-    if (reaction == "cer_to_c1p")
+    if (reaction == "RHEA:17929") ## cer_to_c1p
         l <- list(C1P = unique(df_reaction$C1P))
     
-    if (reaction == "cer_to_glccer")
+    if (reaction == "RHEA:12088") ## cer_to_glccer
         l <- list(GLCCER = unique(df_reaction$GLCCER))
     
-    if (reaction == "cer_to_sm")
+    if (reaction == "cer_to_sm") ## 
         l <- list(SM = unique(df_reaction$SM))
     
     if (reaction == "coa_to_acdhap")
         l <- list(DHAP = unique(df_reaction$DHAP))
     
-    if (reaction == "coa_to_fatoh")
+    if (reaction == "RHEA:52716") ## coa_to_fatoh
         l <- list(FATOH = unique(df_reaction$FATOH))
     
-    if (reaction == "coa_to_lpa")
+    if (reaction == "RHEA:15325") ## coa_to_lpa
         l <- list(LPA = unique(df_reaction$LPA))
     
     if (reaction == "dg_to_sn1mg")
@@ -93,63 +93,63 @@
     if (reaction == "dg_to_sn2mg")
         l <- list(sn2MG = unique(df_reaction$sn2MG))
     
-    if (reaction == "dg_to_pa")
+    if (reaction == "RHEA:10272") ## dg_to_pa
         l <- list(PA = unique(df_reaction$PA))
     
-    if (reaction == "dg_to_pc")
+    if (reaction == "RHEA:32939") ## dg_to_pc
         l <- list(PC = unique(df_reaction$PC))
     
-    if (reaction == "dg_to_pe")
+    if (reaction == "RHEA:32943") ## dg_to_pe
         l <- list(PE = unique(df_reaction$PE))
     
-    if (reaction == "dg_to_tg")
+    if (reaction == "RHEA:10868") ## dg_to_tg
         l <- list(TG = unique(df_reaction$TG))
     
-    if (reaction == "dgo_to_pco")
+    if (reaction == "RHEA:36179") ## dgo_to_pco
         l <- list(PCO = unique(df_reaction$PCO))
     
-    if (reaction == "dgo_to_peo")
+    if (reaction == "RHEA:36187") ## dgo_to_peo
         l <- list(PEO = unique(df_reaction$PEO))
     
     if (reaction == "dhcer_to_cer")
         l <- list(CER = unique(df_reaction$CER))
     
-    if (reaction == "dhcer_to_dhsm")
+    if (reaction == "dhcer_to_dhsm") ##
         l <- list(DHSM = unique(df_reaction$DHSM))
     
-    if (reaction == "dhsm_to_dhcer")
+    if (reaction == "RHEA:19253") ## dhsm_to_dhcer
         l <- list(DHCER = unique(df_reaction$DHCER))
     
-    if (reaction == "fa_to_coa")
+    if (reaction == "RHEA:15421") ## fa_to_coa
         l <- list(CoA = unique(df_reaction$CoA))
     
-    if (reaction == "lnape_to_gpnae")
+    if (reaction == "RHEA:45420") ## lnape_to_gpnae
         l <- list(
             GPNAE = unique(df_reaction$GPNAE), 
             FA = unique(df_reaction$FA))
     
-    if (reaction == "lpa_to_pa")
+    if (reaction == "RHEA:19709") ## lpa_to_pa
         l <- list(PA = unique(df_reaction$PA))
     
-    if (reaction == "lpao_to_pao")
-        l <- list(PAO = unique(df_reaction$PAO))
+    ## if (reaction == "RHEA:19709") ## lpao_to_pao
+    ##     l <- list(PAO = unique(df_reaction$PAO))
     
-    if (reaction == "sn1lpc_to_fa")
+    if (reaction == "RHEA:15177") ## sn1lpc_to_fa
         l <- list(FA = unique(df_reaction$FA))
     
-    if (reaction == "sn2lpc_to_fa")
+    if (reaction == "RHEA:44696") ## sn2lpc_to_fa
         l <- list(FA = unique(df_reaction$FA))
     
-    if (reaction == "sn1lpc_to_pc")
+    if (reaction == "RHEA:12937") ## sn1lpc_to_pc
         l <- list(PC = unique(df_reaction$PC))
     
-    if (reaction == "sn1lpe_to_fa")
+    if (reaction == "RHEA:32967") ## sn1lpe_to_fa
         l <- list(FA = unique(df_reaction$FA))
     
     if (reaction == "sn2lpe_to_fa")
         l <- list(FA = unique(df_reaction$FA))
     
-    if (reaction == "sn1lpe_to_pe")
+    if (reaction == "RHEA:32995") ## sn1lpe_to_pe
         l <- list(PE = unique(df_reaction$PE))
     
     if (reaction == "lpeo_to_peo")
@@ -204,19 +204,19 @@
     if (reaction == "pao_to_dgo")
         l <- list(DGO = unique(df_reaction$DGO))
     
-    if (reaction == "pc_to_dg")
+    if (reaction == "RHEA:10604") ## pc_to_dg
         l <- list(DG = unique(df_reaction$DG))
     
-    if (reaction == "pc_to_sn1lpc")
+    if (reaction == "RHEA:15801") ## pc_to_sn1lpc
         l <- list(sn1LPC = unique(df_reaction$sn1LPC))
     
-    if (reaction == "pc_to_sn2lpc")
+    if (reaction == "RHEA:18689") ## pc_to_sn2lpc
         l <- list(sn2LPC = unique(df_reaction$sn2LPC))
     
-    if (reaction == "pc_to_pa")
+    if (reaction == "RHEA:14445") ## pc_to_pa
         l <- list(PA = unique(df_reaction$PA))
     
-    if (reaction == "pc_to_ps")
+    if (reaction == "RHEA:45088") ## pc_to_ps
         l <- list(PS = unique(df_reaction$PS))
     
     if (reaction == "pco_to_lpco")
@@ -228,7 +228,7 @@
     if (reaction == "pe_to_sn1lpe")
         l <- list(sn1LPE = unique(df_reaction$sn1LPE))
     
-    if (reaction == "pe_to_sn2lpe")
+    if (reaction == "RHEA:44408") ## pe_to_sn2lpe
         l <- list(sn2LPE = unique(df_reaction$sn2LPE))
     
     if (reaction == "pe_to_nape_sn1")
@@ -242,7 +242,7 @@
     if (reaction == "pe_to_pa")
         l <- list(PA = unique(df_reaction$PA))
     
-    if (reaction == "pe_to_ps")
+    if (reaction == "RHEA:27606") ## pe_to_ps
         l <- list(PS = unique(df_reaction$PS))
     
     if (reaction == "peo_to_lpeo")

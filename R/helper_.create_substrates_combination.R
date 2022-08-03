@@ -66,20 +66,24 @@
 #' @title Check if correct colnames are in \code{substrates_combinations}
 #' 
 #' @description
-#' The helper function checks if the correct columns are in \code{df} 
+#' The helper function checks if the correct columns are in \code{substrates} 
 #' depending on the \code{reaction}.
 #' 
 #' @details 
 #' The function will throw an error if \code{reaction} is not of length 1 and
 #' is not an implemented method.
 #' 
+#' The function will invisibly return the correct columns for \code{reaction}.
+#' 
 #' \code{.check_colnames_substrates_combinations} is a helper function to 
 #' test the integrity of \code{df}.
 #' 
-#' @param df \code{data.frame}
+#' @param substrates \code{data.frame} or \code{list}
 #' @param reaction \code{character(1)}
 #' 
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
+#' 
+#' @return character containing the valid colnames
 #'
 #' @examples
 #' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
@@ -92,43 +96,48 @@
 #'     substrates = substrates, 
 #'     constraints = "", negate = FALSE)
 #' LipidNetworkPredictR:::.check_colnames_substrates_combinations(
-#'     df = df_substrates, reaction = "fa_to_coa")
-.check_colnames_substrates_combinations <- function(df, reaction = "fa_to_coa") {
+#'     substrates = df_substrates, reaction = "RHEA:15421")
+.check_colnames_substrates_combinations <- function(substrates, reaction = "RHEA:15421") {
     
     if (length(reaction) != 1)
         stop("'reaction' has to be of length 1")
     
-    if (reaction == "acdhap_to_alkyldhap")
+    ## convert to data.frame if substrates is a list
+    if (is.list(substrates))
+        substrates <- as.data.frame(substrates)
+        
+    
+    if (reaction == "RHEA:36171") ## acdhap_to_alkyldhap
         cols <- c("ACDHAP", "FATOH")
     
-    if (reaction == "alkyldhap_to_lpao")
+    if (reaction == "RHEA:36175") ## alkyldhap_to_lpao
         cols <- c("ALKYLDHAP")
     
     if (reaction == "c1p_to_cer")
         cols <- c("C1P")
     
-    if (reaction == "cdpdg_to_pgp")
+    if (reaction == "RHEA:12593") ## cdpdg_to_pgp
         cols <- c("CDPDG")
     
-    if (reaction == "cdpdg_to_pi")
+    if (reaction == "RHEA:11580") ## cdpdg_to_pi
         cols <- c("CDPDG")
     
-    if (reaction == "cer_to_c1p")
+    if (reaction == "RHEA:17929") ## cer_to_c1p
         cols <- c("CER")
     
-    if (reaction == "cer_to_glccer")
+    if (reaction == "RHEA:12088") ## cer_to_glccer
         cols <- c("CER")
     
-    if (reaction == "cer_to_sm")
+    if (reaction == "cer_to_sm") ## 
         cols <- c("CER")
     
     if (reaction == "coa_to_acdhap")
         cols <- c("CoA")
     
-    if (reaction == "coa_to_fatoh")
+    if (reaction == "RHEA:52716") ## coa_to_fatoh
         cols <- c("CoA")
     
-    if (reaction == "coa_to_lpa")
+    if (reaction == "RHEA:15325") ## coa_to_lpa
         cols <- c("CoA")
     
     if (reaction == "dg_to_sn1mg")
@@ -137,61 +146,61 @@
     if (reaction == "dg_to_sn2mg")
         cols <- c("DG")
     
-    if (reaction == "dg_to_pa")
+    if (reaction == "RHEA:10272") ## dg_to_pa
         cols <- c("DG")
     
-    if (reaction == "dg_to_pc")
+    if (reaction == "RHEA:32939") ## dg_to_pc
         cols <- c("DG")
     
-    if (reaction == "dg_to_pe")
+    if (reaction == "RHEA:32943") ## dg_to_pe
         cols <- c("DG")
     
-    if (reaction == "dg_to_tg")
+    if (reaction == "RHEA:10868") ## dg_to_tg
         cols <- c("DG", "CoA")
     
-    if (reaction == "dgo_to_pco")
+    if (reaction == "RHEA:36179") ## dgo_to_pco
         cols <- c("DGO")
     
-    if (reaction == "dgo_to_peo")
+    if (reaction == "RHEA:36187") ## dgo_to_peo
         cols <- c("DGO")
     
     if (reaction == "dhcer_to_cer")
         cols <- c("DHCER")
     
-    if (reaction == "dhcer_to_dhsm")
+    if (reaction == "dhcer_to_dhsm") ## 
         cols <- c("DHCER")
     
-    if (reaction == "dhsm_to_dhcer")
+    if (reaction == "RHEA:19253") ## dhsm_to_dhcer
         cols <- c("DHSM")
     
-    if (reaction == "fa_to_coa")
+    if (reaction == "RHEA:15421") ## fa_to_coa
         cols <- c("FA")
     
-    if (reaction == "lnape_to_gpnae")
+    if (reaction == "RHEA:45420") ## lnape_to_gpnae
         cols <- c("LNAPE")
     
-    if (reaction == "lpa_to_pa")
+    if (reaction == "RHEA:19709") ## lpa_to_pa
         cols <- c("LPA", "CoA")
     
-    if (reaction == "lpao_to_pao")
-        cols <- c("LPAO", "CoA")
+    ##if (reaction == "RHEA:19709") ## lpao_to_pao
+    ##    cols <- c("LPAO", "CoA")
     
-    if (reaction == "sn1lpc_to_fa")
+    if (reaction == "RHEA:15177") ## sn1lpc_to_fa
         cols <- c("sn1LPC")
     
-    if (reaction == "sn2lpc_to_fa")
+    if (reaction == "RHEA:44696") ## sn2lpc_to_fa
         cols <- c("sn2LPC")
     
-    if (reaction == "sn1lpc_to_pc")
+    if (reaction == "RHEA:12937") ## sn1lpc_to_pc
         cols <- c("sn1LPC", "CoA")
     
-    if (reaction == "sn1lpe_to_fa")
+    if (reaction == "RHEA:32967") ## sn1lpe_to_fa
         cols <- c("sn1LPE")
     
     if (reaction == "sn2lpe_to_fa")
         cols <- c("sn2LPE")
     
-    if (reaction == "sn1lpe_to_pe")
+    if (reaction == "RHEA:32995") ## sn1lpe_to_pe
         cols <- c("sn1LPE", "CoA")
     
     if (reaction == "lpeo_to_peo")
@@ -242,19 +251,19 @@
     if (reaction == "pao_to_dgo")
         cols <- c("PAO")
     
-    if (reaction == "pc_to_dg")
+    if (reaction == "RHEA:10604") ## pc_to_dg
         cols <- c("PC")
     
-    if (reaction == "pc_to_sn1lpc")
+    if (reaction == "RHEA:15801") ## pc_to_sn1lpc
         cols <- c("PC")
     
-    if (reaction == "pc_to_sn2lpc")
+    if (reaction == "RHEA:18689") ## pc_to_sn2lpc
         cols <- c("PC")
     
-    if (reaction == "pc_to_pa")
+    if (reaction == "RHEA:14445") ## pc_to_pa
         cols <- c("PC")
     
-    if (reaction == "pc_to_ps")
+    if (reaction == "RHEA:45088") ## pc_to_ps
         cols <- c("PC")
     
     if (reaction == "pco_to_lpco")
@@ -266,7 +275,7 @@
     if (reaction == "pe_to_sn1lpe")
         cols <- c("PE")
     
-    if (reaction == "pe_to_sn2lpe")
+    if (reaction == "RHEA:44408") ## pe_to_sn2lpe
         cols <- c("PE")
     
     if (reaction == "pe_to_nape_sn1")
@@ -278,7 +287,7 @@
     if (reaction == "pe_to_pa")
         cols <- c("PE")
     
-    if (reaction == "pe_to_ps")
+    if (reaction == "RHEA:27606") ## pe_to_ps
         cols <- c("PE")
     
     if (reaction == "peo_to_lpeo")
@@ -320,7 +329,10 @@
     if (reaction == "tg_to_dg")
         cols <- c("TG")
     
-    if (!all(cols %in% colnames(df)))
+    if (!all(cols %in% colnames(substrates)))
         stop(paste("columns", paste(sprintf("%s", cols), collapse = ", "), 
-            "not in 'colnames(df)'"))
+            "not in 'colnames(substrates)'"))
+    
+    ## return cols
+    invisible(cols)
 }

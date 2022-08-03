@@ -158,6 +158,7 @@ WormJam.
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CoA biosynthesis",
     reaction_formula = "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa",
+    reaction_RHEA = "RHEA:15421",
     reaction_isReversible = "",
     reaction_geneAssociation = "",
     reaction_pathway = "Acyl-CoA synthetase")
@@ -173,8 +174,8 @@ found to be present in glycero- and glycerophospholipids.
 
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
-results <- create_reaction(substrates = list(FA = FA_GPGL), 
-    template = template, reaction = "fa_to_coa")
+results <- .create_reaction(substrates = list(FA = FA_GPGL), 
+    template = template, reaction = "RHEA:15421")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -198,8 +199,8 @@ acyl-CoA.
 
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
-results <- create_reaction(substrates = list(FA = FA_SPH), template = template,
-    reaction = "fa_to_coa")
+results <- .create_reaction(substrates = list(FA = FA_SPH), template = template,
+    reaction = "RHEA:15421")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -238,6 +239,7 @@ therefore the assignments are merged together to yield a single reaction.
 # template for reaction --------------------------------------------------------
 template <- list(reaction_name = "glycerol-3 phosphate acyl transferase",
     reaction_formula = "M_glyc3p + M_fataccoa <=> M_coa + M_alpa_pl",
+    reaction_RHEA = "RHEA:15325",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00017261 or WBGene00018657 or WBGene00011106",
     reaction_pathway = "Biosynthesis and Degradation of Phosphaditic acid and Diacylglycerol")
@@ -245,8 +247,8 @@ template <- list(reaction_name = "glycerol-3 phosphate acyl transferase",
 
 ```{r coa_to_lpa, message=FALSE, warning=FALSE}
 ## biosynthesis of LPA --------------------------------------------------------
-results <- create_reaction(substrates = list(CoA = CoA_GPGL), template = template,
-    reaction = "coa_to_lpa")
+results <- .create_reaction(substrates = list(CoA = CoA_GPGL), template = template,
+    reaction = "RHEA:15325")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -276,6 +278,7 @@ predicted to locate in the mitochondria.
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
     reaction_formula = "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl",
+    reaction_RHEA = "RHEA:19709",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00022646 or WBGene00020264 or WBGene00016934 or WBGene00010339 or WBGene00011543",
     reaction_pathway = "Biosynthesis and Degradation of Phosphaditic acid and Diacylglycerol")
@@ -283,8 +286,8 @@ template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
 
 ```{r lpa_to_pa, message=FALSE, warning=FALSE}
 ## biosynthesis of PA ---------------------------------------------------------
-results <- create_reaction(substrates = list(LPA = LPA, CoA = CoA_GPGL), 
-    template = template, reaction = "lpa_to_pa")
+results <- .create_reaction(substrates = list(LPA = LPA, CoA = CoA_GPGL), 
+    template = template, reaction = "RHEA:19709")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -318,7 +321,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol 3-phosphate phosphohydr
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <- create_reaction(substrates = list(PA = PA), template = template,
+results <- .create_reaction(substrates = list(PA = PA), template = template,
     reaction = "pa_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -338,18 +341,19 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 
 DG can be phosphorylated to create PA, which is the reversal of the reaction above.
 
-```{r, message=FALSE, warning=FALSE}
+```{r dg_to_pa_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1,2-diacyl-sn-glycerol kinase (ER)",
     reaction_formula = "M_atp + M_12dag <=> M_h + M_adp + M_pa_pl",
+    reaction_RHEA = "RHEA:10272",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000958 or WBGene00000959 or WBGene00000960 or WBGene00006483 or WBGene00019428",
     reaction_pathway = "Biosynthesis and Degradation of Phosphaditic acid and Diacylglycerol")
 ```
 
-```{r, message=FALSE, warning=FALSE}
-results <- create_reaction(substrates = list(DG = DG), template = template,
-    reaction = "dg_to_pa")
+```{r dg_to_pa, message=FALSE, warning=FALSE}
+results <- .create_reaction(substrates = list(DG = DG), template = template,
+    reaction = "RHEA:10272")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced PA are in previous list
@@ -377,7 +381,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (1-acyl-M
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-##results <- create_reaction(substrates = list(DG = DG), template = template,
+##results <- .create_reaction(substrates = list(DG = DG), template = template,
 ##    reaction = "dg_to_sn1mg")
 ## results[[2]][1:10, "ReactionFormula"]
 
@@ -405,7 +409,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (2-acyl-M
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
+results <-  .create_reaction(substrates = list(DG = DG), template = template,
     reaction = "dg_to_sn2mg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -431,7 +435,7 @@ template <- list(reaction_name = "1-Acyl-MG 2-Acyl-MG conversion",
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG), template = template,
+results <-  .create_reaction(substrates = list(sn2MG = sn2MG), template = template,
     reaction = "sn2mg_to_sn1mg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -462,7 +466,7 @@ template <- list(reaction_name = "1-acyl-sn-glycerol acylhydrolase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG), template = template,
+results <-  .create_reaction(substrates = list(sn1MG = sn1MG), template = template,
     reaction = "sn1mg_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -485,7 +489,7 @@ template <- list(reaction_name = "2-acyl-sn-glycerol acylhydrolase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG), template = template,
+results <-  .create_reaction(substrates = list(sn2MG = sn2MG), template = template,
     reaction = "sn2mg_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -514,7 +518,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (1-acyl-MG)"
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG, CoA = CoA_GPGL), 
+results <-  .create_reaction(substrates = list(sn1MG = sn1MG, CoA = CoA_GPGL), 
     template = template, reaction = "sn1mg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -538,7 +542,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (2-acyl-MG)"
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG, CoA = CoA_GPGL), 
+results <-  .create_reaction(substrates = list(sn2MG = sn2MG, CoA = CoA_GPGL), 
     template = template, reaction = "sn2mg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -562,7 +566,7 @@ template <- list(reaction_name = "1-acyl-sn-glycerol kinase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG), 
+results <-  .create_reaction(substrates = list(sn1MG = sn1MG), 
     template = template, reaction = "sn1mg_to_lpa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -590,14 +594,15 @@ TG are synthesized by acylation of DG in the ER.
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "diacylglycerol acyl transferase",
     reaction_formula = "M_fataccoa + M_12dag <=> M_coa + M_tag",
+    reaction_RHEA = "RHEA:10868",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00010408",
     reaction_pathway = "Biosynthesis and Degradation of Triacylglycerols")
 ```
 
 ```{r dg_to_tg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG, CoA = CoA_GPGL), 
-    template = template, reaction = "dg_to_tg")
+results <-  .create_reaction(substrates = list(DG = DG, CoA = CoA_GPGL), 
+    template = template, reaction = "RHEA:10868")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector 
@@ -626,7 +631,7 @@ template <- list(reaction_name = "Triacylglycerol acylhydrolase",
 ```
 
 ```{r tg_to_dg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(TG = TG), template = template,
+results <-  .create_reaction(substrates = list(TG = TG), template = template,
     reaction = "tg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -648,16 +653,18 @@ The glycerophospholipids phosphatidylcholine, -ethanolamine and serine are synth
 
 ```{r dg_to_pc_template, message=FALSE, warning=FALSE, eval=FALSE}
 ## template for reaction -------------------------------------------------------
-template <- list(reaction_name = "CDP-choline 1,2-diacyl-sn-glycerol phosphocholine transferase",
+template <- list(
+    reaction_name = "CDP-choline 1,2-diacyl-sn-glycerol phosphocholine transferase",
     reaction_formula = "M_cdpchol + M_12dag <=> M_h + M_cmp + M_pchol",
+    reaction_RHEA = "RHEA:32939",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00009057 or WBGene00013024",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PC, PE, PS)")
 ```
 
 ```{r dg_to_pc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
-    reaction = "dg_to_pc")
+results <-  .create_reaction(substrates = list(DG = DG), template = template,
+    reaction = "RHEA:32939")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -678,14 +685,15 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CDP-ethanolamine 1,2-diacyl-sn-glycerol phosphoethanolamine transferase",
     reaction_formula = "M_cdpea + M_12dag <=> M_h + M_cmp + M_pe",
+    reaction_RHEA = "RHEA:32943",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00009057 or WBGene00013024",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PC, PE, PS)")
 ```
 
 ```{r dg_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
-    reaction = "dg_to_pe")
+results <-  .create_reaction(substrates = list(DG = DG), template = template,
+    reaction = "RHEA:32943")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -708,14 +716,15 @@ from PC
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "phosphatidylcholine-serine O-phosphatidyltransferase",
     reaction_formula = "M_ser_L_c + M_pchol_c <=> M_chol_c + M_ps_c",
+    reaction_RHEA = "RHEA:45088",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00013920",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PC, PE, PS)")
 ```
 
 ```{r pc_to_ps, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
-    reaction = "pc_to_ps")
+results <-  .create_reaction(substrates = list(PC = PC), template = template,
+    reaction = "RHEA:45088")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -736,14 +745,15 @@ from PE
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "phosphatidylethanolamine-serine O-phosphatidyltransferase",
     reaction_formula = "M_ser_L_c + M_pe_c <=> M_etha_c + M_ps_c",
+    reaction_RHEA = "RHEA:27606",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00013920 or WBGene00012095",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PC, PE, PS)")
 ```
 
 ```{r pe_to_ps, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
-    reaction = "pe_to_ps")
+results <-  .create_reaction(substrates = list(PE = PE), template = template,
+    reaction = "RHEA:27606")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced PS are in previous list
@@ -770,7 +780,7 @@ template <- list(reaction_name = "phosphatidylserine decarboxylase",
 ```
 
 ```{r ps_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PS = PS), template = template,
+results <-  .create_reaction(substrates = list(PS = PS), template = template,
     reaction = "ps_to_pe")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -794,14 +804,15 @@ PLA1 cleaves of the acyl at the sn1 position producing an sn2LPC
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A1 (PC)",
     reaction_formula = "M_h2o_c + M_pchol_c <=> M_2agpc_c + M_fatacid_c",
+    reaction_RHEA = "RHEA:18689",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r pc_to_sn2lpc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
-    reaction = "pc_to_sn2lpc")
+results <-  .create_reaction(substrates = list(PC = PC), template = template,
+    reaction = "RHEA:18689")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -822,14 +833,15 @@ PLA2 on PC
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A2 (PC)",
     reaction_formula = "M_h2o + M_pchol <=> M_ag3pc + M_fatacid",
+    reaction_RHEA = "RHEA:15801",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00012319 or WBGene00010872 or WBGene00019236 or WBGene00015202 or WBGene00016288 or WBGene00044468 or WBGene00018411 or WBGene00007419 or WBGene00009404 or WBGene00015406",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r pc_to_sn1lpc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
-    reaction = "pc_to_sn1lpc")
+results <-  .create_reaction(substrates = list(PC = PC), template = template,
+    reaction = "RHEA:15801")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -850,14 +862,15 @@ PLD on PC
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase D (PC)",
     reaction_formula = "M_h2o + M_pchol <=> M_chol + M_pa_pl",
+    reaction_RHEA = "RHEA:14445",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004040 or WBGene00017316 or WBGene00013080",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r pc_to_pa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
-    reaction = "pc_to_pa")
+results <-  .create_reaction(substrates = list(PC = PC), template = template,
+    reaction = "RHEA:14445")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced PA are in previous list
@@ -878,14 +891,15 @@ sn1LPC to FA_GPGL
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine lipase (LPC)",
     reaction_formula = "M_h2o + M_ag3pc <=> M_g3pc + M_h + M_fatacid",
+    reaction_RHEA = "RHEA:15177",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00010915",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r sn1lpc_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPC = sn1LPC), 
-    template = template, reaction = "sn1lpc_to_fa")
+results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC), 
+    template = template, reaction = "RHEA:15177")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced FA are in previous list
@@ -904,14 +918,15 @@ sn2LPC to FA_GPGL
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphocholine lipase (LPC)",
     reaction_formula = "M_h2o + M_2agpc <=> M_g3pc + M_h + M_fatacid",
+    reaction_RHEA = "RHEA:44696",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00010915",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r sn2lpc_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2LPC = sn2LPC), 
-    template = template, reaction = "sn2lpc_to_fa")
+results <-  .create_reaction(substrates = list(sn2LPC = sn2LPC), 
+    template = template, reaction = "RHEA:44696")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced FA are in previous list
@@ -932,14 +947,15 @@ Only sn1LPC get re-acylated --\> constraining? = remodeling!
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine acyltransferase (LPC, cytosol)",
     reaction_formula = "M_ag3pc_c + M_fataccoa_c <=> M_pchol_c + M_coa_c",
+    reaction_RHEA = "RHEA:12937",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00020115 or WBGene00016934 or WBGene00007446",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r sn1lpc_to_pc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPC = sn1LPC, CoA = CoA_GPGL),
-    template = template, reaction = "sn1lpc_to_pc", 
+results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC, CoA = CoA_GPGL),
+    template = template, reaction = "RHEA:12937", 
     constraints = c("", "OH"), negate = c(FALSE, TRUE))
 results[[2]][1:10, "ReactionFormula"]
 
@@ -961,14 +977,15 @@ PLA1 on PE
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A1 (PE)",
     reaction_formula = "M_h2o + M_pe <=> M_h + M_fatacid + M_2agpe",
+    reaction_RHEA = "RHEA:44408",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r pe_to_sn2lpe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
-    reaction = "pe_to_sn2lpe")
+results <-  .create_reaction(substrates = list(PE = PE), template = template,
+    reaction = "RHEA:44408")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -995,7 +1012,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE)",
 ```
 
 ```{r pe_to_sn1lpe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  .create_reaction(substrates = list(PE = PE), template = template,
     reaction = "pe_to_sn1lpe")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1023,7 +1040,7 @@ template <- list(reaction_name = "Phospholipase D (PE)",
 ```
 
 ```{r pe_to_pa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  .create_reaction(substrates = list(PE = PE), template = template,
     reaction = "pe_to_pa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1045,14 +1062,15 @@ sn1LPE to FA_GPGL
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine lipase (LPE)",
     reaction_formula = "M_h2o + M_ag3pe <=> M_h + M_fatacid + M_g3pe",
+    reaction_RHEA = "RHEA:32967",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00010915 or WBGene00022718",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r sn1lpe_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPE = sn1LPE), 
-    template = template, reaction = "sn1lpe_to_fa")
+results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE), 
+    template = template, reaction = "RHEA:32967")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced FA are in previous list
@@ -1077,7 +1095,7 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphoethanolamine lipase
 ```
 
 ```{r sn2lpe_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2LPE = sn2LPE), 
+results <-  .create_reaction(substrates = list(sn2LPE = sn2LPE), 
     template = template, reaction = "sn2lpe_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1099,14 +1117,15 @@ Only sn1LPE get re-acylated --\> constraining? = remodeling!
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine acyltransferase (LPE, cytosol)",
     reaction_formula = "M_fataccoa + M_acg3pe <=> M_coa + M_pe",
+    reaction_RHEA = "RHEA:32995",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00020115 or WBGene00016934 or WBGene00007446",
     reaction_pathway = "Remodeling and Degradation of Glycerophospholipids")
 ```
 
 ```{r sn1lpe_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPE = sn1LPE, CoA = CoA_GPGL), 
-    template = template, reaction = "sn1lpe_to_pe", constraints = c("", "OH"),
+results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE, CoA = CoA_GPGL), 
+    template = template, reaction = "RHEA:32995", constraints = c("", "OH"),
     negate = c(FALSE, TRUE))
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1136,7 +1155,7 @@ template <- list(reaction_name = "phosphatidate cytidylyltransferase",
 ```
 
 ```{r pa_to_cdpdg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PA = PA), template = template,
+results <-  .create_reaction(substrates = list(PA = PA), template = template,
     reaction = "pa_to_cdpdg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1158,14 +1177,15 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CDP-diacylglycerol inositol transferase",
     reaction_formula = "M_inost + M_cdpdag <=> M_h + M_cmp + M_pail",
+    reaction_RHEA = "RHEA:11580",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00012897",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PG, PI, CL)")
 ```
 
 ```{r cdpdg_to_pi, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CDPDG = CDPDG), template = template,
-    reaction = "cdpdg_to_pi")
+results <-  .create_reaction(substrates = list(CDPDG = CDPDG), template = template,
+    reaction = "RHEA:11580")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1188,14 +1208,15 @@ this reaction is only mitochondrial!
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase",
     reaction_formula = "M_glyc3p + M_cdpdag <=> M_h + M_cmp + M_pgp",
+    reaction_RHEA = "RHEA:12593",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00021677",
     reaction_pathway = "Biosynthesis of Glycerophospholipids (PG, PI, CL)")
 ```
 
 ```{r cdpdg_to_pgp, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CDPDG = CDPDG), template = template,
-    reaction = "cdpdg_to_pgp")
+results <-  .create_reaction(substrates = list(CDPDG = CDPDG), template = template,
+    reaction = "RHEA:12593")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1222,7 +1243,7 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 ```
 
 ```{r pgp_to_pg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PGP = PGP), template = template,
+results <-  .create_reaction(substrates = list(PGP = PGP), template = template,
     reaction = "pgp_to_pg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1250,7 +1271,7 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 ```
 
 ```{r pg_to_cl, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PG = PG, CDPDG = CDPDG), 
+results <-  .create_reaction(substrates = list(PG = PG, CDPDG = CDPDG), 
     template = template, reaction = "pg_to_cl",
     constraints = c("(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]",
         "(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]"),
@@ -1279,14 +1300,15 @@ Some etherlipids... mostly PE, small amounts in PC This reaction is constrained 
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Fatty acyl-CoA reductase",
     reaction_formula = "M_fataccoa + 2 M_nadph + 2 M_h <=> M_alkylR1oh + 2 M_nadp + M_coa",
+    reactin_RHEA = "RHEA:52716",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00022200",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r coa_to_fatoh, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_GPGL), 
-    template = template, reaction = "coa_to_fatoh", 
+results <-  .create_reaction(substrates = list(CoA = CoA_GPGL), 
+    template = template, reaction = "RHEA:52716", 
     constraints = c("16:0)|18:0)|20:0)"), negate = c(FALSE))
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1314,7 +1336,7 @@ template <- list(reaction_name = "Glycerone-phosphate O-acyltransferase",
 ```
 
 ```{r coa_to_acdhap, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_GPGL), 
+results <-  .create_reaction(substrates = list(CoA = CoA_GPGL), 
     template = template, reaction = "coa_to_acdhap")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1336,14 +1358,15 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Alkyldihydroxyacetonephosphate synthase",
     reaction_formula = "M_adhap_c + M_alkylR1oh_c <=> M_h_c + M_fatacid_c + M_akdhap_c",
+    reaction_RHEA = "RHEA:36171",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000081",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r acdhap_to_alkyldhap, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(ACDHAP = ACDHAP, FATOH = FATOH), 
-    template = template, reaction = "acdhap_to_alkyldhap")
+results <-  .create_reaction(substrates = list(ACDHAP = ACDHAP, FATOH = FATOH), 
+    template = template, reaction = "RHEA:36171") 
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1366,14 +1389,15 @@ Enzyme not known so far in C. elegans!!! EC 1.1.1.101
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "1-acylglycerone phosphate reductase",
     reaction_formula = "M_h + M_nadph + M_akdhap <=> M_alpa_pl + M_nadp",
+    reaction_RHEA = "RHEA:36175",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r alkyldhap_to_lpao, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(ALKYLDHAP = ALKYLDHAP),
-    template = template, reaction = "alkyldhap_to_lpao")
+results <-  .create_reaction(substrates = list(ALKYLDHAP = ALKYLDHAP),
+    template = template, reaction = "RHEA:36175")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1394,29 +1418,30 @@ Same genes as for LPA to PA --\> substrate specificity not known yet...
 
 ```{r lpao_to_pao_template, message=FALSE, warning=FALSE, eval=FALSE}
 ## template for reaction -------------------------------------------------------
-template <- list(reaction_name = "2-O-Acyl transferase",
-    reaction_formula = "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa",
-    reaction_isReversible = "FALSE",
-    reaction_geneAssociation = "WBGene00022646 or WBGene00020264 or WBGene00016934 or WBGene00010339 or WBGene00011543",
-    reaction_pathway = "Biosynthesis of Etherlipids")
+##template <- list(reaction_name = "2-O-Acyl transferase",
+##    reaction_formula = "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa",
+##    reaction_RHEA = "RHEA:19709",
+##    reaction_isReversible = "FALSE",
+##    reaction_geneAssociation = "WBGene00022646 or WBGene00020264 or WBGene00016934 or WBGene00010339 or WBGene00011543",
+##    reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
-    template = template, reaction = "lpao_to_pao",
-    constraints = c("", "OH"), negate = c(FALSE, TRUE))
-results[[2]][1:10, "ReactionFormula"]
+##results <-  .create_reaction(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
+##    template = template, reaction = "RHEA:19709",
+##    constraints = c("", "OH"), negate = c(FALSE, TRUE))
+##results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
-lipid_abbrev <- c(lipid_abbrev, results[[1]][["PAO"]])
+##lipid_abbrev <- c(lipid_abbrev, results[[1]][["PAO"]])
 
 ## get PAO for further reactions
-PAO <- results[[1]][["PAO"]]
+##PAO <- results[[1]][["PAO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(PAO)
-lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
+##lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+##lipid_info <- rgoslin::parseLipidNames(PAO)
+##lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
 ### Biosynthesis of DG-O
@@ -1431,7 +1456,7 @@ template <- list(reaction_name = "1-Alkyl-2-acyl-sn-glycero-3-phosphate phosphoh
 ```
 
 ```{r pao_to_dgo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PAO = PAO), template = template,
+results <-  .create_reaction(substrates = list(PAO = PAO), template = template,
     reaction = "pao_to_dgo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1455,14 +1480,15 @@ headgroup transfer via cept-1 and cept-2
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CDP-ethanolamine 1-Alkyl,2-acyl-sn-glycerol phosphoethanolamine transferase",
     reaction_formula = "M_cdpea + M_akac2g <=> M_h + M_cmp + M_akac2gpe",
+    reaction_RHEA = "RHEA:36187",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00009057 or WBGene00013024",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r dgo_to_peo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DGO = DGO), template = template,
-    reaction = "dgo_to_peo")
+results <-  .create_reaction(substrates = list(DGO = DGO), template = template,
+    reaction = "RHEA:36187")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1491,7 +1517,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_pep, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO), template = template,
+results <-  .create_reaction(substrates = list(PEO = PEO), template = template,
     reaction = "peo_to_pep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1515,14 +1541,15 @@ same as for PC!
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "CDP-Choline 1-Alkyl,2-acyl-sn-glycerol phosphocholine transferase",
     reaction_formula = "M_cdpchol + M_akac2g <=> M_h + M_cmp + M_akac2gchol",
+    reaction_RHEA = "RHEA:36179"
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00009057 or WBGene00013024",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 ```{r dgo_to_pco, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DGO = DGO), template = template,
-    reaction = "dgo_to_pco")
+results <-  .create_reaction(substrates = list(DGO = DGO), template = template,
+    reaction = "RHEA:36179")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1551,7 +1578,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-O)",
 ```
 
 ```{r peo_to_lpeo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO), template = template,
+results <-  .create_reaction(substrates = list(PEO = PEO), template = template,
     reaction = "peo_to_lpeo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1580,7 +1607,7 @@ template <- list(reaction_name = "1-alkyl-sn-glycero-3-phosphoethanolamine acylt
 
 ```{r lpeo_to_peo, message=FALSE, warning=FALSE, eval=FALSE}
 # biosynthesis of PEO ----------------------------------------------------------
-results <-  create_reaction(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
+results <-  .create_reaction(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
     template = template, reaction = "lpeo_to_peo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1606,7 +1633,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 ```
 
 ```{r pep_to_lpep, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP), template = template,
+results <-  .create_reaction(substrates = list(PEP = PEP), template = template,
     reaction = "pep_to_lpep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1634,7 +1661,7 @@ template <- list(reaction_name = "1-alkenyl-sn-glycero-3-phosphoethanolamine acy
 ```
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(LPEP = LPEP, CoA = CoA_GPGL), 
+results <-  .create_reaction(substrates = list(LPEP = LPEP, CoA = CoA_GPGL), 
     template = template, reaction = "lpep_to_pep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1660,7 +1687,7 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 ```
 
 ```{r pco_to_lpco, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PCO = PCO), template = template,
+results <-  .create_reaction(substrates = list(PCO = PCO), template = template,
     reaction = "pco_to_lpco")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1703,7 +1730,7 @@ template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
 ```
 
 ```{r sphinga_to_dhcer_template, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_SPH), template = template,
+results <-  .create_reaction(substrates = list(CoA = CoA_SPH), template = template,
     reaction = "sphinga_to_dhcer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1725,13 +1752,14 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin synthase",
     reaction_formula = "M_pchol + M_c17isodhcrm <=> M_12dag + M_c17isodhsphmyln",
+    ##reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r dhcer_to_dhsm, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHCER = DHCER), 
+results <-  .create_reaction(substrates = list(DHCER = DHCER), 
     template = template, reaction = "dhcer_to_dhsm")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1753,14 +1781,15 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
     reaction_formula = "M_h2o + M_c17isodhsphmyln <=> M_cholp + M_h + M_c17isodhcrm",
+    reaction_RHEA = "RHEA:19253",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000213 or WBGene00000212 or WBGene00000211",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r dhsm_to_dhcer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHSM = DHSM), template = template,
-    reaction = "dhsm_to_dhcer")
+results <-  .create_reaction(substrates = list(DHSM = DHSM), template = template,
+    reaction = "RHEA:19253")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced DHCER are in previous list
@@ -1785,7 +1814,7 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 ```
 
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHCER = DHCER), template = template,
+results <-  .create_reaction(substrates = list(DHCER = DHCER), template = template,
     reaction = "dhcer_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1807,13 +1836,14 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin synthase",
     reaction_formula = "M_pchol + M_c17isocrm <=> M_12dag + M_c17isosphmyln",
+    ##reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r cer_to_sm, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
+results <-  .create_reaction(substrates = list(CER = CER), template = template,
     reaction = "cer_to_sm")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1841,7 +1871,7 @@ template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
 ```
 
 ```{r sm_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(SM = SM), template = template,
+results <-  .create_reaction(substrates = list(SM = SM), template = template,
     reaction = "sm_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1861,14 +1891,15 @@ if (all(results[[1]][["CER"]] %in% CER)) {
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Ceramide kinase",
     reaction_formula = "M_atp + M_c17isocrm <=> M_h + M_adp + M_c17isocrmp",
+    reaction_RHEA = reaction,
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00020398",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r cer_to_c1p, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
-    reaction = "cer_to_c1p")
+results <-  .create_reaction(substrates = list(CER = CER), template = template,
+    reaction = "RHEA:17929")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1897,7 +1928,7 @@ template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
 ```
 
 ```{r c1p_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(C1P = C1P), template = template,
+results <-  .create_reaction(substrates = list(C1P = C1P), template = template,
     reaction = "c1p_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1917,14 +1948,15 @@ if (all(results[[1]][["CER"]] %in% CER)) {
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "UDP-glucose:N-acylsphingosine D-glucosyltransferase (cytosol)",
     reaction_formula = "M_udpg + M_c17isocrm <=> M_h + M_udp + M_c17isogluside",
+    reaction_RHEA = "RHEA:12088",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00011517 or WBGene00017625 or WBGene00019127",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r cer_to_glccer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
-    reaction = "cer_to_glccer")
+results <-  .create_reaction(substrates = list(CER = CER), template = template,
+    reaction = "RHEA:12088")
 results[[2]][1:10, "ReactionFormula"]
 
 ## add new lipids to lipid vector
@@ -1963,7 +1995,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pe_to_nape_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE, PC = PC), 
+results <-  .create_reaction(substrates = list(PE = PE, PC = PC), 
     template = template, reaction = "pe_to_nape_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1994,7 +2026,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_napeo_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO, PC = PC), 
+results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2025,7 +2057,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pep_to_napep_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP, PC = PC), 
+results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC), 
     template = template, reaction = "pep_to_napep_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2056,7 +2088,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pe_to_nape_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE, PC = PC), 
+results <-  .create_reaction(substrates = list(PE = PE, PC = PC), 
     template = template, reaction = "pe_to_nape_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2082,7 +2114,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_napeo_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO, PC = PC), 
+results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2109,7 +2141,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pep_to_napep_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP, PC = PC), template = template,
+results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC), template = template,
     reaction = "pep_to_napep_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2138,7 +2170,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_nae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  .create_reaction(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_nae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2169,7 +2201,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r napeo_to_nae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPEO = NAPEO), 
+results <-  .create_reaction(substrates = list(NAPEO = NAPEO), 
     template = template, reaction = "napeo_to_nae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2208,7 +2240,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_pnae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  .create_reaction(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_pnae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2245,7 +2277,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_lnape, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  .create_reaction(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_lnape")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2270,14 +2302,15 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_lnape + M_h2o <=> M_gpnae + M_fatacid",
+    reaction_RHEA = "RHEA:45420"
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "")
 ```
 
 ```{r lnape_to_gpnae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(LNAPE = LNAPE), template = template,
-    reaction = "lnape_to_gpnae")
+results <-  .create_reaction(substrates = list(LNAPE = LNAPE), template = template,
+    reaction = "RHEA:45420")
 results[[2]][1:10, "ReactionFormula"]
 
 ## check if produced FA are in previous list
@@ -2309,7 +2342,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nae_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAE = NAE), template = template,
+results <-  .create_reaction(substrates = list(NAE = NAE), template = template,
     reaction = "nae_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
