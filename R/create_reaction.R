@@ -187,6 +187,10 @@ create_reactions <- function(substrates, reactions) {
 #' The function \code{create_reaction_adjacency_matrix} accepts the output of 
 #' the \code{create_reactions} function.
 #' 
+#' The adjacency matrix can be used in subsequent analysis for network analysis,
+#' e.g. by converting the adjacency matrix to a graph via
+#' \code{igraph::graph_from_adjacency_matrix}.
+#' 
 #' @param reaction_l list as obtained from \code{create_reactions}
 #' 
 #' @export

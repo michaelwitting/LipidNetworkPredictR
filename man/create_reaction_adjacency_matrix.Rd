@@ -19,6 +19,10 @@ matrix connecting substrates and products that are linked by reactions.
 \details{
 The function \code{create_reaction_adjacency_matrix} accepts the output of 
 the \code{create_reactions} function.
+
+The adjacency matrix can be used in subsequent analysis for network analysis,
+e.g. by converting the adjacency matrix to a graph via
+\code{igraph::graph_from_adjacency_matrix}.
 }
 \examples{
 FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
