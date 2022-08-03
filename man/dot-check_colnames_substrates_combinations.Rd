@@ -4,20 +4,25 @@
 \alias{.check_colnames_substrates_combinations}
 \title{Check if correct colnames are in \code{substrates_combinations}}
 \usage{
-.check_colnames_substrates_combinations(df, reaction = "fa_to_coa")
+.check_colnames_substrates_combinations(substrates, reaction = "RHEA:15421")
 }
 \arguments{
-\item{df}{\code{data.frame}}
+\item{substrates}{\code{data.frame} or \code{list}}
 
 \item{reaction}{\code{character(1)}}
 }
+\value{
+character containing the valid colnames
+}
 \description{
-The helper function checks if the correct columns are in \code{df} 
+The helper function checks if the correct columns are in \code{substrates} 
 depending on the \code{reaction}.
 }
 \details{
 The function will throw an error if \code{reaction} is not of length 1 and
 is not an implemented method.
+
+The function will invisibly return the correct columns for \code{reaction}.
 
 \code{.check_colnames_substrates_combinations} is a helper function to 
 test the integrity of \code{df}.
@@ -33,7 +38,7 @@ df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
     substrates = substrates, 
     constraints = "", negate = FALSE)
 LipidNetworkPredictR:::.check_colnames_substrates_combinations(
-    df = df_substrates, reaction = "fa_to_coa")
+    substrates = df_substrates, reaction = "RHEA:15421")
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}
