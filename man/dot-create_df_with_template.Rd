@@ -4,7 +4,7 @@
 \alias{.create_df_with_template}
 \title{Create data frame and substitute substrates/products}
 \usage{
-.create_df_with_template(df_reaction, template, reaction = "fa_to_coa")
+.create_df_with_template(df_reaction, template, reaction = "RHEA:15421")
 }
 \arguments{
 \item{df_reaction}{\code{data.frame}}
@@ -31,7 +31,7 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 substrates <- list(FA = FA)
-reaction <- "fa_to_coa"
+reaction <- "RHEA:15421"
 
 ## create template
 template <- LipidNetworkPredictR:::.create_template(template = NA, 

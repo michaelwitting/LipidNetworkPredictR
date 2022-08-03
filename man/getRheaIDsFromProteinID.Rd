@@ -7,7 +7,7 @@
 getRheaIDsFromProteinID(protein_id)
 }
 \arguments{
-\item{protein_id}{character, UNIPROT ID, e.g. \code{"Q9H5J4"}}
+\item{protein_id}{\code{character(1)}, UNIPROT ID, e.g. \code{"Q9H5J4"}}
 }
 \value{
 vector
@@ -26,7 +26,7 @@ because the protein ID is incorrect.
 }
 \examples{
 protein_id <- "Q920L6"
-LipidNetworkPredictR:::getRheaIDsFromProteinID(protein_id)
+\dontrun{LipidNetworkPredictR:::getRheaIDsFromProteinID(protein_id)}
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}

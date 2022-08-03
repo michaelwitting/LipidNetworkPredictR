@@ -4,7 +4,7 @@
 \alias{.check_reaction}
 \title{Check if reaction is implemented}
 \usage{
-.check_reaction(reaction = "fa_to_coa")
+.check_reaction(reaction = "RHEA:15421")
 }
 \arguments{
 \item{reaction}{\code{character(1)}}
@@ -21,7 +21,7 @@ is not an implemented method.
 of \code{reaction}.
 }
 \examples{
-LipidNetworkPredictR:::.check_reaction(reaction = "fa_to_coa")
+LipidNetworkPredictR:::.check_reaction(reaction = "RHEA:15421")
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}

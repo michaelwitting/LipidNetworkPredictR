@@ -1,27 +1,26 @@
-## function create_reaction
-
-test_that("create_reaction works", {
+## function .create_reaction
+test_that(".create_reaction works", {
     
     ## acdhap_to_alkyldhap
     acdhap <- "DHAP(18:0)"
     fatoh <- "FATOH(16:0)"
-    reaction_l <- create_reaction(substrates = list(ACDHAP = acdhap, FATOH = fatoh), 
-        template = NULL, reaction = "acdhap_to_alkyldhap")
+    reaction_l <- .create_reaction(substrates = list(ACDHAP = acdhap, FATOH = fatoh), 
+        template = NULL, reaction = "RHEA:36171")
     expect_equal(reaction_l[[1]]$ALKYLDHAP, "DHAP(O-16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "DHAP(18:0) + FATOH(16:0) <=> H+ + FA(18:0) + DHAP(O-16:0)")
     
     ## alkyldhap_to_lpao
     alkyldhap <- "DHAP(O-18:0)"
-    reaction_l <- create_reaction(substrates = list(ALKYLDHAP = alkyldhap), 
-        template = NULL, reaction =  "alkyldhap_to_lpao")
+    reaction_l <- .create_reaction(substrates = list(ALKYLDHAP = alkyldhap), 
+        template = NULL, reaction =  "RHEA:36175")
     expect_equal(reaction_l[[1]]$LPAO, "PA(O-18:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H+ + NADPH + DHAP(O-18:0) <=> PA(O-18:0/0:0) + NADP+")
     
     ## c1p_to_cer
     c1p <- "C1P(d16:0(3OH,4OH)(15Me)/18:0)"
-    reaction_l <- create_reaction(substrates = list(C1P = c1p), 
+    reaction_l <- .create_reaction(substrates = list(C1P = c1p), 
         template = NULL, reaction =  "c1p_to_cer")
     expect_equal(reaction_l[[1]]$CER, "Cer(d16:0(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -29,8 +28,8 @@ test_that("create_reaction works", {
     
     ## cdpdg_to_pgp
     cdpdg <- "CDP-DG(12:0(11Me)/14:0)"
-    reaction_l <- create_reaction(substrates = list(CDPDG = cdpdg), 
-            template = NULL, reaction =  "cdpdg_to_pgp")
+    reaction_l <- .create_reaction(substrates = list(CDPDG = cdpdg), 
+            template = NULL, reaction =  "RHEA:12593")
     expect_equal(reaction_l[[1]]$PGP, "PGP(12:0(11Me)/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "Glycerol-3-P + CDP-DG(12:0(11Me)/14:0) <=> H+ + CMP + PGP(12:0(11Me)/14:0)")
@@ -38,31 +37,31 @@ test_that("create_reaction works", {
     
     ## cdpdg_to_pi
     cdgdg <- "CDP-DG(12:0(11Me)/14:0)"
-    reaction_l <- create_reaction(substrates = list(CDPDG = cdpdg), template = NULL, 
-        reaction =  "cdpdg_to_pi")
+    reaction_l <- .create_reaction(substrates = list(CDPDG = cdpdg), 
+        template = NULL, reaction =  "RHEA:11580")
     expect_equal(reaction_l[[1]]$PI, "PI(12:0(11Me)/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "Inositol + CDP-DG(12:0(11Me)/14:0) <=> H+ + CMP + PI(12:0(11Me)/14:0)") 
     
     ## cer_to_c1p
     cer <- "Cer(d16:0(3OH,4OH)(15Me)/18:0)"
-    reaction_l <- create_reaction(substrates = list(CER = cer), 
-        template = NULL, reaction =  "cer_to_c1p")
+    reaction_l <- .create_reaction(substrates = list(CER = cer), 
+        template = NULL, reaction =  "RHEA:17929")
     expect_equal(reaction_l[[1]]$C1P, "C1P(d16:0(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "ATP + Cer(d16:0(3OH,4OH)(15Me)/18:0) <=> H+ + ADP + C1P(d16:0(3OH,4OH)(15Me)/18:0)")
     
     ## cer_to_glccer
     cer <- "Cer(d16:0(3OH,4OH)(15Me)/18:0)"
-    reaction_l <- create_reaction(substrates = list(CER = cer), 
-        template = NULL, reaction =  "cer_to_glccer")
+    reaction_l <- .create_reaction(substrates = list(CER = cer), 
+        template = NULL, reaction =  "RHEA:12088")
     expect_equal(reaction_l[[1]]$GLCCER, "GlcCer(d16:0(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "UDP-Glucose + Cer(d16:0(3OH,4OH)(15Me)/18:0) <=> H+ + UDP + GlcCer(d16:0(3OH,4OH)(15Me)/18:0)")
     
     ## cer_to_sm
     cer <- "Cer(d16:0(3OH,4OH)(15Me)/18:0)"
-    reaction_l <- create_reaction(substrates = list(CER = cer), 
+    reaction_l <- .create_reaction(substrates = list(CER = cer), 
         template = NULL, reaction =  "cer_to_sm")
     expect_equal(reaction_l[[1]]$SM, "SM(d16:0(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
@@ -70,7 +69,7 @@ test_that("create_reaction works", {
     
     ## coa_to_acdhap
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(CoA = coa), 
         template = NULL, reaction =  "coa_to_acdhap")
     expect_equal(reaction_l[[1]]$DHAP, "DHAP(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -78,23 +77,23 @@ test_that("create_reaction works", {
     
     ## coa_to_fatoh
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(CoA = coa), 
-        template = NULL, reaction =  "coa_to_fatoh")
+    reaction_l <- .create_reaction(substrates = list(CoA = coa), 
+        template = NULL, reaction =  "RHEA:52716")
     expect_equal(reaction_l[[1]]$FATOH, "FATOH(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(18:0) + 2 NADPH + 2 H+ <=> FATOH(18:0) + 2 NADP+ + CoA")
     
     ## coa_to_lpa
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(CoA = coa), 
-        template = NULL, reaction =  "coa_to_lpa")
+    reaction_l <- .create_reaction(substrates = list(CoA = coa), 
+        template = NULL, reaction =  "RHEA:15325")
     expect_equal(reaction_l[[1]]$LPA, "PA(18:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "Glycerol-3-P + CoA(18:0) <=> CoA + PA(18:0/0:0)")
     
     ## dg_to_sn1mg
     dg <- "DG(18:0/16:0/0:0)" 
-    reaction_l <- create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg), 
         template = NULL, reaction =  "dg_to_sn1mg")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -102,7 +101,7 @@ test_that("create_reaction works", {
     
     ## dg_to_sn2mg
     dg <- "DG(18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg), 
         template = NULL, reaction =  "dg_to_sn2mg")
     expect_equal(reaction_l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -110,24 +109,24 @@ test_that("create_reaction works", {
     
     ## dg_to_pa
     dg <- "DG(18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DG = dg), 
-        template = NULL, reaction =  "dg_to_pa")
+    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+        template = NULL, reaction =  "RHEA:10272")
     expect_equal(reaction_l[[1]]$PA, "PA(18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "ATP + DG(18:0/16:0/0:0) <=> H+ + ADP + PA(18:0/16:0)")
     
     ## dg_to_pc
     dg <- "DG(18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DG = dg), 
-        template = NULL, reaction =  "dg_to_pc")
+    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+        template = NULL, reaction =  "RHEA:32939")
     expect_equal(reaction_l[[1]]$PC, "PC(18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CDP-Chol + DG(18:0/16:0/0:0) <=> H+ + CMP + PC(18:0/16:0)")
     
     ## dg_to_pe
     dg <- "DG(18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DG = dg), 
-        template = NULL, reaction =  "dg_to_pe")
+    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+        template = NULL, reaction =  "RHEA:32943")
     expect_equal(reaction_l[[1]]$PE, "PE(18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CDP-Ethn + DG(18:0/16:0/0:0) <=> H+ + CMP + PE(18:0/16:0)")
@@ -135,31 +134,31 @@ test_that("create_reaction works", {
     ## dg_to_tg
     dg <- "DG(18:0/16:0/0:0)"
     coa <- "CoA(14:0)"
-    reaction_l <- create_reaction(substrates = list(DG = dg, CoA = coa), 
-        template = NULL, reaction =  "dg_to_tg")
+    reaction_l <- .create_reaction(substrates = list(DG = dg, CoA = coa), 
+        template = NULL, reaction =  "RHEA:10868")
     expect_equal(reaction_l[[1]]$TG, "TG(18:0/16:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(14:0) + DG(18:0/16:0/0:0) <=> CoA + TG(18:0/16:0/14:0)")
     
     ## dgo_to_pco
     dgo <- "DG(O-18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DGO = dgo), 
-        template = NULL, reaction =  "dgo_to_pco")
+    reaction_l <- .create_reaction(substrates = list(DGO = dgo), 
+        template = NULL, reaction =  "RHEA:36179")
     expect_equal(reaction_l[[1]]$PCO, "PC(O-18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "CDP-Chol + DG(O-18:0/16:0/0:0) <=> H+ + CMP + PC(O-18:0/16:0)")
     
     ## dgo_to_peo
     dgo <- "DG(O-18:0/16:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(DGO = dgo), 
-        template = NULL, reaction =  "dgo_to_peo")
+    reaction_l <- .create_reaction(substrates = list(DGO = dgo), 
+        template = NULL, reaction =  "RHEA:36187")
     expect_equal(reaction_l[[1]]$PEO, "PE(O-18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CDP-Ethn + DG(O-18:0/16:0/0:0) <=> H+ + CMP + PE(O-18:0/16:0)")
     
     ## dhcer_to_cer
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
-    reaction_l <- create_reaction(substrates = list(DHCER = dhcer), 
+    reaction_l <- .create_reaction(substrates = list(DHCER = dhcer), 
         template = NULL, reaction =  "dhcer_to_cer")
     expect_equal(reaction_l[[1]]$CER, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
@@ -167,7 +166,7 @@ test_that("create_reaction works", {
     
     ## dhcer_to_dhsm
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
-    reaction_l <- create_reaction(substrates = list(DHCER = dhcer),
+    reaction_l <- .create_reaction(substrates = list(DHCER = dhcer),
         template = NULL, reaction =  "dhcer_to_dhsm")
     expect_equal(reaction_l[[1]]$DHSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -175,24 +174,24 @@ test_that("create_reaction works", {
     
     ## dhsm_to_dhcer
     dhsm <- "SM(d16:0(3OH,4OH)(15Me)/12:0)"
-    reaction_l <- create_reaction(substrates = list(DHSM = dhsm), 
-        template = NULL, reaction =  "dhsm_to_dhcer")
+    reaction_l <- .create_reaction(substrates = list(DHSM = dhsm), 
+        template = NULL, reaction =  "RHEA:19253")
     expect_equal(reaction_l[[1]]$DHCER, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + SM(d16:0(3OH,4OH)(15Me)/12:0) <=> P-Choline + H+ + Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     
     ## fa_to_coa
     fa <- "FA(18:0)"
-    reaction_l <- create_reaction(substrates = list(FA = fa), 
-        template = NULL, reaction =  "fa_to_coa")
+    reaction_l <- .create_reaction(substrates = list(FA = fa), 
+        template = NULL, reaction =  "RHEA:15421")
     expect_equal(reaction_l[[1]]$CoA, "CoA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "ATP + CoA + FA(18:0) <=> PPi + AMP + CoA(18:0)")
     
     ## lnape_to_gpnae
     lnape <- "NAPE(14:0/0:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(LNAPE = lnape), 
-        template = NULL, reaction =  "lnape_to_gpnae")
+    reaction_l <- .create_reaction(substrates = list(LNAPE = lnape), 
+        template = NULL, reaction =  "RHEA:45420")
     expect_equal(reaction_l[[1]]$GPNAE, "GPNAE(0:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, ######### check
@@ -201,33 +200,33 @@ test_that("create_reaction works", {
     ## lpa_to_pa
     lpa <- "PA(18:0/0:0)"
     coa <- "CoA(14:0)"
-    reaction_l <- create_reaction(substrates = list(LPA = lpa, CoA = coa), 
-        template = NULL, reaction =  "lpa_to_pa")
+    reaction_l <- .create_reaction(substrates = list(LPA = lpa, CoA = coa), 
+        template = NULL, reaction =  "RHEA:19709")
     expect_equal(reaction_l[[1]]$PA, "PA(18:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(14:0) + PA(18:0/0:0) <=> CoA + PA(18:0/14:0)")
     
     ## lpao_to_pao
-    lpao <- "PA(O-18:0/0:0)"
-    coa <- "CoA(14:0)"
-    reaction_l <- create_reaction(substrates = list(LPAO = lpao,  CoA = coa), 
-        template = NULL, reaction =  "lpao_to_pao")
-    expect_equal(reaction_l[[1]]$PAO, "PA(O-18:0/14:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PA(O-18:0/0:0) + CoA(14:0) <=> PA(O-18:0/14:0) + CoA")
+    ##lpao <- "PA(O-18:0/0:0)"
+    ##coa <- "CoA(14:0)"
+    ##reaction_l <- .create_reaction(substrates = list(LPAO = lpao,  CoA = coa), 
+    ##    template = NULL, reaction =  "RHEA:19709")
+    ##expect_equal(reaction_l[[1]]$PAO, "PA(O-18:0/14:0)")
+    ##expect_equal(reaction_l[[2]]$reaction_formula, 
+    ##    "PA(O-18:0/0:0) + CoA(14:0) <=> PA(O-18:0/14:0) + CoA")
     
     ## sn1lpc_to_fa
     sn1lpc <- "PC(14:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn1LPC = sn1lpc), 
-        template = NULL, reaction =  "sn1lpc_to_fa")
+    reaction_l <- .create_reaction(substrates = list(sn1LPC = sn1lpc), 
+        template = NULL, reaction =  "RHEA:15177")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(14:0/0:0) <=> Glycerophosphoethanolamine + H+ + FA(14:0)")
     
     ## sn2lpc_to_fa
     sn2lpc <- "PC(0:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(sn2LPC = sn2lpc), 
-        template = NULL, reaction =  "sn2lpc_to_fa")
+    reaction_l <- .create_reaction(substrates = list(sn2LPC = sn2lpc), 
+        template = NULL, reaction =  "RHEA:44696")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(0:0/14:0) <=> Glycerophosphoethanolamine + H+ + FA(14:0)")
@@ -235,23 +234,23 @@ test_that("create_reaction works", {
     ## sn1lpc_to_pc
     sn1lpc <- "PC(14:0/0:0)"
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(sn1LPC = sn1lpc, CoA = coa), 
-        template = NULL, reaction =  "sn1lpc_to_pc")
+    reaction_l <- .create_reaction(substrates = list(sn1LPC = sn1lpc, CoA = coa), 
+        template = NULL, reaction =  "RHEA:12937")
     expect_equal(reaction_l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "PC(14:0/0:0) + CoA(18:0) <=> PC(14:0/18:0) + CoA")
     
     ## sn1lpe_to_fa
     pe <- "PE(14:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn1LPE = pe), 
-        template = NULL, reaction =  "sn1lpe_to_fa")
+    reaction_l <- .create_reaction(substrates = list(sn1LPE = pe), 
+        template = NULL, reaction =  "RHEA:32967")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PE(14:0/0:0) <=> H+ + FA(14:0) + Glycerophosphoethanolamine")
     
     ## sn2lpe_to_fa
     sn2lpe <- "PE(0:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(sn2LPE = sn2lpe), 
+    reaction_l <- .create_reaction(substrates = list(sn2LPE = sn2lpe), 
         template = NULL, reaction =  "sn2lpe_to_fa")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -260,8 +259,8 @@ test_that("create_reaction works", {
     ## sn1lpe_to_pe
     sn1lpe <- "PE(14:0/0:0)"
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(sn1LPE = sn1lpe, CoA = coa), 
-        template = NULL, reaction =  "sn1lpe_to_pe")
+    reaction_l <- .create_reaction(substrates = list(sn1LPE = sn1lpe, CoA = coa), 
+        template = NULL, reaction =  "RHEA:32995")
     expect_equal(reaction_l[[1]]$PE, "PE(14:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(18:0) + PE(14:0/0:0) <=> CoA + PE(14:0/18:0)")
@@ -269,7 +268,7 @@ test_that("create_reaction works", {
     ## lpeo_to_peo
     lpeo <- "PE(O-16:0/0:0)"
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(LPEO = lpeo, CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(LPEO = lpeo, CoA = coa), 
         template = NULL, reaction =  "lpeo_to_peo")
     expect_equal(reaction_l[[1]]$PEO, "PE(O-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -278,7 +277,7 @@ test_that("create_reaction works", {
     ## lpep_to_pep
     lpep <- "PE(P-16:0/0:0)"
     coa <- "CoA(18:0)"
-    reaction_l <- create_reaction(substrates = list(LPEP = lpep, CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(LPEP = lpep, CoA = coa), 
         template = NULL, reaction =  "lpep_to_pep")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -287,7 +286,7 @@ test_that("create_reaction works", {
     ## sn1mg_to_dg
     sn1mg <- "MG(14:0/0:0/0:0)"
     coa <- "CoA(16:0)"
-    reaction_l <- create_reaction(substrates = list(sn1MG = sn1mg, CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(sn1MG = sn1mg, CoA = coa), 
         template = NULL, reaction =  "sn1mg_to_dg")
     expect_equal(reaction_l[[1]]$DG, "DG(14:0/16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -296,7 +295,7 @@ test_that("create_reaction works", {
     ## sn2mg_to_dg
     sn2mg <- "MG(0:0/14:0/0:0)"
     coa <- "CoA(16:0)"
-    reaction_l <- create_reaction(substrates = list(sn2MG = sn2mg, CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(sn2MG = sn2mg, CoA = coa), 
         template = NULL, reaction =  "sn2mg_to_dg")
     expect_equal(reaction_l[[1]]$DG, "DG(16:0/14:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -304,7 +303,7 @@ test_that("create_reaction works", {
     
     ## sn1mg_to_fa
     sn1mg <- "MG(14:0/0:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn1MG = sn1mg), 
+    reaction_l <- .create_reaction(substrates = list(sn1MG = sn1mg), 
         template = NULL, reaction =  "sn1mg_to_fa")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -312,7 +311,7 @@ test_that("create_reaction works", {
     
     ## sn2mg_to_fa
     sn2mg <- "MG(0:0/14:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn2MG = sn2mg), 
+    reaction_l <- .create_reaction(substrates = list(sn2MG = sn2mg), 
         template = NULL, reaction =  "sn2mg_to_fa")
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -320,7 +319,7 @@ test_that("create_reaction works", {
     
     ## sn1mg_to_lpa
     sn1mg <- "MG(14:0/0:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn1MG = sn1mg), 
+    reaction_l <- .create_reaction(substrates = list(sn1MG = sn1mg), 
         template = NULL, reaction =  "sn1mg_to_lpa")
     expect_equal(reaction_l[[1]]$LPA, "PA(14:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -328,7 +327,7 @@ test_that("create_reaction works", {
     
     ## sn2mg_to_sn1mg
     sn2mg <- "MG(0:0/14:0/0:0)"
-    reaction_l <- create_reaction(substrates = list(sn2MG = sn2mg), 
+    reaction_l <- .create_reaction(substrates = list(sn2MG = sn2mg), 
         template = NULL, reaction =  "sn2mg_to_sn1mg")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -336,7 +335,7 @@ test_that("create_reaction works", {
     
     ## nae_to_fa
     nae <- "NAE(18:0)"
-    reaction_l <- create_reaction(substrates = list(NAE = nae), 
+    reaction_l <- .create_reaction(substrates = list(NAE = nae), 
         template = NULL, reaction =  "nae_to_fa")
     expect_equal(reaction_l[[1]]$FA, "FA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -344,7 +343,7 @@ test_that("create_reaction works", {
     
     ## nape_to_lnape
     nape <- "NAPE(14:0/16:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(NAPE = nape), 
+    reaction_l <- .create_reaction(substrates = list(NAPE = nape), 
         template = NULL, reaction =  "nape_to_lnape")
     expect_equal(reaction_l[[1]]$LNAPE, "NAPE(14:0/0:0/18:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(16:0)")
@@ -353,7 +352,7 @@ test_that("create_reaction works", {
     
     ## nape_to_nae
     nape <- "NAPE(14:0/16:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(NAPE = nape), 
+    reaction_l <- .create_reaction(substrates = list(NAPE = nape), 
         template = NULL, reaction =  "nape_to_nae")
     expect_equal(reaction_l[[1]]$NAE, "NAE(18:0)")
     expect_equal(reaction_l[[1]]$PA, "PA(14:0/16:0)")
@@ -362,7 +361,7 @@ test_that("create_reaction works", {
     
     ## nape_to_pnae
     nape <- "NAPE(14:0/16:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(NAPE = nape), 
+    reaction_l <- .create_reaction(substrates = list(NAPE = nape), 
         template = NULL, reaction =  "nape_to_pnae")
     expect_equal(reaction_l[[1]]$PNAE, "PNAE(18:0)")
     expect_equal(reaction_l[[1]]$DG, "DG(14:0/16:0/0:0)")
@@ -371,7 +370,7 @@ test_that("create_reaction works", {
     
     ## napeo_to_nae
     napeo <- "NAPE(O-18:0/16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(NAPEO = napeo), 
+    reaction_l <- .create_reaction(substrates = list(NAPEO = napeo), 
         template = NULL, reaction =  "napeo_to_nae")
     expect_equal(reaction_l[[1]]$NAE, "NAE(14:0)")
     expect_equal(reaction_l[[1]]$PAO, "PA(O-18:0/16:0)")
@@ -380,7 +379,7 @@ test_that("create_reaction works", {
     
     ## pa_to_cdpdg
     pa <- "PA(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PA = pa), 
+    reaction_l <- .create_reaction(substrates = list(PA = pa), 
         template = NULL, reaction = "pa_to_cdpdg")
     expect_equal(reaction_l[[1]]$CDPDG, "CDP-DG(14:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -388,7 +387,7 @@ test_that("create_reaction works", {
     
     ## pa_to_dg
     pa <- "PA(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PA = pa), 
+    reaction_l <- .create_reaction(substrates = list(PA = pa), 
         template = NULL, reaction = "pa_to_dg")
     expect_equal(reaction_l[[1]]$DG, "DG(14:0/16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -396,7 +395,7 @@ test_that("create_reaction works", {
     
     ## pao_to_dgo
     pao <- "PA(O-16:0/14:0)" #################### check
-    reaction_l <- create_reaction(substrates = list(PAO = pao), 
+    reaction_l <- .create_reaction(substrates = list(PAO = pao), 
         template = NULL, reaction = "pao_to_dgo")
     expect_equal(reaction_l[[1]]$DGO, "DG(O-16:0/14:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -404,47 +403,47 @@ test_that("create_reaction works", {
     
     ## pc_to_dg
     pc <- "PC(20:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(PC = pc), 
-        template = NULL, reaction = "pc_to_dg")
+    reaction_l <- .create_reaction(substrates = list(PC = pc), 
+        template = NULL, reaction = "RHEA:10604")
     expect_equal(reaction_l[[1]]$DG, "DG(20:0/18:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(20:0/18:0) <=> P-Choline + DG(20:0/18:0/0:0)")
     
     ## pc_to_sn1lpc
     pc <- "PC(16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PC = pc), 
-        template = NULL, reaction = "pc_to_sn1lpc")
+    reaction_l <- .create_reaction(substrates = list(PC = pc), 
+        template = NULL, reaction = "RHEA:15801")
     expect_equal(reaction_l[[1]]$sn1LPC, "PC(16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(16:0/14:0) <=> PC(16:0/0:0) + FA(14:0)") 
     
     ## pc_to_sn2lpc
     pc <- "PC(16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PC = pc), 
-        template = NULL, reaction = "pc_to_sn2lpc")
+    reaction_l <- .create_reaction(substrates = list(PC = pc), 
+        template = NULL, reaction = "RHEA:18689")
     expect_equal(reaction_l[[1]]$sn2LPC, "PC(0:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(16:0/14:0) <=> PC(0:0/14:0) + FA(16:0)")
     
     ## pc_to_pa
     pc <- "PC(16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PC = pc), 
-        template = NULL, reaction = "pc_to_pa")
+    reaction_l <- .create_reaction(substrates = list(PC = pc), 
+        template = NULL, reaction = "RHEA:14445")
     expect_equal(reaction_l[[1]]$PA, "PA(16:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(16:0/14:0) <=> Choline + PA(16:0/14:0)")
     
     ## pc_to_ps
     pc <- "PC(16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PC = pc), 
-        template = NULL, reaction = "pc_to_ps")
+    reaction_l <- .create_reaction(substrates = list(PC = pc), 
+        template = NULL, reaction = "RHEA:45088")
     expect_equal(reaction_l[[1]]$PS, "PS(16:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "L-Serine + PC(16:0/14:0) <=> Choline + PS(16:0/14:0)")  
     
     ## pco_to_lpco
     pco <- "PC(O-16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PCO = pco), 
+    reaction_l <- .create_reaction(substrates = list(PCO = pco), 
         template = NULL, reaction = "pco_to_lpco")
     expect_equal(reaction_l[[1]]$LPCO, "PC(O-16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -452,7 +451,7 @@ test_that("create_reaction works", {
     
     ## pe_to_dg
     pe <- "PE(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe), 
         template = NULL, reaction = "pe_to_dg")
     expect_equal(reaction_l[[1]]$DG, "DG(14:0/16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -460,7 +459,7 @@ test_that("create_reaction works", {
     
     ## pe_to_sn1lpe
     pe <- "PE(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe), 
         template = NULL, reaction = "pe_to_sn1lpe")
     expect_equal(reaction_l[[1]]$sn1LPE, "PE(14:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -468,8 +467,8 @@ test_that("create_reaction works", {
     
     ## pe_to_sn2lpe
     pe <- "PE(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe), 
-        template = NULL, reaction = "pe_to_sn2lpe")
+    reaction_l <- .create_reaction(substrates = list(PE = pe), 
+        template = NULL, reaction = "RHEA:44408")
     expect_equal(reaction_l[[1]]$sn2LPE, "PE(0:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PE(14:0/16:0) <=> H+ + FA(16:0) + PE(0:0/14:0)")
@@ -477,7 +476,7 @@ test_that("create_reaction works", {
     ## pe_to_nape_sn1
     pe <- "PE(14:0/16:0)"
     pc <- "PC(18:0/20:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe, PC = pc), 
         template = NULL, reaction = "pe_to_nape_sn1") ####################
     expect_equal(reaction_l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(0:0/20:0)")
@@ -487,7 +486,7 @@ test_that("create_reaction works", {
     ## pe_to_nape_sn2
     pe <- "PE(14:0/16:0)"
     pc <- "PC(18:0/20:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe, PC = pc), 
         template = NULL, reaction = "pe_to_nape_sn2")
     expect_equal(reaction_l[[1]]$NAPE, "NAPE(14:0/16:0/20:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(18:0/0:0)")
@@ -496,7 +495,7 @@ test_that("create_reaction works", {
     
     ## pe_to_pa
     pe <- "PE(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe), 
         template = NULL, reaction = "pe_to_pa")
     expect_equal(reaction_l[[1]]$PA, "PA(14:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
@@ -504,15 +503,15 @@ test_that("create_reaction works", {
     
     ## pe_to_ps
     pe <- "PE(14:0/16:0)"
-    reaction_l <- create_reaction(substrates = list(PE = pe), 
-        template = NULL, reaction =  "pe_to_ps")
+    reaction_l <- .create_reaction(substrates = list(PE = pe), 
+        template = NULL, reaction =  "RHEA:27606")
     expect_equal(reaction_l[[1]]$PS, "PS(14:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "L-Serine + PE(14:0/16:0) <=> Ethanolamine + PS(14:0/16:0)")
     
     ## peo_to_lpeo
     peo <- "PE(O-16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PEO = peo), 
+    reaction_l <- .create_reaction(substrates = list(PEO = peo), 
         template = NULL, reaction =  "peo_to_lpeo")
     expect_equal(reaction_l[[1]]$LPEO, "PE(O-16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -521,7 +520,7 @@ test_that("create_reaction works", {
     ## peo_to_napeo_sn1
     peo <- "PE(O-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(PEO = peo, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PEO = peo, PC = pc), 
         template = NULL, reaction =  "peo_to_napeo_sn1") ################
     expect_equal(reaction_l[[1]]$NAPEO, "NAPE(O-16:0/14:0/20:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(0:0/18:0)")
@@ -531,7 +530,7 @@ test_that("create_reaction works", {
     ## peo_to_napeo_sn2
     peo <- "PE(O-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(PEO = peo, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PEO = peo, PC = pc), 
         template = NULL, reaction =  "peo_to_napeo_sn2")
     expect_equal(reaction_l[[1]]$NAPEO, "NAPE(O-16:0/14:0/18:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(20:0/0:0)")
@@ -540,7 +539,7 @@ test_that("create_reaction works", {
     
     ## peo_to_pep
     peo <- "PE(O-16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PEO = peo), 
+    reaction_l <- .create_reaction(substrates = list(PEO = peo), 
         template = NULL, reaction =  "peo_to_pep")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -548,7 +547,7 @@ test_that("create_reaction works", {
     
     ## pep_to_lpep
     pep <- "PE(P-16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PEP = pep), 
+    reaction_l <- .create_reaction(substrates = list(PEP = pep), 
         template = NULL, reaction =  "pep_to_lpep")
     expect_equal(reaction_l[[1]]$LPEP, "PE(P-16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -557,7 +556,7 @@ test_that("create_reaction works", {
     ## pep_to_napep_sn1
     pep <- "PE(P-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(PEP = pep, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PEP = pep, PC = pc), 
         template = NULL, reaction =  "pep_to_napep_sn1") ####
     expect_equal(reaction_l[[1]]$NAPEP, "NAPE(P-16:0/14:0/20:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(0:0/18:0)")
@@ -567,7 +566,7 @@ test_that("create_reaction works", {
     ## pep_to_napep_sn2
     pep <- "PE(P-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
-    reaction_l <- create_reaction(substrates = list(PEP = pep, PC = pc), 
+    reaction_l <- .create_reaction(substrates = list(PEP = pep, PC = pc), 
         template = NULL, reaction =  "pep_to_napep_sn2")
     expect_equal(reaction_l[[1]]$NAPEP, "NAPE(P-16:0/14:0/18:0)")
     expect_equal(reaction_l[[1]]$LPC, "PC(20:0/0:0)")
@@ -577,7 +576,7 @@ test_that("create_reaction works", {
     ## pg_to_cl
     pg <- "PG(18:4(6Z,9Z,12Z,15Z)/14:0)"
     cdpdg <- "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)"
-    reaction_l <- create_reaction(substrates = list(PG = pg, CDPDG = cdpdg), 
+    reaction_l <- .create_reaction(substrates = list(PG = pg, CDPDG = cdpdg), 
         template = NULL, reaction =  "pg_to_cl")
     ## check
     expect_equal(reaction_l[[1]]$CL, 
@@ -587,7 +586,7 @@ test_that("create_reaction works", {
     
     ## pgp_to_pg
     pgp <- "PGP(16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PGP = pgp), 
+    reaction_l <- .create_reaction(substrates = list(PGP = pgp), 
         template = NULL, reaction = "pgp_to_pg")
     expect_equal(reaction_l[[1]]$PG, "PG(16:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -595,7 +594,7 @@ test_that("create_reaction works", {
     
     ## ps_to_pe
     ps <- "PS(14:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(PS = ps), 
+    reaction_l <- .create_reaction(substrates = list(PS = ps), 
         template = NULL, reaction = "ps_to_pe")
     expect_equal(reaction_l[[1]]$PE, "PE(14:0/14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -603,7 +602,7 @@ test_that("create_reaction works", {
     
     ## sm_to_cer
     sm <- "SM(d16:0(3OH,4OH)(15Me)/12:0)"
-    reaction_l <- create_reaction(substrates = list(SM = sm), 
+    reaction_l <- .create_reaction(substrates = list(SM = sm), 
         template = NULL, reaction = "sm_to_cer")
     expect_equal(reaction_l[[1]]$CER, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -611,7 +610,7 @@ test_that("create_reaction works", {
     
     ## sphinga_to_dhcer
     coa <- "CoA(12:0)"
-    reaction_l <- create_reaction(substrates = list(CoA = coa), 
+    reaction_l <- .create_reaction(substrates = list(CoA = coa), 
         template = NULL, reaction = "sphinga_to_dhcer")
     expect_equal(reaction_l[[1]]$DHCER, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
@@ -619,7 +618,7 @@ test_that("create_reaction works", {
     
     ## tg_to_dg
     tg <- "TG(18:0/16:0/14:0)"
-    reaction_l <- create_reaction(substrates = list(TG = tg), 
+    reaction_l <- .create_reaction(substrates = list(TG = tg), 
         template = NULL, reaction = "tg_to_dg")
     expect_equal(reaction_l[[1]]$sn1Loss_dg, "DG(14:0/16:0/0:0)")
     expect_equal(reaction_l[[1]]$sn1Loss_fa, "FA(18:0)")
@@ -629,4 +628,179 @@ test_that("create_reaction works", {
         "H2O + TG(18:0/16:0/14:0) <=> H+ + FA(18:0) + DG(14:0/16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula[2], 
         "H2O + TG(18:0/16:0/14:0) <=> H+ + FA(14:0) + DG(18:0/16:0/0:0)")
+})
+
+
+## function create_reactions
+test_that("create_reactions works.", {
+    FA <- c("FA(16:0)", "FA(12:0)", "FA(14:0)")
+    
+    ## create data.frame with reactions and reaction order
+    reactions <- rbind(
+        c(1, "RHEA:15421", 
+            "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa", FALSE),
+        c(2, "RHEA:15325", 
+            "M_glyc3p + M_fataccoa <=> M_coa + M_alpa_pl", FALSE),
+        c(3, "RHEA:19709", 
+            "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl", FALSE),
+        c(4, "pa_to_dg", 
+            "M_h2o + M_pa_pl <=> M_pi + M_12dag", FALSE))
+    
+    reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
+        reactions = reactions[, 3], directed = reactions[, 4])
+    reactions$order <- as.numeric(reactions$order)
+    reactions$directed <- as.logical(reactions$directed)
+    
+    ## run the function
+    reactions_l <- create_reactions(substrates = list(FA = FA), 
+        reactions = reactions)
+    
+    expect_equal(length(reactions_l), 4)
+    
+    ## first entry
+    expect_equal(names(reactions_l[[1]][[1]]), "CoA")
+    expect_equal(reactions_l[[1]][[1]]$CoA, 
+        c("CoA(16:0)", "CoA(12:0)", "CoA(14:0)"))
+    expect_equal(colnames(reactions_l[[1]][[2]]), 
+        c("reaction_name", "reaction_formula", "reaction_isReversible",
+            "reaction_geneAssociation", "reaction_pathway", 
+            "reaction_substrate", "reaction_product"))
+    expect_equal(nrow(reactions_l[[1]][[2]]), 3)
+    expect_equal(reactions_l[[1]][[2]]$reaction_formula[1:3],
+        c("ATP + CoA + FA(16:0) <=> PPi + AMP + CoA(16:0)",
+            "ATP + CoA + FA(12:0) <=> PPi + AMP + CoA(12:0)",
+            "ATP + CoA + FA(14:0) <=> PPi + AMP + CoA(14:0)"))
+    expect_equal(reactions_l[[1]][[2]]$reaction_isReversible[1:3], c("", "", ""))
+    expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation[1:3], 
+        c("", "", ""))
+    expect_equal(reactions_l[[1]][[2]]$reaction_pathway[1:3], c("", "", ""))
+    expect_equal(reactions_l[[1]][[2]]$reaction_substrate[1:3],
+        c("ATP+CoA+FA(16:0)", "ATP+CoA+FA(12:0)", "ATP+CoA+FA(14:0)"))
+    expect_equal(reactions_l[[1]][[2]]$reaction_product[1:3],
+        c("PPi+AMP+CoA(16:0)", "PPi+AMP+CoA(12:0)", "PPi+AMP+CoA(14:0)"))
+    
+    ## second entry
+    expect_equal(names(reactions_l[[2]][[1]]), "LPA")
+    expect_equal(reactions_l[[2]][[1]]$LPA, 
+        c("PA(16:0/0:0)", "PA(12:0/0:0)", "PA(14:0/0:0)"))
+    expect_equal(colnames(reactions_l[[2]][[2]]), 
+        c("reaction_name", "reaction_formula", "reaction_isReversible",
+            "reaction_geneAssociation", "reaction_pathway", 
+            "reaction_substrate", "reaction_product"))
+    expect_equal(nrow(reactions_l[[2]][[2]]), 3)
+    expect_equal(reactions_l[[2]][[2]]$reaction_formula[1:3],
+        c("Glycerol-3-P + CoA(16:0) <=> CoA + PA(16:0/0:0)",
+            "Glycerol-3-P + CoA(12:0) <=> CoA + PA(12:0/0:0)",
+            "Glycerol-3-P + CoA(14:0) <=> CoA + PA(14:0/0:0)"))
+    expect_equal(reactions_l[[2]][[2]]$reaction_isReversible[1:3], 
+        c("", "", ""))
+    expect_equal(reactions_l[[2]][[2]]$reaction_geneAssociation[1:3], 
+        c("", "", ""))
+    expect_equal(reactions_l[[2]][[2]]$reaction_pathway[1:3], c("", "", ""))
+    expect_equal(reactions_l[[2]][[2]]$reaction_substrate[1:3],
+        c("Glycerol-3-P+CoA(16:0)", "Glycerol-3-P+CoA(12:0)",
+            "Glycerol-3-P+CoA(14:0)"))
+    expect_equal(reactions_l[[2]][[2]]$reaction_product[1:3],
+        c("CoA+PA(16:0/0:0)", "CoA+PA(12:0/0:0)", "CoA+PA(14:0/0:0)"))
+    
+    ## third entry
+    expect_equal(names(reactions_l[[3]][[1]]), "PA")
+    expect_equal(reactions_l[[3]][[1]]$PA, 
+        c("PA(16:0/16:0)", "PA(12:0/16:0)", "PA(14:0/16:0)", "PA(16:0/12:0)",
+            "PA(12:0/12:0)", "PA(14:0/12:0)", "PA(16:0/14:0)", "PA(12:0/14:0)",
+            "PA(14:0/14:0)"))
+    expect_equal(colnames(reactions_l[[3]][[2]]), 
+        c("reaction_name", "reaction_formula", "reaction_isReversible",
+            "reaction_geneAssociation", "reaction_pathway", 
+            "reaction_substrate", "reaction_product"))
+    expect_equal(nrow(reactions_l[[3]][[2]]), 9)
+    expect_equal(reactions_l[[3]][[2]]$reaction_formula[1:3],
+        c("CoA(16:0) + PA(16:0/0:0) <=> CoA + PA(16:0/16:0)",
+            "CoA(16:0) + PA(12:0/0:0) <=> CoA + PA(12:0/16:0)",
+            "CoA(16:0) + PA(14:0/0:0) <=> CoA + PA(14:0/16:0)"))
+    expect_equal(reactions_l[[3]][[2]]$reaction_isReversible[1:3], c("", "", ""))
+    expect_equal(reactions_l[[3]][[2]]$reaction_geneAssociation[1:3], 
+                 c("", "", ""))
+    expect_equal(reactions_l[[3]][[2]]$reaction_pathway[1:3], c("", "", ""))
+    expect_equal(reactions_l[[3]][[2]]$reaction_substrate[1:3],
+        c("CoA(16:0)+PA(16:0/0:0)", "CoA(16:0)+PA(12:0/0:0)",
+            "CoA(16:0)+PA(14:0/0:0)"))
+    expect_equal(reactions_l[[3]][[2]]$reaction_product[1:3],
+        c("CoA+PA(16:0/16:0)", "CoA+PA(12:0/16:0)", "CoA+PA(14:0/16:0)"))
+    
+    ## fourth entry
+    expect_equal(names(reactions_l[[4]][[1]]), "DG")
+    expect_equal(reactions_l[[4]][[1]]$DG, 
+        c("DG(16:0/16:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/16:0/0:0)",
+            "DG(16:0/12:0/0:0)", "DG(12:0/12:0/0:0)", "DG(14:0/12:0/0:0)",
+            "DG(16:0/14:0/0:0)", "DG(12:0/14:0/0:0)", "DG(14:0/14:0/0:0)"))
+    expect_equal(colnames(reactions_l[[4]][[2]]), 
+        c("reaction_name", "reaction_formula", "reaction_isReversible",
+            "reaction_geneAssociation", "reaction_pathway", 
+            "reaction_substrate", "reaction_product"))
+    expect_equal(nrow(reactions_l[[4]][[2]]), 9)
+    expect_equal(reactions_l[[4]][[2]]$reaction_formula[1:3],
+        c("H2O + PA(16:0/16:0) <=> Pi + DG(16:0/16:0/0:0)", 
+            "H2O + PA(12:0/16:0) <=> Pi + DG(12:0/16:0/0:0)",
+            "H2O + PA(14:0/16:0) <=> Pi + DG(14:0/16:0/0:0)"))
+    expect_equal(reactions_l[[4]][[2]]$reaction_isReversible[1:3], c("", "", ""))
+    expect_equal(reactions_l[[4]][[2]]$reaction_geneAssociation[1:3], 
+                 c("", "", ""))
+    expect_equal(reactions_l[[4]][[2]]$reaction_pathway[1:3], c("", "", ""))
+    expect_equal(reactions_l[[4]][[2]]$reaction_substrate[1:3],
+        c("H2O+PA(16:0/16:0)", "H2O+PA(12:0/16:0)", "H2O+PA(14:0/16:0)"))
+    expect_equal(reactions_l[[4]][[2]]$reaction_product[1:3],
+        c("Pi+DG(16:0/16:0/0:0)", "Pi+DG(12:0/16:0/0:0)",
+            "Pi+DG(14:0/16:0/0:0)"))
+})
+
+## function create_reactions
+test_that("create_reaction_adjacency_matrix works.", {
+    FA <- c("FA(16:0)", "FA(12:0)", "FA(14:0)")
+    
+    ## create data.frame with reactions and reaction order
+    reactions <- rbind(
+        c(1, "RHEA:15421", 
+          "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa", FALSE),
+        c(2, "RHEA:15325", 
+          "M_glyc3p + M_fataccoa <=> M_coa + M_alpa_pl", FALSE),
+        c(3, "RHEA:19709", 
+          "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl", FALSE),
+        c(4, "pa_to_dg", 
+          "M_h2o + M_pa_pl <=> M_pi + M_12dag", FALSE))
+    
+    reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
+                            reactions = reactions[, 3], directed = reactions[, 4])
+    reactions$order <- as.numeric(reactions$order)
+    reactions$directed <- as.logical(reactions$directed)
+    reactions_l <- create_reactions(substrates = list(FA = FA), 
+                                    reactions = reactions)
+    
+    ## run the function
+    adj <- create_reaction_adjacency_matrix(reaction_l = reactions_l)
+    expect_equal(dim(adj), c(34, 34))
+    expect_equal(rownames(adj), colnames(adj))
+    expect_equal(rownames(adj), 
+        c("AMP", "ATP", "CoA", "CoA(12:0)", "CoA(14:0)", "CoA(16:0)", 
+            "DG(12:0/12:0/0:0)", "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)",
+            "DG(14:0/12:0/0:0)", "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)",
+            "DG(16:0/12:0/0:0)", "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)",
+            "FA(12:0)", "FA(14:0)", "FA(16:0)", "Glycerol-3-P", "H2O", 
+            "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)", "PA(12:0/16:0)",
+            "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", "PA(14:0/16:0)",
+            "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)", "PA(16:0/16:0)",
+            "Pi", "PPi"))
+    expect_equal(sum(adj), 78)
+    expect_equal(as.vector(adj[1:5, 1:5]), 
+        c(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 
+            1, 1, 0, 0))
+    expect_equal(adj["PA(14:0/0:0)", "PA(14:0/16:0)"], 1)
+    expect_equal(adj["PA(14:0/0:0)", "Pi"], 0)
+    expect_equal(adj["PA(14:0/0:0)", "PPi"], 0)
+    expect_equal(adj["PA(14:0/0:0)", "PA(14:0/16:0)"], 1)
+    expect_equal(as.vector(adj["ATP", c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)")]), 
+        c(1, 1, 1))
+    expect_equal(as.vector(adj[c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)"), "ATP"]), 
+        c(0, 0, 0))
+    
 })

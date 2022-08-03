@@ -4,7 +4,7 @@
 \alias{.add_products}
 \title{Produce products by replacing strings of substrates}
 \usage{
-.add_products(substrates, reaction = "fa_to_coa")
+.add_products(substrates, reaction = "RHEA:15421")
 }
 \arguments{
 \item{substrates}{\code{data.frame}}
@@ -36,7 +36,7 @@ substrates <- list(FA = FA)
 
 ## create template
 template <- LipidNetworkPredictR:::.create_template(template = NA, 
-    reaction = "fa_to_coa")
+    reaction = "RHEA:15421")
 
 ## create data.frame of substrates
 df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
@@ -45,7 +45,7 @@ df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
     
 ## add products to data.frame
 LipidNetworkPredictR:::.add_products(substrates = df_substrates, 
-    reaction = "fa_to_coa")
+    reaction = "RHEA:15421")
  
 }
 \author{

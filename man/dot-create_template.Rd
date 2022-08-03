@@ -4,7 +4,7 @@
 \alias{.create_template}
 \title{Create template with mininum information or return a given template}
 \usage{
-.create_template(template = NA, reaction = "fa_to_coa")
+.create_template(template = NA, reaction = "RHEA:15421")
 }
 \arguments{
 \item{template}{NA or \code{list}}
@@ -36,7 +36,7 @@ for the following information:
 }
 }
 \examples{
-LipidNetworkPredictR:::.create_template(template = NA, reaction = "fa_to_coa")
+LipidNetworkPredictR:::.create_template(template = NA, reaction = "RHEA:15421")
 }
 \author{
 Michael Witting, \email{michael.witting@helmholtz-muenchen.de}

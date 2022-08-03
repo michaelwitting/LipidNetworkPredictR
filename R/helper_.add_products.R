@@ -32,7 +32,7 @@
 #' 
 #' ## create template
 #' template <- LipidNetworkPredictR:::.create_template(template = NA, 
-#'     reaction = "fa_to_coa")
+#'     reaction = "RHEA:15421")
 #' 
 #' ## create data.frame of substrates
 #' df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
@@ -41,25 +41,25 @@
 #'     
 #' ## add products to data.frame
 #' LipidNetworkPredictR:::.add_products(substrates = df_substrates, 
-#'     reaction = "fa_to_coa")
+#'     reaction = "RHEA:15421")
 #'  
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
 #' @importFrom lipidomicsUtils isolate_radyls
-.add_products <- function(substrates, reaction = "fa_to_coa") {
+.add_products <- function(substrates, reaction = "RHEA:15421") {
 
     ## make the substrates argument a little bit smaller
     .s <- substrates
     ## start of if statements 
     ## depending on the reaction type, replace the expressions of the substrates
     ## and products in the reaction
-    if (reaction == "acdhap_to_alkyldhap") {
+    if (reaction == "RHEA:36171") { ## acdhap_to_alkyldhap
         .s$FA <- stringi::stri_replace_all_regex(str = .s$ACDHAP, 
             pattern = "DHAP\\(", replacement = "FA(")
         .s$ALKYLDHAP <- stringi::stri_replace_all_regex(str = .s$FATOH, 
             pattern = "FATOH\\(", replacement = "DHAP(O-")
     }
 
-    if (reaction == "alkyldhap_to_lpao") {
+    if (reaction == "RHEA:36175") { ## alkyldhap_to_lpao
         .s$LPAO <- stringi::stri_replace_all_fixed(str = .s$ALKYLDHAP, 
             pattern = "DHAP", replacement = "PA")
         .s$LPAO <- stringi::stri_replace_all_regex(str = .s$LPAO, 
@@ -71,27 +71,27 @@
             pattern = "C1P", replacement = "Cer")
     }
     
-    if (reaction == "cdpdg_to_pgp") {
+    if (reaction == "RHEA:12593") { ## cdpdg_to_pgp
         .s$PGP <- stringi::stri_replace_all_fixed(str = .s$CDPDG, 
             pattern = "CDP-DG", replacement = "PGP")
     }
             
-    if (reaction == "cdpdg_to_pi") {
+    if (reaction == "RHEA:11580") { ## cdpdg_to_pi
         .s$PI <- stringi::stri_replace_all_fixed(str = .s$CDPDG, 
             pattern = "CDP-DG", replacement = "PI")       
     }
             
-    if (reaction == "cer_to_c1p") {
+    if (reaction == "RHEA:17929") { ## cer_to_c1p
         .s$C1P <- stringi::stri_replace_all_fixed(str = .s$CER, 
             pattern = "Cer", replacement = "C1P")
     }
             
-    if (reaction == "cer_to_glccer") {
+    if (reaction == "RHEA:12088") { ## cer_to_glccer
         .s$GLCCER <- stringi::stri_replace_all_fixed(str = .s$CER, 
             pattern = "Cer", replacement = "GlcCer")
     }
             
-    if (reaction == "cer_to_sm") {
+    if (reaction == "cer_to_sm") { ## 
         .s$SM <- stringi::stri_replace_all_fixed(str = .s$CER, 
             pattern = "Cer", replacement = "SM")
     }
@@ -101,12 +101,12 @@
             pattern = "CoA", replacement = "DHAP")
     }
     
-    if (reaction == "coa_to_fatoh") {
+    if (reaction == "RHEA:52716") { ## coa_to_fatoh
         .s$FATOH <- stringi::stri_replace_all_fixed(str = .s$CoA, 
             pattern = "CoA", replacement = "FATOH")
     }
     
-    if (reaction == "coa_to_lpa") {
+    if (reaction == "RHEA:15325") { ## coa_to_lpa
         .s$LPA <- stringi::stri_replace_all_fixed(str = .s$CoA, pattern = "CoA", 
             replacement = "PA")
         .s$LPA <- stringi::stri_replace_all_regex(str = .s$LPA, 
@@ -127,28 +127,28 @@
             function(f) {paste0("FA(", f[1], ")")}))
     }
             
-    if (reaction == "dg_to_pa") {
+    if (reaction == "RHEA:10272") { ## dg_to_pa
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PA")
         .s$PA <- stringi::stri_replace_all_regex(str = .s$PA, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
-    if (reaction == "dg_to_pc") {
+    if (reaction == "RHEA:32939") { ## dg_to_pc
         .s$PC <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PC")
         .s$PC <- stringi::stri_replace_all_regex(str = .s$PC, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
-    if (reaction == "dg_to_pe") {
+    if (reaction == "RHEA:32943") { ## dg_to_pe
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "DG",
             replacement = "PE")
         .s$PE <- stringi::stri_replace_all_regex(str = .s$PE, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
             
-    if (reaction == "dg_to_tg") {
+    if (reaction == "RHEA:10868") { ## dg_to_tg
         .s$TG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "/0:0", 
             replacement = paste0("/", 
                 unlist(lipidomicsUtils::isolate_radyls(.s$CoA))))
@@ -156,14 +156,14 @@
             replacement = "TG")
     }
     
-    if (reaction == "dgo_to_pco") {
+    if (reaction == "RHEA:36179") { ## dgo_to_pco
         .s$PCO <- stringi::stri_replace_all_fixed(str = .s$DGO, pattern = "DG", 
             replacement = "PC")
         .s$PCO <- stringi::stri_replace_all_regex(str = .s$PCO, 
             pattern = "/0:0\\)$", replacement = "\\)")
     }
 
-    if (reaction == "dgo_to_peo") {
+    if (reaction == "RHEA:36187") { ## dgo_to_peo
         .s$PEO <- stringi::stri_replace_all_fixed(str = .s$DGO, pattern = "DG", 
             replacement = "PE")
         .s$PEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
@@ -176,61 +176,60 @@
             replacement = "Cer(d16:1(4E)(3OH,4OH)(15Me)/")
     }
             
-    if (reaction == "dhcer_to_dhsm") {
+    if (reaction == "dhcer_to_dhsm") { ## 
         .s$DHSM <- stringi::stri_replace_all_fixed(str = .s$DHCER, 
             pattern = "Cer", replacement = "SM")
     }
-            
         
-    if (reaction == "dhsm_to_dhcer") {
+    if (reaction == "RHEA:19253") { ## dhsm_to_dhcer
         .s$DHCER <- stringi::stri_replace_all_fixed(str = .s$DHSM, 
             pattern = "SM", replacement = "Cer")
     }
         
-    if (reaction == "fa_to_coa") {
+    if (reaction == "RHEA:15421") { ## fa_to_coa
         .s$CoA <- stringi::stri_replace_all_fixed(str = .s$FA, "FA", 
             replacement = "CoA")
     }
     
-    if (reaction == "lnape_to_gpnae") {
+    if (reaction == "RHEA:45420") { ## lnape_to_gpnae
         .s$GPNAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
             function(f) {paste0("GPNAE(", f[3], ")")}))
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
         
-    if (reaction == "lpa_to_pa") {
+    if (reaction == "RHEA:19709") { ## lpa_to_pa
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$LPA, pattern = "/0:0", 
             replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
                 function(f) {paste0("/", f)})))
     }
             
-    if (reaction == "lpao_to_pao") {
-        .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, 
-            pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
-                function(f) {paste0("/", f)})))
-    }
+    ##if (reaction == "RHEA:19709") { ## lpao_to_pao
+    ##    .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, 
+    ##        pattern = "/0:0", 
+    ##        replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
+    ##            function(f) {paste0("/", f)})))
+    ##}
 
-    if (reaction == "sn1lpc_to_fa") {
+    if (reaction == "RHEA:15177") { ## sn1lpc_to_fa
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPC), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
 
-    if (reaction == "sn2lpc_to_fa") {
+    if (reaction == "RHEA:44696") { ## sn2lpc_to_fa
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2LPC), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
-    if (reaction == "sn1lpc_to_pc") {
+    if (reaction == "RHEA:12937") { ## sn1lpc_to_pc
         .s$PC <- stringi::stri_replace_all_fixed(str = .s$sn1LPC, 
             pattern = "/0:0", 
             replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
                 function(f) {paste0("/", f)})))
     }
 
-    if (reaction == "sn1lpe_to_fa") {
-        ## sn2 loss
+    if (reaction == "RHEA:32967") { ## sn1lpe_to_fa
+        ## sn1 loss
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPE), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
@@ -241,7 +240,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
-    if (reaction == "sn1lpe_to_pe") {
+    if (reaction == "RHEA:32995") { ## sn1lpe_to_pe
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$sn1LPE, 
             pattern = "/0:0", 
             replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA),
@@ -357,14 +356,14 @@
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
-    if (reaction == "pc_to_dg") {
+    if (reaction == "RHEA:10604") { ## pc_to_dg
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PC, pattern = "PC", 
             replacement = "DG")
         .s$DG <- stringi::stri_replace_all_regex(str = .s$DG, pattern = "\\)$", 
             replacement = "/0:0\\)")
     }
 
-    if (reaction == "pc_to_sn1lpc") {
+    if (reaction == "RHEA:15801") { ## pc_to_sn1lpc
         ## "sn2 loss"
         .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
@@ -372,7 +371,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
-    if (reaction == "pc_to_sn2lpc") {
+    if (reaction == "RHEA:18689") { ## pc_to_sn2lpc
         ## "sn2 loss"
         .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
@@ -380,12 +379,12 @@
             function(f) {paste0("FA(", f[1], ")")}))
     }
     
-    if (reaction == "pc_to_pa") {
+    if (reaction == "RHEA:14445") { ## pc_to_pa
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$PC, pattern = "PC", 
             replacement = "PA")
     }
     
-    if (reaction == "pc_to_ps") {
+    if (reaction == "RHEA:45088") { ## pc_to_ps
         .s$PS <- stringi::stri_replace_all_fixed(str = .s$PC, pattern = "PC",
             replacement = "PS")
     }
@@ -413,7 +412,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
-    if (reaction == "pe_to_sn2lpe") {
+    if (reaction == "RHEA:44408") { ## pe_to_sn2lpe
         .s$sn2LPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
             function(f) {paste0("PE(0:0/", f[1], ")")}))
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
@@ -447,7 +446,7 @@
             replacement = "PA")
     }
     
-    if (reaction == "pe_to_ps") {
+    if (reaction == "RHEA:27606") { ## pe_to_ps
         .s$PS <- stringi::stri_replace_all_fixed(str = .s$PE, pattern = "PE", 
             replacement = "PS")
     }
