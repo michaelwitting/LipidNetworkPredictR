@@ -125,8 +125,8 @@ fatty_acid_gl_gp_df <- read.table(f, sep = "\t", header = TRUE,
 FA_GPGL <- fatty_acid_gl_gp_df$shorthand
 
 ## take only a subset of those to speed things up
-FA_GPGL <- FA_GPGL[FA_GPGL %in% 
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+# FA_GPGL <- FA_GPGL[FA_GPGL %in% 
+#     c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
 lipid_info <- rgoslin::parseLipidNames(FA_GPGL)
 
 ## add lipids to data frame
@@ -149,8 +149,8 @@ fatty_acid_sph_df <- read.table(f, sep = "\t", header = TRUE,
 FA_SPH <- fatty_acid_sph_df$shorthand
 
 ## take only a subset of those to speed things up
-FA_SPH <- FA_SPH[FA_SPH %in% 
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+# FA_SPH <- FA_SPH[FA_SPH %in% 
+#     c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
 lipid_info <- rgoslin::parseLipidNames(FA_SPH)
 
 ## add lipids to data frame
@@ -192,13 +192,11 @@ glycerophospholipids.
 
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
-results <- .create_reaction(substrates = list(FA = FA_GPGL), 
-    template = template, reaction = "RHEA:15421")
+results <- .create_reaction(substrates = list(FA = FA_GPGL),
+                            template = template,
+                            reaction = "RHEA:15421")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["CoA"]])
 
 ## get CoA for further reactions (glycero- and glycerophospholipids)
 CoA_GPGL <- results[[1]][["CoA"]]
@@ -220,12 +218,10 @@ position of the acyl.
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
 results <- .create_reaction(substrates = list(FA = FA_SPH),
-    template = template, reaction = "RHEA:15421")
+                            template = template,
+                            reaction = "RHEA:15421")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["CoA"]])
 
 ## get CoA for further reactions (sphingolipids)
 CoA_SPH <- results[[1]][["CoA"]]
@@ -271,12 +267,10 @@ template <- list(reaction_name = "glycerol-3 phosphate acyl transferase",
 ```{r coa_to_lpa, message=FALSE, warning=FALSE}
 ## biosynthesis of LPA --------------------------------------------------------
 results <- .create_reaction(substrates = list(CoA = CoA_GPGL),
-    template = template, reaction = "RHEA:15325")
+                            template = template,
+                            reaction = "RHEA:15325")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPA"]])
 
 ## get LPA for further reactions
 LPA <- results[[1]][["LPA"]]
@@ -311,14 +305,12 @@ template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
 
 ```{r lpa_to_pa, message=FALSE, warning=FALSE}
 ## biosynthesis of PA ---------------------------------------------------------
-results <- .create_reaction(
-    substrates = list(LPA = LPA, CoA = CoA_GPGL),
-    template = template, reaction = "RHEA:19709")
+results <- .create_reaction(substrates = list(LPA = LPA,
+                                              CoA = CoA_GPGL),
+                            template = template,
+                            reaction = "RHEA:19709")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PA"]])
 
 ## get PA for further reactions
 PA <- results[[1]][["PA"]]
@@ -351,12 +343,10 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol 3-phosphate phosphohydr
 
 ```{r, message=FALSE, warning=FALSE}
 results <- .create_reaction(substrates = list(PA = PA),
-    template = template, reaction = "pa_to_dg")
+                            template = template,
+                            reaction = "pa_to_dg")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["DG"]])
 
 ## get DG for further reactions
 DG <- results[[1]][["DG"]]
@@ -392,7 +382,8 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol kinase (ER)",
 
 ```{r dg_to_pa, message=FALSE, warning=FALSE}
 results <- .create_reaction(substrates = list(DG = DG),
-    template = template, reaction = "RHEA:10272")
+                            template = template,
+                            reaction = "RHEA:10272")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -458,12 +449,10 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (2-acyl-M
 
 ```{r, message=FALSE, warning=FALSE}
 results <-  .create_reaction(substrates = list(DG = DG),
-    template = template, reaction = "dg_to_sn2mg")
+                             template = template,
+                             reaction = "dg_to_sn2mg")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2MG"]])
 
 ## get sn2MG for further reactions
 sn2MG <- results[[1]][["sn2MG"]]
@@ -492,13 +481,10 @@ template <- list(reaction_name = "1-Acyl-MG 2-Acyl-MG conversion",
 
 ```{r, message=FALSE, warning=FALSE}
 results <-  .create_reaction(substrates = list(sn2MG = sn2MG),
-    template = template,
-    reaction = "sn2mg_to_sn1mg")
+                             template = template,
+                             reaction = "sn2mg_to_sn1mg")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1MG"]])
 
 ## get sn1MG for further reactions
 sn1MG <- results[[1]][["sn1MG"]]
@@ -530,7 +516,8 @@ template <- list(reaction_name = "1-acyl-sn-glycerol acylhydrolase",
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn1MG = sn1MG),
-    template = template, reaction = "sn1mg_to_fa")
+                             template = template,
+                             reaction = "sn1mg_to_fa")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -555,7 +542,8 @@ template <- list(reaction_name = "2-acyl-sn-glycerol acylhydrolase",
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn2MG = sn2MG),
-    template = template, reaction = "sn2mg_to_fa")
+                             template = template,
+                             reaction = "sn2mg_to_fa")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -587,9 +575,10 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (1-acyl-MG)"
 
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(
-    substrates = list(sn1MG = sn1MG, CoA = CoA_GPGL),
-    template = template, reaction = "sn1mg_to_dg")
+results <-  .create_reaction(substrates = list(sn1MG = sn1MG,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "sn1mg_to_dg")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -614,9 +603,10 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (2-acyl-MG)"
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(
-    substrates = list(sn2MG = sn2MG, CoA = CoA_GPGL), 
-    template = template, reaction = "sn2mg_to_dg")
+results <-  .create_reaction(substrates = list(sn2MG = sn2MG,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "sn2mg_to_dg")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -642,7 +632,8 @@ template <- list(reaction_name = "1-acyl-sn-glycerol kinase",
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn1MG = sn1MG),
-    template = template, reaction = "sn1mg_to_lpa")
+                             template = template,
+                             reaction = "sn1mg_to_lpa")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -678,14 +669,12 @@ template <- list(reaction_name = "diacylglycerol acyl transferase",
 ```
 
 ```{r dg_to_tg, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(
-    substrates = list(DG = DG, CoA = CoA_GPGL), 
-    template = template, reaction = "RHEA:10868")
+results <-  .create_reaction(substrates = list(DG = DG,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "RHEA:10868")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector 
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["TG"]])
 
 ## get TG for further reactions
 TG <- results[[1]][["TG"]]
@@ -715,7 +704,8 @@ template <- list(reaction_name = "Triacylglycerol acylhydrolase",
 
 ```{r tg_to_dg, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(TG = TG),
-    template = template, reaction = "tg_to_dg")
+                             template = template,
+                             reaction = "tg_to_dg")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -749,12 +739,10 @@ template <- list(reaction_name = "CDP-choline 1,2-diacyl-sn-glycerol phosphochol
 
 ```{r dg_to_pc, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DG = DG),
-    template = template, reaction = "RHEA:32939")
+                             template = template,
+                             reaction = "RHEA:32939")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PC"]])
 
 ## get PC for further reactions
 PC <- results[[1]][["PC"]]
@@ -780,12 +768,10 @@ template <- list(
 
 ```{r dg_to_pe, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DG = DG),
-    template = template, reaction = "RHEA:32943")
+                             template = template,
+                             reaction = "RHEA:32943")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PE"]])
 
 ## get PE for further reactions
 PE <- results[[1]][["PE"]]
@@ -812,12 +798,10 @@ template <- list(reaction_name = "phosphatidylcholine-serine O-phosphatidyltrans
 
 ```{r pc_to_ps, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PC = PC),
-    template = template, reaction = "RHEA:45088")
+                             template = template,
+                             reaction = "RHEA:45088")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PS"]])
 
 ## get PS for further reactions
 PS <- results[[1]][["PS"]]
@@ -842,7 +826,8 @@ template <- list(reaction_name = "phosphatidylethanolamine-serine O-phosphatidyl
 
 ```{r pe_to_ps, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PE = PE),
-    template = template, reaction = "RHEA:27606")
+                             template = template,
+                             reaction = "RHEA:27606")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -873,7 +858,8 @@ template <- list(reaction_name = "phosphatidylserine decarboxylase",
 
 ```{r ps_to_pe, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PS = PS),
-    template = template, reaction = "ps_to_pe")
+                             template = template,
+                             reaction = "ps_to_pe")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -905,12 +891,10 @@ template <- list(reaction_name = "Phospholipase A1 (PC)",
 
 ```{r pc_to_sn2lpc, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PC = PC),
-    template = template, reaction = "RHEA:18689")
+                             template = template,
+                             reaction = "RHEA:18689")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2LPC"]])
 
 ## get sn2LPC for further reactions
 sn2LPC <- results[[1]][["sn2LPC"]]
@@ -926,7 +910,7 @@ PLA2 on PC
 ```{r pc_to_sn1lpc_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A2 (PC)",
-    reaction_formula = "M_h2o + M_pchol <=> M_ag3pc + M_fatacid",
+                 reaction_formula = "M_h2o + M_pchol <=> M_ag3pc + M_fatacid",
     reaction_RHEA = "RHEA:15801",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00012319 or WBGene00010872 or WBGene00019236 or WBGene00015202 or WBGene00016288 or WBGene00044468 or WBGene00018411 or WBGene00007419 or WBGene00009404 or WBGene00015406",
@@ -935,12 +919,10 @@ template <- list(reaction_name = "Phospholipase A2 (PC)",
 
 ```{r pc_to_sn1lpc, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PC = PC),
-    template = template, reaction = "RHEA:15801")
+                             template = template,
+                             reaction = "RHEA:15801")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPC"]])
 
 ## get sn1LPC for further reactions
 sn1LPC <- results[[1]][["sn1LPC"]]
@@ -965,7 +947,8 @@ template <- list(reaction_name = "Phospholipase D (PC)",
 
 ```{r pc_to_pa, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PC = PC),
-    template = template, reaction = "RHEA:14445")
+                             template = template,
+                             reaction = "RHEA:14445")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -995,7 +978,8 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine lipase (LPC
 
 ```{r sn1lpc_to_fa, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC),
-    template = template, reaction = "RHEA:15177")
+                             template = template,
+                             reaction = "RHEA:15177")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1022,8 +1006,9 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphocholine lipase (LPC
 ```
 
 ```{r sn2lpc_to_fa, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(sn2LPC = sn2LPC), 
-    template = template, reaction = "RHEA:44696")
+results <-  .create_reaction(substrates = list(sn2LPC = sn2LPC),
+                             template = template,
+                             reaction = "RHEA:44696")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1052,10 +1037,10 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine acyltransfe
 ```
 
 ```{r sn1lpc_to_pc, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(
-    substrates = list(sn1LPC = sn1LPC, CoA = CoA_GPGL),
-    template = template, reaction = "RHEA:12937",
-    constraints = c("", "OH"), negate = c(FALSE, TRUE))
+results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "RHEA:12937")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1085,12 +1070,10 @@ template <- list(reaction_name = "Phospholipase A1 (PE)",
 
 ```{r pe_to_sn2lpe, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PE = PE),
-    template = template, reaction = "RHEA:44408")
+                             template = template,
+                             reaction = "RHEA:44408")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2LPE"]])
 
 ## get sn2LPE for further reactions
 sn2LPE <- results[[1]][["sn2LPE"]]
@@ -1115,12 +1098,10 @@ template <- list(reaction_name = "Phospholipase A2 (PE)",
 
 ```{r pe_to_sn1lpe, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PE = PE),
-    template = template, reaction = "pe_to_sn1lpe")
+                             template = template,
+                             reaction = "pe_to_sn1lpe")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPE"]])
 
 ## get sn1LPE for further reactions
 sn1LPE <- results[[1]][["sn1LPE"]]
@@ -1145,7 +1126,8 @@ template <- list(reaction_name = "Phospholipase D (PE)",
 
 ```{r pe_to_pa, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PE = PE),
-    template = template, reaction = "pe_to_pa")
+                             template = template,
+                             reaction = "pe_to_pa")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1175,7 +1157,8 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine lipase
 
 ```{r sn1lpe_to_fa, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE),
-    template = template, reaction = "RHEA:32967")
+                             template = template,
+                             reaction = "RHEA:32967")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1203,7 +1186,8 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphoethanolamine lipase
 
 ```{r sn2lpe_to_fa, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(sn2LPE = sn2LPE),
-    template = template, reaction = "sn2lpe_to_fa")
+                             template = template,
+                             reaction = "sn2lpe_to_fa")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1233,10 +1217,10 @@ template <- list(
 ```
 
 ```{r sn1lpe_to_pe, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(
-    substrates = list(sn1LPE = sn1LPE, CoA = CoA_GPGL),
-    template = template, reaction = "RHEA:32995", constraints = c("", "OH"),
-    negate = c(FALSE, TRUE))
+results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "RHEA:32995")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1268,12 +1252,10 @@ template <- list(reaction_name = "phosphatidate cytidylyltransferase",
 
 ```{r pa_to_cdpdg, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PA = PA),
-    template = template, reaction = "pa_to_cdpdg")
+                             template = template,
+                             reaction = "pa_to_cdpdg")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["CDPDG"]])
 
 ## get CDPDG for further reactions
 CDPDG <- results[[1]][["CDPDG"]]
@@ -1298,12 +1280,10 @@ template <- list(reaction_name = "CDP-diacylglycerol inositol transferase",
 
 ```{r cdpdg_to_pi, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CDPDG = CDPDG),
-    template = template, reaction = "RHEA:11580")
+                             template = template,
+                             reaction = "RHEA:11580")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PI"]])
 
 ## get PI for further reactions
 PI <- results[[1]][["PI"]]
@@ -1330,12 +1310,10 @@ template <- list(reaction_name = "CDP-diacylglycerol--glycerol-3-phosphate 3-pho
 
 ```{r cdpdg_to_pgp, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CDPDG = CDPDG),
-    template = template, reaction = "RHEA:12593")
+                             template = template,
+                             reaction = "RHEA:12593")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PGP"]])
 
 ## get PGP for further reactions
 PGP <- results[[1]][["PGP"]]
@@ -1360,12 +1338,10 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 
 ```{r pgp_to_pg, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PGP = PGP),
-    template = template, reaction = "pgp_to_pg")
+                             template = template,
+                             reaction = "pgp_to_pg")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PG"]])
 
 ## get PG for further reactions
 PG <- results[[1]][["PG"]]
@@ -1390,16 +1366,15 @@ template <- list(reaction_name = "Cardiolipin synthase",
 
 
 ```{r pg_to_cl, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(PG = PG, CDPDG = CDPDG),
-    template = template, reaction = "pg_to_cl",
-    constraints = c("(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]",
-        "(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]"),
-    negate = c(FALSE, FALSE))
+results <-  .create_reaction(substrates = list(PG = PG,
+                                               CDPDG = CDPDG),
+                             template = template,
+                             reaction = "pg_to_cl")
+                             #constraints = c("(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]",
+                              #               "(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]"),
+                             #negate = c(FALSE, FALSE))
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["CL"]])
 
 ## get CL for further reactions
 CL <- results[[1]][["CL"]]
@@ -1436,9 +1411,6 @@ results <-  .create_reaction(substrates = list(CoA = CoA_GPGL),
 
 results[[2]][1:5, "reaction_formula"]
 
-## add new lipids to lipid vector
-##lipid_abbrev <- c(lipid_abbrev, results[[1]][["FATOH"]])
-
 ## get FATOH for further reactions
 FATOH <- results[[1]][["FATOH"]]
 
@@ -1466,9 +1438,6 @@ results <-  .create_reaction(substrates = list(CoA = CoA_GPGL),
                              reaction = "coa_to_acdhap")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev,  results[[1]][["DHAP"]])
 
 ## get ACDHAP for further reactions
 ACDHAP <- results[[1]][["DHAP"]]
@@ -1499,9 +1468,6 @@ results <-  .create_reaction(substrates = list(ACDHAP = ACDHAP,
 
 results[[2]][1:5, "reaction_formula"]
 
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["ALKYLDHAP"]])
-
 ## get ALKYLDHAP for further reactions
 ALKYLDHAP <- results[[1]][["ALKYLDHAP"]]
 
@@ -1528,12 +1494,10 @@ template <- list(reaction_name = "1-acylglycerone phosphate reductase",
 
 ```{r alkyldhap_to_lpao, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(ALKYLDHAP = ALKYLDHAP),
-    template = template, reaction = "RHEA:36175")
+                             template = template,
+                             reaction = "RHEA:36175")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPAO"]])
 
 ## get LPAO for further reactions
 LPAO <- results[[1]][["LPAO"]]
@@ -1560,14 +1524,14 @@ template <- list(reaction_name = "2-O-Acyl transferase",
 
 
 ```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
-    template = template, reaction = "RHEA:36235", constraints = c("", "OH"),
-    negate = c(FALSE, TRUE))
+results <-  .create_reaction(substrates = list(LPAO = LPAO,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "RHEA:36235")
+                             #constraints = c("", "OH"),
+                             #negate = c(FALSE, TRUE))
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-###lipid_abbrev <- c(lipid_abbrev, results[[1]][["PAO"]])
 
 ## get PAO for further reactions
 PAO <- results[[1]][["PAO"]]
@@ -1592,12 +1556,10 @@ template <- list(reaction_name = "1-Alkyl-2-acyl-sn-glycero-3-phosphate phosphoh
 
 ```{r pao_to_dgo, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PAO = PAO),
-    template = template, reaction = "pao_to_dgo")
+                             template = template,
+                             reaction = "pao_to_dgo")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["DGO"]])
 
 ## get DGO for further reactions
 DGO <- results[[1]][["DGO"]]
@@ -1625,12 +1587,10 @@ template <- list(
 
 ```{r dgo_to_peo, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DGO = DGO),
-    template = template, reaction = "RHEA:36187")
+                             template = template,
+                             reaction = "RHEA:36187")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PEO"]])
 
 ## get PEO for further reactions
 PEO <- results[[1]][["PEO"]]
@@ -1657,12 +1617,10 @@ template <- list(reaction_name = "",
 
 ```{r peo_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEO = PEO),
-    template = template, reaction = "peo_to_pep")
+                             template = template,
+                             reaction = "peo_to_pep")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["PEP"]])
 
 ## get PEP for further reactions
 PEP <- results[[1]][["PEP"]]
@@ -1691,12 +1649,10 @@ template <- list(
 
 ```{r dgo_to_pco, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DGO = DGO),
-    template = template, reaction = "RHEA:36179")
+                             template = template,
+                             reaction = "RHEA:36179")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-##lipid_abbrev <- c(lipid_abbrev, results[[1]][["PCO"]])
 
 ## get PCO for further reactions
 PCO <- results[[1]][["PCO"]]
@@ -1723,12 +1679,10 @@ template <- list(reaction_name = "Phospholipase A2 (PE-O)",
 
 ```{r peo_to_lpeo, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEO = PEO),
-    template = template, reaction = "peo_to_lpeo") ## not run due to missing precursors
+                             template = template,
+                             reaction = "peo_to_lpeo") ## not run due to missing precursors
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPEO"]])
 
 ## get LPEO for further reactions
 LPEO <- results[[1]][["LPEO"]]
@@ -1754,8 +1708,10 @@ template <- list(
 
 ```{r lpeo_to_peo, message=FALSE, warning=FALSE, eval=TRUE}
 # biosynthesis of PEO ----------------------------------------------------------
-results <-  .create_reaction(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
-    template = template, reaction = "lpeo_to_peo")
+results <-  .create_reaction(substrates = list(LPEO = LPEO,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "lpeo_to_peo")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1783,12 +1739,10 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 
 ```{r pep_to_lpep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP),
-    template = template, reaction = "pep_to_lpep")
+                             template = template,
+                             reaction = "pep_to_lpep")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPEP"]])
 
 ## get LPEP for further reactions
 LPEP <- results[[1]][["LPEP"]]
@@ -1813,8 +1767,10 @@ template <- list(
 ```
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(LPEP = LPEP,  CoA = CoA_GPGL), 
-    template = template, reaction = "lpep_to_pep")
+results <-  .create_reaction(substrates = list(LPEP = LPEP,
+                                               CoA = CoA_GPGL),
+                             template = template,
+                             reaction = "lpep_to_pep")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1842,12 +1798,10 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 
 ```{r pco_to_lpco, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PCO = PCO),
-    template = template, reaction = "pco_to_lpco")
+                             template = template,
+                             reaction = "pco_to_lpco")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPCO"]])
 
 ## get LPCO for further reactions
 LPCO <- results[[1]][["LPCO"]]
@@ -1888,12 +1842,10 @@ template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
 
 ```{r sphinga_to_dhcer_template, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CoA = CoA_SPH),
-    template = template, reaction = "sphinga_to_dhcer")
+                             template = template,
+                             reaction = "sphinga_to_dhcer")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["DHCER"]])
 
 ## get DHCER for further reactions
 DHCER <- results[[1]][["DHCER"]]
@@ -1918,12 +1870,10 @@ template <- list(reaction_name = "Dihydrosphingomyelin synthase",
 
 ```{r dhcer_to_dhsm, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DHCER = DHCER),
-    template = template, reaction = "RHEA:44620")
+                             template = template,
+                             reaction = "RHEA:44620")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["DHSM"]])
 
 ## get DHSM for further reactions
 DHSM <- results[[1]][["DHSM"]]
@@ -1948,7 +1898,8 @@ template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
 
 ```{r dhsm_to_dhcer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DHSM = DHSM),
-    template = template, reaction = "RHEA:19253")
+                             template = template,
+                             reaction = "RHEA:19253")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1976,12 +1927,10 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DHCER = DHCER),
-    template = template, reaction = "dhcer_to_cer")
+                             template = template,
+                             reaction = "dhcer_to_cer")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["CER"]])
 
 ## get CER for further reactions
 CER <- results[[1]][["CER"]]
@@ -2006,12 +1955,10 @@ template <- list(reaction_name = "Sphingomyelin synthase",
 
 ```{r cer_to_sm, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CER = CER),
-    template = template, reaction = "RHEA:18765")
+                             template = template,
+                             reaction = "RHEA:18765")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["SM"]])
 
 ## get SM for further reactions
 SM <- results[[1]][["SM"]]
@@ -2036,7 +1983,8 @@ template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
 
 ```{r sm_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(SM = SM),
-    template = template, reaction = "sm_to_cer")
+                             template = template,
+                             reaction = "sm_to_cer")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2064,12 +2012,10 @@ template <- list(reaction_name = "Ceramide kinase",
 
 ```{r cer_to_c1p, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CER = CER),
-    template = template, reaction = "RHEA:17929")
+                             template = template,
+                             reaction = "RHEA:17929")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["C1P"]])
 
 ## get C1P for further reactions
 C1P <- results[[1]][["C1P"]]
@@ -2096,7 +2042,8 @@ template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
 
 ```{r c1p_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(C1P = C1P),
-    template = template, reaction = "c1p_to_cer")
+                             template = template,
+                             reaction = "c1p_to_cer")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2125,12 +2072,10 @@ template <- list(
 
 ```{r cer_to_glccer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CER = CER),
-    template = template, reaction = "RHEA:12088")
+                             template = template,
+                             reaction = "RHEA:12088")
 
 results[[2]][1:5, "reaction_formula"]
-
-## add new lipids to lipid vector
-#lipid_abbrev <- c(lipid_abbrev, results[[1]][["GLCCER"]])
 
 ## get GLCCER for further reactions
 GLCCER <- results[[1]][["GLCCER"]]
