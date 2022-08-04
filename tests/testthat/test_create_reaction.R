@@ -207,13 +207,13 @@ test_that(".create_reaction works", {
         "CoA(14:0) + PA(18:0/0:0) <=> CoA + PA(18:0/14:0)")
     
     ## lpao_to_pao
-    ##lpao <- "PA(O-18:0/0:0)"
-    ##coa <- "CoA(14:0)"
-    ##reaction_l <- .create_reaction(substrates = list(LPAO = lpao,  CoA = coa), 
-    ##    template = NULL, reaction =  "RHEA:19709")
-    ##expect_equal(reaction_l[[1]]$PAO, "PA(O-18:0/14:0)")
-    ##expect_equal(reaction_l[[2]]$reaction_formula, 
-    ##    "PA(O-18:0/0:0) + CoA(14:0) <=> PA(O-18:0/14:0) + CoA")
+    lpao <- "PA(O-18:0/0:0)"
+    coa <- "CoA(14:0)"
+    reaction_l <- .create_reaction(substrates = list(LPAO = lpao,  CoA = coa),
+       template = NULL, reaction =  "RHEA:36235")
+    expect_equal(reaction_l[[1]]$PAO, "PA(O-18:0/14:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula,
+       "PA(O-18:0/0:0) + CoA(14:0) <=> PA(O-18:0/14:0) + CoA")
     
     ## sn1lpc_to_fa
     sn1lpc <- "PC(14:0/0:0)"

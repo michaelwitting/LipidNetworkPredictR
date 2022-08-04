@@ -267,14 +267,14 @@
             pattern = "M_pa_pl", replacement = df_reaction[["PA"]])
     }
     
-    ## if (reaction == "RHEA:19709") { ## lpao_to_pao
-    ##     .formula <- stringi::stri_replace_all_fixed(str = .formula,
-    ##         pattern = "M_fataccoa", replacement = df_reaction[["CoA"]])
-    ##     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-    ##         pattern = "M_alpa_pl", replacement = df_reaction[["LPAO"]])
-    ##     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-    ##         pattern = "M_pa_pl", replacement = df_reaction[["PAO"]])
-    ## }
+    if (reaction == "RHEA:36235") { ## lpao_to_pao
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_fataccoa", replacement = df_reaction[["CoA"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_alpa_pl", replacement = df_reaction[["LPAO"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_pa_pl", replacement = df_reaction[["PAO"]])
+    }
     
     if (reaction == "RHEA:15177") { ## sn1lpc_to_fa
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 

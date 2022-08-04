@@ -131,8 +131,8 @@
     if (reaction == "RHEA:19709") ## lpa_to_pa
         l <- list(PA = unique(df_reaction$PA))
     
-    ## if (reaction == "RHEA:19709") ## lpao_to_pao
-    ##     l <- list(PAO = unique(df_reaction$PAO))
+    if (reaction == "RHEA:36235") ## lpao_to_pao
+        l <- list(PAO = unique(df_reaction$PAO))
     
     if (reaction == "RHEA:15177") ## sn1lpc_to_fa
         l <- list(FA = unique(df_reaction$FA))

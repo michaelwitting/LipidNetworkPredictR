@@ -1552,17 +1552,17 @@ Same genes as for LPA to PA --\> substrate specificity not known yet...
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "2-O-Acyl transferase",
     reaction_formula = "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa",
-    reaction_RHEA = "RHEA:19709",
+    reaction_RHEA = "RHEA:36235",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00022646 or WBGene00020264 or WBGene00016934 or WBGene00010339 or WBGene00011543",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
 
-```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=FALSE}
+```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
-    template = template, reaction = "", constraints = c("", "OH"),
-    negate = c(FALSE, TRUE)) ##not implemented, was RHEA:19709, but also LPA to PA
+    template = template, reaction = "RHEA:36235", constraints = c("", "OH"),
+    negate = c(FALSE, TRUE))
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1590,9 +1590,9 @@ template <- list(reaction_name = "1-Alkyl-2-acyl-sn-glycero-3-phosphate phosphoh
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
-```{r pao_to_dgo, message=FALSE, warning=FALSE, eval=FALSE}
+```{r pao_to_dgo, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PAO = PAO),
-    template = template, reaction = "pao_to_dgo") ## not run due to missing precursors
+    template = template, reaction = "pao_to_dgo")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1625,7 +1625,7 @@ template <- list(
 
 ```{r dgo_to_peo, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DGO = DGO),
-    template = template, reaction = "RHEA:36187") ## ## not run due to missing precursors
+    template = template, reaction = "RHEA:36187")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1657,7 +1657,7 @@ template <- list(reaction_name = "",
 
 ```{r peo_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEO = PEO),
-    template = template, reaction = "peo_to_pep") ## not run due to missing precursors
+    template = template, reaction = "peo_to_pep")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1691,7 +1691,7 @@ template <- list(
 
 ```{r dgo_to_pco, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DGO = DGO),
-    template = template, reaction = "RHEA:36179") ## not run due to missing precursors
+    template = template, reaction = "RHEA:36179")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1741,7 +1741,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 
 ### Reacylation of PE-O
 
-```{r lpeo_to_peo_template, message=FALSE, warning=FALSE, eval=F}
+```{r lpeo_to_peo_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(
     reaction_name = "1-alkyl-sn-glycero-3-phosphoethanolamine acyltransferase (LPE, cytosol)",
@@ -1755,7 +1755,7 @@ template <- list(
 ```{r lpeo_to_peo, message=FALSE, warning=FALSE, eval=TRUE}
 # biosynthesis of PEO ----------------------------------------------------------
 results <-  .create_reaction(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
-    template = template, reaction = "lpeo_to_peo") ## not run due to missing precursors
+    template = template, reaction = "lpeo_to_peo")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1783,7 +1783,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 
 ```{r pep_to_lpep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP),
-    template = template, reaction = "pep_to_lpep") ## not run due to missing precursors
+    template = template, reaction = "pep_to_lpep")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1814,7 +1814,7 @@ template <- list(
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(LPEP = LPEP,  CoA = CoA_GPGL), 
-    template = template, reaction = "lpep_to_pep") ## not run due to missing precursors
+    template = template, reaction = "lpep_to_pep")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1842,7 +1842,7 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 
 ```{r pco_to_lpco, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PCO = PCO),
-    template = template, reaction = "pco_to_lpco") ## not run due to missing precursors
+    template = template, reaction = "pco_to_lpco")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2190,7 +2190,7 @@ if (all(results[[1]][["LPC"]] %in% sn2LPC)) {
 
 transfer of Sn1 fatty acyl to PE-O
 
-```{r peo_to_napeo_sn1_template, message=FALSE, warning=FALSE, eval=FALSE}
+```{r peo_to_napeo_sn1_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_akac2gpe + M_pc <=> M_akac2nape + M_2agpc",
@@ -2200,9 +2200,9 @@ template <- list(reaction_name = "",
     reaction_pathway = "")
 ```
 
-```{r peo_to_napeo_sn1, message=FALSE, warning=FALSE, eval=FALSE}
+```{r peo_to_napeo_sn1, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
-    template = template, reaction = "peo_to_napeo_sn1") ## not run, since precursors are not available
+    template = template, reaction = "peo_to_napeo_sn1")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2223,7 +2223,7 @@ if (all(results[[1]][["LPC"]] %in% sn2LPC)) {
 
 transfer of Sn1 fatty acyl to PE-P
 
-```{r pep_to_napep_sn1_template, message=FALSE, warning=FALSE, eval=FALSE}
+```{r pep_to_napep_sn1_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_alkenac2gpe + M_pc <=> M_alkenac2nape + M_2agpc",
@@ -2233,9 +2233,9 @@ template <- list(reaction_name = "",
     reaction_pathway = "")
 ```
 
-```{r pep_to_napep_sn1, message=FALSE, warning=FALSE, eval=FALSE}
+```{r pep_to_napep_sn1, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC), 
-    template = template, reaction = "pep_to_napep_sn1") ## not run, since precursors are not available
+    template = template, reaction = "pep_to_napep_sn1")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2284,7 +2284,7 @@ if (all(results[[1]][["LPC"]] %in% sn1LPC) & all(results[[1]][["NAPE"]] %in% NAP
 
 transfer of Sn2 fatty acyl to PE-O
 
-```{r peo_to_napeo_sn2_template, message=FALSE, warning=FALSE, eval=FALSE}
+```{r peo_to_napeo_sn2_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_akac2gpe + M_pc <=> M_akac2nape + M_ag3pc",
@@ -2294,9 +2294,9 @@ template <- list(reaction_name = "",
     reaction_pathway = "")
 ```
 
-```{r peo_to_napeo_sn2, message=FALSE, warning=FALSE, eval=FALSE}
+```{r peo_to_napeo_sn2, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
-    template = template, reaction = "peo_to_napeo_sn2") ## not run, since precursors are not available
+    template = template, reaction = "peo_to_napeo_sn2")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2313,7 +2313,7 @@ if (all(results[[1]][["LPC"]] %in% sn1LPC) &
 
 transfer of Sn2 fatty acyl to PE-P
 
-```{r pep_to_napep_sn2_template, message=FALSE, warning=FALSE, eval=FALSE}
+```{r pep_to_napep_sn2_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_alkenac2gpe + M_pc <=> M_alkenac2nape + M_ag3pc",
@@ -2323,9 +2323,9 @@ template <- list(reaction_name = "",
     reaction_pathway = "")
 ```
 
-```{r pep_to_napep_sn2, message=FALSE, warning=FALSE, eval=FALSE}
+```{r pep_to_napep_sn2, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC),
-    template = template, reaction = "pep_to_napep_sn2") ## not run, since precursors are not available
+    template = template, reaction = "pep_to_napep_sn2")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2377,7 +2377,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
 
 From NAPEO
 
-```{r napeo_to_nae_template, message=FALSE, warning=FALSE, eval=FALSE}
+```{r napeo_to_nae_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_akac2nape + M_h2o <=> M_nae + M_akac2gp",
@@ -2387,9 +2387,9 @@ template <- list(reaction_name = "",
     reaction_pathway = "")
 ```
 
-```{r napeo_to_nae, message=FALSE, warning=FALSE, eval=FALSE}
+```{r napeo_to_nae, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(NAPEO = NAPEO),
-    template = template, reaction = "napeo_to_nae") ## not run, since precursors are not available
+    template = template, reaction = "napeo_to_nae")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2405,7 +2405,7 @@ if (all(results[[1]][["PAO"]] %in% PAO) & all(results[[1]][["NAE"]] %in% NAE)) {
 
 From NAPEP.
 
-```{r, message=FALSE, warning=FALSE, eval=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
     reaction_formula = "M_alkenac2nape + M_h2o <=> M_nae + M_akac2gp",

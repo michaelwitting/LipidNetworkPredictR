@@ -150,8 +150,8 @@
         if (reaction == "RHEA:19709") ## lpa_to_pa
             .formula <- "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl"
         
-        ##if (reaction == "RHEA:19709") ## lpao_to_pao
-        ##     .formula <- "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa"
+        if (reaction == "RHEA:36235") ## lpao_to_pao
+             .formula <- "M_alpa_pl + M_fataccoa <=> M_pa_pl + M_coa"
         
         if (reaction == "RHEA:15177") ## sn1lpc_to_fa
             .formula <- "M_h2o + M_ag3pc <=> M_g3pc + M_h + M_fatacid"

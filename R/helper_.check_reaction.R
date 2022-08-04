@@ -51,7 +51,7 @@
         "RHEA:15421", ## fa_to_coa
         "RHEA:45420", ## lnape_to_gpnae
         "RHEA:19709", ## lpa_to_pa
-        ##"RHEA:19709", ## lpao_to_pao
+        "RHEA:36235", ## lpao_to_pao
         "RHEA:15177", ## sn1lpc_to_fa
         "RHEA:44696", ## sn2lpc_to_fa
         "RHEA:12937", ## sn1lpc_to_pc

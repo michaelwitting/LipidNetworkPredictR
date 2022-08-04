@@ -182,8 +182,8 @@
     if (reaction == "RHEA:19709") ## lpa_to_pa
         cols <- c("LPA", "CoA")
     
-    ##if (reaction == "RHEA:19709") ## lpao_to_pao
-    ##    cols <- c("LPAO", "CoA")
+    if (reaction == "RHEA:36235") ## lpao_to_pao
+        cols <- c("LPAO", "CoA")
     
     if (reaction == "RHEA:15177") ## sn1lpc_to_fa
         cols <- c("sn1LPC")

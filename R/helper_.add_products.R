@@ -204,12 +204,12 @@
                 function(f) {paste0("/", f)})))
     }
             
-    ##if (reaction == "RHEA:19709") { ## lpao_to_pao
-    ##    .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO, 
-    ##        pattern = "/0:0", 
-    ##        replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA), 
-    ##            function(f) {paste0("/", f)})))
-    ##}
+    if (reaction == "RHEA:36235") { ## lpao_to_pao
+       .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO,
+           pattern = "/0:0",
+           replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CoA),
+               function(f) {paste0("/", f)})))
+    }
 
     if (reaction == "RHEA:15177") { ## sn1lpc_to_fa
         .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPC), 
