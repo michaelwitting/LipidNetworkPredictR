@@ -193,11 +193,12 @@ jobs:
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = TRUE, upgrade = TRUE, force = TRUE)
         shell: Rscript {0}
 
-      - name: Install BiocGenerics
+      - name: Install BiocGenerics and BiocStyle
         if:  env.has_RUnit == 'true'
         run: |
           ## Install BiocGenerics
           BiocManager::install("BiocGenerics")
+          BiocManager::install("BiocStyle")
         shell: Rscript {0}
 
       - name: Install covr
