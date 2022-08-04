@@ -143,7 +143,7 @@ jobs:
           ## Edit below if you have any Windows system dependencies
         shell: Rscript {0}
 
-      - name: Install BiocManager
+      - name: Install BiocManager and BiocStyle
         run: |
           message(paste('****', Sys.time(), 'installing BiocManager ****'))
           remotes::install_cran("BiocManager")
@@ -190,15 +190,15 @@ jobs:
           ## This pass does not use AnVIL and will thus update any packages
           ## that have seen been updated in Bioconductor
           message(paste('****', Sys.time(), 'pass number 2 at installing dependencies: any remaining dependencies ****'))
+          BiocManager::install("BiocStyle")
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = TRUE, upgrade = TRUE, force = TRUE)
         shell: Rscript {0}
 
-      - name: Install BiocGenerics and BiocStyle
+      - name: Install BiocGenerics
         if:  env.has_RUnit == 'true'
         run: |
           ## Install BiocGenerics
           BiocManager::install("BiocGenerics")
-          BiocManager::install("BiocStyle")
         shell: Rscript {0}
 
       - name: Install covr
