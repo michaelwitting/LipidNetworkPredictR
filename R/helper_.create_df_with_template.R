@@ -129,7 +129,7 @@
             pattern = "M_c17isogluside", replacement = df_reaction[["GLCCER"]])
     }
     
-    if (reaction == "cer_to_sm") { ## 
+    if (reaction == "RHEA:18765") { ## cer_to_sm
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_c17isocrm", replacement = df_reaction[["CER"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -228,7 +228,7 @@
             pattern = "M_c17isocrm", replacement = df_reaction[["CER"]])
     }
     
-    if (reaction == "dhcer_to_dhsm") { ## 
+    if (reaction == "RHEA:44620") { ## dhcer_to_dhsm
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_c17isodhcrm", replacement = df_reaction[["DHCER"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 

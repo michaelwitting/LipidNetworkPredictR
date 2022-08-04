@@ -128,7 +128,7 @@
     if (reaction == "RHEA:12088") ## cer_to_glccer
         cols <- c("CER")
     
-    if (reaction == "cer_to_sm") ## 
+    if (reaction == "RHEA:18765") ## cer_to_sm
         cols <- c("CER")
     
     if (reaction == "coa_to_acdhap")
@@ -167,7 +167,7 @@
     if (reaction == "dhcer_to_cer")
         cols <- c("DHCER")
     
-    if (reaction == "dhcer_to_dhsm") ## 
+    if (reaction == "RHEA:44620") ## dhcer_to_dhsm
         cols <- c("DHCER")
     
     if (reaction == "RHEA:19253") ## dhsm_to_dhcer

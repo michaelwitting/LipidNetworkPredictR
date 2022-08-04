@@ -75,7 +75,7 @@
     if (reaction == "RHEA:12088") ## cer_to_glccer
         l <- list(GLCCER = unique(df_reaction$GLCCER))
     
-    if (reaction == "cer_to_sm") ## 
+    if (reaction == "RHEA:18765") ## cer_to_sm
         l <- list(SM = unique(df_reaction$SM))
     
     if (reaction == "coa_to_acdhap")
@@ -114,7 +114,7 @@
     if (reaction == "dhcer_to_cer")
         l <- list(CER = unique(df_reaction$CER))
     
-    if (reaction == "dhcer_to_dhsm") ##
+    if (reaction == "RHEA:44620") ## dhcer_to_dhsm
         l <- list(DHSM = unique(df_reaction$DHSM))
     
     if (reaction == "RHEA:19253") ## dhsm_to_dhcer

@@ -91,7 +91,7 @@
             pattern = "Cer", replacement = "GlcCer")
     }
             
-    if (reaction == "cer_to_sm") { ## 
+    if (reaction == "RHEA:18765") { ## cer_to_sm
         .s$SM <- stringi::stri_replace_all_fixed(str = .s$CER, 
             pattern = "Cer", replacement = "SM")
     }
@@ -176,7 +176,7 @@
             replacement = "Cer(d16:1(4E)(3OH,4OH)(15Me)/")
     }
             
-    if (reaction == "dhcer_to_dhsm") { ## 
+    if (reaction == "RHEA:44620") { ## dhcer_to_dhsm
         .s$DHSM <- stringi::stri_replace_all_fixed(str = .s$DHCER, 
             pattern = "Cer", replacement = "SM")
     }

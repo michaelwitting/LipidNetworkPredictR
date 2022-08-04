@@ -96,7 +96,7 @@
         if (reaction == "RHEA:12088") ## cer_to_glccer
             .formula <- "M_udpg + M_c17isocrm <=> M_h + M_udp + M_c17isogluside"
         
-        if (reaction == "cer_to_sm") ## 
+        if (reaction == "RHEA:18765") ## cer_to_sm
             .formula <- "M_pchol + M_c17isocrm <=> M_12dag + M_c17isosphmyln"
         
         if (reaction == "coa_to_acdhap")
@@ -135,7 +135,7 @@
         if (reaction == "dhcer_to_cer")
             .formula <- "M_h + M_nadh + M_o2 + M_c17isodhcrm <=> 2 M_h2o + M_nad + M_c17isocrm"
         
-        if (reaction == "dhcer_to_dhsm") ## 
+        if (reaction == "RHEA:44620") ## dhcer_to_dhsm
             .formula <- "M_pchol + M_c17isodhcrm <=> M_12dag + M_c17isodhsphmyln"
         
         if (reaction == "RHEA:19253") ## dhsm_to_dhcer

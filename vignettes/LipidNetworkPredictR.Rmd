@@ -1910,7 +1910,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin synthase",
     reaction_formula = "M_pchol + M_c17isodhcrm <=> M_12dag + M_c17isodhsphmyln",
-    reaction_RHEA = "",
+    reaction_RHEA = "RHEA:44620",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
@@ -1918,7 +1918,7 @@ template <- list(reaction_name = "Dihydrosphingomyelin synthase",
 
 ```{r dhcer_to_dhsm, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DHCER = DHCER),
-    template = template, reaction = "dhcer_to_dhsm")
+    template = template, reaction = "RHEA:44620")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1998,7 +1998,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin synthase",
     reaction_formula = "M_pchol + M_c17isocrm <=> M_12dag + M_c17isosphmyln",
-    reaction_RHEA = "",
+    reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
@@ -2006,7 +2006,7 @@ template <- list(reaction_name = "Sphingomyelin synthase",
 
 ```{r cer_to_sm, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CER = CER),
-    template = template, reaction = "cer_to_sm")
+    template = template, reaction = "RHEA:18765")
 
 results[[2]][1:5, "reaction_formula"]
 

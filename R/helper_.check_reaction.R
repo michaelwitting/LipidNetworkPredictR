@@ -33,7 +33,7 @@
         "RHEA:11580", ## cdpdg_to_pi
         "RHEA:17929", ## cer_to_c1p
         "RHEA:12088", ## cer_to_glccer
-        "cer_to_sm", ## 
+        "RHEA:18765", ## cer_to_sm
         "coa_to_acdhap", 
         "RHEA:52716", ## coa_to_fatoh
         "RHEA:15325", ## coa_to_lpa
@@ -46,7 +46,7 @@
         "RHEA:36179", ## dgo_to_pco
         "RHEA:36187", ## dgo_to_peo
         "dhcer_to_cer",
-        "dhcer_to_dhsm", ## 
+        "RHEA:44620", ## dhcer_to_dhsm
         "RHEA:19253", ## dhsm_to_dhcer
         "RHEA:15421", ## fa_to_coa
         "RHEA:45420", ## lnape_to_gpnae

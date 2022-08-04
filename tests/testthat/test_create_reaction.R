@@ -62,7 +62,7 @@ test_that(".create_reaction works", {
     ## cer_to_sm
     cer <- "Cer(d16:0(3OH,4OH)(15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(CER = cer), 
-        template = NULL, reaction =  "cer_to_sm")
+        template = NULL, reaction =  "RHEA:18765")
     expect_equal(reaction_l[[1]]$SM, "SM(d16:0(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "PC + Cer(d16:0(3OH,4OH)(15Me)/18:0) <=> DG + SM(d16:0(3OH,4OH)(15Me)/18:0)")
@@ -167,7 +167,7 @@ test_that(".create_reaction works", {
     ## dhcer_to_dhsm
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
     reaction_l <- .create_reaction(substrates = list(DHCER = dhcer),
-        template = NULL, reaction =  "dhcer_to_dhsm")
+        template = NULL, reaction =  "RHEA:44620")
     expect_equal(reaction_l[[1]]$DHSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "PC + Cer(d16:0(3OH,4OH)(15Me)/12:0) <=> DG + SM(d16:0(3OH,4OH)(15Me)/12:0)")
