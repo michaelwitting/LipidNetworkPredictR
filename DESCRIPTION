@@ -5,8 +5,10 @@ Authors@R: c(person(given = "Michael", family = "Witting",
 		email = "michael.witting@helmholtz-muenchen.de", role = c("aut", "cre")),
 	person(given = "Thomas", family = "Naake",
 		email = "thomasnaake@googlemail.com", role = "ctb"))
-Description: The packages uses WormJam related lipid reactions and predicts possible lipids. 
-	Users need to supply a reaction order list of lipid reactions to build the networks.
+Description: The packages uses WormJam related lipid reactions and predicts 
+    possible lipids. The package will use pre-defined reaction templates to
+	build the lipid reaction network. Users need to supply a reaction order 
+	list of lipid reactions to build the network.
 Depends: 
 	methods (>= 4.1.2),
 	R (>= 4.1.2),
@@ -25,4 +27,5 @@ License: GPL-2
 LazyData: true
 Encoding: UTF-8
 VignetteBuilder: knitr
+biocViews: Metabolomics, Metabolomics, Network
 RoxygenNote: 7.2.0
