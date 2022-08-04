@@ -95,8 +95,9 @@ jobs:
 
       - name: Query dependencies
         run: |
-          install.packages(c("remotes", "statmod"))
+          install.packages(c("remotes", "statmod", "devtools"))
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          devtools::install_github("michaelwitting/lipidomicsUtils")  
         shell: Rscript {0}
 
       - name: Restore R package cache
