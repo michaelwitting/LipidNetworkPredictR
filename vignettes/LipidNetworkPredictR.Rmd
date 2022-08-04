@@ -450,7 +450,6 @@ DG are degraded by the activity of different lipases yielding mono
 acylglycerols. In the case of this reaction the fatty acid at sn1 position is 
 removed yieling an sn2-MG. sn2-MG can be converted to sn1-MG, which in turn 
 can be re-acylated at a later stage.
->>>>>>> e2d252c5510eae27541a4c7ff5503dd73fc86644
 
 ```{r, message=FALSE, warning=FALSE}
 # template for reaction --------------------------------------------------------
@@ -683,7 +682,6 @@ droplets. Since TGs harbor three acyl chains their combinatorial spaces is large
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "diacylglycerol acyl transferase",
                  reaction_formula = "M_fataccoa + M_12dag <=> M_coa + M_tag",
-                 reaction_RHEA = "",
                  reaction_RHEA = "RHEA:10868",
                  reaction_isReversible = "FALSE",
                  reaction_geneAssociation = "WBGene00010408",
@@ -720,7 +718,7 @@ can produced.
 ```{r tg_to_dg_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Triacylglycerol acylhydrolase",
-                 reaction_formula = " M_h2o + M_tag <=> M_h + M_fatacid + M_12dag",
+                 reaction_formula = "M_h2o + M_tag <=> M_h + M_fatacid + M_12dag",
                  reaction_RHEA = "",
                  reaction_isReversible = "FALSE",
                  reaction_geneAssociation = "WBGene00015484 or WBGene00016704",
@@ -1502,7 +1500,9 @@ template <- list(reaction_name = "Glycerone-phosphate O-acyltransferase",
 ```{r coa_to_acdhap, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CoA = CoA_GPGL),
                              template = template,
-                             reaction = "coa_to_acdhap")
+                             reaction = "coa_to_acdhap",
+                             constraints = c("16:0)|18:0)|20:0)"),
+                             negate = c(FALSE))
 
 results[[2]][1:10, "reaction_formula"]
 
