@@ -103,8 +103,8 @@
         stop("'reaction' has to be of length 1")
     
     ## convert to data.frame if substrates is a list
-    if (is.list(substrates))
-        substrates <- as.data.frame(substrates)
+    if (is.data.frame(substrates))
+        substrates <- as.list(substrates)
         
     
     if (reaction == "RHEA:36171") ## acdhap_to_alkyldhap
@@ -329,7 +329,7 @@
     if (reaction == "tg_to_dg")
         cols <- c("TG")
     
-    if (!all(cols %in% colnames(substrates)))
+    if (!all(cols %in% names(substrates)))
         stop(paste("columns", paste(sprintf("%s", cols), collapse = ", "), 
             "not in 'colnames(substrates)'"))
     
