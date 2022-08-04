@@ -683,6 +683,8 @@
         pattern = "M_coa ", replacement = "CoA ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_coa$", replacement = "CoA")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_coa_c$", replacement = "CoA_c")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_cmp ", replacement = "CMP ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
