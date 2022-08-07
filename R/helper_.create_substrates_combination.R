@@ -38,8 +38,8 @@
     ## that it can be used by grep
     if (length(constraints) != length(substrates))
         stop("'length(constraints)' has to be the same as 'length(substrates)'")
-    constraints <- gsub(x = constraints, pattern = "[(]", replacement = "[(]")
-    constraints <- gsub(x = constraints, pattern = "[)]", replacement = "[)]")
+    #constraints <- gsub(x = constraints, pattern = "[(]", replacement = "[(]")
+    #constraints <- gsub(x = constraints, pattern = "[)]", replacement = "[)]")
     
     ## check if negate has correct length
     if (length(negate) != length(substrates)) 
