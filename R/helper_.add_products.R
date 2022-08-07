@@ -550,7 +550,7 @@
 
     if (reaction == "sphinga_to_dhcer") {
         .s$DHCER <- stringi::stri_replace_all_regex(str = .s$CoA, 
-            pattern = "CoA\\(", replacement = "Cer(d16:0(3OH,4OH)(15Me)/")
+            pattern = "CoA\\(", replacement = "Cer(16:0(3OH,4OH,15Me)/")
     }
 
     if (reaction == "tg_to_dg") {
