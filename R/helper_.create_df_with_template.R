@@ -405,9 +405,9 @@
     
     if (reaction == "sn2mg_to_sn1mg") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_mag", replacement = df_reaction[["sn2MG"]])
+            pattern = "M_2-MG", replacement = df_reaction[["sn2MG"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_1magol", replacement = df_reaction[["sn1MG"]])
+            pattern = "M_1-MG", replacement = df_reaction[["sn1MG"]])
     }
     
     if (reaction == "nae_to_fa") {
@@ -887,20 +887,10 @@
     ## split the df$reaction_formula into substrates and products 
     .formula_tmp <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = ">|<", replacement = "")
-    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = "=")
+    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = " = ")
     .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
     .formula_product <- unlist(lapply(.formula_tmp, "[", 2))
-    
-    ## remove the trailing spaces for substrates and products
-    #.formula_substrate <- stringi::stri_replace_all_regex(str = .formula_substrate, 
-    #    pattern = "[+]", replacement = ",")
-    .formula_substrate <- stringi::stri_replace_all_fixed(str = .formula_substrate, 
-        pattern = " ", replacement = "")
-    #.formula_product <- stringi::stri_replace_all_regex(str = .formula_product, 
-    #    pattern = "[+]", replacement = ",")
-    .formula_product <- stringi::stri_replace_all_fixed(str = .formula_product, 
-        pattern = " ", replacement = "")
-    
+
     ## write the substrates and products to the df
     df$reaction_substrate <- .formula_substrate
     df$reaction_product <- .formula_product

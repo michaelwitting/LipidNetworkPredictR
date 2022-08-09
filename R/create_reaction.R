@@ -238,8 +238,8 @@ create_reaction_adjacency_matrix <- function(reaction_l) {
     
     ## create a matrix with rownames/colnames for all the substrates and 
     ## products
-    substrates_s <- strsplit(substrates, split = "[+]")
-    products_s <- strsplit(products, split = "[+]")
+    substrates_s <- strsplit(substrates, split = " [+] ")
+    products_s <- strsplit(products, split = " [+] ")
     substrates_products_names <- c(unlist(substrates_s), unlist(products_s)) |>
         unique() |> 
         sort()

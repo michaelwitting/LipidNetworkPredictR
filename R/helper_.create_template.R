@@ -292,7 +292,7 @@
             .formula <- "M_ATP + M_1-MG <=> M_H+ + M_ADP + M_LPA"
         
         if (reaction == "sn2mg_to_sn1mg")
-            .formula <- "M_mag <=> M_1magol"
+            .formula <- "M_2-MG <=> M_1-MG"
         
         if (reaction == "nae_to_fa")
             .formula <- "M_H2O + M_NAE <=> M_Ethanolamine + M_H+ + M_FA"
