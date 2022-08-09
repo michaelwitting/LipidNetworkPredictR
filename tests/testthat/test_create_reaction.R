@@ -936,7 +936,7 @@ test_that("create_reactions works.", {
     
     ## create data.frame with reactions and reaction order
     reactions <- rbind(
-        c(1, "RHEA:15421", "M_atp + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
+        c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
         c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
         c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_CoA + M_PA", FALSE),
         c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE))
@@ -962,9 +962,9 @@ test_that("create_reactions works.", {
             "reaction_substrate", "reaction_product"))
     expect_equal(nrow(reactions_l[[1]][[2]]), 3)
     expect_equal(reactions_l[[1]][[2]]$reaction_formula[1:3],
-        c("ATP + CoA + FA(16:0) <=> PPi + AMP + CoA(16:0)",
-            "ATP + CoA + FA(12:0) <=> PPi + AMP + CoA(12:0)",
-            "ATP + CoA + FA(14:0) <=> PPi + AMP + CoA(14:0)"))
+        c("ATP + CoA + FA(16:0) = PPi + AMP + CoA(16:0)",
+            "ATP + CoA + FA(12:0) = PPi + AMP + CoA(12:0)",
+            "ATP + CoA + FA(14:0) = PPi + AMP + CoA(14:0)"))
     expect_equal(reactions_l[[1]][[2]]$reaction_isReversible[1:3], c("", "", ""))
     expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation[1:3], 
         c("", "", ""))
@@ -984,9 +984,9 @@ test_that("create_reactions works.", {
             "reaction_substrate", "reaction_product"))
     expect_equal(nrow(reactions_l[[2]][[2]]), 3)
     expect_equal(reactions_l[[2]][[2]]$reaction_formula[1:3],
-        c("Glycerol-3-P + CoA(16:0) <=> CoA + PA(16:0/0:0)",
-            "Glycerol-3-P + CoA(12:0) <=> CoA + PA(12:0/0:0)",
-            "Glycerol-3-P + CoA(14:0) <=> CoA + PA(14:0/0:0)"))
+        c("Glycerol-3-P + CoA(16:0) = CoA + PA(16:0/0:0)",
+            "Glycerol-3-P + CoA(12:0) = CoA + PA(12:0/0:0)",
+            "Glycerol-3-P + CoA(14:0) = CoA + PA(14:0/0:0)"))
     expect_equal(reactions_l[[2]][[2]]$reaction_isReversible[1:3], 
         c("", "", ""))
     expect_equal(reactions_l[[2]][[2]]$reaction_geneAssociation[1:3], 
@@ -996,7 +996,7 @@ test_that("create_reactions works.", {
         c("Glycerol-3-P+CoA(16:0)", "Glycerol-3-P+CoA(12:0)",
             "Glycerol-3-P+CoA(14:0)"))
     expect_equal(reactions_l[[2]][[2]]$reaction_product[1:3],
-        c("PA(16:0/0:0)+CoA", "PA(12:0/0:0)+CoA", "PA(14:0/0:0)+CoA"))
+        c("CoA+PA(16:0/0:0)", "CoA+PA(12:0/0:0)", "CoA+PA(14:0/0:0)"))
     
     ## third entry
     expect_equal(names(reactions_l[[3]][[1]]), "PA")
@@ -1010,18 +1010,18 @@ test_that("create_reactions works.", {
             "reaction_substrate", "reaction_product"))
     expect_equal(nrow(reactions_l[[3]][[2]]), 9)
     expect_equal(reactions_l[[3]][[2]]$reaction_formula[1:3],
-        c("CoA(16:0) + PA(16:0/0:0) <=> CoA + PA(16:0/16:0)",
-            "CoA(16:0) + PA(12:0/0:0) <=> CoA + PA(12:0/16:0)",
-            "CoA(16:0) + PA(14:0/0:0) <=> CoA + PA(14:0/16:0)"))
+        c("PA(16:0/0:0) + CoA(16:0) = CoA + PA(16:0/16:0)",
+            "PA(12:0/0:0) + CoA(16:0) = CoA + PA(12:0/16:0)",
+            "PA(14:0/0:0) + CoA(16:0) = CoA + PA(14:0/16:0)"))
     expect_equal(reactions_l[[3]][[2]]$reaction_isReversible[1:3], c("", "", ""))
     expect_equal(reactions_l[[3]][[2]]$reaction_geneAssociation[1:3], 
                  c("", "", ""))
     expect_equal(reactions_l[[3]][[2]]$reaction_pathway[1:3], c("", "", ""))
     expect_equal(reactions_l[[3]][[2]]$reaction_substrate[1:3],
-        c("CoA(16:0)+PA(16:0/0:0)", "CoA(16:0)+PA(12:0/0:0)",
-            "CoA(16:0)+PA(14:0/0:0)"))
+        c("PA(16:0/0:0)+CoA(16:0)", "PA(12:0/0:0)+CoA(16:0)",
+            "PA(14:0/0:0)+CoA(16:0)"))
     expect_equal(reactions_l[[3]][[2]]$reaction_product[1:3],
-        c("PA(16:0/16:0)+Coa", "PA(12:0/16:0)+CoA", "PA(14:0/16:0)+CoA"))
+        c("CoA+PA(16:0/16:0)", "CoA+PA(12:0/16:0)", "CoA+PA(14:0/16:0)"))
     
     ## fourth entry
     expect_equal(names(reactions_l[[4]][[1]]), "DG")
