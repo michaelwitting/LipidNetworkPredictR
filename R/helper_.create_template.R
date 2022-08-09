@@ -91,22 +91,28 @@
             .formula <- "M_Inositol + M_cdpdag <=> M_H+ + M_CMP + M_pail"
         
         if (reaction == "RHEA:17929") ## cer_to_c1p
-            .formula <- "M_atp + M_c17isocrm <=> M_H+ + M_adp + M_c17isocrmp"
+            .formula <- "M_ATP + M_c17isocrm <=> M_H+ + M_ADP + M_c17isocrmp"
         
         if (reaction == "RHEA:12088") ## cer_to_glccer
-            .formula <- "M_udpg + M_c17isocrm <=> M_H+ + M_udp + M_c17isogluside"
+            .formula <- "M_UDP-Glucose + M_c17isocrm <=> M_H+ + M_UDP + M_c17isogluside"
         
         if (reaction == "RHEA:18765") ## cer_to_sm
-            .formula <- "M_pchol + M_c17isocrm <=> M_12dag + M_c17isosphmyln"
+            .formula <- "M_PC + M_c17isocrm <=> M_1,2-DG + M_c17isosphmyln"
         
         if (reaction == "coa_to_acdhap")
-            .formula <- "M_dhap + M_fataccoa <=> M_CoA + M_adhap"
+            .formula <- "M_Dihydroxyacetone-P + M_AcylCoA <=> M_CoA + M_adhap"
 
         if (reaction == "RHEA:52716") ## coa_to_fatoh
-            .formula <- "M_fataccoa + 2 M_NADPH + 2 M_H+ <=> M_alkylR1oh + 2 M_NADP + M_CoA"
+            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_alkylR1oh + 2 M_NADP + M_CoA"
         
         ## coa_to_lpa
         if (reaction == "RHEA:15325") 
+            .formula <- "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA"
+        if (reaction == "RHEA:15326") 
+            .formula <- "M_Glycerol-3-P + M_AcylCoA => M_CoA + M_LPA"
+        if (reaction == "RHEA:15327") 
+            .formula <- "M_Glycerol-3-P + M_AcylCoA <= M_CoA + M_LPA"
+        if (reaction == "RHEA:15328")
             .formula <- "M_Glycerol-3-P + M_AcylCoA <=> M_CoA + M_LPA"
 
         ## dg_to_sn1mg
@@ -151,11 +157,11 @@
         
         ## dg_to_pe
         if (reaction == "RHEA:32943") 
-            .formula <- "M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE"
+            .formula <- "M_CDP-Ethanolamine + M_1,2-DG = M_H+ + M_CMP + M_PE"
         if (reaction == "RHEA:32944") 
-            .formula <- "M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE"
+            .formula <- "M_CDP-Ethanolamine + M_1,2-DG => M_H+ + M_CMP + M_PE"
         if (reaction == "RHEA:32945") 
-            .formula <- "M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE"
+            .formula <- "M_CDP-Ethanolamine + M_1,2-DG <= M_H+ + M_CMP + M_PE"
         if (reaction == "RHEA:32946") 
             .formula <- "M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE"
         
@@ -171,19 +177,19 @@
         
         
         if (reaction == "RHEA:36179") ## dgo_to_pco
-            .formula <- "M_cdpchol + M_akac2g <=> M_H+ + M_CMP + M_akac2gchol"
+            .formula <- "M_CDP-Choline + M_akac2g <=> M_H+ + M_CMP + M_akac2gchol"
         
         if (reaction == "RHEA:36187") ## dgo_to_peo
-            .formula <- "M_cdpea + M_akac2g <=> M_H+ + M_CMP + M_akac2gpe"
+            .formula <- "M_CDP-Ethanolamine + M_akac2g <=> M_H+ + M_CMP + M_akac2gpe"
         
         if (reaction == "dhcer_to_cer")
-            .formula <- "M_H+ + M_NADH + M_O2 + M_c17isodhcrm <=> 2 M_H2O + M_nad + M_c17isocrm"
+            .formula <- "M_H+ + M_NADH + M_O2 + M_c17isodhcrm <=> 2 M_H2O + M_NAD + M_c17isocrm"
         
         if (reaction == "RHEA:44620") ## dhcer_to_dhsm
-            .formula <- "M_pchol + M_c17isodhcrm <=> M_12dag + M_c17isodhsphmyln"
+            .formula <- "M_PC + M_c17isodhcrm <=> M_1,2-DG + M_c17isodhsphmyln"
         
         if (reaction == "RHEA:19253") ## dhsm_to_dhcer
-            .formula <- "M_H2O + M_c17isodhsphmyln <=> M_cholp + M_H+ + M_c17isodhcrm"
+            .formula <- "M_H2O + M_c17isodhsphmyln <=> M_P-Choline + M_H+ + M_c17isodhcrm"
         
         ## fa_to_coa
         if (reaction == "RHEA:15421") 
@@ -196,7 +202,7 @@
             .formula <- "M_ATP + M_CoA + M_FA <=> M_PPi + M_AMP + M_AcylCoA"
         
         if (reaction == "RHEA:45420") ## lnape_to_gpnae
-            .formula <- "M_lnape + M_H2O <=> M_gpnae + M_fatacid"
+            .formula <- "M_lnape + M_H2O <=> M_gpnae + M_FA"
         
         ## lpa_to_pa
         if (reaction == "RHEA:19709")
@@ -209,7 +215,7 @@
             .formula <- "M_LPA + M_AcylCoA <=> M_CoA + M_PA"
         
         if (reaction == "RHEA:36235") ## lpao_to_pao
-             .formula <- "M_alpa_pl + M_fataccoa <=> M_PA + M_CoA"
+             .formula <- "M_LPAO + M_AcylCoA <=> M_PAO + M_CoA"
         
         if (reaction == "RHEA:15177") ## sn1lpc_to_fa
             .formula <- "M_H2O + M_ag3pc <=> M_g3pc + M_H+ + M_FA"
@@ -218,22 +224,22 @@
             .formula <- "M_H2O + M_2agpc <=> M_g3pc + M_H+ + M_FA"
         
         if (reaction == "RHEA:12937") ## sn1lpc_to_pc
-            .formula <- "M_ag3pc + M_fataccoa <=> M_pchol + M_CoA"
+            .formula <- "M_ag3pc + M_AcylCoA <=> M_PC + M_CoA"
         
         if (reaction == "RHEA:32967") ## sn1lpe_to_fa
             .formula <- "M_H2O + M_ag3pe <=> M_H+ + M_FA + M_g3pe"
         
         if (reaction == "sn2lpe_to_fa")
-            .formula <- "M_H2O + M_2agpe <=> M_H+ + M_fatacid + M_g3pe"
+            .formula <- "M_H2O + M_2agpe <=> M_H+ + M_FA + M_g3pe"
         
         if (reaction == "RHEA:32995") ## sn1lpe_to_pe
-            .formula <- "M_fataccoa + M_acg3pe <=> M_CoA + M_PE"
+            .formula <- "M_AcylCoA + M_acg3pe <=> M_CoA + M_PE"
         
         if (reaction == "lpeo_to_peo")
-            .formula <- "M_fataccoa + M_ak2lgpe <=> M_CoA + M_akac2gpe"
+            .formula <- "M_AcylCoA + M_ak2lgpe <=> M_CoA + M_akac2gpe"
         
         if (reaction == "lpep_to_pep")
-            .formula <- "M_fataccoa + M_alken2gpe <=> M_CoA + M_alkenac2gpe"
+            .formula <- "M_AcylCoA + M_alken2gpe <=> M_CoA + M_alkenac2gpe"
         
         ## sn1mg_to_dg
         if (reaction == "RHEA:38463")
@@ -289,22 +295,22 @@
             .formula <- "M_mag <=> M_1magol"
         
         if (reaction == "nae_to_fa")
-            .formula <- "M_H2O + M_nae <=> M_Ethanolamine + M_H+ + M_fatacid"
+            .formula <- "M_H2O + M_NAE <=> M_Ethanolamine + M_H+ + M_FA"
         
         if (reaction == "nape_to_lnape")
-            .formula <- "M_nape + M_H2O <=> M_lnape + M_fatacid"
+            .formula <- "M_NAPE + M_H2O <=> M_lnape + M_FA"
         
         if (reaction == "nape_to_nae")
-            .formula <- "M_nape + M_H2O <=> M_nae + M_PA"
+            .formula <- "M_NAPE + M_H2O <=> M_NAE + M_PA"
         
         if (reaction == "nape_to_pnae")
-            .formula <- "M_nape + M_H2O <=> M_pnae + M_12dag"
+            .formula <- "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"
         
         if (reaction == "napeo_to_nae")
-            .formula <- "M_akac2nape + M_H2O <=> M_nae + M_akac2gp"
+            .formula <- "M_akac2nape + M_H2O <=> M_NAE + M_akac2gp"
         
         if (reaction == "pa_to_cdpdg")
-            .formula <- "M_ctp + M_PA <=> M_ppi + M_cdpdag"
+            .formula <- "M_CTP + M_PA <=> M_PPi + M_CDP-DG"
         
         ## pa_to_dg
         if (reaction == "RHEA:27429")
@@ -320,16 +326,16 @@
             .formula <- "M_H2O + M_akac2gp <=> M_Pi + M_akac2g"
         
         if (reaction == "RHEA:10604") ## pc_to_dg
-            .formula <- "M_H2O + M_pchol <=> M_cholp + M_12dag"
+            .formula <- "M_H2O + M_PC <=> M_P-Choline + M_1,2-DG"
         
         if (reaction == "RHEA:15801") ## pc_to_sn1lpc
-            .formula <- "M_H2O + M_pchol <=> M_ag3pc + M_fatacid"
+            .formula <- "M_H2O + M_PC <=> M_ag3pc + M_FA"
         
         if (reaction == "RHEA:18689") ## pc_to_sn2lpc
-            .formula <- "M_H2O + M_pchol <=> M_2agpc + M_fatacid"
+            .formula <- "M_H2O + M_PC <=> M_2agpc + M_FA"
         
         if (reaction == "RHEA:14445") ## pc_to_pa
-            .formula <- "M_H2O + M_pchol <=> M_Choline + M_PA"
+            .formula <- "M_H2O + M_PC <=> M_Choline + M_PA"
         
         ## pc_to_ps
         if (reaction == "RHEA:45088") ## 
@@ -342,22 +348,22 @@
             .formula <- "M_L-Serine + M_PC <=> M_Choline + M_PS"
         
         if (reaction == "pco_to_lpco")
-            .formula <- "M_H2O + M_akac2gchol <=> M_H+ + M_ak2lgchol + M_fatacid"
+            .formula <- "M_H2O + M_akac2gchol <=> M_H+ + M_ak2lgchol + M_FA"
         
         if (reaction == "pe_to_dg")
-            .formula <- "M_H2O + M_PE <=> M_Ethanolaminemp + M_12dag"
+            .formula <- "M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG"
         
         if (reaction == "pe_to_sn1lpe")
-            .formula <- "M_H2O + M_PE <=> M_H+ + M_fatacid + M_ag3pe"
+            .formula <- "M_H2O + M_PE <=> M_H+ + M_FA + M_ag3pe"
         
         if (reaction == "RHEA:44408") ## pe_to_sn2lpe
-            .formula <- "M_H2O + M_PE <=> M_H+ + M_fatacid + M_2agpe"
+            .formula <- "M_H2O + M_PE <=> M_H+ + M_FA + M_2agpe"
         
         if (reaction == "pe_to_nape_sn1")
-            .formula <- "M_PE + M_PC <=> M_nape + M_2agpc"
+            .formula <- "M_PE + M_PC <=> M_NAPE + M_2agpc"
         
         if (reaction == "pe_to_nape_sn2")
-            .formula <- "M_PE + M_PC <=> M_nape + M_ag3pc"
+            .formula <- "M_PE + M_PC <=> M_NAPE + M_ag3pc"
         
         if (reaction == "pe_to_pa")
             .formula <- "M_H2O + M_PE <=> M_Ethanolamine + M_H+ + M_PA"
@@ -373,7 +379,7 @@
             .formula <- "M_L-Serine + M_PE <=> M_Ethanolamine + M_PS"
         
         if (reaction == "peo_to_lpeo")
-            .formula <- "M_H2O + M_akac2gpe <=> M_H+ + M_ak2lgpe + M_fatacid"
+            .formula <- "M_H2O + M_akac2gpe <=> M_H+ + M_ak2lgpe + M_FA"
         
         if (reaction == "peo_to_napeo_sn1")
             .formula <- "M_akac2gpe + M_PC <=> M_akac2nape + M_2agpc"
@@ -385,7 +391,7 @@
             .formula <- "M_akac2gpe + M_NADPH + M_H+ + M_O2 <=> M_alkenac2gpe + M_NADP + 2 M_H2O"
         
         if (reaction == "pep_to_lpep")
-            .formula <- "M_H2O + M_alkenac2gpe <=> M_H+ + M_alken2gpe + M_fatacid"
+            .formula <- "M_H2O + M_alkenac2gpe <=> M_H+ + M_alken2gpe + M_FA"
         
         if (reaction == "pep_to_napep_sn1")
             .formula <- "M_alkenac2gpe + M_PC <=> M_alkenac2nape + M_2agpc"
@@ -401,27 +407,27 @@
         
         ## ps_to_pe
         if (reaction == "RHEA:20828")
-            .formula <- "M_H+ + M_PS <=> M_CO2 + M_PE"
+            .formula <- "M_H+ + M_PS = M_CO2 + M_PE"
         if (reaction == "RHEA:20829")
-            .formula <- "M_H+ + M_PS <=> M_CO2 + M_PE"
+            .formula <- "M_H+ + M_PS => M_CO2 + M_PE"
         if (reaction == "RHEA:20830")
-            .formula <- "M_H+ + M_PS <=> M_CO2 + M_PE"
+            .formula <- "M_H+ + M_PS <= M_CO2 + M_PE"
         if (reaction == "RHEA:20831")
             .formula <- "M_H+ + M_PS <=> M_CO2 + M_PE"
         
         if (reaction == "sm_to_cer")
-            .formula <- "M_H2O + M_c17isosphmyln <=> M_cholp + M_H+ + M_c17isocrm"
+            .formula <- "M_H2O + M_c17isosphmyln <=> M_P-Choline + M_H+ + M_c17isocrm"
         
         if (reaction == "sphinga_to_dhcer")
-            .formula <- "M_fataccoa + M_c17isosphgn <=> M_CoA + M_c17isodhcrm"
+            .formula <- "M_AcylCoA + M_c17isosphgn <=> M_CoA + M_c17isodhcrm"
         
         ## tg_to_dg
         if (reaction == "RHEA:33271")
-            .formula <- "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG"
+            .formula <- "M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG"
         if (reaction == "RHEA:33272")
-            .formula <- "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG"
+            .formula <- "M_H2O + M_TG => M_H+ + M_FA + M_1,2-DG"
         if (reaction == "RHEA:33273")
-            .formula <- "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG"
+            .formula <- "M_H2O + M_TG <= M_H+ + M_FA + M_1,2-DG"
         if (reaction == "RHEA:33274")
             .formula <- "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG"
             

@@ -304,7 +304,7 @@
         cols <- c("PE")
     
     ## pe_to_ps
-    if (reaction == "RHEA:27606")
+    if (reaction %in% c("RHEA:27606", "RHEA:27607", "RHEA:27608","RHEA:27609"))
         cols <- c("PE")
     
     if (reaction == "peo_to_lpeo")
