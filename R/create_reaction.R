@@ -32,7 +32,7 @@
 #'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
 #'     
 #' template <- list(reaction_name = "CoA biosynthesis", 
-#'     reaction_formula = "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa",
+#'     reaction_formula = "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA",
 #'     reaction_RHEA = "RHEA:15421",
 #'     reaction_isReversible = "",
 #'     reaction_geneAssociation = "",
@@ -120,10 +120,10 @@
 #' 
 #' ## create data.frame with reactions and reaction order
 #' reactions <- rbind(
-#'     c(1, "RHEA:15421", "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa", FALSE),
-#'     c(2, "RHEA:15325", "M_glyc3p + M_fataccoa <=> M_coa + M_alpa_pl", FALSE),
-#'     c(3, "RHEA:19709", "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl", FALSE),
-#'     c(4, "pa_to_dg", "M_h2o + M_pa_pl <=> M_pi + M_12dag", FALSE)
+#'     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA <=> M_PPi + M_AMP + M_AcylCoA", FALSE),
+#'     c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA <=> M_CoA + M_LPA", FALSE),
+#'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA <=> M_CoA + M_PA", FALSE),
+#'     c(4, "RHEA:27429", "M_H2O + M_PA <=> M_Pi + M_1,2-DG", FALSE)
 #' )
 #' reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
 #'     reactions = reactions[, 3], directed = reactions[, 4])
@@ -204,10 +204,10 @@ create_reactions <- function(substrates, reactions) {
 #' 
 #' ## create data.frame with reactions and reaction order
 #' reactions <- rbind(
-#'     c(1, "RHEA:15421", "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa", FALSE),
-#'     c(2, "RHEA:15325", "M_glyc3p + M_fataccoa <=> M_coa + M_alpa_pl", FALSE),
-#'     c(3, "RHEA:19709", "M_fataccoa + M_alpa_pl <=> M_coa + M_pa_pl", FALSE),
-#'     c(4, "pa_to_dg", "M_h2o + M_pa_pl <=> M_pi + M_12dag", FALSE)
+#'     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
+#'     c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
+#'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE),
+#'     c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE)
 #' )
 #' reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
 #'     reactions = reactions[, 3], directed = reactions[, 4])

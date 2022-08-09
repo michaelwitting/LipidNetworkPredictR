@@ -44,7 +44,7 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
     
 template <- list(reaction_name = "CoA biosynthesis", 
-    reaction_formula = "M_atp + M_coa + M_fatacid <=> M_ppi + M_amp + M_fataccoa",
+    reaction_formula = "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA",
     reaction_RHEA = "RHEA:15421",
     reaction_isReversible = "",
     reaction_geneAssociation = "",
