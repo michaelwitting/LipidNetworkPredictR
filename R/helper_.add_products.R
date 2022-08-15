@@ -659,9 +659,9 @@
             function(f) {paste0("FA(", f[1], ")")}))
 
         ## "sn3 loss"
-        .s$sn3Loss_dg <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn3Loss_DG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
             function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
-        .s$sn3Loss_fa <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn3Loss_FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
             function(f) {paste0("FA(", f[3], ")")}))
     }
     

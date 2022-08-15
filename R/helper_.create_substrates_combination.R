@@ -106,20 +106,23 @@
     if (is.data.frame(substrates))
         substrates <- as.list(substrates)
         
+    ## acyldhap_to_alkyldhap
+    if (reaction %in% c("RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174")) 
+        cols <- c("AcylDHAP", "FATOH")
     
-    if (reaction == "RHEA:36171") ## acdhap_to_alkyldhap
-        cols <- c("ACDHAP", "FATOH")
-    
-    if (reaction == "RHEA:36175") ## alkyldhap_to_lpao
-        cols <- c("ALKYLDHAP")
+    ## alkyldhap_to_lpao
+    if (reaction %in% c("RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178")) 
+        cols <- c("AlkylDHAP")
     
     if (reaction == "c1p_to_cer")
         cols <- c("C1P")
     
-    if (reaction == "RHEA:12593") ## cdpdg_to_pgp
+    ## cdpdg_to_pgp
+    if (reaction %in% c("RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596")) 
         cols <- c("CDPDG")
     
-    if (reaction == "RHEA:11580") ## cdpdg_to_pi
+    ## cdpdg_to_pi
+    if (reaction %in% c("RHEA:11580", "RHEA:11581", "RHEA:11582", "RHEA:11583")) 
         cols <- c("CDPDG")
     
     if (reaction == "RHEA:17929") ## cer_to_c1p
@@ -131,18 +134,25 @@
     if (reaction == "RHEA:18765") ## cer_to_sm
         cols <- c("CER")
     
-    if (reaction == "coa_to_acdhap")
-        cols <- c("CoA")
+    ## cl_to_lcl
+    if (reaction %in% c("RHEA:32935", "RHEA:32936", "RHEA:32937", "RHEA:32938"))
+        cols <- c("CL")
     
-    if (reaction == "RHEA:52716") ## coa_to_fatoh
-        cols <- c("CoA")
+    ## coa_to_acyldhap
+    if (reaction %in% c("RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660"))
+        cols <- c("AcylCoA")
+    
+    ## coa_to_fatoh
+    if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) 
+        cols <- c("AcylCoA")
     
     ## coa_to_lpa
     if (reaction %in% c("RHEA:15325", "RHEA:15326", "RHEA:15327", "RHEA:15328")) 
-        cols <- c("CoA")
+        cols <- c("AcylCoA")
     
     ## dg_to_sn1mg
-    if (reaction %in% c("RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"))
+    if (reaction %in% c("RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715",
+            "RHEA:35663", "RHEA:35664", "RHEA:35665", "RHEA:35666"))
         cols <- c("DG")
     
     ## dg_to_sn2mg
@@ -163,12 +173,14 @@
     
     ## dg_to_tg
     if (reaction %in% c("RHEA:10868", "RHEA:10869", "RHEA:10870", "RHEA:10871")) 
-        cols <- c("DG", "CoA")
+        cols <- c("DG", "AcylCoA")
     
-    if (reaction == "RHEA:36179") ## dgo_to_pco
+    ## dgo_to_pco
+    if (reaction %in% c("RHEA:36179", "RHEA:36180", "RHEA:36181", "RHEA:36182"))
         cols <- c("DGO")
     
-    if (reaction == "RHEA:36187") ## dgo_to_peo
+    ## dgo_to_peo
+    if (reaction %in% c("RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190"))
         cols <- c("DGO")
     
     if (reaction == "dhcer_to_cer")
@@ -181,50 +193,68 @@
         cols <- c("DHSM")
     
     ## fa_to_coa
-    if (reaction %in% c("RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424"))
+    if (reaction %in% c("RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424",
+            "RHEA:38883", "RHEA:38884", "RHEA:38885", "RHEA:38886"))
         cols <- c("FA")
+    
+    ## lcl_to_cl
+    if (reaction %in% c("RHEA:35839", "RHEA:35840", "RHEA:35841", "RHEA:35842")) {
+        cols <- c("LCL", "AcylCoA")
+    }
     
     if (reaction == "RHEA:45420") ## lnape_to_gpnae
         cols <- c("LNAPE")
     
     ## lpa_to_pa
     if (reaction %in% c("RHEA:19709", "RHEA:19710", "RHEA:19711", "RHEA:19712")) 
-        cols <- c("LPA", "CoA")
+        cols <- c("LPA", "AcylCoA")
     
-    if (reaction == "RHEA:36235") ## lpao_to_pao
-        cols <- c("LPAO", "CoA")
+    ## lpao_to_pao
+    if (reaction %in% c("RHEA:36235", "RHEA:36236", "RHEA:36237", "RHEA:36238")) 
+        cols <- c("LPAO", "AcylCoA")
     
-    if (reaction == "RHEA:15177") ## sn1lpc_to_fa
+    ## sn1lpc_to_fa
+    if (reaction %in% c("RHEA:15177", "RHEA:15178", "RHEA:15179", "RHEA:15180"))
         cols <- c("sn1LPC")
     
-    if (reaction == "RHEA:44696") ## sn2lpc_to_fa
+    ## sn2lpc_to_fa
+    if (reaction %in% c("RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"))
         cols <- c("sn2LPC")
     
-    if (reaction == "RHEA:12937") ## sn1lpc_to_pc
-        cols <- c("sn1LPC", "CoA")
+    ## sn1lpc_to_pc
+    if (reaction %in% c("RHEA:12937", "RHEA:12938", "RHEA:12939", "RHEA:12940")) 
+        cols <- c("sn1LPC", "AcylCoA")
     
-    if (reaction == "RHEA:32967") ## sn1lpe_to_fa
+    ## sn1lpe_to_fa
+    if (reaction %in% c("RHEA:32967", "RHEA:32968", "RHEA:32969", "RHEA:32970")) 
         cols <- c("sn1LPE")
     
     if (reaction == "sn2lpe_to_fa")
         cols <- c("sn2LPE")
     
-    if (reaction == "RHEA:32995") ## sn1lpe_to_pe
-        cols <- c("sn1LPE", "CoA")
+    ## sn1lpe_to_pe
+    if (reaction %in% c("RHEA:32995", "RHEA:32996", "RHEA:32997", "RHEA:32998"))
+        cols <- c("sn1LPE", "AcylCoA")
+    
+    ## sn1lpi_to_pi
+    if (reaction %in% c("RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198"))
+        cols <- c("sn1LPI", "AcylCoA")
     
     if (reaction == "lpeo_to_peo")
-        cols <- c("LPEO", "CoA")
+        cols <- c("LPEO", "AcylCoA")
     
     if (reaction == "lpep_to_pep")
-        cols <- c("LPEP", "CoA")
+        cols <- c("LPEP", "AcylCoA")
     
     ## sn1mg_to_dg
-    if (reaction %in% c("RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466"))
-        cols <- c("sn1MG", "CoA")
+    if (reaction %in% c("RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466",
+            "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946"))
+        cols <- c("sn1MG", "AcylCoA")
     
     ## sn2mg_to_dg
-    if (reaction %in% c("RHEA:32947", "RHEA:32948", "RHEA:32949", "RHEA:32950"))
-        cols <- c("sn2MG", "CoA")
+    if (reaction %in% c("RHEA:32947", "RHEA:32948", "RHEA:32949", "RHEA:32950",
+            "RHEA:16741", "RHEA:16742", "RHEA:16743", "RHEA:16744"))
+        cols <- c("sn2MG", "AcylCoA")
     
     ## sn1mg_to_fa
     if (reaction %in% c("RHEA:34019", "RHEA:34020", "RHEA:34021", "RHEA:34022"))
@@ -256,26 +286,32 @@
     if (reaction == "napeo_to_nae")
         cols <- c("NAPEO")
     
-    if (reaction == "pa_to_cdpdg")
+    ## pa_to_cdpdg
+    if (reaction %in% c("RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"))
         cols <- c("PA")
     
     ## pa_to_dg
     if (reaction %in% c("RHEA:27429", "RHEA:27430", "RHEA:27431", "RHEA:27432"))
         cols <- c("PA")
     
-    if (reaction == "pao_to_dgo")
+    ## pao_to_dgo
+    if (reaction %in% c("RHEA:36239", "RHEA:36240", "RHEA:36241", "RHEA:36242"))
         cols <- c("PAO")
     
-    if (reaction == "RHEA:10604") ## pc_to_dg
+    ## pc_to_dg
+    if (reaction %in% c("RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"))
         cols <- c("PC")
     
-    if (reaction == "RHEA:15801") ## pc_to_sn1lpc
+    ## pc_to_sn1lpc
+    if (reaction %in% c("RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804")) 
         cols <- c("PC")
     
-    if (reaction == "RHEA:18689") ## pc_to_sn2lpc
+    ## pc_to_sn2lpc
+    if (reaction %in% c("RHEA:18689", "RHEA:18690","RHEA:18691","RHEA:18692"))
         cols <- c("PC")
     
-    if (reaction == "RHEA:14445") ## pc_to_pa
+    ## pc_to_pa
+    if (reaction %in% c("RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"))
         cols <- c("PC")
     
     ## pc_to_ps
@@ -288,10 +324,12 @@
     if (reaction == "pe_to_dg")
         cols <- c("PE")
     
-    if (reaction == "pe_to_sn1lpe")
+    ## pe_to_sn1lpe
+    if (reaction %in% c("RHEA:44604", "RHEA:44605", "RHEA:44606", "RHEA:44607"))
         cols <- c("PE")
     
-    if (reaction == "RHEA:44408") ## pe_to_sn2lpe
+    ## pe_to_sn2lpe
+    if (reaction %in% c("RHEA:44408", "RHEA:44409", "RHEA:44410", "RHEA:44411"))
         cols <- c("PE")
     
     if (reaction == "pe_to_nape_sn1")
@@ -316,7 +354,8 @@
     if (reaction == "peo_to_napeo_sn2")
         cols <- c("PEO", "PC")
     
-    if (reaction == "peo_to_pep")
+    ## peo_to_pep
+    if (reaction %in% c("RHEA:22956", "RHEA:22957", "RHEA:22958", "RHEA:22959"))
         cols <- c("PEO")
     
     if (reaction == "pep_to_lpep")
@@ -328,11 +367,21 @@
     if (reaction == "pep_to_napep_sn2")
         cols <- c("PEP", "PC")
     
-    if (reaction == "pg_to_cl")
+    ## pg_to_cl
+    if (reaction %in% c("RHEA:32931", "RHEA:32932", "RHEA:32933", "RHEA:32934"))
         cols <- c("PG", "CDPDG")
     
-    if (reaction == "pgp_to_pg")
+    ## pgp_to_pg
+    if (reaction %in% c("RHEA:33751", "RHEA:33752", "RHEA:33753", "RHEA:33754"))
         cols <- c("PGP")
+    
+    ## pi_to_dg
+    if (reaction %in% c("RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487"))
+        cols <- "PI"
+    
+    ## pi_to_sn1lpi
+    if (reaction %in% c("RHEA:18001", "RHEA:18002", "RHEA:18003", "RHEA:18004"))
+        cols <- c("PI")
     
     ## ps_to_pe
     if (reaction %in% c("RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"))
@@ -342,10 +391,11 @@
         cols <- c("SM")
     
     if (reaction == "sphinga_to_dhcer")
-        cols <- c("CoA")
+        cols <- c("AcylCoA")
     
     ## tg_to_dg
-    if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274"))
+    if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",
+            "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"))
         cols <- c("TG")
     
     if (!all(cols %in% names(substrates)))
