@@ -4,7 +4,7 @@ Version: 0.99.0
 Authors@R: c(person(given = "Michael", family = "Witting", 
 		email = "michael.witting@helmholtz-muenchen.de", role = c("aut", "cre")),
 	person(given = "Thomas", family = "Naake",
-		email = "thomasnaake@googlemail.com", role = "ctb"))
+		email = "thomasnaake@googlemail.com", role = c("aut", "ctb")))
 Description: The packages uses WormJam related lipid reactions and predicts 
     possible lipids. The package will use pre-defined reaction templates to
 	build the lipid reaction network. Users need to supply a reaction order 
@@ -15,8 +15,7 @@ Depends:
 	stringi (>= 1.7.6),
 	utils (>= 4.1.2)	
 Imports:
-	httr (>= 1.4.2),
-	lipidomicsUtils (>= 0.1)
+	httr (>= 1.4.2)
 Suggests: 
 	dplyr (>= 1.0.8),
     knitr (>= 1.38),

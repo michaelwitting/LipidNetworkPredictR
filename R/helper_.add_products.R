@@ -44,7 +44,6 @@
 #'     reaction = "RHEA:15421")
 #'  
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex
-#' @importFrom lipidomicsUtils isolate_radyls
 .add_products <- function(substrates, reaction = "RHEA:15421") {
 
     ## make the substrates argument a little bit smaller
@@ -103,9 +102,9 @@
     
     ## cl_to_lcl
     if (reaction %in% c("RHEA:32935", "RHEA:32936", "RHEA:32937", "RHEA:32938")) {
-        .s$LCL <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CL), 
+        .s$LCL <- unlist(lapply(isolate_radyls(.s$CL), 
             function(f) paste0("CL(1'-[", f[1], "/", f[2], "],3'-[0:0/", f[4], "])")))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$CL), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$CL), 
             function(f) paste0("FA(", f[3], ")")))
     }
     
@@ -132,17 +131,17 @@
     ## dg_to_sn1mg
     if (reaction %in% c("RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715",
             "RHEA:35663", "RHEA:35664", "RHEA:35665", "RHEA:35666")) {
-        .s$sn1MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+        .s$sn1MG <- unlist(lapply(isolate_radyls(.s$DG), 
             function(f) {paste0("MG(", f[1], "/0:0/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$DG), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
     ## dg_to_sn2mg
     if (reaction %in% c("RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278")) {
-        .s$sn2MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+        .s$sn2MG <- unlist(lapply(isolate_radyls(.s$DG), 
             function(f) {paste0("MG(0:0/", f[2], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$DG), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$DG), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
 
@@ -174,7 +173,7 @@
     if (reaction %in% c("RHEA:10868", "RHEA:10869", "RHEA:10870", "RHEA:10871")) { 
         .s$TG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "/0:0", 
             replacement = paste0("/", 
-                unlist(lipidomicsUtils::isolate_radyls(.s$AcylCoA))))
+                unlist(isolate_radyls(.s$AcylCoA))))
          .s$TG <- stringi::stri_replace_all_regex(str = .s$TG, pattern = "^DG", 
             replacement = "TG")
     }
@@ -222,10 +221,10 @@
     if (reaction %in% c("RHEA:35839", "RHEA:35840", "RHEA:35841", "RHEA:35842")) {
         
         ## isolate core from LCL
-        .s$LCLs2 <- lipidomicsUtils::isolate_radyls(.s$LCL)
+        .s$LCLs2 <- isolate_radyls(.s$LCL)
         
         ## isolate core from AcylCoA
-        .s$AcylCoAs2 <- lipidomicsUtils::isolate_radyls(.s$AcylCoA)
+        .s$AcylCoAs2 <- isolate_radyls(.s$AcylCoA)
         
         ## create LC
         .s$CL <- unlist(lapply(seq_along(.s$LCLs2), 
@@ -235,16 +234,16 @@
     }
     
     if (reaction == "RHEA:45420") { ## lnape_to_gpnae
-        .s$GPNAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
+        .s$GPNAE <- unlist(lapply(isolate_radyls(.s$LNAPE), 
             function(f) {paste0("GPNAE(", f[3], ")")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$LNAPE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$LNAPE), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
     
     ## lpa_to_pa
     if (reaction %in% c("RHEA:19709", "RHEA:19710", "RHEA:19711", "RHEA:19712")) {
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$LPA, pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
     }
     
@@ -252,19 +251,19 @@
     if (reaction %in% c("RHEA:36235", "RHEA:36236", "RHEA:36237", "RHEA:36238")) { 
        .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO,
            pattern = "/0:0",
-           replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA),
+           replacement = unlist(lapply(isolate_radyls(.s$AcylCoA),
                function(f) {paste0("/", f)})))
     }
 
     ## sn1lpc_to_fa
     if (reaction %in% c("RHEA:15177", "RHEA:15178", "RHEA:15179", "RHEA:15180")) {
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPC), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn1LPC), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
 
     ## sn2lpc_to_fa
     if (reaction %in% c("RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699")) {
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2LPC), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn2LPC), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
@@ -272,20 +271,20 @@
     if (reaction %in% c("RHEA:12937", "RHEA:12938", "RHEA:12939", "RHEA:12940")) { 
         .s$PC <- stringi::stri_replace_all_fixed(str = .s$sn1LPC, 
             pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
     }
 
     ## sn1lpe_to_fa
     if (reaction %in% c("RHEA:32967", "RHEA:32968", "RHEA:32969", "RHEA:32970")) {
         ## sn1 loss
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1LPE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn1LPE), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
 
     if (reaction == "sn2lpe_to_fa") {
         ## sn2 loss 
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2LPE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn2LPE), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
@@ -293,7 +292,7 @@
     if (reaction %in% c("RHEA:32995", "RHEA:32996", "RHEA:32997", "RHEA:32998")) { 
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$sn1LPE, 
             pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA),
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA),
                 function(f) {paste0("/", f)})))
     }
 
@@ -301,7 +300,7 @@
     if (reaction %in% c("RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198")) {
         .s$PI <- stringi::stri_replace_all_regex(str = .s$sn1LPI,
             pattern = "/0:0\\)$",
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA),
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA),
                 function(f) {paste0("/", f, ")")})))
     }
     
@@ -309,14 +308,14 @@
     if (reaction == "lpeo_to_peo") {
         .s$PEO <- stringi::stri_replace_all_fixed(str = .s$LPEO, 
             pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
     }
 
     if (reaction == "lpep_to_pep") {
         .s$PEP <- stringi::stri_replace_all_fixed(str = .s$LPEP, 
             pattern = "/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
     }
 
@@ -325,7 +324,7 @@
             "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946")) {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$sn1MG, 
             pattern = "/0:0/0:0", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f, "/0:0")})))
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "MG",
             replacement = "DG")
@@ -336,7 +335,7 @@
             "RHEA:16741", "RHEA:16742", "RHEA:16743", "RHEA:16744")) {
         .s$DG <- stringi::stri_replace_all_regex(str = .s$sn2MG, 
             pattern = "\\(0:0/", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$AcylCoA), 
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("(", f, "/")})))
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$DG, pattern = "MG", 
             replacement = "DG")
@@ -345,14 +344,14 @@
     ## sn1mg_to_fa
     if (reaction %in% c("RHEA:34019", "RHEA:34020", "RHEA:34021", "RHEA:34022")) {
         ## "sn1 loss"
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn1MG), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn1MG), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
     
     ## sn2mg_to_fa
     if (reaction %in% c("RHEA:32871", "RHEA:32872", "RHEA:32873", "RHEA:32874")) {
         ## "sn2 loss"
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2MG), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$sn2MG), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
@@ -366,7 +365,7 @@
 
     if (reaction == "sn2mg_to_sn1mg") {
         ## "sn2 loss"
-        .s$sn1MG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$sn2MG), 
+        .s$sn1MG <- unlist(lapply(isolate_radyls(.s$sn2MG), 
             function(f) {paste0("MG(", f[2], "/0:0/0:0)")}))
     }
 
@@ -376,30 +375,30 @@
     }
 
     if (reaction == "nape_to_lnape") {
-        .s$LNAPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$LNAPE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("NAPE(", f[1], "/0:0/", f[3], ")")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "nape_to_nae") {
-        .s$NAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$NAE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("NAE(", f[3], ")")}))
-        .s$PA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$PA <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("PA(", f[1], "/", f[2], ")")}))
     }
 
     if (reaction == "nape_to_pnae") {
-        .s$PNAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$PNAE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("PNAE(", f[3], ")")}))
-        .s$DG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPE), 
+        .s$DG <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
     }
     
     if (reaction == "napeo_to_nae") {
-        .s$NAE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPEO), 
+        .s$NAE <- unlist(lapply(isolate_radyls(.s$NAPEO), 
             function(f) {paste0("NAE(", f[3], ")")}))
-        .s$PAO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$NAPEO), 
+        .s$PAO <- unlist(lapply(isolate_radyls(.s$NAPEO), 
             function(f) {paste0("PA(", f[1], "/", f[2], ")")}))
     }
     
@@ -436,18 +435,18 @@
     ## pc_to_sn1lpc
     if (reaction %in% c("RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804")) { 
         ## "sn2 loss"
-        .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
     ## pc_to_sn2lpc
     if (reaction %in% c("RHEA:18689", "RHEA:18690", "RHEA:18691","RHEA:18692")) {
         ## "sn2 loss"
-        .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("FA(", f[1], ")")}))
     }
     
@@ -465,9 +464,9 @@
     
     if (reaction == "pco_to_lpco") {
         ## "sn2 loss"
-        .s$LPCO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PCO), 
+        .s$LPCO <- unlist(lapply(isolate_radyls(.s$PCO), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PCO), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PCO), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
@@ -481,38 +480,38 @@
     ## pe_to_sn1lpe
     if (reaction %in% c("RHEA:44604", "RHEA:44605", "RHEA:44606", "RHEA:44607")) {
         ## "sn2" loss
-        .s$sn1LPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+        .s$sn1LPE <- unlist(lapply(isolate_radyls(.s$PE), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PE), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
     ## pe_to_sn2lpe
     if (reaction %in% c("RHEA:44408", "RHEA:44409", "RHEA:44410", "RHEA:44411")) {
         ## "sn1" loss
-        .s$sn2LPE <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+        .s$sn2LPE <- unlist(lapply(isolate_radyls(.s$PE), 
             function(f) {paste0("PE(0:0/", f[1], ")")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PE), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PE), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
     if (reaction == "pe_to_nape_sn1") {
-        .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[1], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
             replacement = "NAPE")
     }
 
     if (reaction == "pe_to_nape_sn2") {
-        .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[2], ")")})))
         .s$NAPE <- stringi::stri_replace_all_fixed(str = .s$NAPE, pattern = "PE", 
             replacement = "NAPE")
@@ -531,29 +530,29 @@
     
     if (reaction == "peo_to_lpeo") {
         ## "sn2 loss"
-        .s$LPEO <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEO), 
+        .s$LPEO <- unlist(lapply(isolate_radyls(.s$PEO), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEO), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PEO), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "peo_to_napeo_sn1") {
-        .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[1], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
             pattern = "PE", replacement = "NAPE")
     }
     
     if (reaction == "peo_to_napeo_sn2") {
-        .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPEO <- stringi::stri_replace_all_regex(str = .s$PEO, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[2], ")")})))
         .s$NAPEO <- stringi::stri_replace_all_fixed(str = .s$NAPEO, 
             pattern = "PE", replacement = "NAPE")
@@ -567,29 +566,29 @@
     
     if (reaction == "pep_to_lpep") {
         ## "sn2 loss"
-        .s$LPEP <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEP), 
+        .s$LPEP <- unlist(lapply(isolate_radyls(.s$PEP), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PEP), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PEP), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
     if (reaction == "pep_to_napep_sn1") {
-        .s$sn2LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[1], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP,
             pattern = "PE", replacement = "NAPE")
     }
 
     if (reaction == "pep_to_napep_sn2") {
-        .s$sn1LPC <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+        .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPEP <- stringi::stri_replace_all_regex(str = .s$PEP, 
             pattern = "\\)$", 
-            replacement = unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PC), 
+            replacement = unlist(lapply(isolate_radyls(.s$PC), 
                 function(f) {paste0("/", f[2], ")")})))
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP, 
             pattern = "PE", replacement = "NAPE")
@@ -627,9 +626,9 @@
     
     ## pi_to_sn1lpi
     if (reaction %in% c("RHEA:18001", "RHEA:18002", "RHEA:18003", "RHEA:18004")) {
-        .s$sn1LPI <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PI), 
+        .s$sn1LPI <- unlist(lapply(isolate_radyls(.s$PI), 
             function(f) {paste0("PI(", f[1], "/0:0)")}))
-        .s$FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$PI), 
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PI), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
@@ -653,15 +652,15 @@
     if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",
             "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")) {
         ## "sn1 loss"
-        .s$sn1Loss_DG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn1Loss_DG <- unlist(lapply(isolate_radyls(.s$TG), 
             function(f) {paste0("DG(", f[3], "/", f[2], "/0:0)")}))
-        .s$sn1Loss_FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn1Loss_FA <- unlist(lapply(isolate_radyls(.s$TG), 
             function(f) {paste0("FA(", f[1], ")")}))
 
         ## "sn3 loss"
-        .s$sn3Loss_DG <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn3Loss_DG <- unlist(lapply(isolate_radyls(.s$TG), 
             function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
-        .s$sn3Loss_FA <- unlist(lapply(lipidomicsUtils::isolate_radyls(.s$TG), 
+        .s$sn3Loss_FA <- unlist(lapply(isolate_radyls(.s$TG), 
             function(f) {paste0("FA(", f[3], ")")}))
     }
     
