@@ -143,7 +143,7 @@ create_reactions <- function(substrates, reactions) {
     
     ## order the reactions according to the reaction order and check if the order 
     ## does not contain any gaps
-    reactions <- reactions[order(reactions$order)]
+    reactions <- reactions[order(reactions$order), ]
     if (!all(reactions$order == seq_len(nrow(reactions))))
         stop("The column 'order' in 'reactions' should not contain any gaps.")
     

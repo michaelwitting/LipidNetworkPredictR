@@ -1,0 +1,586 @@
+---
+title: "Pathway based prediction of the *Caenorhabditis elegans* lipidome"
+package: LipidNetworkPredictR
+output:  
+    BiocStyle::html_document:
+        toc_float: true
+vignette: >
+  %\VignetteIndexEntry{lipid_prediction_reaction_order}
+  %\VignettePackage{LipidNetworkPredictR-vignette}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE
+)
+```
+
+This vignette describes the complete workflow for the prediction of
+*Caenorhabditis elegans* (*C. elegans*) lipids performed by Witting et
+al. (in preparation). All template reactions at the current stage have been 
+curated from the WormJam model.
+
+```{r setup}
+# load required library
+library(LipidNetworkPredictR)
+library(dplyr)
+library(rgoslin)
+```
+
+In order to store all the results a data frame for the reactions is
+created. Lipids abbreviations are just appended.
+
+```{r data structures, message=FALSE, warning=FALSE}
+## create data frame to store reactions
+lipid_reactions <- data.frame()
+
+## create vector to store shorthand notations of generated lipids
+##lipid_abbrev <- vector()
+lipid_df <- tibble()
+```
+
+The following abbreviations are used (in alphabetical order):
+
+-   `AcylDHAP`: acyl-dihydroxyacetonephosphate,
+-   `AlkylDHAP`: dihydroxyacetonephosphate,
+-   `C1P`: Ceramide-1-phosphates [SP0205],
+-   `CDPDG`: cytidine diphosphate diacylglycerol,
+-   `CER`: N-acylsphingosines (ceramides) [SP0201],
+-   `CL`: Diacylglycerophosphoglycerophosphodiradylglycerols
+    (cardiolipin) [GP1201],
+-   `CoA`: Fatty acyl CoAs [FA0705],
+-   `DG`: Diacylglycerols [GL0201],
+-   `DGO`: 1-alkyl,2-acylglycerols
+-   `DHCER`: N-acylsphinganines (dihydroceramides) [SP0202],
+-   `DHSM`: Dihydrosphingomyelins [SP0301],
+-   `FA`: Fatty acids [FA01],
+-   `FATOH`: Fatty alcohols [FA05],
+-   `GLCCER`: glycosylceramide [SP0501],
+-   `GPNAE`: glycerophospho-N-acylethanolamine,
+-   `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
+-   `LPA`: 1-acylglycerophosphates [GP1005],
+-   `LPAO`: 1-alkylglycerophosphates [GP1006],
+-   `LPCO`: 1-alkylglycerophosphocholine [GP0106],
+-   `LPEP`: 1Z-alkenylglycerophosphocholine [GP0107],
+-   `NAE`: N-Acyl-phosphatidylethanolamine
+-   `NAPE`: N-Acyl-phosphatidylethanolamine,
+-   `NAPE_sn1`: sn1 N-Acyl-phosphatidylethanolamine
+-   `NAPEP_sn1`: ...
+-   `NAPE_sn2`: sn2 N-Acyl-phosphatidylethanolamine
+-   `NAPEP_sn2`: ...
+-   `NAPEO`: ...
+-   `PA`: Diacylglycerophosphates [GP1001],
+-   `PAO`: 1-alkyl,2-acylglycerophosphates [GP1002]
+-   `PC`: Diacylglycerophosphocholine [GP0101],
+-   `PCO`: 1-alkyl,2-acylglycerophosphocholine [GP0102]
+-   `PE`: Diacylglycerophosphoethanolamines [GP0201],
+-   `PEP`: 1(1Z-alkenyl),2-acylglycerophosphoethanolamines [GP0203],
+-   `PEO`: 1-alkyl,2-acylglyerophosphoethanolamines [GP0202]
+-   `PG`: Diacylglycerophosphoglycerols [GP0401],
+-   `PGP`: Diacylglyerophosphoglycerophosphates [GP0501]
+-   `PI`: Diacylglycerophosphoinositols [GP0601],
+-   `PNAE`: N-acyl ethanolamine phosphates,
+-   `PS`: Diacylglycerophosphoserines [GP0301],
+-   `SM`: Ceramide phosphocholines (sphingomyelins) [SP0301],
+-   `sn1LPC`: 1-acylglycerophosphocholine [GP0105],
+-   `sn1LPE`: 1-acylglycerophosphoethanolamines [GP0205],
+-   `sn1MG`: 1-acylglycerols [GL0101],
+-   `sn2LPC`: 2-acylglycerophosphocholine [GP0105],
+-   `sn2LPE`: 2-acylglycerophosphoethanolamines [GP0205],
+-   `sn2MG`: 2-acylglycerols [GL0101]
+-   `SPHINGA`: Sphinganines [SP0102],
+-   `SPHINGO`: Sphing-4-enines (sphingosines) [SP0101],
+-   `TG`: Triacylglycerols [GL0301]
+
+## Fatty acids used for biosynthesis
+
+First input for the prediction are fatty acids that were shown to be
+present in *C. elegans* by different groups. A consensus list was
+generated based on fatty acids from WormJam and detected in *C. elegans*.
+A data frame of these fatty acids is supplied with this
+package. Fatty acids used in glycero- and glycerophospholipids are
+different from the ones used in sphingolipid biosynthesis. The pools are
+only partially overlapping between the two. Therefore, two different
+files for the two different pools are supplied. The following lines read
+the fatty acids into a data frame and isolates the shorthand notation of
+the fatty acids, which are further used for downstream processing.
+
+```{r fatty acids 1, message=FALSE, warning=FALSE}
+## read data frame with fatty acids detected in C. elegans
+f <- system.file("extdata", "celegans_fatty_acids_GL_GP.txt",
+    package = "LipidNetworkPredictR")
+
+fatty_acid_gl_gp_df <- read.table(f, sep = "\t", header = TRUE, 
+        comment.char = "", stringsAsFactors = FALSE) |> 
+    data.frame()
+
+## get short hand notations for fatty acids
+FA_GPGL <- fatty_acid_gl_gp_df$shorthand
+
+## take only a subset of those to speed things up
+FA_GPGL <- FA_GPGL[FA_GPGL %in%
+    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+lipid_info <- rgoslin::parseLipidNames(FA_GPGL)
+
+## add lipids to data frame
+lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
+```
+
+The lines below perform the same action for fatty acids used in
+sphingolipid biosynthesis.
+
+```{r fatty acids 2, message=FALSE, warning=FALSE}
+## read data frame with fatty acids detected in C. elegans
+f <- system.file("extdata", "celegans_fatty_acids_SPH.txt",
+    package = "LipidNetworkPredictR")
+
+fatty_acid_sph_df <- read.table(f, sep = "\t", header = TRUE,
+    comment.char = "", stringsAsFactors = FALSE) |>
+    data.frame()
+
+## get short hand notations for fatty acids
+FA_SPH <- fatty_acid_sph_df$shorthand
+
+## take only a subset of those to speed things up
+FA_SPH <- FA_SPH[FA_SPH %in%
+    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+lipid_info <- rgoslin::parseLipidNames(FA_SPH)
+
+## add lipids to data frame
+lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
+```
+
+# GPGL pool
+
+## Block 0: Preparation of Acyl-CoA
+
+### Biosynthesis of CoA from FA (RHEA:15421)
+
+Acyl groups are transfered in their activate form of acyl CoA (CoA).
+Their synthesis requires ATP. *C. elegans* harbors different Acyl-CoA
+synthetases and their substrate specificity is not established so far.
+In order to be able to use all defined acyls they are converted to acyl
+CoA. The reaction converts fatty acids (FA) to acyl-CoA. 
+
+## Block 1: Biosynthesis and Degradation of Phosphaditic acid and Diacylglycerol
+
+Phosphaditic acid (PA) and Diacylgylcerols (DG) are an important
+intermediate for the biosynthesis of different lipids. The represent a
+branching point between triacylglycerols and glycerophospholipids. They
+are synthesized from lysosphosphaditic and phosphaditic acid by
+successive acylation of glycerol 3-phosphate. The first block of
+reactions handles the generation of PA and DG as well as their
+degradation via monoacylglycerols to fatty acids.
+
+### Biosynthesis of LPA (RHEA:15325)
+
+The first step to obtain DG is the biosynthesis of lysophophaditic acid
+from acyl CoA_GPGL and glycerol 3-phosphate. This reaction takes place
+in the ER and the mitochondria. In the ER the reaction is catalyzed by
+acl-5 (WBGene00011106) or acl-6 (WBGene00017261), while in the
+mitochondria acl-4 (WBGene00018657) is used. No subcellular specificity
+is currently used, therefore the assignments are merged together to
+yield a single reaction.
+
+### Biosynthesis of PA (RHEA:19709)
+
+In the next step a second acyl group is transferred to the LPA to
+produce PA. This reaction is catalyzed by acl-9 (WBGene00022646) or
+acl-8 (WBGene00020264) or mboa-3 (WBGene00016934) or acl-1
+(WBGene00010339) or acl-2 (WBGene00011543) in the ER. For the
+mitochondrial counterpart no genes are known so far. acl-3
+(WBGene00006491) might be a good candidate since it is predicted to
+locate in the mitochondria.
+
+### Biosynthesis of DG (RHEA:27429)
+
+Diacylglycerols (DG) are produced from PA by dephosphorylation. DG are
+important intermediates for biosynthesis of glycerophospholipids or
+triacylglycerols (DG). A prominent enzyme catalyzing this reactions is
+LPIN-1. Plasma membrane or ER WBGene00008749 or WBGene00018756 or
+WBGene00020895 or WBGene00010425 nucleus WBGene00010425
+
+### DG Kinase (RHEA:10272)
+
+DG can be phosphorylated to create PA, which is the reversal of the
+reaction above. Under normal conditions this reactions is inactive, but can be
+activated yielding PA. Normally, DG is used for synthesis of TGs and phospho-
+lipids, but phosphorylation yields a switch in DG to PA, which both have also
+different signaling functions. In this case a lipid, which has been generated 
+previously by a different reactions is produced. 
+
+### Degradation of DG (RHEA:44712, RHEA:33275, sn2mg_to_sn1mg)
+
+#### Production of 1-MG (RHEA:44712)
+
+DG are degraded by the activity of different lipases yielding mono
+acylglycerols. In the case of this reaction the fatty acid at sn1
+position is removed yieling an sn2-MG. sn2-MG can be converted to
+sn1-MG, which in turn can be re-acylated at a later stage.
+
+
+#### Production of 2-MG (RHEA:33275)
+
+DG are degraded by the activity of different lipases yielding mono 
+acylglycerols. In the case of this reaction the fatty acid at sn1 position is 
+removed yieling an sn2-MG. sn2-MG can be converted to sn1-MG, which in turn 
+can be re-acylated at a later stage.
+
+#### Acyl chain migration (sn2mg_to_sn1mg)
+
+Acyl chain migration can happen to produced 1-Acyl-MGs from 2-Acyl-MGs. Both 
+species are in equilibrium to each other. However, 1-Acyl-MGs can be reacylated
+to yields DGs.
+
+### Degradation of MG (RHEA:34019, RHEA:32871)
+
+Both, sn1- and sn2-MG, can degraded to free fatty acids and glycerol,
+which can be used for energy production upon conversion to Acyl-CoAs and import
+into mitochondria for beta-oxidation. Other possibilities include the re-use in
+lipid biosynthesis.
+
+### Phosphorylation and reacylation of MG (RHEA:38463, RHEA:32947, RHEA:33747)
+
+Similar to the degradation, all MG can be reacylated to yields DG again.
+
+Additionally, 1-Acyl-MG can be also phosphorylated to yield LPA, which is then 
+fed into lipid biosynthesis.
+
+## Block 2: Biosynthesis and degradation of TG
+
+Triacylglycerols (TG) are storage lipids in *C. elegans* and other
+organisms. They are stored in lipid droplets. In *C. elegans* they are
+also found in yolk for the production of eggs.
+
+### Biosynthesis of TG (RHEA:10868)
+
+TG are synthesized by acylation of DG in the ER and sequestered into lipid 
+droplets. Since TGs harbor three acyl chains their combinatorial spaces is 
+large.
+
+### Degradation of TG (RHEA:33271)
+
+TG are "symmetric" molecules, therefore from each TG two different DG
+can produced.
+
+## Block 3: Biosynthesis of Glycerophospholipids (PC, PE, PS)
+
+The glycerophospholipids phosphatidylcholine, -ethanolamine and serine
+are synthesized from DG by addition of headgroups. Additionally they can
+be interconverted
+
+### Biosynthesis of PC (RHEA:32939)
+
+### Biosynthesis of PE (RHEA:32943)
+
+### Biosynthesis of PS (RHEA:45088, RHEA:27606)
+
+PS can be formed from PC (RHEA:45088) and from PE (RHEA:27606).
+
+### Decarboxylation of PS to PE (RHEA:20828)
+
+PE can be formed from PS species by decarboxylation. The reaction takes 
+place only in mitochondria.
+
+## Block 4: Remodeling and Degradation of Glycerophospholipids
+
+### Phospholipase action on PC (RHEA:18689, RHEA:15801, RHEA:14445)
+
+PLA1 cleaves of the acyl at the sn1 position producing an sn2LPC (RHEA:18689_.
+
+PLA2 on PC (RHEA:15801).
+
+PLD on PC (RHEA:14445).
+
+
+### LPC to FA_GPGL (RHEA:15177, RHEA:44696)
+
+sn1LPC to FA_GPGL.
+
+sn2LPC to FA_GPGL.
+
+### Reacylation of LPC to PC (Remodeling, RHEA:12937)
+
+Only sn1LPC get re-acylated --\> constraining? = remodeling!
+
+### Phospholipase action on PE (RHEA:44408)
+
+PLA1 on PE (RHEA:44408).
+
+PLA2 on PE (RHEA:44604).
+
+PLD on PE (pe_to_pa).
+
+### LPE to FA_GPGL (RHEA:32967)
+
+sn1LPE to FA_GPGL (RHEA:32967).
+
+sn2LPE to FA_GPGL (sn2lpe_to_fa)
+
+### Reacylation of LPE to PE (Remodeling, RHEA:32995)
+
+Only sn1LPE get re-acylated --\> constraining? = remodeling!
+
+## Block 5: Biosynthesis of Glycerophospholipids (PG, PI, CL)
+
+PG, PI and CL are synthesized based on the common precursor CDP-DG
+
+### Biosynthesis of CDP-DG (RHEA:16229)
+
+### Biosynthesis of PI (RHEA:11580)
+
+### Biosynthesis of PGP and PG (RHEA:12593, RHEA:33751, RHEA:32931)
+
+This reaction is taking place only in the mitochondria.
+
+This reaction has no gene assignment at the moment (RHEA:33751).
+
+The reaction from PG to CL is only taking place in mitochondria (RHEA:32931).
+
+## Block 6: Biosynthesis of Etherlipids
+
+### Generation of fatty alcohols (RHEA:52716)
+
+Some etherlipids... mostly PE, small amounts in PC. This reaction is
+constrained to 16:0, 18:0, 20:0!
+
+### Generation of Acyl-DHAP (RHEA:17657)
+
+### Generation of Alkyl-DHAP (RHEA:36171)
+
+### Reduction of Alkyl-DHAP to LPA-O (RHEA:36175)
+
+Enzyme not known so far in C. elegans!!! EC 1.1.1.101
+
+### Biosynthesis of PA-O (RHEA:36235)
+
+Same genes as for LPA to PA --\> substrate specificity not known yet.
+
+### Biosynthesis of DG-O (RHEA:36239)
+
+### Biosnythesis of PE-O (RHEA:36187)
+
+Headgroup transfer via cept-1 and cept-2.
+
+### Biosynthesis of PE-P (RHEA:22956)
+
+reductase is unknown so far.
+
+### Biosynthesis of PC-O (RHEA:36179)
+
+same as for PC!
+
+## Block 7: Remodeling of Etherlipids
+
+### PLA2 on PE-O (peo_to_lpeo)
+
+### Reacylation of PE-O (lpeo_to_peo)
+
+### PLA2 on PE-P (pep_to_lpep)
+
+### Reacylation of PE-P (lpep_to_pep)
+
+### PLA2 on PC-O (pco_to_lpco)
+
+### Remodeling of PC-O???
+
+### Degradation of LPEP
+
+## Block Y: Biosynthesis and Degradation of N-Acyl-Ethanolamines
+
+This biosynthetic pathway is putative. Only a few enzymes have been
+found so far.
+
+### Biosynthesis of N-Acyl-phosphatidylethanolamine (NAPE) from PE and PC (pe_to_nape_sn1, peo_to_napeo_sn1, pep_to_napep_sn1, pe_to_nape_sn2, peo_to_napeo_sn2, pep_to_napep_sn2)
+
+N-acyl-phosphatidylethanolamines are produced by the transfer of an acyl
+group from PC to the nitrogen of PE. In *C. elegans* this reaction is so
+far not known. It is unknown if the sn1 or sn2 position is transferred.
+Since *C. elegans* contains about equal amounts of PE, PE-O and PE-P it
+might be possible that the acyl group is transferred to all of them
+producing NAPE, NAPE-O and NAPE-P.
+
+transfer of Sn1 fatty acyl to PE (pe_to_nape_sn1)
+
+transfer of Sn1 fatty acyl to PE-O (peo_to_napeo_sn1)
+
+transfer of Sn1 fatty acyl to PE-P (pep_to_napep_sn1)
+
+transfer of Sn2 fatty acyl to PE (pe_to_nape_sn2)
+
+transfer of Sn2 fatty acyl to PE-O (peo_to_napeo_sn2)
+
+transfer of Sn2 fatty acyl to PE-P (pep_to_napep_sn2)
+
+
+### Biosynthesis of N-Acyl-ethanolamine (nape_to_nae, napeo_to_nae)
+
+From NAPE (nape_to_nae)
+
+From NAPEO (napeo_to_nae)
+
+### Biosynthesis of from NAPE (nape_to_pnae)
+
+From NAPE.
+
+### Generation of N-Acyl-Ethanolamines from N-Acyl-Phosphoethanolamines
+
+### Generation of LysoNAPE from NAPE (nape_to_lnape)
+
+### Generation of GPNAE from LysoNAPE (RHEA:45420)
+
+### Degradation of N-Acyl-Ethanolamines (nae_to_fa)
+
+## Run the function 
+
+```{r, message=FALSE, warning=FALSE}
+reactions <- rbind(
+    ## Block 0
+    c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## FA_GPGL + CoA = PPi + AMP + CoA_GPGL
+    ## Block 1
+    c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA"), ## G3P + CoA_GPGL = CoA + LPA
+    c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_CoA + M_PA"), ## LPA + CoA_GPGL = CoA + PA
+    c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG"), ## H2O + PA = Pi + DG
+    c(5, "RHEA:10272", "M_ATP + M_1,2-DG = M_H+ + M_ADP + M_PA"), ## ATP + DG = H+ + ADP + PA
+    c(6, "RHEA:44712", "M_H2O + M_1,2-DG = M_H+ + M_1-MG + M_FA"), ## H2O + DG = H+ + sn1MG + FA
+    c(7, "RHEA:33275", "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA"), ## H2O + DG = H+ + sn2MG + FA
+    c(8, "sn2mg_to_sn1mg", "M_2-MG <=> M_1-MG"), ## sn1MG <=> sn2MG
+    c(9, "RHEA:34019", "M_H2O + M_1-MG = M_Glycerol + M_H+ + M_FA"), ## H2O + sn1MG = Glycerol + H+ + FA
+    c(10, "RHEA:32871", "M_H2O + M_2-MG = M_Glycerol + M_H+ + M_FA"), ## H2O + sn2MG = Glycerol + H+ + FA
+    c(11, "RHEA:38463", "M_1-MG + M_AcylCoA = M_CoA + M_1,2-DG"), ## sn1MG + CoA_GPGL = CoA + DG
+    c(12, "RHEA:32947", "M_AcylCoA + M_1-MG = M_CoA + M_1,2-DG"), #################### CoA_GPGL + sn2MG = CoA + DG #################### should be 2-MG???
+    c(13, "RHEA:33747", "M_ATP + M_1-MG = M_H+ + M_ADP + M_LPA"), ## ATP + 1-MG = H+ + ADP + LPA
+    ## Block 2
+    c(14, "RHEA:10868", "M_AcylCoA + M_1,2-DG = M_CoA + M_TG"), ## CoA_GPGL + DG = CoA + TG
+    c(15, "RHEA:33271", "M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG"), ## H2O + TG = H+ + FA + DG
+    ## Block 3
+    c(16, "RHEA:32939", "M_CDP-Choline + M_1,2-DG = M_H+ + M_CMP + M_PC"), ## CDP-Choline + DG = H+ + CMP + PC
+    c(17, "RHEA:32943", "M_CDP-Ethanolamine + M_1,2-DG = M_H+ + M_CMP + M_PE"), ## CDP-Ethanolamine + DG = H+ + CMP + PE
+    c(18, "RHEA:45088", "M_L-Serine + M_PC = M_Choline + M_PS"), ## L-Serine + PC = Choline + PS
+    c(19, "RHEA:27606", "M_L-Serine + M_PE = M_Ethanolamine + M_PS"), ## L-Serine + PE = Ethanolamine + PS
+    c(20, "RHEA:20828", "M_H+ + M_PS = M_CO2 + M_PE"), ## H+ + PS = CO2 + PE
+    ## Block 4
+    c(21, "RHEA:18689", "M_H2O_c + M_PC_c = M_2-LPC_c + M_FA_c"), ## H2O + PC = sn2LPC + FA_GPGL
+    c(22, "RHEA:15801", "M_H2O + M_PC = M_1-LPC + M_FA"), ## H2O + PC = sn1LPC + FA_GPGL
+    c(23, "RHEA:14445", "M_H2O + M_PC = M_Choline + M_PA"), ## H2O + PC = Choline + PA
+    c(24, "RHEA:15177", "M_H2O + M_1-LPC = M_Glycerophosphocholine + M_H+ + M_FA"), ## H2O + sn1LPC = Glycerophosphocholine + H+ + FA_GPGL 
+    c(25, "RHEA:44696", "M_H2O + M_2-LPC = M_Glycerophosphocholine + M_H+ + M_FA"), ## H2O + sn2LPC = Glycerophosphocholine + H+ + FA_GPGL
+    c(26, "RHEA:12937", "M_1-LPC_c + M_AcylCoA_c = M_PC_c + M_CoA_c"), ## sn1LPC + CoA_GPGL = PC + CoA_GPGL
+    c(27, "RHEA:44408", "M_H2O + M_PE = M_H+ + M_FA + M_2-LPE"), ## H2O + PE = H+ + FA_GPGL + sn2LPE
+    c(28, "RHEA:44604", "M_H2O + M_PE = M_H+ + M_FA + M_1-LPE"), ## H2O + PE = H+ + FA_GPGL + sn1LPE
+    c(29, "pe_to_pa", "M_H2O + M_PE <=> M_Ethanolamine + M_H+ + M_PA"), ## H2O + PE <=> Ethanolamine + H+ + PA
+    c(30, "RHEA:32967", "M_H2O + M_1-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine"), ## H2O + sn1LPE = H+ + FA_GPGL + Glycerophosphoethanolamine
+    c(31, "sn2lpe_to_fa", "M_H2O + M_2-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine"), ## H2O + sn2LPE = H+ + FA_GPGL + Glycerophosphoethanolamine
+    c(32, "RHEA:32995", "M_AcylCoA + M_1-LPE = M_CoA + M_PE"), ## CoA_GPGL + sn1LPE = CoA + PE
+    ## Block 5
+    c(33, "RHEA:16229", "M_CTP + M_PA = M_PPi + M_CDP-DG"), ## CTP + PA = PPi + CDP-DG
+    c(34, "RHEA:11580", "M_myo-Inositol + M_CDP-DG = M_H+ + M_CMP + M_PI"), ## myo-Inositol + CDP-DG = H+ + CMP + PI
+    c(35, "RHEA:12593", "M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_PGP"), ## Glycerol-3-P + CDP-DG = H+ + CMP + PGP
+    c(36, "RHEA:33751", "M_H2O + M_PGP = M_Pi + M_PG"), ## H2O + PGP = Pi + PG
+    c(37, "RHEA:32931", "M_CDP-DG + M_PG = M_H+ + M_CMP + M_CL"), ## CDP-DG + PG = H+ + CMP + CL
+    ## Block 6
+    c(38, "RHEA:52716", "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FATOH + 2 M_NADP + M_CoA"), ## AcylCoA_GPGL + 2 NADPH + 2 H+ = FATOH + 2 NADP + CoA
+    c(39, "RHEA:17657", "M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP"), ## Dihydroxyacetone-P + CoA_GPGL = CoA + AcylDHAP 
+    c(40, "RHEA:36171", "M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP"), ## AcylDHAP + FATOH = H+ + FA_GPGL + M_AlkylDHAP
+    c(41, "RHEA:36175", "M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP"), ## H+ + NADPH + AlkylDHAP = LPAO + NADP
+    c(42, "RHEA:36235", "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"), ## LPAO + CoA_GPGL = PAO + CoA
+    c(43, "RHEA:36239", "M_H2O + M_PA-O = M_Pi + M_DG-O"), ## H2O + PAO = Pi + DGO
+    c(44, "RHEA:36187", "M_CDP-Ethanolamine + M_DG-O = M_H+ + M_CMP + M_PE-O"), ## CDP-Ethanolamine + DGO = H+ + CMP + PEO
+    c(45, "RHEA:22956", "M_PE-O + M_Fe2+cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+cytochrome_b5 + 2 M_H2O"), ## PEO + Fe2+cytochrome_b5 + 2 H+ + O2 = PEP + Fe3+cytochrome_b5 + 2 H2O
+    c(46, "RHEA:36179", "M_CDP-Choline + M_DG-O = M_H+ + M_CMP + M_PC-O"), ## CDP-Choline + DGO = H+ + CMP + PCO
+    ## Block 7
+    c(47, "peo_to_lpeo", "M_H2O + M_PE-O = M_H+ + M_LPE-O+ M_FA"), ## H2O + PEO = H+ + LPEO + FA_GPGL
+    c(48, "lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
+    c(49, "pep_to_lpep", "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"), ## H2O + PEP = H+ + LPEP + FA
+    c(50, "lpep_to_pep", "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"), ## CoA_GPGL + LPEP = CoA + PEP
+    c(51, "pco_to_lpco", "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"), ## H2O + PCO = H+ + LPCO + FA_GPGL
+    ## Block Y
+    c(52, "pe_to_nape_sn1", "M_PE + M_PC = M_NAPE + M_2-LPC"), ## PE + PC = NAPE + sn2LPC"
+    c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
+    c(54, "pep_to_napep_sn1", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
+    c(55, "pe_to_nape_sn2", "M_PE + M_PC = M_NAPE + M_1-LPC"), ## PE + PC = NAPE + sn1LPC
+    c(56, "peo_to_napeo_sn2", "M_PE-O + M_PC = M_NAPEO + M_1-LPC"), ## PEO + PC = NAPEO + sn1LPC
+    c(57, "pep_to_napep_sn2", "M_PE-P + M_PC = M_NAPEP + M_1-LPC"), ## PEP + PC = NAPEP + sn1LPC
+    c(58, "nape_to_nae", "M_NAPE + M_H2O <=> M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
+    c(59, "napeo_to_nae", "M_NAPEO + M_H2O <=> M_NAE + M_PA-O"), ## akac2nape + H2O <=> NAE + PAO
+    c(60, "nape_to_pnae", "M_LNAPE + M_H2O <=> M_pnae + M_1,2-DG"), ## LNAPE + H2O <=> PNAE + DG
+    c(61, "nape_to_lnape", "M_LNAPE + M_H2O <=> M_LNAPE + M_FA"), ## LNAPE + H2O <=> LNAPE + FA_GPGL
+    c(62, "RHEA:45420", "M_LNAPE + M_H2O = M_GPNAE + M_FA"), ## LNAPE + H2O = GPNAE + FA_GPGL
+    c(63, "nae_to_fa", "M_H2O + M_NAE = M_Ethanolamine + M_H+ + M_FA") ## H2O + nae = Ethanolamine + H+ + FA_GPGL
+)
+
+reactions <- data.frame(order = as.numeric(reactions[, 1]), RHEA = reactions[, 2],
+    reactions = reactions[, 3])
+ 
+## run the function
+reactions_GPGL <- create_reactions(substrates = list(FA = FA_GPGL), reactions = reactions)
+```
+
+
+# SPH pool
+
+## Block 0: Preparation of Acyl-CoA
+
+### Biosynthesis from FA to CoA (RHEA:15421)
+
+Likewise, the fatty acyls for the synthesis of sphingolipids are
+required as acyl-CoA. The main differences are that fatty acyls in
+sphingolipids are generally saturated and longer compared to glycero-
+and glycerophospholipids and often contain a hydroxygroup at the second
+position of the acyl.
+
+
+## Block X: Biosynthesis and degradation of sphingolipids
+
+### Biosynthesis of Dihydroceramides (sphinga_to_dhcer)
+
+### Biosynthesis of Dihydrosphingomyelins (RHEA:44620)
+
+### Degradation of Dihydrosphingomyelins (DHSM, RHEA:19253)
+
+### Biosynthesis of Ceramides (CER, dhcer_to_cer)
+
+### Biosynthesis of Sphingomyelins (SM, RHEA:18765)
+
+### Degradation of Sphingomyelins (SM) to Ceramides (CER) (sm_to_cer)
+
+### Biosynthesis of Ceramide-1-Phosphates (C1P) from Ceramides (CER) (RHEA:17929)
+
+### Degradation of Ceramide-1-Phosphates (C1P) to Ceramides (CER) (c1p_to_cer)
+
+Gene is unknown. 
+
+### Biosynthesis of Glucosylceramides (RHEA:12088)
+
+
+## Run the function
+```{r, message=FALSE, warning=FALSE}
+reactions <- rbind(
+    c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## ATP + CoA + FA_SPH = PPi + AMP + CoA_SPH
+    ## Block X
+    c(2, "sphinga_to_dhcer", "M_AcylCoA + M_c17isosphgn <=> M_CoA + M_DHCER"), ## CoA_SPH + c17isosphgn <=> CoA + DHCER
+    c(3, "RHEA:44620", "M_P-Choline + M_DHCER = M_1,2-DG + M_DHSM"), ## P-Choline + DHCER = DG + DHSM
+    c(4, "RHEA:19253", "M_H2O + M_DHSM = M_P-Choline + M_H+ + M_DHCER"), ## H2O + DHSM = P-Choline + H+ + DHCER
+    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DHCER = 2 M_H2O + M_NAD + M_CER"), ## H+ + NADH + O2 + DHCER = 2 H2O + NAD + CER
+    c(6, "RHEA:18765", "M_P-Choline + M_CER = M_1,2-DG + M_SM"), ## P-Choline + CER = 1,2-DG + SM
+    c(7, "sm_to_cer", "M_H2O + M_SM = M_P-Choline + M_H+ + M_CER"), ## H2O + SM = P-Choline + H+ + CER
+    c(8, "RHEA:17929", "M_ATP + M_CER = M_H+ + M_ADP + M_C1P"), ## ATP + CER = H+ + ADP + C1P
+    c(9, "c1p_to_cer", "M_H2O + M_C1P = M_Pi + M_CER"), ## H2O + C1P = Pi + CER
+    c(10, "RHEA:12088", "M_UDP-Glucose + M_CER = M_H+ + M_UDP + GLCCER") ## UDP-Glucose + CER = H+ + UDP + GLCCER
+)
+
+reactions <- data.frame(order = as.numeric(reactions[, 1]), RHEA = reactions[, 2],
+    reactions = reactions[, 3])
+ 
+## run the function
+reactions_SPH <- create_reactions(substrates = list(FA = FA_SPH), reactions = reactions)
+```
+
+

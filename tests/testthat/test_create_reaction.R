@@ -508,7 +508,6 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_formula,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]) + CoA(18:4(6Z,9Z,12Z,15Z)) <=> CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]) + CoA") 
     
-    
     ## lnape_to_gpnae
     lnape <- "NAPE(14:0/0:0/0:0)"
     reaction_l <- .create_reaction(substrates = list(LNAPE = lnape), 
@@ -635,8 +634,7 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "PC(14:0/0:0) + CoA(18:0) <=> PC(14:0/18:0) + CoA")
-    
-    
+
     ## sn1lpe_to_fa
     pe <- "PE(14:0/0:0)"
     reaction_l <- .create_reaction(substrates = list(sn1LPE = pe), 
