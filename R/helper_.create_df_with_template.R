@@ -111,7 +111,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_CDP-DG", replacement = df_reaction[["CDPDG"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_pgp", replacement = df_reaction[["PGP"]])
+            pattern = "M_PGP", replacement = df_reaction[["PGP"]])
     }
     
     ## cdpdg_to_pi
@@ -637,7 +637,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-O", replacement = df_reaction[["PEO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_ak2lgpe", replacement = df_reaction[["LPEO"]])
+            pattern = "M_LPE-O", replacement = df_reaction[["LPEO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
     }

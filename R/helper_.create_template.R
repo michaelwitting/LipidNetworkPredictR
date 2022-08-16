@@ -101,13 +101,13 @@
         
         ## cdpdg_to_pgp
         if (reaction == "RHEA:12593") 
-            .formula <- "M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_pgp"
+            .formula <- "M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_PGP"
         if (reaction == "RHEA:12594") 
-            .formula <- "M_Glycerol-3-P + M_CDP-DG => M_H+ + M_CMP + M_pgp"
+            .formula <- "M_Glycerol-3-P + M_CDP-DG => M_H+ + M_CMP + M_PGP"
         if (reaction == "RHEA:12595") 
-            .formula <- "M_Glycerol-3-P + M_CDP-DG <= M_H+ + M_CMP + M_pgp"
+            .formula <- "M_Glycerol-3-P + M_CDP-DG <= M_H+ + M_CMP + M_PGP"
         if (reaction == "RHEA:12596") 
-            .formula <- "M_Glycerol-3-P + M_CDP-DG <=> M_H+ + M_CMP + M_pgp"
+            .formula <- "M_Glycerol-3-P + M_CDP-DG <=> M_H+ + M_CMP + M_PGP"
         
         ## cdpdg_to_pi
         if (reaction == "RHEA:11580") 
@@ -563,7 +563,7 @@
             .formula <- "M_L-Serine + M_PE <=> M_Ethanolamine + M_PS"
         
         if (reaction == "peo_to_lpeo")
-            .formula <- "M_H2O + M_PE-O <=> M_H+ + M_ak2lgpe + M_FA"
+            .formula <- "M_H2O + M_PE-O <=> M_H+ + M_LPE-O + M_FA"
         
         if (reaction == "peo_to_napeo_sn1")
             .formula <- "M_PE-O + M_PC <=> M_NAPEO + M_2-LPC"
