@@ -1994,7 +1994,7 @@ if (all(results[[1]][["CER"]] %in% CER)) {
 ## template for reaction -------------------------------------------------------
 template <- list(
     reaction_name = "UDP-glucose:N-acylsphingosine D-glucosyltransferase (cytosol)",
-    reaction_formula = "M_udpg + M_CER = M_H+ + M_UDP + M_GLCCER",
+    reaction_formula = "M_UDP-Glucose + M_CER = M_H+ + M_UDP + M_GLCCER",
     reaction_RHEA = "RHEA:12088",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00011517 or WBGene00017625 or WBGene00019127",
