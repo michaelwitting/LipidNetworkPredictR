@@ -7,21 +7,25 @@ test_that(".create_reaction works", {
     reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
         template = NULL, reaction = "RHEA:36171")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(reaction_l[[1]]$FATOH, "FATOH(16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "DHAP(18:0) + FATOH(16:0) = H+ + FA(18:0) + DHAP(O-16:0)")
     reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
         template = NULL, reaction = "RHEA:36172")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(reaction_l[[1]]$FATOH, "FATOH(16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "DHAP(18:0) + FATOH(16:0) => H+ + FA(18:0) + DHAP(O-16:0)")
     reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
         template = NULL, reaction = "RHEA:36173")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(reaction_l[[1]]$FATOH, "FATOH(16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "DHAP(18:0) + FATOH(16:0) <= H+ + FA(18:0) + DHAP(O-16:0)")
     reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
         template = NULL, reaction = "RHEA:36174")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(reaction_l[[1]]$FATOH, "FATOH(16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "DHAP(18:0) + FATOH(16:0) <=> H+ + FA(18:0) + DHAP(O-16:0)")
     
