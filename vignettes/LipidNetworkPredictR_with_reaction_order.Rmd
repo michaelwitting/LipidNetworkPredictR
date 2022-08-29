@@ -52,17 +52,17 @@ The following abbreviations are used (in alphabetical order):
 -   `AlkylDHAP`: dihydroxyacetonephosphate,
 -   `C1P`: Ceramide-1-phosphates [SP0205],
 -   `CDPDG`: cytidine diphosphate diacylglycerol,
--   `CER`: N-acylsphingosines (ceramides) [SP0201],
+-   `Cer`: N-acylsphingosines (ceramides) [SP0201],
 -   `CL`: Diacylglycerophosphoglycerophosphodiradylglycerols
     (cardiolipin) [GP1201],
 -   `CoA`: Fatty acyl CoAs [FA0705],
 -   `DG`: Diacylglycerols [GL0201],
 -   `DGO`: 1-alkyl,2-acylglycerols
--   `DHCER`: N-acylsphinganines (dihydroceramides) [SP0202],
--   `DHSM`: Dihydrosphingomyelins [SP0301],
+-   `DhCer`: N-acylsphinganines (dihydroceramides) [SP0202],
+-   `DhSM`: Dihydrosphingomyelins [SP0301],
 -   `FA`: Fatty acids [FA01],
 -   `FATOH`: Fatty alcohols [FA05],
--   `GLCCER`: glycosylceramide [SP0501],
+-   `GLCCer`: glycosylceramide [SP0501],
 -   `GPNAE`: glycerophospho-N-acylethanolamine,
 -   `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
 -   `LPA`: 1-acylglycerophosphates [GP1005],
@@ -563,21 +563,21 @@ position of the acyl.
 
 ## Block X: Biosynthesis and degradation of sphingolipids
 
-### Biosynthesis of Dihydroceramides (sphinga_to_dhcer)
+### Biosynthesis of Dihydroceramides (RHEA:53424)
 
 ### Biosynthesis of Dihydrosphingomyelins (RHEA:44620)
 
-### Degradation of Dihydrosphingomyelins (DHSM, RHEA:19253)
+### Degradation of Dihydrosphingomyelins (DhSM, RHEA:45300)
 
-### Biosynthesis of Ceramides (CER, dhcer_to_cer)
+### Biosynthesis of Ceramides (Cer, dhcer_to_cer)
 
 ### Biosynthesis of Sphingomyelins (SM, RHEA:18765)
 
-### Degradation of Sphingomyelins (SM) to Ceramides (CER) (sm_to_cer)
+### Degradation of Sphingomyelins (SM) to Ceramides (Cer) (sm_to_cer)
 
-### Biosynthesis of Ceramide-1-Phosphates (C1P) from Ceramides (CER) (RHEA:17929)
+### Biosynthesis of Ceramide-1-Phosphates (C1P) from Ceramides (Cer) (RHEA:17929)
 
-### Degradation of Ceramide-1-Phosphates (C1P) to Ceramides (CER) (c1p_to_cer)
+### Degradation of Ceramide-1-Phosphates (C1P) to Ceramides (Cer) (c1p_to_cer)
 
 Gene is unknown. 
 
@@ -589,15 +589,15 @@ Gene is unknown.
 reactions <- rbind(
     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## ATP + CoA + FA_SPH = PPi + AMP + CoA_SPH
     ## Block X
-    c(2, "sphinga_to_dhcer", "M_AcylCoA + M_c17isosphgn <=> M_CoA + M_DHCER"), ## CoA_SPH + c17isosphgn <=> CoA + DHCER
-    c(3, "RHEA:44620", "M_P-Choline + M_DHCER = M_1,2-DG + M_DHSM"), ## P-Choline + DHCER = DG + DHSM
-    c(4, "RHEA:19253", "M_H2O + M_DHSM = M_P-Choline + M_H+ + M_DHCER"), ## H2O + DHSM = P-Choline + H+ + DHCER
-    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DHCER = 2 M_H2O + M_NAD + M_CER"), ## H+ + NADH + O2 + DHCER = 2 H2O + NAD + CER
-    c(6, "RHEA:18765", "M_P-Choline + M_CER = M_1,2-DG + M_SM"), ## P-Choline + CER = 1,2-DG + SM
-    c(7, "sm_to_cer", "M_H2O + M_SM = M_P-Choline + M_H+ + M_CER"), ## H2O + SM = P-Choline + H+ + CER
-    c(8, "RHEA:17929", "M_ATP + M_CER = M_H+ + M_ADP + M_C1P"), ## ATP + CER = H+ + ADP + C1P
-    c(9, "c1p_to_cer", "M_H2O + M_C1P = M_Pi + M_CER"), ## H2O + C1P = Pi + CER
-    c(10, "RHEA:12088", "M_UDP-Glucose + M_CER = M_H+ + M_UDP + GLCCER") ## UDP-Glucose + CER = H+ + UDP + GLCCER
+    c(2, "RHEA:53424", "M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"), ## CoA_SPH + c17isosphgn <=> CoA + DHCer
+    c(3, "RHEA:44620", "M_P-Choline + M_DhCer = M_1,2-DG + M_DhSM"), ## P-Choline + DhCer = DG + DhSM
+    c(4, "RHEA:45300", "M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer"), ## H2O + DhSM = P-Choline + H+ + DhCer
+    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DhCer = 2 M_H2O + M_NAD + M_Cer"), ## H+ + NADH + O2 + DhCer = 2 H2O + NAD + Cer
+    c(6, "RHEA:18765", "M_P-Choline + M_Cer = M_1,2-DG + M_SM"), ## P-Choline + Cer = 1,2-DG + SM
+    c(7, "sm_to_cer", "M_H2O + M_SM = M_P-Choline + M_H+ + M_Cer"), ## H2O + SM = P-Choline + H+ + Cer
+    c(8, "RHEA:17929", "M_ATP + M_Cer = M_H+ + M_ADP + M_C1P"), ## ATP + Cer = H+ + ADP + C1P
+    c(9, "c1p_to_cer", "M_H2O + M_C1P = M_Pi + M_Cer"), ## H2O + C1P = Pi + Cer
+    c(10, "RHEA:12088", "M_UDP-Glucose + M_Cer = M_H+ + M_UDP + GLCCer") ## UDP-Glucose + Cer = H+ + UDP + GLCCer
 )
 
 reactions <- data.frame(order = as.numeric(reactions[, 1]), RHEA = reactions[, 2],
@@ -639,10 +639,10 @@ Please find here a list of the implemented reactions. The list is
 ordered according to their RHEA ids.
 
 `c1p_to_cer`:
-- `"c1p_to_cer"`: `"M_H2O + M_C1P <=> M_Pi + M_CER"`
+- `"c1p_to_cer"`: `"M_H2O + M_C1P <=> M_Pi + M_Cer"`
 
 `dhcer_to_cer`
-- `"dhcer_to_cer"`: `"M_H+ + M_NADH + M_O2 + M_DHCER <=> 2 M_H2O + M_NAD + M_CER"`
+- `"dhcer_to_cer"`: `"M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"`
 
 `sn2lpe_to_fa`:
 - `"sn2lpe_to_fa"`: `"M_H2O + M_2-LPE <=> M_H+ + M_FA + M_Glycerophosphoethanolamine"`
@@ -739,7 +739,7 @@ ordered according to their RHEA ids.
 - `"RHEA:11583"`: `"M_myo-Inositol + M_CDP-DG <=> M_H+ + M_CMP + M_PI"`
 
 `cer_to_glccer`:
-- `"RHEA:12088"`: `"M_UDP-Glucose + M_CER <=> M_H+ + M_UDP + M_GLCCER"`
+- `"RHEA:12088"`: `"M_UDP-Glucose + M_Cer <=> M_H+ + M_UDP + M_GLCCer"`
 
 `cdpdg_to_pgp`:
 - `"RHEA:12593"`: `"M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_pgp"`
@@ -802,7 +802,7 @@ ordered according to their RHEA ids.
 - `"RHEA:17660"`: `"M_Dihydroxyacetone-P + M_AcylCoA <=> M_CoA + M_AcylDHAP"`
 
 `cer_to_c1p`:
-- `"RHEA:17929"`: `"M_ATP + M_CER <=> M_H+ + M_ADP + M_C1P"`
+- `"RHEA:17929"`: `"M_ATP + M_Cer <=> M_H+ + M_ADP + M_C1P"`
 
 `pi_to_sn1lpi`:
 - `"RHEA:18001"`: `"M_H2O + M_PI = M_1-LPI + M_H+ + M_FA"`
@@ -817,10 +817,13 @@ ordered according to their RHEA ids.
 - `"RHEA:18692"`: `"M_H2O + M_PC <=> M_2-LPC + M_FA"`
 
 `cer_to_sm`:
-- `"RHEA:18765"`: `"M_PC + M_CER <=> M_1,2-DG + M_SM"`
+- `"RHEA:18765"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
 
 `dhsm_to_dhcer`
-- `"RHEA:19253"`: `"M_H2O + M_DHSM <=> M_P-Choline + M_H+ + M_DHCER"`
+- `"RHEA:45300"`: `"M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer"`
+- `"RHEA:45301"`: `"M_H2O + M_DhSM => M_P-Choline + M_H+ + M_DhCer"`
+- `"RHEA:45302"`: `"M_H2O + M_DhSM <= M_P-Choline + M_H+ + M_DhCer"`
+- `"RHEA:45303"`: `"M_H2O + M_DhSM <=> M_P-Choline + M_H+ + M_DhCer"`
 
 `lpa_to_pa`:
 - `"RHEA:19709"`: `"M_LPA + M_AcylCoA = M_CoA + M_PA"`
@@ -1003,7 +1006,7 @@ ordered according to their RHEA ids.
 - `"RHEA:44607"`: `"M_H2O + M_PE <=> M_H+ + M_FA + M_1-LPE"`
 
 `dhcer_to_dhsm`
-- `"RHEA:44620"`: `"M_PC + M_DHCER <=> M_1,2-DG + M_DHSM"`
+- `"RHEA:44620"`: `"M_PC + M_DhCer <=> M_1,2-DG + M_DhSM"`
 
 `sn2lpc_to_fa`:
 - `"RHEA:44696"`: `"M_H2O + M_2-LPC = M_Glycerophosphocholine + M_H+ + M_FA"`
@@ -1027,10 +1030,13 @@ ordered according to their RHEA ids.
 - `"RHEA:52719"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FATOH + 2 M_NADP + M_CoA"`
 
 `sm_to_cer`:    
-- `"sm_to_cer"`: `"M_H2O + M_SM <=> M_P-Choline + M_H+ + M_CER"`
+- `"sm_to_cer"`: `"M_H2O + M_SM <=> M_P-Choline + M_H+ + M_Cer"`
     
 `sphinga_to_dhcer`:    
-- `"sphinga_to_dhcer"`: `"M_AcylCoA + M_c17isosphgn <=> M_CoA + M_DHCER"`
+- `"RHEA:53424"`: `"M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"`
+- `"RHEA:53425"`: `"M_AcylCoA + M_Sphinganine => M_CoA + M_DhCer"`
+- `"RHEA:53426"`: `"M_AcylCoA + M_Sphinganine <= M_CoA + M_DhCer"`
+- `"RHEA:53427"`: `"M_AcylCoA + M_Sphinganine <=> M_CoA + M_DhCer"`
         
 
     

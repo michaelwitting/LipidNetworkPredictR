@@ -126,13 +126,13 @@
         cols <- c("CDPDG")
     
     if (reaction == "RHEA:17929") ## cer_to_c1p
-        cols <- c("CER")
+        cols <- c("Cer")
     
     if (reaction == "RHEA:12088") ## cer_to_glccer
-        cols <- c("CER")
+        cols <- c("Cer")
     
     if (reaction == "RHEA:18765") ## cer_to_sm
-        cols <- c("CER")
+        cols <- c("Cer")
     
     ## cl_to_lcl
     if (reaction %in% c("RHEA:32935", "RHEA:32936", "RHEA:32937", "RHEA:32938"))
@@ -184,13 +184,14 @@
         cols <- c("DGO")
     
     if (reaction == "dhcer_to_cer")
-        cols <- c("DHCER")
+        cols <- c("DhCer")
     
     if (reaction == "RHEA:44620") ## dhcer_to_dhsm
-        cols <- c("DHCER")
+        cols <- c("DhCer")
     
-    if (reaction == "RHEA:19253") ## dhsm_to_dhcer
-        cols <- c("DHSM")
+    ## dhsm_to_dhcer
+    if (reaction %in% c("RHEA:45300", "RHEA:45301", "RHEA:45302", "RHEA:45303"))
+        cols <- c("DhSM")
     
     ## fa_to_coa
     if (reaction %in% c("RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424",
@@ -393,7 +394,8 @@
     if (reaction == "sm_to_cer")
         cols <- c("SM")
     
-    if (reaction == "sphinga_to_dhcer")
+    ## sphinga_to_dhcer
+    if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"))
         cols <- c("AcylCoA")
     
     ## tg_to_dg

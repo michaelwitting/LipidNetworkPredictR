@@ -49,7 +49,7 @@
         "RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190", ## dgo_to_peo
         "dhcer_to_cer",
         "RHEA:44620", ## dhcer_to_dhsm
-        "RHEA:19253", ## dhsm_to_dhcer
+        "RHEA:45300", "RHEA:45301", "RHEA:45302", "RHEA:45303", ## dhsm_to_dhcer
         "RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424", ## fa_to_coa
         "RHEA:38883", "RHEA:38884", "RHEA:38885", "RHEA:38886", ## fa_to_coa
         "RHEA:35839", "RHEA:35840", "RHEA:35841", "RHEA:35842", ## lcl_to_cl
@@ -107,7 +107,7 @@
         "RHEA:18001", "RHEA:18002", "RHEA:18003", "RHEA:18004", ## pi_to_sn1lpi
         "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831", ## ps_to_pe 
         "sm_to_cer", 
-        "sphinga_to_dhcer", 
+        "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427", ## sphinga_to_dhcer 
         "RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274", ## tg_to_dg
         "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867") ## tg_to_dg)
     

@@ -64,7 +64,7 @@
         l <- list(LPAO = unique(df_reaction$LPAO))
 
     if (reaction == "c1p_to_cer")
-        l <- list(CER = unique(df_reaction$CER))
+        l <- list(Cer = unique(df_reaction$Cer))
     
     ## cdpdg_to_pgp
     if (reaction %in% c("RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596"))
@@ -78,7 +78,7 @@
         l <- list(C1P = unique(df_reaction$C1P))
     
     if (reaction == "RHEA:12088") ## cer_to_glccer
-        l <- list(GLCCER = unique(df_reaction$GLCCER))
+        l <- list(GLCCer = unique(df_reaction$GLCCer))
     
     if (reaction == "RHEA:18765") ## cer_to_sm
         l <- list(SM = unique(df_reaction$SM))
@@ -137,13 +137,14 @@
         l <- list(PEO = unique(df_reaction$PEO))
     
     if (reaction == "dhcer_to_cer")
-        l <- list(CER = unique(df_reaction$CER))
+        l <- list(Cer = unique(df_reaction$Cer))
     
     if (reaction == "RHEA:44620") ## dhcer_to_dhsm
-        l <- list(DHSM = unique(df_reaction$DHSM))
+        l <- list(DhSM = unique(df_reaction$DhSM))
     
-    if (reaction == "RHEA:19253") ## dhsm_to_dhcer
-        l <- list(DHCER = unique(df_reaction$DHCER))
+    ## dhsm_to_dhcer
+    if (reaction %in% c("RHEA:45300", "RHEA:45301", "RHEA:45302", "RHEA:45303"))
+        l <- list(DhCer = unique(df_reaction$DhCer))
     
     ## fa_to_coa
     if (reaction %in% c("RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424",
@@ -367,10 +368,11 @@
         l <- list(PE = unique(df_reaction$PE))
     
     if (reaction == "sm_to_cer")
-        l <- list(CER = unique(df_reaction$CER))
+        l <- list(Cer = unique(df_reaction$Cer))
     
-    if (reaction == "sphinga_to_dhcer")
-        l <- list(DHCER = unique(df_reaction$DHCER))
+    ## sphinga_to_dhcer
+    if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"))
+        l <- list(DhCer = unique(df_reaction$DhCer))
     
     ## tg_to_dg
     if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",

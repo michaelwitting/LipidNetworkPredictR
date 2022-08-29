@@ -52,17 +52,17 @@ The following abbreviations are used (in alphabetical order):
 -   `AlkylDHAP`: dihydroxyacetonephosphate,
 -   `C1P`: Ceramide-1-phosphates [SP0205],
 -   `CDPDG`: cytidine diphosphate diacylglycerol,
--   `CER`: N-acylsphingosines (ceramides) [SP0201],
+-   `Cer`: N-acylsphingosines (ceramides) [SP0201],
 -   `CL`: Diacylglycerophosphoglycerophosphodiradylglycerols
     (cardiolipin) [GP1201],
 -   `CoA`: Fatty acyl CoAs [FA0705],
 -   `DG`: Diacylglycerols [GL0201],
 -   `DGO`: 1-alkyl,2-acylglycerols
--   `DHCER`: N-acylsphinganines (dihydroceramides) [SP0202],
--   `DHSM`: Dihydrosphingomyelins [SP0301],
+-   `DhCer`: N-acylsphinganines (dihydroceramides) [SP0202],
+-   `DhSM`: Dihydrosphingomyelins [SP0301],
 -   `FA`: Fatty acids [FA01],
 -   `FATOH`: Fatty alcohols [FA05],
--   `GLCCER`: glycosylceramide [SP0501],
+-   `GLCCer`: glycosylceramide [SP0501],
 -   `GPNAE`: glycerophospho-N-acylethanolamine,
 -   `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
 -   `LPA`: 1-acylglycerophosphates [GP1005],
@@ -1772,8 +1772,8 @@ template <- list(reaction_name = "Lysoplasmalogen ethanolamine phosphohydrolase"
 ```{r sphinga_to_dhcer, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
-    reaction_formula = "M_AcylCoA + M_c17isosphgn <=> M_CoA + M_DHCER",
-    reaction_RHEA = "",
+    reaction_formula = "M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer",
+    reaction_RHEA = "RHEA:53424",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00006505 or WBGene00002044 or WBGene00002043",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
@@ -1781,16 +1781,16 @@ template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
 
 ```{r sphinga_to_dhcer_template, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(AcylCoA = CoA_SPH),
-    template = template, reaction = "sphinga_to_dhcer")
+    template = template, reaction = "RHEA:53424")
 
 results[[2]][1:5, "reaction_formula"]
 
-## get DHCER for further reactions
-DHCER <- results[[1]][["DHCER"]]
+## get DhCer for further reactions
+DhCer <- results[[1]][["DhCer"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(DHCER)
+lipid_info <- rgoslin::parseLipidNames(DhCer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
@@ -1799,7 +1799,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r dhcer_to_dhsm_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin synthase",
-    reaction_formula = "M_P-Choline + M_DHCER = M_1,2-DG + M_DHSM",
+    reaction_formula = "M_P-Choline + M_DhCer = M_1,2-DG + M_DhSM",
     reaction_RHEA = "RHEA:44620",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
@@ -1807,40 +1807,40 @@ template <- list(reaction_name = "Dihydrosphingomyelin synthase",
 ```
 
 ```{r dhcer_to_dhsm, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(DHCER = DHCER),
+results <-  .create_reaction(substrates = list(DhCer = DhCer),
     template = template, reaction = "RHEA:44620")
 
 results[[2]][1:5, "reaction_formula"]
 
-## get DHSM for further reactions
-DHSM <- results[[1]][["DHSM"]]
+## get DhSM for further reactions
+DhSM <- results[[1]][["DhSM"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(DHSM)
+lipid_info <- rgoslin::parseLipidNames(DhSM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
-### Degradation of Dihydrosphingomyelins (DHSM)
+### Degradation of Dihydrosphingomyelins (DhSM)
 
 ```{r dhsm_to_dhcer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
-    reaction_formula = "M_H2O + M_DHSM = M_P-Choline + M_H+ + M_DHCER",
-    reaction_RHEA = "RHEA:19253",
+    reaction_formula = "M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer",
+    reaction_RHEA = "RHEA:45300",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000213 or WBGene00000212 or WBGene00000211",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
 ```
 
 ```{r dhsm_to_dhcer, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(DHSM = DHSM),
-    template = template, reaction = "RHEA:19253")
+results <-  .create_reaction(substrates = list(DhSM = DhSM),
+    template = template, reaction = "RHEA:45300")
 
 results[[2]][1:5, "reaction_formula"]
 
-## check if produced DHCER are in previous list
-if (all(results[[1]][["DHCER"]] %in% DHCER)) {
+## check if produced DhCer are in previous list
+if (all(results[[1]][["DhCer"]] %in% DhCer)) {
   
   print("all fine...")
   
@@ -1849,12 +1849,12 @@ if (all(results[[1]][["DHCER"]] %in% DHCER)) {
 }
 ```
 
-### Biosynthesis of Ceramides (CER)
+### Biosynthesis of Ceramides (Cer)
 
 ```{r dhcer_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydroceramide dehydrogenase",
-    reaction_formula = "M_H+ + M_NADH + M_O2 + M_DHCER = 2 M_H2O + M_NAD + M_CER",
+    reaction_formula = "M_H+ + M_NADH + M_O2 + M_DhCer = 2 M_H2O + M_NAD + M_Cer",
     reaction_RHEA = "",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00017996 or WBGene00013197",
@@ -1862,17 +1862,17 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 ```
 
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(DHCER = DHCER),
+results <-  .create_reaction(substrates = list(DhCer = DhCer),
     template = template, reaction = "dhcer_to_cer")
 
 results[[2]][1:5, "reaction_formula"]
 
-## get CER for further reactions
-CER <- results[[1]][["CER"]]
+## get Cer for further reactions
+Cer <- results[[1]][["Cer"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(CER)
+lipid_info <- rgoslin::parseLipidNames(Cer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
@@ -1881,7 +1881,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r cer_to_sm_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin synthase",
-    reaction_formula = "M_P-Choline + M_CER = M_1,2-DG + M_SM",
+    reaction_formula = "M_P-Choline + M_Cer = M_1,2-DG + M_SM",
     reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
@@ -1889,7 +1889,7 @@ template <- list(reaction_name = "Sphingomyelin synthase",
 ```
 
 ```{r cer_to_sm, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(CER = CER),
+results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:18765")
 
 results[[2]][1:5, "reaction_formula"]
@@ -1903,12 +1903,12 @@ lipid_info <- rgoslin::parseLipidNames(SM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
-### Degradation of Sphingomyelins (SM) to Ceramides (CER)
+### Degradation of Sphingomyelins (SM) to Ceramides (Cer)
 
 ```{r sm_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
-    reaction_formula = "M_H2O + M_SM = M_P-Choline + M_H+ + M_CER",
+    reaction_formula = "M_H2O + M_SM = M_P-Choline + M_H+ + M_Cer",
     reaction_RHEA = "",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000211 or WBGene00000212 or WBGene00000213 or WBGene00012105 or WBGene00011037",
@@ -1921,8 +1921,8 @@ results <-  .create_reaction(substrates = list(SM = SM),
 
 results[[2]][1:5, "reaction_formula"]
 
-## check if produced CER are in previous list
-if (all(results[[1]][["CER"]] %in% CER)) {
+## check if produced Cer are in previous list
+if (all(results[[1]][["Cer"]] %in% Cer)) {
   
   print("all fine...")
   
@@ -1931,12 +1931,12 @@ if (all(results[[1]][["CER"]] %in% CER)) {
 }
 ```
 
-### Biosynthesis of Ceramide-1-Phosphates (C1P) from Ceramides (CER)
+### Biosynthesis of Ceramide-1-Phosphates (C1P) from Ceramides (Cer)
 
 ```{r cer_to_c1p_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Ceramide kinase",
-    reaction_formula = "M_ATP + M_CER = M_H+ + M_ADP + M_C1P",
+    reaction_formula = "M_ATP + M_Cer = M_H+ + M_ADP + M_C1P",
     reaction_RHEA = "",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00020398",
@@ -1944,7 +1944,7 @@ template <- list(reaction_name = "Ceramide kinase",
 ```
 
 ```{r cer_to_c1p, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(CER = CER),
+results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:17929")
 
 results[[2]][1:5, "reaction_formula"]
@@ -1958,14 +1958,14 @@ lipid_info <- rgoslin::parseLipidNames(C1P)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
-### Degradation of Ceramide-1-Phosphates (C1P) to Ceramides (CER)
+### Degradation of Ceramide-1-Phosphates (C1P) to Ceramides (Cer)
 
 gene is unknown!
 
 ```{r c1p_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
-    reaction_formula = "M_H2O + M_C1P = M_Pi + M_CER",
+    reaction_formula = "M_H2O + M_C1P = M_Pi + M_Cer",
     reaction_RHEA = "",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
@@ -1978,8 +1978,8 @@ results <-  .create_reaction(substrates = list(C1P = C1P),
 
 results[[2]][1:5, "reaction_formula"]
 
-## check if produced CER are in previous list
-if (all(results[[1]][["CER"]] %in% CER)) {
+## check if produced Cer are in previous list
+if (all(results[[1]][["Cer"]] %in% Cer)) {
   
     print("all fine...")
   
@@ -1994,7 +1994,7 @@ if (all(results[[1]][["CER"]] %in% CER)) {
 ## template for reaction -------------------------------------------------------
 template <- list(
     reaction_name = "UDP-glucose:N-acylsphingosine D-glucosyltransferase (cytosol)",
-    reaction_formula = "M_UDP-Glucose + M_CER = M_H+ + M_UDP + M_GLCCER",
+    reaction_formula = "M_UDP-Glucose + M_Cer = M_H+ + M_UDP + M_GLCCer",
     reaction_RHEA = "RHEA:12088",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00011517 or WBGene00017625 or WBGene00019127",
@@ -2002,17 +2002,17 @@ template <- list(
 ```
 
 ```{r cer_to_glccer, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(CER = CER),
+results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:12088")
 
 results[[2]][1:5, "reaction_formula"]
 
-## get GLCCER for further reactions
-GLCCER <- results[[1]][["GLCCER"]]
+## get GLCCer for further reactions
+GLCCer <- results[[1]][["GLCCer"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(GLCCER)
+lipid_info <- rgoslin::parseLipidNames(GLCCer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 

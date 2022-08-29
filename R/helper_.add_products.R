@@ -69,7 +69,7 @@
     }
 
     if (reaction == "c1p_to_cer") {
-        .s$CER <- stringi::stri_replace_all_fixed(str = .s$C1P, 
+        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$C1P, 
             pattern = "C1P", replacement = "Cer")
     }
     
@@ -86,17 +86,17 @@
     }
             
     if (reaction == "RHEA:17929") { ## cer_to_c1p
-        .s$C1P <- stringi::stri_replace_all_fixed(str = .s$CER, 
+        .s$C1P <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "C1P")
     }
             
     if (reaction == "RHEA:12088") { ## cer_to_glccer
-        .s$GLCCER <- stringi::stri_replace_all_fixed(str = .s$CER, 
+        .s$GLCCer <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "GlcCer")
     }
             
     if (reaction == "RHEA:18765") { ## cer_to_sm
-        .s$SM <- stringi::stri_replace_all_fixed(str = .s$CER, 
+        .s$SM <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "SM")
     }
     
@@ -195,18 +195,20 @@
     }
             
     if (reaction == "dhcer_to_cer") {
-        .s$CER <- stringi::stri_replace_all_fixed(str = .s$DHCER, 
+        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$DhCer, 
             pattern = "Cer\\(d16:0\\(3OH,4OH\\)\\(15Me\\)\\/",
             replacement = "Cer(d16:1(4E)(3OH,4OH)(15Me)/")
     }
-            
-    if (reaction == "RHEA:44620") { ## dhcer_to_dhsm
-        .s$DHSM <- stringi::stri_replace_all_fixed(str = .s$DHCER, 
+
+    ## dhcer_to_dhsm
+    if (reaction == "RHEA:44620") { 
+        .s$DhSM <- stringi::stri_replace_all_fixed(str = .s$DhCer, 
             pattern = "Cer", replacement = "SM")
     }
-        
-    if (reaction == "RHEA:19253") { ## dhsm_to_dhcer
-        .s$DHCER <- stringi::stri_replace_all_fixed(str = .s$DHSM, 
+    
+    ## dhsm_to_dhcer
+    if (reaction %in% c("RHEA:45300", "RHEA:45301", "RHEA:45302", "RHEA:45303")) { 
+        .s$DhCer <- stringi::stri_replace_all_fixed(str = .s$DhSM, 
             pattern = "SM", replacement = "Cer")
     }
 
@@ -233,7 +235,8 @@
                 "],3'-[", .s$AcylCoAs2[[f]], "/", .s$LCLs2[[f]][4], "])")))
     }
     
-    if (reaction == "RHEA:45420") { ## lnape_to_gpnae
+    ## lnape_to_gpnae
+    if (reaction == "RHEA:45420") { 
         .s$GPNAE <- unlist(lapply(isolate_radyls(.s$LNAPE), 
             function(f) {paste0("GPNAE(", f[3], ")")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$LNAPE), 
@@ -642,12 +645,13 @@
     }
     
     if (reaction == "sm_to_cer") {
-        .s$CER <- stringi::stri_replace_all_fixed(str = .s$SM, pattern = "SM",
+        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$SM, pattern = "SM",
             replacement = "Cer")
     }
 
-    if (reaction == "sphinga_to_dhcer") {
-        .s$DHCER <- stringi::stri_replace_all_regex(str = .s$AcylCoA, 
+    ## sphinga_to_dhcer
+    if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427")) {
+        .s$DhCer <- stringi::stri_replace_all_regex(str = .s$AcylCoA, 
             pattern = "CoA\\(", replacement = "Cer(16:0(3OH,4OH,15Me)/")
     }
     
