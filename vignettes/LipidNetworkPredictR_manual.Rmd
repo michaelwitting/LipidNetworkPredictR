@@ -1702,7 +1702,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 template <- list(
     reaction_name = "1-alkenyl-sn-glycero-3-phosphoethanolamine acyltransferase (LPE, cytosol)",
     reaction_formula = "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P",
-    reaction_RHEA = "",
+    reaction_RHEA = "RHEA:16245",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Remodeling and Degradation of Etherlipids")
@@ -1710,7 +1710,7 @@ template <- list(
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(LPEP = LPEP, AcylCoA = CoA_GPGL),
-    template = template, reaction = "lpep_to_pep")
+    template = template, reaction = "RHEA:16245")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -1730,7 +1730,7 @@ if (all(results[[1]][["PEP"]] %in% PEP)) {
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A2 (PC-O)",
     reaction_formula = "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA",
-    reaction_RHEA = "",
+    reaction_RHEA = "RHEA:36231",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00012319 or WBGene00010872 or WBGene00019236 or WBGene00015202 or WBGene00016288 or WBGene00044468 or WBGene00018411 or WBGene00007419 or WBGene00009404 or WBGene00015406",
     reaction_pathway = "Remodeling and Degradation of Etherlipids")
@@ -1738,7 +1738,7 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 
 ```{r pco_to_lpco, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PCO = PCO),
-    template = template, reaction = "pco_to_lpco")
+    template = template, reaction = "RHEA:36231")
 
 results[[2]][1:5, "reaction_formula"]
 

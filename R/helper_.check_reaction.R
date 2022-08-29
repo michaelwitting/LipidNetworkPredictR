@@ -64,7 +64,7 @@
         "RHEA:32995", "RHEA:32996", "RHEA:32997", "RHEA:32998", ## sn1lpe_to_pe
         "RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198", ## sn1lpi_to_pi
         "lpeo_to_peo", 
-        "lpep_to_pep", 
+        "RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248", ##lpep_to_pep 
         "RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466", ## sn1mg_to_dg
         "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946", ## sn1mg_to_dg
         "RHEA:32947", "RHEA:32948", "RHEA:32949", "RHEA:32950", ## sn2mg_to_dg
@@ -86,7 +86,7 @@
         "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692", ## pc_to_sn2lpc
         "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448", ## pc_to_pa
         "RHEA:45088", "RHEA:45089", "RHEA:45090", "RHEA:45091", ## pc_to_ps
-        "pco_to_lpco", 
+        "RHEA:36231", "RHEA:36232", "RHEA:36233", "RHEA:36234", ## pco_to_lpco 
         "pe_to_dg", 
         "RHEA:44604", "RHEA:44605", "RHEA:44606", "RHEA:44607", ## pe_to_sn1lpe 
         "RHEA:44408", "RHEA:44409", "RHEA:44410", "RHEA:44411", ## pe_to_sn2lpe

@@ -366,8 +366,16 @@
         if (reaction == "lpeo_to_peo")
             .formula <- "M_AcylCoA + M_ak2lgpe <=> M_CoA + M_PE-O"
         
-        if (reaction == "lpep_to_pep")
+        ## lpep_to_pep
+        if (reaction == "RHEA:16245")
             .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+        if (reaction == "RHEA:16246")    
+            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+        if (reaction == "RHEA:16247")
+            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+        if (reaction == "RHEA:16248")
+            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+            
         
         ## sn1mg_to_dg
         if (reaction %in% c("RHEA:38463", "RHEA:39943"))
@@ -516,8 +524,15 @@
             .formula <- "M_L-Serine + M_PC <= M_Choline + M_PS"
         if (reaction == "RHEA:45091") ## 
             .formula <- "M_L-Serine + M_PC <=> M_Choline + M_PS"
-        
-        if (reaction == "pco_to_lpco")
+
+        ## pco_to_lpco
+        if (reaction == "RHEA:36231")
+            .formula <- "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"
+        if (reaction == "RHEA:36232")
+            .formula <- "M_H2O + M_PC-O => M_H+ + M_LPC-O + M_FA"
+        if (reaction == "RHEA:36233")
+            .formula <- "M_H2O + M_PC-O <= M_H+ + M_LPC-O + M_FA"
+        if (reaction == "RHEA:36234")
             .formula <- "M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"
         
         if (reaction == "pe_to_dg")

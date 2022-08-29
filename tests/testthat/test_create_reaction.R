@@ -736,10 +736,31 @@ test_that(".create_reaction works", {
     lpep <- "PE(P-16:0/0:0)"
     acylcoa <- "CoA(18:0)"
     reaction_l <- .create_reaction(substrates = list(LPEP = lpep, AcylCoA = acylcoa), 
-        template = NULL, reaction =  "lpep_to_pep")
+        template = NULL, reaction =  "RHEA:16245")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+    reaction_l <- .create_reaction(
+        substrates = list(LPEP = lpep, AcylCoA = acylcoa), 
+        template = NULL, reaction =  "RHEA:16246")
+    expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+    reaction_l <- .create_reaction(
+        substrates = list(LPEP = lpep, AcylCoA = acylcoa), 
+        template = NULL, reaction =  "RHEA:16247")
+    expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+    reaction_l <- .create_reaction(
+        substrates = list(LPEP = lpep, AcylCoA = acylcoa), 
+        template = NULL, reaction =  "RHEA:16248")
+    expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+    
+    
+    c("", "RHEA:16246", "RHEA:16247", "RHEA:16248")
     
     ## sn1mg_to_dg
     sn1mg <- "MG(14:0/0:0/0:0)"
@@ -1137,10 +1158,30 @@ test_that(".create_reaction works", {
     ## pco_to_lpco
     pco <- "PC(O-16:0/14:0)"
     reaction_l <- .create_reaction(substrates = list(PCO = pco), 
-        template = NULL, reaction = "pco_to_lpco")
+        template = NULL, reaction = "RHEA:36231")
     expect_equal(reaction_l[[1]]$LPCO, "PC(O-16:0/0:0)")
+    expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PC(O-16:0/14:0) = H+ + PC(O-16:0/0:0) + FA(14:0)")
+    reaction_l <- .create_reaction(substrates = list(PCO = pco), 
+        template = NULL, reaction = "RHEA:36232")
+    expect_equal(reaction_l[[1]]$LPCO, "PC(O-16:0/0:0)")
+    expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PC(O-16:0/14:0) => H+ + PC(O-16:0/0:0) + FA(14:0)")
+    reaction_l <- .create_reaction(substrates = list(PCO = pco), 
+        template = NULL, reaction = "RHEA:36233")
+    expect_equal(reaction_l[[1]]$LPCO, "PC(O-16:0/0:0)")
+    expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PC(O-16:0/14:0) <= H+ + PC(O-16:0/0:0) + FA(14:0)")
+    reaction_l <- .create_reaction(substrates = list(PCO = pco), 
+        template = NULL, reaction = "RHEA:36234")
+    expect_equal(reaction_l[[1]]$LPCO, "PC(O-16:0/0:0)")
+    expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PC(O-16:0/14:0) <=> H+ + PC(O-16:0/0:0) + FA(14:0)")
+    
     
     ## pe_to_dg
     pe <- "PE(14:0/16:0)"

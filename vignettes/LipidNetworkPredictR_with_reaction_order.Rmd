@@ -383,11 +383,11 @@ same as for PC!
 
 ### Reacylation of PE-O (lpeo_to_peo)
 
-### PLA2 on PE-P (pep_to_lpep)
+### PLA2 on PE-P (RHEA:36195)
 
-### Reacylation of PE-P (lpep_to_pep)
+### Reacylation of PE-P (RHEA:16245)
 
-### PLA2 on PC-O (pco_to_lpco)
+### PLA2 on PC-O (RHEA:36231)
 
 ### Remodeling of PC-O???
 
@@ -499,8 +499,8 @@ reactions <- rbind(
     c(47, "peo_to_lpeo", "M_H2O + M_PE-O = M_H+ + M_LPE-O+ M_FA"), ## H2O + PEO = H+ + LPEO + FA_GPGL
     c(48, "lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
     c(49, "RHEA:36195", "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"), ## H2O + PEP = H+ + LPEP + FA
-    c(50, "lpep_to_pep", "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"), ## CoA_GPGL + LPEP = CoA + PEP
-    c(51, "pco_to_lpco", "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"), ## H2O + PCO = H+ + LPCO + FA_GPGL
+    c(50, "RHEA:16245", "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"), ## CoA_GPGL + LPEP = CoA + PEP
+    c(51, "RHEA:36231", "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"), ## H2O + PCO = H+ + LPCO + FA_GPGL
     ## Block Y
     c(52, "pe_to_nape_sn1", "M_PE + M_PC = M_NAPE + M_2-LPC"), ## PE + PC = NAPE + sn2LPC"
     c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
@@ -651,7 +651,10 @@ ordered according to their RHEA ids.
 - `"lpeo_to_peo"`: `"M_AcylCoA + M_ak2lgpe <=> M_CoA + M_PE-O"`
 
 `lpep_to_pep`:
-- `"lpep_to_pep"`: `"M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"`
+- `"RHEA:16245"`: `"M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"`
+- `"RHEA:16246"`: `"M_AcylCoA + M_LPE-P => M_CoA + M_PE-P"`
+- `"RHEA:16247"`: `"M_AcylCoA + M_LPE-P <= M_CoA + M_PE-P"`
+- `"RHEA:16248"`: `"M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"`
     
 `sn2mg_to_sn1mg`:
 - `"sn2mg_to_sn1mg"`: `"M_2-MG <=> M_1-MG"`
@@ -672,7 +675,11 @@ ordered according to their RHEA ids.
 - `"napeo_to_nae"`: `"M_NAPEO + M_H2O <=> M_NAE + M_PA-O"`
 
 `pco_to_lpco`:      
-- `"pco_to_lpco"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
+- `"RHEA:36231"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
+- `"RHEA:36232"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
+- `"RHEA:36233"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
+- `"RHEA:36234"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
+
 
 `pe_to_dg`:     
 - `"pe_to_dg"`: `"M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG"`

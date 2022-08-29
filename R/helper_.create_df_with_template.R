@@ -386,7 +386,8 @@
             pattern = "M_PE-O", replacement = df_reaction[["PEO"]])
     }
     
-    if (reaction == "lpep_to_pep") {
+    ## lpep_to_pep
+    if (reaction %in% c("RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -559,7 +560,8 @@
             pattern = "M_PS", replacement = df_reaction[["PS"]])
     }
     
-    if (reaction == "pco_to_lpco"){
+    ## pco_to_lpco
+    if (reaction %in% c("RHEA:36231", "RHEA:36232", "RHEA:36233", "RHEA:36234")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PC-O", replacement = df_reaction[["PCO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 

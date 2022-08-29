@@ -312,7 +312,8 @@
                 function(f) {paste0("/", f)})))
     }
 
-    if (reaction == "lpep_to_pep") {
+    ## lpep_to_pep
+    if (reaction %in% c("RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248")) {
         .s$PEP <- stringi::stri_replace_all_fixed(str = .s$LPEP, 
             pattern = "/0:0", 
             replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
@@ -462,7 +463,8 @@
             replacement = "PS")
     }
     
-    if (reaction == "pco_to_lpco") {
+    ## pco_to_lpco
+    if (reaction %in% c("RHEA:36231", "RHEA:36232", "RHEA:36233", "RHEA:36234")) {
         ## "sn2 loss"
         .s$LPCO <- unlist(lapply(isolate_radyls(.s$PCO), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
