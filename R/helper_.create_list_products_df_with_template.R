@@ -56,7 +56,8 @@
     
     ## acyldhap_to_alkyldhap
     if (reaction %in% c("RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174")) 
-        l <- list(AlkylDHAP = unique(df_reaction$AlkylDHAP))
+        l <- list(AlkylDHAP = unique(df_reaction$AlkylDHAP), 
+            FA = unique(df_reaction$FA))
     
     ## alkyldhap_to_lpao
     if (reaction %in% c("RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178"))
