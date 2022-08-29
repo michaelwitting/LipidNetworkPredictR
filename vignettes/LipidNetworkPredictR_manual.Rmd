@@ -1674,7 +1674,7 @@ if (all(results[[1]][["PEO"]] %in% PEO)) {
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Phospholipase A2 (PE-P)",
     reaction_formula = "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA",
-    reaction_RHEA = "",
+    reaction_RHEA = "RHEA:36195",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Remodeling and Degradation of Etherlipids")
@@ -1682,7 +1682,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 
 ```{r pep_to_lpep, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP),
-    template = template, reaction = "pep_to_lpep")
+    template = template, reaction = "RHEA:36195")
 
 results[[2]][1:5, "reaction_formula"]
 

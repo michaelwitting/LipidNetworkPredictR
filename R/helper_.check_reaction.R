@@ -98,7 +98,7 @@
         "peo_to_napeo_sn1", 
         "peo_to_napeo_sn2", 
         "RHEA:22956", "RHEA:22957", "RHEA:22958", "RHEA:22959", ## peo_to_pep, 
-        "pep_to_lpep", 
+        "RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198", ##"pep_to_lpep", 
         "pep_to_napep_sn1", 
         "pep_to_napep_sn2", 
         "RHEA:32931", "RHEA:32932", "RHEA:32933", "RHEA:32934", ## "pg_to_cl", 

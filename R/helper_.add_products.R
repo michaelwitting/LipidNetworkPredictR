@@ -564,7 +564,8 @@
             pattern = "PE\\(O-", replacement = "PE(P-")
     }
     
-    if (reaction == "pep_to_lpep") {
+    ## pep_to_lpep
+    if (reaction %in% c("RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198")) {
         ## "sn2 loss"
         .s$LPEP <- unlist(lapply(isolate_radyls(.s$PEP), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))

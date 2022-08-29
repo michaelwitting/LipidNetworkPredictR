@@ -581,7 +581,14 @@
         if (reaction == "RHEA:22959")
             .formula <- "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"
         
-        if (reaction == "pep_to_lpep")
+        ## pep_to_lpep
+        if (reaction == "RHEA:36195")
+            .formula <- "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"
+        if (reaction == "RHEA:36196")
+            .formula <- "M_H2O + M_PE-P => M_H+ + M_LPE-P + M_FA"
+        if (reaction == "RHEA:36197")
+            .formula <- "M_H2O + M_PE-P <= M_H+ + M_LPE-P + M_FA"
+        if (reaction == "RHEA:36198")
             .formula <- "M_H2O + M_PE-P <=> M_H+ + M_LPE-P + M_FA"
         
         if (reaction == "pep_to_napep_sn1")

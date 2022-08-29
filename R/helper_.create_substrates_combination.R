@@ -243,6 +243,7 @@
     if (reaction == "lpeo_to_peo")
         cols <- c("LPEO", "AcylCoA")
     
+    ## 
     if (reaction == "lpep_to_pep")
         cols <- c("LPEP", "AcylCoA")
     
@@ -358,7 +359,8 @@
     if (reaction %in% c("RHEA:22956", "RHEA:22957", "RHEA:22958", "RHEA:22959"))
         cols <- c("PEO")
     
-    if (reaction == "pep_to_lpep")
+    ## pep_to_lpep
+    if (reaction %in% c("RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198"))
         cols <- c("PEP")
     
     if (reaction == "pep_to_napep_sn1")

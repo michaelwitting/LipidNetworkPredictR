@@ -1302,7 +1302,22 @@ test_that(".create_reaction works", {
     ## pep_to_lpep
     pep <- "PE(P-16:0/14:0)"
     reaction_l <- .create_reaction(substrates = list(PEP = pep), 
-        template = NULL, reaction =  "pep_to_lpep")
+        template = NULL, reaction =  "RHEA:36195")
+    expect_equal(reaction_l[[1]]$LPEP, "PE(P-16:0/0:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) = H+ + PE(P-16:0/0:0) + FA(14:0)")
+    reaction_l <- .create_reaction(substrates = list(PEP = pep), 
+        template = NULL, reaction =  "RHEA:36196")
+    expect_equal(reaction_l[[1]]$LPEP, "PE(P-16:0/0:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) => H+ + PE(P-16:0/0:0) + FA(14:0)")  
+    reaction_l <- .create_reaction(substrates = list(PEP = pep), 
+        template = NULL, reaction =  "RHEA:36197")
+    expect_equal(reaction_l[[1]]$LPEP, "PE(P-16:0/0:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) <= H+ + PE(P-16:0/0:0) + FA(14:0)")  
+    reaction_l <- .create_reaction(substrates = list(PEP = pep), 
+        template = NULL, reaction =  "RHEA:36198")
     expect_equal(reaction_l[[1]]$LPEP, "PE(P-16:0/0:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H2O + PE(P-16:0/14:0) <=> H+ + PE(P-16:0/0:0) + FA(14:0)")  

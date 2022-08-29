@@ -672,7 +672,8 @@
             pattern = "M_PE-P", replacement = df_reaction[["PEP"]])
     }
     
-    if (reaction == "pep_to_lpep") {
+    ## pep_to_lpep
+    if (reaction %in% c("RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-P", replacement = df_reaction[["PEP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 

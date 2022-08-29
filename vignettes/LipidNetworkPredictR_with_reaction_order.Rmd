@@ -498,7 +498,7 @@ reactions <- rbind(
     ## Block 7
     c(47, "peo_to_lpeo", "M_H2O + M_PE-O = M_H+ + M_LPE-O+ M_FA"), ## H2O + PEO = H+ + LPEO + FA_GPGL
     c(48, "lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
-    c(49, "pep_to_lpep", "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"), ## H2O + PEP = H+ + LPEP + FA
+    c(49, "RHEA:36195", "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"), ## H2O + PEP = H+ + LPEP + FA
     c(50, "lpep_to_pep", "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"), ## CoA_GPGL + LPEP = CoA + PEP
     c(51, "pco_to_lpco", "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"), ## H2O + PCO = H+ + LPCO + FA_GPGL
     ## Block Y
@@ -696,7 +696,10 @@ ordered according to their RHEA ids.
 - `"peo_to_napeo_sn2"`: `"M_PE-O + M_PC <=> M_NAPEO + M_1-LPC"`
 
 `pep_to_lpep`:    
-- `"pep_to_lpep"`: `"M_H2O + M_PE-P <=> M_H+ + M_LPE-P + M_FA"`
+- `"RHEA:36195"`: `"M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"`
+- `"RHEA:36196"`: `"M_H2O + M_PE-P => M_H+ + M_LPE-P + M_FA"`
+- `"RHEA:36197"`: `"M_H2O + M_PE-P <= M_H+ + M_LPE-P + M_FA"`
+- `"RHEA:36198"`: `"M_H2O + M_PE-P <=> M_H+ + M_LPE-P + M_FA"`
 
 `pep_to_napep_sn1`:    
 - `"pep_to_napep_sn1"`: `"M_PE-P + M_PC <=> M_NAPEP + M_2-LPC"`

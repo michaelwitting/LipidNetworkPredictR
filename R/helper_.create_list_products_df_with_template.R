@@ -199,6 +199,7 @@
     if (reaction == "lpeo_to_peo")
         l <- list(PEO = unique(df_reaction$PEO))
     
+    ## lpep_to_pep
     if (reaction == "lpep_to_pep")
         l <- list(PEP = unique(df_reaction$PEP))
     
@@ -326,7 +327,8 @@
     if (reaction %in% c("RHEA:22956", "RHEA:22957", "RHEA:22958", "RHEA:22959"))
         l <- list(PEP = unique(df_reaction$PEP))
     
-    if (reaction == "pep_to_lpep")
+    ## pep_to_lpep
+    if (reaction %in% c("RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198"))
         l <- list(LPEP = unique(df_reaction$LPEP))
     
     if (reaction == "pep_to_napep_sn1")
