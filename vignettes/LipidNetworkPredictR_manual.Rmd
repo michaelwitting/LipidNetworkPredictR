@@ -270,7 +270,7 @@ results <- .create_reaction(substrates = list(AcylCoA = CoA_GPGL),
 results[[2]][1:5, "reaction_formula"]
 
 ## get LPA for further reactions
-LPA <- results[[1]][["LPA"]]
+LPA <- results[[1]][["sn1LPA"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
@@ -302,7 +302,7 @@ template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
 
 ```{r lpa_to_pa, message=FALSE, warning=FALSE}
 ## biosynthesis of PA ---------------------------------------------------------
-results <- .create_reaction(substrates = list(LPA = LPA, AcylCoA = CoA_GPGL),
+results <- .create_reaction(substrates = list(sn1LPA = LPA, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:19709")
 
 results[[2]][1:5, "reaction_formula"]
@@ -623,7 +623,7 @@ results <-  .create_reaction(substrates = list(sn1MG = sn1MG),
 results[[2]][1:5, "reaction_formula"]
 
 ## check if produced LPA are in previous list
-if (all(results[[1]][["LPA"]] %in% LPA)) {
+if (all(results[[1]][["sn1LPA"]] %in% LPA)) {
   
     print("all fine...")
   
@@ -1452,7 +1452,7 @@ results <-  .create_reaction(substrates = list(AlkylDHAP = AlkylDHAP),
 results[[2]][1:5, "reaction_formula"]
 
 ## get LPAO for further reactions
-LPAO <- results[[1]][["LPAO"]]
+LPAO <- results[[1]][["sn1LPAO"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
@@ -1476,7 +1476,7 @@ template <- list(reaction_name = "2-O-Acyl transferase",
 
 
 ```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(LPAO = LPAO, AcylCoA = CoA_GPGL),
+results <-  .create_reaction(substrates = list(sn1LPAO = LPAO, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:36235")
                              #constraints = c("", "OH"),
                              #negate = c(FALSE, TRUE))
@@ -1630,7 +1630,7 @@ results <-  .create_reaction(substrates = list(PEO = PEO),
 results[[2]][1:5, "reaction_formula"]
 
 ## get LPEO for further reactions
-LPEO <- results[[1]][["LPEO"]]
+LPEO <- results[[1]][["sn1LPEO"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
@@ -1653,7 +1653,7 @@ template <- list(
 
 ```{r lpeo_to_peo, message=FALSE, warning=FALSE, eval=TRUE}
 # biosynthesis of PEO ----------------------------------------------------------
-results <-  .create_reaction(substrates = list(LPEO = LPEO, AcylCoA = CoA_GPGL),
+results <-  .create_reaction(substrates = list(sn1LPEO = LPEO, AcylCoA = CoA_GPGL),
     template = template, reaction = "lpeo_to_peo")
 
 results[[2]][1:5, "reaction_formula"]
@@ -1687,7 +1687,7 @@ results <-  .create_reaction(substrates = list(PEP = PEP),
 results[[2]][1:5, "reaction_formula"]
 
 ## get LPEP for further reactions
-LPEP <- results[[1]][["LPEP"]]
+LPEP <- results[[1]][["sn1LPEP"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
@@ -1709,7 +1709,8 @@ template <- list(
 ```
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(LPEP = LPEP, AcylCoA = CoA_GPGL),
+results <-  .create_reaction(
+    substrates = list(sn1LPEP = LPEP, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:16245")
 
 results[[2]][1:5, "reaction_formula"]
@@ -1743,7 +1744,7 @@ results <-  .create_reaction(substrates = list(PCO = PCO),
 results[[2]][1:5, "reaction_formula"]
 
 ## get LPCO for further reactions
-LPCO <- results[[1]][["LPCO"]]
+LPCO <- results[[1]][["sn1LPCO"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
@@ -1799,7 +1800,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r dhcer_to_dhsm_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin synthase",
-    reaction_formula = "M_P-Choline + M_DhCer = M_1,2-DG + M_DhSM",
+    reaction_formula = "M_Phosphocholine + M_DhCer = M_1,2-DG + M_DhSM",
     reaction_RHEA = "RHEA:44620",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
@@ -1826,7 +1827,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r dhsm_to_dhcer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
-    reaction_formula = "M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer",
+    reaction_formula = "M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer",
     reaction_RHEA = "RHEA:45300",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000213 or WBGene00000212 or WBGene00000211",
@@ -1881,7 +1882,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r cer_to_sm_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin synthase",
-    reaction_formula = "M_P-Choline + M_Cer = M_1,2-DG + M_SM",
+    reaction_formula = "M_Phosphocholine + M_Cer = M_1,2-DG + M_SM",
     reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
@@ -1908,7 +1909,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r sm_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
-    reaction_formula = "M_H2O + M_SM = M_P-Choline + M_H+ + M_Cer",
+    reaction_formula = "M_H2O + M_SM = M_Phosphocholine + M_H+ + M_Cer",
     reaction_RHEA = "",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000211 or WBGene00000212 or WBGene00000213 or WBGene00012105 or WBGene00011037",

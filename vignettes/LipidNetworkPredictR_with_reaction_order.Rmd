@@ -590,11 +590,11 @@ reactions <- rbind(
     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## ATP + CoA + FA_SPH = PPi + AMP + CoA_SPH
     ## Block X
     c(2, "RHEA:53424", "M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"), ## CoA_SPH + c17isosphgn <=> CoA + DHCer
-    c(3, "RHEA:44620", "M_P-Choline + M_DhCer = M_1,2-DG + M_DhSM"), ## P-Choline + DhCer = DG + DhSM
-    c(4, "RHEA:45300", "M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer"), ## H2O + DhSM = P-Choline + H+ + DhCer
+    c(3, "RHEA:44620", "M_Phosphocholine + M_DhCer = M_1,2-DG + M_DhSM"), ## Phosphocholine + DhCer = DG + DhSM
+    c(4, "RHEA:45300", "M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer"), ## H2O + DhSM = Phosphocholine + H+ + DhCer
     c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DhCer = 2 M_H2O + M_NAD + M_Cer"), ## H+ + NADH + O2 + DhCer = 2 H2O + NAD + Cer
-    c(6, "RHEA:18765", "M_P-Choline + M_Cer = M_1,2-DG + M_SM"), ## P-Choline + Cer = 1,2-DG + SM
-    c(7, "sm_to_cer", "M_H2O + M_SM = M_P-Choline + M_H+ + M_Cer"), ## H2O + SM = P-Choline + H+ + Cer
+    c(6, "RHEA:18765", "M_Phosphocholine + M_Cer = M_1,2-DG + M_SM"), ## Phosphocholine + Cer = 1,2-DG + SM
+    c(7, "sm_to_cer", "M_H2O + M_SM = M_Phosphocholine + M_H+ + M_Cer"), ## H2O + SM = Phosphocholine + H+ + Cer
     c(8, "RHEA:17929", "M_ATP + M_Cer = M_H+ + M_ADP + M_C1P"), ## ATP + Cer = H+ + ADP + C1P
     c(9, "c1p_to_cer", "M_H2O + M_C1P = M_Pi + M_Cer"), ## H2O + C1P = Pi + Cer
     c(10, "RHEA:12088", "M_UDP-Glucose + M_Cer = M_H+ + M_UDP + GLCCer") ## UDP-Glucose + Cer = H+ + UDP + GLCCer
@@ -721,10 +721,10 @@ ordered according to their RHEA ids.
 - `"RHEA:10275"`: `"M_ATP + M_1,2-DG <=> M_H+ + M_ADP + M_PA"`
 
 `pc_to_dg`
-- `"RHEA:10604"`: `"M_H2O + M_PC = M_P-Choline + M_1,2-DG"`
-- `"RHEA:10605"`: `"M_H2O + M_PC => M_P-Choline + M_1,2-DG"`
-- `"RHEA:10606"`: `"M_H2O + M_PC <= M_P-Choline + M_1,2-DG"`
-- `"RHEA:10607"`: `"M_H2O + M_PC <=> M_P-Choline + M_1,2-DG"`
+- `"RHEA:10604"`: `"M_H2O + M_PC = M_Phosphocholine + M_1,2-DG"`
+- `"RHEA:10605"`: `"M_H2O + M_PC => M_Phosphocholine + M_1,2-DG"`
+- `"RHEA:10606"`: `"M_H2O + M_PC <= M_Phosphocholine + M_1,2-DG"`
+- `"RHEA:10607"`: `"M_H2O + M_PC <=> M_Phosphocholine + M_1,2-DG"`
 
 `dg_to_tg`:
 - `"RHEA:10868"`: `"M_AcylCoA + M_1,2-DG = M_CoA + M_TG"`
@@ -783,7 +783,7 @@ ordered according to their RHEA ids.
 - `"RHEA:15803"`: `"M_H2O + M_PC <= M_1-LPC + M_FA"`
 - `"RHEA:15804"`: `"M_H2O + M_PC <=> M_1-LPC + M_FA"`
 
-`pa_to_cdpdg`
+`pa_to_cdpdg`:
 - `"RHEA:16229"`: `"M_CTP + M_PA = M_PPi + M_CDP-DG"`
 - `"RHEA:16230"`: `"M_CTP + M_PA => M_PPi + M_CDP-DG"`
 - `"RHEA:16231"`: `"M_CTP + M_PA <= M_PPi + M_CDP-DG"`
@@ -794,6 +794,12 @@ ordered according to their RHEA ids.
 - `"RHEA:16742"`/`"RHEA:32948"`: `"M_AcylCoA + M_1-MG => M_CoA + M_1,2-DG"`
 - `"RHEA:16743"`/`"RHEA:32949"`: `"M_AcylCoA + M_1-MG <= M_CoA + M_1,2-DG"`
 - `"RHEA:16744"`/`"RHEA:32950"`: `"M_AcylCoA + M_1-MG <=> M_CoA + M_1,2-DG"`
+
+`lpep_to_fal`:
+- `RHEA:16905`: `"H2O + 1-LPE-P = FAL + Glycerophosphoethanolamine"`
+- `RHEA:16906`: `"H2O + 1-LPE-P => FAL + Glycerophosphoethanolamine"`
+- `RHEA:16907`: `"H2O + 1-LPE-P <= FAL + Glycerophosphoethanolamine"`
+- `RHEA:16908`: `"H2O + 1-LPE-P <=> FAL + Glycerophosphoethanolamine"`
 
 `coa_to_acdhap`:
 - `"RHEA:17657"`: `"M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP"`
@@ -819,12 +825,6 @@ ordered according to their RHEA ids.
 `cer_to_sm`:
 - `"RHEA:18765"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
 
-`dhsm_to_dhcer`
-- `"RHEA:45300"`: `"M_H2O + M_DhSM = M_P-Choline + M_H+ + M_DhCer"`
-- `"RHEA:45301"`: `"M_H2O + M_DhSM => M_P-Choline + M_H+ + M_DhCer"`
-- `"RHEA:45302"`: `"M_H2O + M_DhSM <= M_P-Choline + M_H+ + M_DhCer"`
-- `"RHEA:45303"`: `"M_H2O + M_DhSM <=> M_P-Choline + M_H+ + M_DhCer"`
-
 `lpa_to_pa`:
 - `"RHEA:19709"`: `"M_LPA + M_AcylCoA = M_CoA + M_PA"`
 - `"RHEA:19710"`: `"M_LPA + M_AcylCoA => M_CoA + M_PA"`
@@ -842,6 +842,12 @@ ordered according to their RHEA ids.
 - `"RHEA:22957"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 - `"RHEA:22958"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 - `"RHEA:22959"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
+
+`lpco_to_pco`:
+- `"RHEA:23992"`: `"1-LPC-O + AcylCoA = PC-O + CoA"`
+- `"RHEA:23993"`: `"1-LPC-O + AcylCoA => PC-O + CoA"`
+- `"RHEA:23994"`: `"1-LPC-O + AcylCoA <= PC-O + CoA"`
+- `"RHEA:23995"`: `"1-LPC-O + AcylCoA <=> PC-O + CoA"`
 
 `pa_to_dg`:
 - `"RHEA:27429"`: `"M_H2O + M_PA = M_Pi + M_1,2-DG"`
@@ -939,11 +945,17 @@ ordered according to their RHEA ids.
 - `"RHEA:35665"`/`"RHEA:44714"`: `"M_H2O + M_1,2-DG <= M_H+ + M_1-MG + M_FA"`
 - `"RHEA:35666"`/`"RHEA:44715"`: `"M_H2O + M_1,2-DG <=> M_H+ + M_1-MG + M_FA"`
 
-`lcl_to_cl`
+`lcl_to_cl`:
 - `"RHEA:35839"`: `"M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA"`
 - `"RHEA:35840"`: `"M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA"`
 - `"RHEA:35841"`: `"M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA"`
 - `"RHEA:35842"`: `"M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA"`
+
+`lpco_to_mgo`:
+- `"RHEA:36083"`: `"H2O + 1-LPC-O = H+ + Phosphocholine + 1-MG-O"`
+- `"RHEA:36084"`: `"H2O + 1-LPC-O => H+ + Phosphocholine + 1-MG-O"`
+- `"RHEA:36085"`: `"H2O + 1-LPC-O <= H+ + Phosphocholine + 1-MG-O"`
+- `"RHEA:36086"`: `"H2O + 1-LPC-O <=> H+ + Phosphocholine + 1-MG-O"`
 
 `acyldhap_to_alkyldhap`:
 - `"RHEA:36171"`: `"M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP"`
@@ -963,17 +975,29 @@ ordered according to their RHEA ids.
 - `"RHEA:36181"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
 - `"RHEA:36182"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
 
-`dgo_to_peo`
+`dgo_to_peo`:
 - `"RHEA:36187"`: `"M_CDP-Ethanolamine + M_DG-O = M_H+ + M_CMP + M_PE-O"`
 - `"RHEA:36188"`: `"M_CDP-Ethanolamine + M_DG-O => M_H+ + M_CMP + M_PE-O"`
 - `"RHEA:36189"`: `"M_CDP-Ethanolamine + M_DG-O <= M_H+ + M_CMP + M_PE-O"`
 - `"RHEA:36190"`: `"M_CDP-Ethanolamine + M_DG-O <=> M_H+ + M_CMP + M_PE-O"`
+
+`lpep_to_lpap`:
+- `"RHEA:36203"`: `"H2O + 1-LPE-P = LPA-P + H+ + Ethanolamine"`
+- `"RHEA:36204"`: `"H2O + 1-LPE-P => LPA-P + H+ + Ethanolamine"`
+- `"RHEA:36205"`: `"H2O + 1-LPE-P <= LPA-P + H+ + Ethanolamine"`
+- `"RHEA:36206"`: `"H2O + 1-LPE-P <=> LPA-P + H+ + Ethanolamine"`
 
 `lpao_to_pao`:
 - `"RHEA:36235"`: `"M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"`
 - `"RHEA:36236"`: `"M_LPA-O + M_AcylCoA => M_PA-O + M_CoA"`
 - `"RHEA:36237"`: `"M_LPA-O + M_AcylCoA <= M_PA-O + M_CoA"`
 - `"RHEA:36238"`: `"M_LPA-O + M_AcylCoA <=> M_PA-O + M_CoA"`
+
+`lpep_to_mgp`:
+- `"RHEA:36199"`: `"H2O + 1-LPE-P = Phosphoethanolamine + H+ + 1-MG-P"`
+- `"RHEA:36200"`: `"H2O + 1-LPE-P => Phosphoethanolamine + H+ + 1-MG-P"`
+- `"RHEA:36201"`: `"H2O + 1-LPE-P <= Phosphoethanolamine + H+ + 1-MG-P"`
+- `"RHEA:36202"`: `"H2O + 1-LPE-P <=> Phosphoethanolamine + H+ + 1-MG-P"`
 
 `pao_to_dgo`
 - `"RHEA:36239"`: `"M_H2O + M_PA-O = M_Pi + M_DG-O"`
@@ -986,6 +1010,12 @@ ordered according to their RHEA ids.
 - `"RHEA:38464"`/`"RHEA:39944"`: `"M_1-MG + M_AcylCoA => M_CoA + M_1,2-DG"`
 - `"RHEA:38465"`/`"RHEA:39945"`: `"M_1-MG + M_AcylCoA <= M_CoA + M_1,2-DG"`
 - `"RHEA:38466"`/`"RHEA:39946"`: `"M_1-MG + M_AcylCoA <=> M_CoA + M_1,2-DG"`
+
+`lpco_to_lpao`:
+- `"RHEA:39927"`: `"M_H2O + M_1-LPC-O = M_1-LPA-O + M_H+ + M_Choline"`
+- `"RHEA:39928"`: `"M_H2O + M_1-LPC-O => M_1-LPA-O + M_H+ + M_Choline"`
+- `"RHEA:39929"`: `"M_H2O + M_1-LPC-O <= M_1-LPA-O + M_H+ + M_Choline"`
+- `"RHEA:39930"`: `"M_H2O + M_1-LPC-O <=> M_1-LPA-O + M_H+ + M_Choline"`
 
 `pi_to_dg`:
 - `"RHEA:43484"`: `"M_H2O + M_PI = M_myo-Inositol-1-P + M_H+ + M_1,2-DG"`
@@ -1020,6 +1050,12 @@ ordered according to their RHEA ids.
 - `"RHEA:45090"`: `"M_L-Serine + M_PC <= M_Choline + M_PS"`
 - `"RHEA:45091"`: `"M_L-Serine + M_PC <=> M_Choline + M_PS"`
 
+`dhsm_to_dhcer`
+- `"RHEA:45300"`: `"M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer"`
+- `"RHEA:45301"`: `"M_H2O + M_DhSM => M_Phosphocholine + M_H+ + M_DhCer"`
+- `"RHEA:45302"`: `"M_H2O + M_DhSM <= M_Phosphocholine + M_H+ + M_DhCer"`
+- `"RHEA:45303"`: `"M_H2O + M_DhSM <=> M_Phosphocholine + M_H+ + M_DhCer"`
+
 `lnape_to_gpnae`:
 - `"RHEA:45420"`: `"M_LNAPE + M_H2O <=> M_gpnae + M_FA"`
 
@@ -1030,7 +1066,7 @@ ordered according to their RHEA ids.
 - `"RHEA:52719"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FATOH + 2 M_NADP + M_CoA"`
 
 `sm_to_cer`:    
-- `"sm_to_cer"`: `"M_H2O + M_SM <=> M_P-Choline + M_H+ + M_Cer"`
+- `"sm_to_cer"`: `"M_H2O + M_SM <=> M_Phosphocholine + M_H+ + M_Cer"`
     
 `sphinga_to_dhcer`:    
 - `"RHEA:53424"`: `"M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"`

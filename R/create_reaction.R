@@ -72,8 +72,8 @@
         template = template, reaction = reaction)
     
     ## return results
-    .create_list_products_df_with_template(df_reaction = df_reaction, 
-        template = df, reaction = reaction)
+    .create_list_reactants_with_template(df_reaction = df_reaction, 
+        template = df)
 }
 
 

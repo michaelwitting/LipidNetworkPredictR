@@ -96,7 +96,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AlkylDHAP", replacement = df_reaction[["AlkylDHAP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPA-O", replacement = df_reaction[["LPAO"]])
+            pattern = "M_LPA-O", replacement = df_reaction[["sn1LPAO"]])
     }
     
     if (reaction == "c1p_to_cer") {
@@ -174,7 +174,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPA", replacement = df_reaction[["LPA"]])
+            pattern = "M_LPA", replacement = df_reaction[["sn1LPA"]])
     }
     ## dg_to_sn1mg
     if (reaction %in% c("RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715",
@@ -302,7 +302,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPA", replacement = df_reaction[["LPA"]])
+            pattern = "M_LPA", replacement = df_reaction[["sn1LPA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PA", replacement = df_reaction[["PA"]])
     }
@@ -312,7 +312,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
-            pattern = "M_LPA-O", replacement = df_reaction[["LPAO"]])
+            pattern = "M_LPA-O", replacement = df_reaction[["sn1LPAO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
             pattern = "M_PA-O", replacement = df_reaction[["PAO"]])
     }
@@ -382,7 +382,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_ak2lgpe", replacement = df_reaction[["LPEO"]])
+            pattern = "M_ak2lgpe", replacement = df_reaction[["sn1LPEO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-O", replacement = df_reaction[["PEO"]])
     }
@@ -392,7 +392,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPE-P", replacement = df_reaction[["LPEP"]])
+            pattern = "M_LPE-P", replacement = df_reaction[["sn1LPEP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-P", replacement = df_reaction[["PEP"]])
     }
@@ -440,7 +440,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_1-MG", replacement = df_reaction[["sn1MG"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPA", replacement = df_reaction[["LPA"]])
+            pattern = "M_LPA", replacement = df_reaction[["sn1LPA"]])
     }
     
     if (reaction == "sn2mg_to_sn1mg") {
@@ -566,11 +566,38 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PC-O", replacement = df_reaction[["PCO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPC-O", replacement = df_reaction[["LPCO"]])
+            pattern = "M_LPC-O", replacement = df_reaction[["sn1LPCO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
     } 
     
+    ## lpco_to_lpao
+    if (reaction %in% c("RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_1-LPC-O", replacement = df_reaction[["sn1LPCO"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_1-LPA-O", replacement = df_reaction[["sn1LPAO"]])
+    }
+
+    ## lpco_to_mgo
+    if (reaction %in% c("RHEA:36083", "RHEA:36084", "RHEA:36085", "RHEA:36086")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_1-LPC-O", replacement = df_reaction[["sn1LPCO"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_1-MG-O", replacement = df_reaction[["sn1MGO"]])  
+    }
+
+    ## lpco_to_pco
+    if (reaction %in% c("RHEA:23992", "RHEA:23993", "RHEA:23994", "RHEA:23995")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_1-LPC-O", replacement = df_reaction[["sn1LPCO"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_PC-O", replacement = df_reaction[["PCO"]]) 
+    }
+
+    ## pe_to_dg
     if (reaction == "pe_to_dg") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE", replacement = df_reaction[["PE"]])
@@ -640,7 +667,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-O", replacement = df_reaction[["PEO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPE-O", replacement = df_reaction[["LPEO"]])
+            pattern = "M_LPE-O", replacement = df_reaction[["sn1LPEO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
     }
@@ -680,11 +707,36 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PE-P", replacement = df_reaction[["PEP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_LPE-P", replacement = df_reaction[["LPEP"]])
+            pattern = "M_LPE-P", replacement = df_reaction[["sn1LPEP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
     }
     
+    ## lpep_to_fal
+    if (reaction %in% c("RHEA:16905", "RHEA:16906", "RHEA:16907", "RHEA:16908")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_1-LPE-P", replacement = df_reaction[["sn1LPEP"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_FAL", replacement = df_reaction[["FAL"]])
+    }
+    
+    ## lpep_to_lpap
+    if (reaction %in% c("RHEA:36203", "RHEA:36204", "RHEA:36205", "RHEA:36206")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_1-LPE-P", replacement = df_reaction[["sn1LPEP"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_LPA-P", replacement = df_reaction[["sn1LPAP"]])
+    }
+    
+    ## lpep_to_mgp
+    if (reaction %in% c("RHEA:36199", "RHEA:36200", "RHEA:36201", "RHEA:36202")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_1-LPE-P", replacement = df_reaction[["sn1LPEP"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_1-MG-P", replacement = df_reaction[["sn1MGP"]])
+    }
+    
+    ## pep_to_napep_sn1
     if (reaction == "pep_to_napep_sn1") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PC", replacement = df_reaction[["PC"]])
@@ -696,6 +748,7 @@
             pattern = "M_2-LPC", replacement = df_reaction[["sn2LPC"]])
     }
     
+    ## pep_to_napep_sn2
     if (reaction == "pep_to_napep_sn2") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PC", replacement = df_reaction[["PC"]])
@@ -942,9 +995,13 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_Choline$", replacement = "Choline")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_P-Choline ", replacement = "P-Choline ")
+        pattern = "M_Phosphocholine ", replacement = "Phosphocholine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_P-Choline$", replacement = "P-Choline")
+        pattern = "M_Phosphocholine$", replacement = "Phosphocholine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_Phosphoethanolamine ", replacement = "Phosphoethanolamine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Phosphoethanolamine$", replacement = "Phosphoethanolamine")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_Glycerophosphoethanolamine ", replacement = "Glycerophosphoethanolamine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
@@ -952,7 +1009,7 @@
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_Glycerophosphocholine ", replacement = "Glycerophosphocholine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Glycerophosphocholineg3pc$", replacement = "Glycerophosphocholine")
+        pattern = "M_Glycerophosphocholine$", replacement = "Glycerophosphocholine")
     
     ## replace existing lipid backbones (DG, PC)
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 

@@ -62,9 +62,9 @@
 
     ## alkyldhap_to_lpao
     if (reaction %in% c("RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178")) {
-        .s$LPAO <- stringi::stri_replace_all_fixed(str = .s$AlkylDHAP, 
+        .s$sn1LPAO <- stringi::stri_replace_all_fixed(str = .s$AlkylDHAP, 
             pattern = "DHAP", replacement = "PA")
-        .s$LPAO <- stringi::stri_replace_all_regex(str = .s$LPAO, 
+        .s$sn1LPAO <- stringi::stri_replace_all_regex(str = .s$sn1LPAO, 
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
@@ -122,9 +122,9 @@
     
     ## coa_to_lpa
     if (reaction %in% c("RHEA:15325", "RHEA:15326", "RHEA:15327", "RHEA:15328")) {
-        .s$LPA <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, pattern = "CoA", 
+        .s$sn1LPA <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, pattern = "CoA", 
             replacement = "PA")
-        .s$LPA <- stringi::stri_replace_all_regex(str = .s$LPA, 
+        .s$sn1LPA <- stringi::stri_replace_all_regex(str = .s$sn1LPA, 
             pattern = "\\)$", replacement = "/0:0\\)")
     }
     
@@ -245,14 +245,15 @@
     
     ## lpa_to_pa
     if (reaction %in% c("RHEA:19709", "RHEA:19710", "RHEA:19711", "RHEA:19712")) {
-        .s$PA <- stringi::stri_replace_all_fixed(str = .s$LPA, pattern = "/0:0", 
+        .s$PA <- stringi::stri_replace_all_fixed(str = .s$sn1LPA, 
+            pattern = "/0:0", 
             replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
     }
     
     ## lpao_to_pao
     if (reaction %in% c("RHEA:36235", "RHEA:36236", "RHEA:36237", "RHEA:36238")) { 
-       .s$PAO <- stringi::stri_replace_all_fixed(str = .s$LPAO,
+       .s$PAO <- stringi::stri_replace_all_fixed(str = .s$sn1LPAO,
            pattern = "/0:0",
            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA),
                function(f) {paste0("/", f)})))
@@ -309,7 +310,7 @@
     
     
     if (reaction == "lpeo_to_peo") {
-        .s$PEO <- stringi::stri_replace_all_fixed(str = .s$LPEO, 
+        .s$PEO <- stringi::stri_replace_all_fixed(str = .s$sn1LPEO, 
             pattern = "/0:0", 
             replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
@@ -317,7 +318,7 @@
 
     ## lpep_to_pep
     if (reaction %in% c("RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248")) {
-        .s$PEP <- stringi::stri_replace_all_fixed(str = .s$LPEP, 
+        .s$PEP <- stringi::stri_replace_all_fixed(str = .s$sn1LPEP, 
             pattern = "/0:0", 
             replacement = unlist(lapply(isolate_radyls(.s$AcylCoA), 
                 function(f) {paste0("/", f)})))
@@ -361,9 +362,10 @@
 
     ## sn1mg_to_lpa
     if (reaction %in% c("RHEA:33747", "RHEA:33748", "RHEA:33749", "RHEA:33750")) {
-        .s$LPA <- stringi::stri_replace_all_fixed(str = .s$sn1MG, 
+        .s$sn1LPA <- stringi::stri_replace_all_fixed(str = .s$sn1MG, 
             pattern = "MG", replacement = "PA")
-        .s$LPA <- stringi::stri_replace_all_regex(str = .s$LPA, "/0:0\\)$", 
+        .s$sn1LPA <- stringi::stri_replace_all_regex(
+            str = .s$sn1LPA, "/0:0\\)$", 
             replacement = "\\)")
     }
 
@@ -469,10 +471,29 @@
     ## pco_to_lpco
     if (reaction %in% c("RHEA:36231", "RHEA:36232", "RHEA:36233", "RHEA:36234")) {
         ## "sn2 loss"
-        .s$LPCO <- unlist(lapply(isolate_radyls(.s$PCO), 
+        .s$sn1LPCO <- unlist(lapply(isolate_radyls(.s$PCO), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$PCO), 
             function(f) {paste0("FA(", f[2], ")")}))
+    }
+    
+    ## lpco_to_lpao
+    if (reaction %in% c("RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930")) {
+        .s$sn1LPAO <- stringi::stri_replace_all_fixed(str = .s$sn1LPCO,
+            pattern = "PC(O-", replacement = "PA(O-")   
+    }
+    
+    ## lpco_to_mgo
+    if (reaction %in% c("RHEA:36083", "RHEA:36084", "RHEA:36085", "RHEA:36086")) {
+        .s$sn1MGO <-  unlist(lapply(isolate_radyls(.s$sn1LPCO),
+            function(f) {paste0("MG(", f[1], "/0:0/0:0)")}))
+    }
+    
+    ## lpco_to_pco
+    if (reaction %in% c("RHEA:23992", "RHEA:23993", "RHEA:23994", "RHEA:23995")) {
+        .s$PCO <- stringi::stri_replace_all_fixed(str = .s$sn1LPCO, 
+            pattern = "/0:0)", 
+            replacement = paste0("/", isolate_radyls(.s$AcylCoA), ")"))
     }
     
     if (reaction == "pe_to_dg") {
@@ -535,7 +556,7 @@
     
     if (reaction == "peo_to_lpeo") {
         ## "sn2 loss"
-        .s$LPEO <- unlist(lapply(isolate_radyls(.s$PEO), 
+        .s$sn1LPEO <- unlist(lapply(isolate_radyls(.s$PEO), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$PEO), 
             function(f) {paste0("FA(", f[2], ")")}))
@@ -572,12 +593,33 @@
     ## pep_to_lpep
     if (reaction %in% c("RHEA:36195", "RHEA:36196", "RHEA:36197", "RHEA:36198")) {
         ## "sn2 loss"
-        .s$LPEP <- unlist(lapply(isolate_radyls(.s$PEP), 
+        .s$sn1LPEP <- unlist(lapply(isolate_radyls(.s$PEP), 
             function(f) {paste0("PE(", f[1], "/0:0)")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$PEP), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
+    ## lpep_to_fal
+    if (reaction %in% c("RHEA:16905", "RHEA:16906", "RHEA:16907", "RHEA:16908")) {
+        .s$FAL <- unlist(lapply(isolate_radyls(.s$sn1LPEP),
+            function(f) paste0("FAL(", f[1], ")")))
+        .s$FAL <- stringi::stri_replace_all_fixed(str = .s$FAL,
+            pattern = "P-", replacement = "")
+    }
+
+    ## lpep_to_lpap
+    if (reaction %in% c("RHEA:36203", "RHEA:36204", "RHEA:36205", "RHEA:36206")) {
+        .s$sn1LPAP <- stringi::stri_replace_all_fixed(str = .s$sn1LPEP,
+            pattern = "PE(P-", replacement = "PA(P-")
+    }
+
+    ## lpep_to_mgp
+    if (reaction %in% c("RHEA:36199", "RHEA:36200", "RHEA:36201", "RHEA:36202")) {
+        .s$sn1MGP <- unlist(lapply(isolate_radyls(.s$sn1LPEP),
+            function(f) {paste0("MG(", f[1], "/0:0/0:0)")}))
+    }
+
+    ## pep_to_napep_sn1
     if (reaction == "pep_to_napep_sn1") {
         .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
@@ -589,6 +631,7 @@
             pattern = "PE", replacement = "NAPE")
     }
 
+    ## pep_to_napep_sn2
     if (reaction == "pep_to_napep_sn2") {
         .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
@@ -599,7 +642,7 @@
         .s$NAPEP <- stringi::stri_replace_all_fixed(str = .s$NAPEP, 
             pattern = "PE", replacement = "NAPE")
     }
-    
+
     ## pg_to_cl
     if (reaction %in% c("RHEA:32931", "RHEA:32932", "RHEA:32933", "RHEA:32934")) {
         ## isolate core from PGs
@@ -607,29 +650,29 @@
             pattern = "^PG\\(", replacement = "")
         .s$PGs2 <- stringi::stri_replace_all_regex(str = .s$PGs2, 
             pattern = "\\)$", replacement = "")
-         
+
         ## isolate core from CDPDGs
         .s$CDPDGs2 <- stringi::stri_replace_all_regex(str = .s$CDPDG, 
             pattern = "^CDP-DG\\(", replacement = "")
         .s$CDPDGs2 <- stringi::stri_replace_all_regex(str = .s$CDPDGs2, 
             pattern = "\\)$", replacement = "")
-        
+
         ## create CL
         .s$CL <- paste0("CL(1'-[", .s$PGs2, "],3'-[", .s$CDPDGs2, "])")
     }
-    
+
     ## pgp_to_pg
     if (reaction %in% c("RHEA:33751", "RHEA:33752", "RHEA:33753", "RHEA:33754")) {
         .s$PG <- stringi::stri_replace_all_fixed(str = .s$PGP, pattern = "PGP", 
             replacement = "PG")
     }
-    
+
     ## pi_to_dg
     if (reaction %in% c("RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487")) {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PI, pattern = "PI",
             replacement = "DG")
     }
-    
+
     ## pi_to_sn1lpi
     if (reaction %in% c("RHEA:18001", "RHEA:18002", "RHEA:18003", "RHEA:18004")) {
         .s$sn1LPI <- unlist(lapply(isolate_radyls(.s$PI), 
@@ -637,13 +680,13 @@
         .s$FA <- unlist(lapply(isolate_radyls(.s$PI), 
             function(f) {paste0("FA(", f[2], ")")}))
     }
-    
+
     ## ps_to_pe
     if (reaction %in% c("RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831")) {
         .s$PE <- stringi::stri_replace_all_fixed(str = .s$PS, pattern = "PS",
             replacement = "PE")
     }
-    
+
     if (reaction == "sm_to_cer") {
         .s$Cer <- stringi::stri_replace_all_fixed(str = .s$SM, pattern = "SM",
             replacement = "Cer")
@@ -654,7 +697,7 @@
         .s$DhCer <- stringi::stri_replace_all_regex(str = .s$AcylCoA, 
             pattern = "CoA\\(", replacement = "Cer(16:0(3OH,4OH,15Me)/")
     }
-    
+
     ## tg_to_dg
     if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",
             "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")) {
