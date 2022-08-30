@@ -2,9 +2,10 @@
 % Please edit documentation in R/helper_.create_list_products_df_with_template.R
 \name{.create_list_products_df_with_template}
 \alias{.create_list_products_df_with_template}
+\alias{.create_list_reactants_with_template}
 \title{Create the object to return in \code{create_reaction}}
 \usage{
-.create_list_products_df_with_template(df_reaction, template)
+.create_list_reactants_with_template(df_reaction, template)
 }
 \arguments{
 \item{df_reaction}{\code{data.frame}}
@@ -17,8 +18,8 @@ list of length 2
 \description{
 Helper function for \code{create_reaction}.
 
-The function \code{.create_list_products_df_with_template} will return a
-list of length 2 containing the products (in the first entry) and the 
+The function \code{.create_list_reactants_with_template} will return a
+list of length 2 containing the reactants (in the first entry) and the 
 updated \code{template} object (in the second entry).
 }
 \details{
@@ -51,7 +52,7 @@ df <- LipidNetworkPredictR:::.create_df_with_template(
     df_reaction = df_reaction,
     template = template, reaction = reaction)
 
-LipidNetworkPredictR:::.create_list_products_df_with_template(
+LipidNetworkPredictR:::.create_list_reactants_with_template(
     df_reaction = df_reaction,
     template = template)
 }
