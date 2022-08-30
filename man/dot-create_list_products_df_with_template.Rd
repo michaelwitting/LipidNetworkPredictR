@@ -4,18 +4,12 @@
 \alias{.create_list_products_df_with_template}
 \title{Create the object to return in \code{create_reaction}}
 \usage{
-.create_list_products_df_with_template(
-  df_reaction,
-  template,
-  reaction = "RHEA:15421"
-)
+.create_list_products_df_with_template(df_reaction, template)
 }
 \arguments{
 \item{df_reaction}{\code{data.frame}}
 
 \item{template}{\code{data.frame}}
-
-\item{reaction}{\code{character(1)}}
 }
 \value{
 list of length 2
@@ -59,8 +53,7 @@ df <- LipidNetworkPredictR:::.create_df_with_template(
 
 LipidNetworkPredictR:::.create_list_products_df_with_template(
     df_reaction = df_reaction,
-    template = template,
-    reaction = reaction)
+    template = template)
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}
