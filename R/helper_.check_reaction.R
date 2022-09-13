@@ -28,10 +28,10 @@
     reaction_types <- c(
         "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174", ## acyldhap_to_alkyldhap
         "RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178", ## alkyldhap_to_lpao
-        "c1p_to_cer", 
+        "cerp_to_cer", 
         "RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596", ## cdpdg_to_pgp
         "RHEA:11580", "RHEA:11581", "RHEA:11582", "RHEA:11583", ## cdpdg_to_pi
-        "RHEA:17929", ## cer_to_c1p
+        "RHEA:17929", ## cer_to_cerp
         "RHEA:12088", ## cer_to_glccer
         "RHEA:18765", ## cer_to_sm
         "RHEA:32935", "RHEA:32936", "RHEA:32937", "RHEA:32938", ## cl_to_lcl

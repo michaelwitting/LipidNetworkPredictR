@@ -52,13 +52,13 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "H+ + NADPH + DHAP(O-18:0) <=> PA(O-18:0/0:0) + NADP+")
     
-    ## c1p_to_cer
-    c1p <- "C1P(16:0(3OH,4OH,15Me)/18:0)"
-    reaction_l <- .create_reaction(substrates = list(C1P = c1p), 
-        template = NULL, reaction =  "c1p_to_cer")
+    ## cerp_to_cer
+    cerp <- "CerP(16:0(3OH,4OH,15Me)/18:0)"
+    reaction_l <- .create_reaction(substrates = list(CerP = cerp), 
+        template = NULL, reaction =  "cerp_to_cer")
     expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "H2O + C1P(16:0(3OH,4OH,15Me)/18:0) <=> Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+        "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) <=> Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
     
     ## cdpdg_to_pgp
     cdpdg <- "CDP-DG(12:0(11Me)/14:0)"
@@ -106,19 +106,19 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "myo-Inositol + CDP-DG(12:0(11Me)/14:0) <=> H+ + CMP + PI(12:0(11Me)/14:0)") 
     
-    ## cer_to_c1p
+    ## cer_to_cerp
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(Cer = cer), 
         template = NULL, reaction =  "RHEA:17929")
-    expect_equal(reaction_l[[1]]$C1P, "C1P(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "ATP + Cer(16:0(3OH,4OH,15Me)/18:0) <=> H+ + ADP + C1P(16:0(3OH,4OH,15Me)/18:0)")
+        "ATP + Cer(16:0(3OH,4OH,15Me)/18:0) <=> H+ + ADP + CerP(16:0(3OH,4OH,15Me)/18:0)")
     
     ## cer_to_glccer
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(Cer = cer), 
         template = NULL, reaction =  "RHEA:12088")
-    expect_equal(reaction_l[[1]]$GLCCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "UDP-Glucose + Cer(16:0(3OH,4OH,15Me)/18:0) <=> H+ + UDP + GlcCer(16:0(3OH,4OH,15Me)/18:0)")
     

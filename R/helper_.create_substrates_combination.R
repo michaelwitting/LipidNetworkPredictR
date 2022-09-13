@@ -114,8 +114,8 @@
     if (reaction %in% c("RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178")) 
         cols <- c("AlkylDHAP")
     
-    if (reaction == "c1p_to_cer")
-        cols <- c("C1P")
+    if (reaction == "cerp_to_cer")
+        cols <- c("CerP")
     
     ## cdpdg_to_pgp
     if (reaction %in% c("RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596")) 
@@ -125,7 +125,7 @@
     if (reaction %in% c("RHEA:11580", "RHEA:11581", "RHEA:11582", "RHEA:11583")) 
         cols <- c("CDPDG")
     
-    if (reaction == "RHEA:17929") ## cer_to_c1p
+    if (reaction == "RHEA:17929") ## cer_to_cerp
         cols <- c("Cer")
     
     if (reaction == "RHEA:12088") ## cer_to_glccer

@@ -68,9 +68,9 @@
             pattern = "\\)$", replacement = "/0:0\\)")
     }
 
-    if (reaction == "c1p_to_cer") {
-        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$C1P, 
-            pattern = "C1P", replacement = "Cer")
+    if (reaction == "cerp_to_cer") {
+        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$CerP, 
+            pattern = "CerP", replacement = "Cer")
     }
     
     ## cdpdg_to_pgp
@@ -85,13 +85,13 @@
             pattern = "CDP-DG", replacement = "PI")     
     }
             
-    if (reaction == "RHEA:17929") { ## cer_to_c1p
-        .s$C1P <- stringi::stri_replace_all_fixed(str = .s$Cer, 
-            pattern = "Cer", replacement = "C1P")
+    if (reaction == "RHEA:17929") { ## cer_to_cerp
+        .s$CerP <- stringi::stri_replace_all_fixed(str = .s$Cer, 
+            pattern = "Cer", replacement = "CerP")
     }
             
     if (reaction == "RHEA:12088") { ## cer_to_glccer
-        .s$GLCCer <- stringi::stri_replace_all_fixed(str = .s$Cer, 
+        .s$GlcCer <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "GlcCer")
     }
             

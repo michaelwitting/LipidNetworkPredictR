@@ -96,8 +96,8 @@
         if (reaction == "RHEA:36178") 
             .formula <- "M_H+ + M_NADPH + M_AlkylDHAP <=> M_LPA-O + M_NADP"
         
-        if (reaction == "c1p_to_cer")
-            .formula <- "M_H2O + M_C1P <=> M_Pi + M_Cer"
+        if (reaction == "cerp_to_cer")
+            .formula <- "M_H2O + M_CerP <=> M_Pi + M_Cer"
         
         ## cdpdg_to_pgp
         if (reaction == "RHEA:12593") 
@@ -119,13 +119,13 @@
         if (reaction == "RHEA:11583") 
             .formula <- "M_myo-Inositol + M_CDP-DG <=> M_H+ + M_CMP + M_PI"
         
-        ## cer_to_c1p
+        ## cer_to_cerp
         if (reaction == "RHEA:17929")
-            .formula <- "M_ATP + M_Cer <=> M_H+ + M_ADP + M_C1P"
+            .formula <- "M_ATP + M_Cer <=> M_H+ + M_ADP + M_CerP"
         
         ## cer_to_glccer
         if (reaction == "RHEA:12088")
-            .formula <- "M_UDP-Glucose + M_Cer <=> M_H+ + M_UDP + M_GLCCer"
+            .formula <- "M_UDP-Glucose + M_Cer <=> M_H+ + M_UDP + M_GlcCer"
         
         ## cer_to_sm
         if (reaction == "RHEA:18765") 

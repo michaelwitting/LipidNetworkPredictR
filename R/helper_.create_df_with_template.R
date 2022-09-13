@@ -99,9 +99,9 @@
             pattern = "M_LPA-O", replacement = df_reaction[["sn1LPAO"]])
     }
     
-    if (reaction == "c1p_to_cer") {
+    if (reaction == "cerp_to_cer") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_C1P", replacement = df_reaction[["C1P"]])
+            pattern = "M_CerP", replacement = df_reaction[["CerP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_Cer", replacement = df_reaction[["Cer"]])
     }
@@ -122,18 +122,18 @@
             pattern = "M_PI", replacement = df_reaction[["PI"]])
     }
     
-    if (reaction == "RHEA:17929") { ## cer_to_c1p
+    if (reaction == "RHEA:17929") { ## cer_to_cerp
         .formula <- stringi::stri_replace_first_fixed(str = .formula, 
             pattern = "M_Cer", replacement = df_reaction[["Cer"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_C1P", replacement = df_reaction[["C1P"]])
+            pattern = "M_CerP", replacement = df_reaction[["CerP"]])
     }
     
     if (reaction == "RHEA:12088") { ## cer_to_glccer
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_Cer", replacement = df_reaction[["Cer"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_GLCCer", replacement = df_reaction[["GLCCer"]])
+            pattern = "M_GlcCer", replacement = df_reaction[["GlcCer"]])
     }
     
     if (reaction == "RHEA:18765") { ## cer_to_sm
