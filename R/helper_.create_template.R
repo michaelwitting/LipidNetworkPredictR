@@ -78,13 +78,13 @@
         
         ## acyldhap_to_alkyldhap
         if (reaction == "RHEA:36171") 
-            .formula <- "M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP"
+            .formula <- "M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP"
         if (reaction == "RHEA:36172") 
-            .formula <- "M_AcylDHAP + M_FATOH => M_H+ + M_FA + M_AlkylDHAP"
+            .formula <- "M_AcylDHAP + M_FAO => M_H+ + M_FA + M_AlkylDHAP"
         if (reaction == "RHEA:36173") 
-            .formula <- "M_AcylDHAP + M_FATOH <= M_H+ + M_FA + M_AlkylDHAP"
+            .formula <- "M_AcylDHAP + M_FAO <= M_H+ + M_FA + M_AlkylDHAP"
         if (reaction == "RHEA:36174") 
-            .formula <- "M_AcylDHAP + M_FATOH <=> M_H+ + M_FA + M_AlkylDHAP"
+            .formula <- "M_AcylDHAP + M_FAO <=> M_H+ + M_FA + M_AlkylDHAP"
         
         ## alkyldhap_to_lpao
         if (reaction == "RHEA:36175") 
@@ -151,15 +151,15 @@
         if (reaction == "RHEA:17660")
             .formula <- "M_Dihydroxyacetone-P + M_AcylCoA <=> M_CoA + M_AcylDHAP"
     
-        ## coa_to_fatoh
+        ## coa_to_fao
         if (reaction == "RHEA:52716") 
-            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FATOH + 2 M_NADP + M_CoA"
+            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA"
         if (reaction == "RHEA:52717") 
-            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FATOH + 2 M_NADP + M_CoA"
+            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FAO + 2 M_NADP + M_CoA"
         if (reaction == "RHEA:52718") 
-            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FATOH + 2 M_NADP + M_CoA"
+            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FAO + 2 M_NADP + M_CoA"
         if (reaction == "RHEA:52719") 
-            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FATOH + 2 M_NADP + M_CoA"
+            .formula <- "M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FAO + 2 M_NADP + M_CoA"
         
         ## coa_to_lpa
         if (reaction == "RHEA:15325") 

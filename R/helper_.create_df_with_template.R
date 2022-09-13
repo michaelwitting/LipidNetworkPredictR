@@ -84,7 +84,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylDHAP", replacement = df_reaction[["AcylDHAP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_FATOH", replacement = df_reaction[["FATOH"]])
+            pattern = "M_FAO", replacement = df_reaction[["FAO"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -161,12 +161,12 @@
             pattern = "M_AcylDHAP", replacement = df_reaction[["AcylDHAP"]])
     }
     
-    ## coa_to_fatoh
+    ## coa_to_fao
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) { 
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_FATOH",  replacement = df_reaction[["FATOH"]])
+            pattern = "M_FAO",  replacement = df_reaction[["FAO"]])
     }
     
     ## coa_to_lpa

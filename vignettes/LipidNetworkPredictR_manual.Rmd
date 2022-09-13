@@ -60,8 +60,8 @@ The following abbreviations are used (in alphabetical order):
 -   `DGO`: 1-alkyl,2-acylglycerols
 -   `DhCer`: N-acylsphinganines (dihydroceramides) [SP0202],
 -   `DhSM`: Dihydrosphingomyelins [SP0301],
--   `FA`: Fatty acids [FA01],
--   `FATOH`: Fatty alcohols [FA05],
+-   `FA`: Fatty acids and Conjugates [FA01],
+-   `FAO`: Fatty alcohols [FA05],
 -   `GLCCer`: glycosylceramide [SP0501],
 -   `GPNAE`: glycerophospho-N-acylethanolamine,
 -   `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
@@ -1350,29 +1350,29 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 Some etherlipids... mostly PE, small amounts in PC This reaction is
 constrained to 16:0, 18:0, 20:0!
 
-```{r coa_to_fatoh_template, message=FALSE, warning=FALSE}
+```{r coa_to_FAO_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Fatty acyl-CoA reductase",
-    reaction_formula = "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FATOH + 2 M_NADP + M_CoA",
+    reaction_formula = "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA",
     reaction_RHEA = "RHEA:52716",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00022200",
     reaction_pathway = "Biosynthesis of Etherlipids")
 ```
 
-```{r coa_to_fatoh, message=FALSE, warning=FALSE, eval=TRUE}
+```{r coa_to_FAO, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:52716")
     #constraints = c("16:0)|18:0)|20:0)"), negate = c(FALSE))
 
 results[[2]][1:5, "reaction_formula"]
 
-## get FATOH for further reactions
-FATOH <- results[[1]][["FATOH"]]
+## get FAO for further reactions
+FAO <- results[[1]][["FAO"]]
 
 ## add new reactions and add lipids to data frame
 lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
-lipid_info <- rgoslin::parseLipidNames(FATOH)
+lipid_info <- rgoslin::parseLipidNames(FAO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
 
@@ -1408,7 +1408,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r acyldhap_to_alkyldhap_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Alkyldihydroxyacetonephosphate synthase",
-    reaction_formula = "M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP",
+    reaction_formula = "M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP",
     reaction_RHEA = "RHEA:36171",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000081",
@@ -1416,7 +1416,7 @@ template <- list(reaction_name = "Alkyldihydroxyacetonephosphate synthase",
 ```
 
 ```{r acdhap_to_alkyldhap, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(AcylDHAP = AcylDHAP, FATOH = FATOH),
+results <-  .create_reaction(substrates = list(AcylDHAP = AcylDHAP, FAO = FAO),
     template = template, reaction = "RHEA:36171")
 
 results[[2]][1:5, "reaction_formula"]

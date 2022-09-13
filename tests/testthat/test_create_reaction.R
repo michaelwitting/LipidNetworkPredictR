@@ -3,31 +3,31 @@ test_that(".create_reaction works", {
     
     ## acyldhap_to_alkyldhap
     acyldhap <- "DHAP(18:0)"
-    fatoh <- "FATOH(16:0)"
-    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
+    fao <- "FAO(16:0)"
+    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FAO = fao), 
         template = NULL, reaction = "RHEA:36171")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "DHAP(18:0) + FATOH(16:0) = H+ + FA(18:0) + DHAP(O-16:0)")
-    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
+        "DHAP(18:0) + FAO(16:0) = H+ + FA(18:0) + DHAP(O-16:0)")
+    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FAO = fao), 
         template = NULL, reaction = "RHEA:36172")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "DHAP(18:0) + FATOH(16:0) => H+ + FA(18:0) + DHAP(O-16:0)")
-    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
+        "DHAP(18:0) + FAO(16:0) => H+ + FA(18:0) + DHAP(O-16:0)")
+    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FAO = fao), 
         template = NULL, reaction = "RHEA:36173")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "DHAP(18:0) + FATOH(16:0) <= H+ + FA(18:0) + DHAP(O-16:0)")
-    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FATOH = fatoh), 
+        "DHAP(18:0) + FAO(16:0) <= H+ + FA(18:0) + DHAP(O-16:0)")
+    reaction_l <- .create_reaction(substrates = list(AcylDHAP = acyldhap, FAO = fao), 
         template = NULL, reaction = "RHEA:36174")
     expect_equal(reaction_l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
     expect_equal(reaction_l[[1]]$FA, "FA(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "DHAP(18:0) + FATOH(16:0) <=> H+ + FA(18:0) + DHAP(O-16:0)")
+        "DHAP(18:0) + FAO(16:0) <=> H+ + FA(18:0) + DHAP(O-16:0)")
     
     ## alkyldhap_to_lpao
     alkyldhap <- "DHAP(O-18:0)"
@@ -184,28 +184,28 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "Dihydroxyacetone-P + CoA(18:0) <=> CoA + DHAP(18:0)")
     
-    ## coa_to_fatoh
+    ## coa_to_fao
     acylcoa <- "CoA(18:0)"
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:52716")
-    expect_equal(reaction_l[[1]]$FATOH, "FATOH(18:0)")
+    expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + 2 NADPH + 2 H+ = FATOH(18:0) + 2 NADP+ + CoA")
+        "CoA(18:0) + 2 NADPH + 2 H+ = FAO(18:0) + 2 NADP+ + CoA")
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:52717")
-    expect_equal(reaction_l[[1]]$FATOH, "FATOH(18:0)")
+    expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + 2 NADPH + 2 H+ => FATOH(18:0) + 2 NADP+ + CoA")
+        "CoA(18:0) + 2 NADPH + 2 H+ => FAO(18:0) + 2 NADP+ + CoA")
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:52718")
-    expect_equal(reaction_l[[1]]$FATOH, "FATOH(18:0)")
+    expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "CoA(18:0) + 2 NADPH + 2 H+ <= FATOH(18:0) + 2 NADP+ + CoA")
+        "CoA(18:0) + 2 NADPH + 2 H+ <= FAO(18:0) + 2 NADP+ + CoA")
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:52719")
-    expect_equal(reaction_l[[1]]$FATOH, "FATOH(18:0)")
+    expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + 2 NADPH + 2 H+ <=> FATOH(18:0) + 2 NADP+ + CoA")
+        "CoA(18:0) + 2 NADPH + 2 H+ <=> FAO(18:0) + 2 NADP+ + CoA")
     
     ## coa_to_lpa
     acylcoa <- "CoA(18:0)"

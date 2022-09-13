@@ -56,8 +56,8 @@
     if (reaction %in% c("RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174")) { 
         .s$FA <- stringi::stri_replace_all_regex(str = .s$AcylDHAP, 
             pattern = "DHAP\\(", replacement = "FA(")
-        .s$AlkylDHAP <- stringi::stri_replace_all_regex(str = .s$FATOH, 
-            pattern = "FATOH\\(", replacement = "DHAP(O-")
+        .s$AlkylDHAP <- stringi::stri_replace_all_regex(str = .s$FAO, 
+            pattern = "FAO\\(", replacement = "DHAP(O-")
     }
 
     ## alkyldhap_to_lpao
@@ -114,10 +114,10 @@
             pattern = "CoA", replacement = "DHAP")
     }
     
-    ## coa_to_fatoh
+    ## coa_to_FAO
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) {
-        .s$FATOH <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, 
-            pattern = "CoA", replacement = "FATOH")
+        .s$FAO <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, 
+            pattern = "CoA", replacement = "FAO")
     }
     
     ## coa_to_lpa

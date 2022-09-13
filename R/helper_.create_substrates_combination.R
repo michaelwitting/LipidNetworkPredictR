@@ -108,7 +108,7 @@
         
     ## acyldhap_to_alkyldhap
     if (reaction %in% c("RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174")) 
-        cols <- c("AcylDHAP", "FATOH")
+        cols <- c("AcylDHAP", "FAO")
     
     ## alkyldhap_to_lpao
     if (reaction %in% c("RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178")) 
@@ -142,7 +142,7 @@
     if (reaction %in% c("RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660"))
         cols <- c("AcylCoA")
     
-    ## coa_to_fatoh
+    ## coa_to_fao
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) 
         cols <- c("AcylCoA")
     

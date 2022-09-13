@@ -60,8 +60,8 @@ The following abbreviations are used (in alphabetical order):
 -   `DGO`: 1-alkyl,2-acylglycerols
 -   `DhCer`: N-acylsphinganines (dihydroceramides) [SP0202],
 -   `DhSM`: Dihydrosphingomyelins [SP0301],
--   `FA`: Fatty acids [FA01],
--   `FATOH`: Fatty alcohols [FA05],
+-   `FA`: Fatty acids and Conjugates [FA01],
+-   `FAO`: Fatty alcohols [FA05],
 -   `GLCCer`: glycosylceramide [SP0501],
 -   `GPNAE`: glycerophospho-N-acylethanolamine,
 -   `LNAPE`: lyso-N-Acyl-phosphatidylethanolamine,
@@ -486,9 +486,9 @@ reactions <- rbind(
     c(36, "RHEA:33751", "M_H2O + M_PGP = M_Pi + M_PG"), ## H2O + PGP = Pi + PG
     c(37, "RHEA:32931", "M_CDP-DG + M_PG = M_H+ + M_CMP + M_CL"), ## CDP-DG + PG = H+ + CMP + CL
     ## Block 6
-    c(38, "RHEA:52716", "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FATOH + 2 M_NADP + M_CoA"), ## AcylCoA_GPGL + 2 NADPH + 2 H+ = FATOH + 2 NADP + CoA
+    c(38, "RHEA:52716", "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAOH + 2 M_NADP + M_CoA"), ## AcylCoA_GPGL + 2 NADPH + 2 H+ = FAO + 2 NADP + CoA
     c(39, "RHEA:17657", "M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP"), ## Dihydroxyacetone-P + CoA_GPGL = CoA + AcylDHAP 
-    c(40, "RHEA:36171", "M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP"), ## AcylDHAP + FATOH = H+ + FA_GPGL + M_AlkylDHAP
+    c(40, "RHEA:36171", "M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP"), ## AcylDHAP + FAO = H+ + FA_GPGL + M_AlkylDHAP
     c(41, "RHEA:36175", "M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP"), ## H+ + NADPH + AlkylDHAP = LPAO + NADP
     c(42, "RHEA:36235", "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"), ## LPAO + CoA_GPGL = PAO + CoA
     c(43, "RHEA:36239", "M_H2O + M_PA-O = M_Pi + M_DG-O"), ## H2O + PAO = Pi + DGO
@@ -958,10 +958,10 @@ ordered according to their RHEA ids.
 - `"RHEA:36086"`: `"H2O + 1-LPC-O <=> H+ + Phosphocholine + 1-MG-O"`
 
 `acyldhap_to_alkyldhap`:
-- `"RHEA:36171"`: `"M_AcylDHAP + M_FATOH = M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36172"`: `"M_AcylDHAP + M_FATOH => M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36173"`: `"M_AcylDHAP + M_FATOH <= M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36174"`: `"M_AcylDHAP + M_FATOH <=> M_H+ + M_FA + M_AlkylDHAP"`
+- `"RHEA:36171"`: `"M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP"`
+- `"RHEA:36172"`: `"M_AcylDHAP + M_FAO => M_H+ + M_FA + M_AlkylDHAP"`
+- `"RHEA:36173"`: `"M_AcylDHAP + M_FAO <= M_H+ + M_FA + M_AlkylDHAP"`
+- `"RHEA:36174"`: `"M_AcylDHAP + M_FAO <=> M_H+ + M_FA + M_AlkylDHAP"`
 
 `alkyldhap_to_lpao`:
 - `"RHEA:36175"`: `"M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP"`
@@ -1059,11 +1059,11 @@ ordered according to their RHEA ids.
 `lnape_to_gpnae`:
 - `"RHEA:45420"`: `"M_LNAPE + M_H2O <=> M_gpnae + M_FA"`
 
-`coa_to_fatoh`:
-- `"RHEA:52716"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FATOH + 2 M_NADP + M_CoA"`
-- `"RHEA:52717"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FATOH + 2 M_NADP + M_CoA"`
-- `"RHEA:52718"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FATOH + 2 M_NADP + M_CoA"`
-- `"RHEA:52719"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FATOH + 2 M_NADP + M_CoA"`
+`coa_to_FAO`:
+- `"RHEA:52716"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA"`
+- `"RHEA:52717"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FAO + 2 M_NADP + M_CoA"`
+- `"RHEA:52718"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FAO + 2 M_NADP + M_CoA"`
+- `"RHEA:52719"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FAO + 2 M_NADP + M_CoA"`
 
 `sm_to_cer`:    
 - `"sm_to_cer"`: `"M_H2O + M_SM <=> M_Phosphocholine + M_H+ + M_Cer"`
