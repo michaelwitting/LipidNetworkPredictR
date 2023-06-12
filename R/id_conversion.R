@@ -1,7 +1,4 @@
 
-
-
-
 ## a user would typically have a matrix with samples in columns and metabolites
 ## in the rows, the rownames would be of kind 'id', e.g. HMDB ids or Name
 
