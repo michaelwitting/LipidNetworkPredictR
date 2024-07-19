@@ -7,6 +7,8 @@
 
 #' @name translate_id_to_ChEBI
 #' 
+#' @title Translate ID to ChEBI
+#' 
 #' @description
 #' The function \code{translate_id_to_ChEBI} will translate identifiers 
 #' (\code{ids}) of type \code{id_type} to ChEBI identifiers. 
@@ -74,6 +76,8 @@ translate_id_to_ChEBI <- function(ids, id_type = colnames(annotation_set),
 
 #' @name translate_ChEBI_to_SMILES
 #' 
+#' @title Translate ChEBI to SMILES
+#' 
 #' @description
 #' The function \code{translate_ChEBI_to_SMILES} takes ChEBI identifiers
 #' (\code{ids}) and translate these via the dictionary \code{rhea_chebi_smiles}
@@ -125,6 +129,8 @@ translate_ChEBI_to_SMILES <- function(ids, rhea_chebi_smiles) {
 ## from the SMILES find the RHEA reaction id using rhea_reaction_smiles
 
 #' @name select_substrates_or_products
+#' 
+#' @title Select substrates or products
 #' 
 #' @description
 #' The function \code{select_substrates_or_products} selects either 
@@ -201,6 +207,8 @@ select_substrates_or_products <- function(reaction, cols,
 
 
 #' @name obtain_substrates_products
+#' 
+#' @title Obtain substrates and products
 #' 
 #' @description
 #' The function \code{obtain_substrates_products} obtains from the 
@@ -282,6 +290,8 @@ obtain_substrates_products <- function(rhea_reaction_smiles, rhea_directions) {
 
 
 #' @name find_RHEA_ids_from_SMILES
+#' 
+#' @title Find RHEA ids from SMILES  
 #' 
 #' @description
 #' The function \code{find_RHEA_ids_from_SMILES} returns the RHEA ids
@@ -397,6 +407,8 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 
 
 #' @name find_RHEA_ids_from_ids
+#' 
+#' @title Find RHEA ids from ids
 #' 
 #' @description
 #' The function \code{find_RHEA_ids_from_ids} returns the RHEA ids
