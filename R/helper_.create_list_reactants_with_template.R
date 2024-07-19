@@ -41,11 +41,7 @@
 #'     substrates = df_substrates, 
 #'     reaction = reaction)
 #'     
-#' ## make new data.frame with reaction template
-#' df <- LipidNetworkPredictR:::.create_df_with_template(
-#'     df_reaction = df_reaction,
-#'     template = template, reaction = reaction)
-#' 
+#' ## make new data.frame with reaction template 
 #' LipidNetworkPredictR:::.create_list_reactants_with_template(
 #'     df_reaction = df_reaction,
 #'     template = template)
