@@ -13,8 +13,8 @@ Creates ...
 Uses ...
 }
 \examples{
-rhea_reactions_order <- read.table("inst/rhea_reactions.tsv", sep = "\t", header = TRUE)
-rhea_reactions_order <- rhea_reactions_order[c(1, 5, 9), ]
-rhea_reactions <- read.table("inst/extdata/rhea-reactions.txt", sep = "\t", header = FALSE, quote = "")
+##rhea_reactions_order <- read.table("extdata/rhea_reactions.tsv", sep = "\t", header = TRUE)
+##rhea_reactions_order <- rhea_reactions_order[c(1, 5, 9), ]
+##rhea_reactions <- read.table("extdata/rhea-reactions.txt", sep = "\t", header = FALSE, quote = "")
 
 }
