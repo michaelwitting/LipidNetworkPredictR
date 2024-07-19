@@ -10,6 +10,7 @@ Description: The packages uses WormJam related lipid reactions and predicts
 	build the lipid reaction network. Users need to supply a reaction order 
 	list of lipid reactions to build the network.
 Depends: 
+	metaboliteIDmapping (>= 1.0.0),
 	methods (>= 4.1.2),
 	R (>= 4.1.2),
 	stringi (>= 1.7.6),
