@@ -174,7 +174,7 @@ found to be present in glycero- and glycerophospholipids.
 
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
-results <- create_reaction(substrates = list(FA = FA_GPGL), 
+results <- create_reactions(substrates = list(FA = FA_GPGL), 
     template = template, reaction = "RHEA:15421")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -199,7 +199,7 @@ acyl-CoA.
 
 ```{r, message=FALSE, warning=FALSE}
 ## convert fatty acids to acyl CoA --------------------------------------------
-results <- create_reaction(substrates = list(FA = FA_SPH), template = template,
+results <- create_reactions(substrates = list(FA = FA_SPH), template = template,
     reaction = "RHEA:15421")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -247,7 +247,7 @@ template <- list(reaction_name = "glycerol-3 phosphate acyl transferase",
 
 ```{r coa_to_lpa, message=FALSE, warning=FALSE}
 ## biosynthesis of LPA --------------------------------------------------------
-results <- create_reaction(substrates = list(CoA = CoA_GPGL), template = template,
+results <- create_reactions(substrates = list(CoA = CoA_GPGL), template = template,
     reaction = "RHEA:15325")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -286,7 +286,7 @@ template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
 
 ```{r lpa_to_pa, message=FALSE, warning=FALSE}
 ## biosynthesis of PA ---------------------------------------------------------
-results <- create_reaction(substrates = list(LPA = LPA, CoA = CoA_GPGL), 
+results <- create_reactions(substrates = list(LPA = LPA, CoA = CoA_GPGL), 
     template = template, reaction = "RHEA:19709")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -321,7 +321,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol 3-phosphate phosphohydr
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <- create_reaction(substrates = list(PA = PA), template = template,
+results <- create_reactions(substrates = list(PA = PA), template = template,
     reaction = "pa_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -352,7 +352,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol kinase (ER)",
 ```
 
 ```{r dg_to_pa, message=FALSE, warning=FALSE}
-results <- create_reaction(substrates = list(DG = DG), template = template,
+results <- create_reactions(substrates = list(DG = DG), template = template,
     reaction = "RHEA:10272")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -381,7 +381,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (1-acyl-M
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-##results <- create_reaction(substrates = list(DG = DG), template = template,
+##results <- create_reactions(substrates = list(DG = DG), template = template,
 ##    reaction = "dg_to_sn1mg")
 ## results[[2]][1:10, "ReactionFormula"]
 
@@ -409,7 +409,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (2-acyl-M
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
+results <-  create_reactions(substrates = list(DG = DG), template = template,
     reaction = "dg_to_sn2mg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -435,7 +435,7 @@ template <- list(reaction_name = "1-Acyl-MG 2-Acyl-MG conversion",
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG), template = template,
+results <-  create_reactions(substrates = list(sn2MG = sn2MG), template = template,
     reaction = "sn2mg_to_sn1mg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -466,7 +466,7 @@ template <- list(reaction_name = "1-acyl-sn-glycerol acylhydrolase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG), template = template,
+results <-  create_reactions(substrates = list(sn1MG = sn1MG), template = template,
     reaction = "sn1mg_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -489,7 +489,7 @@ template <- list(reaction_name = "2-acyl-sn-glycerol acylhydrolase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG), template = template,
+results <-  create_reactions(substrates = list(sn2MG = sn2MG), template = template,
     reaction = "sn2mg_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -518,7 +518,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (1-acyl-MG)"
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(sn1MG = sn1MG, CoA = CoA_GPGL), 
     template = template, reaction = "sn1mg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -542,7 +542,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (2-acyl-MG)"
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2MG = sn2MG, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(sn2MG = sn2MG, CoA = CoA_GPGL), 
     template = template, reaction = "sn2mg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -566,7 +566,7 @@ template <- list(reaction_name = "1-acyl-sn-glycerol kinase",
 ```
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1MG = sn1MG), 
+results <-  create_reactions(substrates = list(sn1MG = sn1MG), 
     template = template, reaction = "sn1mg_to_lpa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -601,7 +601,7 @@ template <- list(reaction_name = "diacylglycerol acyl transferase",
 ```
 
 ```{r dg_to_tg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(DG = DG, CoA = CoA_GPGL), 
     template = template, reaction = "RHEA:10868")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -631,7 +631,7 @@ template <- list(reaction_name = "Triacylglycerol acylhydrolase",
 ```
 
 ```{r tg_to_dg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(TG = TG), template = template,
+results <-  create_reactions(substrates = list(TG = TG), template = template,
     reaction = "tg_to_dg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -663,7 +663,7 @@ template <- list(
 ```
 
 ```{r dg_to_pc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
+results <-  create_reactions(substrates = list(DG = DG), template = template,
     reaction = "RHEA:32939")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -692,7 +692,7 @@ template <- list(reaction_name = "CDP-ethanolamine 1,2-diacyl-sn-glycerol phosph
 ```
 
 ```{r dg_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DG = DG), template = template,
+results <-  create_reactions(substrates = list(DG = DG), template = template,
     reaction = "RHEA:32943")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -723,7 +723,7 @@ template <- list(reaction_name = "phosphatidylcholine-serine O-phosphatidyltrans
 ```
 
 ```{r pc_to_ps, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
+results <-  create_reactions(substrates = list(PC = PC), template = template,
     reaction = "RHEA:45088")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -752,7 +752,7 @@ template <- list(reaction_name = "phosphatidylethanolamine-serine O-phosphatidyl
 ```
 
 ```{r pe_to_ps, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  create_reactions(substrates = list(PE = PE), template = template,
     reaction = "RHEA:27606")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -780,7 +780,7 @@ template <- list(reaction_name = "phosphatidylserine decarboxylase",
 ```
 
 ```{r ps_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PS = PS), template = template,
+results <-  create_reactions(substrates = list(PS = PS), template = template,
     reaction = "ps_to_pe")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -811,7 +811,7 @@ template <- list(reaction_name = "Phospholipase A1 (PC)",
 ```
 
 ```{r pc_to_sn2lpc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
+results <-  create_reactions(substrates = list(PC = PC), template = template,
     reaction = "RHEA:18689")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -840,7 +840,7 @@ template <- list(reaction_name = "Phospholipase A2 (PC)",
 ```
 
 ```{r pc_to_sn1lpc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
+results <-  create_reactions(substrates = list(PC = PC), template = template,
     reaction = "RHEA:15801")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -869,7 +869,7 @@ template <- list(reaction_name = "Phospholipase D (PC)",
 ```
 
 ```{r pc_to_pa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PC = PC), template = template,
+results <-  create_reactions(substrates = list(PC = PC), template = template,
     reaction = "RHEA:14445")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -898,7 +898,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine lipase (LPC
 ```
 
 ```{r sn1lpc_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPC = sn1LPC), 
+results <-  create_reactions(substrates = list(sn1LPC = sn1LPC), 
     template = template, reaction = "RHEA:15177")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -925,7 +925,7 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphocholine lipase (LPC
 ```
 
 ```{r sn2lpc_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2LPC = sn2LPC), 
+results <-  create_reactions(substrates = list(sn2LPC = sn2LPC), 
     template = template, reaction = "RHEA:44696")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -954,7 +954,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine acyltransfe
 ```
 
 ```{r sn1lpc_to_pc, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPC = sn1LPC, CoA = CoA_GPGL),
+results <-  create_reactions(substrates = list(sn1LPC = sn1LPC, CoA = CoA_GPGL),
     template = template, reaction = "RHEA:12937", 
     constraints = c("", "OH"), negate = c(FALSE, TRUE))
 results[[2]][1:10, "ReactionFormula"]
@@ -984,7 +984,7 @@ template <- list(reaction_name = "Phospholipase A1 (PE)",
 ```
 
 ```{r pe_to_sn2lpe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  create_reactions(substrates = list(PE = PE), template = template,
     reaction = "RHEA:44408")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1012,7 +1012,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE)",
 ```
 
 ```{r pe_to_sn1lpe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  create_reactions(substrates = list(PE = PE), template = template,
     reaction = "pe_to_sn1lpe")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1040,7 +1040,7 @@ template <- list(reaction_name = "Phospholipase D (PE)",
 ```
 
 ```{r pe_to_pa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE), template = template,
+results <-  create_reactions(substrates = list(PE = PE), template = template,
     reaction = "pe_to_pa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1069,7 +1069,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine lipase
 ```
 
 ```{r sn1lpe_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPE = sn1LPE), 
+results <-  create_reactions(substrates = list(sn1LPE = sn1LPE), 
     template = template, reaction = "RHEA:32967")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1095,7 +1095,7 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphoethanolamine lipase
 ```
 
 ```{r sn2lpe_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn2LPE = sn2LPE), 
+results <-  create_reactions(substrates = list(sn2LPE = sn2LPE), 
     template = template, reaction = "sn2lpe_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1124,7 +1124,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine acyltr
 ```
 
 ```{r sn1lpe_to_pe, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(sn1LPE = sn1LPE, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(sn1LPE = sn1LPE, CoA = CoA_GPGL), 
     template = template, reaction = "RHEA:32995", constraints = c("", "OH"),
     negate = c(FALSE, TRUE))
 results[[2]][1:10, "ReactionFormula"]
@@ -1155,7 +1155,7 @@ template <- list(reaction_name = "phosphatidate cytidylyltransferase",
 ```
 
 ```{r pa_to_cdpdg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PA = PA), template = template,
+results <-  create_reactions(substrates = list(PA = PA), template = template,
     reaction = "pa_to_cdpdg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1184,7 +1184,7 @@ template <- list(reaction_name = "CDP-diacylglycerol inositol transferase",
 ```
 
 ```{r cdpdg_to_pi, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CDPDG = CDPDG), template = template,
+results <-  create_reactions(substrates = list(CDPDG = CDPDG), template = template,
     reaction = "RHEA:11580")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1215,7 +1215,7 @@ template <- list(reaction_name = "CDP-diacylglycerol--glycerol-3-phosphate 3-pho
 ```
 
 ```{r cdpdg_to_pgp, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CDPDG = CDPDG), template = template,
+results <-  create_reactions(substrates = list(CDPDG = CDPDG), template = template,
     reaction = "RHEA:12593")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1243,7 +1243,7 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 ```
 
 ```{r pgp_to_pg, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PGP = PGP), template = template,
+results <-  create_reactions(substrates = list(PGP = PGP), template = template,
     reaction = "pgp_to_pg")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1271,7 +1271,7 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 ```
 
 ```{r pg_to_cl, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PG = PG, CDPDG = CDPDG), 
+results <-  create_reactions(substrates = list(PG = PG, CDPDG = CDPDG), 
     template = template, reaction = "pg_to_cl",
     constraints = c("(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]",
         "(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]"),
@@ -1307,7 +1307,7 @@ template <- list(reaction_name = "Fatty acyl-CoA reductase",
 ```
 
 ```{r coa_to_fatoh, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(CoA = CoA_GPGL), 
     template = template, reaction = "RHEA:52716", 
     constraints = c("16:0)|18:0)|20:0)"), negate = c(FALSE))
 results[[2]][1:10, "ReactionFormula"]
@@ -1336,7 +1336,7 @@ template <- list(reaction_name = "Glycerone-phosphate O-acyltransferase",
 ```
 
 ```{r coa_to_acdhap, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(CoA = CoA_GPGL), 
     template = template, reaction = "coa_to_acdhap")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1365,7 +1365,7 @@ template <- list(reaction_name = "Alkyldihydroxyacetonephosphate synthase",
 ```
 
 ```{r acdhap_to_alkyldhap, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(ACDHAP = ACDHAP, FATOH = FATOH), 
+results <-  create_reactions(substrates = list(ACDHAP = ACDHAP, FATOH = FATOH), 
     template = template, reaction = "RHEA:36171") 
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1396,7 +1396,7 @@ template <- list(reaction_name = "1-acylglycerone phosphate reductase",
 ```
 
 ```{r alkyldhap_to_lpao, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(ALKYLDHAP = ALKYLDHAP),
+results <-  create_reactions(substrates = list(ALKYLDHAP = ALKYLDHAP),
     template = template, reaction = "RHEA:36175")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1427,7 +1427,7 @@ Same genes as for LPA to PA --\> substrate specificity not known yet...
 ```
 
 ```{r lpao_to_pao, message=FALSE, warning=FALSE, eval=FALSE}
-##results <-  create_reaction(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
+##results <-  create_reactions(substrates = list(LPAO = LPAO, CoA = CoA_GPGL), 
 ##    template = template, reaction = "RHEA:19709",
 ##    constraints = c("", "OH"), negate = c(FALSE, TRUE))
 ##results[[2]][1:10, "ReactionFormula"]
@@ -1456,7 +1456,7 @@ template <- list(reaction_name = "1-Alkyl-2-acyl-sn-glycero-3-phosphate phosphoh
 ```
 
 ```{r pao_to_dgo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PAO = PAO), template = template,
+results <-  create_reactions(substrates = list(PAO = PAO), template = template,
     reaction = "pao_to_dgo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1487,7 +1487,7 @@ template <- list(reaction_name = "CDP-ethanolamine 1-Alkyl,2-acyl-sn-glycerol ph
 ```
 
 ```{r dgo_to_peo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DGO = DGO), template = template,
+results <-  create_reactions(substrates = list(DGO = DGO), template = template,
     reaction = "RHEA:36187")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1517,7 +1517,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_pep, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO), template = template,
+results <-  create_reactions(substrates = list(PEO = PEO), template = template,
     reaction = "peo_to_pep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1548,7 +1548,7 @@ template <- list(reaction_name = "CDP-Choline 1-Alkyl,2-acyl-sn-glycerol phospho
 ```
 
 ```{r dgo_to_pco, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DGO = DGO), template = template,
+results <-  create_reactions(substrates = list(DGO = DGO), template = template,
     reaction = "RHEA:36179")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1578,7 +1578,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-O)",
 ```
 
 ```{r peo_to_lpeo, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO), template = template,
+results <-  create_reactions(substrates = list(PEO = PEO), template = template,
     reaction = "peo_to_lpeo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1607,7 +1607,7 @@ template <- list(reaction_name = "1-alkyl-sn-glycero-3-phosphoethanolamine acylt
 
 ```{r lpeo_to_peo, message=FALSE, warning=FALSE, eval=FALSE}
 # biosynthesis of PEO ----------------------------------------------------------
-results <-  create_reaction(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(LPEO = LPEO, CoA = CoA_GPGL), 
     template = template, reaction = "lpeo_to_peo")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1633,7 +1633,7 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 ```
 
 ```{r pep_to_lpep, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP), template = template,
+results <-  create_reactions(substrates = list(PEP = PEP), template = template,
     reaction = "pep_to_lpep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1661,7 +1661,7 @@ template <- list(reaction_name = "1-alkenyl-sn-glycero-3-phosphoethanolamine acy
 ```
 
 ```{r lpep_to_pep, message=FALSE, warning=FALSE, eval=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(LPEP = LPEP, CoA = CoA_GPGL), 
+results <-  create_reactions(substrates = list(LPEP = LPEP, CoA = CoA_GPGL), 
     template = template, reaction = "lpep_to_pep")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1687,7 +1687,7 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 ```
 
 ```{r pco_to_lpco, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PCO = PCO), template = template,
+results <-  create_reactions(substrates = list(PCO = PCO), template = template,
     reaction = "pco_to_lpco")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1730,7 +1730,7 @@ template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
 ```
 
 ```{r sphinga_to_dhcer_template, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CoA = CoA_SPH), template = template,
+results <-  create_reactions(substrates = list(CoA = CoA_SPH), template = template,
     reaction = "sphinga_to_dhcer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1759,7 +1759,7 @@ template <- list(reaction_name = "Dihydrosphingomyelin synthase",
 ```
 
 ```{r dhcer_to_dhsm, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHCER = DHCER), 
+results <-  create_reactions(substrates = list(DHCER = DHCER), 
     template = template, reaction = "RHEA:18765")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1788,7 +1788,7 @@ template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
 ```
 
 ```{r dhsm_to_dhcer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHSM = DHSM), template = template,
+results <-  create_reactions(substrates = list(DHSM = DHSM), template = template,
     reaction = "RHEA:19253")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1814,7 +1814,7 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 ```
 
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(DHCER = DHCER), template = template,
+results <-  create_reactions(substrates = list(DHCER = DHCER), template = template,
     reaction = "dhcer_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1843,7 +1843,7 @@ template <- list(reaction_name = "Sphingomyelin synthase",
 ```
 
 ```{r cer_to_sm, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
+results <-  create_reactions(substrates = list(CER = CER), template = template,
     reaction = "RHEA:18765")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1871,7 +1871,7 @@ template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
 ```
 
 ```{r sm_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(SM = SM), template = template,
+results <-  create_reactions(substrates = list(SM = SM), template = template,
     reaction = "sm_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1898,7 +1898,7 @@ template <- list(reaction_name = "Ceramide kinase",
 ```
 
 ```{r cer_to_c1p, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
+results <-  create_reactions(substrates = list(CER = CER), template = template,
     reaction = "RHEA:17929")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1928,7 +1928,7 @@ template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
 ```
 
 ```{r c1p_to_cer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(C1P = C1P), template = template,
+results <-  create_reactions(substrates = list(C1P = C1P), template = template,
     reaction = "c1p_to_cer")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1955,7 +1955,7 @@ template <- list(reaction_name = "UDP-glucose:N-acylsphingosine D-glucosyltransf
 ```
 
 ```{r cer_to_glccer, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(CER = CER), template = template,
+results <-  create_reactions(substrates = list(CER = CER), template = template,
     reaction = "RHEA:12088")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -1995,7 +1995,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pe_to_nape_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE, PC = PC), 
+results <-  create_reactions(substrates = list(PE = PE, PC = PC), 
     template = template, reaction = "pe_to_nape_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2026,7 +2026,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_napeo_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO, PC = PC), 
+results <-  create_reactions(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2057,7 +2057,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pep_to_napep_sn1, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP, PC = PC), 
+results <-  create_reactions(substrates = list(PEP = PEP, PC = PC), 
     template = template, reaction = "pep_to_napep_sn1")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2088,7 +2088,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pe_to_nape_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PE = PE, PC = PC), 
+results <-  create_reactions(substrates = list(PE = PE, PC = PC), 
     template = template, reaction = "pe_to_nape_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2114,7 +2114,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r peo_to_napeo_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEO = PEO, PC = PC), 
+results <-  create_reactions(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2141,7 +2141,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r pep_to_napep_sn2, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(PEP = PEP, PC = PC), template = template,
+results <-  create_reactions(substrates = list(PEP = PEP, PC = PC), template = template,
     reaction = "pep_to_napep_sn2")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2170,7 +2170,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_nae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  create_reactions(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_nae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2201,7 +2201,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r napeo_to_nae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPEO = NAPEO), 
+results <-  create_reactions(substrates = list(NAPEO = NAPEO), 
     template = template, reaction = "napeo_to_nae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2240,7 +2240,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_pnae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  create_reactions(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_pnae")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2277,7 +2277,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nape_to_lnape, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAPE = NAPE), template = template,
+results <-  create_reactions(substrates = list(NAPE = NAPE), template = template,
     reaction = "nape_to_lnape")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2309,7 +2309,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r lnape_to_gpnae, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(LNAPE = LNAPE), template = template,
+results <-  create_reactions(substrates = list(LNAPE = LNAPE), template = template,
     reaction = "RHEA:45420")
 results[[2]][1:10, "ReactionFormula"]
 
@@ -2342,7 +2342,7 @@ template <- list(reaction_name = "",
 ```
 
 ```{r nae_to_fa, message=FALSE, warning=FALSE, eval=FALSE}
-results <-  create_reaction(substrates = list(NAE = NAE), template = template,
+results <-  create_reactions(substrates = list(NAE = NAE), template = template,
     reaction = "nae_to_fa")
 results[[2]][1:10, "ReactionFormula"]
 
