@@ -3,6 +3,7 @@
 export(.create_reaction)
 export(create_reaction_adjacency_matrix)
 export(create_reactions)
+export(create_via_chebi)
 export(find_RHEA_ids_from_SMILES)
 export(find_RHEA_ids_from_ids)
 export(isolate_radyls)
