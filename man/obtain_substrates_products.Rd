@@ -31,7 +31,7 @@ bidirectional reactions. To comply with downstream functions
 \code{obtain_substrates_products} will interpret the entries of the reactions
 in \code{rhea_reaction_smiles} as in the following:
 
-\begin{itemize}
+\itemize{
     \item if reaction id in column 1 of \code{rhea_directions}: 
         first entry = substrates, 
     \item if reaction id in column 2 of \code{rhea_directions}:
@@ -40,7 +40,7 @@ in \code{rhea_reaction_smiles} as in the following:
         first entry = products, 
     \item if reaction id in column 4 of \code{rhea_directions}:
         first entry = substrates.
-\end{itemize}
+}
 }
 \examples{
 ## rhea_reaction_smiles
@@ -56,7 +56,8 @@ file <- file.path(
 rhea_directions <- read.csv(file, sep = "\t", header = TRUE)
 
 ## run the function
-obtain_substrates_products(rhea_reaction_smiles = rhea_reaction_smiles,
+LipidNetworkPredictR:::obtain_substrates_products(
+    rhea_reaction_smiles = rhea_reaction_smiles,
     rhea_directions = rhea_directions)
 }
 \author{

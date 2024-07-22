@@ -32,7 +32,7 @@ that are involved in reactions of the given SMILES (\code{ids}).
 \details{
 The returned result might differ depending on the \code{type} object:
 
-\begin{itemize}
+\itemize{
     \item if \code{type = "both"}, the function will return the RHEA 
     identifiers for the SMILES found both in the substrates or products of 
     the reactions,
@@ -40,7 +40,7 @@ The returned result might differ depending on the \code{type} object:
     identifiers for the SMILES found in the substrates of the reactions,
     \item if \code{type = "products"}, the function will return the RHEA 
     identifiers for the SMILES found in the products of the reactions.
-\end{itemize}
+}
 }
 \examples{
 ids <- list(

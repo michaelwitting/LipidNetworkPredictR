@@ -4,7 +4,12 @@
 \alias{create_via_chebi}
 \title{create_via_chebi}
 \usage{
-create_via_chebi()
+create_via_chebi(rhea_reactions_order, rhea_reactions)
+}
+\arguments{
+\item{rhea_reactions_order}{data.frame}
+
+\item{rhea_reactions}{data.frame}
 }
 \description{
 Creates ...
@@ -13,8 +18,14 @@ Creates ...
 Uses ...
 }
 \examples{
-##rhea_reactions_order <- read.table("extdata/rhea_reactions.tsv", sep = "\t", header = TRUE)
+file <- file.path(
+    path.package("LipidNetworkPredictR"), "extdata", "rhea_reactions.tsv",
+    fsep = .Platform$file.sep)
+##rhea_reactions_order <- read.table(file, sep = "\t", header = TRUE)
 ##rhea_reactions_order <- rhea_reactions_order[c(1, 5, 9), ]
-##rhea_reactions <- read.table("extdata/rhea-reactions.txt", sep = "\t", header = FALSE, quote = "")
+file <- file.path(
+    path.package("LipidNetworkPredictR"), "extdata", "rhea-reactions.txt",
+    fsep = .Platform$file.sep)
+##rhea_reactions <- read.table(file, sep = "\t", header = FALSE, quote = "")
 
 }

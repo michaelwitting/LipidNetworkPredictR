@@ -32,7 +32,7 @@ ids <- list("HMDB0004947" = "72956", "HMDB0004949" = "72959",
     
 ## load rhea_chebi_smiles
 file <- file.path(
-    path.package("LipidNetworkPredictR"), "data", "rhea-chebi-smiles.tsv",
+    path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
     fsep = .Platform$file.sep)
 rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
 

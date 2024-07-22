@@ -29,6 +29,8 @@
 #' 
 #' @return list
 #' 
+#' @export
+#' 
 #' @examples
 #' ## define the identifiers and the id type 
 #' ids <- c("HMDB0004947", "HMDB0004949", "HMDB0011763", "HMDB0004974", "HMDB0011594")
@@ -96,6 +98,8 @@ translate_id_to_ChEBI <- function(ids, id_type = colnames(annotation_set),
 #' 
 #' @return list
 #' 
+#' @export
+#' 
 #' @examples
 #' ids <- list("HMDB0004947" = "72956", "HMDB0004949" = "72959", 
 #'     "HMDB0011763" = "74100", "HMDB0004974" = "62107", 
@@ -103,7 +107,7 @@ translate_id_to_ChEBI <- function(ids, id_type = colnames(annotation_set),
 #'     
 #' ## load rhea_chebi_smiles
 #' file <- file.path(
-#'     path.package("LipidNetworkPredictR"), "data", "rhea-chebi-smiles.tsv",
+#'     path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
 #'     fsep = .Platform$file.sep)
 #' rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
 #' 
@@ -165,17 +169,17 @@ translate_ChEBI_to_SMILES <- function(ids, rhea_chebi_smiles) {
 #'
 #' ## cols = 2
 #' cols <- 2
-#' select_substrates_or_products(reaction = reaction, cols = cols, 
-#'     type = "substrates")
-#' select_substrates_or_products(reaction = reaction, cols = cols, 
-#'     type = "products")
+#' LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+#'     cols = cols, type = "substrates")
+#' LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+#'     cols = cols, type = "products")
 #' 
 #' ## cols = 3
 #' cols <- 3
-#' select_substrates_or_products(reaction = reaction, cols = cols, 
-#'     type = "substrates")
-#' select_substrates_or_products(reaction = reaction, cols = cols, 
-#'     type = "products")
+#' LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+#'     cols = cols, type = "substrates")
+#' LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+#'     cols = cols, type = "products")
 select_substrates_or_products <- function(reaction, cols, 
     type = c("substrates", "products")) {
     
@@ -225,7 +229,7 @@ select_substrates_or_products <- function(reaction, cols,
 #' \code{obtain_substrates_products} will interpret the entries of the reactions
 #' in \code{rhea_reaction_smiles} as in the following:
 #' 
-#' \begin{itemize}
+#' \itemize{
 #'     \item if reaction id in column 1 of \code{rhea_directions}: 
 #'         first entry = substrates, 
 #'     \item if reaction id in column 2 of \code{rhea_directions}:
@@ -234,7 +238,7 @@ select_substrates_or_products <- function(reaction, cols,
 #'         first entry = products, 
 #'     \item if reaction id in column 4 of \code{rhea_directions}:
 #'         first entry = substrates.
-#' \end{itemize}
+#' }
 #' 
 #' @param rhea_reaction_smiles data.frame containing the mappings between RHEA
 #' reaction ids and SMILES identifiers
@@ -259,7 +263,8 @@ select_substrates_or_products <- function(reaction, cols,
 #' rhea_directions <- read.csv(file, sep = "\t", header = TRUE)
 #' 
 #' ## run the function
-#' obtain_substrates_products(rhea_reaction_smiles = rhea_reaction_smiles,
+#' LipidNetworkPredictR:::obtain_substrates_products(
+#'     rhea_reaction_smiles = rhea_reaction_smiles,
 #'     rhea_directions = rhea_directions)
 obtain_substrates_products <- function(rhea_reaction_smiles, rhea_directions) {
     
@@ -300,7 +305,7 @@ obtain_substrates_products <- function(rhea_reaction_smiles, rhea_directions) {
 #' @details
 #' The returned result might differ depending on the \code{type} object:
 #' 
-#' \begin{itemize}
+#' \itemize{
 #'     \item if \code{type = "both"}, the function will return the RHEA 
 #'     identifiers for the SMILES found both in the substrates or products of 
 #'     the reactions,
@@ -308,7 +313,7 @@ obtain_substrates_products <- function(rhea_reaction_smiles, rhea_directions) {
 #'     identifiers for the SMILES found in the substrates of the reactions,
 #'     \item if \code{type = "products"}, the function will return the RHEA 
 #'     identifiers for the SMILES found in the products of the reactions.
-#' \end{itemize}
+#' }
 #' 
 #' @param ids list, entries contain the SMILES identifiers.
 #' @param rhea_reaction_smiles data.frame containing the mappings between ChEBI 
@@ -320,6 +325,8 @@ obtain_substrates_products <- function(rhea_reaction_smiles, rhea_directions) {
 #' @author Thomas Naake
 #' 
 #' @return list
+#' 
+#' @export
 #' 
 #' @examples
 #' ids <- list(
@@ -424,7 +431,7 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 #' 
 #' The returned result might differ depending on the \code{type} object:
 #' 
-#' \begin{itemize}
+#' \itemize{
 #'      \item if \code{type = "both"}, the function will return the RHEA 
 #'     identifiers for the SMILES found both in the substrates or products of 
 #'     the reactions,
@@ -432,7 +439,7 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 #'     identifiers for the SMILES found in the substrates of the reactions,
 #'     \item if \code{type = "products"}, the function will return the RHEA 
 #'     identifiers for the SMILES found in the products of the reactions.
-#' \end{itemize}
+#' }
 #' 
 #' @param ids character, identifiers to be translated to ChEBI ids
 #' @param id_type character(1), one of \code{colnames(annotation_set)}
@@ -447,6 +454,8 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 #' @param type character(1), one of "both", "substrates", or "products"
 #' 
 #' @author Thomas Naake
+#' 
+#' @export
 #' 
 #' @return list
 #' 
@@ -473,7 +482,7 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 #' 
 #' ## load rhea_chebi_smiles
 #' file <- file.path(
-#'     path.package("LipidNetworkPredictR"), "data", "rhea-chebi-smiles.tsv",
+#'     path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
 #'     fsep = .Platform$file.sep)
 #' rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
 #' 
@@ -517,7 +526,7 @@ find_RHEA_ids_from_ids <- function(ids, id_type, annotation_set = NULL,
 
     if (is.null(rhea_chebi_smiles)) {
         file <- file.path(
-            path.package("LipidNetworkPredictR"), "data", "rhea-chebi-smiles.tsv",
+            path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
             fsep = .Platform$file.sep)
         rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
     }

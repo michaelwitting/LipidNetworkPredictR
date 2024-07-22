@@ -45,17 +45,17 @@ reaction <- list(c("CC(=O)[C@H](C)O",  "CC(=O)[C@H](C)O"))
 
 ## cols = 2
 cols <- 2
-select_substrates_or_products(reaction = reaction, cols = cols, 
-    type = "substrates")
-select_substrates_or_products(reaction = reaction, cols = cols, 
-    type = "products")
+LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+    cols = cols, type = "substrates")
+LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+    cols = cols, type = "products")
 
 ## cols = 3
 cols <- 3
-select_substrates_or_products(reaction = reaction, cols = cols, 
-    type = "substrates")
-select_substrates_or_products(reaction = reaction, cols = cols, 
-    type = "products")
+LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+    cols = cols, type = "substrates")
+LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
+    cols = cols, type = "products")
 }
 \author{
 Thomas Naake

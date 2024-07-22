@@ -50,7 +50,7 @@ Example section below).
 
 The returned result might differ depending on the \code{type} object:
 
-\begin{itemize}
+\itemize{
      \item if \code{type = "both"}, the function will return the RHEA 
     identifiers for the SMILES found both in the substrates or products of 
     the reactions,
@@ -58,7 +58,7 @@ The returned result might differ depending on the \code{type} object:
     identifiers for the SMILES found in the substrates of the reactions,
     \item if \code{type = "products"}, the function will return the RHEA 
     identifiers for the SMILES found in the products of the reactions.
-\end{itemize}
+}
 }
 \examples{
 ids <- c("HMDB0004947", "HMDB0004949", "HMDB0011763", "HMDB0004974", "HMDB0011594")
@@ -80,7 +80,7 @@ annotation_set <- ah[["AH91792"]]
 
 ## load rhea_chebi_smiles
 file <- file.path(
-    path.package("LipidNetworkPredictR"), "data", "rhea-chebi-smiles.tsv",
+    path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
     fsep = .Platform$file.sep)
 rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
 
