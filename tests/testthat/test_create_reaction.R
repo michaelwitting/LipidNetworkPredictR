@@ -422,7 +422,7 @@ test_that(".create_reaction works", {
     
     ## dhcer_to_cer 
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
-    reaction_l <- .create_reaction(substrates = list(DhCer = dhcer)
+    reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = NULL, reaction =  "dhcer_to_cer")
     expect_equal(reaction_l[[1]]$Cer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
