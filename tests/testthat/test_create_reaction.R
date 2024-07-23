@@ -421,15 +421,15 @@ test_that(".create_reaction works", {
         "CDP-Ethanolamine + DG(O-18:0/16:0/0:0) <=> H+ + CMP + PE(O-18:0/16:0)")
     
     ## dhcer_to_cer 
-    dhcer <- "Cer(16:0(3OH,4OH,15Me)/12:0)" ###################################################
-    reaction_l <- .create_reaction(substrates = list(DhCer = dhcer), 
+    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
+    reaction_l <- .create_reaction(substrates = list(DhCer = dhcer)
         template = NULL, reaction =  "dhcer_to_cer")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "H+ + NADH + O2 + Cer(16:0(3OH,4OH,15Me)/12:0) <=> 2 H2O + NAD+ + Cer(16:0(3OH,4OH,15Me)/12:0)")
+        "H+ + NADH + O2 + Cer(d16:0(3OH,4OH)(15Me)/12:0) <=> 2 H2O + NAD+ + Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)"
+    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)" ###################################################
     reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = NULL, reaction =  "RHEA:44620")
     expect_equal(reaction_l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
@@ -437,7 +437,7 @@ test_that(".create_reaction works", {
         "PC + Cer(16:1(3OH,4OH,15Me)/12:0) <=> DG + SM(16:1(3OH,4OH,15Me)/12:0)")
     
     ## dhsm_to_dhcer
-    dhsm <- "SM(16:1(3OH,4OH,15Me)/12:0)"
+    dhsm <- "SM(16:1(3OH,4OH,15Me)/12:0)" ###################################################
     reaction_l <- .create_reaction(substrates = list(DhSM = dhsm), 
         template = NULL, reaction =  "RHEA:45300")
     expect_equal(reaction_l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
@@ -777,9 +777,6 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
         "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
-    
-    
-    c("", "RHEA:16246", "RHEA:16247", "RHEA:16248")
     
     ## sn1mg_to_dg
     sn1mg <- "MG(14:0/0:0/0:0)"
@@ -1676,7 +1673,7 @@ test_that(".create_reaction works", {
         "H2O + SM(16:0(3OH,4OH,15Me)/12:0) <=> Phosphocholine + H+ + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     ## sphinga_to_dhcer
-    acylcoa <- "CoA(12:0)"
+    acylcoa <- "CoA(12:0)" ###############################################################
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
         template = NULL, reaction = "RHEA:53424")
     expect_equal(reaction_l[[1]]$DhCer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
