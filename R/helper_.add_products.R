@@ -84,17 +84,20 @@
         .s$PI <- stringi::stri_replace_all_fixed(str = .s$CDPDG, 
             pattern = "CDP-DG", replacement = "PI")     
     }
-            
+    
+    ## cer_to_cerp
     if (reaction == "RHEA:17929") { ## cer_to_cerp
         .s$CerP <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "CerP")
     }
-            
+    
+    ## cer_to_glccer
     if (reaction == "RHEA:12088") { ## cer_to_glccer
         .s$GlcCer <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "GlcCer")
     }
             
+    ## cer_to_sm
     if (reaction == "RHEA:18765") { ## cer_to_sm
         .s$SM <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "SM")
@@ -286,6 +289,7 @@
             function(f) {paste0("FA(", f[1], ")")}))
     }
 
+    ## sn2lpe_to_fa
     if (reaction == "sn2lpe_to_fa") {
         ## sn2 loss 
         .s$FA <- unlist(lapply(isolate_radyls(.s$sn2LPE), 
@@ -308,7 +312,7 @@
                 function(f) {paste0("/", f, ")")})))
     }
     
-    
+    ## lpeo_to_peo
     if (reaction == "lpeo_to_peo") {
         .s$PEO <- stringi::stri_replace_all_fixed(str = .s$sn1LPEO, 
             pattern = "/0:0", 
@@ -369,17 +373,20 @@
             replacement = "\\)")
     }
 
+    ## sn2mg_to_sn1mg
     if (reaction == "sn2mg_to_sn1mg") {
         ## "sn2 loss"
         .s$sn1MG <- unlist(lapply(isolate_radyls(.s$sn2MG), 
             function(f) {paste0("MG(", f[2], "/0:0/0:0)")}))
     }
 
+    ## nae_to_fa
     if (reaction == "nae_to_fa") {
         .s$FA <- stringi::stri_replace_all_fixed(str = .s$NAE, pattern = "NAE", 
             replacement = "FA")
     }
 
+    ## nape_to_lnape
     if (reaction == "nape_to_lnape") {
         .s$LNAPE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("NAPE(", f[1], "/0:0/", f[3], ")")}))
@@ -387,6 +394,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
+    ## nape_to_nae
     if (reaction == "nape_to_nae") {
         .s$NAE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("NAE(", f[3], ")")}))
@@ -394,6 +402,7 @@
             function(f) {paste0("PA(", f[1], "/", f[2], ")")}))
     }
 
+    ## nape_to_pnae
     if (reaction == "nape_to_pnae") {
         .s$PNAE <- unlist(lapply(isolate_radyls(.s$NAPE), 
             function(f) {paste0("PNAE(", f[3], ")")}))
@@ -401,6 +410,7 @@
             function(f) {paste0("DG(", f[1], "/", f[2], "/0:0)")}))
     }
     
+    ## napeo_to_nae
     if (reaction == "napeo_to_nae") {
         .s$NAE <- unlist(lapply(isolate_radyls(.s$NAPEO), 
             function(f) {paste0("NAE(", f[3], ")")}))
@@ -521,6 +531,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
     
+    ## pe_to_nape_sn1
     if (reaction == "pe_to_nape_sn1") {
         .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
@@ -532,6 +543,7 @@
             replacement = "NAPE")
     }
 
+    ## pe_to_nape_sn2
     if (reaction == "pe_to_nape_sn2") {
         .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
@@ -543,6 +555,7 @@
             replacement = "NAPE")
     }
     
+    ## pe_to_pa
     if (reaction == "pe_to_pa") {
         .s$PA <- stringi::stri_replace_all_fixed(str = .s$PE, pattern = "PE", 
             replacement = "PA")
@@ -554,6 +567,7 @@
             replacement = "PS")
     }
     
+    ## peo_to_lpeo
     if (reaction == "peo_to_lpeo") {
         ## "sn2 loss"
         .s$sn1LPEO <- unlist(lapply(isolate_radyls(.s$PEO), 
@@ -562,6 +576,7 @@
             function(f) {paste0("FA(", f[2], ")")}))
     }
 
+    ## peo_to_napeo_sn1
     if (reaction == "peo_to_napeo_sn1") {
         .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
@@ -573,6 +588,7 @@
             pattern = "PE", replacement = "NAPE")
     }
     
+    ## peo_to_napeo_sn2
     if (reaction == "peo_to_napeo_sn2") {
         .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
@@ -687,6 +703,7 @@
             replacement = "PE")
     }
 
+    ## sm_to_cer
     if (reaction == "sm_to_cer") {
         .s$Cer <- stringi::stri_replace_all_fixed(str = .s$SM, pattern = "SM",
             replacement = "Cer")
