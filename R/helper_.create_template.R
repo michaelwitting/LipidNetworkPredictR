@@ -233,11 +233,11 @@
         
         ## dgo_to_pco
         if (reaction == "RHEA:36179")
-            .formula <- "M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"
+            .formula <- "M_CDP-Choline + M_DG-O = M_H+ + M_CMP + M_PC-O"
         if (reaction == "RHEA:36180")
-            .formula <- "M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"
+            .formula <- "M_CDP-Choline + M_DG-O => M_H+ + M_CMP + M_PC-O"
         if (reaction == "RHEA:36181")
-            .formula <- "M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"
+            .formula <- "M_CDP-Choline + M_DG-O <= M_H+ + M_CMP + M_PC-O"
         if (reaction == "RHEA:36182")
             .formula <- "M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"
         
@@ -390,11 +390,11 @@
         
         ## lpep_to_pep
         if (reaction == "RHEA:16245")
-            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+            .formula <- "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"
         if (reaction == "RHEA:16246")    
-            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+            .formula <- "M_AcylCoA + M_LPE-P => M_CoA + M_PE-P"
         if (reaction == "RHEA:16247")
-            .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
+            .formula <- "M_AcylCoA + M_LPE-P <= M_CoA + M_PE-P"
         if (reaction == "RHEA:16248")
             .formula <- "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"
             
