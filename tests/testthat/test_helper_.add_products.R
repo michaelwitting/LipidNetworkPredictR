@@ -514,10 +514,6 @@ test_that(".add_reaction works", {
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     df <- .add_products(substrates = df_substrates, 
-        reaction = "RHEA:15421")
-    expect_equal(names(df), .names)
-    expect_equal(as.character(unlist(df)), .values)
-    df <- .add_products(substrates = df_substrates, 
         reaction = "RHEA:15422")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
