@@ -3606,15 +3606,15 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:45090"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
+        reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
-                                                        reaction = reaction)
+        reaction = reaction)
     df <- LipidNetworkPredictR:::.create_df_with_template(
         df_reaction = df_reaction,
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-                 "L-Serine + PC(20:0/18:0) <= Choline + PS(20:0/18:0)")
+        "L-Serine + PC(20:0/18:0) <= Choline + PS(20:0/18:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -3623,15 +3623,15 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:45091"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
+        reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
-                                                        reaction = reaction)
+        reaction = reaction)
     df <- LipidNetworkPredictR:::.create_df_with_template(
         df_reaction = df_reaction,
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-                 "L-Serine + PC(20:0/18:0) <=> Choline + PS(20:0/18:0)")
+        "L-Serine + PC(20:0/18:0) <=> Choline + PS(20:0/18:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -3720,39 +3720,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:39927"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
+        reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
-                                                        reaction = reaction)
+        reaction = reaction)
     df <- LipidNetworkPredictR:::.create_df_with_template(
         df_reaction = df_reaction,
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-                 "H2O + PC(O-16:0/0:0) = PA(O-16:0/0:0) + H+ + Choline")
+        "H2O + PC(O-16:0/0:0) = PA(O-16:0/0:0) + H+ + Choline")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
     expect_equal(df$reaction_product, "PA(O-16:0/0:0) + H+ + Choline")
     
-    
     reaction <- "RHEA:39928"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) => PA(O-16:0/0:0) + H+ + Choline")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(O-16:0/0:0) + H+ + Choline")
     
     reaction <- "RHEA:39929"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) <= PA(O-16:0/0:0) + H+ + Choline")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(O-16:0/0:0) + H+ + Choline")
     
     reaction <- "RHEA:39930"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) <=> PA(O-16:0/0:0) + H+ + Choline")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(O-16:0/0:0) + H+ + Choline")
     
     ## lpco_to_mgo
     sn1lpco <- "PC(O-16:0/0:0)"
@@ -3762,27 +3794,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:36083"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) = H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
     
     reaction <- "RHEA:36084"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) => H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
     
     reaction <- "RHEA:36085"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) <= H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
     
     reaction <- "RHEA:36086"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PC(O-16:0/0:0) <=> H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PC(O-16:0/0:0)")
+    expect_equal(df$reaction_product, "H+ + Phosphocholine + MG(O-16:0/0:0/0:0)")
     
     ## lpco_to_pco
     sn1lpco <- "PC(O-16:0/0:0)"
@@ -3793,27 +3869,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:23992"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PC(O-16:0/0:0) + CoA(18:0) = PC(O-16:0/18:0) + CoA")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PC(O-16:0/0:0) + CoA(18:0)")
+    expect_equal(df$reaction_product, "PC(O-16:0/18:0) + CoA")
     
     reaction <- "RHEA:23993"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PC(O-16:0/0:0) + CoA(18:0) => PC(O-16:0/18:0) + CoA")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PC(O-16:0/0:0) + CoA(18:0)")
+    expect_equal(df$reaction_product, "PC(O-16:0/18:0) + CoA")
     
     reaction <- "RHEA:23994"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PC(O-16:0/0:0) + CoA(18:0) <= PC(O-16:0/18:0) + CoA")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PC(O-16:0/0:0) + CoA(18:0)")
+    expect_equal(df$reaction_product, "PC(O-16:0/18:0) + CoA")
     
     reaction <- "RHEA:23995"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PC(O-16:0/0:0) + CoA(18:0) <=> PC(O-16:0/18:0) + CoA")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PC(O-16:0/0:0) + CoA(18:0)")
+    expect_equal(df$reaction_product, "PC(O-16:0/18:0) + CoA")
     
     ## pe_to_dg
     pe <- "PE(14:0/16:0)"
@@ -3823,9 +3943,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pe_to_dg"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <=> P-Ethanolamine + DG(14:0/16:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "P-Ethanolamine + DG(14:0/16:0/0:0)")
     
     ## pe_to_sn1lpe
     pe <- "PE(14:0/16:0)"
@@ -3835,27 +3966,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:44604"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) = H+ + FA(16:0) + PE(14:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(14:0/0:0)")
     
     reaction <- "RHEA:44605"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) => H+ + FA(16:0) + PE(14:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(14:0/0:0)")
     
     reaction <- "RHEA:44606"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <= H+ + FA(16:0) + PE(14:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(14:0/0:0)")
     
     reaction <- "RHEA:44607"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <=> H+ + FA(16:0) + PE(14:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(14:0/0:0)")
     
     ## pe_to_sn2lpe
     pe <- "PE(14:0/16:0)"
@@ -3865,27 +4040,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:44408"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) = H+ + FA(16:0) + PE(0:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(0:0/14:0)")
     
     reaction <- "RHEA:44409"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) => H+ + FA(16:0) + PE(0:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(0:0/14:0)")
     
     reaction <- "RHEA:44410"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <= H+ + FA(16:0) + PE(0:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(0:0/14:0)")
     
     reaction <- "RHEA:44411"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <=> H+ + FA(16:0) + PE(0:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "H+ + FA(16:0) + PE(0:0/14:0)")
     
     ## pe_to_nape_sn1
     pe <- "PE(14:0/16:0)"
@@ -3896,9 +4115,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pe_to_nape_sn1"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(14:0/16:0) + PC(18:0/20:0) <=> NAPE(14:0/16:0/18:0) + PC(0:0/20:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(14:0/16:0) + PC(18:0/20:0)")
+    expect_equal(df$reaction_product, "NAPE(14:0/16:0/18:0) + PC(0:0/20:0)")
     
     ## pe_to_nape_sn2
     pe <- "PE(14:0/16:0)"
@@ -3909,9 +4139,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pe_to_nape_sn2"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(14:0/16:0) + PC(18:0/20:0) <=> NAPE(14:0/16:0/20:0) + PC(18:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(14:0/16:0) + PC(18:0/20:0)")
+    expect_equal(df$reaction_product, "NAPE(14:0/16:0/20:0) + PC(18:0/0:0)")
     
     ## pe_to_pa
     pe <- "PE(14:0/16:0)"
@@ -3921,9 +4162,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pe_to_pa"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(14:0/16:0) <=> Ethanolamine + H+ + PA(14:0/16:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "Ethanolamine + H+ + PA(14:0/16:0)")
     
     ## pe_to_ps
     pe <- "PE(14:0/16:0)"
@@ -3933,27 +4185,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:27606" 
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "L-Serine + PE(14:0/16:0) = Ethanolamine + PS(14:0/16:0))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "L-Serine + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "Ethanolamine + PS(14:0/16:0)")
     
     reaction <- "RHEA:27607"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "L-Serine + PE(14:0/16:0) => Ethanolamine + PS(14:0/16:0))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "L-Serine + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "Ethanolamine + PS(14:0/16:0)")
     
     reaction <- "RHEA:27608"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "L-Serine + PE(14:0/16:0) <= Ethanolamine + PS(14:0/16:0))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "L-Serine + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "Ethanolamine + PS(14:0/16:0)")
     
     reaction <- "RHEA:27609"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "L-Serine + PE(14:0/16:0) <=> Ethanolamine + PS(14:0/16:0))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "L-Serine + PE(14:0/16:0)")
+    expect_equal(df$reaction_product, "Ethanolamine + PS(14:0/16:0)")
     
     ## peo_to_lpeo
     peo <- "PE(O-16:0/14:0)"
@@ -3963,9 +4259,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "peo_to_lpeo"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(O-16:0/14:0) <=> H+ + PE(O-16:0/0:0) + FA(14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(O-16:0/14:0)")
+    expect_equal(df$reaction_product, "H+ + PE(O-16:0/0:0) + FA(14:0)")
     
     ## peo_to_napeo_sn1
     peo <- "PE(O-16:0/14:0)"
@@ -3976,9 +4283,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "peo_to_napeo_sn1"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + PC(20:0/18:0) <=> NAPE(O-16:0/14:0/20:0) + PC(0:0/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "NAPE(O-16:0/14:0/20:0) + PC(0:0/18:0)")
     
     ## peo_to_napeo_sn2
     peo <- "PE(O-16:0/14:0)"
@@ -3989,9 +4307,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "peo_to_napeo_sn2"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + PC(20:0/18:0) <=> NAPE(O-16:0/14:0/18:0) + PC(20:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "NAPE(O-16:0/14:0/18:0) + PC(20:0/0:0)")
     
     ## peo_to_pep
     peo <- "PE(O-16:0/14:0)"
@@ -4001,27 +4330,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:22956"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2 = PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
     
     reaction <- "RHEA:22957"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2 => PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
     
     reaction <- "RHEA:22958"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2 <= PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
     
     reaction <- "RHEA:22959"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2 <=> PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(O-16:0/14:0) + Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "PE(P-16:0/14:0) + Fe3+-cytochrome b5 + 2 H2O")
     
     ## pep_to_lpep
     pep <- "PE(P-16:0/14:0)"
@@ -4031,27 +4404,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:36195"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) = H+ + PE(P-16:0/0:0) + FA(14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "H+ + PE(P-16:0/0:0) + FA(14:0)")
     
     reaction <- "RHEA:36196"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) => H+ + PE(P-16:0/0:0) + FA(14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "H+ + PE(P-16:0/0:0) + FA(14:0)")
     
     reaction <- "RHEA:36197"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) <= H+ + PE(P-16:0/0:0) + FA(14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "H+ + PE(P-16:0/0:0) + FA(14:0)")
     
     reaction <- "RHEA:36198"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-                         
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/14:0) <=> H+ + PE(P-16:0/0:0) + FA(14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "H+ + PE(P-16:0/0:0) + FA(14:0)")
     
     ## lpep_to_fal
     sn1lpep <- "PE(P-16:0/0:0)"
@@ -4061,27 +4478,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:16905"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) = FAL(16:0) + Glycerophosphoethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16906"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) => FAL(16:0) + Glycerophosphoethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16907"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <= FAL(16:0) + Glycerophosphoethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16908"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <=> FAL(16:0) + Glycerophosphoethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     ## lpep_to_lpap
     sn1lpep <- "PE(P-16:0/0:0)"
@@ -4091,27 +4552,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:36203"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) = PA(P-16:0/0:0) + H+ + Ethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(P-16:0/0:0) + H+ + Ethanolamine")
     
     reaction <- "RHEA:36204"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) => PA(P-16:0/0:0) + H+ + Ethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(P-16:0/0:0) + H+ + Ethanolamine")
     
     reaction <- "RHEA:36205"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <= PA(P-16:0/0:0) + H+ + Ethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(P-16:0/0:0) + H+ + Ethanolamine")
     
     reaction <- "RHEA:36206"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <=> PA(P-16:0/0:0) + H+ + Ethanolamine")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "PA(P-16:0/0:0) + H+ + Ethanolamine")
     
     ## lpep_to_mgp
     sn1lpep <- "PE(P-16:0/0:0)"
@@ -4121,27 +4626,72 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:36199"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) = Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
     
     reaction <- "RHEA:36200"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) => Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
     
     reaction <- "RHEA:36201"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <= Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
     
     
     reaction <- "RHEA:36202"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PE(P-16:0/0:0) <=> Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
+    expect_equal(df$reaction_product, "Phosphoethanolamine + H+ + MG(P-16:0/0:0/0:0)")
     
     ## pep_to_napep_sn1
     pep <- "PE(P-16:0/14:0)"
@@ -4152,9 +4702,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pep_to_napep_sn1"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(P-16:0/14:0) + PC(20:0/18:0) <=> NAPE(P-16:0/14:0/20:0) + PC(0:0/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(P-16:0/14:0) + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "NAPE(P-16:0/14:0/20:0) + PC(0:0/18:0)")
     
     ## pep_to_napep_sn2
     pep <- "PE(P-16:0/14:0)"
@@ -4165,9 +4726,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "pep_to_napep_sn2"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "PE(P-16:0/14:0) + PC(20:0/18:0) <=> NAPE(P-16:0/14:0/18:0) + PC(20:0/0:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "PE(P-16:0/14:0) + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "NAPE(P-16:0/14:0/18:0) + PC(20:0/0:0)")
     
     ## pg_to_cl
     pg <- "PG(18:4(6Z,9Z,12Z,15Z)/14:0)"
@@ -4178,27 +4750,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:32931"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0) = H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(df$reaction_product, "H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
     
     reaction <- "RHEA:32932"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0) => H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(df$reaction_product, "H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
     
     reaction <- "RHEA:32933"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0) <= H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(df$reaction_product, "H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
     
     reaction <- "RHEA:32934"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0) <=> H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0) + PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(df$reaction_product, "H+ + CMP + CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
     
     ## pgp_to_pg
     pgp <- "PGP(16:0/14:0)"
@@ -4210,27 +4826,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:33751"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PGP(16:0/14:0) = Pi + PG(16:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PGP(16:0/14:0)")
+    expect_equal(df$reaction_product, "Pi + PG(16:0/14:0)")
     
     reaction <- "RHEA:33752"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PGP(16:0/14:0) => Pi + PG(16:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PGP(16:0/14:0)")
+    expect_equal(df$reaction_product, "Pi + PG(16:0/14:0)")
     
     reaction <- "RHEA:33753"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PGP(16:0/14:0) <= Pi + PG(16:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PGP(16:0/14:0)")
+    expect_equal(df$reaction_product, "Pi + PG(16:0/14:0)")
     
     reaction <- "RHEA:33754"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PGP(16:0/14:0) <=> Pi + PG(16:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PGP(16:0/14:0)")
+    expect_equal(df$reaction_product, "Pi + PG(16:0/14:0)")
     
     ## pi_to_dg
     pi <- "PI(16:0/18:1(9Z))"
@@ -4240,27 +4900,72 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:43484"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     
     reaction <- "RHEA:43485"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     
     
     reaction <- "RHEA:43486"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     
     reaction <- "RHEA:43487"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     
     ## pi_to_sn1lpi
     pi <- "PI(16:0/18:1(9Z))"
@@ -4270,27 +4975,72 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:18001"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) = PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     reaction <- "RHEA:18002"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) => PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     reaction <- "RHEA:18003"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) <= PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     
     reaction <- "RHEA:18004"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + PI(16:0/18:1(9Z)) <=> PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     ## ps_to_pe
     ps <- "PS(14:0/14:0)"
@@ -4300,28 +5050,72 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:20828"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H+ + PS(14:0/14:0) = CO2 + PE(14:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     reaction <- "RHEA:20829"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H+ + PS(14:0/14:0) = CO2 + PE(14:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     reaction <- "RHEA:20830"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H+ + PS(14:0/14:0) <= CO2 + PE(14:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
     reaction <- "RHEA:20831"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-                                   
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H+ + PS(14:0/14:0) <=> CO2 + PE(14:0/14:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
+    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+
     ## sm_to_cer
     sm <- "SM(16:0(3OH,4OH,15Me)/12:0)"
     substrates <- list(SM = sm)
@@ -4330,9 +5124,20 @@ test_that(".create_df_with_template works", {
     
     reaction <- "sm_to_cer"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + SM(16:0(3OH,4OH,15Me)/12:0) <=> Phosphocholine + H+ + Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + SM(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_product, "Phosphocholine + H+ + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     ## sphinga_to_dhcer
     acylcoa <- "CoA(12:0)" 
@@ -4342,27 +5147,71 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:53424"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) = CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))")
+    expect_equal(df$reaction_product, "CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     reaction <- "RHEA:53425"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) => CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))")
+    expect_equal(df$reaction_product, "CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     reaction <- "RHEA:53426"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <= CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))")
+    expect_equal(df$reaction_product, "CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     reaction <- "RHEA:53427"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-     
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <=> CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))")
+    expect_equal(df$reaction_product, "CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
     
     ## tg_to_dg
     tg <- "TG(18:0/16:0/14:0)"
@@ -4372,49 +5221,162 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:33271"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) = H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) = H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:33272"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction) 
-    
-    
+        reaction = reaction) 
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) => H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) => H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:33273"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) <= H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) <= H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:33274"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) <=> H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) <=> H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
      
-    
     reaction <- "RHEA:44864"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) = H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) = H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:44865"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) => H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) => H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:44866"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) <= H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) <= H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
     
     reaction <- "RHEA:44867"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
-    
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, c("", ""))
+    expect_equal(df$reaction_formula, 
+        c("H2O + TG(18:0/16:0/14:0) <=> H+ + FA(18:0) + DG(14:0/16:0/0:0)", 
+            "H2O + TG(18:0/16:0/14:0) <=> H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
+    expect_equal(df$reaction_isReversible, c("", ""))
+    expect_equal(df$reaction_geneAssociation, c("", ""))
+    expect_equal(df$reaction_pathway, c("", ""))
+    expect_equal(df$reaction_substrate, 
+        c("H2O + TG(18:0/16:0/14:0)", "H2O + TG(18:0/16:0/14:0)"))
+    expect_equal(df$reaction_product, 
+        c("H+ + FA(18:0) + DG(14:0/16:0/0:0)", "H+ + FA(14:0) + DG(18:0/16:0/0:0)"))
      
 })
