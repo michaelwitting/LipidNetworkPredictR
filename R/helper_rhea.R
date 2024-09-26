@@ -20,45 +20,35 @@
 #' 
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #' 
-#' @importFrom methods is
-#' @importFrom utils URLencode read.csv
-#' @importFrom httr GET
+#' @importFrom httr GET status_code content
+#' @importFrom jsonlite fromJSON
 #' 
 #' @examples
 #' protein_id <- "Q920L6"
 #' \dontrun{LipidNetworkPredictR:::getRheaIDsFromProteinID(protein_id)}
-getRheaIDsFromProteinID <- function(protein_id) {
+getRheaIDsFromProteinID <- function(uniprot_id) {
     
-    ## check the protein_id argument for validity
-    if (!(methods::is(protein_id, "character") & length(protein_id) == 1))
-        stop("'protein_id' has to be of type 'character' and length 1")
-
-    ## define the information to retrieve from UNIPROT
-    columns <- c("id,rhea-id")
-    uniprot_url <- "http://www.uniprot.org/uniprot/"
-
-    ## check if internet connection exists 
-    final_url <- paste0(uniprot_url, protein_id,".xml")
-    request <- tryCatch(httr::GET(final_url), error = function(e) NULL)
-    if (length(request) == 0)
-        stop("Internet connection problem occured.")
-
-    ## retrieve the information
-    protein_url <- paste0("?query=accession:", protein_id, 
-                                            "&format=tab&columns=", columns)
-    request_url <- paste0(uniprot_url, protein_url)
-    request_url <- utils::URLencode(request_url)
-
-    ## prepare the information to be returned
-    protein_data <- tryCatch(
-        utils::read.csv(request_url, header = TRUE, sep = "\t"), 
-        error = function(e) NULL)
-    if (is.null(protein_data))
-        stop("Protein ID not found.")
-    rhea_id <- protein_data[, "Rhea.ID"]
-    rhea_id <- strsplit(rhea_id, split = ";| ")[[1]]
-    rhea_id <- rhea_id[grep(x = rhea_id, pattern = "RHEA:")]
+    ## construct the UniProt URL for the API request
+    url <- paste0("https://rest.uniprot.org/uniprotkb/", uniprot_id, ".json")
+    
+    ## make the HTTP GET request
+    response <- httr::GET(url)
+    
+    ## check if the request was successful and stop if it was not succesful
+    if (httr::status_code(response) != 200) 
+        stop("Failed to retrieve data from UniProt. Check the UniProt ID and try again.")
+        
+    ## Parse the JSON content
+    data <- httr::content(response, "text", encoding = "UTF-8")
+    parsed_data <- jsonlite::fromJSON(data, flatten = TRUE)
+        
+    ## obtain RHEA ids
+    rhea_ids <- lapply(parsed_data$comments$reaction.reactionCrossReferences,
+        function(parsed_data_i) {
+            grep(x = parsed_data_i[, "id"], pattern = "RHEA", value = TRUE)
+        }) |>
+        unlist()
 
     ## return the RHEA ids
-    rhea_id
+        rhea_ids
 }
