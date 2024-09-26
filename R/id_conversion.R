@@ -392,7 +392,7 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
     }})
     
     ## finally, obtain the RHEA ids and return the object
-    lapply(seq_along(ids), function(i) {
+    res <- lapply(seq_along(ids), function(i) {
         if (type == "substrates")
             inds <- substrates_inds[[i]]
         if (type == "products")
@@ -410,6 +410,12 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
             ids <- NA
         ids
     })
+    
+    ## set names to names(ids)
+    names(res) <- names(ids)
+    
+    ## return the object
+    res
 }
 
 
