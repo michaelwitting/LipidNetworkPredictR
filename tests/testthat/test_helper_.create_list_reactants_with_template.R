@@ -1,4 +1,4 @@
-## function .create_reaction
+## function .create_list_reactions_with_template
 test_that(".create_list_reactions_with_template works", {
     
     ## acyldhap_to_alkyldhap
@@ -2147,15 +2147,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    df_reaction <- .add_products(substrates = df_substrates, 
-        reaction = reaction)
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-        reaction = reaction)
-    df <- LipidNetworkPredictR:::.create_df_with_template(
-        df_reaction = df_reaction,
-        template = template, reaction = reaction)
-    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
-        template = template)
     expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
     expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
@@ -2177,15 +2168,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    df_reaction <- .add_products(substrates = df_substrates, 
-        reaction = reaction)
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-        reaction = reaction)
-    df <- LipidNetworkPredictR:::.create_df_with_template(
-        df_reaction = df_reaction,
-        template = template, reaction = reaction)
-    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
-        template = template)
     expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
     expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
@@ -2198,15 +2180,6 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product, c("M_PA-O", "M_CoA"))
     
     reaction <- "RHEA:36238"
-    df_reaction <- .add_products(substrates = df_substrates, 
-        reaction = reaction)
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-        reaction = reaction)
-    df <- LipidNetworkPredictR:::.create_df_with_template(
-        df_reaction = df_reaction,
-        template = template, reaction = reaction)
-    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
-        template = template)
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
