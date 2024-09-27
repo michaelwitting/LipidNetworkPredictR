@@ -4,10 +4,10 @@
 \alias{getRheaIDsFromProteinID}
 \title{Get RHEA IDs from protein ID}
 \usage{
-getRheaIDsFromProteinID(protein_id)
+getRheaIDsFromProteinID(uniprot_id)
 }
 \arguments{
-\item{protein_id}{\code{character(1)}, UNIPROT ID, e.g. \code{"Q9H5J4"}}
+\item{uniprot_id}{\code{character(1)}, UNIPROT ID, e.g. \code{"Q9H5J4"}}
 }
 \value{
 vector

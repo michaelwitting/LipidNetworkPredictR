@@ -14,7 +14,7 @@
 #' UNIPROT. The error might be linked to internet connection problems or 
 #' because the protein ID is incorrect.
 #' 
-#' @param protein_id \code{character(1)}, UNIPROT ID, e.g. \code{"Q9H5J4"}
+#' @param uniprot_id \code{character(1)}, UNIPROT ID, e.g. \code{"Q9H5J4"}
 #' 
 #' @return vector
 #' 
