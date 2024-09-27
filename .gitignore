@@ -6,3 +6,11 @@ inst/doc
 *.DS_Store
 vignettes/.gitignore
 .github/.gitignore
+
+## rhea specific files
+rhea.rdf
+rhea.rdf.gz
+rhea2reactome.tsv
+chebi.owl.gz
+chebi_ph7_3_mapping.tsv
+chebild_name.tsv
