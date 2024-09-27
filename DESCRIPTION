@@ -13,12 +13,13 @@ Depends:
 	AnnotationHub (>= 3.13.0),
 	dplyr (>= 1.1.4),
 	metaboliteIDmapping (>= 1.0.0),
-	methods (>= 4.1.2),
 	R (>= 4.1.2),
+	rlang (>= 1.1.4),
 	stringi (>= 1.7.6),
 	utils (>= 4.1.2)	
 Imports:
-	httr (>= 1.4.2)
+	httr (>= 1.4.2),
+	jsonlite (>= 1.8.8)
 Suggests: 
 	BiocStyle (>= 2.33.1),
     	knitr (>= 1.38),
