@@ -225,10 +225,10 @@
     ## lcl_to_cl
     if (reaction %in% c("RHEA:35839", "RHEA:35840", "RHEA:35841", "RHEA:35842")) {
         
-        ## isolate core from LCL
+        ## isolate core from LCL (used to assemble LC)
         .s$LCLs2 <- isolate_radyls(.s$LCL)
         
-        ## isolate core from AcylCoA
+        ## isolate core from AcylCoA (used to assemble LC)
         .s$AcylCoAs2 <- isolate_radyls(.s$AcylCoA)
         
         ## create LC
@@ -236,6 +236,10 @@
             function(f) paste0(
                 "CL(1'-[", .s$LCLs2[[f]][1], "/", .s$LCLs2[[f]][2], 
                 "],3'-[", .s$AcylCoAs2[[f]], "/", .s$LCLs2[[f]][4], "])")))
+        
+        ## remove the LCLs2 and AcylCoAs2 helper entries
+        .s$LCLs2 <- NULL
+        .s$AcylCoAs2 <- NULL
     }
     
     ## lnape_to_gpnae
