@@ -395,6 +395,21 @@ test_that(".create_reaction works", {
         template = NULL, reaction =  "RHEA:36179")
     expect_equal(reaction_l[[1]]$PCO, "PC(O-18:0/16:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
+        "CDP-Choline + DG(O-18:0/16:0/0:0) = H+ + CMP + PC(O-18:0/16:0)")
+    reaction_l <- .create_reaction(substrates = list(DGO = dgo), 
+        template = NULL, reaction =  "RHEA:36180")
+    expect_equal(reaction_l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula,
+        "CDP-Choline + DG(O-18:0/16:0/0:0) => H+ + CMP + PC(O-18:0/16:0)")
+    reaction_l <- .create_reaction(substrates = list(DGO = dgo), 
+        template = NULL, reaction =  "RHEA:36181")
+    expect_equal(reaction_l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula,
+        "CDP-Choline + DG(O-18:0/16:0/0:0) <= H+ + CMP + PC(O-18:0/16:0)")
+    reaction_l <- .create_reaction(substrates = list(DGO = dgo), 
+        template = NULL, reaction =  "RHEA:36182")
+    expect_equal(reaction_l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CDP-Choline + DG(O-18:0/16:0/0:0) <=> H+ + CMP + PC(O-18:0/16:0)")
     
     ## dgo_to_peo
@@ -758,19 +773,19 @@ test_that(".create_reaction works", {
         template = NULL, reaction =  "RHEA:16245")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+        "CoA(18:0) + PE(P-16:0/0:0) = CoA + PE(P-16:0/18:0)")
     reaction_l <- .create_reaction(
         substrates = list(sn1LPEP = lpep, AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:16246")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+        "CoA(18:0) + PE(P-16:0/0:0) => CoA + PE(P-16:0/18:0)")
     reaction_l <- .create_reaction(
         substrates = list(sn1LPEP = lpep, AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:16247")
     expect_equal(reaction_l[[1]]$PEP, "PE(P-16:0/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "CoA(18:0) + PE(P-16:0/0:0) <=> CoA + PE(P-16:0/18:0)")
+        "CoA(18:0) + PE(P-16:0/0:0) <= CoA + PE(P-16:0/18:0)")
     reaction_l <- .create_reaction(
         substrates = list(sn1LPEP = lpep, AcylCoA = acylcoa), 
         template = NULL, reaction =  "RHEA:16248")
@@ -1696,7 +1711,6 @@ test_that(".create_reaction works", {
         "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <=> CoA + Cer(16:0(3OH,4OH,15Me)/12:0)")
     ## should be: "CoA(12:0) + SPH(16:0(1OH,3OH,15Me)) <=> CoA + Cer(16:0(3OH,4OH,15Me)/12:0)"
     
-    
     ## tg_to_dg
     tg <- "TG(18:0/16:0/14:0)"
     reaction_l <- .create_reaction(substrates = list(TG = tg), 
@@ -1913,7 +1927,7 @@ test_that("create_reactions works.", {
             "Pi + DG(14:0/16:0/0:0)"))
 })
 
-## function create_reactions
+## function create_reaction_adjacency_matrix
 test_that("create_reaction_adjacency_matrix works.", {
     FA <- c("FA(16:0)", "FA(12:0)", "FA(14:0)")
     
@@ -1959,3 +1973,5 @@ test_that("create_reaction_adjacency_matrix works.", {
         c(0, 0, 0))
     
 })
+
+
