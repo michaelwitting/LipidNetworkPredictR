@@ -289,7 +289,7 @@
             .formula <- "M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA"
         
         if (reaction == "RHEA:45420") ## lnape_to_gpnae
-            .formula <- "M_LNAPE + M_H2O <=> M_gpnae + M_FA"
+            .formula <- "M_LNAPE + M_H2O <=> M_GPNAE + M_FA"
         
         ## lpa_to_pa
         if (reaction == "RHEA:19709")
@@ -709,13 +709,13 @@
         
         ## pgp_to_pg
         if (reaction == "RHEA:33751")
-            .formula <- "M_H2O + M_pgp = M_Pi + M_PG"
+            .formula <- "M_H2O + M_PGP = M_Pi + M_PG"
         if (reaction == "RHEA:33752")
-            .formula <- "M_H2O + M_pgp => M_Pi + M_PG"
+            .formula <- "M_H2O + M_PGP => M_Pi + M_PG"
         if (reaction == "RHEA:33753")
-            .formula <- "M_H2O + M_pgp <= M_Pi + M_PG"
+            .formula <- "M_H2O + M_PGP <= M_Pi + M_PG"
         if (reaction == "RHEA:33754")
-            .formula <- "M_H2O + M_pgp <=> M_Pi + M_PG"
+            .formula <- "M_H2O + M_PGP <=> M_Pi + M_PG"
         
         ## pi_to_dg
         if (reaction == "RHEA:43484")
@@ -783,13 +783,13 @@
     
     ## remove the "+" and the trailing spaces for substrates and products
     .formula_substrate <- stringi::stri_split(str = .formula_substrate, 
-        regex = "[+]")[[1]]
-    .formula_substrate <- stringi::stri_replace_all_fixed(str = .formula_substrate, 
-        pattern = " ", replacement = "")
+        regex = "[ ][+][ ]")[[1]]
+    .formula_substrate <- stringi::stri_replace_all_regex(str = .formula_substrate, 
+        pattern = "^ | $", replacement = "")
     .formula_product <- stringi::stri_split(str = .formula_product, 
-        regex = "[+]")[[1]]
-    .formula_product <- stringi::stri_replace_all_fixed(str = .formula_product, 
-        pattern = " ", replacement = "")
+        regex = "[ ][+][ ]")[[1]]
+    .formula_product <- stringi::stri_replace_all_regex(str = .formula_product, 
+        pattern = "^ | $", replacement = "")
 
     ## write the substrates and products to the template
     template$reaction_substrate <- .formula_substrate
