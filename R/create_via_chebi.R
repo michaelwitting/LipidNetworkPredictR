@@ -14,6 +14,8 @@
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #' 
 #' @export
+#' 
+#' @importFrom rlang sym
 #'    
 #' @examples
 #' ## load rhea_reactions_order
@@ -39,7 +41,7 @@ create_via_chebi <- function(rhea_reactions_order, rhea_reactions) {
     ## only keep the entries of interest
     rhea_reactions <- rhea_reactions |>
         ##dplyr::filter(V1 != "///") |>
-        dplyr::filter(grepl(x = V1, pattern = "ENTRY|DEFINITION|EQUATION"))
+        dplyr::filter(grepl(x = !!rlang::sym("V1"), pattern = "ENTRY|DEFINITION|EQUATION"))
     
     ## split the dataset into columns
     rhea_reactions_l <- strsplit(rhea_reactions[, 1], split = "       |    |  ")
