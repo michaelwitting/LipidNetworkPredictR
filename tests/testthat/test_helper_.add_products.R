@@ -548,27 +548,26 @@ test_that(".add_reaction works", {
     substrates <- list(LCL = lcl, AcylCoA = acylcoa)
     df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
         substrates = substrates)
-    .names <- c("LCL", "AcylCoA", "LCLs2", "AcylCoAs2", "CL")
+    .names <- c("LCL", "AcylCoA", "CL")
     .values <- c("CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])", 
         "CoA(18:4(6Z,9Z,12Z,15Z))",
-        "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])",
-        "CoA(18:4(6Z,9Z,12Z,15Z))") ##############################################
+        "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
     df <- .add_products(substrates = df_substrates, 
         reaction = "RHEA:35839")
     expect_equal(names(df), .names)
-    ##expect_equal(as.character(unlist(df)), .values)
+    expect_equal(as.character(unlist(df)), .values)
     df <- .add_products(substrates = df_substrates, 
         reaction = "RHEA:35840")
     expect_equal(names(df), .names)
-    ##expect_equal(as.character(unlist(df)), .values)
+    expect_equal(as.character(unlist(df)), .values)
     df <- .add_products(substrates = df_substrates, 
         reaction = "RHEA:35841")
     expect_equal(names(df), .names)
-    ##expect_equal(as.character(unlist(df)), .values)
+    expect_equal(as.character(unlist(df)), .values)
     df <- .add_products(substrates = df_substrates, 
         reaction = "RHEA:35842")
     expect_equal(names(df), .names)
-    ##expect_equal(as.character(unlist(df)), .values)
+    expect_equal(as.character(unlist(df)), .values)
     
     ## lnape_to_gpnae
     lnape <- "NAPE(14:0/0:0/0:0)"
