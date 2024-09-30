@@ -29,7 +29,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36172"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -51,7 +51,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36173"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -73,7 +73,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36174"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -95,7 +95,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     ## alkyldhap_to_lpao
     alkyldhap <- "DHAP(O-18:0)"
@@ -120,7 +120,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(l[[2]]$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36176"
@@ -140,7 +140,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(l[[2]]$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36177"
@@ -160,7 +160,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(l[[2]]$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36178"
@@ -180,7 +180,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(l[[2]]$reaction_product, c("M_LPA-O", "M_NADP"))
     
     ## cerp_to_cer
@@ -232,7 +232,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12594"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -252,7 +252,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12595"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -272,7 +272,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12596"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -292,7 +292,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     ## cdpdg_to_pi
     cdgdg <- "CDP-DG(12:0(11Me)/14:0)"
@@ -318,7 +318,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11581"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -338,7 +338,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11582"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -358,7 +358,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11583"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -378,7 +378,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     ## cer_to_cerp
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
@@ -403,7 +403,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_Cer"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_ADP", "M_CerP"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_CerP"))
     
     ## cer_to_glccer
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
@@ -428,7 +428,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_UDP-Glucose", "M_Cer"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_UDP", "M_GlcCer"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_UDP", "M_GlcCer"))
     
     ## cer_to_sm
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
@@ -480,7 +480,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32936"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -501,7 +501,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32937"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -522,7 +522,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32938"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -543,7 +543,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     ## coa_to_acyldhap
     acylcoa <- "CoA(18:0)"
@@ -654,8 +654,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     reaction <- "RHEA:52717"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -674,8 +674,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     reaction <- "RHEA:52718"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -694,8 +694,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" )) 
+    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" )) 
     
     reaction <- "RHEA:52719"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -714,8 +714,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(l[[2]]$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     ## coa_to_lpa
     acylcoa <- "CoA(18:0)"
@@ -828,7 +828,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:44713"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -849,7 +849,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA")) 
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA")) 
     
     reaction <- "RHEA:44714"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -870,7 +870,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:44715"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -891,7 +891,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35663"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -912,7 +912,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35664"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -933,7 +933,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35665"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -954,7 +954,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35666"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -975,7 +975,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     ## dg_to_sn2mg
     dg <- "DG(18:0/16:0/0:0)"
@@ -1002,30 +1002,9 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
     reaction <- "RHEA:33276"
-    df_reaction <- .add_products(substrates = df_substrates, 
-        reaction = reaction)
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-        reaction = reaction)
-    df <- LipidNetworkPredictR:::.create_df_with_template(
-        df_reaction = df_reaction,
-        template = template, reaction = reaction)
-    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
-        template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA")
-    expect_equal(l[[2]]$reaction_isReversible, "")
-    expect_equal(l[[2]]$reaction_geneAssociation, "")
-    expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
-    
-    reaction <- "RHEA:33277"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
@@ -1044,9 +1023,9 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
-    reaction <- "RHEA:33278"
+    reaction <- "RHEA:33277"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- LipidNetworkPredictR:::.create_template(template = NA,
@@ -1065,7 +1044,28 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
+    
+    reaction <- "RHEA:33278"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- LipidNetworkPredictR:::.create_template(template = NA,
+        reaction = reaction)
+    df <- LipidNetworkPredictR:::.create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
+        template = template)
+    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
+    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[2]]$reaction_name, "")
+    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG <=> M_H+ + M_2-MG + M_FA")
+    expect_equal(l[[2]]$reaction_isReversible, "")
+    expect_equal(l[[2]]$reaction_geneAssociation, "")
+    expect_equal(l[[2]]$reaction_pathway, "")
+    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
     ## dg_to_pa
     dg <- "DG(18:0/16:0/0:0)"
@@ -1086,12 +1086,12 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
     expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA")
+    expect_equal(l[[2]]$reaction_formula, "M_ATP + M_1,2-DG = M_H+ + M_ADP + M_PA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_PA"))
     
     reaction <- "RHEA:10273"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1106,12 +1106,12 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
     expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_2-MG + M_FA")
+    expect_equal(l[[2]]$reaction_formula, "M_ATP + M_1,2-DG => M_H+ + M_ADP + M_PA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_PA"))
     
     reaction <- "RHEA:10274"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1126,12 +1126,12 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
     expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_2-MG + M_FA")
+    expect_equal(l[[2]]$reaction_formula, "M_ATP + M_1,2-DG <= M_H+ + M_ADP + M_PA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_PA"))
     
     reaction <- "RHEA:10275"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1146,12 +1146,12 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
     expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_1,2-DG <=> M_H+ + M_2-MG + M_FA")
+    expect_equal(l[[2]]$reaction_formula, "M_ATP + M_1,2-DG <=> M_H+ + M_ADP + M_PA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_PA"))
     
     ## dg_to_pc
     dg <- "DG(18:0/16:0/0:0)"
@@ -1177,7 +1177,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32940"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1197,7 +1197,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32941"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1217,7 +1217,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32942"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1237,7 +1237,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     ## dg_to_pe
     dg <- "DG(18:0/16:0/0:0)"
@@ -1263,7 +1263,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32944"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1283,7 +1283,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32945"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1303,7 +1303,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32946"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1323,7 +1323,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     ## dg_to_tg
     dg <- "DG(18:0/16:0/0:0)"
@@ -1440,7 +1440,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36180"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1460,7 +1460,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36181"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1480,7 +1480,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36182"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1500,7 +1500,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     ## dgo_to_peo
     dgo <- "DG(O-18:0/16:0/0:0)"
@@ -1526,7 +1526,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36188"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1546,7 +1546,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36189"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1566,7 +1566,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36190"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1586,7 +1586,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     ## dhcer_to_cer
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
@@ -1611,11 +1611,11 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_H", "", "M_NADH", "M_O2", "M_DhCer"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_H+", "M_NADH", "M_O2", "M_DhCer"))
     expect_equal(l[[2]]$reaction_product, c("2 M_H2O", "M_NAD", "M_Cer"))
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)" ###################################################
+    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)"
     substrates <- list(DhCer = dhcer)
     df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
         substrates = substrates)
@@ -1630,7 +1630,7 @@ test_that(".create_list_reactions_with_template works", {
         template = template, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
     expect_equal(l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_DhCer <=> M_1,2-DG + M_DhSM")
@@ -1664,7 +1664,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45301"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1684,7 +1684,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45302"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1704,7 +1704,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45303"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -1724,7 +1724,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))    
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))    
     
     ## fa_to_coa
     fa <- "FA(18:0)"
@@ -1893,7 +1893,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     ## lcl_to_cl
-    lcl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])" ###################
+    lcl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])"
     acylcoa <- "CoA(18:4(6Z,9Z,12Z,15Z))"
     substrates <- list(LCL = lcl, AcylCoA = acylcoa)
     df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
@@ -1911,8 +1911,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template)
     expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$LCLs2, c("18:4(6Z,9Z,12Z,15Z)", "18:4(6Z,9Z,12Z,15Z)", "0:0",           "18:4(6Z,9Z,12Z,15Z)"))#####
-    expect_equal(l[[1]]$AcylCoAs2, "18:4(6Z,9Z,12Z,15Z)") #####
     expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA")
@@ -1934,8 +1932,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template)
     expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$LCLs2, c("18:4(6Z,9Z,12Z,15Z)", "18:4(6Z,9Z,12Z,15Z)", "0:0",           "18:4(6Z,9Z,12Z,15Z)"))#####
-    expect_equal(l[[1]]$AcylCoAs2, "18:4(6Z,9Z,12Z,15Z)") #####
     expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA")
@@ -1957,8 +1953,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template)
     expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$LCLs2, c("18:4(6Z,9Z,12Z,15Z)", "18:4(6Z,9Z,12Z,15Z)", "0:0",           "18:4(6Z,9Z,12Z,15Z)"))#####
-    expect_equal(l[[1]]$AcylCoAs2, "18:4(6Z,9Z,12Z,15Z)") #####
     expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA")
@@ -1980,8 +1974,6 @@ test_that(".create_list_reactions_with_template works", {
         template = template)
     expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$LCLs2, c("18:4(6Z,9Z,12Z,15Z)", "18:4(6Z,9Z,12Z,15Z)", "0:0",           "18:4(6Z,9Z,12Z,15Z)"))#####
-    expect_equal(l[[1]]$AcylCoAs2, "18:4(6Z,9Z,12Z,15Z)") #####
     expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA")
@@ -2224,7 +2216,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15178"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2244,7 +2236,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15179"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2264,7 +2256,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15180"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2284,7 +2276,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     ## sn2lpc_to_fa
     sn2lpc <- "PC(0:0/14:0)"
@@ -2310,7 +2302,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44697"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2330,7 +2322,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44698"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2350,7 +2342,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44699"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2370,7 +2362,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     ## sn1lpc_to_pc
     sn1lpc <- "PC(14:0/0:0)"
@@ -2390,7 +2382,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
     expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA = M_PC + M_CoA")
@@ -2411,7 +2403,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
     expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA => M_PC + M_CoA")
@@ -2432,7 +2424,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
     expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA <= M_PC + M_CoA")
@@ -2453,7 +2445,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
     expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA <=> M_PC + M_CoA")
@@ -2487,7 +2479,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32968"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2507,7 +2499,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32969"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2527,7 +2519,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32970"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -2547,7 +2539,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     ## sn2lpe_to_fa
     pe <- "PE(0:0/14:0)"
@@ -2573,7 +2565,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-LPE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     ## sn1lpe_to_pe
     pe <- "PE(14:0/0:0)"
@@ -3250,7 +3242,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34020"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3270,7 +3262,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34021"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3290,7 +3282,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34022"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3310,7 +3302,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     ## sn2mg_to_fa
     sn2mg <- "MG(0:0/14:0/0:0)"
@@ -3336,7 +3328,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32872"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3356,7 +3348,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32873"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3376,7 +3368,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32874"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3396,7 +3388,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     ## sn1mg_to_lpa
     sn1mg <- "MG(14:0/0:0/0:0)"
@@ -3422,7 +3414,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33748"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3442,7 +3434,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33749"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3462,7 +3454,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33750"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3482,7 +3474,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     ## sn2mg_to_sn1mg
     sn2mg <- "MG(0:0/14:0/0:0)"
@@ -3533,7 +3525,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_NAE"))
-    expect_equal(l[[2]]$reaction_product, c("M_Ethanolamine", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Ethanolamine", "M_H+", "M_FA"))
     
     ## nape_to_lnape
     nape <- "NAPE(14:0/16:0/18:0)"
@@ -4067,7 +4059,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
     expect_equal(l[[1]]$FA, "FA(18:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PC = M_1-LPC + M_FA")
+    expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PC <=> M_1-LPC + M_FA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
@@ -4361,7 +4353,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36232"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4382,7 +4374,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36233"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4403,7 +4395,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36234"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4424,7 +4416,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     ## lpco_to_lpao
     sn1lpco <- "PC(O-16:0/0:0)"
@@ -4450,7 +4442,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39928"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4470,7 +4462,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39929"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4490,7 +4482,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39930"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4510,7 +4502,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     ## lpco_to_mgo
     sn1lpco <- "PC(O-16:0/0:0)"
@@ -4536,7 +4528,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36084"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4556,7 +4548,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36085"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4576,7 +4568,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36086"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4596,7 +4588,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     ## lpco_to_pco
     sn1lpco <- "PC(O-16:0/0:0)"
@@ -4740,7 +4732,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44605"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4761,7 +4753,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44606"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4782,7 +4774,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44607"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4803,7 +4795,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     ## pe_to_sn2lpe
     pe <- "PE(14:0/16:0)"
@@ -4830,7 +4822,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44409"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4851,7 +4843,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44410"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4872,7 +4864,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44411"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -4893,7 +4885,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     ## pe_to_nape_sn1
     pe <- "PE(14:0/16:0)"
@@ -4977,7 +4969,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(l[[2]]$reaction_product, c("M_Ethanolamine", "M_H", "", "M_PA"))
+    expect_equal(l[[2]]$reaction_product, c("M_Ethanolamine", "M_H+", "M_PA"))
     
     ## pe_to_ps
     pe <- "PE(14:0/16:0)"
@@ -5013,6 +5005,8 @@ test_that(".create_list_reactions_with_template works", {
     df <- LipidNetworkPredictR:::.create_df_with_template(
         df_reaction = df_reaction,
         template = template, reaction = reaction)
+    l <- .create_list_reactants_with_template(df_reaction = df_reaction,
+        template = template)
     expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
     expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
     expect_equal(l[[2]]$reaction_name, "")
@@ -5088,7 +5082,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE-O"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPE-O", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPE-O", "M_FA"))
     
     ## peo_to_napeo_sn1
     peo <- "PE(O-16:0/14:0)"
@@ -5171,8 +5165,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22957"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5191,8 +5185,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22958"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5211,8 +5205,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22959"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5231,8 +5225,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(l[[2]]$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     ## pep_to_lpep
     pep <- "PE(P-16:0/14:0)"
@@ -5259,7 +5253,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36196"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5280,7 +5274,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36197"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5301,7 +5295,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36198"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5322,7 +5316,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     ## lpep_to_fal
     sn1lpep <- "PE(P-16:0/0:0)"
@@ -5434,7 +5428,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36204"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5454,7 +5448,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36205"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5474,7 +5468,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36206"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5494,7 +5488,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(l[[2]]$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     ## lpep_to_mgp
     sn1lpep <- "PE(P-16:0/0:0)"
@@ -5520,7 +5514,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36200"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5540,7 +5534,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36201"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5560,7 +5554,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36202"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5580,7 +5574,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(l[[2]]$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     ## pep_to_napep_sn1
     pep <- "PE(P-16:0/14:0)"
@@ -5668,7 +5662,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32932"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5691,7 +5685,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32933"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5714,7 +5708,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32934"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5737,7 +5731,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(l[[2]]$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(l[[2]]$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     ## pgp_to_pg
     pgp <- "PGP(16:0/14:0)"
@@ -5936,7 +5930,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18002"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5957,7 +5951,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18003"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5978,7 +5972,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18004"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5999,7 +5993,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(l[[2]]$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     ## ps_to_pe
     ps <- "PS(14:0/14:0)"
