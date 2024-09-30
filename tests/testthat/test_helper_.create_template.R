@@ -3,8 +3,7 @@ test_that(".create_template works", {
     
     ## acyldhap_to_alkyldhap
     reaction <- "RHEA:36171"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction) 
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -12,11 +11,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36172"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction) 
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylDHAP + M_FAO => M_H+ + M_FA + M_AlkylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -24,11 +22,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36173"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylDHAP + M_FAO <= M_H+ + M_FA + M_AlkylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -36,11 +33,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     reaction <- "RHEA:36174"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylDHAP + M_FAO <=> M_H+ + M_FA + M_AlkylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -48,61 +44,56 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_AcylDHAP", "M_FAO"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_AlkylDHAP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_AlkylDHAP"))
     
     ## alkyldhap_to_lpao
     reaction <- "RHEA:36175"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(template$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(template$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36176"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction) 
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_NADPH + M_AlkylDHAP => M_LPA-O + M_NADP")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(template$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(template$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36177"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_NADPH + M_AlkylDHAP <= M_LPA-O + M_NADP")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(template$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(template$reaction_product, c("M_LPA-O", "M_NADP"))
     
     reaction <- "RHEA:36178"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_NADPH + M_AlkylDHAP <=> M_LPA-O + M_NADP")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H", "", "M_NADPH", "M_AlkylDHAP"))
+    expect_equal(template$reaction_substrate, c("M_H+", "M_NADPH", "M_AlkylDHAP"))
     expect_equal(template$reaction_product, c("M_LPA-O", "M_NADP"))
     
     ## cerp_to_cer
     reaction <- "cerp_to_cer"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction) 
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_CerP <=> M_Pi + M_Cer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -114,8 +105,7 @@ test_that(".create_template works", {
     
     ## cdpdg_to_pgp
     reaction <- "RHEA:12593"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_PGP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -123,11 +113,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12594"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_CDP-DG => M_H+ + M_CMP + M_PGP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -135,11 +124,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12595"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_CDP-DG <= M_H+ + M_CMP + M_PGP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -147,11 +135,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     reaction <- "RHEA:12596"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_CDP-DG <=> M_H+ + M_CMP + M_PGP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -159,12 +146,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Glycerol-3-P", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PGP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PGP"))
     
     ## cdpdg_to_pi
     reaction <- "RHEA:11580"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_myo-Inositol + M_CDP-DG = M_H+ + M_CMP + M_PI")
     expect_equal(template$reaction_RHEA, reaction)
@@ -172,11 +158,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11581"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_myo-Inositol + M_CDP-DG => M_H+ + M_CMP + M_PI")
     expect_equal(template$reaction_RHEA, reaction)
@@ -184,11 +169,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11582"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_myo-Inositol + M_CDP-DG <= M_H+ + M_CMP + M_PI")
     expect_equal(template$reaction_RHEA, reaction)
@@ -196,11 +180,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     reaction <- "RHEA:11583"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_myo-Inositol + M_CDP-DG <=> M_H+ + M_CMP + M_PI")
     expect_equal(template$reaction_RHEA, reaction)
@@ -208,12 +191,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_myo-Inositol", "M_CDP-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PI"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PI"))
     
     ## cer_to_cerp
     reaction <- "RHEA:17929"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_Cer <=> M_H+ + M_ADP + M_CerP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -221,12 +203,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_ATP", "M_Cer"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_ADP", "M_CerP"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_CerP"))
     
     ## cer_to_glccer
     reaction <- "RHEA:12088"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_UDP-Glucose + M_Cer <=> M_H+ + M_UDP + M_GlcCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -234,12 +215,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_UDP-Glucose", "M_Cer"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_UDP", "M_GlcCer"))
+    expect_equal(template$reaction_product, c("M_H+", "M_UDP", "M_GlcCer"))
     
     ## cer_to_sm
     reaction <-  "RHEA:18765"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PC + M_Cer <=> M_1,2-DG + M_SM")
     expect_equal(template$reaction_RHEA, reaction)
@@ -251,8 +231,7 @@ test_that(".create_template works", {
     
     ## cl_to_lcl
     reaction <- "RHEA:32935"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_CL = M_1,2,4-LCL + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -260,11 +239,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32936"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_CL => M_1,2,4-LCL + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -272,11 +250,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32937"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_CL <= M_1,2,4-LCL + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -284,11 +261,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32938"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_CL <=> M_1,2,4-LCL + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -296,12 +272,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_CL" ))
-    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1,2,4-LCL", "M_H+", "M_FA"))
     
     ## coa_to_acyldhap
     reaction <- "RHEA:17657"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -312,8 +287,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_AcylDHAP"))
     
     reaction <- "RHEA:17658"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Dihydroxyacetone-P + M_AcylCoA => M_CoA + M_AcylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -324,8 +298,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_AcylDHAP"))
     
     reaction <- "RHEA:17659"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Dihydroxyacetone-P + M_AcylCoA <= M_CoA + M_AcylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -336,8 +309,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_AcylDHAP"))
     
     reaction <- "RHEA:17660"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Dihydroxyacetone-P + M_AcylCoA <=> M_CoA + M_AcylDHAP")
     expect_equal(template$reaction_RHEA, reaction)
@@ -349,57 +321,52 @@ test_that(".create_template works", {
     
     ## coa_to_FAO
     reaction <- "RHEA:52716"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(template$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(template$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     reaction <- "RHEA:52717"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FAO + 2 M_NADP + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(template$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(template$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     reaction <- "RHEA:52718"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FAO + 2 M_NADP + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(template$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" )) 
+    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(template$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" )) 
     
     reaction <- "RHEA:52719"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FAO + 2 M_NADP + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2M_NADPH", "2M_H", ""))
-    expect_equal(template$reaction_product, c("M_FAO", "2M_NADP", "M_CoA" ))
+    expect_equal(template$reaction_substrate, c("M_AcylCoA", "2 M_NADPH", "2 M_H+"))
+    expect_equal(template$reaction_product, c("M_FAO", "2 M_NADP", "M_CoA" ))
     
     ## coa_to_lpa
     reaction <- "RHEA:15325"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -410,8 +377,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_LPA"))
     
     reaction <- "RHEA:15326"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_AcylCoA => M_CoA + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -422,8 +388,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_LPA"))
     
     reaction <- "RHEA:15327"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_AcylCoA <= M_CoA + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -434,8 +399,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_LPA"))
     
     reaction <- "RHEA:15328"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_Glycerol-3-P + M_AcylCoA <=> M_CoA + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -447,8 +411,7 @@ test_that(".create_template works", {
     
     ## dg_to_sn1mg
     reaction <- "RHEA:44712"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -456,11 +419,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:44713"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -468,11 +430,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA")) 
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA")) 
     
     reaction <- "RHEA:44714"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -480,11 +441,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:44715"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <=> M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -492,11 +452,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35663"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -504,11 +463,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35664"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -516,11 +474,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35665"
-    template <- LipidNetworkPredictR:::.create_template(template = NA, 
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -528,11 +485,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     reaction <- "RHEA:35666"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <=> M_H+ + M_1-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -540,12 +496,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_1-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_1-MG", "M_FA"))
     
     ## dg_to_sn2mg
     reaction <- "RHEA:33275"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -553,84 +508,32 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
     reaction <- "RHEA:33276"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA")
+    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_2-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
     reaction <- "RHEA:33277"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_2-MG + M_FA")
+    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_2-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
     
     reaction <- "RHEA:33278"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
-    expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_2-MG + M_FA")
-    expect_equal(template$reaction_RHEA, reaction)
-    expect_equal(template$reaction_isReversible, "")
-    expect_equal(template$reaction_geneAssociation, "")
-    expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
-    
-    ## dg_to_pa
-    reaction <- "RHEA:10272"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
-    expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA")
-    expect_equal(template$reaction_RHEA, reaction)
-    expect_equal(template$reaction_isReversible, "")
-    expect_equal(template$reaction_geneAssociation, "")
-    expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
-    
-    reaction <- "RHEA:10273"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
-    expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG => M_H+ + M_2-MG + M_FA")
-    expect_equal(template$reaction_RHEA, reaction)
-    expect_equal(template$reaction_isReversible, "")
-    expect_equal(template$reaction_geneAssociation, "")
-    expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
-    
-    reaction <- "RHEA:10274"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
-    expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <= M_H+ + M_2-MG + M_FA")
-    expect_equal(template$reaction_RHEA, reaction)
-    expect_equal(template$reaction_isReversible, "")
-    expect_equal(template$reaction_geneAssociation, "")
-    expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
-    
-    reaction <- "RHEA:10275"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1,2-DG <=> M_H+ + M_2-MG + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -638,12 +541,56 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_2-MG", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_2-MG", "M_FA"))
+    
+    ## dg_to_pa
+    reaction <- "RHEA:10272"
+    template <- .create_template(template = NA, reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_ATP + M_1,2-DG = M_H+ + M_ADP + M_PA")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_PA"))
+    
+    reaction <- "RHEA:10273"
+    template <- .create_template(template = NA, reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_ATP + M_1,2-DG => M_H+ + M_ADP + M_PA")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_PA"))
+    
+    reaction <- "RHEA:10274"
+    template <- .create_template(template = NA, reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_ATP + M_1,2-DG <= M_H+ + M_ADP + M_PA")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_PA"))
+    
+    reaction <- "RHEA:10275"
+    template <- .create_template(template = NA, reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_ATP + M_1,2-DG <=> M_H+ + M_ADP + M_PA")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_substrate, c("M_ATP", "M_1,2-DG"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_PA"))
     
     ## dg_to_pc
     reaction <- "RHEA:32939"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_1,2-DG = M_H+ + M_CMP + M_PC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -651,11 +598,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32940"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_1,2-DG => M_H+ + M_CMP + M_PC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -663,11 +609,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32941"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_1,2-DG <= M_H+ + M_CMP + M_PC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -675,11 +620,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     reaction <- "RHEA:32942"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_1,2-DG <=> M_H+ + M_CMP + M_PC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -687,12 +631,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC"))
     
     ## dg_to_pe
     reaction <- "RHEA:32943"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_1,2-DG = M_H+ + M_CMP + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -700,11 +643,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32944"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_1,2-DG => M_H+ + M_CMP + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -712,11 +654,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32945"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_1,2-DG <= M_H+ + M_CMP + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -724,11 +665,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     reaction <- "RHEA:32946"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -736,12 +676,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_1,2-DG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE"))
     
     ## dg_to_tg
     reaction <- "RHEA:10868"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1,2-DG = M_CoA + M_TG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -752,8 +691,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_TG"))
     
     reaction <- "RHEA:10869"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1,2-DG => M_CoA + M_TG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -764,8 +702,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_TG"))
     
     reaction <- "RHEA:10870"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1,2-DG <= M_CoA + M_TG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -776,8 +713,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_TG"))
     
     reaction <- "RHEA:10871"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1,2-DG <=> M_CoA + M_TG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -789,8 +725,7 @@ test_that(".create_template works", {
     
     ## dgo_to_pco
     reaction <- "RHEA:36179"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_DG-O = M_H+ + M_CMP + M_PC-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -798,11 +733,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36180"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_DG-O => M_H+ + M_CMP + M_PC-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -810,11 +744,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36181"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_DG-O <= M_H+ + M_CMP + M_PC-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -822,11 +755,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     reaction <- "RHEA:36182"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -834,12 +766,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Choline", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PC-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PC-O"))
     
     ## dgo_to_peo
     reaction <- "RHEA:36187"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_DG-O = M_H+ + M_CMP + M_PE-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -847,11 +778,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36188"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_DG-O => M_H+ + M_CMP + M_PE-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -859,11 +789,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36189"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_DG-O <= M_H+ + M_CMP + M_PE-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -871,11 +800,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     reaction <- "RHEA:36190"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-Ethanolamine + M_DG-O <=> M_H+ + M_CMP + M_PE-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -883,25 +811,23 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-Ethanolamine", "M_DG-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_PE-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_PE-O"))
     
     ## dhcer_to_cer
     reaction <- "dhcer_to_cer"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_H", "", "M_NADH", "M_O2", "M_DhCer"))
+    expect_equal(template$reaction_substrate, c("M_H+", "M_NADH", "M_O2", "M_DhCer"))
     expect_equal(template$reaction_product, c("2 M_H2O", "M_NAD", "M_Cer"))
     
     ## dhcer_to_dhsm
     reaction <- "RHEA:44620"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PC + M_DhCer <=> M_1,2-DG + M_DhSM")
     expect_equal(template$reaction_RHEA, reaction)
@@ -913,8 +839,7 @@ test_that(".create_template works", {
     
     ## dhsm_to_dhcer
     reaction <- "RHEA:45300"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -922,11 +847,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45301"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_DhSM => M_Phosphocholine + M_H+ + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -934,11 +858,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45302"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_DhSM <= M_Phosphocholine + M_H+ + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -946,11 +869,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))
+    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))
     
     reaction <- "RHEA:45303"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_DhSM <=> M_Phosphocholine + M_H+ + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -958,12 +880,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_DhSM"))
-    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H", "", "M_DhCer"))    
+    expect_equal(template$reaction_product, c("M_Phosphocholine", "M_H+", "M_DhCer"))    
     
     ## fa_to_coa
     reaction <- "RHEA:15421"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -974,8 +895,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA")) 
     
     reaction <- "RHEA:15422"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA => M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -986,8 +906,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:15423"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA <= M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -998,8 +917,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:15424"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA <=> M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1010,8 +928,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:38883"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1022,8 +939,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:38884"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA => M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1034,8 +950,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:38885"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA <= M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1046,8 +961,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_AMP", "M_AcylCoA"))
     
     reaction <- "RHEA:38886"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_CoA + M_FA <=> M_PPi + M_AMP + M_AcylCoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1059,8 +973,7 @@ test_that(".create_template works", {
     
     ## lcl_to_cl
     reaction <- "RHEA:35839"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1071,8 +984,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CL", "M_CoA"))
     
     reaction <- "RHEA:35840"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1083,8 +995,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CL", "M_CoA"))
     
     reaction <- "RHEA:35841"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1095,8 +1006,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CL", "M_CoA"))
     
     reaction <- "RHEA:35842"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1108,8 +1018,7 @@ test_that(".create_template works", {
     
     ## lnape_to_gpnae
     reaction <- "RHEA:45420"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LNAPE + M_H2O <=> M_GPNAE + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1121,8 +1030,7 @@ test_that(".create_template works", {
     
     ## lpa_to_pa
     reaction <- "RHEA:19709"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA + M_AcylCoA = M_CoA + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1133,8 +1041,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PA"))
     
     reaction <- "RHEA:19710"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA + M_AcylCoA => M_CoA + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1145,8 +1052,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PA"))
     
     reaction <- "RHEA:19711"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA + M_AcylCoA <= M_CoA + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1157,8 +1063,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PA"))
     
     reaction <- "RHEA:19712"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA + M_AcylCoA <=> M_CoA + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1170,8 +1075,7 @@ test_that(".create_template works", {
     
     ## lpao_to_pao
     reaction <- "RHEA:36235"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1182,8 +1086,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PA-O", "M_CoA"))
     
     reaction <- "RHEA:36236"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA-O + M_AcylCoA => M_PA-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1194,8 +1097,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PA-O", "M_CoA"))
     
     reaction <- "RHEA:36237"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA-O + M_AcylCoA <= M_PA-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1206,8 +1108,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PA-O", "M_CoA"))
     
     reaction <- "RHEA:36238"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,  "M_LPA-O + M_AcylCoA <=> M_PA-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1219,8 +1120,7 @@ test_that(".create_template works", {
     
     ## sn1lpc_to_fa
     reaction <- "RHEA:15177"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC = M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1228,11 +1128,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15178"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC => M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1240,11 +1139,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15179"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC <= M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1252,11 +1150,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:15180"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC <=> M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1264,12 +1161,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     ## sn2lpc_to_fa
     reaction <- "RHEA:44696"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-LPC = M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1277,11 +1173,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44697"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-LPC => M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1289,11 +1184,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44698"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-LPC <= M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1301,11 +1195,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     reaction <- "RHEA:44699"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-LPC <=> M_Glycerophosphocholine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1313,12 +1206,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-LPC"))
-    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerophosphocholine", "M_H+", "M_FA"))
     
     ## sn1lpc_to_pc
     reaction <- "RHEA:12937"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC + M_AcylCoA = M_PC + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1329,8 +1221,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC", "M_CoA"))
     
     reaction <- "RHEA:12938"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC + M_AcylCoA => M_PC + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1341,8 +1232,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC", "M_CoA"))
     
     reaction <- "RHEA:12939"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC + M_AcylCoA <= M_PC + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1353,8 +1243,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC", "M_CoA"))
     
     reaction <- "RHEA:12940"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC + M_AcylCoA <=> M_PC + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1366,8 +1255,7 @@ test_that(".create_template works", {
     
     ## sn1lpe_to_fa
     reaction <- "RHEA:32967"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1375,11 +1263,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32968"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE => M_H+ + M_FA + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1387,11 +1274,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32969"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE <= M_H+ + M_FA + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1399,11 +1285,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:32970"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE <=> M_H+ + M_FA + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1411,12 +1296,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     ## sn2lpe_to_fa
     reaction <- "sn2lpe_to_fa"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-LPE <=> M_H+ + M_FA + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1424,12 +1308,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-LPE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_Glycerophosphoethanolamine"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_Glycerophosphoethanolamine"))
     
     ## sn1lpe_to_pe
     reaction <- "RHEA:32995"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-LPE = M_CoA + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1440,8 +1323,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE"))
     
     reaction <- "RHEA:32996"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-LPE => M_CoA + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1452,8 +1334,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE"))
     
     reaction <- "RHEA:32997"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-LPE <= M_CoA + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1464,8 +1345,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE"))
     
     reaction <- "RHEA:32998"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-LPE <=> M_CoA + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1477,8 +1357,7 @@ test_that(".create_template works", {
     
     ## sn1lpi_to_pi
     reaction <- "RHEA:33195"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPI + M_AcylCoA = M_PI + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1489,8 +1368,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PI", "M_CoA"))
     
     reaction <- "RHEA:33196"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPI + M_AcylCoA => M_PI + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1501,8 +1379,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PI", "M_CoA"))
     
     reaction <- "RHEA:33197"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPI + M_AcylCoA <= M_PI + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1513,8 +1390,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PI", "M_CoA"))
     
     reaction <- "RHEA:33198"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPI + M_AcylCoA <=> M_PI + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1526,8 +1402,7 @@ test_that(".create_template works", {
     
     ## lpeo_to_peo
     reaction <- "lpeo_to_peo"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_ak2lgpe <=> M_CoA + M_PE-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1539,8 +1414,7 @@ test_that(".create_template works", {
     
     ## lpep_to_pep
     reaction <- "RHEA:16245"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1551,8 +1425,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE-P"))
     
     reaction <- "RHEA:16246"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_LPE-P => M_CoA + M_PE-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1563,8 +1436,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE-P"))
     
     reaction <- "RHEA:16247"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_LPE-P <= M_CoA + M_PE-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1575,8 +1447,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_PE-P"))
     
     reaction <- "RHEA:16248"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1588,8 +1459,7 @@ test_that(".create_template works", {
     
     ## sn1mg_to_dg
     reaction <- "RHEA:38463"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA = M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1600,8 +1470,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:38464"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA => M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1612,8 +1481,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:38465"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA <= M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1624,8 +1492,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:38466"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA <=> M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1636,8 +1503,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:39943"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA = M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1648,8 +1514,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:39944"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA => M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1660,8 +1525,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:39945"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA <= M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1672,8 +1536,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:39946"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-MG + M_AcylCoA <=> M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1685,8 +1548,7 @@ test_that(".create_template works", {
     
     ## sn2mg_to_dg
     reaction <- "RHEA:32947"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG = M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1697,8 +1559,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:32948"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG => M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1709,8 +1570,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:32949"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG <= M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1721,8 +1581,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:32950"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG <=> M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1733,8 +1592,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:16741"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG = M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1745,8 +1603,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:16742"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG => M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1757,8 +1614,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:16743"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG <= M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1769,8 +1625,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_1,2-DG"))
     
     reaction <- "RHEA:16744"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_1-MG <=> M_CoA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1782,8 +1637,7 @@ test_that(".create_template works", {
     
     ## sn1mg_to_fa
     reaction <- "RHEA:34019"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-MG = M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1791,11 +1645,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34020"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-MG => M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1803,11 +1656,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34021"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-MG <= M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1815,11 +1667,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:34022"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-MG <=> M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1827,12 +1678,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     ## sn2mg_to_fa
     reaction <- "RHEA:32871"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-MG = M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1840,11 +1690,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32872"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-MG => M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1852,11 +1701,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32873"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-MG <= M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1864,11 +1712,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     reaction <- "RHEA:32874"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_2-MG <=> M_Glycerol + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1876,12 +1723,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_2-MG"))
-    expect_equal(template$reaction_product, c("M_Glycerol", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Glycerol", "M_H+", "M_FA"))
     
     ## sn1mg_to_lpa
     reaction <- "RHEA:33747"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_1-MG = M_H+ + M_ADP + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1889,11 +1735,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33748"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_1-MG => M_H+ + M_ADP + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1901,11 +1746,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33749"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_1-MG <= M_H+ + M_ADP + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1913,11 +1757,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     reaction <- "RHEA:33750"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_ATP + M_1-MG <=> M_H+ + M_ADP + M_LPA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1925,12 +1768,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_ATP", "M_1-MG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_ADP", "M_LPA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_ADP", "M_LPA"))
     
     ## sn2mg_to_sn1mg
     reaction <- "sn2mg_to_sn1mg"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_2-MG <=> M_1-MG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1942,8 +1784,7 @@ test_that(".create_template works", {
     
     ## nae_to_fa
     reaction <- "nae_to_fa"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_NAE <=> M_Ethanolamine + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1951,12 +1792,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_NAE"))
-    expect_equal(template$reaction_product, c("M_Ethanolamine", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_Ethanolamine", "M_H+", "M_FA"))
     
     ## nape_to_lnape
     reaction <- "nape_to_lnape"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_NAPE + M_H2O <=> M_LNAPE + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1968,8 +1808,7 @@ test_that(".create_template works", {
     
     ## nape_to_nae
     reaction <- "nape_to_nae"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_NAPE + M_H2O <=> M_NAE + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1981,8 +1820,7 @@ test_that(".create_template works", {
     
     ## nape_to_pnae
     reaction <- "nape_to_pnae"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -1994,8 +1832,7 @@ test_that(".create_template works", {
     
     ## napeo_to_nae
     reaction <- "napeo_to_nae"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_NAPEO + M_H2O <=> M_NAE + M_PA-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2007,8 +1844,7 @@ test_that(".create_template works", {
     
     ## pa_to_cdpdg
     reaction <- "RHEA:16229"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CTP + M_PA = M_PPi + M_CDP-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2019,8 +1855,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_CDP-DG"))
     
     reaction <- "RHEA:16230"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CTP + M_PA => M_PPi + M_CDP-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2031,8 +1866,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_CDP-DG"))
     
     reaction <- "RHEA:16231"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CTP + M_PA <= M_PPi + M_CDP-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2043,8 +1877,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PPi", "M_CDP-DG"))
     
     reaction <- "RHEA:16232"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CTP + M_PA <=> M_PPi + M_CDP-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2056,8 +1889,7 @@ test_that(".create_template works", {
     
     ## pa_to_dg
     reaction <- "RHEA:27429"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA = M_Pi + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2068,8 +1900,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_1,2-DG"))
     
     reaction <- "RHEA:27430"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA => M_Pi + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2080,8 +1911,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_1,2-DG"))
     
     reaction <- "RHEA:27431"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA <= M_Pi + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2092,8 +1922,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_1,2-DG"))
     
     reaction <- "RHEA:27432"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA <=> M_Pi + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2105,8 +1934,7 @@ test_that(".create_template works", {
     
     ## pao_to_dgo
     reaction <- "RHEA:36239"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA-O = M_Pi + M_DG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2117,8 +1945,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_DG-O"))
     
     reaction <- "RHEA:36240"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA-O => M_Pi + M_DG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2129,8 +1956,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_DG-O"))
     
     reaction <- "RHEA:36241"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA-O <= M_Pi + M_DG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2141,8 +1967,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_DG-O"))
     
     reaction <- "RHEA:36242"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PA-O <=> M_Pi + M_DG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2154,8 +1979,7 @@ test_that(".create_template works", {
     
     ## pc_to_dg
     reaction <- "RHEA:10604"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC = M_Phosphocholine + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2166,8 +1990,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Phosphocholine", "M_1,2-DG"))
     
     reaction <- "RHEA:10605"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC => M_Phosphocholine + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2178,8 +2001,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Phosphocholine", "M_1,2-DG"))
     
     reaction <- "RHEA:10606"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <= M_Phosphocholine + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2190,8 +2012,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Phosphocholine", "M_1,2-DG"))
     
     reaction <- "RHEA:10607"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <=> M_Phosphocholine + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2203,8 +2024,7 @@ test_that(".create_template works", {
     
     ## pc_to_sn1lpc
     reaction <- "RHEA:15801"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC = M_1-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2215,8 +2035,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_1-LPC", "M_FA"))
     
     reaction <- "RHEA:15802"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC => M_1-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2227,8 +2046,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_1-LPC", "M_FA"))
     
     reaction <- "RHEA:15803"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <= M_1-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2239,10 +2057,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_1-LPC", "M_FA"))
     
     reaction <- "RHEA:15804"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
-    expect_equal(template$reaction_formula, "M_H2O + M_PC = M_1-LPC + M_FA")
+    expect_equal(template$reaction_formula, "M_H2O + M_PC <=> M_1-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
@@ -2252,8 +2069,7 @@ test_that(".create_template works", {
     
     ## pc_to_sn2lpc
     reaction <- "RHEA:18689"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC = M_2-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2264,8 +2080,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_2-LPC", "M_FA"))
     
     reaction <- "RHEA:18690"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC => M_2-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2276,8 +2091,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_2-LPC", "M_FA"))
     
     reaction <- "RHEA:18691"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <= M_2-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2288,8 +2102,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_2-LPC", "M_FA"))
     
     reaction <- "RHEA:18692"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <=> M_2-LPC + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2301,8 +2114,7 @@ test_that(".create_template works", {
     
     ## pc_to_pa
     reaction <- "RHEA:14445"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC = M_Choline + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2313,8 +2125,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PA"))
     
     reaction <- "RHEA:14446"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC => M_Choline + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2325,8 +2136,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PA"))
     
     reaction <- "RHEA:14447"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <= M_Choline + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2337,8 +2147,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PA"))
     
     reaction <- "RHEA:14448"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC <=> M_Choline + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2350,8 +2159,7 @@ test_that(".create_template works", {
     
     ## pc_to_ps
     reaction <- "RHEA:45088"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PC = M_Choline + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2362,8 +2170,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PS"))
     
     reaction <- "RHEA:45089"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PC => M_Choline + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2374,8 +2181,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PS"))
     
     reaction <- "RHEA:45090"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PC <= M_Choline + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2386,8 +2192,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Choline", "M_PS"))
     
     reaction <- "RHEA:45091"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PC <=> M_Choline + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2399,8 +2204,7 @@ test_that(".create_template works", {
     
     ## pco_to_lpco
     reaction <- "RHEA:36231"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2408,11 +2212,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36232"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC-O => M_H+ + M_LPC-O + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2420,11 +2223,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36233"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC-O <= M_H+ + M_LPC-O + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2432,11 +2234,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     reaction <- "RHEA:36234"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2444,12 +2245,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPC-O", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPC-O", "M_FA"))
     
     ## lpco_to_lpao
     reaction <- "RHEA:39927"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O = M_1-LPA-O + M_H+ + M_Choline")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2457,11 +2257,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39928"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O => M_1-LPA-O + M_H+ + M_Choline")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2469,11 +2268,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39929"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O <= M_1-LPA-O + M_H+ + M_Choline")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2481,11 +2279,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     reaction <- "RHEA:39930"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O <=> M_1-LPA-O + M_H+ + M_Choline")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2493,12 +2290,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H", "", "M_Choline"))
+    expect_equal(template$reaction_product, c("M_1-LPA-O", "M_H+", "M_Choline"))
     
     ## lpco_to_mgo
     reaction <- "RHEA:36083"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O = M_H+ + M_Phosphocholine + M_1-MG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2506,11 +2302,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36084"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O => M_H+ + M_Phosphocholine + M_1-MG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2518,11 +2313,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36085"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O <= M_H+ + M_Phosphocholine + M_1-MG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2530,11 +2324,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     reaction <- "RHEA:36086"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPC-O <=> M_H+ + M_Phosphocholine + M_1-MG-O")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2542,12 +2335,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPC-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_Phosphocholine", "M_1-MG-O"))
+    expect_equal(template$reaction_product, c("M_H+", "M_Phosphocholine", "M_1-MG-O"))
     
     ## lpco_to_pco
     reaction <- "RHEA:23992"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC-O + M_AcylCoA = M_PC-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2558,8 +2350,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC-O", "M_CoA"))
     
     reaction <- "RHEA:23993"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC-O + M_AcylCoA => M_PC-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2570,8 +2361,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC-O", "M_CoA"))
     
     reaction <- "RHEA:23994"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC-O + M_AcylCoA <= M_PC-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2582,8 +2372,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_PC-O", "M_CoA"))
     
     reaction <- "RHEA:23995"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_1-LPC-O + M_AcylCoA <=> M_PC-O + M_CoA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2595,8 +2384,7 @@ test_that(".create_template works", {
     
     ## pe_to_dg
     reaction <- "pe_to_dg"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2608,8 +2396,7 @@ test_that(".create_template works", {
     
     ## pe_to_sn1lpe
     reaction <- "RHEA:44604"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE = M_H+ + M_FA + M_1-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2617,11 +2404,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44605"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE => M_H+ + M_FA + M_1-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2629,11 +2415,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44606"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <= M_H+ + M_FA + M_1-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2641,11 +2426,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     reaction <- "RHEA:44607"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <=> M_H+ + M_FA + M_1-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2653,12 +2437,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_1-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1-LPE"))
     
     ## pe_to_sn2lpe
     reaction <- "RHEA:44408"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE = M_H+ + M_FA + M_2-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2666,11 +2449,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44409"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE => M_H+ + M_FA + M_2-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2678,11 +2460,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44410"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <= M_H+ + M_FA + M_2-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2690,11 +2471,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     reaction <- "RHEA:44411"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <=> M_H+ + M_FA + M_2-LPE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2702,12 +2482,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_FA", "M_2-LPE"))
+    expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_2-LPE"))
     
     ## pe_to_nape_sn1
     reaction <- "pe_to_nape_sn1"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE + M_PC <=> M_NAPE + M_2-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2719,8 +2498,7 @@ test_that(".create_template works", {
     
     ## pe_to_nape_sn2
     reaction <- "pe_to_nape_sn2"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE + M_PC <=> M_NAPE + M_1-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2732,8 +2510,7 @@ test_that(".create_template works", {
     
     ## pe_to_pa
     reaction <- "pe_to_pa"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE <=> M_Ethanolamine + M_H+ + M_PA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2741,12 +2518,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
-    expect_equal(template$reaction_product, c("M_Ethanolamine", "M_H", "", "M_PA"))
+    expect_equal(template$reaction_product, c("M_Ethanolamine", "M_H+", "M_PA"))
     
     ## pe_to_ps
     reaction <- "RHEA:27606"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PE = M_Ethanolamine + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2757,8 +2533,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Ethanolamine", "M_PS"))
     
     reaction <- "RHEA:27607"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PE => M_Ethanolamine + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2769,8 +2544,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Ethanolamine", "M_PS"))
     
     reaction <- "RHEA:27608"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PE <= M_Ethanolamine + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2781,8 +2555,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Ethanolamine", "M_PS"))
     
     reaction <- "RHEA:27609"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_L-Serine + M_PE <=> M_Ethanolamine + M_PS")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2794,8 +2567,7 @@ test_that(".create_template works", {
     
     ## peo_to_lpeo
     reaction <- "peo_to_lpeo"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE-O <=> M_H+ + M_LPE-O + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2803,12 +2575,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE-O"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPE-O", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPE-O", "M_FA"))
     
     ## peo_to_napeo_sn1
     reaction <- "peo_to_napeo_sn1"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_PC <=> M_NAPEO + M_2-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2820,8 +2591,7 @@ test_that(".create_template works", {
     
     ## peo_to_napeo_sn2
     reaction <- "peo_to_napeo_sn2"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_PC <=> M_NAPEO + M_1-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2833,57 +2603,52 @@ test_that(".create_template works", {
     
     ## peo_to_pep
     reaction <- "RHEA:22956"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22957"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22958"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     reaction <- "RHEA:22959"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(template$reaction_RHEA, reaction)
     expect_equal(template$reaction_isReversible, "")
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
-    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2-cytochrome_b5", "2 M_H", "", "M_O2"))
-    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3-cytochrome_b5", "2M_H2O"))
+    expect_equal(template$reaction_substrate, c("M_PE-O", "M_Fe2+-cytochrome_b5", "2 M_H+", "M_O2"))
+    expect_equal(template$reaction_product, c("M_PE-P", "M_Fe3+-cytochrome_b5", "2 M_H2O"))
     
     ## pep_to_lpep
     reaction <- "RHEA:36195"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2891,11 +2656,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36196"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE-P => M_H+ + M_LPE-P + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2903,11 +2667,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36197"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE-P <= M_H+ + M_LPE-P + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2915,11 +2678,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     reaction <- "RHEA:36198"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PE-P <=> M_H+ + M_LPE-P + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2927,12 +2689,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE-P"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_LPE-P", "M_FA"))
+    expect_equal(template$reaction_product, c("M_H+", "M_LPE-P", "M_FA"))
     
     ## lpep_to_fal
     reaction <- "RHEA:16905"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,"M_H2O + M_1-LPE-P = M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2943,8 +2704,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_FAL", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:16906"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,"M_H2O + M_1-LPE-P => M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2955,8 +2715,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_FAL", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:16907"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,"M_H2O + M_1-LPE-P <= M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2967,8 +2726,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_FAL", "M_Glycerophosphoethanolamine"))
     
     reaction <- "RHEA:16908"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula,"M_H2O + M_1-LPE-P <=> M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2980,8 +2738,7 @@ test_that(".create_template works", {
     
     ## lpep_to_lpap
     reaction <- "RHEA:36203"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P = M_LPA-P + M_H+ + M_Ethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -2989,11 +2746,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(template$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36204"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P => M_LPA-P + M_H+ + M_Ethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3001,11 +2757,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(template$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36205"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P <= M_LPA-P + M_H+ + M_Ethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3013,11 +2768,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(template$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     reaction <- "RHEA:36206"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P <=> M_LPA-P + M_H+ + M_Ethanolamine")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3025,12 +2779,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_LPA-P", "M_H", "", "M_Ethanolamine"))
+    expect_equal(template$reaction_product, c("M_LPA-P", "M_H+", "M_Ethanolamine"))
     
     ## lpep_to_mgp
     reaction <- "RHEA:36199"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P = M_Phosphoethanolamine + M_H+ + M_1-MG-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3038,11 +2791,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36200"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P => M_Phosphoethanolamine + M_H+ + M_1-MG-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3050,11 +2802,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36201"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P <= M_Phosphoethanolamine + M_H+ + M_1-MG-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3062,11 +2813,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     reaction <- "RHEA:36202"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_1-LPE-P <=> M_Phosphoethanolamine + M_H+ + M_1-MG-P")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3074,12 +2824,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_1-LPE-P"))
-    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H", "", "M_1-MG-P"))
+    expect_equal(template$reaction_product, c("M_Phosphoethanolamine", "M_H+", "M_1-MG-P"))
     
     ## pep_to_napep_sn1
     reaction <- "pep_to_napep_sn1"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-P + M_PC <=> M_NAPEP + M_2-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3091,8 +2840,7 @@ test_that(".create_template works", {
     
     ## pep_to_napep_sn2
     reaction <- "pep_to_napep_sn2"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_PE-P + M_PC <=> M_NAPEP + M_1-LPC")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3104,8 +2852,7 @@ test_that(".create_template works", {
     
     ## pg_to_cl
     reaction <- "RHEA:32931"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-DG + M_PG = M_H+ + M_CMP + M_CL")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3113,11 +2860,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32932"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-DG + M_PG => M_H+ + M_CMP + M_CL")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3125,11 +2871,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32933"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-DG + M_PG <= M_H+ + M_CMP + M_CL")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3137,11 +2882,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     reaction <- "RHEA:32934"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_CDP-DG + M_PG <=> M_H+ + M_CMP + M_CL")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3149,12 +2893,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_CDP-DG", "M_PG"))
-    expect_equal(template$reaction_product, c("M_H", "", "M_CMP", "M_CL"))
+    expect_equal(template$reaction_product, c("M_H+", "M_CMP", "M_CL"))
     
     ## pgp_to_pg
     reaction <- "RHEA:33751"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PGP = M_Pi + M_PG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3165,8 +2908,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_PG"))
     
     reaction <- "RHEA:33752"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PGP => M_Pi + M_PG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3177,8 +2919,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_PG"))
     
     reaction <- "RHEA:33753"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PGP <= M_Pi + M_PG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3189,8 +2930,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_Pi", "M_PG"))
     
     reaction <- "RHEA:33754"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PGP <=> M_Pi + M_PG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3202,8 +2942,7 @@ test_that(".create_template works", {
     
     ## pi_to_dg
     reaction <- "RHEA:43484"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI = M_myo-Inositol-1-P + M_H+ + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3214,8 +2953,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_myo-Inositol-1-P", "M_H+", "M_1,2-DG"))
     
     reaction <- "RHEA:43485"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI => M_myo-Inositol-1-P + M_H+ + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3226,8 +2964,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_myo-Inositol-1-P", "M_H+", "M_1,2-DG"))
     
     reaction <- "RHEA:43486"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI <= M_myo-Inositol-1-P + M_H+ + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3238,8 +2975,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_myo-Inositol-1-P", "M_H+", "M_1,2-DG"))
     
     reaction <- "RHEA:43487"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI <=> M_myo-Inositol-1-P + M_H+ + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3251,8 +2987,7 @@ test_that(".create_template works", {
     
     ## pi_to_sn1lpi
     reaction <- "RHEA:18001"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI = M_1-LPI + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3260,11 +2995,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(template$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18002"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI => M_1-LPI + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3272,11 +3006,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(template$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18003"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI <= M_1-LPI + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3284,11 +3017,10 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(template$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     reaction <- "RHEA:18004"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_PI <=> M_1-LPI + M_H+ + M_FA")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3296,12 +3028,11 @@ test_that(".create_template works", {
     expect_equal(template$reaction_geneAssociation, "")
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PI"))
-    expect_equal(template$reaction_product, c("M_1-LPI", "M_H", "", "M_FA"))
+    expect_equal(template$reaction_product, c("M_1-LPI", "M_H+", "M_FA"))
     
     ## ps_to_pe
     reaction <- "RHEA:20828"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_PS = M_CO2 + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3312,8 +3043,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CO2", "M_PE"))
     
     reaction <- "RHEA:20829"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_PS => M_CO2 + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3324,8 +3054,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CO2", "M_PE"))
     
     reaction <- "RHEA:20830"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_PS <= M_CO2 + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3336,8 +3065,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CO2", "M_PE"))
     
     reaction <- "RHEA:20831"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H+ + M_PS <=> M_CO2 + M_PE")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3349,8 +3077,7 @@ test_that(".create_template works", {
     
     ## sm_to_cer
     reaction <- "sm_to_cer"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_SM <=> M_Phosphocholine + M_H+ + M_Cer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3362,8 +3089,7 @@ test_that(".create_template works", {
     
     ## sphinga_to_dhcer
     reaction <- "RHEA:53424"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3374,8 +3100,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_DhCer"))
     
     reaction <- "RHEA:53425"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_Sphinganine => M_CoA + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3386,8 +3111,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_DhCer"))
     
     reaction <- "RHEA:53426"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_Sphinganine <= M_CoA + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3398,8 +3122,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_CoA", "M_DhCer"))
     
     reaction <- "RHEA:53427"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_AcylCoA + M_Sphinganine <=> M_CoA + M_DhCer")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3411,8 +3134,7 @@ test_that(".create_template works", {
     
     ## tg_to_dg
     reaction <- "RHEA:33271"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3423,8 +3145,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:33272"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG => M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3435,8 +3156,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:33273"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG <= M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3447,8 +3167,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:33274"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3459,8 +3178,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:44864"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3471,8 +3189,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:44865"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG => M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3483,8 +3200,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:44866"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG <= M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3496,8 +3212,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
     
     reaction <- "RHEA:44867"
-    template <- LipidNetworkPredictR:::.create_template(template = NA,
-       reaction = reaction)
+    template <- .create_template(template = NA, reaction = reaction)
     expect_equal(template$reaction_name, "")
     expect_equal(template$reaction_formula, "M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG")
     expect_equal(template$reaction_RHEA, reaction)
@@ -3507,3 +3222,4 @@ test_that(".create_template works", {
     expect_equal(template$reaction_substrate, c("M_H2O", "M_TG"))
     expect_equal(template$reaction_product, c("M_H+", "M_FA", "M_1,2-DG"))
 })
+
