@@ -3584,8 +3584,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PC(20:0/18:0)")
-    expect_equal(df$reaction_product, "Choline + PA(20:0/18:0)")
+    expect_equal(df$reaction_substrate, "L-Serine + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "Choline + PS(20:0/18:0)")
     
     reaction <- "RHEA:45089"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3601,8 +3601,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PC(20:0/18:0)")
-    expect_equal(df$reaction_product, "Choline + PA(20:0/18:0)")
+    expect_equal(df$reaction_substrate, "L-Serine + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "Choline + PS(20:0/18:0)")
     
     reaction <- "RHEA:45090"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3618,8 +3618,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PC(20:0/18:0)")
-    expect_equal(df$reaction_product, "Choline + PA(20:0/18:0)")
+    expect_equal(df$reaction_substrate, "L-Serine + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "Choline + PS(20:0/18:0)")
     
     reaction <- "RHEA:45091"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -3635,8 +3635,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PC(20:0/18:0)")
-    expect_equal(df$reaction_product, "Choline + PA(20:0/18:0)")
+    expect_equal(df$reaction_substrate, "L-Serine + PC(20:0/18:0)")
+    expect_equal(df$reaction_product, "Choline + PS(20:0/18:0)")
     
     ## pco_to_lpco
     pco <- "PC(O-16:0/14:0)"
@@ -4193,7 +4193,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "L-Serine + PE(14:0/16:0) = Ethanolamine + PS(14:0/16:0))")
+        "L-Serine + PE(14:0/16:0) = Ethanolamine + PS(14:0/16:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4210,7 +4210,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "L-Serine + PE(14:0/16:0) => Ethanolamine + PS(14:0/16:0))")
+        "L-Serine + PE(14:0/16:0) => Ethanolamine + PS(14:0/16:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4227,7 +4227,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "L-Serine + PE(14:0/16:0) <= Ethanolamine + PS(14:0/16:0))")
+        "L-Serine + PE(14:0/16:0) <= Ethanolamine + PS(14:0/16:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4244,7 +4244,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "L-Serine + PE(14:0/16:0) <=> Ethanolamine + PS(14:0/16:0))")
+        "L-Serine + PE(14:0/16:0) <=> Ethanolamine + PS(14:0/16:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4490,7 +4490,7 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
     expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16906"
@@ -4507,7 +4507,7 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
     expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16907"
@@ -4524,7 +4524,7 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
     expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     reaction <- "RHEA:16908"
@@ -4541,7 +4541,7 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/14:0)")
+    expect_equal(df$reaction_substrate, "H2O + PE(P-16:0/0:0)")
     expect_equal(df$reaction_product, "FAL(16:0) + Glycerophosphoethanolamine")
     
     ## lpep_to_lpap
@@ -4925,7 +4925,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+        "H2O + PI(16:0/18:1(9Z)) => myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4943,7 +4943,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+        "H2O + PI(16:0/18:1(9Z)) <= myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -4960,7 +4960,7 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "H2O + PI(16:0/18:1(9Z)) = myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
+        "H2O + PI(16:0/18:1(9Z)) <=> myo-Inositol-1-P + H+ + DG(16:0/18:1(9Z))")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -5024,7 +5024,6 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
     expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
     
-    
     reaction <- "RHEA:18004"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
@@ -5062,8 +5061,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
-    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_substrate, "H+ + PS(14:0/14:0)")
+    expect_equal(df$reaction_product, "CO2 + PE(14:0/14:0)")
     
     reaction <- "RHEA:20829"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5075,12 +5074,12 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "H+ + PS(14:0/14:0) = CO2 + PE(14:0/14:0)")
+        "H+ + PS(14:0/14:0) => CO2 + PE(14:0/14:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
-    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_substrate, "H+ + PS(14:0/14:0)")
+    expect_equal(df$reaction_product, "CO2 + PE(14:0/14:0)")
     
     reaction <- "RHEA:20830"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5096,8 +5095,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
-    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_substrate, "H+ + PS(14:0/14:0)")
+    expect_equal(df$reaction_product, "CO2 + PE(14:0/14:0)")
     
     reaction <- "RHEA:20831"
     df_reaction <- .add_products(substrates = df_substrates, 
@@ -5113,8 +5112,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H2O + PI(16:0/18:1(9Z))")
-    expect_equal(df$reaction_product, "PI(16:0/0:0) + H+ + FA(18:1(9Z))")
+    expect_equal(df$reaction_substrate, "H+ + PS(14:0/14:0)")
+    expect_equal(df$reaction_product, "CO2 + PE(14:0/14:0)")
 
     ## sm_to_cer
     sm <- "SM(16:0(3OH,4OH,15Me)/12:0)"
