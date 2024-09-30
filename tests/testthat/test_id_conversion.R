@@ -15,7 +15,7 @@ test_that("translate_id_to_ChEBI works", {
     translations <- translate_id_to_ChEBI(ids = ids, id_type = "HMDB",
         annotation_set = annotation_set)
     expect_equal(translations[["HMDB0004947"]], "72956")
-    expect_equal(translations[["HMDB0004949"]], "72956")
+    expect_equal(translations[["HMDB0004949"]], "72959")
     expect_equal(translations[["HMDB0011763"]], "74100")
     expect_equal(translations[["HMDB0004974"]], "62107")
     expect_equal(translations[["HMDB0011594"]], "62109")
@@ -64,7 +64,7 @@ test_that("translate_ChEBI_to_SMILES works", {
     expect_equal(translations[["HMDB0011594"]], NA)
     expect_error(
         translate_ChEBI_to_SMILES(ids = NULL, rhea_chebi_smiles = rhea_chebi_smiles), 
-        "is not a list ")
+        "is not a list")
     expect_equal(
         translate_ChEBI_to_SMILES(ids = list(), rhea_chebi_smiles = rhea_chebi_smiles), 
         list())
@@ -82,11 +82,11 @@ test_that("select_substrates_or_products works", {
     res <- LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
         cols = cols, type = "substrates")
     expect_equal(length(res), 1)
-    expect_equal(res[[1]], "CC(=O)[C@@H](C)O")
+    expect_equal(res[[1]], "CC(=O)[C@H](C)O")
     res <- LipidNetworkPredictR:::select_substrates_or_products(reaction = reaction, 
         cols = cols, type = "products")
     expect_equal(length(res), 1)
-    expect_equal(res[[1]], "CC(=O)[C@H](C)O")
+    expect_equal(res[[1]], "CC(=O)[C@@H](C)O")
     
     ## cols = 3
     cols <- 3
@@ -157,7 +157,7 @@ test_that("find_RHEA_ids_from_SMILES works", {
     expect_equal(res[["HMDB0004947"]], 
         c(70256, 70257, 70308, 70309))
     expect_equal(res[["HMDB0004949"]], 
-        c(36688, 36689, 45645, 45646, 58297, 58298, 58317, 58318, 
+        c(36688, 36689, 45645, 45646, 45721, 45722, 58297, 58298, 58317, 58318, 
             69700, 69701, 69704, 69705))
     expect_equal(res[["HMDB0011763"]], 
                  c(36576, 36577))
@@ -227,7 +227,7 @@ test_that("find_RHEA_ids_from_ids works", {
     expect_equal(res[["HMDB0004947"]], 
         c(70256, 70257, 70308, 70309))
     expect_equal(res[["HMDB0004949"]], 
-        c(36688, 36689, 45645, 45646, 58297, 58298, 58317, 58318, 
+        c(36688, 36689, 45645, 45646, 45721, 45722, 58297, 58298, 58317, 58318, 
             69700, 69701, 69704, 69705))
     expect_equal(res[["HMDB0011763"]], 
         c(36576, 36577))
