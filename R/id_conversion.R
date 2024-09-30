@@ -26,6 +26,7 @@
 #' @author Thomas Naake
 #' 
 #' @importFrom dplyr filter
+#' @importFrom rlang sym
 #' 
 #' @return list
 #' 
@@ -64,7 +65,7 @@ translate_id_to_ChEBI <- function(ids, id_type = colnames(annotation_set),
     })
     chebi_ids <- lapply(mappings, function(mappings_i) {
         mappings_i |>
-            dplyr::select(ChEBI) |>
+            dplyr::select(!!rlang::sym("ChEBI")) |>
             as.character()
     })
     names(chebi_ids) <- ids
@@ -467,6 +468,7 @@ find_RHEA_ids_from_SMILES <- function(ids, rhea_reaction_smiles,
 #' 
 #' @import metaboliteIDmapping
 #' @importFrom AnnotationHub AnnotationHub query
+#' @importFrom utils read.csv
 #' 
 #' @examples
 #' ids <- c("HMDB0004947", "HMDB0004949", "HMDB0011763", "HMDB0004974", "HMDB0011594")
@@ -534,21 +536,21 @@ find_RHEA_ids_from_ids <- function(ids, id_type, annotation_set = NULL,
         file <- file.path(
             path.package("LipidNetworkPredictR"), "extdata", "rhea-chebi-smiles.tsv",
             fsep = .Platform$file.sep)
-        rhea_chebi_smiles <- read.csv(file, sep = "\t", header = FALSE)
+        rhea_chebi_smiles <- utils::read.csv(file, sep = "\t", header = FALSE)
     }
 
     if (is.null(rhea_reaction_smiles)) {
         file <- file.path(
             path.package("LipidNetworkPredictR"), "extdata", "rhea-reaction-smiles.tsv",
             fsep = .Platform$file.sep)
-        rhea_reaction_smiles <- read.csv(file, sep = "\t", header = FALSE)
+        rhea_reaction_smiles <- utils::read.csv(file, sep = "\t", header = FALSE)
     }
 
     if (is.null(rhea_directions)) {
         file <- file.path(
             path.package("LipidNetworkPredictR"), "extdata", "rhea-directions.tsv",
             fsep = .Platform$file.sep)
-        rhea_directions <- read.csv(file, sep = "\t", header = TRUE)
+        rhea_directions <- utils::read.csv(file, sep = "\t", header = TRUE)
     }
 
     ## check the type argument
