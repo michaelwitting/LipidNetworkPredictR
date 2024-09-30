@@ -299,7 +299,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_LNAPE", replacement = df_reaction[["LNAPE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_gpnae", replacement = df_reaction[["GPNAE"]])
+            pattern = "M_GPNAE", replacement = df_reaction[["GPNAE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_FA", replacement = df_reaction[["FA"]])
     }
@@ -793,7 +793,7 @@
     ## pgp_to_pg
     if (reaction %in% c("RHEA:33751", "RHEA:33752", "RHEA:33753", "RHEA:33754")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_pgp", replacement = df_reaction[["PGP"]])
+            pattern = "M_PGP", replacement = df_reaction[["PGP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PG", replacement = df_reaction[["PG"]])
     }
