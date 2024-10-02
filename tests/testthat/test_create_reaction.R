@@ -1936,10 +1936,11 @@ test_that("create_reaction_adjacency_matrix works.", {
         c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
         c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
         c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_CoA + M_PA", FALSE),
-        c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE))
+        c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE),
+        c(5, "RHEA:52716", "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA", FALSE))
     
     reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
-                            reactions = reactions[, 3], directed = reactions[, 4])
+        reactions = reactions[, 3], directed = reactions[, 4])
     reactions$order <- as.numeric(reactions$order)
     reactions$directed <- as.logical(reactions$directed)
     reactions_l <- create_reactions(substrates = list(FA = FA), 
@@ -1947,19 +1948,20 @@ test_that("create_reaction_adjacency_matrix works.", {
     
     ## run the function
     adj <- create_reaction_adjacency_matrix(reaction_l = reactions_l)
-    expect_equal(dim(adj), c(34, 34))
+    expect_equal(dim(adj), c(40, 40))
     expect_equal(rownames(adj), colnames(adj))
-    expect_equal(rownames(adj)[1:32], 
+    expect_equal(rownames(adj), 
         c("AMP", "ATP", "CoA", "CoA(12:0)", "CoA(14:0)", "CoA(16:0)", 
             "DG(12:0/12:0/0:0)", "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)",
             "DG(14:0/12:0/0:0)", "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)",
             "DG(16:0/12:0/0:0)", "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)",
-            "FA(12:0)", "FA(14:0)", "FA(16:0)", "Glycerol-3-P", "H2O",
+            "FA(12:0)", "FA(14:0)", "FA(16:0)", "FAO(12:0)", "FAO(14:0)", 
+            "FAO(16:0)", "Glycerol-3-P", "H+", "H2O", "NADP+", "NADPH",
             "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)", "PA(12:0/16:0)",
             "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", "PA(14:0/16:0)",
             "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)", "PA(16:0/16:0)",
-            "Pi", "PPi")[1:32])
-    expect_equal(sum(adj), 78)
+            "Pi", "PPi"))
+    expect_equal(sum(adj), 94)
     expect_equal(as.vector(adj[1:5, 1:5]), 
         c(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 
             1, 1, 0, 0))
