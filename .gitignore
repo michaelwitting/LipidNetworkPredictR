@@ -3,10 +3,10 @@
 .RData
 .Ruserdata
 inst/doc
-*.DS_Store
+*[.]DS_Store
+*DS_Store
 vignettes/.gitignore
 .github/.gitignore
-*DS_Store
 
 ## rhea specific files
 rhea.rdf
