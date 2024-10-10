@@ -443,77 +443,77 @@ From NAPE.
 ```{r, message=FALSE, warning=FALSE}
 reactions <- rbind(
     ## Block 0
-    c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## FA_GPGL + CoA = PPi + AMP + CoA_GPGL
+    c(1, "RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), ## FA_GPGL + ATP + CoA = CoA_GPGL + AMP + PPi
     ## Block 1
-    c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA"), ## G3P + CoA_GPGL = CoA + LPA
-    c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_CoA + M_PA"), ## LPA + CoA_GPGL = CoA + PA
-    c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG"), ## H2O + PA = Pi + DG
-    c(5, "RHEA:10272", "M_ATP + M_1,2-DG = M_H+ + M_ADP + M_PA"), ## ATP + DG = H+ + ADP + PA
-    c(6, "RHEA:44712", "M_H2O + M_1,2-DG = M_H+ + M_1-MG + M_FA"), ## H2O + DG = H+ + sn1MG + FA
-    c(7, "RHEA:33275", "M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA"), ## H2O + DG = H+ + sn2MG + FA
+    c(2, "RHEA:15325", "M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA"), ## CoA_GPGL + G3P = LPA + CoA
+    c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_PA + M_CoA"), ## LPA + CoA_GPGL = PA + CoA
+    c(4, "RHEA:27429", "M_PA + M_H2O = M_1,2-DG + M_Pi"), ## PA + H2O = DG + Pi
+    c(5, "RHEA:10272", "M_1,2-DG + M_ATP = M_PA + M_ADP + M_H+"), ## DG + ATP = PA + ADP + H+
+    c(6, "RHEA:44712", "M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+"), ## DG + H2O = sn1MG + FA + H+
+    c(7, "RHEA:33275", "M_1,2-DG + M_H2O = M_2-MG + M_FA + M_H+"), ## DG + H2O = sn2MG + FA + H+
     c(8, "sn2mg_to_sn1mg", "M_2-MG <=> M_1-MG"), ## sn1MG <=> sn2MG
-    c(9, "RHEA:34019", "M_H2O + M_1-MG = M_Glycerol + M_H+ + M_FA"), ## H2O + sn1MG = Glycerol + H+ + FA
-    c(10, "RHEA:32871", "M_H2O + M_2-MG = M_Glycerol + M_H+ + M_FA"), ## H2O + sn2MG = Glycerol + H+ + FA
-    c(11, "RHEA:38463", "M_1-MG + M_AcylCoA = M_CoA + M_1,2-DG"), ## sn1MG + CoA_GPGL = CoA + DG
-    c(12, "RHEA:32947", "M_AcylCoA + M_1-MG = M_CoA + M_1,2-DG"), #################### CoA_GPGL + sn2MG = CoA + DG #################### should be 2-MG???
-    c(13, "RHEA:33747", "M_ATP + M_1-MG = M_H+ + M_ADP + M_LPA"), ## ATP + 1-MG = H+ + ADP + LPA
+    c(9, "RHEA:34019", "M_1-MG + M_H2O = M_FA + M_Glycerol + M_H+"), ## sn1MG + H2O = FA + Glycerol + H+
+    c(10, "RHEA:32871", "M_H2O + M_2-MG = M_FA + M_Glycerol + M_H+"), ## H2O + sn2MG = FA + Glycerol + H+
+    c(11, "RHEA:38463", "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn1MG + CoA_GPGL = DG + CoA
+    c(12, "RHEA:32947", "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn2MG + CoA_GPGL = DG + CoA
+    c(13, "RHEA:33747", "M_1-MG + M_ATP = M_LPA + M_ADP + M_H+"), ## 1-MG + ATP = LPA + ADP + H+
     ## Block 2
-    c(14, "RHEA:10868", "M_AcylCoA + M_1,2-DG = M_CoA + M_TG"), ## CoA_GPGL + DG = CoA + TG
-    c(15, "RHEA:33271", "M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG"), ## H2O + TG = H+ + FA + DG
+    c(14, "RHEA:10868", "M_1,2-DG + M_AcylCoA = M_TG + M_CoA"), ## DG + CoA_GPGL = TG + CoA
+    c(15, "RHEA:33271", "M_TG + M_H2O = M_1,2-DG + M_FA + M_H+"), ## TG + H2O = DG + FA + H+
     ## Block 3
-    c(16, "RHEA:32939", "M_CDP-Choline + M_1,2-DG = M_H+ + M_CMP + M_PC"), ## CDP-Choline + DG = H+ + CMP + PC
-    c(17, "RHEA:32943", "M_CDP-Ethanolamine + M_1,2-DG = M_H+ + M_CMP + M_PE"), ## CDP-Ethanolamine + DG = H+ + CMP + PE
-    c(18, "RHEA:45088", "M_L-Serine + M_PC = M_Choline + M_PS"), ## L-Serine + PC = Choline + PS
-    c(19, "RHEA:27606", "M_L-Serine + M_PE = M_Ethanolamine + M_PS"), ## L-Serine + PE = Ethanolamine + PS
-    c(20, "RHEA:20828", "M_H+ + M_PS = M_CO2 + M_PE"), ## H+ + PS = CO2 + PE
+    c(16, "RHEA:32939", "M_1,2-DG + M_CDP-Choline = M_PC + M_CMP + M_H+"), ## DG + CDP-Choline = PC + CMP + H+
+    c(17, "RHEA:32943", "M_1,2-DG + M_CDP-Ethanolamine = M_PE + M_CMP + M_H+"), ## DG + CDP-Ethanolamine = PE + CMP + H+
+    c(18, "RHEA:45088", "M_PC + M_L-Serine = M_PS + M_Choline"), ## PC + L-Serine = PS + Choline
+    c(19, "RHEA:27606", "M_PE + M_L-Serine = M_PS + M_Ethanolamine"), ## PE + L-Serine = PS + Ethanolamine
+    c(20, "RHEA:20828", "M_PS + M_H+ = M_PE + M_CO2"), ## PS + H+ = PE + CO2
     ## Block 4
-    c(21, "RHEA:18689", "M_H2O_c + M_PC_c = M_2-LPC_c + M_FA_c"), ## H2O + PC = sn2LPC + FA_GPGL
-    c(22, "RHEA:15801", "M_H2O + M_PC = M_1-LPC + M_FA"), ## H2O + PC = sn1LPC + FA_GPGL
-    c(23, "RHEA:14445", "M_H2O + M_PC = M_Choline + M_PA"), ## H2O + PC = Choline + PA
-    c(24, "RHEA:15177", "M_H2O + M_1-LPC = M_Glycerophosphocholine + M_H+ + M_FA"), ## H2O + sn1LPC = Glycerophosphocholine + H+ + FA_GPGL 
-    c(25, "RHEA:44696", "M_H2O + M_2-LPC = M_Glycerophosphocholine + M_H+ + M_FA"), ## H2O + sn2LPC = Glycerophosphocholine + H+ + FA_GPGL
+    c(21, "RHEA:18689", "M_PC_c + M_H2O_c = M_2-LPC_c + M_FA_c + M_H+_c"), ## PC + H2O = sn2LPC + FA_GPGL
+    c(22, "RHEA:15801", "M_PC + M_H2O  = M_1-LPC + M_FA + M_H+"), ## PC + H2O  = sn1LPC + FA_GPGL + H+
+    c(23, "RHEA:14445", "M_PC + M_H2O = M_PA + M_Choline + M_H+"), ## PC + H2O = PA + Choline + H+
+    c(24, "RHEA:15177", "M_1-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn1LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
+    c(25, "RHEA:44696", "M_2-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn2LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
     c(26, "RHEA:12937", "M_1-LPC_c + M_AcylCoA_c = M_PC_c + M_CoA_c"), ## sn1LPC + CoA_GPGL = PC + CoA_GPGL
-    c(27, "RHEA:44408", "M_H2O + M_PE = M_H+ + M_FA + M_2-LPE"), ## H2O + PE = H+ + FA_GPGL + sn2LPE
-    c(28, "RHEA:44604", "M_H2O + M_PE = M_H+ + M_FA + M_1-LPE"), ## H2O + PE = H+ + FA_GPGL + sn1LPE
-    c(29, "pe_to_pa", "M_H2O + M_PE <=> M_Ethanolamine + M_H+ + M_PA"), ## H2O + PE <=> Ethanolamine + H+ + PA
-    c(30, "RHEA:32967", "M_H2O + M_1-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine"), ## H2O + sn1LPE = H+ + FA_GPGL + Glycerophosphoethanolamine
-    c(31, "sn2lpe_to_fa", "M_H2O + M_2-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine"), ## H2O + sn2LPE = H+ + FA_GPGL + Glycerophosphoethanolamine
-    c(32, "RHEA:32995", "M_AcylCoA + M_1-LPE = M_CoA + M_PE"), ## CoA_GPGL + sn1LPE = CoA + PE
+    c(27, "RHEA:44408", "M_PE + M_H2O = M_2-LPE + M_FA + M_H+"), ## PE + H2O = sn2LPE + FA_GPGL + H+
+    c(28, "RHEA:44604", "M_PE + M_H2O = M_1-LPE + M_FA + M_H+"), ## PE + H2O = sn1LPE + FA_GPGL + H+
+    c(29, "pe_to_pa", "M_PE + M_H2O <=> M_PA + M_Ethanolamine + M_H+"), ## PE + H2O <=> PA + Ethanolamine + H+
+    c(30, "RHEA:32967", "M_1-LPE + M_H2O = M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn1LPE + H2O = FA_GPGL + H+ + Glycerophosphoethanolamine
+    c(31, "sn2lpe_to_fa", "M_2-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn2LPE + H2O <=> FA_GPGL + H+ + Glycerophosphoethanolamine
+    c(32, "RHEA:32995", "M_1-LPE + M_AcylCoA = M_PE + M_CoA"), ## sn1LPE + CoA_GPGL = PE + CoA
     ## Block 5
-    c(33, "RHEA:16229", "M_CTP + M_PA = M_PPi + M_CDP-DG"), ## CTP + PA = PPi + CDP-DG
-    c(34, "RHEA:11580", "M_myo-Inositol + M_CDP-DG = M_H+ + M_CMP + M_PI"), ## myo-Inositol + CDP-DG = H+ + CMP + PI
-    c(35, "RHEA:12593", "M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_PGP"), ## Glycerol-3-P + CDP-DG = H+ + CMP + PGP
-    c(36, "RHEA:33751", "M_H2O + M_PGP = M_Pi + M_PG"), ## H2O + PGP = Pi + PG
-    c(37, "RHEA:32931", "M_CDP-DG + M_PG = M_H+ + M_CMP + M_CL"), ## CDP-DG + PG = H+ + CMP + CL
+    c(33, "RHEA:16229", "M_PA + M_CTP + M_H+ = M_CDP-DG + M_PPi"), ## PA + CTP + H+ = CDP-DG + PPi
+    c(34, "RHEA:11580", "M_CDP-DG + M_myo-Inositol = M_PI + M_CMP + M_H+"), ## CDP-DG + myo-Inositol = PI + CMP + H+
+    c(35, "RHEA:12593", "M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+"), ## CDP-DG + Glycerol-3-P = PGP + CMP + M_H+
+    c(36, "RHEA:33751", "M_PGP + M_H2O = M_PG + M_Pi"), ## PGP + H2O = PG + Pi
+    c(37, "RHEA:32931", "M_PG + M_CDP-DG = M_CL + M_CMP + M_H+"), ## PG + CDP-DG = CL + CMP + H+
     ## Block 6
-    c(38, "RHEA:52716", "M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAOH + 2 M_NADP + M_CoA"), ## AcylCoA_GPGL + 2 NADPH + 2 H+ = FAO + 2 NADP + CoA
-    c(39, "RHEA:17657", "M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP"), ## Dihydroxyacetone-P + CoA_GPGL = CoA + AcylDHAP 
-    c(40, "RHEA:36171", "M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP"), ## AcylDHAP + FAO = H+ + FA_GPGL + M_AlkylDHAP
-    c(41, "RHEA:36175", "M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP"), ## H+ + NADPH + AlkylDHAP = LPAO + NADP
+    c(38, "RHEA:52716", "M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP"), ## AcylCoA_GPGL + 2 H+ + 2 NADPH = FAO + CoA + 2 NADP
+    c(39, "RHEA:17657", "M_AcylCoA + M_Dihydroxyacetone-P = M_AcylDHAP + M_CoA"), ##CoA_GPGL + Dihydroxyacetone-P = AcylDHAP + CoA
+    c(40, "RHEA:36171", "M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+"), ##AcylDHAP + FAO = AlkylDHAP + FA_GPGL + H+
+    c(41, "RHEA:36175", "M_AlkylDHAP + M_H+ + M_NADPH = M_LPA-O + M_NADP"), ## AlkylDHAP + H+ + NADPH = LPAO + NADP
     c(42, "RHEA:36235", "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"), ## LPAO + CoA_GPGL = PAO + CoA
-    c(43, "RHEA:36239", "M_H2O + M_PA-O = M_Pi + M_DG-O"), ## H2O + PAO = Pi + DGO
-    c(44, "RHEA:36187", "M_CDP-Ethanolamine + M_DG-O = M_H+ + M_CMP + M_PE-O"), ## CDP-Ethanolamine + DGO = H+ + CMP + PEO
+    c(43, "RHEA:36239", "M_PA-O + M_H2O = M_DG-O + M_Pi"), ## PAO + H2O = DGO + Pi
+    c(44, "RHEA:36187", "M_DG-O + M_CDP-Ethanolamine =  M_PE-O + M_CMP + M_H+"), ## DGO + CDP-Ethanolamine =  PEO + CMP + H+
     c(45, "RHEA:22956", "M_PE-O + M_Fe2+cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+cytochrome_b5 + 2 M_H2O"), ## PEO + Fe2+cytochrome_b5 + 2 H+ + O2 = PEP + Fe3+cytochrome_b5 + 2 H2O
-    c(46, "RHEA:36179", "M_CDP-Choline + M_DG-O = M_H+ + M_CMP + M_PC-O"), ## CDP-Choline + DGO = H+ + CMP + PCO
+    c(46, "RHEA:36179", "M_DG-O + M_CDP-Choline = M_PC-O + M_CMP + M_H+"), ## DGO + CDP-Choline = PCO + CMP + H+
     ## Block 7
-    c(47, "peo_to_lpeo", "M_H2O + M_PE-O = M_H+ + M_LPE-O+ M_FA"), ## H2O + PEO = H+ + LPEO + FA_GPGL
+    c(47, "peo_to_lpeo", "M_PE-O + M_H2O <=> M_LPE-O + M_FA + M_H+"), ## PEO + H2O <=> LPEO + FA_GPGL + H+
     c(48, "lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
-    c(49, "RHEA:36195", "M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"), ## H2O + PEP = H+ + LPEP + FA
-    c(50, "RHEA:16245", "M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"), ## CoA_GPGL + LPEP = CoA + PEP
-    c(51, "RHEA:36231", "M_H2O + M_PC-O = M_H+ + M_LPC-O + M_FA"), ## H2O + PCO = H+ + LPCO + FA_GPGL
+    c(49, "RHEA:36195", "M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+"), ## PEP + H2O = LPE-P + FA + H+
+    c(50, "RHEA:16245", "M_LPE-P + M_AcylCoA = M_PE-P + M_CoA"), ## LPEP + CoA_GPGL = PEP + CoA
+    c(51, "RHEA:36231", "M_PC-O + M_H2O = M_LPC-O + M_FA + M_H"), ## PCO + H2O = LPCO + FA_GPGL + H+
     ## Block Y
-    c(52, "pe_to_nape_sn1", "M_PE + M_PC = M_NAPE + M_2-LPC"), ## PE + PC = NAPE + sn2LPC"
+    c(52, "RHEA:45188", "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"), ## PC + PE = sn2LPC + H+ + NAPE
     c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
     c(54, "pep_to_napep_sn1", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
-    c(55, "pe_to_nape_sn2", "M_PE + M_PC = M_NAPE + M_1-LPC"), ## PE + PC = NAPE + sn1LPC
+    c(55, "RHEA:45192", "M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE"), ## ## PC + PE = sn1LPC + H+ + NAPE
     c(56, "peo_to_napeo_sn2", "M_PE-O + M_PC = M_NAPEO + M_1-LPC"), ## PEO + PC = NAPEO + sn1LPC
     c(57, "pep_to_napep_sn2", "M_PE-P + M_PC = M_NAPEP + M_1-LPC"), ## PEP + PC = NAPEP + sn1LPC
     c(58, "nape_to_nae", "M_NAPE + M_H2O <=> M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
     c(59, "napeo_to_nae", "M_NAPEO + M_H2O <=> M_NAE + M_PA-O"), ## akac2nape + H2O <=> NAE + PAO
-    c(60, "nape_to_pnae", "M_LNAPE + M_H2O <=> M_pnae + M_1,2-DG"), ## LNAPE + H2O <=> PNAE + DG
-    c(61, "nape_to_lnape", "M_LNAPE + M_H2O <=> M_LNAPE + M_FA"), ## LNAPE + H2O <=> LNAPE + FA_GPGL
-    c(62, "RHEA:45420", "M_LNAPE + M_H2O = M_GPNAE + M_FA"), ## LNAPE + H2O = GPNAE + FA_GPGL
-    c(63, "nae_to_fa", "M_H2O + M_NAE = M_Ethanolamine + M_H+ + M_FA") ## H2O + nae = Ethanolamine + H+ + FA_GPGL
+    c(60, "nape_to_pnae", "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"), ## NAPE + H2O <=> PNAE + DG
+    c(61, "nape_to_lnape", "M_NAPE + M_H2O <=> M_LNAPE + M_FA"), ## NAPE + H2O <=> LNAPE + FA_GPGL
+    c(62, "RHEA:45420", "M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE"), ## H2O + LNAPE = FA_GPGL + H+ + GPNAE
+    c(63, "RHEA:17505", "M_H2O + M_NAE = M_FA + M_Ethanolamine") ## H2O + NAE = FA_GPGL + Ethanolamine
 )
 
 reactions <- data.frame(order = as.numeric(reactions[, 1]), RHEA = reactions[, 2],
@@ -587,17 +587,17 @@ Gene is unknown.
 ## Run the function
 ```{r, message=FALSE, warning=FALSE}
 reactions <- rbind(
-    c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"), ## ATP + CoA + FA_SPH = PPi + AMP + CoA_SPH
+    c(1, "RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), 
     ## Block X
-    c(2, "RHEA:53424", "M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"), ## CoA_SPH + c17isosphgn <=> CoA + DHCer
-    c(3, "RHEA:44620", "M_Phosphocholine + M_DhCer = M_1,2-DG + M_DhSM"), ## Phosphocholine + DhCer = DG + DhSM
-    c(4, "RHEA:45300", "M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer"), ## H2O + DhSM = Phosphocholine + H+ + DhCer
-    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DhCer = 2 M_H2O + M_NAD + M_Cer"), ## H+ + NADH + O2 + DhCer = 2 H2O + NAD + Cer
-    c(6, "RHEA:18765", "M_Phosphocholine + M_Cer = M_1,2-DG + M_SM"), ## Phosphocholine + Cer = 1,2-DG + SM
-    c(7, "sm_to_cer", "M_H2O + M_SM = M_Phosphocholine + M_H+ + M_Cer"), ## H2O + SM = Phosphocholine + H+ + Cer
-    c(8, "RHEA:17929", "M_ATP + M_Cer = M_H+ + M_ADP + M_CerP"), ## ATP + Cer = H+ + ADP + CerP
-    c(9, "cerp_to_cer", "M_H2O + M_CerP = M_Pi + M_Cer"), ## H2O + CerP = Pi + Cer
-    c(10, "RHEA:12088", "M_UDP-Glucose + M_Cer = M_H+ + M_UDP + GlcCer") ## UDP-Glucose + Cer = H+ + UDP + GlcCer
+    c(2, "RHEA:53424", "M_AcylCoA + M_Sphinganine = M_DhCer + M_CoA + M_H+"), 
+    c(3, "RHEA:44620", "M_PC + M_DhCer = M_1,2-DG + M_DhSM"), 
+    c(4, "RHEA:45300", "M_DhSM + M_H2O = M_DhCer + M_H+ + M_Phosphocholine"), 
+    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"),
+    c(6, "RHEA:18765", "M_PC + M_Cer <=> M_1,2-DG + M_SM"),
+    c(7, "RHEA:45644", "M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine"),
+    c(8, "RHEA:17929", "M_Cer + M_ATP = M_ADP + M_CerP + M_H+"),
+    c(9, "cerp_to_cer", "M_H2O + M_CerP <=> M_Pi + M_Cer"),
+    c(10, "RHEA:12088", "M_Cer + M_UDP-Glucose = M_GlcCer + M_H+ + M_UDP")
 )
 
 reactions <- data.frame(order = as.numeric(reactions[, 1]), RHEA = reactions[, 2],
@@ -635,444 +635,476 @@ adj_GPGL <- create_reaction_adjacency_matrix(reactions_SPH)
 
 # List of implemented reactions
 
-Please find here a list of the implemented reactions. The list is 
-ordered according to their RHEA ids.
+Please find here a list of the implemented reactions. 
 
+`acyldhap_to_alkyldhap`:
+- `"RHEA:36171"`: `"M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+"`
+- `"RHEA:36172"`: `"M_AcylDHAP + M_FAO => M_AlkylDHAP + M_FA + M_H+"`
+- `"RHEA:36173"`: `"M_AcylDHAP + M_FAO <= M_AlkylDHAP + M_FA + M_H+"`
+- `"RHEA:36174"`: `"M_AcylDHAP + M_FAO <=> M_AlkylDHAP + M_FA + M_H+"`
+        
+`alkyldhap_to_lpao`:
+- `"RHEA:36175"`: `"M_AlkylDHAP + M_H+ + M_NADPH = M_LPA-O + M_NADP"`
+- `"RHEA:36176"`: `"M_AlkylDHAP + M_H+ + M_NADPH => M_LPA-O + M_NADP"`
+- `"RHEA:36177"`: `"M_AlkylDHAP + M_H+ + M_NADPH <= M_LPA-O + M_NADP"`
+- `"RHEA:36178"`: `"M_AlkylDHAP + M_H+ + M_NADPH <=> M_LPA-O + M_NADP"`
+        
 `cerp_to_cer`:
 - `"cerp_to_cer"`: `"M_H2O + M_CerP <=> M_Pi + M_Cer"`
-
-`dhcer_to_cer`
-- `"dhcer_to_cer"`: `"M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"`
-
-`sn2lpe_to_fa`:
-- `"sn2lpe_to_fa"`: `"M_H2O + M_2-LPE <=> M_H+ + M_FA + M_Glycerophosphoethanolamine"`
-
-`lpeo_to_peo`:
-- `"lpeo_to_peo"`: `"M_AcylCoA + M_ak2lgpe <=> M_CoA + M_PE-O"`
-
-`lpep_to_pep`:
-- `"RHEA:16245"`: `"M_AcylCoA + M_LPE-P = M_CoA + M_PE-P"`
-- `"RHEA:16246"`: `"M_AcylCoA + M_LPE-P => M_CoA + M_PE-P"`
-- `"RHEA:16247"`: `"M_AcylCoA + M_LPE-P <= M_CoA + M_PE-P"`
-- `"RHEA:16248"`: `"M_AcylCoA + M_LPE-P <=> M_CoA + M_PE-P"`
-    
-`sn2mg_to_sn1mg`:
-- `"sn2mg_to_sn1mg"`: `"M_2-MG <=> M_1-MG"`
-
-`nae_to_fa`:
-- `"nae_to_fa"`: `"M_H2O + M_NAE <=> M_Ethanolamine + M_H+ + M_FA"`
-    
-`nape_to_lnape`    
-- `"nape_to_lnape"`: `"M_NAPE + M_H2O <=> M_LNAPE + M_FA"`
-    
-`nape_to_nae`    
-- `"nape_to_nae"`: `"M_NAPE + M_H2O <=> M_NAE + M_PA"`
-
-`nape_to_pnae`    
-- `"nape_to_pnae"`: `"M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"`
-    
-`napeo_to_nae`    
-- `"napeo_to_nae"`: `"M_NAPEO + M_H2O <=> M_NAE + M_PA-O"`
-
-`pco_to_lpco`:      
-- `"RHEA:36231"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
-- `"RHEA:36232"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
-- `"RHEA:36233"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
-- `"RHEA:36234"`: `"M_H2O + M_PC-O <=> M_H+ + M_LPC-O + M_FA"`
-
-
-`pe_to_dg`:     
-- `"pe_to_dg"`: `"M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG"`
-    
-`pe_to_nape_sn1`:    
-- `"pe_to_nape_sn1"`: `"M_PE + M_PC <=> M_NAPE + M_2-LPC"`
-    
-`pe_to_nape_sn2`:    
-- `"pe_to_nape_sn2"`: `"M_PE + M_PC <=> M_NAPE + M_1-LPC"`
-
-`pe_to_pa`
-- `"pe_to_pa"`: `"M_H2O + M_PE <=> M_Ethanolamine + M_H+ + M_PA"`
-
-`peo_to_lpeo`:
-- `"peo_to_lpeo"`: `"M_H2O + M_PE-O <=> M_H+ + M_LPE-O + M_FA"`        
-
-`peo_to_napeo_sn1`    
-- `"peo_to_napeo_sn1"`: `"M_PE-O + M_PC <=> M_NAPEO + M_2-LPC"`
-
-`peo_to_napeo_sn2`    
-- `"peo_to_napeo_sn2"`: `"M_PE-O + M_PC <=> M_NAPEO + M_1-LPC"`
-
-`pep_to_lpep`:    
-- `"RHEA:36195"`: `"M_H2O + M_PE-P = M_H+ + M_LPE-P + M_FA"`
-- `"RHEA:36196"`: `"M_H2O + M_PE-P => M_H+ + M_LPE-P + M_FA"`
-- `"RHEA:36197"`: `"M_H2O + M_PE-P <= M_H+ + M_LPE-P + M_FA"`
-- `"RHEA:36198"`: `"M_H2O + M_PE-P <=> M_H+ + M_LPE-P + M_FA"`
-
-`pep_to_napep_sn1`:    
-- `"pep_to_napep_sn1"`: `"M_PE-P + M_PC <=> M_NAPEP + M_2-LPC"`
-
-`pep_to_napep_sn2`:    
-- `"pep_to_napep_sn2"`: `"M_PE-P + M_PC <=> M_NAPEP + M_1-LPC"`
-
-`dg_to_pa`:
-- `"RHEA:10272"`: `"M_ATP + M_1,2-DG = M_H+ + M_ADP + M_PA"`
-- `"RHEA:10273"`: `"M_ATP + M_1,2-DG => M_H+ + M_ADP + M_PA"`
-- `"RHEA:10274"`: `"M_ATP + M_1,2-DG <= M_H+ + M_ADP + M_PA"`
-- `"RHEA:10275"`: `"M_ATP + M_1,2-DG <=> M_H+ + M_ADP + M_PA"`
-
-`pc_to_dg`
-- `"RHEA:10604"`: `"M_H2O + M_PC = M_Phosphocholine + M_1,2-DG"`
-- `"RHEA:10605"`: `"M_H2O + M_PC => M_Phosphocholine + M_1,2-DG"`
-- `"RHEA:10606"`: `"M_H2O + M_PC <= M_Phosphocholine + M_1,2-DG"`
-- `"RHEA:10607"`: `"M_H2O + M_PC <=> M_Phosphocholine + M_1,2-DG"`
-
-`dg_to_tg`:
-- `"RHEA:10868"`: `"M_AcylCoA + M_1,2-DG = M_CoA + M_TG"`
-- `"RHEA:10869"`: `"M_AcylCoA + M_1,2-DG => M_CoA + M_TG"`
-- `"RHEA:10870"`: `"M_AcylCoA + M_1,2-DG <= M_CoA + M_TG"`
-- `"RHEA:10871"`: `"M_AcylCoA + M_1,2-DG <=> M_CoA + M_TG"`
-
-`cdpdg_to_pi`:
-- `"RHEA:11580"`: `"M_myo-Inositol + M_CDP-DG = M_H+ + M_CMP + M_PI"`
-- `"RHEA:11581"`: `"M_myo-Inositol + M_CDP-DG => M_H+ + M_CMP + M_PI"`
-- `"RHEA:11582"`: `"M_myo-Inositol + M_CDP-DG <= M_H+ + M_CMP + M_PI"`
-- `"RHEA:11583"`: `"M_myo-Inositol + M_CDP-DG <=> M_H+ + M_CMP + M_PI"`
-
-`cer_to_glccer`:
-- `"RHEA:12088"`: `"M_UDP-Glucose + M_Cer <=> M_H+ + M_UDP + M_GlcCer"`
-
+        
 `cdpdg_to_pgp`:
-- `"RHEA:12593"`: `"M_Glycerol-3-P + M_CDP-DG = M_H+ + M_CMP + M_pgp"`
-- `"RHEA:12594"`: `"M_Glycerol-3-P + M_CDP-DG => M_H+ + M_CMP + M_PGP"`
-- `"RHEA:12595"`: `"M_Glycerol-3-P + M_CDP-DG <= M_H+ + M_CMP + M_PGP"`
-- `"RHEA:12596"`: `"M_Glycerol-3-P + M_CDP-DG <=> M_H+ + M_CMP + M_PGP"`
+- `"RHEA:12593"`: `"M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+"`
+- `"RHEA:12594"`: `"M_CDP-DG + M_Glycerol-3-P => M_PGP + M_CMP + M_H+"`
+- `"RHEA:12595"`: `"M_CDP-DG + M_Glycerol-3-P <= M_PGP + M_CMP + M_H+"`
+- `"RHEA:12596"`: `"M_CDP-DG + M_Glycerol-3-P <=> M_PGP + M_CMP + M_H+"`
+        
+`cdpdg_to_pi`:
+- `"RHEA:11580"`: `"M_CDP-DG + M_myo-Inositol = M_PI + M_CMP + M_H+"`
+- `"RHEA:11581"`: `"M_CDP-DG + M_myo-Inositol => M_PI + M_CMP + M_H+"`
+- `"RHEA:11582"`: `"M_CDP-DG + M_myo-Inositol <= M_PI + M_CMP + M_H+"`
+- `"RHEA:11583"`: `"M_CDP-DG + M_myo-Inositol <=> M_PI + M_CMP + M_H+"`
 
+`cer_to_cerp`:
+- `"RHEA:17929"`: `"M_Cer + M_ATP = M_ADP + M_CerP + M_H+"`
+- `"RHEA:17930"`: `"M_Cer + M_ATP => M_ADP + M_CerP + M_H+"`
+- `"RHEA:17931"`: `"M_Cer + M_ATP <= M_ADP + M_CerP + M_H+"`
+- `"RHEA:17932"`: `"M_Cer + M_ATP <=> M_ADP + M_CerP + M_H+"`
+        
+`cer_to_glccer`:
+- `"RHEA:12088"`: `"M_Cer + M_UDP-Glucose = M_GlcCer + M_H+ + M_UDP"`
+- `"RHEA:12089"`: `"M_Cer + M_UDP-Glucose => M_GlcCer + M_H+ + M_UDP"`
+- `"RHEA:12090"`: `"M_Cer + M_UDP-Glucose <= M_GlcCer + M_H+ + M_UDP"`
+- `"RHEA:12091"`: `"M_Cer + M_UDP-Glucose <=> M_GlcCer + M_H+ + M_UDP"`
+        
+`cer_to_sm`:
+- `"RHEA:18765"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
+- `"RHEA:18766"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
+- `"RHEA:18767"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
+- `"RHEA:18768"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
+        
+`cl_to_lcl`:
+- `"RHEA:32935"`: `"M_CL + M_H2O = M_1,2,4-LCL + M_FA + M_H+"`
+- `"RHEA:32936"`: `"M_CL + M_H2O => M_1,2,4-LCL + M_FA + M_H+"`
+- `"RHEA:32937"`: `"M_CL + M_H2O <= M_1,2,4-LCL + M_FA + M_H+"`
+- `"RHEA:32938"`: `"M_CL + M_H2O <=> M_1,2,4-LCL + M_FA + M_H+"`
+        
+`coa_to_acdhap`:
+- `"RHEA:17657"`: `"M_AcylCoA + M_Dihydroxyacetone-P = M_AcylDHAP + M_CoA"`
+- `"RHEA:17658"`: `"M_AcylCoA + M_Dihydroxyacetone-P => M_AcylDHAP + M_CoA"`
+- `"RHEA:17659"`: `"M_AcylCoA + M_Dihydroxyacetone-P <= M_AcylDHAP + M_CoA"`
+- `"RHEA:17660"`: `"M_AcylCoA + M_Dihydroxyacetone-P <=> M_AcylDHAP + M_CoA"`
+    
+`coa_to_fao`:
+- `"RHEA:52716"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP`"
+- `"RHEA:52717"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH => M_FAO + M_CoA + 2 M_NADP"`
+- `"RHEA:52718"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH <= M_FAO + M_CoA + 2 M_NADP"`
+- `"RHEA:52719"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH <=> M_FAO + M_CoA + 2 M_NADP"`
+        
+`coa_to_lpa`:
+- `"RHEA:15325"`: `"M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA"`
+- `"RHEA:15326"`: `"M_AcylCoA + M_Glycerol-3-P => M_LPA + M_CoA"`
+- `"RHEA:15327"`: `"M_AcylCoA + M_Glycerol-3-P <= M_LPA + M_CoA"`
+- `"RHEA:15328"`: `"M_AcylCoA + M_Glycerol-3-P <=> M_LPA + M_CoA"`
+
+`dg_to_sn1mg`:
+- `"RHEA:44712"`/`"RHEA:35663"`: `"M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+"`
+- `"RHEA:44713"`/`"RHEA:35664"`: `"M_1,2-DG + M_H2O => M_1-MG + M_FA + M_H+"`
+- `"RHEA:44714"`/`"RHEA:35665"`: `"M_1,2-DG + M_H2O <= M_1-MG + M_FA + M_H+"`
+- `"RHEA:44715"`/`"RHEA:35666"`: `"M_1,2-DG + M_H2O <=> M_1-MG + M_FA + M_H+"`
+
+`dg_to_sn2mg`:
+- `"RHEA:33275"`: `"M_1,2-DG + M_H2O = M_2-MG + M_FA + M_H+"`
+- `"RHEA:33276"`: `"M_1,2-DG + M_H2O => M_2-MG + M_FA + M_H+"`
+- `"RHEA:33277"`: `"M_1,2-DG + M_H2O <= M_2-MG + M_FA + M_H+"`
+- `"RHEA:33278"`: `"M_1,2-DG + M_H2O <=> M_2-MG + M_FA + M_H+"`
+        
+`dg_to_pa`:
+- `"RHEA:10272"`: `"M_1,2-DG + M_ATP = M_PA + M_ADP + M_H+"`
+- `"RHEA:10273"`: `"M_1,2-DG + M_ATP => M_PA + M_ADP + M_H+"`
+- `"RHEA:10274"`: `"M_1,2-DG + M_ATP <= M_PA + M_ADP + M_H+"`
+- `"RHEA:10275"`: `"M_1,2-DG + M_ATP <=> M_PA + M_ADP + M_H+"`
+        
+`dg_to_pc`:
+- `"RHEA:32939"`: `"M_1,2-DG + M_CDP-Choline = M_PC + M_CMP + M_H+"`
+- `"RHEA:32940"`: `"M_1,2-DG + M_CDP-Choline => M_PC + M_CMP + M_H+"`
+- `"RHEA:32941"`: `"M_1,2-DG + M_CDP-Choline <= M_PC + M_CMP + M_H+"`
+- `"RHEA:32942"`: `"M_1,2-DG + M_CDP-Choline <=> M_PC + M_CMP + M_H+"`
+        
+`dg_to_pe`:
+- `"RHEA:32943"`: `"M_1,2-DG + M_CDP-Ethanolamine = M_PE + M_CMP + M_H+"```
+- `"RHEA:32944"`: `"M_1,2-DG + M_CDP-Ethanolamine => M_PE + M_CMP + M_H+"`
+- `"RHEA:32945"`: `"M_1,2-DG + M_CDP-Ethanolamine <= M_PE + M_CMP + M_H+"`
+- `"RHEA:32946"`: `"M_1,2-DG + M_CDP-Ethanolamine <=> M_PE + M_CMP + M_H+"`
+        
+`dg_to_tg`:
+- `"RHEA:10868"`: `"M_1,2-DG + M_AcylCoA = M_TG + M_CoA"`
+- `"RHEA:10869"`: `"M_1,2-DG + M_AcylCoA => M_TG + M_CoA"`
+- `"RHEA:10870"`: `"M_1,2-DG + M_AcylCoA <= M_TG + M_CoA"`
+- `"RHEA:10871"`: `"M_1,2-DG + M_AcylCoA <=> M_TG + M_CoA"`
+        
+`dgo_to_pco`:
+- `"RHEA:36179"`: `"M_DG-O + M_CDP-Choline = M_PC-O + M_CMP + M_H+"`
+- `"RHEA:36180"`: `"M_DG-O + M_CDP-Choline => M_PC-O + M_CMP + M_H+"`
+- `"RHEA:36181"`: `"M_DG-O + M_CDP-Choline <= M_PC-O + M_CMP + M_H+"`
+- `"RHEA:36182"`: `"M_DG-O + M_CDP-Choline <=> M_PC-O + M_CMP + M_H+"`
+        
+`dgo_to_peo`:
+- `"RHEA:36187"`: `"M_DG-O + M_CDP-Ethanolamine =  M_PE-O + M_CMP + M_H+"`
+- `"RHEA:36188"`: `"M_DG-O + M_CDP-Ethanolamine => M_PE-O + M_CMP + M_H+"`
+- `"RHEA:36189"`: `"M_DG-O + M_CDP-Ethanolamine <= M_PE-O + M_CMP + M_H+"`
+- `"RHEA:36190"`: `"M_DG-O + M_CDP-Ethanolamine <=> M_PE-O + M_CMP + M_H+"`
+        
+`dhcer_to_cer`:
+- `"dhcer_to_cer"`: `"M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"`
+        
+`dhcer_to_dhsm`:
+- `"RHEA:44620"`: `"M_PC + M_DhCer = M_1,2-DG + M_DhSM"`
+- `"RHEA:44621"`: `"M_PC + M_DhCer => M_1,2-DG + M_DhSM"`
+- `"RHEA:44622"`: `"M_PC + M_DhCer <= M_1,2-DG + M_DhSM"`
+- `"RHEA:44623"`: `"M_PC + M_DhCer <=> M_1,2-DG + M_DhSM"`
+        
+`dhsm_to_dhcer`:
+- `"RHEA:45300"`: `"M_DhSM + M_H2O = M_DhCer + M_H+ + M_Phosphocholine"`
+- `"RHEA:45301"`: `"M_DhSM + M_H2O => M_DhCer + M_H+ + M_Phosphocholine"`
+- `"RHEA:45302"`: `"M_DhSM + M_H2O <= M_DhCer + M_H+ + M_Phosphocholine"`
+- `"RHEA:45303"`: `"M_DhSM + M_H2O <=> M_DhCer + M_H+ + M_Phosphocholine"`
+        
+`fa_to_coa`:
+- `"RHEA:15421"`/`"RHEA:38883"`: `"M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"`
+- `"RHEA:15422"`/`"RHEA:38884"`: `"M_FA + M_ATP + M_CoA => M_AcylCoA + M_AMP + M_PPi"`
+- `"RHEA:15423"`/`"RHEA:38885"`: `"M_FA + M_ATP + M_CoA <= M_AcylCoA + M_AMP + M_PPi"`
+- `"RHEA:15424"`/`"RHEA:38886"`: `"M_FA + M_ATP + M_CoA <=> M_AcylCoA + M_AMP + M_PPi"`
+        
+`lcl_to_cl`:
+- `"RHEA:35839"`: `"M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA"`
+- `"RHEA:35840"`: `"M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA"`
+- `"RHEA:35841"`: `"M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA"`
+- `"RHEA:35842"`: `"M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA"`
+        
+`lnape_to_gpnae`:
+- `"RHEA:45420"`: `"M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE"`
+- `"RHEA:45421"`: `"M_H2O + M_LNAPE => M_FA + M_H+ + M_GPNAE"`
+- `"RHEA:45422"`: `"M_H2O + M_LNAPE <= M_FA + M_H+ + M_GPNAE"`
+- `"RHEA:45423"`: `"M_H2O + M_LNAPE <=> M_FA + M_H+ + M_GPNAE"`
+        
+`lpa_to_pa`:
+- `"RHEA:19709"`: `"M_LPA + M_AcylCoA = M_PA + M_CoA"`
+- `"RHEA:19710"`: `"M_LPA + M_AcylCoA => M_PA + M_CoA"`
+- `"RHEA:19711"`: `"M_LPA + M_AcylCoA <= M_PA + M_CoA"`
+- `"RHEA:19712"`: `"M_LPA + M_AcylCoA <=> M_PA + M_CoA"`
+        
+`lpao_to_pao`:
+- `"RHEA:36235"`: `"M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"`
+- `"RHEA:36236"`: `"M_LPA-O + M_AcylCoA => M_PA-O + M_CoA"`
+- `"RHEA:36237"`: `"M_LPA-O + M_AcylCoA <= M_PA-O + M_CoA"`
+- `"RHEA:36238"`: `"M_LPA-O + M_AcylCoA <=> M_PA-O + M_CoA"`
+        
+`sn1lpc_to_fa`:
+- `"RHEA:15177"`: `"M_1-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:15178"`: `"M_1-LPC + M_H2O => M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:15179"`: `"M_1-LPC + M_H2O <= M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:15180"`: `"M_1-LPC + M_H2O <=> M_FA + M_H+ + M_Glycerophosphocholine"`
+        
+`sn2lpc_to_fa`:
+- `"RHEA:44696"`: `"M_2-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:44697"`: `"M_2-LPC + M_H2O => M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:44698"`: `"M_2-LPC + M_H2O <= M_FA + M_H+ + M_Glycerophosphocholine"`
+- `"RHEA:44699"`: `"M_2-LPC + M_H2O <=> M_FA + M_H+ + M_Glycerophosphocholine"`
+        
 `sn1lpc_to_pc`:
 - `"RHEA:12937"`: `"M_1-LPC + M_AcylCoA = M_PC + M_CoA"`
 - `"RHEA:12938"`: `"M_1-LPC + M_AcylCoA => M_PC + M_CoA"`
 - `"RHEA:12939"`: `"M_1-LPC + M_AcylCoA <= M_PC + M_CoA"`
 - `"RHEA:12940"`: `"M_1-LPC + M_AcylCoA <=> M_PC + M_CoA"`
 
-`pc_to_pa`
-- `"RHEA:14445"`: `"M_H2O + M_PC = M_Choline + M_PA"`
-- `"RHEA:14446"`: `"M_H2O + M_PC => M_Choline + M_PA"`
-- `"RHEA:14447"`: `"M_H2O + M_PC <= M_Choline + M_PA"`
-- `"RHEA:14448"`: `"M_H2O + M_PC <=> M_Choline + M_PA"`
+`lpco_to_pco`:
+- `"RHEA:23992"`: `"M_1-LPC-O + M_AcylCoA = M_PC-O + M_CoA"`
+- `"RHEA:23993"`: `"M_1-LPC-O + M_AcylCoA => M_PC-O + M_CoA"`
+- `"RHEA:23994"`: `"M_1-LPC-O + M_AcylCoA <= M_PC-O + M_CoA"`
+- `"RHEA:23995"`: `"M_1-LPC-O + M_AcylCoA <=> M_PC-O + M_CoA"`
+        
+`sn1lpe_to_fa`:
+- `"RHEA:32967"`: `"M_1-LPE + M_H2O = M_FA + M_H+ + M_Glycerophosphoethanolamine"`
+- `"RHEA:32968"`: `"M_1-LPE + M_H2O => M_FA + M_H+ + M_Glycerophosphoethanolamine"`
+- `"RHEA:32969"`: `"M_1-LPE + M_H2O <= M_FA + M_H+ + M_Glycerophosphoethanolamine"`
+- `"RHEA:32970"`: `"M_1-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine"`
 
-`sn1lpc_to_fa`:
-- `"RHEA:15177"`: `"M_H2O + M_1-LPC = M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:15178"`: `"M_H2O + M_1-LPC => M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:15179"`: `"M_H2O + M_1-LPC <= M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:15180"`: `"M_H2O + M_1-LPC <=> M_Glycerophosphocholine + M_H+ + M_FA"`
+`sn2lpe_to_fa`:
+- `"sn2lpe_to_fa"`: `"M_2-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine"`
 
-`coa_to_lpa`:
-- `"RHEA:15325"`: `"M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA"`
-- `"RHEA:15326"`: `"M_Glycerol-3-P + M_AcylCoA => M_CoA + M_LPA"`
-- `"RHEA:15327"`: `"M_Glycerol-3-P + M_AcylCoA <= M_CoA + M_LPA"`
-- `"RHEA:15328"`: `"M_Glycerol-3-P + M_AcylCoA <=> M_CoA + M_LPA"`
+`sn1lpe_to_pe`:
+- `"RHEA:32995"`: `"M_1-LPE + M_AcylCoA = M_PE + M_CoA"`
+- `"RHEA:32996"`: `"M_1-LPE + M_AcylCoA => M_PE + M_CoA"`
+- `"RHEA:32997"`: `"M_1-LPE + M_AcylCoA <= M_PE + M_CoA"`
+- `"RHEA:32998"`: `"M_1-LPE + M_AcylCoA <=> M_PE + M_CoA"`
+        
+`sn1lpi_to_pi`:
+- `"RHEA:33195"`: `"M_1-LPI + M_AcylCoA = M_PI + M_CoA"`
+- `"RHEA:33196"`: `"M_1-LPI + M_AcylCoA => M_PI + M_CoA"`
+- `"RHEA:33197"`: `"M_1-LPI + M_AcylCoA <= M_PI + M_CoA"`
+- `"RHEA:33198"`: `"M_1-LPI + M_AcylCoA <=> M_PI + M_CoA"`
+        
+`lpeo_to_peo`:
+- `"lpeo_to_peo"`: `"M_AcylCoA + M_ak2lgpe <=> M_CoA + M_PE-O"`
 
-`fa_to_coa`
-- `"RHEA:15421"`/`"RHEA:38883"`: `"M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA"`
-- `"RHEA:15422"`/`"RHEA:38884"`: `"M_ATP + M_CoA + M_FA => M_PPi + M_AMP + M_AcylCoA"`
-- `"RHEA:15423"`/`"RHEA:38885"`: `"M_ATP + M_CoA + M_FA <= M_PPi + M_AMP + M_AcylCoA"`
--` "RHEA:15424"`/`"RHEA:38886"`: `"M_ATP + M_CoA + M_FA <=> M_PPi + M_AMP + M_AcylCoA"`
+`lpep_to_pep`:
+- `"RHEA:16245"`: `"M_LPE-P + M_AcylCoA = M_PE-P + M_CoA"`
+- `"RHEA:16246"`: `"M_LPE-P + M_AcylCoA => M_PE-P + M_CoA"`
+- `"RHEA:16247"`: `"M_LPE-P + M_AcylCoA <= M_PE-P + M_CoA"`
+- `"RHEA:16248"`: `"M_LPE-P + M_AcylCoA <=> M_PE-P + M_CoA"`
 
-`pc_to_sn1lpc`
-- `"RHEA:15801"`: `"M_H2O + M_PC = M_1-LPC + M_FA"`
-- `"RHEA:15802"`: `"M_H2O + M_PC => M_1-LPC + M_FA"`
-- `"RHEA:15803"`: `"M_H2O + M_PC <= M_1-LPC + M_FA"`
-- `"RHEA:15804"`: `"M_H2O + M_PC <=> M_1-LPC + M_FA"`
-
-`pa_to_cdpdg`:
-- `"RHEA:16229"`: `"M_CTP + M_PA = M_PPi + M_CDP-DG"`
-- `"RHEA:16230"`: `"M_CTP + M_PA => M_PPi + M_CDP-DG"`
-- `"RHEA:16231"`: `"M_CTP + M_PA <= M_PPi + M_CDP-DG"`
-- `"RHEA:16232"`: `"M_CTP + M_PA <=> M_PPi + M_CDP-DG"`
+`sn1mg_to_dg`:
+- `"RHEA:38463"`/`"RHEA:39943"`: `"M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"`
+- `"RHEA:38464"`/`"RHEA:39944"`: `"M_1-MG + M_AcylCoA => M_1,2-DG + M_CoA"`
+- `"RHEA:38465"`/`"RHEA:39945"`: `"M_1-MG + M_AcylCoA <= M_1,2-DG + M_CoA"`
+- `"RHEA:38466"`/`"RHEA:39946"`: `"M_1-MG + M_AcylCoA <=> M_1,2-DG + M_CoA"`
 
 `sn2mg_to_dg`:
-- `"RHEA:16741"`/`"RHEA:32947"`: `"M_AcylCoA + M_1-MG = M_CoA + M_1,2-DG"`
-- `"RHEA:16742"`/`"RHEA:32948"`: `"M_AcylCoA + M_1-MG => M_CoA + M_1,2-DG"`
-- `"RHEA:16743"`/`"RHEA:32949"`: `"M_AcylCoA + M_1-MG <= M_CoA + M_1,2-DG"`
-- `"RHEA:16744"`/`"RHEA:32950"`: `"M_AcylCoA + M_1-MG <=> M_CoA + M_1,2-DG"`
+- `"RHEA:32947"`/`"RHEA:16741"`: `"M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA"`
+- `"RHEA:32948"`/`"RHEA:16742"`: `"M_2-MG + M_AcylCoA => M_1,2-DG + M_CoA"`
+- `"RHEA:32949"`/`"RHEA:16743"`: `"M_2-MG + M_AcylCoA <= M_1,2-DG + M_CoA"`
+- `"RHEA:32950"`/`"RHEA:16744"`: `"M_2-MG + M_AcylCoA <=> M_1,2-DG + M_CoA"`
 
-`lpep_to_fal`:
-- `RHEA:16905`: `"H2O + 1-LPE-P = FAL + Glycerophosphoethanolamine"`
-- `RHEA:16906`: `"H2O + 1-LPE-P => FAL + Glycerophosphoethanolamine"`
-- `RHEA:16907`: `"H2O + 1-LPE-P <= FAL + Glycerophosphoethanolamine"`
-- `RHEA:16908`: `"H2O + 1-LPE-P <=> FAL + Glycerophosphoethanolamine"`
+`sn1mg_to_fa`:
+- `"RHEA:34019"`: `"M_1-MG + M_H2O = M_FA + M_Glycerol + M_H+"`
+- `"RHEA:34020"`: `"M_1-MG + M_H2O => M_FA + M_Glycerol + M_H+"`
+- `"RHEA:34021"`: `"M_1-MG + M_H2O <= M_FA + M_Glycerol + M_H+"`
+- `"RHEA:34022"`: `"M_1-MG + M_H2O <=> M_FA + M_Glycerol + M_H+"`
 
-`coa_to_acdhap`:
-- `"RHEA:17657"`: `"M_Dihydroxyacetone-P + M_AcylCoA = M_CoA + M_AcylDHAP"`
-- `"RHEA:17658"`: `"M_Dihydroxyacetone-P + M_AcylCoA => M_CoA + M_AcylDHAP"`
-- `"RHEA:17659"`: `"M_Dihydroxyacetone-P + M_AcylCoA <= M_CoA + M_AcylDHAP"`
-- `"RHEA:17660"`: `"M_Dihydroxyacetone-P + M_AcylCoA <=> M_CoA + M_AcylDHAP"`
+`sn2mg_to_fa`:
+- `"RHEA:32871"`: `"M_H2O + M_2-MG = M_FA + M_Glycerol + M_H+"`
+- `"RHEA:32872"`: `"M_H2O + M_2-MG => M_FA + M_Glycerol + M_H+"`
+- `"RHEA:32873"`: `"M_H2O + M_2-MG <= M_FA + M_Glycerol + M_H+"`
+- `"RHEA:32874"`: `"M_H2O + M_2-MG <=> M_FA + M_Glycerol + M_H+"`
 
-`cer_to_cerp`:
-- `"RHEA:17929"`: `"M_ATP + M_Cer <=> M_H+ + M_ADP + M_CerP"`
+`sn1mg_to_lpa`:
+- `"RHEA:33747"`: `"M_1-MG + M_ATP = M_LPA + M_ADP + M_H+"`
+- `"RHEA:33748"`: `"M_1-MG + M_ATP => M_LPA + M_ADP + M_H+"`
+- `"RHEA:33749"`: `"M_1-MG + M_ATP <= M_LPA + M_ADP + M_H+"`
+- `"RHEA:33750"`: `"M_1-MG + M_ATP <=> M_LPA + M_ADP + M_H+"`
 
-`pi_to_sn1lpi`:
-- `"RHEA:18001"`: `"M_H2O + M_PI = M_1-LPI + M_H+ + M_FA"`
-- `"RHEA:18002"`: `"M_H2O + M_PI => M_1-LPI + M_H+ + M_FA"`
-- `"RHEA:18003"`: `"M_H2O + M_PI <= M_1-LPI + M_H+ + M_FA"`
-- `"RHEA:18004"`: `"M_H2O + M_PI <=> M_1-LPI + M_H+ + M_FA"`
-            
-`pc_to_sn2lpc`
-- `"RHEA:18689"`: `"M_H2O + M_PC = M_2-LPC + M_FA"`
-- `"RHEA:18690"`: `"M_H2O + M_PC => M_2-LPC + M_FA"`
-- `"RHEA:18691"`: `"M_H2O + M_PC <= M_2-LPC + M_FA"`
-- `"RHEA:18692"`: `"M_H2O + M_PC <=> M_2-LPC + M_FA"`
+`sn2mg_to_sn1mg`:
+- `"sn2mg_to_sn1mg"`: `"M_2-MG <=> M_1-MG"`
+        
+`nae_to_fa`:
+- `"RHEA:17505"`/`"RHEA:39995"`: `"M_H2O + M_NAE = M_FA + M_Ethanolamine"`
+- `"RHEA:17506"`/`"RHEA:39996"`: `"M_H2O + M_NAE => M_FA + M_Ethanolamine"`
+- `"RHEA:17507"`/`"RHEA:39997"`: `"M_H2O + M_NAE <= M_FA + M_Ethanolamine"`
+- `"RHEA:17508"`/`"RHEA:39998"`: `"M_H2O + M_NAE <=> M_FA + M_Ethanolamine"`
+        
+`nape_to_lnape`:
+- `"nape_to_lnape"`: `"M_NAPE + M_H2O <=> M_LNAPE + M_FA"`
+        
+`nape_to_nae`:
+- `"nape_to_nae"`: `"M_NAPE + M_H2O <=> M_NAE + M_PA"`
+        
+`nape_to_pnae`:
+- `"nape_to_pnae"`: `"M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"`
+        
+`napeo_to_nae`:
+- `"napeo_to_nae"`: `"M_NAPEO + M_H2O <=> M_NAE + M_PA-O"`
+        
+`pa_to_cdpdg`:
+- `"RHEA:16229"`: `"M_PA + M_CTP + M_H+ = M_CDP-DG + M_PPi"`
+- `"RHEA:16230"`: `"M_PA + M_CTP + M_H+ => M_CDP-DG + M_PPi"`
+- `"RHEA:16231"`: `"M_PA + M_CTP + M_H+ <= M_CDP-DG + M_PPi"`
+- `"RHEA:16232"`: `"M_PA + M_CTP + M_H+ <=> M_CDP-DG + M_PPi"`
+        
+`pa_to_dg`:
+- `"RHEA:27429"`: `"M_PA + M_H2O = M_1,2-DG + M_Pi"`
+- `"RHEA:27430"`: `"M_PA + M_H2O => M_1,2-DG + M_Pi"`
+- `"RHEA:27431"`: `"M_PA + M_H2O <= M_1,2-DG + M_Pi"`
+- `"RHEA:27432"`: `"M_PA + M_H2O <=> M_1,2-DG + M_Pi"`
+        
+`pao_to_dgo`:
+- `"RHEA:36239"`: `"M_PA-O + M_H2O = M_DG-O + M_Pi"`
+- `"RHEA:36240"`: `"M_PA-O + M_H2O => M_DG-O + M_Pi"`
+- `"RHEA:36241"`: `"M_PA-O + M_H2O <= M_DG-O + M_Pi"`
+- `"RHEA:36242"`: `"M_PA-O + M_H2O <=> M_DG-O + M_Pi"`
+        
+`pc_to_dg`:
+- `"RHEA:10604"`: `"M_PC + M_H2O = M_1,2-DG + M_H+ + M_Phosphocholine"`
+- `"RHEA:10605"`: `"M_PC + M_H2O => M_1,2-DG + M_H+ + M_Phosphocholine"`
+- `"RHEA:10606"`: `"M_PC + M_H2O <= M_1,2-DG + M_H+ + M_Phosphocholine"`
+- `"RHEA:10607"`: `"M_PC + M_H2O <=> M_1,2-DG + M_H+ + M_Phosphocholine"`
+        
+`pc_to_sn1lpc`:
+- `"RHEA:15801"`: `"M_PC + M_H2O  = M_1-LPC + M_FA + M_H+"`
+- `"RHEA:15802"`: `"M_PC + M_H2O => M_1-LPC + M_FA + M_H+A"`
+- `"RHEA:15803"`: `"M_PC + M_H2O <= M_1-LPC + M_FA + M_H+"`
+- `"RHEA:15804"`: `"M_PC + M_H2O <=> M_1-LPC + M_FA + M_H+"`
+        
+`pc_to_sn2lpc`:
+- `"RHEA:18689"`: `"M_PC + M_H2O = M_2-LPC + M_FA + M_H+"`
+- `"RHEA:18690"`: `"M_PC + M_H2O => M_2-LPC + M_FA + M_H+"`
+- `"RHEA:18691"`: `"M_PC + M_H2O <= M_2-LPC + M_FA + M_H+"`
+- `"RHEA:18692"`: `"M_PC + M_H2O <=> M_2-LPC + M_FA + M_H+"`
+        
+`pc_to_pa`:
+- `"RHEA:14445"`: `"M_PC + M_H2O = M_PA + M_Choline + M_H+"`
+- `"RHEA:14446"`: `"M_PC + M_H2O => M_PA + M_Choline + M_H+"`
+- `"RHEA:14447"`: `"M_PC + M_H2O <= M_PA + M_Choline + M_H+"`
+- `"RHEA:14448"`: `"M_PC + M_H2O <=> M_PA + M_Choline + M_H+"`
+        
+`pc_to_ps`:
+- `"RHEA:45088"`: `"M_PC + M_L-Serine = M_PS + M_Choline"`
+- `"RHEA:45089"`: `"M_PC + M_L-Serine => M_PS + M_Choline"`
+- `"RHEA:45090"`: `"M_PC + M_L-Serine <= M_PS + M_Choline"`
+- `"RHEA:45091"`: `"M_PC + M_L-Serine <=> M_PS + M_Choline"`
 
-`cer_to_sm`:
-- `"RHEA:18765"`: `"M_PC + M_Cer <=> M_1,2-DG + M_SM"`
-
-`lpa_to_pa`:
-- `"RHEA:19709"`: `"M_LPA + M_AcylCoA = M_CoA + M_PA"`
-- `"RHEA:19710"`: `"M_LPA + M_AcylCoA => M_CoA + M_PA"`
-- `"RHEA:19711"`: `"M_LPA + M_AcylCoA <= M_CoA + M_PA"`
-- `"RHEA:19712"`: `"M_LPA + M_AcylCoA <=> M_CoA + M_PA"`
-
-`ps_to_pe`:
-- `"RHEA:20828"`: `"M_H+ + M_PS = M_CO2 + M_PE"`
-- `"RHEA:20829"`: `"M_H+ + M_PS => M_CO2 + M_PE"`
-- `"RHEA:20830"`: `"M_H+ + M_PS <= M_CO2 + M_PE"`
-- `"RHEA:20831"`: `"M_H+ + M_PS <=> M_CO2 + M_PE"`
-
+`pco_to_lpco`:
+- `"RHEA:36231"`: `"M_PC-O + M_H2O = M_LPC-O + M_FA + M_H+"`
+- `"RHEA:36232"`: `"M_PC-O + M_H2O => M_LPC-O + M_FA + M_H+"`
+- `"RHEA:36233"`: `"M_PC-O + M_H2O <= M_LPC-O + M_FA + M_H+"`
+- `"RHEA:36234"`: `"M_PC-O + M_H2O <=> M_LPC-O + M_FA + M_H+"`
+        
+`lpco_to_lpao`:
+- `"RHEA:39927"`: `"M_1-LPC-O + M_H2O = M_1-LPA-O + M_Choline + M_H+"`
+- `"RHEA:39928"`: `"M_1-LPC-O + M_H2O => M_1-LPA-O + M_Choline + M_H+"`
+- `"RHEA:39929"`: `"M_1-LPC-O + M_H2O <= M_1-LPA-O + M_Choline + M_H+"`
+- `"RHEA:39930"`: `"M_1-LPC-O + M_H2O <=> M_1-LPA-O + M_Choline + M_H+"`
+        
+`lpco_to_mgo`:
+- `"RHEA:36083"`: `"M_1-LPC-O + M_H2O = M_1-MG-O + M_H+ + M_Phosphocholine"`
+- `"RHEA:36084"`: `"M_1-LPC-O + M_H2O => M_1-MG-O + M_H+ + M_Phosphocholine"`
+- `"RHEA:36085"`: `"M_1-LPC-O + M_H2O <= M_1-MG-O + M_H+ + M_Phosphocholine"`
+- `"RHEA:36086"`: `"M_1-LPC-O + M_H2O <=> M_1-MG-O + M_H+ + M_Phosphocholine"`
+        
+`lpco_to_pco`:
+- `"RHEA:23992"`: `"M_1-LPC-O + M_AcylCoA = M_PC-O + M_CoA"`
+- `"RHEA:23993"`: `"M_1-LPC-O + M_AcylCoA => M_PC-O + M_CoA"`
+- `"RHEA:23994"`: `"M_1-LPC-O + M_AcylCoA <= M_PC-O + M_CoA"`
+- `"RHEA:23995"`: `"M_1-LPC-O + M_AcylCoA <=> M_PC-O + M_CoA"`
+        
+`pe_to_dg`:
+- `"RHEA:78951"`: `"M_H2O + M_PE = M_P-Ethanolamine + M_1,2-DG + M_H+"`
+- `"RHEA:78952"`: `"M_H2O + M_PE => M_P-Ethanolamine + M_1,2-DG + M_H+"`
+- `"RHEA:78953"`: `"M_H2O + M_PE <= M_P-Ethanolamine + M_1,2-DG + M_H+"`
+- `"RHEA:78954"`: `"M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG + M_H+"`
+        
+`pe_to_sn1lpe`:
+- `"RHEA:44604"`: `"M_PE + M_H2O = M_1-LPE + M_FA + M_H+"`
+- `"RHEA:44605"`: `"M_PE + M_H2O => M_1-LPE + M_FA + M_H+"`
+- `"RHEA:44606"`: `"M_PE + M_H2O <= M_1-LPE + M_FA + M_H+"`
+- `"RHEA:44607"`: `"M_PE + M_H2O <=> M_1-LPE + M_FA + M_H+"`
+        
+`pe_to_sn2lpe`:
+- `"RHEA:44408"`: `"M_PE + M_H2O = M_2-LPE + M_FA + M_H+"`
+- `"RHEA:44409"`: `"M_PE + M_H2O => M_2-LPE + M_FA + M_H+"`
+- `"RHEA:44410"`: `"M_PE + M_H2O <= M_2-LPE + M_FA + M_H+"`
+- `"RHEA:44411"`: `"M_PE + M_H2O <=> M_2-LPE + M_FA + M_H+"`
+        
+`pe_to_nape_sn1`:
+- `"RHEA:45188"`: `"M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45189"`: `"M_PC + M_PE => M_2-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45190"`: `"M_PC + M_PE <= M_2-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45191"`: `"M_PC + M_PE <=> M_2-LPC + M_H+ + M_NAPE"`
+        
+`pe_to_nape_sn2`:
+- `"RHEA:45192"`: `"M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45193"`: `"M_PC + M_PE => M_1-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45194"`: `"M_PC + M_PE <= M_1-LPC + M_H+ + M_NAPE"`
+- `"RHEA:45195"`: `"M_PC + M_PE <=> M_1-LPC + M_H+ + M_NAPE"`
+        
+`pe_to_pa`:
+- `"pe_to_pa"`: `"M_PE + M_H2O <=> M_PA + M_Ethanolamine + M_H+"`
+        
+`pe_to_ps`:
+- `"RHEA:27606"`: `"M_PE + M_L-Serine = M_PS + M_Ethanolamine"`
+- `"RHEA:27607"`: `"M_PE + M_L-Serine => M_PS + M_Ethanolamine"`
+- `"RHEA:27608"`: `"M_PE + M_L-Serine <= M_PS + M_Ethanolamine"`
+- `"RHEA:27609"`: `"M_PE + M_L-Serine <=> M_PS + M_Ethanolamine"`
+        
+`peo_to_lpeo`:
+- `"peo_to_lpeo"`: `"M_PE-O + M_H2O <=> M_LPE-O + M_FA + M_H+"`
+        
+`peo_to_napeo_sn1`:
+- `"peo_to_napeo_sn1"`: `"M_PE-O + M_PC <=> M_NAPEO + M_2-LPC"`
+        
+`peo_to_napeo_sn2`:
+- `"peo_to_napeo_sn2"`: `"M_PE-O + M_PC <=> M_NAPEO + M_1-LPC"`
+        
 `peo_to_pep`:
 - `"RHEA:22956"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 - `"RHEA:22957"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 - `"RHEA:22958"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 - `"RHEA:22959"`: `"M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O"`
 
-`lpco_to_pco`:
-- `"RHEA:23992"`: `"1-LPC-O + AcylCoA = PC-O + CoA"`
-- `"RHEA:23993"`: `"1-LPC-O + AcylCoA => PC-O + CoA"`
-- `"RHEA:23994"`: `"1-LPC-O + AcylCoA <= PC-O + CoA"`
-- `"RHEA:23995"`: `"1-LPC-O + AcylCoA <=> PC-O + CoA"`
-
-`pa_to_dg`:
-- `"RHEA:27429"`: `"M_H2O + M_PA = M_Pi + M_1,2-DG"`
-- `"RHEA:27430"`: `"M_H2O + M_PA => M_Pi + M_1,2-DG"`
-- `"RHEA:27431"`: `"M_H2O + M_PA <= M_Pi + M_1,2-DG"`
-- `"RHEA:27432"`: `"M_H2O + M_PA <=> M_Pi + M_1,2-DG"`
-
-`pe_to_ps`:
-- `"RHEA:27606"`: `"M_L-Serine + M_PE = M_Ethanolamine + M_PS"`
-- `"RHEA:27607"`: `"M_L-Serine + M_PE => M_Ethanolamine + M_PS"`
-- `"RHEA:27608"`: `"M_L-Serine + M_PE <= M_Ethanolamine + M_PS"`
-- `"RHEA:27609"`: `"M_L-Serine + M_PE <=> M_Ethanolamine + M_PS"`
-
-`sn2mg_to_fa`:
-- `"RHEA:32871"`: `"M_H2O + M_2-MG = M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:32872"`: `"M_H2O + M_2-MG => M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:32873"`: `"M_H2O + M_2-MG <= M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:32874"`: `"M_H2O + M_2-MG <=> M_Glycerol + M_H+ + M_FA"`
-
-`pg_to_cl`:
-- `"RHEA:32931"`: `"M_CDP-DG + M_PG = M_H+ + M_CMP + M_CL"`
-- `"RHEA:32932"`: `"M_CDP-DG + M_PG => M_H+ + M_CMP + M_CL"`
-- `"RHEA:32933"`: `"M_CDP-DG + M_PG <= M_H+ + M_CMP + M_CL"`
-- `"RHEA:32934"`: `"M_CDP-DG + M_PG <=> M_H+ + M_CMP + M_CL"`
-
-`cl_to_lcl`:
-- `"RHEA:32935"`: `"M_H2O + M_CL = M_1,2,4-LCL + M_H+ + M_FA"`
-- `"RHEA:32936"`: `"M_H2O + M_CL => M_1,2,4-LCL + M_H+ + M_FA"`
-- `"RHEA:32937"`: `"M_H2O + M_CL <= M_1,2,4-LCL + M_H+ + M_FA"`
-- `"RHEA:32938"`: `"M_H2O + M_CL <=> M_1,2,4-LCL + M_H+ + M_FA"`
-
-`dg_to_pc`
-- `"RHEA:32939"`: `"M_CDP-Choline + M_1,2-DG = M_H+ + M_CMP + M_PC"`
-- `"RHEA:32940"`: `"M_CDP-Choline + M_1,2-DG => M_H+ + M_CMP + M_PC"`
-- `"RHEA:32941"`: `"M_CDP-Choline + M_1,2-DG <= M_H+ + M_CMP + M_PC"`
-- `"RHEA:32942"`: `"M_CDP-Choline + M_1,2-DG <=> M_H+ + M_CMP + M_PC"`
-
-`dg_to_pe`:
-- `"RHEA:32943"`: `"M_CDP-Ethanolamine + M_1,2-DG = M_H+ + M_CMP + M_PE"`
-- `"RHEA:32944"`: `"M_CDP-Ethanolamine + M_1,2-DG => M_H+ + M_CMP + M_PE"`
-- `"RHEA:32945"`: `"M_CDP-Ethanolamine + M_1,2-DG <= M_H+ + M_CMP + M_PE"`
-- `"RHEA:32946"`: `"M_CDP-Ethanolamine + M_1,2-DG <=> M_H+ + M_CMP + M_PE"`
-
-`sn1lpe_to_fa`:
-- `"RHEA:32967"`: `"M_H2O + M_1-LPE = M_H+ + M_FA + M_Glycerophosphoethanolamine"`
-- `"RHEA:32968"`: `"M_H2O + M_1-LPE => M_H+ + M_FA + M_Glycerophosphoethanolamine"`
-- `"RHEA:32969"`: `"M_H2O + M_1-LPE <= M_H+ + M_FA + M_Glycerophosphoethanolamine"`
-- `"RHEA:32970"`: `"M_H2O + M_1-LPE <=> M_H+ + M_FA + M_Glycerophosphoethanolamine"`
-
-`sn1lpe_to_pe`:
-- `"RHEA:32995"`: `"M_AcylCoA + M_1-LPE = M_CoA + M_PE"`
-- `"RHEA:32996"`: `"M_AcylCoA + M_1-LPE => M_CoA + M_PE"`
-- `"RHEA:32997"`: `"M_AcylCoA + M_1-LPE <= M_CoA + M_PE"`
-- `"RHEA:32998"`: `"M_AcylCoA + M_1-LPE <=> M_CoA + M_PE"`
-
-`sn1lpi_to_pi`: 
-- `"RHEA:33195"`: `"M_1-LPI + M_AcylCoA = M_PI + M_CoA"`
-- `"RHEA:33196"`: `"M_1-LPI + M_AcylCoA => M_PI + M_CoA"`
-- `"RHEA:33197"`: `"M_1-LPI + M_AcylCoA <= M_PI + M_CoA"`
-- `"RHEA:33198"`: `"M_1-LPI + M_AcylCoA <=> M_PI + M_CoA"`
-
-`tg_to_dg`:
-- `"RHEA:33271"`/`"RHEA:44864"`: `"M_H2O + M_TG = M_H+ + M_FA + M_1,2-DG"`
-- `"RHEA:33272"`/`"RHEA:44865"`: `"M_H2O + M_TG => M_H+ + M_FA + M_1,2-DG"`
-- `"RHEA:33273"`/`"RHEA:44866"`: `"M_H2O + M_TG <= M_H+ + M_FA + M_1,2-DG"`
-- `"RHEA:33274"`/`"RHEA:44867"`: `"M_H2O + M_TG <=> M_H+ + M_FA + M_1,2-DG"`
-
-`dg_to_sn2mg`
-- `"RHEA:33275"`: `"M_H2O + M_1,2-DG = M_H+ + M_2-MG + M_FA"`
-- `"RHEA:33276"`: `"M_H2O + M_1,2-DG => M_H+ + M_2-MG + M_FA"`
-- `"RHEA:33277"`: `"M_H2O + M_1,2-DG <= M_H+ + M_2-MG + M_FA"`
-- `"RHEA:33278"`: `"M_H2O + M_1,2-DG <=> M_H+ + M_2-MG + M_FA"`
-
-`sn1mg_to_lpa`
-- `"RHEA:33747"`: `"M_ATP + M_1-MG = M_H+ + M_ADP + M_LPA"`
-- `"RHEA:33748"`: `"M_ATP + M_1-MG => M_H+ + M_ADP + M_LPA"`
-- `"RHEA:33749"`: `"M_ATP + M_1-MG <= M_H+ + M_ADP + M_LPA"`
-- `"RHEA:33750"`: `"M_ATP + M_1-MG <=> M_H+ + M_ADP + M_LPA"`
-
-`pgp_to_pg`:
-- `"RHEA:33751"`: `"M_H2O + M_pgp = M_Pi + M_PG"`
-- `"RHEA:33752"`: `"M_H2O + M_pgp => M_Pi + M_PG"`
-- `"RHEA:33753"`: `"M_H2O + M_pgp <= M_Pi + M_PG"`
-- `"RHEA:33754"`: `"M_H2O + M_pgp <=> M_Pi + M_PG"`
-
-`sn1mg_to_fa`:
-- `"RHEA:34019"`: `"M_H2O + M_1-MG = M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:34020"`: `"M_H2O + M_1-MG => M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:34021"`: `"M_H2O + M_1-MG <= M_Glycerol + M_H+ + M_FA"`
-- `"RHEA:34022"`: `"M_H2O + M_1-MG <=> M_Glycerol + M_H+ + M_FA"`
-
-`dg_to_sn1mg`:
-- `"RHEA:35663"`/`"RHEA:44712"`: `"M_H2O + M_1,2-DG = M_H+ + M_1-MG + M_FA"`
-- `"RHEA:35664"`/`"RHEA:44713"`: `"M_H2O + M_1,2-DG => M_H+ + M_1-MG + M_FA"`
-- `"RHEA:35665"`/`"RHEA:44714"`: `"M_H2O + M_1,2-DG <= M_H+ + M_1-MG + M_FA"`
-- `"RHEA:35666"`/`"RHEA:44715"`: `"M_H2O + M_1,2-DG <=> M_H+ + M_1-MG + M_FA"`
-
-`lcl_to_cl`:
-- `"RHEA:35839"`: `"M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA"`
-- `"RHEA:35840"`: `"M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA"`
-- `"RHEA:35841"`: `"M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA"`
-- `"RHEA:35842"`: `"M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA"`
-
-`lpco_to_mgo`:
-- `"RHEA:36083"`: `"H2O + 1-LPC-O = H+ + Phosphocholine + 1-MG-O"`
-- `"RHEA:36084"`: `"H2O + 1-LPC-O => H+ + Phosphocholine + 1-MG-O"`
-- `"RHEA:36085"`: `"H2O + 1-LPC-O <= H+ + Phosphocholine + 1-MG-O"`
-- `"RHEA:36086"`: `"H2O + 1-LPC-O <=> H+ + Phosphocholine + 1-MG-O"`
-
-`acyldhap_to_alkyldhap`:
-- `"RHEA:36171"`: `"M_AcylDHAP + M_FAO = M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36172"`: `"M_AcylDHAP + M_FAO => M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36173"`: `"M_AcylDHAP + M_FAO <= M_H+ + M_FA + M_AlkylDHAP"`
-- `"RHEA:36174"`: `"M_AcylDHAP + M_FAO <=> M_H+ + M_FA + M_AlkylDHAP"`
-
-`alkyldhap_to_lpao`:
-- `"RHEA:36175"`: `"M_H+ + M_NADPH + M_AlkylDHAP = M_LPA-O + M_NADP"`
-- `"RHEA:36176"`: `"M_H+ + M_NADPH + M_AlkylDHAP => M_LPA-O + M_NADP"`
-- `"RHEA:36177"`: `"M_H+ + M_NADPH + M_AlkylDHAP <= M_LPA-O + M_NADP"`
-- `"RHEA:36178"`: `"M_H+ + M_NADPH + M_AlkylDHAP <=> M_LPA-O + M_NADP"`
-
-`dgo_to_pco`
-- `"RHEA:36179"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
-- `"RHEA:36180"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
-- `"RHEA:36181"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
-- `"RHEA:36182"`: `"M_CDP-Choline + M_DG-O <=> M_H+ + M_CMP + M_PC-O"`
-
-`dgo_to_peo`:
-- `"RHEA:36187"`: `"M_CDP-Ethanolamine + M_DG-O = M_H+ + M_CMP + M_PE-O"`
-- `"RHEA:36188"`: `"M_CDP-Ethanolamine + M_DG-O => M_H+ + M_CMP + M_PE-O"`
-- `"RHEA:36189"`: `"M_CDP-Ethanolamine + M_DG-O <= M_H+ + M_CMP + M_PE-O"`
-- `"RHEA:36190"`: `"M_CDP-Ethanolamine + M_DG-O <=> M_H+ + M_CMP + M_PE-O"`
-
+`pep_to_lpep`:
+- `"RHEA:36195"`: `"M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+"`
+- `"RHEA:36196"`: `"M_PE-P + M_H2O => M_LPE-P + M_FA + M_H+"`
+- `"RHEA:36197"`: `"M_PE-P + M_H2O <= M_LPE-P + M_FA + M_H+"`
+- `"RHEA:36198"`: `"M_PE-P + M_H2O <=> M_LPE-P + M_FA + M_H+"`
+        
+`lpep_to_fal`:
+- `"RHEA:16905"`: `"M_1-LPE-P + M_H2O = M_FAL + M_Glycerophosphoethanolamine"`
+- `"RHEA:16906"`: `"M_1-LPE-P + M_H2O => M_FAL + M_Glycerophosphoethanolamine"`
+- `"RHEA:16907"`: `"M_1-LPE-P + M_H2O <= M_FAL + M_Glycerophosphoethanolamine"`
+- `"RHEA:16908"`: `"M_1-LPE-P + M_H2O <=> M_FAL + M_Glycerophosphoethanolamine"`
+        
 `lpep_to_lpap`:
-- `"RHEA:36203"`: `"H2O + 1-LPE-P = LPA-P + H+ + Ethanolamine"`
-- `"RHEA:36204"`: `"H2O + 1-LPE-P => LPA-P + H+ + Ethanolamine"`
-- `"RHEA:36205"`: `"H2O + 1-LPE-P <= LPA-P + H+ + Ethanolamine"`
-- `"RHEA:36206"`: `"H2O + 1-LPE-P <=> LPA-P + H+ + Ethanolamine"`
-
-`lpao_to_pao`:
-- `"RHEA:36235"`: `"M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"`
-- `"RHEA:36236"`: `"M_LPA-O + M_AcylCoA => M_PA-O + M_CoA"`
-- `"RHEA:36237"`: `"M_LPA-O + M_AcylCoA <= M_PA-O + M_CoA"`
-- `"RHEA:36238"`: `"M_LPA-O + M_AcylCoA <=> M_PA-O + M_CoA"`
+- `"RHEA:36203"`: `"M_1-LPE-P + M_H2O = M_LPA-P + M_Ethanolamine + M_H+"`
+- `"RHEA:36204"`: `"M_1-LPE-P + M_H2O => M_LPA-P + M_Ethanolamine + M_H+"`
+- `"RHEA:36205"`: `"M_1-LPE-P + M_H2O <= M_LPA-P + M_Ethanolamine + M_H+"`
+- `"RHEA:36206"`: `"M_1-LPE-P + M_H2O <=> M_LPA-P + M_Ethanolamine + M_H+"`
 
 `lpep_to_mgp`:
-- `"RHEA:36199"`: `"H2O + 1-LPE-P = Phosphoethanolamine + H+ + 1-MG-P"`
-- `"RHEA:36200"`: `"H2O + 1-LPE-P => Phosphoethanolamine + H+ + 1-MG-P"`
-- `"RHEA:36201"`: `"H2O + 1-LPE-P <= Phosphoethanolamine + H+ + 1-MG-P"`
-- `"RHEA:36202"`: `"H2O + 1-LPE-P <=> Phosphoethanolamine + H+ + 1-MG-P"`
-
-`pao_to_dgo`
-- `"RHEA:36239"`: `"M_H2O + M_PA-O = M_Pi + M_DG-O"`
-- `"RHEA:36240"`: `"M_H2O + M_PA-O => M_Pi + M_DG-O"`
-- `"RHEA:36241"`: `"M_H2O + M_PA-O <= M_Pi + M_DG-O"`
-- `"RHEA:36242"`: `"M_H2O + M_PA-O <=> M_Pi + M_DG-O"`
-
-`sn1mg_to_dg`:
-- `"RHEA:38463"`/`"RHEA:39943"`: `"M_1-MG + M_AcylCoA = M_CoA + M_1,2-DG"`
-- `"RHEA:38464"`/`"RHEA:39944"`: `"M_1-MG + M_AcylCoA => M_CoA + M_1,2-DG"`
-- `"RHEA:38465"`/`"RHEA:39945"`: `"M_1-MG + M_AcylCoA <= M_CoA + M_1,2-DG"`
-- `"RHEA:38466"`/`"RHEA:39946"`: `"M_1-MG + M_AcylCoA <=> M_CoA + M_1,2-DG"`
-
-`lpco_to_lpao`:
-- `"RHEA:39927"`: `"M_H2O + M_1-LPC-O = M_1-LPA-O + M_H+ + M_Choline"`
-- `"RHEA:39928"`: `"M_H2O + M_1-LPC-O => M_1-LPA-O + M_H+ + M_Choline"`
-- `"RHEA:39929"`: `"M_H2O + M_1-LPC-O <= M_1-LPA-O + M_H+ + M_Choline"`
-- `"RHEA:39930"`: `"M_H2O + M_1-LPC-O <=> M_1-LPA-O + M_H+ + M_Choline"`
-
-`pi_to_dg`:
-- `"RHEA:43484"`: `"M_H2O + M_PI = M_myo-Inositol-1-P + M_H+ + M_1,2-DG"`
-- `"RHEA:43485"`: `"M_H2O + M_PI => M_myo-Inositol-1-P + M_H+ + M_1,2-DG"`
-- `"RHEA:43486"`: `"M_H2O + M_PI <= M_myo-Inositol-1-P + M_H+ + M_1,2-DG"`
-- `"RHEA:43487"`: `"M_H2O + M_PI <=> M_myo-Inositol-1-P + M_H+ + M_1,2-DG"`
-
-`pe_to_sn2lpe`:
-- `"RHEA:44408"`: `"M_H2O + M_PE = M_H+ + M_FA + M_2-LPE"`
-- `"RHEA:44409"`: `"M_H2O + M_PE => M_H+ + M_FA + M_2-LPE"`
-- `"RHEA:44410"`: `"M_H2O + M_PE <= M_H+ + M_FA + M_2-LPE"`
-- `"RHEA:44411"`: `"M_H2O + M_PE <=> M_H+ + M_FA + M_2-LPE"`
-
-`pe_to_sn1lpe`:
-- `"RHEA:44604"`: `"M_H2O + M_PE = M_H+ + M_FA + M_1-LPE"`
-- `"RHEA:44605"`: `"M_H2O + M_PE => M_H+ + M_FA + M_1-LPE"`
-- `"RHEA:44606"`: `"M_H2O + M_PE <= M_H+ + M_FA + M_1-LPE"`
-- `"RHEA:44607"`: `"M_H2O + M_PE <=> M_H+ + M_FA + M_1-LPE"`
-
-`dhcer_to_dhsm`
-- `"RHEA:44620"`: `"M_PC + M_DhCer <=> M_1,2-DG + M_DhSM"`
-
-`sn2lpc_to_fa`:
-- `"RHEA:44696"`: `"M_H2O + M_2-LPC = M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:44697"`: `"M_H2O + M_2-LPC => M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:44698"`: `"M_H2O + M_2-LPC <= M_Glycerophosphocholine + M_H+ + M_FA"`
-- `"RHEA:44699"`: `"M_H2O + M_2-LPC <=> M_Glycerophosphocholine + M_H+ + M_FA"`
-
-`pc_to_ps`
-- `"RHEA:45088"`: `"M_L-Serine + M_PC = M_Choline + M_PS"`
-- `"RHEA:45089"`: `"M_L-Serine + M_PC => M_Choline + M_PS"`
-- `"RHEA:45090"`: `"M_L-Serine + M_PC <= M_Choline + M_PS"`
-- `"RHEA:45091"`: `"M_L-Serine + M_PC <=> M_Choline + M_PS"`
-
-`dhsm_to_dhcer`
-- `"RHEA:45300"`: `"M_H2O + M_DhSM = M_Phosphocholine + M_H+ + M_DhCer"`
-- `"RHEA:45301"`: `"M_H2O + M_DhSM => M_Phosphocholine + M_H+ + M_DhCer"`
-- `"RHEA:45302"`: `"M_H2O + M_DhSM <= M_Phosphocholine + M_H+ + M_DhCer"`
-- `"RHEA:45303"`: `"M_H2O + M_DhSM <=> M_Phosphocholine + M_H+ + M_DhCer"`
-
-`lnape_to_gpnae`:
-- `"RHEA:45420"`: `"M_LNAPE + M_H2O <=> M_gpnae + M_FA"`
-
-`coa_to_FAO`:
-- `"RHEA:52716"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ = M_FAO + 2 M_NADP + M_CoA"`
-- `"RHEA:52717"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ => M_FAO + 2 M_NADP + M_CoA"`
-- `"RHEA:52718"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <= M_FAO + 2 M_NADP + M_CoA"`
-- `"RHEA:52719"`: `"M_AcylCoA + 2 M_NADPH + 2 M_H+ <=> M_FAO + 2 M_NADP + M_CoA"`
-
-`sm_to_cer`:    
-- `"sm_to_cer"`: `"M_H2O + M_SM <=> M_Phosphocholine + M_H+ + M_Cer"`
-    
-`sphinga_to_dhcer`:    
-- `"RHEA:53424"`: `"M_AcylCoA + M_Sphinganine = M_CoA + M_DhCer"`
-- `"RHEA:53425"`: `"M_AcylCoA + M_Sphinganine => M_CoA + M_DhCer"`
-- `"RHEA:53426"`: `"M_AcylCoA + M_Sphinganine <= M_CoA + M_DhCer"`
-- `"RHEA:53427"`: `"M_AcylCoA + M_Sphinganine <=> M_CoA + M_DhCer"`
+- `"RHEA:36199"`: `"M_1-LPE-P + M_H2O = M_1-MG-P + M_H+ + M_Phosphoethanolamine"`
+- `"RHEA:36200"`: `"M_1-LPE-P + M_H2O => M_1-MG-P + M_H+ + M_Phosphoethanolamine"`
+- `"RHEA:36201"`: `"M_1-LPE-P + M_H2O <= M_1-MG-P + M_H+ + M_Phosphoethanolamine"`
+- `"RHEA:36202"`: `"M_1-LPE-P + M_H2O <=> M_1-MG-P + M_H+ + M_Phosphoethanolamine"`
         
+`pep_to_napep_sn1`:
+- `"pep_to_napep_sn1"`: `"M_PE-P + M_PC <=> M_NAPEP + M_2-LPC"`
 
-    
+`pep_to_napep_sn2`:
+- `"pep_to_napep_sn2"`: `"M_PE-P + M_PC <=> M_NAPEP + M_1-LPC"`
+
+`pg_to_cl`:
+- `"RHEA:32931"`: `"M_PG + M_CDP-DG = M_CL + M_CMP + M_H+"`
+- `"RHEA:32932"`: `"M_PG + M_CDP-DG => M_CL + M_CMP + M_H+"`
+- `"RHEA:32933"`: `"M_PG + M_CDP-DG <= M_CL + M_CMP + M_H+"`
+- `"RHEA:32934"`: `"M_PG + M_CDP-DG <=> M_CL + M_CMP + M_H+"`
+        
+`pgp_to_pg`:
+- `"RHEA:33751"`: `"M_PGP + M_H2O = M_PG + M_Pi"`
+- `"RHEA:33752"`: `"M_PGP + M_H2O => M_PG + M_Pi"`
+- `"RHEA:33753"`: `"M_PGP + M_H2O <= M_PG + M_Pi"`
+- `"RHEA:33754"`: `"M_PGP + M_H2O <=> M_PG + M_Pi"`
+        
+`pi_to_dg`:
+- `"RHEA:43484"`: `"M_PI + M_H2O = M_myo-Inositol-1-P + M_1,2-DG + M_H+"`
+- `"RHEA:43485"`: `"M_PI + M_H2O => M_myo-Inositol-1-P + M_1,2-DG + M_H+"`
+- `"RHEA:43486"`: `"M_PI + M_H2O <= M_myo-Inositol-1-P + M_1,2-DG + M_H+"`
+- `"RHEA:43487"`: `"M_PI + M_H2O <=> M_myo-Inositol-1-P + M_1,2-DG + M_H+"`
+        
+`pi_to_sn1lpi`:
+- `"RHEA:18001"`: `"M_PI + M_H2O = M_1-LPI + M_FA + M_H+"`
+- `"RHEA:18002"`: `"M_PI + M_H2O => M_1-LPI + M_FA + M_H+"`
+- `"RHEA:18003"`: `"M_PI + M_H2O <= M_1-LPI + M_FA + M_H+"`
+- `"RHEA:18004"`: `"M_PI + M_H2O <=> M_1-LPI + M_FA + M_H+"`
+            
+`ps_to_pe`
+- `"RHEA:20828"`: `"M_PS + M_H+ = M_PE + M_CO2"`
+- `"RHEA:20829"`: `"M_PS + M_H+ => M_PE + M_CO2"`
+- `"RHEA:20830"`: `"M_PS + M_H+ <= M_PE + M_CO2"`
+- `"RHEA:20831"`: `"M_PS + M_H+ <=> M_PE + M_CO2"`
+
+`sm_to_cer`:
+- `"RHEA:45644"`: `"M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine"`
+- `"RHEA:45644"`: `"M_H2O + M_SM => M_H+ + M_Cer + M_Phosphocholine"`
+- `"RHEA:45644"`: `"M_H2O + M_SM <= M_H+ + M_Cer + M_Phosphocholine"`
+- `"RHEA:45644"`: `"M_H2O + M_SM <=> M_H+ + M_Cer + M_Phosphocholine"`
+
+`sphinga_to_dhcer`:
+- `"RHEA:53424"`: `"M_AcylCoA + M_Sphinganine = M_DhCer + M_CoA + M_H+"`
+- `"RHEA:53425"`: `"M_AcylCoA + M_Sphinganine => M_DhCer + M_CoA + M_H+"`
+- `"RHEA:53426"`: `"M_AcylCoA + M_Sphinganine <= M_DhCer + M_CoA + M_H+"`
+- `"RHEA:53427"`: `"M_AcylCoA + M_Sphinganine <=> M_DhCer + M_CoA + M_H+"`
+
+`tg_to_dg`:
+- `"RHEA:33271"`/`"RHEA:44864"`: `"M_TG + M_H2O = M_1,2-DG + M_FA + M_H+"`
+- `"RHEA:33272"`/`"RHEA:44865"`: `"M_TG + M_H2O => M_1,2-DG + M_FA + M_H+"`
+- `"RHEA:33273"`/`"RHEA:44866"`: `"M_TG + M_H2O <= M_1,2-DG + M_FA + M_H+"`
+- `"RHEA:33274"`/`"RHEA:44867"`: `"M_TG + M_H2O <=> M_1,2-DG + M_FA + M_H+"`
+
