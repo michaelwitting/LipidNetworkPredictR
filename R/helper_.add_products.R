@@ -86,19 +86,19 @@
     }
     
     ## cer_to_cerp
-    if (reaction == "RHEA:17929") { ## cer_to_cerp
+    if (reaction %in% c("RHEA:17929", "RHEA:17930", "RHEA:17931", "RHEA:17932")) { 
         .s$CerP <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "CerP")
     }
     
     ## cer_to_glccer
-    if (reaction == "RHEA:12088") { ## cer_to_glccer
+    if (reaction %in% c("RHEA:12088", "RHEA:12089", "RHEA:12090", "RHEA:12091")) {
         .s$GlcCer <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "GlcCer")
     }
             
     ## cer_to_sm
-    if (reaction == "RHEA:18765") { ## cer_to_sm
+    if (reaction %in% c("RHEA:18765", "RHEA:18766", "RHEA:18767", "RHEA:18768")) {
         .s$SM <- stringi::stri_replace_all_fixed(str = .s$Cer, 
             pattern = "Cer", replacement = "SM")
     }
@@ -204,7 +204,7 @@
     }
 
     ## dhcer_to_dhsm
-    if (reaction == "RHEA:44620") { 
+    if (reaction %in% c("RHEA:44620", "RHEA:44621", "RHEA:44622", "RHEA:44623")) { 
         .s$DhSM <- stringi::stri_replace_all_fixed(str = .s$DhCer, 
             pattern = "Cer", replacement = "SM")
     }
@@ -243,7 +243,7 @@
     }
     
     ## lnape_to_gpnae
-    if (reaction == "RHEA:45420") { 
+    if (reaction %in% c("RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423")) { 
         .s$GPNAE <- unlist(lapply(isolate_radyls(.s$LNAPE), 
             function(f) {paste0("GPNAE(", f[3], ")")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$LNAPE), 
@@ -385,7 +385,8 @@
     }
 
     ## nae_to_fa
-    if (reaction == "nae_to_fa") {
+    if (reaction %in% c("RHEA:17505", "RHEA:17506", "RHEA:17507", "RHEA:17508",
+            "RHEA:39995", "RHEA:39996", "RHEA:39997", "RHEA:39998")) {
         .s$FA <- stringi::stri_replace_all_fixed(str = .s$NAE, pattern = "NAE", 
             replacement = "FA")
     }
@@ -510,7 +511,8 @@
             replacement = paste0("/", isolate_radyls(.s$AcylCoA), ")"))
     }
     
-    if (reaction == "pe_to_dg") {
+    ## pe_to_dg
+    if (reaction %in% c("RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954")) {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PE, pattern = "PE",
             replacement = "DG")
         .s$DG <- stringi::stri_replace_all_regex(str = .s$DG, pattern = "\\)$",
@@ -536,7 +538,7 @@
     }
     
     ## pe_to_nape_sn1
-    if (reaction == "pe_to_nape_sn1") {
+    if (reaction %in% c("RHEA:45188", "RHEA:45189", "RHEA:45190", "RHEA:45191")) {
         .s$sn2LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(0:0/", f[2], ")")}))
         .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
@@ -548,7 +550,7 @@
     }
 
     ## pe_to_nape_sn2
-    if (reaction == "pe_to_nape_sn2") {
+    if (reaction %in% c("RHEA:45192", "RHEA:45193", "RHEA:45194", "RHEA:45195")) {
         .s$sn1LPC <- unlist(lapply(isolate_radyls(.s$PC), 
             function(f) {paste0("PC(", f[1], "/0:0)")}))
         .s$NAPE <- stringi::stri_replace_all_regex(str = .s$PE, 
@@ -708,7 +710,7 @@
     }
 
     ## sm_to_cer
-    if (reaction == "sm_to_cer") {
+    if (reaction %in% c("RHEA:45644", "RHEA:45645", "RHEA:45646", "RHEA:45647")) {
         .s$Cer <- stringi::stri_replace_all_fixed(str = .s$SM, pattern = "SM",
             replacement = "Cer")
     }
