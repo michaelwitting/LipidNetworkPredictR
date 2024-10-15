@@ -23,7 +23,7 @@
 mappingTable <- function() {
     
     ## name_LipidNetworkPredictR, name_RHEA, CHEBI_ID, RHEA_ID_undetermined, RHEA_ID_left_to_right, RHEA_ID_right_to_left, RHEA_ID_both_directions
-    
+    rbind(
     ## acyldhap_to_alkyldhap
     c("M_AcylDHAP",  "a 1-acylglycerone 3-phosphate",  "CHEBI:57534", "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174"),
     c("M_FAO",       "a long chain fatty alcohol",     "CHEBI:17135", "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174"),
@@ -383,10 +383,10 @@ mappingTable <- function() {
     c("M_PA-O",  "1-O-alkyl-2-acyl-sn-glycero-3-phosphate", "CHEBI:73332", NA, NA, NA, "napeo_to_nae"),
         
     ## pa_to_cdpdg
-    ## ??????????????? wrong?
+    ## ??????????????? wrong? (H+ missing)
     c("M_PA",     "a 1,2-diacyl-sn-glycero-3-phosphate", "CHEBI:58608", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_CTP",    "CTP",                                 "CHEBI:37563", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
-    c("",         "H(+)",                                "CHEBI:15378", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
+    c("M_H+",         "H(+)",                                "CHEBI:15378", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_CDP-DG", "a CDP-1,2-diacyl-sn-glycerol",        "CHEBI:58332", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_PPi",    "diphosphate",                         "CHEBI:33019", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     
@@ -403,20 +403,20 @@ mappingTable <- function() {
     c("M_Pi",   "phosphate",                               "CHEBI:43474", "RHEA:36239", "RHEA:36240", "RHEA:36241", "RHEA:36242"),
         
     ## pc_to_dg
-    ## ??????????? wrong???
+    ## ??????????? wrong??? (misses M_H+)
     c("M_PC",             "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_H2O",            "H2O",                                      "CHEBI:15377", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_1,2-DG",         "a 1,2-diacyl-sn-glycerol",                 "CHEBI:17815", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
-    c("",                 "H(+)",                                     "CHEBI:15378", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
+    c("M_H+",                 "H(+)",                                     "CHEBI:15378", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_Phosphocholine", "phosphocholine",                           "CHEBI:295975", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
 
     ## pc_to_sn1lpc
     ## ??????????? wrong??? (no M_H+)
-    c("M_PC", "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
-    c("M_H2O", "H2O", "CHEBI:15377", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
-    c("M_1-LPC", "a 1-acyl-sn-glycero-3-phosphocholine", "CHEBI:58168", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
-    c("M_FA", "a fatty acid", "CHEBI:28868", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
-    c("", "H(+)", "CHEBI:15378", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
+    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
+    c("M_H2O",   "H2O",                                      "CHEBI:15377", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
+    c("M_1-LPC", "a 1-acyl-sn-glycero-3-phosphocholine",     "CHEBI:58168", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
+    c("M_FA",    "a fatty acid",                             "CHEBI:28868", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
+    c("M_H+",    "H(+)",                                     "CHEBI:15378", "RHEA:15801", "RHEA:15802", "RHEA:15803", "RHEA:15804"),
 
     ## pc_to_sn2lpc
     ## ??????????? wrong??? (no M_H+)
@@ -424,7 +424,7 @@ mappingTable <- function() {
     c("M_H2O",   "H2O",                                      "CHEBI:15377", "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692"),
     c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine",     "CHEBI:57875", "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692"),
     c("M_FA",    "a fatty acid",                             "CHEBI:28868", "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692"),
-    c("", "H(+)",                                     "CHEBI:15378", "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692"),
+    c("M_H+",    "H(+)",                                     "CHEBI:15378", "RHEA:18689", "RHEA:18690", "RHEA:18691", "RHEA:18692"),
         
     ## pc_to_pa
     ## ??????????? wrong??? (no M_H+)
@@ -432,7 +432,7 @@ mappingTable <- function() {
     c("M_H2O",     "H2O",                                      "CHEBI:15377", "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"),
     c("M_PA",      "a 1,2-diacyl-sn-glycero-3-phosphate",      "CHEBI:58608", "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"),
     c("M_Choline", "choline",                                  "CHEBI:15354", "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"),
-    c("",          "H(+)",                                     "CHEBI:15378", "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"),
+    c("M_H+",      "H(+)",                                     "CHEBI:15378", "RHEA:14445", "RHEA:14446", "RHEA:14447", "RHEA:14448"),
         
     ## pc_to_ps
     c("M_PC",       "a 1,2-diacyl-sn-glycero-3-phosphocholine",   "CHEBI:57643", "RHEA:45088", "RHEA:45089", "RHEA:45090", "RHEA:45091"),
@@ -629,7 +629,7 @@ mappingTable <- function() {
     c("M_PS",  "a 1,2-diacyl-sn-glycero-3-phospho-L-serine",    "CHEBI:57262", "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"),
     c("M_H+",  "H(+)",                                          "CHEBI:15378", "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"),
     c("M_PE",  "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:64612", "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"),
-    c("M_CO2", "CO2",                                           "CHEBI:16526", "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"),s
+    c("M_CO2", "CO2",                                           "CHEBI:16526", "RHEA:20828", "RHEA:20829", "RHEA:20830", "RHEA:20831"),
 
     ## sm_to_cer    
     ## was: sm_to_cer
@@ -641,12 +641,12 @@ mappingTable <- function() {
     c("M_Phosphocholine", "phosphocholine",                                   "CHEBI:295975", "RHEA:45644", "RHEA:45645", "RHEA:45646", "RHEA:45647"),
         
     ## sphinga_to_dhcer
-    ## ???????????????? wrong?
+    ## ???????????????? wrong? (missing H+)
     c("M_AcylCoA",     "a fatty acyl-CoA",         "CHEBI:77636", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
     c("M_Sphinganine", "a sphingoid base",         "CHEBI:84410", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
     c("M_DhCer",       "an N-acyl-sphingoid base", "CHEBI:83273", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
     c("M_CoA",         "CoA",                      "CHEBI:57287", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
-    c("",              "H(+)",                     "CHEBI:15378", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
+    c("M_H+",          "H(+)",                     "CHEBI:15378", "RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"),
     
     ## tg_to_dg
     c("M_TG",     "a triacyl-sn-glycerol",    "CHEBI:64615", "RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274"),
@@ -658,5 +658,5 @@ mappingTable <- function() {
     c("M_H2O",    "H2O",                   "CHEBI:15377", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"),
     c("M_1,2-DG", "a 1,2-diacylglycerol",  "CHEBI:49172", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"),
     c("M_FA",     "a fatty acid",          "CHEBI:28868", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"),
-    c("M_H+",     "H(+)",                  "CHEBI:15378", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")
+    c("M_H+",     "H(+)",                  "CHEBI:15378", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"))
 }

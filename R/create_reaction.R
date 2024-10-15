@@ -126,7 +126,7 @@
 #'     c(4, "RHEA:27429", "M_H2O + M_PA <=> M_Pi + M_1,2-DG", FALSE)
 #' )
 #' reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
-#'     reactions = reactions[, 3], directed = reactions[, 4])
+#'     reaction_formula = reactions[, 3], directed = reactions[, 4])
 #' reactions$order <- as.numeric(reactions$order)
 #' reactions$directed <- as.logical(reactions$directed)
 #' 
@@ -138,8 +138,8 @@ create_reactions <- function(substrates, reactions) {
     if (!is.list(substrates)) stop("'substrates' is not a list")
     if (!is.data.frame(reactions))
         stop("'reactions' has to be a data.frame")
-    if (!all(c("order", "RHEA", "reactions") %in% colnames(reactions)))
-        stop("'reactions' has to contain the columns 'order', 'RHEA', and 'reactions'")
+    if (!all(c("order", "RHEA", "reaction_formula") %in% colnames(reactions)))
+        stop("'reactions' has to contain the columns 'order', 'RHEA', and 'reaction_formula'")
     
     ## order the reactions according to the reaction order and check if the order 
     ## does not contain any gaps
@@ -154,12 +154,13 @@ create_reactions <- function(substrates, reactions) {
         
         ## obtain the RHEA id (key) for the entry
         rhea <- reactions$RHEA[reaction_i]
+        .template <- reactions[reaction_i, ]
         
         ## create the reaction using the given substrates from the pool of
         ## lipids (substrates is a list and will comprise the different 
         ## lipid species)
         reaction_l[[reaction_i]] <- .create_reaction(substrates = substrates, 
-            reaction = rhea)
+            template = .template, reaction = rhea)
         
         ## append the latest products that might be the substrates and append
         ## to the list

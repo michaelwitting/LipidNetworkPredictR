@@ -100,7 +100,7 @@
     }
     
     ## cerp_to_cer
-    if (reaction %in% c("RHEA:17929", "RHEA:17930", "RHEA:17931", "RHEA:17932")) {
+    if (reaction == "cerp_to_cer") {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_CerP", replacement = df_reaction[["CerP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -422,7 +422,7 @@
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-            pattern = "M_1-MG", replacement = df_reaction[["sn2MG"]])
+            pattern = "M_2-MG", replacement = df_reaction[["sn2MG"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_1,2-DG", replacement = df_reaction[["DG"]])
     }
@@ -933,9 +933,9 @@
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_H+_c ", replacement = "H+_c ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H+$", replacement = "H+")
+        pattern = "M_H[+]$", replacement = "H+")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H+_c$", replacement = "H+_c")
+        pattern = "M_H[+]_c$", replacement = "H+_c")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_Pi ", replacement = "Pi ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 

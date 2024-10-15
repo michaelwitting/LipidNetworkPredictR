@@ -5,7 +5,7 @@ test_that(".add_reaction works", {
     acyldhap <- "DHAP(18:0)"
     fao <- "FAO(16:0)"
     substrates <- list(AcylDHAP = acyldhap, FAO = fao)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AcylDHAP", "FAO", "FA", "AlkylDHAP")
     .values <- c("DHAP(18:0)", "FAO(16:0)", "FA(18:0)", "DHAP(O-16:0)")
@@ -29,7 +29,7 @@ test_that(".add_reaction works", {
     ## alkyldhap_to_lpao
     alkyldhap <- "DHAP(O-18:0)"
     substrates = list(AlkylDHAP = alkyldhap)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AlkylDHAP", "sn1LPAO")
     .values <- c("DHAP(O-18:0)", "PA(O-18:0/0:0)")
@@ -53,7 +53,7 @@ test_that(".add_reaction works", {
     ## cerp_to_cer
     cerp <- "CerP(16:0(3OH,4OH,15Me)/18:0)"
     substrates <- list(CerP = cerp)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("CerP", "Cer")
     .values <- c("CerP(16:0(3OH,4OH,15Me)/18:0)", "Cer(16:0(3OH,4OH,15Me)/18:0)")
@@ -65,7 +65,7 @@ test_that(".add_reaction works", {
     ## cdpdg_to_pgp
     cdpdg <- "CDP-DG(12:0(11Me)/14:0)"
     substrates <- list(CDPDG = cdpdg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("CDPDG", "PGP")
     .values <- c("CDP-DG(12:0(11Me)/14:0)", "PGP(12:0(11Me)/14:0)")
@@ -89,7 +89,7 @@ test_that(".add_reaction works", {
     ## cdpdg_to_pi
     cdgdg <- "CDP-DG(12:0(11Me)/14:0)"
     substrates <- list(CDPDG = cdpdg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("CDPDG", "PI")
     .values <- c("CDP-DG(12:0(11Me)/14:0)", "PI(12:0(11Me)/14:0)")
@@ -113,19 +113,31 @@ test_that(".add_reaction works", {
     ## cer_to_cerp
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
     substrates <- list(Cer = cer)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("Cer", "CerP")
     .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "CerP(16:0(3OH,4OH,15Me)/18:0)")
     df <- .add_products(substrates = df_substrates, 
-                        reaction = "RHEA:17929")
+        reaction = "RHEA:17929")
     expect_equal(names(df), .names)
-    expect_equal(as.character(unlist(df)), .values)                   
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17930")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)   
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17931")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)  
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17932")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)   
     
     ## cer_to_glccer
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
     substrates <- list(Cer = cer)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("Cer", "GlcCer")
     .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
@@ -133,11 +145,23 @@ test_that(".add_reaction works", {
         reaction = "RHEA:12088")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:12089")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:12090")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:12091")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
     
     ## cer_to_sm
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
     substrates <- list(Cer = cer)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("Cer", "SM")
     .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "SM(16:0(3OH,4OH,15Me)/18:0)")
@@ -145,11 +169,23 @@ test_that(".add_reaction works", {
         reaction = "RHEA:18765")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:18766")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:18767")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:18768")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
     
     ## cl_to_lcl
     cl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])"
     substrates <- list(CL = cl)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("CL", "LCL", "FA")
     .values <- c("CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])", 
@@ -175,7 +211,7 @@ test_that(".add_reaction works", {
     ## coa_to_acyldhap
     acylcoa <- "CoA(18:0)"
     substrates <- list(AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AcylCoA", "AcylDHAP")
     .values <- c("CoA(18:0)", "DHAP(18:0)")
@@ -199,7 +235,7 @@ test_that(".add_reaction works", {
     ## coa_to_FAO
     acylcoa <- "CoA(18:0)"
     substrates <- list(AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AcylCoA", "FAO")
     .values <- c("CoA(18:0)", "FAO(18:0)")
@@ -223,7 +259,7 @@ test_that(".add_reaction works", {
     ## coa_to_lpa
     acylcoa <- "CoA(18:0)"
     substrates <- list(AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AcylCoA", "sn1LPA")
     .values <- c("CoA(18:0)", "PA(18:0/0:0)")
@@ -247,7 +283,7 @@ test_that(".add_reaction works", {
     ## dg_to_sn1mg
     dg <- "DG(18:0/16:0/0:0)" 
     substrates <- list(DG = dg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "sn1MG", "FA")
     .values <- c("DG(18:0/16:0/0:0)", "MG(18:0/0:0/0:0)", "FA(16:0)")
@@ -287,7 +323,7 @@ test_that(".add_reaction works", {
     ## dg_to_sn2mg
     dg <- "DG(18:0/16:0/0:0)"
     substrates <- list(DG = dg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "sn2MG", "FA")
     .values <- c("DG(18:0/16:0/0:0)", "MG(0:0/16:0/0:0)", "FA(18:0)")
@@ -311,7 +347,7 @@ test_that(".add_reaction works", {
     ## dg_to_pa
     dg <- "DG(18:0/16:0/0:0)"
     substrates <- list(DG = dg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "PA")
     .values <- c("DG(18:0/16:0/0:0)", "PA(18:0/16:0)")
@@ -335,7 +371,7 @@ test_that(".add_reaction works", {
     ## dg_to_pc
     dg <- "DG(18:0/16:0/0:0)"
     substrates <- list(DG = dg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "PC")
     .values <- c("DG(18:0/16:0/0:0)", "PC(18:0/16:0)")
@@ -359,7 +395,7 @@ test_that(".add_reaction works", {
     ## dg_to_pe
     dg <- "DG(18:0/16:0/0:0)"
     substrates <- list(DG = dg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "PE")
     .values <- c("DG(18:0/16:0/0:0)", "PE(18:0/16:0)")
@@ -384,7 +420,7 @@ test_that(".add_reaction works", {
     dg <- "DG(18:0/16:0/0:0)"
     acylcoa <- "CoA(14:0)"
     substrates <- list(DG = dg, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DG", "AcylCoA", "TG")
     .values <- c("DG(18:0/16:0/0:0)", "CoA(14:0)", "TG(18:0/16:0/14:0)")
@@ -408,7 +444,7 @@ test_that(".add_reaction works", {
     ## dgo_to_pco
     dgo <- "DG(O-18:0/16:0/0:0)"
     substrates <- list(DGO = dgo)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DGO", "PCO")
     .values <- c("DG(O-18:0/16:0/0:0)", "PC(O-18:0/16:0)")
@@ -432,7 +468,7 @@ test_that(".add_reaction works", {
     ## dgo_to_peo
     dgo <- "DG(O-18:0/16:0/0:0)"
     substrates <- list(DGO = dgo)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DGO", "PEO")
     .values <- c("DG(O-18:0/16:0/0:0)", "PE(O-18:0/16:0)")
@@ -454,34 +490,45 @@ test_that(".add_reaction works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## dhcer_to_cer
-    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
+    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
     substrates <- list(DhCer = dhcer)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DhCer", "Cer")
-    .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
     df <- .add_products(substrates = df_substrates, 
         reaction = "dhcer_to_cer")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)" ###################################################
+    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)"
     substrates <- list(DhCer = dhcer)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DhCer", "DhSM")
     .values <- c("Cer(16:1(3OH,4OH,15Me)/12:0)", "SM(16:1(3OH,4OH,15Me)/12:0)")
     df <- .add_products(substrates = df_substrates, 
-                        reaction = "RHEA:44620")
+        reaction = "RHEA:44620")
     expect_equal(names(df), .names)
-    expect_equal(as.character(unlist(df)), .values)                  
-    
+    expect_equal(as.character(unlist(df)), .values)  
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:44621")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)  
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:44622")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)  
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:44623")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)  
     
     ## dhsm_to_dhcer
     dhsm <- "SM(16:1(3OH,4OH,15Me)/12:0)" ###################################################
     substrates <- list(DhSM = dhsm)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("DhSM", "DhCer")
     .values <- c("SM(16:1(3OH,4OH,15Me)/12:0)", "Cer(16:1(3OH,4OH,15Me)/12:0)")
@@ -505,7 +552,7 @@ test_that(".add_reaction works", {
     ## fa_to_coa
     fa <- "FA(18:0)"
     substrates = list(FA = fa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("FA", "AcylCoA")
     .values <- c("FA(18:0)", "CoA(18:0)")
@@ -546,7 +593,7 @@ test_that(".add_reaction works", {
     lcl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])" ###################
     acylcoa <- "CoA(18:4(6Z,9Z,12Z,15Z))"
     substrates <- list(LCL = lcl, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("LCL", "AcylCoA", "CL")
     .values <- c("CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])", 
@@ -572,12 +619,24 @@ test_that(".add_reaction works", {
     ## lnape_to_gpnae
     lnape <- "NAPE(14:0/0:0/0:0)"
     substrates <- list(LNAPE = lnape)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("LNAPE", "GPNAE", "FA")
     .values <- c("NAPE(14:0/0:0/0:0)", "GPNAE(0:0)", "FA(14:0)")
     df <- .add_products(substrates = df_substrates, 
-                        reaction = "RHEA:45420")
+        reaction = "RHEA:45420")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45421")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45422")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45423")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -585,7 +644,7 @@ test_that(".add_reaction works", {
     lpa <- "PA(18:0/0:0)"
     acylcoa <- "CoA(14:0)"
     substrates <- list(sn1LPA = lpa, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPA", "AcylCoA", "PA")
     .values <- c("PA(18:0/0:0)", "CoA(14:0)", "PA(18:0/14:0)")
@@ -610,7 +669,7 @@ test_that(".add_reaction works", {
     lpao <- "PA(O-18:0/0:0)"
     acylcoa <- "CoA(14:0)"
     substrates <- list(sn1LPAO = lpao, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPAO", "AcylCoA", "PAO")
     .values <- c("PA(O-18:0/0:0)", "CoA(14:0)", "PA(O-18:0/14:0)")
@@ -634,7 +693,7 @@ test_that(".add_reaction works", {
     ## sn1lpc_to_fa
     sn1lpc <- "PC(14:0/0:0)"
     substrates <- list(sn1LPC = sn1lpc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPC", "FA")
     .values <- c("PC(14:0/0:0)", "FA(14:0)")
@@ -658,7 +717,7 @@ test_that(".add_reaction works", {
     ## sn2lpc_to_fa
     sn2lpc <- "PC(0:0/14:0)"
     substrates <- list(sn2LPC = sn2lpc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn2LPC", "FA")
     .values <- c("PC(0:0/14:0)", "FA(14:0)")
@@ -683,7 +742,7 @@ test_that(".add_reaction works", {
     sn1lpc <- "PC(14:0/0:0)"
     acylcoa <- "CoA(18:0)"
     substrates <- list(sn1LPC = sn1lpc, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPC", "AcylCoA", "PC")
     .values <- c("PC(14:0/0:0)", "CoA(18:0)", "PC(14:0/18:0)")
@@ -707,7 +766,7 @@ test_that(".add_reaction works", {
     ## sn1lpe_to_fa
     pe <- "PE(14:0/0:0)"
     substrates <- list(sn1LPE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPE", "FA")
     .values <- c("PE(14:0/0:0)", "FA(14:0)")
@@ -731,7 +790,7 @@ test_that(".add_reaction works", {
     ## sn2lpe_to_fa
     pe <- "PE(0:0/14:0)"
     substrates <- list(sn2LPE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn2LPE", "FA")
     .values <- c("PE(0:0/14:0)", "FA(14:0)")
@@ -744,7 +803,7 @@ test_that(".add_reaction works", {
     pe <- "PE(14:0/0:0)"
     acylcoa <- "CoA(18:0)"
     substrates <- list(sn1LPE = pe, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPE", "AcylCoA", "PE")
     .values <- c("PE(14:0/0:0)", "CoA(18:0)", "PE(14:0/18:0)")
@@ -769,7 +828,7 @@ test_that(".add_reaction works", {
     sn1lpi <- "PI(16:0/0:0)"
     acylcoa <- "CoA(18:1(9Z))"
     substrates = list(sn1LPI = sn1lpi, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPI", "AcylCoA", "PI")
     .values <- c("PI(16:0/0:0)", "CoA(18:1(9Z))", "PI(16:0/18:1(9Z))")
@@ -794,7 +853,7 @@ test_that(".add_reaction works", {
     lpeo <- "PE(O-16:0/0:0)"
     acylcoa <- "CoA(18:0)"
     substrates <- list(sn1LPEO = lpeo, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPEO", "AcylCoA", "PEO")
     .values <- c("PE(O-16:0/0:0)", "CoA(18:0)", "PE(O-16:0/18:0)")
@@ -807,7 +866,7 @@ test_that(".add_reaction works", {
     lpep <- "PE(P-16:0/0:0)"
     acylcoa <- "CoA(18:0)"
     substrates <- list(sn1LPEP = lpep, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPEP", "AcylCoA", "PEP")
     .values <- c("PE(P-16:0/0:0)", "CoA(18:0)", "PE(P-16:0/18:0)")
@@ -832,7 +891,7 @@ test_that(".add_reaction works", {
     sn1mg <- "MG(14:0/0:0/0:0)"
     acylcoa <- "CoA(16:0)"
     substrates <- list(sn1MG = sn1mg, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1MG", "AcylCoA", "DG")
     .values <- c("MG(14:0/0:0/0:0)", "CoA(16:0)", "DG(14:0/16:0/0:0)")
@@ -873,7 +932,7 @@ test_that(".add_reaction works", {
     sn2mg <- "MG(0:0/14:0/0:0)"
     acylcoa <- "CoA(16:0)"
     substrates <- list(sn2MG = sn2mg, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn2MG", "AcylCoA", "DG")
     .values <- c("MG(0:0/14:0/0:0)", "CoA(16:0)", "DG(16:0/14:0/0:0)")
@@ -913,7 +972,7 @@ test_that(".add_reaction works", {
     ## sn1mg_to_fa
     sn1mg <- "MG(14:0/0:0/0:0)"
     substrates <- list(sn1MG = sn1mg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1MG", "FA")
     .values <- c("MG(14:0/0:0/0:0)", "FA(14:0)")
@@ -930,14 +989,14 @@ test_that(".add_reaction works", {
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     df <- .add_products(substrates = df_substrates, 
-                        reaction = "RHEA:34022")
+        reaction = "RHEA:34022")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
     ## sn2mg_to_fa
     sn2mg <- "MG(0:0/14:0/0:0)"
     substrates <- list(sn2MG = sn2mg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn2MG", "FA")
     .values <- c("MG(0:0/14:0/0:0)", "FA(14:0)")
@@ -961,7 +1020,7 @@ test_that(".add_reaction works", {
     ## sn1mg_to_lpa
     sn1mg <- "MG(14:0/0:0/0:0)"
     substrates <- list(sn1MG = sn1mg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1MG", "sn1LPA")
     .values <- c("MG(14:0/0:0/0:0)", "PA(14:0/0:0)")
@@ -985,7 +1044,7 @@ test_that(".add_reaction works", {
     ## sn2mg_to_sn1mg
     sn2mg <- "MG(0:0/14:0/0:0)"
     substrates = list(sn2MG = sn2mg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn2MG", "sn1MG")
     .values <- c("MG(0:0/14:0/0:0)", "MG(14:0/0:0/0:0)")
@@ -997,19 +1056,47 @@ test_that(".add_reaction works", {
     ## nae_to_fa
     nae <- "NAE(18:0)"
     substrates <- list(NAE = nae)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("NAE", "FA")
     .values <- c("NAE(18:0)", "FA(18:0)")
     df <- .add_products(substrates = df_substrates, 
-                        reaction = "nae_to_fa")
+        reaction = "RHEA:17505")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
-
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17506")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17507")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:17508")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:39995")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:39996")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:39997")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:39998")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
     ## nape_to_lnape
     nape <- "NAPE(14:0/16:0/18:0)"
     substrates = list(NAPE = nape)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("NAPE", "LNAPE", "FA")
     .values <- c("NAPE(14:0/16:0/18:0)", "NAPE(14:0/0:0/18:0)", "FA(16:0)")
@@ -1021,7 +1108,7 @@ test_that(".add_reaction works", {
     ## nape_to_nae
     nape <- "NAPE(14:0/16:0/18:0)"
     substrates = list(NAPE = nape)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("NAPE", "NAE", "PA")
     .values <- c("NAPE(14:0/16:0/18:0)", "NAE(18:0)", "PA(14:0/16:0)")
@@ -1033,7 +1120,7 @@ test_that(".add_reaction works", {
     ## nape_to_pnae
     nape <- "NAPE(14:0/16:0/18:0)"
     substrates <- list(NAPE = nape)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("NAPE", "PNAE", "DG")
     .values <- c("NAPE(14:0/16:0/18:0)", "PNAE(18:0)", "DG(14:0/16:0/0:0)")
@@ -1045,7 +1132,7 @@ test_that(".add_reaction works", {
     ## napeo_to_nae
     napeo <- "NAPE(O-18:0/16:0/14:0)"
     substrates = list(NAPEO = napeo)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("NAPEO", "NAE", "PAO")
     .values <- c("NAPE(O-18:0/16:0/14:0)", "NAE(14:0)", "PA(O-18:0/16:0)")
@@ -1057,7 +1144,7 @@ test_that(".add_reaction works", {
     ## pa_to_cdpdg
     pa <- "PA(14:0/16:0)"
     substrates <- list(PA = pa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PA", "CDPDG")
     .values <- c("PA(14:0/16:0)", "CDP-DG(14:0/16:0)")
@@ -1081,7 +1168,7 @@ test_that(".add_reaction works", {
     ## pa_to_dg
     pa <- "PA(14:0/16:0)"
     substrates = list(PA = pa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PA", "DG")
     .values <- c("PA(14:0/16:0)", "DG(14:0/16:0/0:0)")
@@ -1105,7 +1192,7 @@ test_that(".add_reaction works", {
     ## pao_to_dgo
     pa0 <- "PA(O-14:0/16:0)"
     substrates = list(PAO = pa0)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PAO", "DGO")
     .values <- c("PA(O-14:0/16:0)", "DG(O-14:0/16:0/0:0)")
@@ -1129,7 +1216,7 @@ test_that(".add_reaction works", {
     ## pc_to_dg
     pc <- "PC(20:0/18:0)"
     substrates <- list(PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PC", "DG")
     .values <- c("PC(20:0/18:0)", "DG(20:0/18:0/0:0)")
@@ -1153,7 +1240,7 @@ test_that(".add_reaction works", {
     ## pc_to_sn1lpc
     pc <- "PC(20:0/18:0)"
     substrates <- list(PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PC", "sn1LPC", "FA")
     .values <- c("PC(20:0/18:0)", "PC(20:0/0:0)", "FA(18:0)")
@@ -1177,7 +1264,7 @@ test_that(".add_reaction works", {
     ## pc_to_sn2lpc
     pc <- "PC(20:0/18:0)"
     substrates <- list(PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PC", "sn2LPC", "FA")
     .values <- c("PC(20:0/18:0)", "PC(0:0/18:0)", "FA(20:0)")
@@ -1201,7 +1288,7 @@ test_that(".add_reaction works", {
     ## pc_to_pa
     pc <- "PC(20:0/18:0)"
     substrates <- list(PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PC", "PA")
     .values <- c("PC(20:0/18:0)", "PA(20:0/18:0)")
@@ -1225,7 +1312,7 @@ test_that(".add_reaction works", {
     ## pc_to_ps
     pc <- "PC(20:0/18:0)"
     substrates <- list(PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PC", "PS")
     .values <- c("PC(20:0/18:0)", "PS(20:0/18:0)")
@@ -1249,7 +1336,7 @@ test_that(".add_reaction works", {
     ## pco_to_lpco
     pco <- "PC(O-16:0/14:0)"
     substrates <- list(PCO = pco)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PCO", "sn1LPCO", "FA")
     .values <- c("PC(O-16:0/14:0)", "PC(O-16:0/0:0)", "FA(14:0)")
@@ -1273,7 +1360,7 @@ test_that(".add_reaction works", {
     ## lpco_to_lpao
     sn1lpco <- "PC(O-16:0/0:0)"
     substrates <- list(sn1LPCO = sn1lpco)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPCO", "sn1LPAO")
     .values <- c("PC(O-16:0/0:0)", "PA(O-16:0/0:0)")
@@ -1297,7 +1384,7 @@ test_that(".add_reaction works", {
     ## lpco_to_mgo
     sn1lpco <- "PC(O-16:0/0:0)"
     substrates <- list(sn1LPCO = sn1lpco)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPCO", "sn1MGO")
     .values <- c("PC(O-16:0/0:0)", "MG(O-16:0/0:0/0:0)")
@@ -1322,7 +1409,7 @@ test_that(".add_reaction works", {
     sn1lpco <- "PC(O-16:0/0:0)"
     acylcoa <- "CoA(18:0)"
     substrates <- list(sn1LPCO = sn1lpco, AcylCoA = acylcoa)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPCO", "AcylCoA", "PCO")
     .values <- c("PC(O-16:0/0:0)", "CoA(18:0)", "PC(O-16:0/18:0)")
@@ -1346,19 +1433,31 @@ test_that(".add_reaction works", {
     ## pe_to_dg
     pe <- "PE(14:0/16:0)"
     substrates <- list(PE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "DG")
     .values <- c("PE(14:0/16:0)", "DG(14:0/16:0/0:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "pe_to_dg")
+        reaction = "RHEA:78951")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:78952")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:78953")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:78954")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
     ## pe_to_sn1lpe
     pe <- "PE(14:0/16:0)"
     substrates = list(PE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "sn1LPE", "FA")
     .values <- c("PE(14:0/16:0)", "PE(14:0/0:0)", "FA(16:0)")
@@ -1382,7 +1481,7 @@ test_that(".add_reaction works", {
     ## pe_to_sn2lpe
     pe <- "PE(14:0/16:0)"
     substrates = list(PE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "sn2LPE", "FA")
     .values <- c("PE(14:0/16:0)", "PE(0:0/14:0)", "FA(16:0)")
@@ -1407,12 +1506,24 @@ test_that(".add_reaction works", {
     pe <- "PE(14:0/16:0)"
     pc <- "PC(18:0/20:0)"
     substrates <- list(PE = pe, PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "PC", "sn2LPC", "NAPE")
     .values <- c("PE(14:0/16:0)", "PC(18:0/20:0)", "PC(0:0/20:0)", "NAPE(14:0/16:0/18:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "pe_to_nape_sn1")
+        reaction = "RHEA:45188")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45189")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45190")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45191")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -1420,19 +1531,31 @@ test_that(".add_reaction works", {
     pe <- "PE(14:0/16:0)"
     pc <- "PC(18:0/20:0)"
     substrates <- list(PE = pe, PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "PC", "sn1LPC", "NAPE")
     .values <- c("PE(14:0/16:0)", "PC(18:0/20:0)", "PC(18:0/0:0)", "NAPE(14:0/16:0/20:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "pe_to_nape_sn2")
+        reaction = "RHEA:45192")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45193")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45194")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45195")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
     ## pe_to_pa
     pe <- "PE(14:0/16:0)"
     substrates <- list(PE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "PA")
     .values <- c("PE(14:0/16:0)", "PA(14:0/16:0)")
@@ -1444,7 +1567,7 @@ test_that(".add_reaction works", {
     ## pe_to_ps
     pe <- "PE(14:0/16:0)"
     substrates <- list(PE = pe)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PE", "PS")
     .values <- c("PE(14:0/16:0)", "PS(14:0/16:0)")
@@ -1468,7 +1591,7 @@ test_that(".add_reaction works", {
     ## peo_to_lpeo
     peo <- "PE(O-16:0/14:0)"
     substrates <- list(PEO = peo)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEO", "sn1LPEO", "FA")
     .values <- c("PE(O-16:0/14:0)", "PE(O-16:0/0:0)", "FA(14:0)")
@@ -1481,7 +1604,7 @@ test_that(".add_reaction works", {
     peo <- "PE(O-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
     substrates <- list(PEO = peo, PC = pc) ################
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEO", "PC", "sn2LPC", "NAPEO") 
     .values <- c("PE(O-16:0/14:0)", "PC(20:0/18:0)", "PC(0:0/18:0)", "NAPE(O-16:0/14:0/20:0)")
@@ -1494,7 +1617,7 @@ test_that(".add_reaction works", {
     peo <- "PE(O-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
     substrates <- list(PEO = peo, PC = pc) ################
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEO", "PC", "sn1LPC", "NAPEO") ### sn2LPC??
     .values <- c("PE(O-16:0/14:0)", "PC(20:0/18:0)", "PC(20:0/0:0)", "NAPE(O-16:0/14:0/18:0)")
@@ -1506,7 +1629,7 @@ test_that(".add_reaction works", {
     ## peo_to_pep
     peo <- "PE(O-16:0/14:0)"
     substrates <- list(PEO = peo)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEO", "PEP")
     .values <- c("PE(O-16:0/14:0)", "PE(P-16:0/14:0)")
@@ -1530,7 +1653,7 @@ test_that(".add_reaction works", {
     ## pep_to_lpep
     pep <- "PE(P-16:0/14:0)"
     substrates <- list(PEP = pep)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEP", "sn1LPEP", "FA")
     .values <- c("PE(P-16:0/14:0)", "PE(P-16:0/0:0)", "FA(14:0)")
@@ -1554,7 +1677,7 @@ test_that(".add_reaction works", {
     ## lpep_to_fal
     sn1lpep <- "PE(P-16:0/0:0)"
     substrates = list(sn1LPEP = sn1lpep)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPEP", "FAL")
     .values <- c("PE(P-16:0/0:0)", "FAL(16:0)")
@@ -1578,7 +1701,7 @@ test_that(".add_reaction works", {
     ## lpep_to_lpap
     sn1lpep <- "PE(P-16:0/0:0)"
     substrates <- list(sn1LPEP = sn1lpep)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPEP", "sn1LPAP")
     .values <- c("PE(P-16:0/0:0)", "PA(P-16:0/0:0)")
@@ -1602,7 +1725,7 @@ test_that(".add_reaction works", {
     ## lpep_to_mgp
     sn1lpep <- "PE(P-16:0/0:0)"
     substrates <- list(sn1LPEP = sn1lpep)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("sn1LPEP", "sn1MGP")
     .values <- c("PE(P-16:0/0:0)", "MG(P-16:0/0:0/0:0)")
@@ -1627,7 +1750,7 @@ test_that(".add_reaction works", {
     pep <- "PE(P-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
     substrates <- list(PEP = pep, PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEP", "PC", "sn2LPC", "NAPEP")
     .values <- c("PE(P-16:0/14:0)", "PC(20:0/18:0)", "PC(0:0/18:0)", "NAPE(P-16:0/14:0/20:0)")
@@ -1640,7 +1763,7 @@ test_that(".add_reaction works", {
     pep <- "PE(P-16:0/14:0)"
     pc <- "PC(20:0/18:0)"
     substrates <- list(PEP = pep, PC = pc)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PEP", "PC", "sn1LPC", "NAPEP")
     .values <- c("PE(P-16:0/14:0)", "PC(20:0/18:0)", "PC(20:0/0:0)", "NAPE(P-16:0/14:0/18:0)")
@@ -1653,7 +1776,7 @@ test_that(".add_reaction works", {
     pg <- "PG(18:4(6Z,9Z,12Z,15Z)/14:0)"
     cdpdg <- "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)"
     substrates = list(PG = pg, CDPDG = cdpdg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PG", "CDPDG", "PGs2", "CDPDGs2", "CL")
     .values <- c("PG(18:4(6Z,9Z,12Z,15Z)/14:0)", 
@@ -1681,7 +1804,7 @@ test_that(".add_reaction works", {
     ## pgp_to_pg
     pgp <- "PGP(16:0/14:0)"
     substrates <- list(PGP = pgp)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PGP", "PG")
     .values <- c("PGP(16:0/14:0)", "PG(16:0/14:0)")
@@ -1705,7 +1828,7 @@ test_that(".add_reaction works", {
     ## pi_to_dg
     pi <- "PI(16:0/18:1(9Z))"
     substrates <- list(PI = pi)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PI", "DG")
     .values <- c("PI(16:0/18:1(9Z))", "DG(16:0/18:1(9Z))")
@@ -1729,7 +1852,7 @@ test_that(".add_reaction works", {
     ## pi_to_sn1lpi
     pi <- "PI(16:0/18:1(9Z))"
     substrates <- list(PI = pi)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PI", "sn1LPI", "FA")
     .values <- c("PI(16:0/18:1(9Z))", "PI(16:0/0:0)", "FA(18:1(9Z))")
@@ -1753,7 +1876,7 @@ test_that(".add_reaction works", {
     ## ps_to_pe
     ps <- "PS(14:0/14:0)"
     substrates = list(PS = ps)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("PS", "PE")
     .values <- c("PS(14:0/14:0)", "PE(14:0/14:0)")
@@ -1777,19 +1900,31 @@ test_that(".add_reaction works", {
     ## sm_to_cer
     sm <- "SM(16:0(3OH,4OH,15Me)/12:0)"
     substrates <- list(SM = sm)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("SM", "Cer")
     .values <- c("SM(16:0(3OH,4OH,15Me)/12:0)", "Cer(16:0(3OH,4OH,15Me)/12:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "sm_to_cer")
+        reaction = "RHEA:45644")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45645")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45646")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45647")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
     ## sphinga_to_dhcer
     acylcoa <- "CoA(12:0)" 
     substrates <- list(AcylCoA = acylcoa) #######################################
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("AcylCoA", "DhCer")
     .values <- c("CoA(12:0)", "Cer(16:0(3OH,4OH,15Me)/12:0)")
@@ -1813,7 +1948,7 @@ test_that(".add_reaction works", {
     ## tg_to_dg
     tg <- "TG(18:0/16:0/14:0)"
     substrates = list(TG = tg)
-    df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
+    df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     .names <- c("TG", "sn1Loss_DG", "sn1Loss_FA", "sn3Loss_DG", "sn3Loss_FA")
     .values <- c("TG(18:0/16:0/14:0)", "DG(14:0/16:0/0:0)", "FA(18:0)", "DG(18:0/16:0/0:0)", "FA(14:0)")
