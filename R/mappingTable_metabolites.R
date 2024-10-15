@@ -101,7 +101,7 @@ mappingTable <- function() {
     
     ## dg_to_sn1mg
     c("M_1,2-DG", "a 1,2-diacylglycerol", "CHEBI:49172", "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
-    c("M_H2O",    "H2O", "CHEBI:15377",   "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
+    c("M_H2O",    "H2O",                  "CHEBI:15377", "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
     c("M_1-MG",   "a 1-acylglycerol",     "CHEBI:35759", "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
     c("M_FA",     "a fatty acid",         "CHEBI:28868", "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
     c("M_H+",     "H(+)",                 "CHEBI:15378", "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715"),
@@ -283,7 +283,7 @@ mappingTable <- function() {
     ## is M_ak2lgpe M_LPE-O?
     ## same as peo_to_lpeo??
     c("M_AcylCoA", "an acyl-CoA",                                                     "CHEBI:58342", NA, NA, NA, "lpeo_to_peo"),
-    c("M_ak2lgpe", "",                                                                "", NA, NA, NA, "lpeo_to_peo"),
+    c("M_ak2lgpe", "",                                                                "",            NA, NA, NA, "lpeo_to_peo"),
     c("M_CoA",     "CoA",                                                             "CHEBI:57287", NA, NA, NA, "lpeo_to_peo"),
     c("M_PE-O",    "1-(1,2-saturated alkyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:75028", NA, NA, NA, "lpeo_to_peo"),
 
@@ -386,7 +386,7 @@ mappingTable <- function() {
     ## ??????????????? wrong? (H+ missing)
     c("M_PA",     "a 1,2-diacyl-sn-glycero-3-phosphate", "CHEBI:58608", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_CTP",    "CTP",                                 "CHEBI:37563", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
-    c("M_H+",         "H(+)",                                "CHEBI:15378", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
+    c("M_H+",     "H(+)",                                "CHEBI:15378", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_CDP-DG", "a CDP-1,2-diacyl-sn-glycerol",        "CHEBI:58332", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     c("M_PPi",    "diphosphate",                         "CHEBI:33019", "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232"),
     
@@ -407,7 +407,7 @@ mappingTable <- function() {
     c("M_PC",             "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_H2O",            "H2O",                                      "CHEBI:15377", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_1,2-DG",         "a 1,2-diacyl-sn-glycerol",                 "CHEBI:17815", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
-    c("M_H+",                 "H(+)",                                     "CHEBI:15378", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
+    c("M_H+",             "H(+)",                                     "CHEBI:15378", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
     c("M_Phosphocholine", "phosphocholine",                           "CHEBI:295975", "RHEA:10604", "RHEA:10605", "RHEA:10606", "RHEA:10607"),
 
     ## pc_to_sn1lpc
@@ -586,16 +586,16 @@ mappingTable <- function() {
     ## ?????????? correct?
     ## ?????????? RHEA id missing
     c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", , NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_NAPEP", "", "", NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine", "CHEBI:57875", NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643",  NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_NAPEP", "",                                         "",             NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine", "CHEBI:57875",      NA, NA, NA, "pep_to_napep_sn1"),
 
     ## pep_to_napep_sn2
     ## ?????????? correct?
     ## ?????????? RHEA id missing
     c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:77290", NA, NA, NA, "pep_to_napep_sn2"),
     c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                 "CHEBI:57643", NA, NA, NA, "pep_to_napep_sn2"),
-    c("M_NAPEP", "",                                                         "", NA, NA, NA, "pep_to_napep_sn2"),
+    c("M_NAPEP", "",                                                         "",            NA, NA, NA, "pep_to_napep_sn2"),
     c("M_1-LPC", "a 1-acyl-sn-glycero-3-phosphocholine",                     "CHEBI:58168", NA, NA, NA, "pep_to_napep_sn2"),
         
     ## pg_to_cl
