@@ -23,7 +23,10 @@
 #'     \item column "reaction_pathway" with character entry.
 #' }    
 #' 
-#' @param template NA or \code{list}
+#' If \code{template} is \code{NA} or \code{NULL}, \code{template} will be set 
+#' to an empty list.
+#' 
+#' @param template \code{list}, \code{NA} or \code{NULL}
 #' @param reaction \code{character(1)}
 #' 
 #' @return data.frame
@@ -34,50 +37,62 @@
 #' @importFrom stringi stri_replace_all_fixed stri_replace_all_regex stri_split
 #' 
 #' @examples 
-#' LipidNetworkPredictR:::.create_template(template = NA, reaction = "RHEA:15421")
-.create_template <- function(template = NA, reaction = "RHEA:15421") {
+#' LipidNetworkPredictR:::.create_template(template = list(), reaction = "RHEA:15421")
+.create_template <- function(template = list(), reaction = "RHEA:15421") {
     
-    if (is.list(template)) {
-        ## check integrity (all names are present in template)
-        if (!"reaction_name" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_name'")
-        if (!"reaction_formula" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_formula'")
-        if (!"reaction_isReversible" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_isReversible'")
-        if (!"reaction_geneAssociation" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_geneAssociation'")
-        if (!"reaction_pathway" %in% names(template)) 
-            stop("'template' has to contain the entry 'reaction_pathway'")
+    ## checks on template, convert to empty list if template is NA or NULL
+    if (length(template) == 1) {
+        if (is.na(template)) 
+            template <- list()
+    }
+    
+    if (length(template) == 0) {
+        if (is.null(template))
+            template <- list()
+    }
+
+    if (!is.list(template)) 
+        stop("'template' has to be a list")
+    
+    ## convert to list if template is a data.frame
+    if (is.data.frame(template)) {
+        template <- as.list(template)
+    }
         
-        ## all entries are of mode character
-        if (!is.vector(template$reaction_name, "character"))
-            stop("entry 'reaction_name' is not of mode 'character'")
-        if (!is.vector(template$reaction_formula, "character"))
-            stop("entry 'reaction_formula' is not of mode 'character'")
-        if (!is.vector(template$reaction_isReversible, "character"))
-            stop("entry 'reaction_isReversible' is not of mode 'character'")
-        if (!is.vector(template$reaction_geneAssociation, "character"))
-            stop("entry 'reaction_geneAssociation' is not of mode 'character'")
-        if (!is.vector(template$reaction_pathway, "character"))
-            stop("entry 'reaction_pathway' is not of mode 'character'")
-            
-        ## convert to list if template is a data.frame
-        if (is.data.frame(template)) {
-            template <- as.list(template)
-        }
+    ## write reaction to reation_RHEA entry
+    template[["reaction_RHEA"]] <- reaction
         
-    } else {
+    ## check integrity (all names are present in template)
+    if (!"reaction_name" %in% names(template)) 
+        template[["reaction_name"]] <- ""
+    if (!"reaction_isReversible" %in% names(template)) 
+        template[["reaction_isReversible"]] <- ""
+    if (!"reaction_geneAssociation" %in% names(template)) 
+        template[["reaction_geneAssociation"]] <- ""
+    if (!"reaction_pathway" %in% names(template))
+        template[["reaction_pathway"]] <- ""
+        
+    ## all entries are of mode character
+    if (!is.vector(template$reaction_name, "character"))
+        stop("entry 'reaction_name' is not of mode 'character'")
+    if (!is.vector(template$reaction_isReversible, "character"))
+        stop("entry 'reaction_isReversible' is not of mode 'character'")
+    if (!is.vector(template$reaction_geneAssociation, "character"))
+        stop("entry 'reaction_geneAssociation' is not of mode 'character'")
+    if (!is.vector(template$reaction_pathway, "character"))
+        stop("entry 'reaction_pathway' is not of mode 'character'")
+
+    if (is.null(template$reaction_formula)) {
         ## this event happens if the param template is not a list
         
         ## check if reaction is in the parameter space
         .check_reaction(reaction)
         
-        ## create a template object (list)
-        template <- list(reaction_name = "", reaction_formula = "",
-            reaction_RHEA = reaction, reaction_isReversible = "",
-            reaction_geneAssociation = "", reaction_pathway = "")
-        
+        # ## create a template object (list)
+        # template <- list(reaction_name = "", reaction_formula = "",
+        #     reaction_RHEA = reaction, reaction_isReversible = "",
+        #     reaction_geneAssociation = "", reaction_pathway = "")
+        # 
         ## depending on the reaction, write specific reaction .formula to the
         ## entry reaction_.formula
         

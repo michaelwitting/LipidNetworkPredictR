@@ -31,7 +31,7 @@
 #' substrates <- list(FA = FA)
 #' 
 #' ## create template
-#' template <- LipidNetworkPredictR:::.create_template(template = NA, 
+#' template <- LipidNetworkPredictR:::.create_template(template = list(), 
 #'     reaction = "RHEA:15421")
 #' 
 #' ## create data.frame of substrates

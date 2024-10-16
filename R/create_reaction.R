@@ -125,7 +125,7 @@
 #'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA <=> M_CoA + M_PA", FALSE),
 #'     c(4, "RHEA:27429", "M_H2O + M_PA <=> M_Pi + M_1,2-DG", FALSE)
 #' )
-#' reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
+#' reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
 #'     reaction_formula = reactions[, 3], directed = reactions[, 4])
 #' reactions$order <- as.numeric(reactions$order)
 #' reactions$directed <- as.logical(reactions$directed)
@@ -138,8 +138,10 @@ create_reactions <- function(substrates, reactions) {
     if (!is.list(substrates)) stop("'substrates' is not a list")
     if (!is.data.frame(reactions))
         stop("'reactions' has to be a data.frame")
-    if (!all(c("order", "RHEA", "reaction_formula") %in% colnames(reactions)))
-        stop("'reactions' has to contain the columns 'order', 'RHEA', and 'reaction_formula'")
+    if (!"order" %in% colnames(reactions)) 
+        stop("'reactions' has to contain the column 'order'")
+    if (!"reaction_RHEA" %in% colnames(reactions)) 
+        stop("'reactions' has to contain the column 'reaction_RHEA'")
     
     ## order the reactions according to the reaction order and check if the order 
     ## does not contain any gaps
@@ -153,7 +155,7 @@ create_reactions <- function(substrates, reactions) {
     for (reaction_i in reactions$order) {
         
         ## obtain the RHEA id (key) for the entry
-        rhea <- reactions$RHEA[reaction_i]
+        rhea <- reactions$reaction_RHEA[reaction_i]
         .template <- reactions[reaction_i, ]
         
         ## create the reaction using the given substrates from the pool of
@@ -210,8 +212,8 @@ create_reactions <- function(substrates, reactions) {
 #'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE),
 #'     c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE)
 #' )
-#' reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
-#'     reactions = reactions[, 3], directed = reactions[, 4])
+#' reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
+#'     reaction_formula = reactions[, 3], directed = reactions[, 4])
 #' reactions$order <- as.numeric(reactions$order)
 #' reactions$directed <- as.logical(reactions$directed)
 #' 
