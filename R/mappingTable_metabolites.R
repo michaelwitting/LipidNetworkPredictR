@@ -3,26 +3,23 @@
 #' @title Create a mapping table to map between LipidNetworkPredictR and RHEA metabolite names
 #' 
 #' @description 
-#' 
+#' The function returns a \code{data.frame} containing information of 
+#' corresponding features from \code{LipidNetworkPredictR}, the 
+#' \code{RHEA} database and \code{ChEBI} database.
 #' 
 #' @details 
 #' The mapping table is derived from the file 
 #' `rhea-reactions.txt`.
 #' 
-#' @param 
-#' @param 
-#' 
 #' @return data.frame
 #' 
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
-#' 
-#' @importFrom 
 #' 
 #' @examples 
 #' LipidNetworkPredictR:::mappingTable()
 mappingTable <- function() {
     
-    ## name_LipidNetworkPredictR, name_RHEA, CHEBI_ID, RHEA_ID_undetermined, RHEA_ID_left_to_right, RHEA_ID_right_to_left, RHEA_ID_both_directions
+    ## name_LipidNetworkPredictR, name_RHEA, ChEBI_ID, RHEA_ID_undetermined, RHEA_ID_left_to_right, RHEA_ID_right_to_left, RHEA_ID_both_directions
     rbind(
     ## acyldhap_to_alkyldhap
     c("M_AcylDHAP",  "a 1-acylglycerone 3-phosphate",  "CHEBI:57534", "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174"),

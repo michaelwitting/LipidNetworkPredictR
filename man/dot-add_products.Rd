@@ -35,7 +35,7 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
 substrates <- list(FA = FA)
 
 ## create template
-template <- LipidNetworkPredictR:::.create_template(template = NA, 
+template <- LipidNetworkPredictR:::.create_template(template = list(), 
     reaction = "RHEA:15421")
 
 ## create data.frame of substrates

@@ -4,10 +4,10 @@
 \alias{.create_template}
 \title{Create template with mininum information or return a given template}
 \usage{
-.create_template(template = NA, reaction = "RHEA:15421")
+.create_template(template = list(), reaction = "RHEA:15421")
 }
 \arguments{
-\item{template}{NA or \code{list}}
+\item{template}{\code{list}, \code{NA} or \code{NULL}}
 
 \item{reaction}{\code{character(1)}}
 }
@@ -33,10 +33,13 @@ for the following information:
     \item column "reaction_isReversible" with character entry, 
     \item column "reaction_geneAssociation" with character entry,
     \item column "reaction_pathway" with character entry.
-}
+}    
+
+If \code{template} is \code{NA} or \code{NULL}, \code{template} will be set 
+to an empty list.
 }
 \examples{
-LipidNetworkPredictR:::.create_template(template = NA, reaction = "RHEA:15421")
+LipidNetworkPredictR:::.create_template(template = list(), reaction = "RHEA:15421")
 }
 \author{
 Michael Witting, \email{michael.witting@helmholtz-muenchen.de}

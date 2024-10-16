@@ -1881,7 +1881,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r cer_to_sm_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin synthase",
-    reaction_formula = "M_PC + M_Cer <=> M_1,2-DG + M_SM",
+    reaction_formula = "M_PC + M_Cer = M_1,2-DG + M_SM",
     reaction_RHEA = "RHEA:18765",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00004894 or WBGene00004893 or WBGene00004892",
@@ -1908,7 +1908,7 @@ lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```{r sm_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
-    reaction_formula = "M_H2O + M_SM <=> M_H+ + M_Cer + M_Phosphocholine",
+    reaction_formula = "M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine",
     reaction_RHEA = "RHEA:45644",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00000211 or WBGene00000212 or WBGene00000213 or WBGene00012105 or WBGene00011037",

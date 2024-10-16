@@ -34,8 +34,8 @@ reactions <- rbind(
     c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE),
     c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE)
 )
-reactions <- data.frame(order = reactions[, 1], RHEA = reactions[, 2],
-    reactions = reactions[, 3], directed = reactions[, 4])
+reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
+    reaction_formula = reactions[, 3], directed = reactions[, 4])
 reactions$order <- as.numeric(reactions$order)
 reactions$directed <- as.logical(reactions$directed)
 
