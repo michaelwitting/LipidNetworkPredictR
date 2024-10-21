@@ -245,11 +245,11 @@ create_reaction_adjacency_matrix <- function(reaction_l) {
     ## products
     substrates_s <- strsplit(substrates, split = " [+] ") |>
         lapply(FUN = function(substrates_s_i) 
-            stringi::stri_replace_all_regex(substrates_s_i, 
+            stringi::stri_replace_all_regex(substrates_s_i,
                 pattern = "[0-9] ", replacement = ""))
     products_s <- strsplit(products, split = " [+] ") |>
         lapply(FUN = function(products_s_i)
-            stringi::stri_replace_all_regex(products_s_i, 
+            stringi::stri_replace_all_regex(products_s_i,
                 pattern = "[0-9] ", replacement = ""))
     substrates_products_names <- c(unlist(substrates_s), unlist(products_s)) |>
         unique() |> 
