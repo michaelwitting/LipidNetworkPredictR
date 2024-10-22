@@ -68,11 +68,11 @@
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     
     ## make new data.frame with reaction template
-    df <- .create_df_with_template(df_reaction = df_reaction, 
+    df <- .create_df_with_template(df_reaction = df_reaction,
         template = template, reaction = reaction)
     
     ## return results
-    .create_list_reactants_with_template(df_reaction = df_reaction, 
+    .create_list_reactants_with_template(df_reaction = df_reaction,
         template = df)
 }
 
@@ -100,7 +100,7 @@
 #' The column \code{RHEA} will contain the ids that are used for 
 #' matching the reaction type.
 #' 
-#' @param substrates list containing the substrates for the reaction, 
+#' @param substrates list containing the substrates for the reaction,
 #' e.g. the initial substrate for the first reaction
 #' @param reactions data.frame containing the reaction order (in the column
 #' \code{"order"}) and the RHEA id (in the column \code{"RHEA"}).
