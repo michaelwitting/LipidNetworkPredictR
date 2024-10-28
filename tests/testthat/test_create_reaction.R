@@ -116,60 +116,60 @@ test_that(".create_reaction works", {
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17930")
     expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP => ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17931")
     expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP <= ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17932")
     expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP <=> ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
     
     ## cer_to_glccer
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12088")
     expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose = GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12089")
     expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose => GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12090")
     expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose <= GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12091")
     expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose <=> GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
     
     ## cer_to_sm
     cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18765")
     expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "PC + Cer(16:0(3OH,4OH,15Me)/18:0) = DG + SM(16:0(3OH,4OH,15Me)/18:0)")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18766")
     expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "PC + Cer(16:0(3OH,4OH,15Me)/18:0) => DG + SM(16:0(3OH,4OH,15Me)/18:0)")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18767")
     expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "PC + Cer(16:0(3OH,4OH,15Me)/18:0) <= DG + SM(16:0(3OH,4OH,15Me)/18:0)")
-    reaction_l <- .create_reaction(substrates = list(Cer = cer), 
+    reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18768")
     expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
@@ -177,145 +177,145 @@ test_that(".create_reaction works", {
     
     ## cl_to_lcl
     cl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])"
-    reaction_l <- .create_reaction(substrates = list(CL = cl), 
+    reaction_l <- .create_reaction(substrates = list(CL = cl),
         template = list(), reaction = "RHEA:32935")
-    expect_equal(reaction_l[[1]]$LCL, 
+    expect_equal(reaction_l[[1]]$LCL,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(reaction_l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]) + H2O = CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]) + FA(18:4(6Z,9Z,12Z,15Z)) + H+")
     reaction_l <- .create_reaction(substrates = list(CL = cl),
         template = list(), reaction = "RHEA:32936")
-    expect_equal(reaction_l[[1]]$LCL, 
+    expect_equal(reaction_l[[1]]$LCL,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(reaction_l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]) + H2O => CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]) + FA(18:4(6Z,9Z,12Z,15Z)) + H+")
-    reaction_l <- .create_reaction(substrates = list(CL = cl), 
+    reaction_l <- .create_reaction(substrates = list(CL = cl),
         template = list(), reaction = "RHEA:32937")
-    expect_equal(reaction_l[[1]]$LCL, 
+    expect_equal(reaction_l[[1]]$LCL,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(reaction_l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]) + H2O <= CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]) + FA(18:4(6Z,9Z,12Z,15Z)) + H+")
-    reaction_l <- .create_reaction(substrates = list(CL = cl), 
+    reaction_l <- .create_reaction(substrates = list(CL = cl),
         template = list(), reaction = "RHEA:32938")
-    expect_equal(reaction_l[[1]]$LCL, 
+    expect_equal(reaction_l[[1]]$LCL,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
     expect_equal(reaction_l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]) + H2O <=> CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]) + FA(18:4(6Z,9Z,12Z,15Z)) + H+")
     
     ## coa_to_acyldhap
     acylcoa <- "CoA(18:0)"
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:17657")
     expect_equal(reaction_l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Dihydroxyacetone-P = DHAP(18:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:17658")
     expect_equal(reaction_l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Dihydroxyacetone-P => DHAP(18:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:17659")
     expect_equal(reaction_l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Dihydroxyacetone-P <= DHAP(18:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:17660")
     expect_equal(reaction_l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Dihydroxyacetone-P <=> DHAP(18:0) + CoA")
     
     ## coa_to_fao
     acylcoa <- "CoA(18:0)"
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:52716")
     expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + 2 H+ + 2 NADPH = FAO(18:0) + CoA + 2 NADP+")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:52717")
     expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + 2 H+ + 2 NADPH => FAO(18:0) + CoA + 2 NADP+")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:52718")
     expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + 2 H+ + 2 NADPH <= FAO(18:0) + CoA + 2 NADP+")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:52719")
     expect_equal(reaction_l[[1]]$FAO, "FAO(18:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + 2 H+ + 2 NADPH <=> FAO(18:0) + CoA + 2 NADP+")
     
     ## coa_to_lpa
     acylcoa <- "CoA(18:0)"
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:15325")
     expect_equal(reaction_l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Glycerol-3-P = PA(18:0/0:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:15326")
     expect_equal(reaction_l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Glycerol-3-P => PA(18:0/0:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:15327")
     expect_equal(reaction_l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Glycerol-3-P <= PA(18:0/0:0) + CoA")
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
         template = list(), reaction =  "RHEA:15328")
     expect_equal(reaction_l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "CoA(18:0) + Glycerol-3-P <=> PA(18:0/0:0) + CoA")
     
     ## dg_to_sn1mg
     dg <- "DG(18:0/16:0/0:0)" 
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:44712")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O = MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:35663")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O = MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:44713")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O => MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:35664")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O => MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:44714")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O <= MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:35665")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O <= MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:44715")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O <=> MG(18:0/0:0/0:0) + FA(16:0) + H+")
-    reaction_l <- .create_reaction(substrates = list(DG = dg), 
+    reaction_l <- .create_reaction(substrates = list(DG = dg),
         template = list(), reaction =  "RHEA:35666")
     expect_equal(reaction_l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(reaction_l[[2]]$reaction_formula, 
+    expect_equal(reaction_l[[2]]$reaction_formula,
         "DG(18:0/16:0/0:0) + H2O <=> MG(18:0/0:0/0:0) + FA(16:0) + H+")
     
     ## dg_to_sn2mg
