@@ -177,7 +177,7 @@ jobs:
           message(paste('****', Sys.time(), 'pass number 1 at installing dependencies: local dependencies ****'))
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = FALSE, upgrade = TRUE)
           
-          ## install metaboliteIDmapping and dependency IRanges
+          ## install metaboliteIDmapping and dependency IRanges 
           BiocManager::install("IRanges", source = FALSE)
           BiocManager::install("metaboliteIDmapping", source = TRUE)
         continue-on-error: true
