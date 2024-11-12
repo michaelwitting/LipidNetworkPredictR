@@ -88,14 +88,6 @@
         ## check if reaction is in the parameter space
         .check_reaction(reaction)
         
-        # ## create a template object (list)
-        # template <- list(reaction_name = "", reaction_formula = "",
-        #     reaction_RHEA = reaction, reaction_isReversible = "",
-        #     reaction_geneAssociation = "", reaction_pathway = "")
-        # 
-        ## depending on the reaction, write specific reaction .formula to the
-        ## entry reaction_.formula
-        
         ## acyldhap_to_alkyldhap
         if (reaction == "RHEA:36171") 
             .formula <- "M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+"
@@ -869,6 +861,7 @@
         template$reaction_formula <- .formula
     }
     
+    ## fill using reaction_formula
     ## split the template$reaction_formula into substrates and products 
     .formula_tmp <- template$reaction_formula
     .formula_tmp <- stringi::stri_replace_all_regex(str = .formula_tmp, 
@@ -890,6 +883,37 @@
     ## write the substrates and products to the template
     template$reaction_substrate <- .formula_substrate
     template$reaction_product <- .formula_product
+    
+    ## fill using reaction_formula_chebi
+    ## add ChEBI ids using the mapping table
+    .mappingTable <- mappingTable()
+    inds <- which(.mappingTable == reaction, arr.ind = TRUE)[, "row"]
+    .mappingTable <- .mappingTable[inds, ]
+    template$reaction_formula_chebi <- stringi::stri_replace_all_fixed(
+        str = template$reaction_formula, replacement = .mappingTable[, 3], 
+        pattern = .mappingTable[, 1], vectorize_all = FALSE)
+    
+    ## split the template$reaction_formula_chebi into substrates and products
+    .formula_tmp <- template$reaction_formula_chebi
+    .formula_tmp <- stringi::stri_replace_all_regex(str = .formula_tmp, 
+        pattern = ">|<", replacement = "")
+    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = "=")[[1]]
+    .formula_substrate <- .formula_tmp[1]
+    .formula_product <- .formula_tmp[2]
+    
+    ## remove the "+" and the trailing spaces for substrates and products
+    .formula_substrate <- stringi::stri_split(str = .formula_substrate, 
+        regex = "[ ][+][ ]")[[1]]
+    .formula_substrate <- stringi::stri_replace_all_regex(str = .formula_substrate, 
+        pattern = "^ | $", replacement = "")
+    .formula_product <- stringi::stri_split(str = .formula_product, 
+        regex = "[ ][+][ ]")[[1]]
+    .formula_product <- stringi::stri_replace_all_regex(str = .formula_product, 
+        pattern = "^ | $", replacement = "")
+    
+    ## write the substrates and products to the template
+    template$reaction_substrate_chebi <- .formula_substrate
+    template$reaction_product_chebi <- .formula_product
     
     ## return the template object
     template
