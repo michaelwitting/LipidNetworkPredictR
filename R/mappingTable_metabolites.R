@@ -20,7 +20,7 @@
 mappingTable <- function() {
     
     ## name_LipidNetworkPredictR, name_RHEA, ChEBI_ID, RHEA_ID_undetermined, RHEA_ID_left_to_right, RHEA_ID_right_to_left, RHEA_ID_both_directions
-    rbind(
+    res <- rbind(
     ## acyldhap_to_alkyldhap
     c("M_AcylDHAP",  "a 1-acylglycerone 3-phosphate",  "CHEBI:57534", "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174"),
     c("M_FAO",       "a long chain fatty alcohol",     "CHEBI:17135", "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174"),
@@ -35,6 +35,12 @@ mappingTable <- function() {
     c("M_LPA-O",     "1-O-alkyl-sn-glycero-3-phosphate", "CHEBI:58014", "RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178"),
     c("M_NADP",      "NADP(+)",                          "CHEBI:58349", "RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178"),
 
+    ## cerp_to_cer
+    c("M_H2O",  "H2O",                                 "CHEBI:15377", NA, NA, NA, "cerp_to_cer"),
+    c("M_CerP", "an N-acylsphing-4-enine 1-phosphate", "CHEBI:57674", NA, NA, NA, "cerp_to_cer"),
+    c("M_Pi",   "phosphate",                           "CHEBI:43474", NA, NA, NA, "cerp_to_cer"),
+    c("M_Cer",  "an N-acylsphing-4-enine",             "CHEBI:52639", NA, NA, NA, "cerp_to_cer"),
+    
     ## cdpdg_to_pgp
     c("M_Glycerol-3-P", "sn-glycerol 3-phosphate",                                      "CHEBI:57597", "RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596"),
     c("M_CDP-DG",       "a CDP-1,2-diacyl-sn-glycerol",                                 "CHEBI:58332", "RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596"),
@@ -582,10 +588,10 @@ mappingTable <- function() {
     ## pep_to_napep_sn1
     ## ?????????? correct?
     ## ?????????? RHEA id missing
-    c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643",  NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_NAPEP", "",                                         "",             NA, NA, NA, "pep_to_napep_sn1"),
-    c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine", "CHEBI:57875",      NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "",             NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                 "CHEBI:57643",  NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_NAPEP", "",                                                         "",             NA, NA, NA, "pep_to_napep_sn1"),
+    c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine",                     "CHEBI:57875",  NA, NA, NA, "pep_to_napep_sn1"),
 
     ## pep_to_napep_sn2
     ## ?????????? correct?
@@ -656,4 +662,12 @@ mappingTable <- function() {
     c("M_1,2-DG", "a 1,2-diacylglycerol",  "CHEBI:49172", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"),
     c("M_FA",     "a fatty acid",          "CHEBI:28868", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"),
     c("M_H+",     "H(+)",                  "CHEBI:15378", "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867"))
+    
+    ## set colnames 
+    colnames(res) <- c("name_LipidNetworkPredictR", "name_RHEA", "ChEBI_ID", 
+        "RHEA_ID_undetermined", "RHEA_ID_left_to_right", 
+        "RHEA_ID_right_to_left", "RHEA_ID_both_directions")
+    
+    ## return the object
+    res
 }
