@@ -8,7 +8,7 @@
 #' 
 #' The function returns a list of the products of the reaction (in the first
 #' entry of the returned list), together with the \code{template} with the 
-#' updated reactions (in the second entry of the returned list). 
+#' updated reactions (in the second entry of the returned list).
 #' 
 #' @details 
 #' If \code{template == NULL}, the function will load a template specific
