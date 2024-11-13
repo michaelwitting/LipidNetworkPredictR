@@ -213,7 +213,7 @@ mappingTable <- function() {
     c("M_H2O",   "H2O",                                         "CHEBI:15377", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
     c("M_LNAPE", "N,1-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:85216", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
     c("M_FA",    "a fatty acid",                                "CHEBI:28868", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
-    c("",        "H(+)",                                        "CHEBI:15378", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
+    c("M_H+",    "H(+)",                                        "CHEBI:15378", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
     c("M_GPNAE", "N-acyl-sn-glycero-3-phosphoethanolamine",     "CHEBI:85225", "RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423"),
 
     ## lpa_to_pa
@@ -239,7 +239,7 @@ mappingTable <- function() {
     c("M_2-LPC",                 "a 2-acyl-sn-glycero-3-phosphocholine", "CHEBI:57875", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
     c("M_H2O",                   "H2O",                                  "CHEBI:15377", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
     c("M_FA",                    "a fatty acid",                         "CHEBI:28868", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
-    c("M_H+ ",                   "H(+)",                                 "CHEBI:15378", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
+    c("M_H+",                    "H(+)",                                 "CHEBI:15378", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
     c("M_Glycerophosphocholine", "sn-glycerol 3-phosphocholine",         "CHEBI:16870", "RHEA:44696", "RHEA:44697", "RHEA:44698", "RHEA:44699"),
    
     ## sn1lpc_to_pc
@@ -472,11 +472,11 @@ mappingTable <- function() {
     c("M_CoA",     "CoA",                                          "CHEBI:57287", "RHEA:23992", "RHEA:23993", "RHEA:23994", "RHEA:23995"),
 
     ## pe_to_dg
-    c("M_H2O",    "H2O",                                           "CHEBI:15377", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
-    c("M_PE",     "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:64612", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
-    c("M_H2O",    "H2O",                                           "CHEBI:15377", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
-    c("M_1,2-DG", "a 1,2-diacyl-sn-glycerol",                      "CHEBI:17815", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
-    c("M_H+",     "H(+)",                                          "CHEBI:15378", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
+    c("M_H2O",            "H2O",                                           "CHEBI:15377", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
+    c("M_PE",             "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:64612", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
+    c("M_P-Ethanolamine", "phosphoethanolamine",                           "CHEBI:58190", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
+    c("M_1,2-DG",         "a 1,2-diacyl-sn-glycerol",                      "CHEBI:17815", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
+    c("M_H+",             "H(+)",                                          "CHEBI:15378", "RHEA:78951", "RHEA:78952", "RHEA:78953", "RHEA:78954"),
 
     ## pe_to_sn1lpe
     c("M_PE",    "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:64612", "RHEA:44604", "RHEA:44605", "RHEA:44606", "RHEA:44607"),
