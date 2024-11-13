@@ -1,4 +1,3 @@
-
 #' @name .create_df_with_template
 #' 
 #' @title Create data frame and substitute substrates/products
@@ -62,16 +61,24 @@
             "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")) 
         .char <- c(.char, .char)
     
-    df <- data.frame(reaction_name = .char, reaction_formula = .char,
-        reaction_isReversible = .char, reaction_geneAssociation = .char, 
-        reaction_pathway = .char)
+    df <- data.frame(
+        reaction_RHEA = .char,
+        reaction_name = .char, 
+        reaction_isReversible = .char,
+        reaction_geneAssociation = .char, 
+        reaction_pathway = .char,
+        reaction_formula = .char,
+        reaction_formula_chebi = .char
+    )
     
     ## fill with data
+    df[["reaction_RHEA"]] <- template[["reaction_RHEA"]]
     df[["reaction_name"]] <- template[["reaction_name"]]
-    df[["reaction_formula"]] <- template[["reaction_formula"]]
     df[["reaction_isReversible"]] <- template[["reaction_isReversible"]]
     df[["reaction_geneAssociation"]] <- template[["reaction_geneAssociation"]]
     df[["reaction_pathway"]] <- template[["reaction_pathway"]]
+    df[["reaction_formula"]] <- template[["reaction_formula"]]
+    df[["reaction_formula_chebi"]] <- template[["reaction_formula_chebi"]]
     
     ## get the (reaction) formula
     .formula <- df$reaction_formula
@@ -1043,7 +1050,7 @@
     df$reaction_formula <- .formula
     
     ## split the df$reaction_formula into substrates and products 
-    .formula_tmp <- stringi::stri_replace_all_regex(str = .formula, 
+    .formula_tmp <- stringi::stri_replace_all_regex(str = df$reaction_formula, 
         pattern = ">|<", replacement = "")
     .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = " = ")
     .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
@@ -1052,6 +1059,17 @@
     ## write the substrates and products to the df
     df$reaction_substrate <- .formula_substrate
     df$reaction_product <- .formula_product
+    
+    ## split the df$reaction_formula_chebi into substrates and products 
+    .formula_tmp <- stringi::stri_replace_all_regex(str = df$reaction_formula_chebi, 
+        pattern = ">|<", replacement = "")
+    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = " = ")
+    .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
+    .formula_product <- unlist(lapply(.formula_tmp, "[", 2))
+    
+    ## write the substrates and products to the df
+    df$reaction_substrate_chebi <- .formula_substrate
+    df$reaction_product_chebi <- .formula_product
     
     ## return the data.frame
     df
