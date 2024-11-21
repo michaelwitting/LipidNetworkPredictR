@@ -5493,9 +5493,9 @@ test_that("create_reactions works.", {
             "ATP + CoA + FA(14:0) = PPi + AMP + CoA(14:0)"))
     expect_equal(reactions_l[[1]][[2]]$reaction_isReversible[1:3], 
         c("unknown", "unknown", "unknown"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation[1:3], 
+    expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation[1:3],
         c("gene_1", "gene_1", "gene_1"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_pathway[1:3], 
+    expect_equal(reactions_l[[1]][[2]]$reaction_pathway[1:3],
         c("pathway_1", "pathway_1", "pathway_1"))
     expect_equal(reactions_l[[1]][[2]]$reaction_substrate[1:3],
         c("ATP + CoA + FA(16:0)", "ATP + CoA + FA(12:0)", "ATP + CoA + FA(14:0)"))
