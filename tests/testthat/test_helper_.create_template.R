@@ -255,9 +255,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Cer", "M_ATP"))
     expect_equal(template$reaction_product, c("M_ADP", "M_CerP", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 = CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 = CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:52639", "CHEBI:30616"))
-    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:52639P", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:57674", "CHEBI:15378"))
     
     reaction <- "RHEA:17930"
     template <- .create_template(template = list(), reaction = reaction)
@@ -269,9 +269,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Cer", "M_ATP"))
     expect_equal(template$reaction_product, c("M_ADP", "M_CerP", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 => CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 => CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:52639", "CHEBI:30616"))
-    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:52639P", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:57674", "CHEBI:15378"))
     
     reaction <- "RHEA:17931"
     template <- .create_template(template = list(), reaction = reaction)
@@ -283,9 +283,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Cer", "M_ATP"))
     expect_equal(template$reaction_product, c("M_ADP", "M_CerP", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <= CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <= CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:52639", "CHEBI:30616"))
-    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:52639P", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:57674", "CHEBI:15378"))
     
     reaction <- "RHEA:17932"
     template <- .create_template(template = list(), reaction = reaction)
@@ -297,9 +297,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_Cer", "M_ATP"))
     expect_equal(template$reaction_product, c("M_ADP", "M_CerP", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <=> CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(template$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <=> CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:52639", "CHEBI:30616"))
-    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:52639P", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:456216", "CHEBI:57674", "CHEBI:15378"))
     
     ## cer_to_glccer
     reaction <- "RHEA:12088"
@@ -3334,9 +3334,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
     expect_equal(template$reaction_product, c("M_P-Ethanolamine", "M_1,2-DG", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 = M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") #######
+    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 = CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:64612"))
-    expect_equal(template$reaction_product_chebi, c("M_P-Ethanolamine", "CHEBI:17815", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:58190", "CHEBI:17815", "CHEBI:15378"))
     
     reaction <- "RHEA:78952"
     template <- .create_template(template = list(), reaction = reaction)
@@ -3348,9 +3348,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
     expect_equal(template$reaction_product, c("M_P-Ethanolamine", "M_1,2-DG", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 => M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") #######
+    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 => CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:64612"))
-    expect_equal(template$reaction_product_chebi, c("M_P-Ethanolamine", "CHEBI:17815", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:58190", "CHEBI:17815", "CHEBI:15378"))
     
     reaction <- "RHEA:78953"
     template <- .create_template(template = list(), reaction = reaction)
@@ -3362,9 +3362,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
     expect_equal(template$reaction_product, c("M_P-Ethanolamine", "M_1,2-DG", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <= M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") #######
+    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <= CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:64612"))
-    expect_equal(template$reaction_product_chebi, c("M_P-Ethanolamine", "CHEBI:17815", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:58190", "CHEBI:17815", "CHEBI:15378"))
     
     reaction <- "RHEA:78954"
     template <- .create_template(template = list(), reaction = reaction)
@@ -3376,9 +3376,9 @@ test_that(".create_template works", {
     expect_equal(template$reaction_pathway, "")
     expect_equal(template$reaction_substrate, c("M_H2O", "M_PE"))
     expect_equal(template$reaction_product, c("M_P-Ethanolamine", "M_1,2-DG", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <=> M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") #######
+    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <=> CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:64612"))
-    expect_equal(template$reaction_product_chebi, c("M_P-Ethanolamine", "CHEBI:17815", "CHEBI:15378"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:58190", "CHEBI:17815", "CHEBI:15378"))
     
     ## pe_to_sn1lpe
     reaction <- "RHEA:44604"
