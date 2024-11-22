@@ -889,27 +889,36 @@
     .mappingTable <- mappingTable()
     inds <- which(.mappingTable == reaction, arr.ind = TRUE)[, "row"]
     .mappingTable <- .mappingTable[inds, ]
-    template$reaction_formula_chebi <- stringi::stri_replace_all_fixed(
-        str = template$reaction_formula, replacement = .mappingTable[, 3], 
-        pattern = .mappingTable[, 1], vectorize_all = FALSE)
     
-    ## split the template$reaction_formula_chebi into substrates and products
-    .formula_tmp <- template$reaction_formula_chebi
-    .formula_tmp <- stringi::stri_replace_all_regex(str = .formula_tmp, 
-        pattern = ">|<", replacement = "")
-    .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = "=")[[1]]
-    .formula_substrate <- .formula_tmp[1]
-    .formula_product <- .formula_tmp[2]
+    ## find the corresponding CHEBIs for substrates
+    substrate_tmp <- stringi::stri_split(template$reaction_substrate, regex = "[ ]")
+    .formula_substrate <- lapply(substrate_tmp, function(substrate_tmp_i) {
+        inds_match <- match(substrate_tmp_i, .mappingTable[, 1])
+        res <- .mappingTable[inds_match, 3, drop = FALSE]
+        res[is.na(inds_match)] <- substrate_tmp_i[is.na(inds_match)]
+        paste(res, collapse = " ")
+    }) |>
+        unlist()
     
-    ## remove the "+" and the trailing spaces for substrates and products
-    .formula_substrate <- stringi::stri_split(str = .formula_substrate, 
-        regex = "[ ][+][ ]")[[1]]
-    .formula_substrate <- stringi::stri_replace_all_regex(str = .formula_substrate, 
-        pattern = "^ | $", replacement = "")
-    .formula_product <- stringi::stri_split(str = .formula_product, 
-        regex = "[ ][+][ ]")[[1]]
-    .formula_product <- stringi::stri_replace_all_regex(str = .formula_product, 
-        pattern = "^ | $", replacement = "")
+    ## find the corresponding CHEBIs for products
+    product_tmp <- stringi::stri_split(template$reaction_product, regex = "[ ]")
+    .formula_product <- lapply(product_tmp, function(product_tmp_i) {
+        inds_match <- match(product_tmp_i, .mappingTable[, 1])
+        res <- .mappingTable[inds_match, 3, drop = FALSE]
+        res[is.na(inds_match)] <- product_tmp_i[is.na(inds_match)]
+        paste(res, collapse = " ")
+    }) |>
+        unlist()
+    
+    ## determine the reaction direction
+    patterns <- c("<=>", "<=", "=>", "=")
+    matches <- sapply(patterns, function(p) grepl(p, template$reaction_formula))
+    reaction_type <- names(which(matches)[1])
+    
+    ## assemble the reaction_formula_chebi
+    template$reaction_formula_chebi <- paste(
+        paste(.formula_substrate, collapse = " + "), reaction_type,
+        paste(.formula_product, collapse = " + "), collapse = " ")
     
     ## write the substrates and products to the template
     template$reaction_substrate_chebi <- .formula_substrate
