@@ -3499,8 +3499,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_AcylCoA", "M_LPE-O"))
     expect_equal(l[[2]]$reaction_product, c("M_CoA", "M_PE-O"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:58342 + <=> CHEBI:57287 + CHEBI:75028") #############################
-    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:58342", ""))
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:58342 + M_LPE-O <=> CHEBI:57287 + CHEBI:75028") #############################
+    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:58342", "M_LPE-O"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57287", "CHEBI:75028"))
     
     ## lpep_to_pep

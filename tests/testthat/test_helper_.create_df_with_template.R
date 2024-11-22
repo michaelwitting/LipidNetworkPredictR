@@ -4981,9 +4981,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
     expect_equal(df$reaction_product, "P-Ethanolamine + DG(14:0/16:0/0:0) + H+")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 = M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") ################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 = CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:64612")
-    expect_equal(df$reaction_product_chebi, "M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     
     reaction <- "RHEA:78952"
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
@@ -4999,9 +4999,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
     expect_equal(df$reaction_product, "P-Ethanolamine + DG(14:0/16:0/0:0) + H+")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 => M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") ################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 => CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:64612")
-    expect_equal(df$reaction_product_chebi, "M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     
     reaction <- "RHEA:78953"
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
@@ -5017,9 +5017,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
     expect_equal(df$reaction_product, "P-Ethanolamine + DG(14:0/16:0/0:0) + H+")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <= M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") ################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <= CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:64612")
-    expect_equal(df$reaction_product_chebi, "M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     
     reaction <- "RHEA:78954"
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
@@ -5035,9 +5035,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "H2O + PE(14:0/16:0)")
     expect_equal(df$reaction_product, "P-Ethanolamine + DG(14:0/16:0/0:0) + H+")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <=> M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378") ################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:64612 <=> CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:64612")
-    expect_equal(df$reaction_product_chebi, "M_P-Ethanolamine + CHEBI:17815 + CHEBI:15378")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58190 + CHEBI:17815 + CHEBI:15378")
     
     ## pe_to_sn1lpe
     pe <- "PE(14:0/16:0)"
