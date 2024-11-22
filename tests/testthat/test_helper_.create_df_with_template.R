@@ -389,9 +389,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP")
     expect_equal(df$reaction_product, "ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 => CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 => CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:52639 + CHEBI:30616")
-    expect_equal(df$reaction_product_chebi, "CHEBI:456216 + CHEBI:52639P + CHEBI:15378")
+    expect_equal(df$reaction_product_chebi, "CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     
     reaction <- "RHEA:17931"
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
