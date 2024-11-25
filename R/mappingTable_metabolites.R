@@ -36,7 +36,7 @@ mappingTable <- function() {
     c("M_NADP",      "NADP(+)",                          "CHEBI:58349", "RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178"),
 
     ## cerp_to_cer
-    c("M_H2O",  "H2O",                                 "CHEBI:15377", "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"), # cerp_to_cer
+    c("M_H2O",  "H2O",                                 "CHEBI:15377", "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"),
     c("M_CerP", "an N-acylsphing-4-enine 1-phosphate", "CHEBI:57674", "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"),
     c("M_Pi",   "phosphate",                           "CHEBI:43474", "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"),
     c("M_Cer",  "an N-acylsphing-4-enine",             "CHEBI:52639", "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"),
@@ -161,20 +161,16 @@ mappingTable <- function() {
     c("M_PE-O",             "1-O-alkyl-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:60520", "RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190"),
     c("M_CMP",              "CMP",                                               "CHEBI:60377", "RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190"),
     c("M_H+",               "H(+)",                                              "CHEBI:15378", "RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190"),
-    
-    
+
     ## dhcer_to_cer
-    ## ?????????? RHEA id missing
-    ## In Rhea this reaction is with cytochrome B
-    ## https://www.rhea-db.org/rhea/46544
-    c("M_H+",    "H(+)",                    "CHEBI:15378", NA, NA, NA, "dhcer_to_cer"),
-    c("M_NADH",  "NADH",                    "CHEBI:57945", NA, NA, NA, "dhcer_to_cer"),
-    c("M_O2",    "O2",                      "CHEBI:15379", NA, NA, NA, "dhcer_to_cer"),
-    c("M_DhCer", "an N-acylsphinganine",    "CHEBI:31488", NA, NA, NA, "dhcer_to_cer"),
-    c("M_H2O",   "H2O",                     "CHEBI:15377", NA, NA, NA, "dhcer_to_cer"),
-    c("M_NAD",   "NAD+",                    "CHEBI:57540", NA, NA, NA, "dhcer_to_cer"),
-    c("M_Cer",   "an N-acylsphing-4-enine", "CHEBI:52639", NA, NA, NA, "dhcer_to_cer"),
-        
+    c("M_DhCer",              "an N-acylsphinganine",    "CHEBI:31488", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_Fe2+-cytochrome_b5", "Fe(II)-[cytochrome b5]",  "CHEBI:29033", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_H+",                 "H(+)",                    "CHEBI:15378", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_O2",                 "O2",                      "CHEBI:15379", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_Cer",                "an N-acylsphing-4-enine", "CHEBI:52639", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_Fe3+-cytochrome_b5", "Fe(III)-[cytochrome b5]", "CHEBI:57540", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+    c("M_H2O",                "H2O",                     "CHEBI:15377", "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547"),
+
     ## dhcer_to_dhsm
     c("M_PC",     "a 1,2-diacyl-sn-glycero-3-phosphocholine", "CHEBI:57643", "RHEA:44620", "RHEA:44621", "RHEA:44622", "RHEA:44623"),
     c("M_DhCer",  "an N-acylsphinganine",                     "CHEBI:31488", "RHEA:44620", "RHEA:44621", "RHEA:44622", "RHEA:44623"),
@@ -261,12 +257,11 @@ mappingTable <- function() {
     c("M_Glycerophosphoethanolamine", "sn-glycero-3-phosphoethanolamine",          "CHEBI:143890", "RHEA:32967", "RHEA:32968", "RHEA:32969", "RHEA:32970"),
     
     ## sn2lpe_to_fa
-    ## ?????????? RHEA id missing
     ## Reaction in RHEA not exisiting so far
-    c("M_H2O",                        "H2O",                                       "CHEBI:15377", NA, NA, NA, "sn2lpe_to_fa"),
-    c("M_2-LPE",                      "a 2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:65213", NA, NA, NA, "sn2lpe_to_fa"),
-    c("M_H+",                         "H(+)",                                      "CHEBI:15378", NA, NA, NA, "sn2lpe_to_fa"),
-    c("M_FA",                         "a fatty acid",                              "CHEBI:28868", NA, NA, NA, "sn2lpe_to_fa"),
+    c("M_H2O",                        "H2O",                                       "CHEBI:15377",  NA, NA, NA, "sn2lpe_to_fa"),
+    c("M_2-LPE",                      "a 2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:65213",  NA, NA, NA, "sn2lpe_to_fa"),
+    c("M_H+",                         "H(+)",                                      "CHEBI:15378",  NA, NA, NA, "sn2lpe_to_fa"),
+    c("M_FA",                         "a fatty acid",                              "CHEBI:28868",  NA, NA, NA, "sn2lpe_to_fa"),
     c("M_Glycerophosphoethanolamine", "sn-glycero-3-phosphoethanolamine",          "CHEBI:143890", NA, NA, NA, "sn2lpe_to_fa"),
         
     ## sn1lpe_to_pe
@@ -282,7 +277,6 @@ mappingTable <- function() {
     c("M_CoA",     "CoA",                                                 "CHEBI:57287", "RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198"),
     
     ## lpeo_to_peo
-    ## ????????? RHEA id missing
     ## is M_ak2lgpe M_LPE-O?
     ## same as peo_to_lpeo??
     ## reaction not exisiting in Rhea
@@ -339,7 +333,6 @@ mappingTable <- function() {
     c("M_H+",   "H(+)",                            "CHEBI:15378", "RHEA:33747", "RHEA:33748", "RHEA:33749", "RHEA:33750"),
     
     ## sn2mg_to_sn1mg
-    ## ?????????? RHEA id missing
     ## Reaction in RHEA not exisiting
     c("M_2-MG", "a 1-acylglycerol", "CHEBI:35759", NA, NA, NA, "sn2mg_to_sn1mg"),
     c("M_1-MG", "a 2-acylglycerol", "CHEBI:17389", NA, NA, NA, "sn2mg_to_sn1mg"),
@@ -361,12 +354,13 @@ mappingTable <- function() {
     c("M_LNAPE", "N,1-diacyl-sn-glycero-3-phosphoethanolamine",        "CHEBI:85216", "RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463"),
     c("M_FA",    "a fatty acid",                                       "CHEBI:28868", "RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463"),
     c("M_H+",    "H(+)",                                               "CHEBI:15378", "RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463"),
-        
+    
     ## nape_to_nae
-    c("M_NAPE", "N-acyl-1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:62537", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
     c("M_H2O",  "H2O",                                                "CHEBI:15377", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
-    c("M_NAE",  "an N-acylethanolamine",                              "CHEBI:52640", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
+    c("M_NAPE", "N-acyl-1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:62537", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
     c("M_PA",   "a 1,2-diacyl-sn-glycero-3-phosphate",                "CHEBI:58608", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
+    c("M_NAE",  "an N-acylethanolamine",                              "CHEBI:52640", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
+    c("M_H+",   "H(+)",                                               "CHEBI:15378", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
 
     ## nape_to_pnae
     ## ???????????????
