@@ -363,8 +363,6 @@ mappingTable <- function() {
     c("M_H+",   "H(+)",                                               "CHEBI:15378", "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"),
 
     ## nape_to_pnae
-    ## ???????????????
-    ## ?????????? RHEA id missing
     ## reaction not existing in Rhea so far
     c("M_NAPE",   "N-acyl-1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:62537",  NA, NA, NA, "nape_to_pnae"),
     c("M_H2O",    "H2O",                                                "CHEBI:15377",  NA, NA, NA, "nape_to_pnae"),
@@ -372,8 +370,6 @@ mappingTable <- function() {
     c("M_1,2-DG", "a 1,2-diacyl-sn-glycerol",                           "CHEBI:17815",  NA, NA, NA, "nape_to_pnae"),
         
     ## napeo_to_nae
-    ## ??????????????????
-    ## ?????????? RHEA id missing
     ## reaction not existing in Rhea so far
     c("M_NAPEO", "",                                        "",            NA, NA, NA, "napeo_to_nae"),
     c("M_H2O",   "H2O",                                     "CHEBI:15377", NA, NA, NA, "napeo_to_nae"),
@@ -496,7 +492,6 @@ mappingTable <- function() {
     c("M_NAPE",  "N-acyl-1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:62537", "RHEA:45192", "RHEA:45193", "RHEA:45194", "RHEA:45195"),
   
     ## pe_to_pa
-    ## ?????????? RHEA id missing
     ## reaction not present in Rhea so far
     c("M_H2O",          "H2O",                                           "CHEBI:15377", NA, NA, NA, "pe_to_pa"),
     c("M_PE",           "a 1,2-diacyl-sn-glycero-3-phosphoethanolamine", "CHEBI:64612", NA, NA, NA, "pe_to_pa"),
@@ -511,8 +506,6 @@ mappingTable <- function() {
     c("M_Ethanolamine", "ethanolamine",                                  "CHEBI:57603", "RHEA:27606", "RHEA:27607", "RHEA:27608", "RHEA:27609"),
 
     ## peo_to_lpeo
-    ## ??????????? correct?
-    ## ?????????? RHEA id missing
     ## reaction not present in Rhea so far
     c("M_H2O",   "H2O",                                                             "CHEBI:15377", NA, NA, NA, "peo_to_lpeo"),
     c("M_PE-O",  "1-(1,2-saturated alkyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:75028", NA, NA, NA, "peo_to_lpeo"),
@@ -521,8 +514,6 @@ mappingTable <- function() {
     c("M_FA",    "a fatty acid",                                                    "CHEBI:28868", NA, NA, NA, "peo_to_lpeo"),
         
     ## peo_to_napeo_sn1
-    ## ?????????? correct?
-    ## ?????????? RHEA id missing
     ## reaction not present in Rhea so far
     c("M_PE-O",  "1-(1,2-saturated alkyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:75028", NA, NA, NA, "peo_to_napeo_sn1"),
     c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                        "CHEBI:57643", NA, NA, NA, "peo_to_napeo_sn1"),
@@ -530,8 +521,6 @@ mappingTable <- function() {
     c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine",                            "CHEBI:58168", NA, NA, NA, "peo_to_napeo_sn1"),
         
     ## peo_to_napeo_sn2
-    ## ?????????? correct?
-    ## ?????????? RHEA id missing
     ## reaction not prsent in Rhea so far
     c("M_PE-O",  "1-(1,2-saturated alkyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:75028", NA, NA, NA, "peo_to_napeo_sn2"),
     c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                        "CHEBI:57643", NA, NA, NA, "peo_to_napeo_sn2"),
@@ -577,16 +566,17 @@ mappingTable <- function() {
     ## pep_to_napep_sn1
     c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine",       "CHEBI:77290",  "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
     c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                       "CHEBI:57643",  "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
-    c("M_NAPEP", "N-acyl-1-[(1Z)-alkenyl]-2-acyl-sn-glycero-3-phosphoethanolamine","CHEBI:140451",  "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
     c("M_2-LPC", "a 2-acyl-sn-glycero-3-phosphocholine",                           "CHEBI:57875",  "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
     c("M_H+",    "H(+)",                                                           "CHEBI:15378",  "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
+    c("M_NAPEP", "N-acyl-1-[(1Z)-alkenyl]-2-acyl-sn-glycero-3-phosphoethanolamine","CHEBI:140451", "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"),
+    
 
     ## pep_to_napep_sn2
     ## reaction currently not existing in Rhea
-    c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:77290", NA, NA, NA, "pep_to_napep_sn2"),
-    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                 "CHEBI:57643", NA, NA, NA, "pep_to_napep_sn2"),
-    c("M_NAPEP", "",                                                         "CHEBI:140451", NA, NA, NA, "pep_to_napep_sn2"),
-    c("M_1-LPC", "a 1-acyl-sn-glycero-3-phosphocholine",                     "CHEBI:58168", NA, NA, NA, "pep_to_napep_sn2"),
+    c("M_PE-P",  "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine",        "CHEBI:77290",  NA, NA, NA, "pep_to_napep_sn2"),
+    c("M_PC",    "a 1,2-diacyl-sn-glycero-3-phosphocholine",                        "CHEBI:57643",  NA, NA, NA, "pep_to_napep_sn2"),
+    c("M_NAPEP", "N-acyl-1-[(1Z)-alkenyl]-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:140451", NA, NA, NA, "pep_to_napep_sn2"),
+    c("M_1-LPC", "a 1-acyl-sn-glycero-3-phosphocholine",                            "CHEBI:58168", NA, NA, NA, "pep_to_napep_sn2"),
         
     ## pg_to_cl
     c("M_PG",     "1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)", "CHEBI:64716", "RHEA:32931", "RHEA:32932", "RHEA:32933", "RHEA:32934"),
