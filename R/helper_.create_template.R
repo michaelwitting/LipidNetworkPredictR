@@ -288,7 +288,7 @@
         if (reaction == "RHEA:36190")
             .formula <- "M_DG-O + M_CDP-Ethanolamine <=> M_PE-O + M_CMP + M_H+"
         
-        ## dhcer_to_cer
+        ## dhcer_to_cer 
         if (reaction == "RHEA:46544")
             .formula <- "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"
         if (reaction == "RHEA:46544")
