@@ -7,7 +7,7 @@
 create_reactions(substrates, reactions)
 }
 \arguments{
-\item{substrates}{list containing the substrates for the reaction, 
+\item{substrates}{list containing the substrates for the reaction,
 e.g. the initial substrate for the first reaction}
 
 \item{reactions}{data.frame containing the reaction order (in the column
