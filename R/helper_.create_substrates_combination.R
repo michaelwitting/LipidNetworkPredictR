@@ -115,7 +115,7 @@
         cols <- c("AlkylDHAP")
     
     ## cerp_to_cer
-    if (reaction == "cerp_to_cer")
+    if (reaction %in% c("RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746"))
         cols <- c("CerP")
     
     ## cdpdg_to_pgp
@@ -188,7 +188,7 @@
         cols <- c("DGO")
     
     ## dhcer_to_cer
-    if (reaction == "dhcer_to_cer")
+    if (reaction %in% c("RHEA:46544", "RHEA:46545","RHEA:46546", "RHEA:46547"))
         cols <- c("DhCer")
     
     ## dhcer_to_dhsm
@@ -288,11 +288,11 @@
         cols <- c("NAE")
     
     ## nape_to_lnape
-    if (reaction == "nape_to_lnape")
+    if (reaction %in% c("RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463"))
         cols <- c("NAPE")
     
     ## nape_to_nae
-    if (reaction == "nape_to_nae")
+    if (reaction %in% c("RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162"))
         cols <- c("NAPE")
     
     ## nape_to_pnae
@@ -412,7 +412,7 @@
         cols <- c("sn1LPEP")
     
     ## pep_to_napep_sn1
-    if (reaction == "pep_to_napep_sn1")
+    if (reaction %in% c("RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599"))
         cols <- c("PEP", "PC")
     
     ## pep_to_napep_sn2

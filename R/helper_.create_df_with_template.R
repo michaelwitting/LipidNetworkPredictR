@@ -107,7 +107,7 @@
     }
     
     ## cerp_to_cer
-    if (reaction == "cerp_to_cer") {
+    if (reaction %in% c("RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_CerP", replacement = df_reaction[["CerP"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -259,7 +259,7 @@
     }
     
     ## dhcer_to_cer
-    if (reaction == "dhcer_to_cer") {
+    if (reaction %in% c("RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_DhCer", replacement = df_reaction[["DhCer"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -476,7 +476,7 @@
     }
     
     ## nape_to_lnape
-    if (reaction == "nape_to_lnape") {
+    if (reaction %in% c("RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_NAPE", replacement = df_reaction[["NAPE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -486,7 +486,7 @@
     }
     
     ## nape_to_nae
-    if (reaction == "nape_to_nae") {
+    if (reaction %in% c("RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
             pattern = "M_NAPE", replacement = df_reaction[["NAPE"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula,
@@ -765,7 +765,7 @@
     }
     
     ## pep_to_napep_sn1
-    if (reaction == "pep_to_napep_sn1") {
+    if (reaction %in% c("RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_PC", replacement = df_reaction[["PC"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 

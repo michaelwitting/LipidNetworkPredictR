@@ -288,14 +288,14 @@
         if (reaction == "RHEA:36190")
             .formula <- "M_DG-O + M_CDP-Ethanolamine <=> M_PE-O + M_CMP + M_H+"
         
-        ## dhcer_to_cer 
+        ## dhcer_to_cer
         if (reaction == "RHEA:46544")
             .formula <- "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"
-        if (reaction == "RHEA:46544")
+        if (reaction == "RHEA:46545")
             .formula <- "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"
-        if (reaction == "RHEA:46544")
+        if (reaction == "RHEA:46546")
             .formula <- "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"
-        if (reaction == "RHEA:46544")
+        if (reaction == "RHEA:46547")
             .formula <- "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"
         
         ## dhcer_to_dhsm
@@ -796,13 +796,13 @@
         
         ## pep_to_napep_sn1
         if (reaction == "RHEA:63596")
-            .formula <- "M_PE-P + M_PC = M_2-LPC+ M_H+ + M_NAPEP"
+            .formula <- "M_PE-P + M_PC = M_2-LPC + M_H+ + M_NAPEP"
         if (reaction == "RHEA:63597")
-            .formula <- "M_PE-P + M_PC => M_2-LPC+ M_H+ + M_NAPEP"
+            .formula <- "M_PE-P + M_PC => M_2-LPC + M_H+ + M_NAPEP"
         if (reaction == "RHEA:63598")
-            .formula <- "M_PE-P + M_PC <= M_2-LPC+ M_H+ + M_NAPEP"
+            .formula <- "M_PE-P + M_PC <= M_2-LPC + M_H+ + M_NAPEP"
         if (reaction == "RHEA:63599")
-            .formula <- "M_PE-P + M_PC <=> M_2-LPC+ M_H+ + M_NAPEP"
+            .formula <- "M_PE-P + M_PC <=> M_2-LPC + M_H+ + M_NAPEP"
         
         ## pep_to_napep_sn2
         if (reaction == "pep_to_napep_sn2")

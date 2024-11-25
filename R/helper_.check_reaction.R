@@ -28,7 +28,7 @@
     reaction_types <- c(
         "RHEA:36171", "RHEA:36172", "RHEA:36173", "RHEA:36174", ## acyldhap_to_alkyldhap
         "RHEA:36175", "RHEA:36176", "RHEA:36177", "RHEA:36178", ## alkyldhap_to_lpao
-        "cerp_to_cer", 
+        "RHEA:33743", "RHEA:33744", "RHEA:33745", "RHEA:33746", ## cerp_to_cer 
         "RHEA:12593", "RHEA:12594", "RHEA:12595", "RHEA:12596", ## cdpdg_to_pgp
         "RHEA:11580", "RHEA:11581", "RHEA:11582", "RHEA:11583", ## cdpdg_to_pi
         "RHEA:17929", "RHEA:17930", "RHEA:17931", "RHEA:17932", ## cer_to_cerp
@@ -47,7 +47,7 @@
         "RHEA:10868", "RHEA:10869", "RHEA:10870", "RHEA:10871", ## dg_to_tg
         "RHEA:36179", "RHEA:36180", "RHEA:36181", "RHEA:36182", ## dgo_to_pco
         "RHEA:36187", "RHEA:36188", "RHEA:36189", "RHEA:36190", ## dgo_to_peo
-        "dhcer_to_cer",
+        "RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547", ## dhcer_to_cer
         "RHEA:44620", "RHEA:44621", "RHEA:44622", "RHEA:44623", ## dhcer_to_dhsm
         "RHEA:45300", "RHEA:45301", "RHEA:45302", "RHEA:45303", ## dhsm_to_dhcer
         "RHEA:15421", "RHEA:15422", "RHEA:15423", "RHEA:15424", ## fa_to_coa
@@ -75,8 +75,8 @@
         "sn2mg_to_sn1mg", 
         "RHEA:17505", "RHEA:17506", "RHEA:17507", "RHEA:17508", ## nae_to_fa
         "RHEA:39995", "RHEA:39996", "RHEA:39997", "RHEA:39998", ## nae_to_fa
-        "nape_to_lnape", 
-        "nape_to_nae", 
+        "RHEA:45460", "RHEA:45461", "RHEA:45462", "RHEA:45463", ## nape_to_lnape 
+        "RHEA:33159", "RHEA:33160", "RHEA:33161", "RHEA:33162", ## nape_to_nae
         "nape_to_pnae",
         "napeo_to_nae", 
         "RHEA:16229", "RHEA:16230", "RHEA:16231", "RHEA:16232", ## pa_to_cdpdg
@@ -106,7 +106,7 @@
         "RHEA:16905", "RHEA:16906", "RHEA:16907", "RHEA:16908", ## lpep_to_fal
         "RHEA:36203", "RHEA:36204", "RHEA:36205", "RHEA:36206", ## lpep_to_lpap
         "RHEA:36199", "RHEA:36200", "RHEA:36201", "RHEA:36202", ## lpep_to_mgp
-        "pep_to_napep_sn1", 
+        "RHEA:63596", "RHEA:63597", "RHEA:63598", "RHEA:63599", ## pep_to_napep_sn1
         "pep_to_napep_sn2", 
         "RHEA:32931", "RHEA:32932", "RHEA:32933", "RHEA:32934", ## pg_to_cl, 
         "RHEA:33751", "RHEA:33752", "RHEA:33753", "RHEA:33754", ## pgp_to_pg,
