@@ -1965,8 +1965,8 @@ gene is unknown!
 ```{r CerP_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
-    reaction_formula = "M_H2O + M_CerP <=> M_Pi + M_Cer",
-    reaction_RHEA = "",
+    reaction_formula = "M_H2O + M_CerP = M_Pi + M_Cer",
+    reaction_RHEA = "RHEA:33743",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
@@ -1974,7 +1974,7 @@ template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
 
 ```{r CerP_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(CerP = CerP),
-    template = template, reaction = "cerp_to_cer")
+    template = template, reaction = "RHEA:33743")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2101,8 +2101,8 @@ transfer of Sn1 fatty acyl to PE-P
 ```{r pep_to_napep_sn1_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
-    reaction_formula = "M_PE-P + M_PC <=> M_NAPEP + M_2-LPC",
-    reaction_RHEA = "",
+    reaction_formula = "M_PE-P + M_PC = M_NAPEP + M_H+ + M_2-LPC",
+    reaction_RHEA = "RHEA:63596",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "")
@@ -2110,7 +2110,7 @@ template <- list(reaction_name = "",
 
 ```{r pep_to_napep_sn1, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC), 
-    template = template, reaction = "pep_to_napep_sn1")
+    template = template, reaction = "RHEA:63596")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2222,8 +2222,8 @@ From NAPE
 ```{r nape_to_nae_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
-    reaction_formula = "M_NAPE + M_H2O <=> M_NAE + M_PA",
-    reaction_RHEA = "",
+    reaction_formula = "M_NAPE + M_H2O = M_NAE + M_PA",
+    reaction_RHEA = "RHEA:33159",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00021371 or WBGene00021370",
     reaction_pathway = "")
@@ -2231,7 +2231,7 @@ template <- list(reaction_name = "",
 
 ```{r nape_to_nae, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(NAPE = NAPE),
-    template = template, reaction = "nape_to_nae")
+    template = template, reaction = "RHEA:33159")
 
 results[[2]][1:5, "reaction_formula"]
 
@@ -2336,8 +2336,8 @@ From NAPEP
 ```{r nape_to_lnape_template, message=FALSE, warning=FALSE, eval=TRUE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "",
-    reaction_formula = "M_NAPE + M_H2O <=> M_LNAPE + M_FA",
-    reaction_RHEA = "",
+    reaction_formula = "M_NAPE + M_H2O = M_LNAPE + M_FA + M_H+",
+    reaction_RHEA = "RHEA:45460",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "",
     reaction_pathway = "")
@@ -2345,7 +2345,7 @@ template <- list(reaction_name = "",
 
 ```{r nape_to_lnape, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(NAPE = NAPE),
-    template = template, reaction = "nape_to_lnape")
+    template = template, reaction = "RHEA:45460")
 
 results[[2]][1:5, "reaction_formula"]
 
