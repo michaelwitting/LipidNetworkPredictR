@@ -58,7 +58,19 @@ test_that(".add_reaction works", {
     .names <- c("CerP", "Cer")
     .values <- c("CerP(16:0(3OH,4OH,15Me)/18:0)", "Cer(16:0(3OH,4OH,15Me)/18:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "cerp_to_cer")
+        reaction = "RHEA:33743")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33744")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33745")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33746")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -497,7 +509,19 @@ test_that(".add_reaction works", {
     .names <- c("DhCer", "Cer")
     .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "dhcer_to_cer")
+        reaction = "RHEA:46544")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:46545")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:46546")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:46547")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -1101,7 +1125,19 @@ test_that(".add_reaction works", {
     .names <- c("NAPE", "LNAPE", "FA")
     .values <- c("NAPE(14:0/16:0/18:0)", "NAPE(14:0/0:0/18:0)", "FA(16:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "nape_to_lnape")
+        reaction = "RHEA:45460")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45461")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45462")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:45463")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -1113,7 +1149,19 @@ test_that(".add_reaction works", {
     .names <- c("NAPE", "NAE", "PA")
     .values <- c("NAPE(14:0/16:0/18:0)", "NAE(18:0)", "PA(14:0/16:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "nape_to_nae")
+        reaction = "RHEA:33159")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33160")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33161")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:33162")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -1432,6 +1480,7 @@ test_that(".add_reaction works", {
     
     ## pe_to_dg
     pe <- "PE(14:0/16:0)"
+    
     substrates <- list(PE = pe)
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
@@ -1755,7 +1804,19 @@ test_that(".add_reaction works", {
     .names <- c("PEP", "PC", "sn2LPC", "NAPEP")
     .values <- c("PE(P-16:0/14:0)", "PC(20:0/18:0)", "PC(0:0/18:0)", "NAPE(P-16:0/14:0/20:0)")
     df <- .add_products(substrates = df_substrates, 
-        reaction = "pep_to_napep_sn1")
+        reaction = "RHEA:63596")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:63597")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:63598")
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    df <- .add_products(substrates = df_substrates, 
+        reaction = "RHEA:63599")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
@@ -1986,3 +2047,4 @@ test_that(".add_reaction works", {
     expect_equal(as.character(unlist(df)), .values) 
 
 })
+

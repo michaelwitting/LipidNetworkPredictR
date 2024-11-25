@@ -172,7 +172,64 @@ test_that(".create_df_with_template works", {
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     
-    reaction <- "cerp_to_cer"
+    reaction <- "RHEA:33743"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(), 
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) = Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_product, "Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 = CHEBI:43474 + CHEBI:52639")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:57674")
+    expect_equal(df$reaction_product_chebi, "CHEBI:43474 + CHEBI:52639")
+    
+    reaction <- "RHEA:33744"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(), 
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) => Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_product, "Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 => CHEBI:43474 + CHEBI:52639")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:57674")
+    expect_equal(df$reaction_product_chebi, "CHEBI:43474 + CHEBI:52639")
+    
+    reaction <- "RHEA:33745"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(), 
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) <= Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_product, "Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 <= CHEBI:43474 + CHEBI:52639")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:57674")
+    expect_equal(df$reaction_product_chebi, "CHEBI:43474 + CHEBI:52639")
+    
+    reaction <- "RHEA:33746"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- .create_template(template = list(), 
@@ -1692,7 +1749,7 @@ test_that(".create_df_with_template works", {
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     
-    reaction <- "dhcer_to_cer"
+    reaction <- "RHEA:46544"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- .create_template(template = list(),
@@ -1702,15 +1759,75 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "H+ + NADH + O2 + Cer(d16:0(3OH,4OH)(15Me)/12:0) <=> 2 H2O + NAD+ + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+        "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2 = 2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "H+ + NADH + O2 + Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(df$reaction_product, "2 H2O + NAD+ + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:15378 + CHEBI:57945 + CHEBI:15379 + CHEBI:31488 <=> 2 CHEBI:15377 + CHEBI:57540 + CHEBI:52639")
-    expect_equal(df$reaction_substrate_chebi, "CHEBI:15378 + CHEBI:57945 + CHEBI:15379 + CHEBI:31488")
-    expect_equal(df$reaction_product_chebi, "2 CHEBI:15377 + CHEBI:57540 + CHEBI:52639")
+    expect_equal(df$reaction_substrate, "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379 = 2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379")
+    expect_equal(df$reaction_product_chebi, "2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    
+    reaction <- "RHEA:46545"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2 => 2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379 => 2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379")
+    expect_equal(df$reaction_product_chebi, "2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    
+    reaction <- "RHEA:46546"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2 <= 2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379 <= 2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379")
+    expect_equal(df$reaction_product_chebi, "2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    
+    reaction <- "RHEA:46547"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2 <=> 2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "Cer(d16:0(3OH,4OH)(15Me)/12:0) + 2 Fe2+-cytochrome b5 + 2 H+ + O2")
+    expect_equal(df$reaction_product, "2 Fe3+-cytochrome b5 + Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0) + 2 H2O")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379 <=> 2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:31488 + 2 CHEBI:29033 + 2 CHEBI:15378 + CHEBI:15379")
+    expect_equal(df$reaction_product_chebi, "2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377")
     
     ## dhcer_to_dhsm
     dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)" ###################################################
@@ -2250,14 +2367,14 @@ test_that(".create_df_with_template works", {
     
     reaction <- "RHEA:19710"
     df_reaction <- .add_products(substrates = df_substrates, 
-                        reaction = reaction)
+        reaction = reaction)
     template <- .create_template(template = list(), reaction = reaction)
     df <- .create_df_with_template(
         df_reaction = df_reaction,
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-                 "PA(18:0/0:0) + CoA(14:0) => PA(18:0/14:0) + CoA")
+        "PA(18:0/0:0) + CoA(14:0) => PA(18:0/14:0) + CoA")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
@@ -3189,7 +3306,7 @@ test_that(".create_df_with_template works", {
         df_reaction = df_reaction,
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
-    expect_equal(df$reaction_formula, 
+    expect_equal(df$reaction_formula,
         "MG(14:0/0:0/0:0) + CoA(16:0) <= DG(14:0/16:0/0:0) + CoA")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
@@ -3830,7 +3947,7 @@ test_that(".create_df_with_template works", {
     substrates = list(NAPE = nape)
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
-    reaction <- "nape_to_lnape"
+    reaction <- "RHEA:45460"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- .create_template(template = list(),
@@ -3840,15 +3957,75 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "NAPE(14:0/16:0/18:0) + H2O <=> NAPE(14:0/0:0/18:0) + FA(16:0)")
+        "H2O + NAPE(14:0/16:0/18:0) = FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "NAPE(14:0/16:0/18:0) + H2O")
-    expect_equal(df$reaction_product, "NAPE(14:0/0:0/18:0) + FA(16:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:62537 + CHEBI:15377 <=> CHEBI:85216 + CHEBI:28868")
-    expect_equal(df$reaction_substrate_chebi, "CHEBI:62537 + CHEBI:15377")
-    expect_equal(df$reaction_product_chebi, "CHEBI:85216 + CHEBI:28868")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 = CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    
+    reaction <- "RHEA:45461"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) => FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 => CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    
+    reaction <- "RHEA:45462"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) <= FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 <= CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    
+    reaction <- "RHEA:45463"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) <=> FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "FA(16:0) + H+ + NAPE(14:0/0:0/18:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 <=> CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:28868 + CHEBI:15378 + CHEBI:85216")
     
     ## nape_to_nae
     nape <- "NAPE(14:0/16:0/18:0)"
@@ -3856,7 +4033,7 @@ test_that(".create_df_with_template works", {
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     
-    reaction <- "nape_to_nae"
+    reaction <- "RHEA:33159"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- .create_template(template = list(),
@@ -3866,15 +4043,75 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "NAPE(14:0/16:0/18:0) + H2O <=> NAE(18:0) + PA(14:0/16:0)")
+        "H2O + NAPE(14:0/16:0/18:0) = PA(14:0/16:0) + NAE(18:0) + H+")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
-    expect_equal(df$reaction_substrate, "NAPE(14:0/16:0/18:0) + H2O")
-    expect_equal(df$reaction_product, "NAE(18:0) + PA(14:0/16:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:62537 + CHEBI:15377 <=> CHEBI:52640 + CHEBI:58608")
-    expect_equal(df$reaction_substrate_chebi, "CHEBI:62537 + CHEBI:15377")
-    expect_equal(df$reaction_product_chebi, "CHEBI:52640 + CHEBI:58608")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 = CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    
+    reaction <- "RHEA:33160"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) => PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 => CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    
+    reaction <- "RHEA:33161"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) <= PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 <= CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    
+    reaction <- "RHEA:33162"
+    df_reaction <- .add_products(substrates = df_substrates, 
+        reaction = reaction)
+    template <- .create_template(template = list(),
+        reaction = reaction)
+    df <- .create_df_with_template(
+        df_reaction = df_reaction,
+        template = template, reaction = reaction)
+    expect_equal(df$reaction_name, "")
+    expect_equal(df$reaction_formula, 
+        "H2O + NAPE(14:0/16:0/18:0) <=> PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_isReversible, "")
+    expect_equal(df$reaction_geneAssociation, "")
+    expect_equal(df$reaction_pathway, "")
+    expect_equal(df$reaction_substrate, "H2O + NAPE(14:0/16:0/18:0)")
+    expect_equal(df$reaction_product, "PA(14:0/16:0) + NAE(18:0) + H+")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:15377 + CHEBI:62537 <=> CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:15377 + CHEBI:62537")
+    expect_equal(df$reaction_product_chebi, "CHEBI:58608 + CHEBI:52640 + CHEBI:15378")
     
     ## nape_to_pnae
     nape <- "NAPE(14:0/16:0/18:0)"
@@ -3898,9 +4135,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "NAPE(14:0/16:0/18:0) + H2O")
     expect_equal(df$reaction_product, "PNAE(18:0) + DG(14:0/16:0/0:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:62537 + CHEBI:15377 <=>  + CHEBI:17815") ##########################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:62537 + CHEBI:15377 <=> CHEBI:145538 + CHEBI:17815")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:62537 + CHEBI:15377")
-    expect_equal(df$reaction_product_chebi, " + CHEBI:17815")
+    expect_equal(df$reaction_product_chebi, "CHEBI:145538 + CHEBI:17815")
     
     ## napeo_to_nae
     napeo <- "NAPE(O-18:0/16:0/14:0)"
@@ -5990,7 +6227,7 @@ test_that(".create_df_with_template works", {
     df_substrates <- .create_substrates_combinations(
         substrates = substrates)
     
-    reaction <- "pep_to_napep_sn1"
+    reaction <- "RHEA:63596"
     df_reaction <- .add_products(substrates = df_substrates, 
         reaction = reaction)
     template <- .create_template(template = list(),
@@ -6000,15 +6237,15 @@ test_that(".create_df_with_template works", {
         template = template, reaction = reaction)
     expect_equal(df$reaction_name, "")
     expect_equal(df$reaction_formula, 
-        "PE(P-16:0/14:0) + PC(20:0/18:0) <=> NAPE(P-16:0/14:0/20:0) + PC(0:0/18:0)")
+        "PE(P-16:0/14:0) + PC(20:0/18:0) = PC(0:0/18:0) + H+ + NAPE(P-16:0/14:0/20:0)")
     expect_equal(df$reaction_isReversible, "")
     expect_equal(df$reaction_geneAssociation, "")
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "PE(P-16:0/14:0) + PC(20:0/18:0)")
-    expect_equal(df$reaction_product, "NAPE(P-16:0/14:0/20:0) + PC(0:0/18:0)")
-    expect_equal(df$reaction_formula_chebi, " + CHEBI:57643 <=>  + CHEBI:57875") #####################
-    expect_equal(df$reaction_substrate_chebi, " + CHEBI:57643")
-    expect_equal(df$reaction_product_chebi, " + CHEBI:57875")
+    expect_equal(df$reaction_product, "PC(0:0/18:0) + H+ + NAPE(P-16:0/14:0/20:0)")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:77290 + CHEBI:57643 = CHEBI:57875 + CHEBI:15378 + CHEBI:140451")
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:77290 + CHEBI:57643")
+    expect_equal(df$reaction_product_chebi, "CHEBI:57875 + CHEBI:15378 + CHEBI:140451")
     
     ## pep_to_napep_sn2
     pep <- "PE(P-16:0/14:0)"
@@ -6033,9 +6270,9 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "PE(P-16:0/14:0) + PC(20:0/18:0)")
     expect_equal(df$reaction_product, "NAPE(P-16:0/14:0/18:0) + PC(20:0/0:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:77290 + CHEBI:57643 <=>  + CHEBI:58168") #####################
+    expect_equal(df$reaction_formula_chebi, "CHEBI:77290 + CHEBI:57643 <=> CHEBI:140451 + CHEBI:58168")
     expect_equal(df$reaction_substrate_chebi, "CHEBI:77290 + CHEBI:57643")
-    expect_equal(df$reaction_product_chebi, " + CHEBI:58168")
+    expect_equal(df$reaction_product_chebi, "CHEBI:140451 + CHEBI:58168")
     
     ## pg_to_cl
     pg <- "PG(18:4(6Z,9Z,12Z,15Z)/14:0)"
@@ -6807,3 +7044,4 @@ test_that(".create_df_with_template works", {
         c("CHEBI:49172 + CHEBI:28868 + CHEBI:15378", 
             "CHEBI:49172 + CHEBI:28868 + CHEBI:15378"))
 })
+
