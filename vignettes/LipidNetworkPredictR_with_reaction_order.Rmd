@@ -504,14 +504,14 @@ reactions <- rbind(
     ## Block Y
     c(52, "RHEA:45188", "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"), ## PC + PE = sn2LPC + H+ + NAPE
     c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
-    c(54, "pep_to_napep_sn1", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
+    c(54, "RHEA:63596", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
     c(55, "RHEA:45192", "M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE"), ## ## PC + PE = sn1LPC + H+ + NAPE
     c(56, "peo_to_napeo_sn2", "M_PE-O + M_PC = M_NAPEO + M_1-LPC"), ## PEO + PC = NAPEO + sn1LPC
     c(57, "pep_to_napep_sn2", "M_PE-P + M_PC = M_NAPEP + M_1-LPC"), ## PEP + PC = NAPEP + sn1LPC
-    c(58, "nape_to_nae", "M_NAPE + M_H2O <=> M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
+    c(58, "RHEA:33159", "M_NAPE + M_H2O = M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
     c(59, "napeo_to_nae", "M_NAPEO + M_H2O <=> M_NAE + M_PA-O"), ## akac2nape + H2O <=> NAE + PAO
     c(60, "nape_to_pnae", "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"), ## NAPE + H2O <=> PNAE + DG
-    c(61, "nape_to_lnape", "M_NAPE + M_H2O <=> M_LNAPE + M_FA"), ## NAPE + H2O <=> LNAPE + FA_GPGL
+    c(61, "RHEA:45460", "M_NAPE + M_H2O = M_LNAPE + M_FA + M_H+"), ## NAPE + H2O <=> LNAPE + FA_GPGL
     c(62, "RHEA:45420", "M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE"), ## H2O + LNAPE = FA_GPGL + H+ + GPNAE
     c(63, "RHEA:17505", "M_H2O + M_NAE = M_FA + M_Ethanolamine") ## H2O + NAE = FA_GPGL + Ethanolamine
 )
@@ -596,7 +596,7 @@ reactions <- rbind(
     c(6, "RHEA:18765", "M_PC + M_Cer <=> M_1,2-DG + M_SM"),
     c(7, "RHEA:45644", "M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine"),
     c(8, "RHEA:17929", "M_Cer + M_ATP = M_ADP + M_CerP + M_H+"),
-    c(9, "cerp_to_cer", "M_H2O + M_CerP <=> M_Pi + M_Cer"),
+    c(9, "RHEA:33743", "M_H2O + M_CerP = M_Pi + M_Cer"),
     c(10, "RHEA:12088", "M_Cer + M_UDP-Glucose = M_GlcCer + M_H+ + M_UDP")
 )
 
@@ -650,8 +650,11 @@ Please find here a list of the implemented reactions.
 - `"RHEA:36178"`: `"M_AlkylDHAP + M_H+ + M_NADPH <=> M_LPA-O + M_NADP"`
         
 `cerp_to_cer`:
-- `"cerp_to_cer"`: `"M_H2O + M_CerP <=> M_Pi + M_Cer"`
-        
+- `"RHEA:33743"`: `"M_H2O + M_CerP = M_Pi + M_Cer"`
+- `"RHEA:33744"`: `"M_H2O + M_CerP => M_Pi + M_Cer"`
+- `"RHEA:33745"`: `"M_H2O + M_CerP <= M_Pi + M_Cer"`
+- `"RHEA:33746"`: `"M_H2O + M_CerP <=> M_Pi + M_Cer"`
+
 `cdpdg_to_pgp`:
 - `"RHEA:12593"`: `"M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+"`
 - `"RHEA:12594"`: `"M_CDP-DG + M_Glycerol-3-P => M_PGP + M_CMP + M_H+"`
@@ -893,10 +896,16 @@ Please find here a list of the implemented reactions.
 - `"RHEA:17508"`/`"RHEA:39998"`: `"M_H2O + M_NAE <=> M_FA + M_Ethanolamine"`
         
 `nape_to_lnape`:
-- `"nape_to_lnape"`: `"M_NAPE + M_H2O <=> M_LNAPE + M_FA"`
+- `"RHEA:45460"`: `"M_H2O + M_NAPE = M_FA + M_H+ + M_LNAPE"`
+- `"RHEA:45461"`: `"M_H2O + M_NAPE => M_FA + M_H+ + M_LNAPE"`
+- `"RHEA:45462"`: `"M_H2O + M_NAPE <= M_FA + M_H+ + M_LNAPE"`
+- `"RHEA:45463"`: "M_H2O + M_NAPE <=> M_FA + M_H+ + M_LNAPE"`
         
 `nape_to_nae`:
-- `"nape_to_nae"`: `"M_NAPE + M_H2O <=> M_NAE + M_PA"`
+- `"RHEA:33159"`: `"M_H2O + M_NAPE = M_PA + M_NAE + M_H+"`
+- `"RHEA:33160"`: `"M_H2O + M_NAPE => M_PA + M_NAE + M_H+"`
+- `"RHEA:33161"`: `"M_H2O + M_NAPE <= M_PA + M_NAE + M_H+"`
+- `"RHEA:33162"`: `"M_H2O + M_NAPE <=> M_PA + M_NAE + M_H+"`
         
 `nape_to_pnae`:
 - `"nape_to_pnae"`: `"M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"`
@@ -1055,7 +1064,10 @@ Please find here a list of the implemented reactions.
 - `"RHEA:36202"`: `"M_1-LPE-P + M_H2O <=> M_1-MG-P + M_H+ + M_Phosphoethanolamine"`
         
 `pep_to_napep_sn1`:
-- `"pep_to_napep_sn1"`: `"M_PE-P + M_PC <=> M_NAPEP + M_2-LPC"`
+- `"RHEA:63596"`: `"M_PE-P + M_PC = M_2-LPC+ M_H+ + M_NAPEP"`
+- `"RHEA:63597"`: `"M_PE-P + M_PC => M_2-LPC+ M_H+ + M_NAPEP"`
+- `"RHEA:63598"`: `"M_PE-P + M_PC <= M_2-LPC+ M_H+ + M_NAPEP"`
+- `"RHEA:63599"`: `"M_PE-P + M_PC <=> M_2-LPC+ M_H+ + M_NAPEP"`
 
 `pep_to_napep_sn2`:
 - `"pep_to_napep_sn2"`: `"M_PE-P + M_PC <=> M_NAPEP + M_1-LPC"`
