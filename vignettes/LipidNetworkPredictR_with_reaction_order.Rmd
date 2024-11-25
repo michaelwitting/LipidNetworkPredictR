@@ -569,7 +569,7 @@ position of the acyl.
 
 ### Degradation of Dihydrosphingomyelins (DhSM, RHEA:45300)
 
-### Biosynthesis of Ceramides (Cer, dhcer_to_cer)
+### Biosynthesis of Ceramides (Cer, RHEA:46544)
 
 ### Biosynthesis of Sphingomyelins (SM, RHEA:18765)
 
@@ -592,7 +592,7 @@ reactions <- rbind(
     c(2, "RHEA:53424", "M_AcylCoA + M_Sphinganine = M_DhCer + M_CoA + M_H+"), 
     c(3, "RHEA:44620", "M_PC + M_DhCer = M_1,2-DG + M_DhSM"), 
     c(4, "RHEA:45300", "M_DhSM + M_H2O = M_DhCer + M_H+ + M_Phosphocholine"), 
-    c(5, "dhcer_to_cer", "M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"),
+    c(5, "RHEA:46544", "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"),
     c(6, "RHEA:18765", "M_PC + M_Cer <=> M_1,2-DG + M_SM"),
     c(7, "RHEA:45644", "M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine"),
     c(8, "RHEA:17929", "M_Cer + M_ATP = M_ADP + M_CerP + M_H+"),
@@ -758,8 +758,11 @@ Please find here a list of the implemented reactions.
 - `"RHEA:36190"`: `"M_DG-O + M_CDP-Ethanolamine <=> M_PE-O + M_CMP + M_H+"`
         
 `dhcer_to_cer`:
-- `"dhcer_to_cer"`: `"M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer"`
-        
+- `"RHEA:46544"`: `"M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"`
+- `"RHEA:46545"`: `"M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"`
+- `"RHEA:46546"`: `"M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"`
+- `"RHEA:46547"`: `"M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"`
+
 `dhcer_to_dhsm`:
 - `"RHEA:44620"`: `"M_PC + M_DhCer = M_1,2-DG + M_DhSM"`
 - `"RHEA:44621"`: `"M_PC + M_DhCer => M_1,2-DG + M_DhSM"`

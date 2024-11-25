@@ -1854,8 +1854,8 @@ if (all(results[[1]][["DhCer"]] %in% DhCer)) {
 ```{r dhcer_to_cer_template, message=FALSE, warning=FALSE}
 ## template for reaction -------------------------------------------------------
 template <- list(reaction_name = "Dihydroceramide dehydrogenase",
-    reaction_formula = "M_H+ + M_NADH + M_O2 + M_DhCer <=> 2 M_H2O + M_NAD + M_Cer",
-    reaction_RHEA = "",
+    reaction_formula = "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O",
+    reaction_RHEA = "RHEA:46544",
     reaction_isReversible = "FALSE",
     reaction_geneAssociation = "WBGene00017996 or WBGene00013197",
     reaction_pathway = "Biosynthesis and degradation of sphingolipids")
@@ -1863,8 +1863,7 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DhCer = DhCer),
-    template = template, reaction = "dhcer_to_cer")
-
+    template = template, reaction = "RHEA:46544")
 results[[2]][1:5, "reaction_formula"]
 
 ## get Cer for further reactions
