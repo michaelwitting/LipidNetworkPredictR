@@ -39,5 +39,5 @@ isolate_radyls <- function(lipids) {
     radyls <- radyls[filter]
     
     ## return result
-    return(radyls)
+    radyls
 }
