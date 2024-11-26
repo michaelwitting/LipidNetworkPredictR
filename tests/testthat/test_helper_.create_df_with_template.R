@@ -3079,8 +3079,8 @@ test_that(".create_df_with_template works", {
     expect_equal(df$reaction_pathway, "")
     expect_equal(df$reaction_substrate, "CoA(18:0) + PE(O-16:0/0:0)")
     expect_equal(df$reaction_product, "CoA + PE(O-16:0/18:0)")
-    expect_equal(df$reaction_formula_chebi, "CHEBI:58342 + M_LPE-O <=> CHEBI:57287 + CHEBI:75028") ####################
-    expect_equal(df$reaction_substrate_chebi, "CHEBI:58342 + M_LPE-O")
+    expect_equal(df$reaction_formula_chebi, "CHEBI:58342 +  <=> CHEBI:57287 + CHEBI:75028") ####################
+    expect_equal(df$reaction_substrate_chebi, "CHEBI:58342 + ")
     expect_equal(df$reaction_product_chebi, "CHEBI:57287 + CHEBI:75028")
     
     ## lpep_to_pep

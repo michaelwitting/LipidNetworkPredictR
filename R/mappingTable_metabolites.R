@@ -277,11 +277,10 @@ mappingTable <- function() {
     c("M_CoA",     "CoA",                                                 "CHEBI:57287", "RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198"),
     
     ## lpeo_to_peo
-    ## is M_ak2lgpe M_LPE-O?
     ## same as peo_to_lpeo??
-    ## reaction not exisiting in Rhea
+    ## reaction not exiisting in Rhea
     c("M_AcylCoA", "an acyl-CoA",                                                     "CHEBI:58342", NA, NA, NA, "lpeo_to_peo"),
-    c("M_ak2lgpe", "",                                                                "",            NA, NA, NA, "lpeo_to_peo"),
+    c("M_LPE-O",   "",                                                                "",            NA, NA, NA, "lpeo_to_peo"),
     c("M_CoA",     "CoA",                                                             "CHEBI:57287", NA, NA, NA, "lpeo_to_peo"),
     c("M_PE-O",    "1-(1,2-saturated alkyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:75028", NA, NA, NA, "lpeo_to_peo"),
 

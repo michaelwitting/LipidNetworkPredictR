@@ -2419,8 +2419,8 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
     expect_equal(reaction_l[[2]]$reaction_substrate, c("CoA(18:0) + PE(O-16:0/0:0)"))
     expect_equal(reaction_l[[2]]$reaction_product, c("CoA + PE(O-16:0/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:58342 + M_LPE-O <=> CHEBI:57287 + CHEBI:75028") ##############
-    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:58342 + M_LPE-O"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:58342 +  <=> CHEBI:57287 + CHEBI:75028") ##############
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:58342 + "))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:57287 + CHEBI:75028"))
     
     ## lpep_to_pep
