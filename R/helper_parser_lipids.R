@@ -1,14 +1,14 @@
 #' @title Get all fatty acyls, alkyls and alkenyls
 #' 
 #' @description
-#' This functions isolates all fatty acyls, alkyls and alkenyls from a given 
+#' This functions isolates all fatty acyls, alkyls and alkenyls from a given
 #' lipid shorthand notation and returns them as vector. 
 #' 
 #' @details
-#' Supported modifications are currently hydroxy groups (OH), hydroperoxy 
+#' Supported modifications are currently hydroxy groups (OH), hydroperoxy
 #' groups (OOH), keto groups (O), and amino groups (NH2).
 #' 
-#' @param lipids list of vector of shorthand notation of a acyl (as string), 
+#' @param lipids list of vector of shorthand notation of a acyl (as string),
 #' e.g. \code{c("PC(18:0/20:4(7E,9E,11Z,14Z))", "PC(16:0/18:1(9Z))")}
 #' 
 #' @examples
