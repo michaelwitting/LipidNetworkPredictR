@@ -80,7 +80,7 @@ attributes_df <- data.frame(
        -8.25, 4.94, -3.54, -7.74, -1.98, 0.73,  2.36,  2.53, -0.62))
 
 ## apply the function
-add_vertex_attributes(g, attributes)
+add_vertex_attributes(g = g, attributes = attributes_df, col_vertex = "name")
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}
