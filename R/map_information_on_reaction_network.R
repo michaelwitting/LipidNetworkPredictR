@@ -468,7 +468,7 @@ add_edge_attributes <- function(g, attributes, cols_vertex = colnames(attributes
 #' 
 #' ## apply the function
 #' add_vertex_attributes(g = g, attributes = attributes_df, col_vertex = "name")
-add_vertex_attributes <- function(g, attributes, col_vertex = colnames(attributes_df)[1]) {
+add_vertex_attributes <- function(g, attributes, col_vertex = colnames(attributes)[1]) {
     
     ## check arguments
     if (!is.data.frame(attributes))
