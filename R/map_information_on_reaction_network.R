@@ -113,7 +113,7 @@
 #'         c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
-#' names(attributes) <- c("from", "to", weight)
+#' names(attributes) <- c("from", "to", "weight")
 #' 
 #' ## apply the function
 #' add_attributes(g, attribute_type = "edges", attributes = attributes, cols_vertex = c("from", "to"))
@@ -137,13 +137,13 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
     attribute_type <- match.arg(attribute_type)
     
     ## for attribute_type == "edges"
-    if (attribute_type == "edges")
-        g <- add_edge_attributes(g, attributes, 
+    if (attribute_type == "edges") 
+        g <- add_edge_attributes(g = g, attributes = attributes, 
             cols_vertex = cols_vertex)
     
     ## for attribute_type == "vertex"
     if (attribute_type == "vertex")
-        g <- add_vertex_attributes(g, attributes, 
+        g <- add_vertex_attributes(g = g, attributes = attributes, 
             col_vertex = cols_vertex)
         
     ## return the graph
@@ -175,8 +175,11 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
 #' @param g \code{igraph} object
 #' @param attributes \code{data.frame} containing edge
 #' attribute information
-#' @param vertex \code{chararacter} of length 2, specifying the columns 
-#' containing the out- and ingoing vertices in \code{attributes} of type
+#' @param column_from \code{chararacter} of length 1, specifying the columns 
+#' containing the outgoing vertices in \code{attributes} of type
+#' \code{data.frame}
+#' @param column_to \code{chararacter} of length 1, specifying the columns 
+#' containing the ingoing vertices in \code{attributes} of type
 #' \code{data.frame}
 #' 
 #' @return igraph object
@@ -216,18 +219,18 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
 #'         c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
-#' names(attributes) <- c("from", "to", weight)
+#' names(attributes) <- c("from", "to", "weight")
 #' 
 #' ## apply the function
-#' add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 
+#' LipidNetworkPredictR:::add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 
 #'     column_to = "to")
-add_edge_attributes_from_data.frame <- function(g, attributes_df, 
+add_edge_attributes_from_data.frame <- function(g, attributes, 
     column_from = "from", column_to = "to") {
     
-    if (!is.data.frame(attributes_df))
-        stop("'attributes_df' has to be a data.frame.")
+    if (!is.data.frame(attributes))
+        stop("'attributes' has to be a data.frame.")
         
-    if (ncol(attributes < 3)) 
+    if (ncol(attributes) < 3)
         stop("The data.frame must have at least 3 columns: 'from', 'to' and attribute column(s).")
         
     ## extract vertex names and attribute names
@@ -328,10 +331,10 @@ add_edge_attributes_from_data.frame <- function(g, attributes_df,
 #'         c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
-#' names(attributes) <- c("from", "to", weight)
+#' names(attributes) <- c("from", "to", "weight")
 #' 
 #' ## apply the function
-#' add_edge_attributes(g, attributes, vertex = c("from", "to"))
+#' add_edge_attributes(g, attributes, cols_vertex = c("from", "to"))
 #' 
 #' ## attributes: matrix
 #' attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
@@ -357,8 +360,8 @@ add_edge_attributes <- function(g, attributes, cols_vertex = colnames(attributes
         if (!all(cols_vertex %in% colnames(attributes))) 
             stop("'cols_vertex' have to be in colnames(attributes).")
             
-        g <- add_attributes_edges_from_data.frame(g, attributes_df = attributes,
-            vertex_from = cols_vertex[1], vertex_to = cols_vertex[2])
+        g <- add_edge_attributes_from_data.frame(g, attributes = attributes,
+            column_from = cols_vertex[1], column_to = cols_vertex[2])
     }
     
     ## adjacency matrix: the matrix will be first converted into a long 
@@ -375,9 +378,9 @@ add_edge_attributes <- function(g, attributes, cols_vertex = colnames(attributes
             cols = -c("Row"), names_to = "Col", values_to = "value")
         
         ## add edge attributes from long data.frame
-        g <- add_attributes_edges_from_data.frame(g, 
-            attributes_df = attributes_df, 
-            values_from = "Row", values_to = "Col")
+        g <- add_edge_attributes_from_data.frame(g, 
+            attributes = attributes_df, 
+            column_from = "Row", column_to = "Col")
     }
     
     ## return the updated graph object

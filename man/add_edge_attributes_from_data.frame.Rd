@@ -6,7 +6,7 @@
 \usage{
 add_edge_attributes_from_data.frame(
   g,
-  attributes_df,
+  attributes,
   column_from = "from",
   column_to = "to"
 )
@@ -17,8 +17,12 @@ add_edge_attributes_from_data.frame(
 \item{attributes}{\code{data.frame} containing edge
 attribute information}
 
-\item{vertex}{\code{chararacter} of length 2, specifying the columns 
-containing the out- and ingoing vertices in \code{attributes} of type
+\item{column_from}{\code{chararacter} of length 1, specifying the columns 
+containing the outgoing vertices in \code{attributes} of type
+\code{data.frame}}
+
+\item{column_to}{\code{chararacter} of length 1, specifying the columns 
+containing the ingoing vertices in \code{attributes} of type
 \code{data.frame}}
 }
 \value{
@@ -72,10 +76,10 @@ attributes <- data.frame(
         c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 ))
-names(attributes) <- c("from", "to", weight)
+names(attributes) <- c("from", "to", "weight")
 
 ## apply the function
-add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 
+LipidNetworkPredictR:::add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 
     column_to = "to")
 }
 \author{
