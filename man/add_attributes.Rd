@@ -123,6 +123,7 @@ attributes <- data.frame(
         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
+attributes$weight <- as.numeric(attributes$weight)
 
 ## apply the function
 add_attributes(g, attribute_type = "edges", attributes = attributes, cols_vertex = c("from", "to"))
@@ -135,8 +136,6 @@ attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE,
 
 ## apply the function
 add_attributes(g, attribute_type = "edges", attributes = attributes)
-
-
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}

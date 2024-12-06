@@ -114,6 +114,7 @@
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
 #' names(attributes) <- c("from", "to", "weight")
+#' attributes$weight <- as.numeric(attributes$weight)
 #' 
 #' ## apply the function
 #' add_attributes(g, attribute_type = "edges", attributes = attributes, cols_vertex = c("from", "to"))
@@ -126,8 +127,6 @@
 #' 
 #' ## apply the function
 #' add_attributes(g, attribute_type = "edges", attributes = attributes)
-#' 
-#' 
 add_attributes <- function(g, attribute_type = c("edges", "vertex"), 
         attributes, cols_vertex = colnames(attributes)[1:2]) {
     
@@ -220,6 +219,7 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
 #' names(attributes) <- c("from", "to", "weight")
+#' attributes$weight <- as.numeric(attributes$weight)
 #' 
 #' ## apply the function
 #' LipidNetworkPredictR:::add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 
@@ -286,6 +286,9 @@ add_edge_attributes_from_data.frame <- function(g, attributes,
 #' \code{data.frame}. The \code{character} of length 2 will specify the columns
 #' containing the out- and ingoing vertices of the graph.
 #' 
+#' In case of \code{attributes} is a \code{matrix}, the matrix entries will be
+#' stored in \code{E(g)$value}
+#' 
 #' @param g \code{igraph} object
 #' @param attributes \code{matrix} or \code{data.frame} containing edge
 #' attribute information
@@ -332,6 +335,7 @@ add_edge_attributes_from_data.frame <- function(g, attributes,
 #'         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 #' ))
 #' names(attributes) <- c("from", "to", "weight")
+#' attributes$weight <- as.numeric(attributes$weight)
 #' 
 #' ## apply the function
 #' add_edge_attributes(g, attributes, cols_vertex = c("from", "to"))

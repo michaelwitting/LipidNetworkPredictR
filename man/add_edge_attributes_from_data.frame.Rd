@@ -77,6 +77,7 @@ attributes <- data.frame(
         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
+attributes$weight <- as.numeric(attributes$weight)
 
 ## apply the function
 LipidNetworkPredictR:::add_edge_attributes_from_data.frame(g, attributes, column_from = "from", 

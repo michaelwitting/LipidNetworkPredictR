@@ -41,6 +41,9 @@ weights will be stored in the respective slots with same names as the
 \code{cols_vertex} has to be adjusted only when \code{attributes} is a
 \code{data.frame}. The \code{character} of length 2 will specify the columns
 containing the out- and ingoing vertices of the graph.
+
+In case of \code{attributes} is a \code{matrix}, the matrix entries will be
+stored in \code{E(g)$value}
 }
 \examples{
 FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
@@ -73,6 +76,7 @@ attributes <- data.frame(
         c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
+attributes$weight <- as.numeric(attributes$weight)
 
 ## apply the function
 add_edge_attributes(g, attributes, cols_vertex = c("from", "to"))
