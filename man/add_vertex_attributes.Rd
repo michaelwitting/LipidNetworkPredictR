@@ -4,7 +4,7 @@
 \alias{add_vertex_attributes}
 \title{Add vertex attributes to \code{igraph} object}
 \usage{
-add_vertex_attributes(g, attributes, col_vertex = colnames(attributes_df)[1])
+add_vertex_attributes(g, attributes, col_vertex = colnames(attributes)[1])
 }
 \arguments{
 \item{g}{\code{igraph} object}
