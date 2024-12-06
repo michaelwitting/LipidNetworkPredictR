@@ -135,6 +135,9 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
     ## nodes: e.g. log-fold change
     attribute_type <- match.arg(attribute_type)
     
+    if (!all(cols_vertex %in% colnames(attributes)))
+        stop("'cols_vertex' not in 'colnames(attributes)'.")
+    
     ## for attribute_type == "edges"
     if (attribute_type == "edges") 
         g <- add_edge_attributes(g = g, attributes = attributes, 
@@ -230,22 +233,43 @@ add_edge_attributes_from_data.frame <- function(g, attributes,
     if (!is.data.frame(attributes))
         stop("'attributes' has to be a data.frame.")
         
+    if (length(column_from) != 1)
+        stop("'column_from' has to be of length 1.")
+    
+    if (!column_from %in% colnames(attributes))
+        stop("'column_from' not in 'colnames(attributes)'.")
+    
+    if (length(column_to) != 1)
+        stop("'column_to' has to be of length 1.")
+    
+    if (!column_to %in% colnames(attributes))
+        stop("'column_to' not in 'colnames(attributes)'.")
+    
     if (ncol(attributes) < 3)
         stop("The data.frame must have at least 3 columns: 'from', 'to' and attribute column(s).")
-        
+       
+    ## subset attributes such that it does not contain entries that are not
+    ## vertices of g
+    attributes <- attributes[
+        attributes[[column_from]] %in% names(V(g)) & 
+            attributes[[column_to]] %in% names(V(g)), ]
+    
     ## extract vertex names and attribute names
     from_vertices <- attributes[[column_from]]
     to_vertices <- attributes[[column_to]]
     cols <- colnames(attributes)
     attribute_names <- cols[!(cols %in% c(column_from, column_to))]
-        
+    
     ## iterate through each attribute column to update weights
     for (attr in attribute_names) {
         
         ## create a names vector of new attribute values
         new_values <- stats::setNames(attributes[[attr]], 
             paste(from_vertices, to_vertices, sep = "|"))
-            
+        
+        ## assure that edges in g are found in new_values
+        new_values <- new_values[names(new_values) %in% attr(igraph::E(g), "vnames")]
+        
         ## update the graph's edge attributes
         ## initialize the attribute of the graph
         g <- igraph::set_edge_attr(g, attr, value = NA)
@@ -379,7 +403,8 @@ add_edge_attributes <- function(g, attributes, cols_vertex = colnames(attributes
             as.data.frame()
         attributes_df[["Row"]] <- rownames(attributes)
         attributes_df <- tidyr::pivot_longer(attributes_df, 
-            cols = -c("Row"), names_to = "Col", values_to = "value")
+            cols = -c("Row"), names_to = "Col", values_to = "value") |>
+            as.data.frame()
         
         ## add edge attributes from long data.frame
         g <- add_edge_attributes_from_data.frame(g, 
@@ -426,7 +451,7 @@ add_edge_attributes <- function(g, attributes, cols_vertex = colnames(attributes
 #' 
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #'
-#' @importFrom igraph set_vertex_attr
+#' @importFrom igraph set_vertex_attr V
 #' 
 #' @examples
 #' FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
@@ -481,8 +506,16 @@ add_vertex_attributes <- function(g, attributes, col_vertex = colnames(attribute
     if (length(col_vertex) != 1)
         stop("'col_vertex' has to be of length 1.")
     
+    
+    if (!col_vertex %in% colnames(attributes))
+        stop("'col_vertex' not in 'colnames(attributes)'.")
+    
     if (any(duplicated(attributes[[col_vertex]])))
         stop("'attributes[[col_vertex]]' contains duplicated entries.")
+    
+    ## subset attributes such that it does not contain entries that are not
+    ## vertices of g
+    attributes <- attributes[attributes[[col_vertex]] %in% names(igraph::V(g)), ]
     
     ## obtain the colnames, obtain the columns that store attribute information
     cols_df <- colnames(attributes)
@@ -492,6 +525,7 @@ add_vertex_attributes <- function(g, attributes, col_vertex = colnames(attribute
     for (attr_i in cols_df_attr) {
         ## set V(g) for cols_df_attr to NA
         g <- igraph::set_vertex_attr(graph = g, name = attr_i, value = NA)
+        
         ## set V(g) for cols_df_attr to attribute values
         g <- igraph::set_vertex_attr(graph = g, name = attr_i, 
             index = attributes[[col_vertex]], 
