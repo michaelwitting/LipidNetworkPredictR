@@ -29,9 +29,10 @@ curated from the WormJam model.
 
 ```{r setup}
 # load required library
-library(LipidNetworkPredictR)
-library(dplyr)
-library(rgoslin)
+library("LipidNetworkPredictR")
+library("dplyr")
+library("rgoslin")
+library("igraph")
 ```
 
 In order to store all the results a data frame for the reactions is
@@ -630,7 +631,195 @@ subsequent analysis, e.g. using the `igraph` package.
 
 
 ```{r create_adjacency_SPH, echo = TRUE}
-adj_GPGL <- create_reaction_adjacency_matrix(reactions_SPH)
+adj_SPH <- create_reaction_adjacency_matrix(reactions_SPH)
+```
+
+# Network analysis
+
+The adjacency matrix can be converted to graph objects, e.g. via the
+`sna` or the `igraph` packages. The `LipidNetworkPredictR` package enables 
+users to add experimental data on an `igraph` graph object derived from the
+reaction adjacency matrix. 
+
+Here, we will simimulate data and map these data on the `igraph`object `g`.
+
+First, we will create an `igraph` object from the adjacency matrix `adj_GPGL`.
+
+```{r}
+g <- igraph::graph_from_adjacency_matrix(adjmatrix = adj_SPH,
+    mode = "directed", weighted = TRUE, diag = FALSE)
+
+plot(g, vertex.label = NA)
+```
+
+## Map data on edges
+
+Experimental data can be used to uncover relational information between 
+features of a network, such as constructing correlation networks based on 
+Pearson or Spearman coefficients. Such networks can be overlaid with the 
+networks that are based on the biochemistry, such as provided by 
+`LipidNetworkPredictR`.
+
+Such correlation data can be provided by either (1) an adjacency matrix 
+where the entries are the correlation coefficients or (2) a `data.frame`
+object with columns specifying the in- and outgoing nodes and (an) additional 
+column(s) specifying the correlation coefficients.
+
+Here, we will only show how to add information via (1).
+
+```{r}
+## simulate the correlation adjacency matrix
+.names <- rownames(adj_SPH)
+n <- length(.names)
+set.seed(2024)
+attributes <- matrix(runif(n ^ 2, min = -1, max = 1), ncol = n, nrow = n, 
+    dimnames = list(.names, .names))
+attributes[upper.tri(attributes)] <- attributes[lower.tri(attributes)]
+diag(attributes) <- 1
+
+## add the information to the object g
+g_new <- add_attributes(g, attribute_type = "edges", attributes = attributes)
+```
+
+In a next step, we can explore the weighted biochemical reaction network and 
+use the built-in functions in the `igraph` package. 
+
+```{r}
+plot(g_new, edge.weights = E(g_new)$value, vertex.label = NA)
+
+## create an undirected graph, take absolute values from correlation 
+## coefficients
+g_new_undirected <- g_new
+E(g_new_undirected)$weight <- abs(E(g_new_undirected)$value)
+g_new_undirected <- as.undirected(g_new_undirected)
+cluster_louvain(g_new_undirected)
+```
+
+## Map data on vertices
+
+Data can be mapped on vertices of the network, e.g. log2-fold changes or 
+t-values regarding contrasts. Information is passed to the `igraph` object `g`
+via the argument `attributes`. The assignment of the vertices will be done 
+via the column `cols_vertex` (here: `"name"`) of the `attributes` object.
+
+The `logFC_cond1` and `logFC_cond2` were previously simulated using `rnorm`.
+
+```{r}
+attributes <- data.frame(
+    name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", 
+        "Cer(16:0(3OH,4OH,15Me)/12:0)", "Cer(16:0(3OH,4OH,15Me)/14:0)",
+        "Cer(16:0(3OH,4OH,15Me)/15:0)", "Cer(16:0(3OH,4OH,15Me)/16:0)",
+        "Cer(16:0(3OH,4OH,15Me)/17:0)", "Cer(16:0(3OH,4OH,15Me)/18:0)",
+        "Cer(16:0(3OH,4OH,15Me)/19:0)", "Cer(16:0(3OH,4OH,15Me)/20:0)",
+        "CerP(16:0(3OH,4OH,15Me)/12:0)", "FA(12:0)", "FA(14:0)",
+        "FA(16:0)", "SM(16:0(3OH,4OH,15Me)/12:0)", 
+        "SM(16:0(3OH,4OH,15Me)/14:0)", "SM(16:0(3OH,4OH,15Me)/15:0)", 
+        "SM(16:0(3OH,4OH,15Me)/16:0)", "SM(16:0(3OH,4OH,15Me)/17:0)", 
+        "SM(16:0(3OH,4OH,15Me)/18:0)", "SM(16:0(3OH,4OH,15Me)/19:0)", 
+        "SM(16:0(3OH,4OH,15Me)/20:0)", "SPH(d16:0(1OH,3OH)(15Me))",
+        "GlcCer(16:0(3OH,4OH,15Me)/17:0)", "GlcCer(16:0(3OH,4OH,15Me)/18:0)",
+        "PA(16:0/16:0)"),
+    logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
+        -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
+        -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
+        -0.11),
+    logFC_cond2 = c(-2.73,  6.14,  1.98,  0.09,  1.57,  1.77,  3.08,  4.04,
+        -3.01, 1.22, -4.25, 0.39, 0.53, 3.30, 7.10, 2.81, -0.99, -0.09,
+        -8.25, 4.94, -3.54, -7.74, -1.98, 0.73,  2.36,  2.53, -0.62))
+
+g_new <- add_attributes(g, attribute_type = "vertex", attributes = attributes, 
+    cols_vertex = "name")
+```
+
+Perform clustering based on vertex attributes in the `g` object. While `igraph`
+does not have built-in clustering algorithms specifically designed for vertex 
+attributes, we can use general clustering functions combined with preprocessing
+or external libraries to achieve this.
+
+### Approach 1: Using vertex attributes as input for clustering
+
+We can treat vertex attributes as data points and perform clustering using a
+method such as k-means, hierarchical clustering, or any other clustering
+algorithm. 
+
+```{r}
+## create a data.frame of vertex attributes
+attributes_network <- data.frame(
+    logFC_cond1 = V(g_new)$logFC_cond1, 
+    logFC_cond2 = V(g_new)$logFC_cond2) 
+rownames(attributes_network) <- V(g_new)$name
+attributes_network <- attributes_network |>
+    na.omit()
+
+## perform k-means clustering on attributes
+set.seed(2024)
+clusters <- kmeans(attributes_network, centers = 2)$cluster |>
+    as.data.frame()
+clusters$name <- rownames(clusters)
+colnames(clusters)[1] <- "cluster"
+
+## assign clustering results as a new vertex attribute
+g_new <- add_attributes(g_new, attribute_type = "vertex", attributes = clusters, cols_vertex = "name")
+
+## check the cluster assignment
+V(g_new)$cluster
+```
+
+### Approach 2: Network clustering and vertex attributes
+
+If we want to combine vertex attributes with the graph's structural information
+(e.g., topology), we can extend clustering algorithms with custom similarity
+metrics.
+
+Example: Similarity based on attributes
+
+1. compute a similarity or distance matrix based on the vertex attributes,
+2. use this matrix for clustering.
+
+```{r}
+## compute a similarity matrix based on vertex attributes, Euclidean distance
+## between attributes
+similarity_matrix <- dist(attributes_network)
+
+## perform hierarchical clustering and cut into 2 clusters
+hc <- hclust(similarity_matrix)
+clusters <- cutree(hc, k = 2)
+clusters <- data.frame(name = names(clusters), cluster = clusters)
+
+## assign clustering results as a new vertex attribute
+g_new <- add_attributes(g_new, attribute_type = "vertex", attributes = clusters, cols_vertex = "name")
+
+## check the cluster assignment
+V(g_new)$cluster
+```
+
+### Approach 3: Community detection and attributes
+
+The `igraph` package provides community detection algorithms based on network
+topology (e.g., Louvain). We can augment this by adding attribute similarity
+as weights.
+
+1. create edge weights based on attributes: combine structural and 
+attribute-based similarity into edge weights.
+
+2. run community detection: use algorithms like `cluster_louvain` or 
+`cluster_fast_greedy` with the custom weights.
+
+```{r}
+## calculate edge weights based on attribute similarity
+E(g_new)$weight_logFC_cond1 <- 1 / 
+    (1 + abs(V(g_new)[ends(g_new, E(g_new))[,1]]$logFC_cond1 - 
+        V(g_new)[ends(g_new, E(g_new))[,2]]$logFC_cond1))
+
+## perform community detection
+g_new_undirected <- as.undirected(g_new)
+community <- cluster_louvain(g_new_undirected, weights = E(g_new_undirected)$weight_logFC_cond1)
+
+## assign community membership to vertices
+V(g_new_undirected)$community <- membership(community)
+
+# Check the community assignment
+V(g_new_undirected)$community
 ```
 
 # List of implemented reactions
