@@ -39,7 +39,7 @@ created. Lipids abbreviations are just appended.
 
 ```{r data structures, message=FALSE, warning=FALSE}
 ## create data frame to store reactions
-lipid_reactions <- data.frame()
+lipid_reactions <- list()
 
 ## create vector to store shorthand notations of generated lipids
 ##lipid_abbrev <- vector()
@@ -195,13 +195,13 @@ glycerophospholipids.
 results <- .create_reaction(substrates = list(FA = FA_GPGL),
     template = template, reaction = "RHEA:15421")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get CoA for further reactions (glycero- and glycerophospholipids)
 CoA_GPGL <- results[[1]][["AcylCoA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CoA_GPGL)
 
 ## add lipids to data frame
@@ -219,13 +219,13 @@ position of the acyl.
 results <- .create_reaction(substrates = list(FA = FA_SPH),
     template = template, reaction = "RHEA:15421")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get CoA for further reactions (sphingolipids)
 CoA_SPH <- results[[1]][["AcylCoA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CoA_SPH)
 
 ## add lipids to data frame
@@ -267,13 +267,13 @@ template <- list(reaction_name = "glycerol-3 phosphate acyl transferase",
 results <- .create_reaction(substrates = list(AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:15325")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get LPA for further reactions
 LPA <- results[[1]][["sn1LPA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPA)
 
 ## add lipids to data frame
@@ -305,13 +305,13 @@ template <- list(reaction_name = "lysophosphatidic acid acyl transferase",
 results <- .create_reaction(substrates = list(sn1LPA = LPA, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:19709")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PA for further reactions
 PA <- results[[1]][["PA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PA)
 
 ## add lipids to data frame
@@ -340,13 +340,13 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol 3-phosphate phosphohydr
 results <- .create_reaction(substrates = list(PA = PA),
     template = template, reaction = "RHEA:27429")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get DG for further reactions
 DG <- results[[1]][["DG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DG)
 
 ## add lipids to data frame
@@ -378,7 +378,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol kinase (ER)",
 results <- .create_reaction(substrates = list(DG = DG),
     template = template, reaction = "RHEA:10272")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PA are in previous list
 if (all(results[[1]][["PA"]] %in% PA)) {
@@ -386,7 +386,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 
 }
 ```
@@ -414,7 +414,7 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (1-acyl-M
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
 results <- .create_reaction(substrates = list(DG = DG), template = template,
    reaction = "RHEA:44712")
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## add new lipids to lipid vector
 #lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1MG"]])
@@ -423,7 +423,7 @@ results[[2]][1:5, "reaction_formula"]
 sn1MG <- results[[1]][["sn1MG"]]
 
 ## add new reactions
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 ```
 
 DG are degraded by the activity of different lipases yielding mono 
@@ -445,13 +445,13 @@ template <- list(reaction_name = "1,2-diacyl-sn-glycerol acylhydrolase (2-acyl-M
 results <-  .create_reaction(substrates = list(DG = DG),
     template = template, reaction = "RHEA:33275")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn2MG for further reactions
 sn2MG <- results[[1]][["sn2MG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2MG)
 
 ## add lipids to data frame
@@ -476,13 +476,13 @@ template <- list(reaction_name = "1-Acyl-MG 2-Acyl-MG conversion",
 results <-  .create_reaction(substrates = list(sn2MG = sn2MG),
     template = template, reaction = "sn2mg_to_sn1mg")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn1MG for further reactions
 sn1MG <- results[[1]][["sn1MG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1MG)
 
 ## add lipids to data frame
@@ -510,14 +510,14 @@ template <- list(reaction_name = "1-acyl-sn-glycerol acylhydrolase",
 results <-  .create_reaction(substrates = list(sn1MG = sn1MG),
     template = template, reaction = "RHEA:34019")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -535,7 +535,7 @@ template <- list(reaction_name = "2-acyl-sn-glycerol acylhydrolase",
 results <-  .create_reaction(substrates = list(sn2MG = sn2MG),
     template = template, reaction = "RHEA:32871")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -543,7 +543,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -567,7 +567,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (1-acyl-MG)"
 results <-  .create_reaction(substrates = list(sn1MG = sn1MG, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:38463")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced DG are in previous list
 if (all(results[[1]][["DG"]] %in% DG)) {
@@ -575,7 +575,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -593,7 +593,7 @@ template <- list(reaction_name = "Monoacylglycerol-acyl transferase (2-acyl-MG)"
 results <-  .create_reaction(substrates = list(sn2MG = sn2MG, AcylCoA = CoA_GPGL), 
     template = template, reaction = "RHEA:32947")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced DG are in previous list
 if (all(results[[1]][["DG"]] %in% DG)) {
@@ -601,7 +601,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -619,7 +619,7 @@ template <- list(reaction_name = "1-acyl-sn-glycerol kinase",
 results <-  .create_reaction(substrates = list(sn1MG = sn1MG),
     template = template, reaction = "RHEA:33747")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced LPA are in previous list
 if (all(results[[1]][["sn1LPA"]] %in% LPA)) {
@@ -627,7 +627,7 @@ if (all(results[[1]][["sn1LPA"]] %in% LPA)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -656,13 +656,13 @@ template <- list(reaction_name = "diacylglycerol acyl transferase",
 results <-  .create_reaction(substrates = list(DG = DG, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:10868")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get TG for further reactions
 TG <- results[[1]][["TG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(TG)
 
 ## add lipids to data frame
@@ -688,7 +688,7 @@ template <- list(reaction_name = "Triacylglycerol acylhydrolase",
 # results <-  .create_reaction(substrates = list(TG = TG),
 #     template = template, reaction = "RHEA:33271")
 # 
-# results[[2]][1:5, "reaction_formula"]
+# results[[2]][["reaction_formula"]][1:5]
 # 
 # ## check if produced DG are in previous list
 # if (all(results[[1]][["DG"]] %in% DG)) {
@@ -696,7 +696,7 @@ template <- list(reaction_name = "Triacylglycerol acylhydrolase",
 #     print("all fine...")
 #   
 #     ## add new reactions and add lipids to data frame
-#     lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+#     lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 # }
 ```
 
@@ -722,13 +722,13 @@ template <- list(reaction_name = "CDP-choline 1,2-diacyl-sn-glycerol phosphochol
 results <-  .create_reaction(substrates = list(DG = DG),
     template = template, reaction = "RHEA:32939")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PC for further reactions
 PC <- results[[1]][["PC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -750,13 +750,13 @@ template <- list(
 results <-  .create_reaction(substrates = list(DG = DG),
     template = template, reaction = "RHEA:32943")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PE for further reactions
 PE <- results[[1]][["PE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -779,13 +779,13 @@ template <- list(reaction_name = "phosphatidylcholine-serine O-phosphatidyltrans
 results <-  .create_reaction(substrates = list(PC = PC),
     template = template, reaction = "RHEA:45088")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PS for further reactions
 PS <- results[[1]][["PS"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PS)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -807,7 +807,7 @@ template <- list(
 results <-  .create_reaction(substrates = list(PE = PE),
     template = template, reaction = "RHEA:27606")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PS are in previous list
 if (all(results[[1]][["PS"]] %in% PS)) {
@@ -815,7 +815,7 @@ if (all(results[[1]][["PS"]] %in% PS)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -838,7 +838,7 @@ template <- list(reaction_name = "phosphatidylserine decarboxylase",
 results <-  .create_reaction(substrates = list(PS = PS),
     template = template, reaction = "RHEA:20828")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PE are in previous list
 if (all(results[[1]][["PE"]] %in% PE)) {
@@ -846,7 +846,7 @@ if (all(results[[1]][["PE"]] %in% PE)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -870,13 +870,13 @@ template <- list(reaction_name = "Phospholipase A1 (PC)",
 results <-  .create_reaction(substrates = list(PC = PC),
     template = template, reaction = "RHEA:18689")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn2LPC for further reactions
 sn2LPC <- results[[1]][["sn2LPC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2LPC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -897,13 +897,13 @@ template <- list(reaction_name = "Phospholipase A2 (PC)",
 results <-  .create_reaction(substrates = list(PC = PC),
     template = template, reaction = "RHEA:15801")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn1LPC for further reactions
 sn1LPC <- results[[1]][["sn1LPC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1LPC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -924,7 +924,7 @@ template <- list(reaction_name = "Phospholipase D (PC)",
 results <-  .create_reaction(substrates = list(PC = PC),
     template = template, reaction = "RHEA:14445")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PA are in previous list
 if (all(results[[1]][["PA"]] %in% PA)) {
@@ -932,7 +932,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -954,7 +954,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine lipase (LPC
 results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC),
     template = template, reaction = "RHEA:15177")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -962,7 +962,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -982,7 +982,7 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphocholine lipase (LPC
 results <-  .create_reaction(substrates = list(sn2LPC = sn2LPC),
     template = template, reaction = "RHEA:44696")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -990,7 +990,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1012,7 +1012,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphocholine acyltransfe
 results <-  .create_reaction(substrates = list(sn1LPC = sn1LPC, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:12937")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PC are in previous list
 if (all(results[[1]][["PC"]] %in% PC)) {
@@ -1020,7 +1020,7 @@ if (all(results[[1]][["PC"]] %in% PC)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1042,13 +1042,13 @@ template <- list(reaction_name = "Phospholipase A1 (PE)",
 results <-  .create_reaction(substrates = list(PE = PE),
     template = template, reaction = "RHEA:44408")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn2LPE for further reactions
 sn2LPE <- results[[1]][["sn2LPE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2LPE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1069,13 +1069,13 @@ template <- list(reaction_name = "Phospholipase A2 (PE)",
 results <-  .create_reaction(substrates = list(PE = PE),
     template = template, reaction = "RHEA:44604")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get sn1LPE for further reactions
 sn1LPE <- results[[1]][["sn1LPE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1LPE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1096,7 +1096,7 @@ template <- list(reaction_name = "Phospholipase D (PE)",
 results <-  .create_reaction(substrates = list(PE = PE),
     template = template, reaction = "pe_to_pa")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PA are in previous list
 if (all(results[[1]][["PA"]] %in% PA)) {
@@ -1104,7 +1104,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1126,7 +1126,7 @@ template <- list(reaction_name = "1-acyl-sn-glycero-3-phosphoethanolamine lipase
 results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE),
     template = template, reaction = "RHEA:32967")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -1134,7 +1134,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1154,7 +1154,7 @@ template <- list(reaction_name = "2-acyl-sn-glycero-3-phosphoethanolamine lipase
 results <-  .create_reaction(substrates = list(sn2LPE = sn2LPE),
     template = template, reaction = "sn2lpe_to_fa")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -1162,7 +1162,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1185,7 +1185,7 @@ template <- list(
 results <-  .create_reaction(substrates = list(sn1LPE = sn1LPE, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:32995")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PE are in previous list
 if (all(results[[1]][["PE"]] %in% PE)) {
@@ -1193,7 +1193,7 @@ if (all(results[[1]][["PE"]] %in% PE)) {
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1217,13 +1217,13 @@ template <- list(reaction_name = "phosphatidate cytidylyltransferase",
 results <-  .create_reaction(substrates = list(PA = PA),
     template = template, reaction = "RHEA:16229")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get CDPDG for further reactions
 CDPDG <- results[[1]][["CDPDG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CDPDG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1244,13 +1244,13 @@ template <- list(reaction_name = "CDP-diacylglycerol inositol transferase",
 results <-  .create_reaction(substrates = list(CDPDG = CDPDG),
     template = template, reaction = "RHEA:11580")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PI for further reactions
 PI <- results[[1]][["PI"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PI)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1273,13 +1273,13 @@ template <- list(reaction_name = "CDP-diacylglycerol--glycerol-3-phosphate 3-pho
 results <-  .create_reaction(substrates = list(CDPDG = CDPDG),
     template = template, reaction = "RHEA:12593")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PGP for further reactions
 PGP <- results[[1]][["PGP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PGP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1300,13 +1300,13 @@ template <- list(reaction_name = "Phosphatidylglycerophosphatase",
 results <-  .create_reaction(substrates = list(PGP = PGP),
     template = template, reaction = "RHEA:33751")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PG for further reactions
 PG <- results[[1]][["PG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1331,13 +1331,13 @@ results <-  .create_reaction(substrates = list(PG = PG, CDPDG = CDPDG),
                               #               "(18|20):[1,2,3,4,5].*/(18|20):[1,2,3,4,5]"),
                              #negate = c(FALSE, FALSE))
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get CL for further reactions
 CL <- results[[1]][["CL"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CL)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1364,13 +1364,13 @@ results <-  .create_reaction(substrates = list(AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:52716")
     #constraints = c("16:0)|18:0)|20:0)"), negate = c(FALSE))
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get FAO for further reactions
 FAO <- results[[1]][["FAO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(FAO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1391,13 +1391,13 @@ template <- list(reaction_name = "Glycerone-phosphate O-acyltransferase",
 results <-  .create_reaction(substrates = list(AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:17657")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get AcylDHAP for further reactions
 AcylDHAP <- results[[1]][["AcylDHAP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(AcylDHAP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1418,13 +1418,13 @@ template <- list(reaction_name = "Alkyldihydroxyacetonephosphate synthase",
 results <-  .create_reaction(substrates = list(AcylDHAP = AcylDHAP, FAO = FAO),
     template = template, reaction = "RHEA:36171")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get AlkylDHAP for further reactions
 AlkylDHAP <- results[[1]][["AlkylDHAP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(AlkylDHAP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1448,13 +1448,13 @@ template <- list(reaction_name = "1-acylglycerone phosphate reductase",
 results <-  .create_reaction(substrates = list(AlkylDHAP = AlkylDHAP),
     template = template, reaction = "RHEA:36175")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get LPAO for further reactions
 LPAO <- results[[1]][["sn1LPAO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPAO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1480,13 +1480,13 @@ results <-  .create_reaction(substrates = list(sn1LPAO = LPAO, AcylCoA = CoA_GPG
                              #constraints = c("", "OH"),
                              #negate = c(FALSE, TRUE))
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PAO for further reactions
 PAO <- results[[1]][["PAO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PAO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1507,13 +1507,13 @@ template <- list(reaction_name = "1-Alkyl-2-acyl-sn-glycero-3-phosphate phosphoh
 results <-  .create_reaction(substrates = list(PAO = PAO),
     template = template, reaction = "RHEA:36239")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get DGO for further reactions
 DGO <- results[[1]][["DGO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DGO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1537,13 +1537,13 @@ template <- list(
 results <-  .create_reaction(substrates = list(DGO = DGO),
     template = template, reaction = "RHEA:36187")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PEO for further reactions
 PEO <- results[[1]][["PEO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PEO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1566,13 +1566,13 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PEO = PEO),
     template = template, reaction = "RHEA:22956")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PEP for further reactions
 PEP <- results[[1]][["PEP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PEP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1597,13 +1597,13 @@ template <- list(
 results <-  .create_reaction(substrates = list(DGO = DGO),
     template = template, reaction = "RHEA:36179")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get PCO for further reactions
 PCO <- results[[1]][["PCO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PCO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1626,13 +1626,13 @@ template <- list(reaction_name = "Phospholipase A2 (PE-O)",
 results <-  .create_reaction(substrates = list(PEO = PEO),
     template = template, reaction = "peo_to_lpeo")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get LPEO for further reactions
 LPEO <- results[[1]][["sn1LPEO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPEO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1655,7 +1655,7 @@ template <- list(
 results <-  .create_reaction(substrates = list(sn1LPEO = LPEO, AcylCoA = CoA_GPGL),
     template = template, reaction = "lpeo_to_peo")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PEO are in previous list
 if (all(results[[1]][["PEO"]] %in% PEO)) {
@@ -1663,7 +1663,7 @@ if (all(results[[1]][["PEO"]] %in% PEO)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1683,13 +1683,13 @@ template <- list(reaction_name = "Phospholipase A2 (PE-P)",
 results <-  .create_reaction(substrates = list(PEP = PEP),
     template = template, reaction = "RHEA:36195")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get LPEP for further reactions
 LPEP <- results[[1]][["sn1LPEP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPEP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1712,7 +1712,7 @@ results <-  .create_reaction(
     substrates = list(sn1LPEP = LPEP, AcylCoA = CoA_GPGL),
     template = template, reaction = "RHEA:16245")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PEP are in previous list
 if (all(results[[1]][["PEP"]] %in% PEP)) {
@@ -1720,7 +1720,7 @@ if (all(results[[1]][["PEP"]] %in% PEP)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1740,13 +1740,13 @@ template <- list(reaction_name = "Phospholipase A2 (PC-O)",
 results <-  .create_reaction(substrates = list(PCO = PCO),
     template = template, reaction = "RHEA:36231")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get LPCO for further reactions
 LPCO <- results[[1]][["sn1LPCO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPCO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1780,16 +1780,16 @@ template <- list(reaction_name = "Sphinganine Acyl-CoA transferase",
 ```
 
 ```{r sphinga_to_dhcer_template, message=FALSE, warning=FALSE, eval=TRUE}
-results <-  .create_reaction(substrates = list(AcylCoA = CoA_SPH),
+results <-  .create_reaction(substrates = list(AcylCoA = CoA_SPH, SPH = "SPH(d16:0(1OH,3OH)(15Me))"),
     template = template, reaction = "RHEA:53424")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get DhCer for further reactions
 DhCer <- results[[1]][["DhCer"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DhCer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1810,13 +1810,13 @@ template <- list(reaction_name = "Dihydrosphingomyelin synthase",
 results <-  .create_reaction(substrates = list(DhCer = DhCer),
     template = template, reaction = "RHEA:44620")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get DhSM for further reactions
 DhSM <- results[[1]][["DhSM"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DhSM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1837,7 +1837,7 @@ template <- list(reaction_name = "Dihydrosphingomyelin phosphodiesterase",
 results <-  .create_reaction(substrates = list(DhSM = DhSM),
     template = template, reaction = "RHEA:45300")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced DhCer are in previous list
 if (all(results[[1]][["DhCer"]] %in% DhCer)) {
@@ -1845,7 +1845,7 @@ if (all(results[[1]][["DhCer"]] %in% DhCer)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1864,13 +1864,13 @@ template <- list(reaction_name = "Dihydroceramide dehydrogenase",
 ```{r dhcer_to_cer, message=FALSE, warning=FALSE, eval=TRUE}
 results <-  .create_reaction(substrates = list(DhCer = DhCer),
     template = template, reaction = "RHEA:46544")
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get Cer for further reactions
 Cer <- results[[1]][["Cer"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(Cer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1891,13 +1891,13 @@ template <- list(reaction_name = "Sphingomyelin synthase",
 results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:18765")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get SM for further reactions
 SM <- results[[1]][["SM"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(SM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1918,7 +1918,7 @@ template <- list(reaction_name = "Sphingomyelin phosphodiesterase",
 results <-  .create_reaction(substrates = list(SM = SM),
     template = template, reaction = "RHEA:45644")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced Cer are in previous list
 if (all(results[[1]][["Cer"]] %in% Cer)) {
@@ -1926,7 +1926,7 @@ if (all(results[[1]][["Cer"]] %in% Cer)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1946,13 +1946,13 @@ template <- list(reaction_name = "Ceramide kinase",
 results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:17929")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get CerP for further reactions
 CerP <- results[[1]][["CerP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CerP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1975,7 +1975,7 @@ template <- list(reaction_name = "Ceramide 1-phosphate hydrolase",
 results <-  .create_reaction(substrates = list(CerP = CerP),
     template = template, reaction = "RHEA:33743")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced Cer are in previous list
 if (all(results[[1]][["Cer"]] %in% Cer)) {
@@ -1983,7 +1983,7 @@ if (all(results[[1]][["Cer"]] %in% Cer)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2004,13 +2004,13 @@ template <- list(
 results <-  .create_reaction(substrates = list(Cer = Cer),
     template = template, reaction = "RHEA:12088")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## get GlcCer for further reactions
 GlcCer <- results[[1]][["GlcCer"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(GlcCer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -2045,7 +2045,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PE = PE, PC = PC), 
     template = template, reaction = "RHEA:45188")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn2LPC are in previous list
 if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
@@ -2056,7 +2056,7 @@ if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
     NAPE <- results[[1]][["NAPE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2078,7 +2078,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn1")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn2LPC are in previous list
 if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
@@ -2089,7 +2089,7 @@ if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
     NAPEO <- results[[1]][["NAPEO"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPEO)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2111,7 +2111,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC), 
     template = template, reaction = "RHEA:63596")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn2LPC are in previous list
 if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
@@ -2122,7 +2122,7 @@ if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
     NAPEP <- results[[1]][["NAPEP"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPEP)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2144,7 +2144,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PE = PE, PC = PC),
     template = template, reaction = "RHEA:45192")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn1LPC and NAPE are in previous list
 if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) & all(results[[1]][["NAPE"]] %in% NAPE)) {
@@ -2152,7 +2152,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) & all(results[[1]][["NAPE"]] %in% 
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2172,7 +2172,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PEO = PEO, PC = PC), 
     template = template, reaction = "peo_to_napeo_sn2")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn1LPC and NAPEO are in previous list
 if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) & 
@@ -2181,7 +2181,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) &
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2201,7 +2201,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(PEP = PEP, PC = PC),
     template = template, reaction = "pep_to_napep_sn2")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced sn1LPC and NAPEP are in previous list
 if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) & 
@@ -2210,7 +2210,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) &
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2232,7 +2232,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(NAPE = NAPE),
     template = template, reaction = "RHEA:33159")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PA are in previous list
 if (all(results[[1]][["PA"]] %in% PA)) {
@@ -2243,7 +2243,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     NAE <- results[[1]][["NAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2265,7 +2265,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(NAPEO = NAPEO),
     template = template, reaction = "napeo_to_nae")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced PAO and NAE are in previous list
 if (all(results[[1]][["PAO"]] %in% PAO) & all(results[[1]][["NAE"]] %in% NAE)) {
@@ -2273,7 +2273,7 @@ if (all(results[[1]][["PAO"]] %in% PAO) & all(results[[1]][["NAE"]] %in% NAE)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2307,7 +2307,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(NAPE = NAPE),
     template = template, reaction = "nape_to_pnae")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced DG are in previous list
 if (all(results[[1]][["DG"]] %in% DG)) {
@@ -2318,7 +2318,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     PNAE <- results[[1]][["PNAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(PNAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2346,7 +2346,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(NAPE = NAPE),
     template = template, reaction = "RHEA:45460")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -2357,7 +2357,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     LNAPE <- results[[1]][["LNAPE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(LNAPE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2379,7 +2379,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(LNAPE = LNAPE),
     template = template, reaction = "RHEA:45420")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -2390,7 +2390,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     GPNAE <- results[[1]][["GPNAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(GPNAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2412,7 +2412,7 @@ template <- list(reaction_name = "",
 results <-  .create_reaction(substrates = list(NAE = NAE),
     template = template, reaction = "RHEA:17505")
 
-results[[2]][1:5, "reaction_formula"]
+results[[2]][["reaction_formula"]][1:5]
 
 ## check if produced FA are in previous list
 if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
@@ -2420,6 +2420,6 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
