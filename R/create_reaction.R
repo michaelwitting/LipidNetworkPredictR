@@ -60,7 +60,7 @@
         reaction = reaction)
     substrates <- substrates[cols]
     df_substrates <- .create_substrates_combinations(substrates = substrates,
-        constraints = constraints, negate = negate)
+        template = template)
     .check_colnames_substrates_combinations(substrates = df_substrates,
         reaction = reaction)
     
@@ -68,12 +68,12 @@
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     
     ## make new data.frame with reaction template
-    df <- .create_df_with_template(df_reaction = df_reaction,
+    l <- .create_list_with_template(df_reaction = df_reaction,
         template = template, reaction = reaction)
     
     ## return results
     .create_list_reactants_with_template(df_reaction = df_reaction,
-        template = df)
+        template = l)
 }
 
 
