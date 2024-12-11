@@ -1,11 +1,11 @@
-#' @name .create_df_with_template
+#' @name .create_list_with_template
 #' 
-#' @title Create data frame and substitute substrates/products
+#' @title Create list and substitute substrates/products
 #' 
 #' @description 
 #' Helper function for \code{create_reaction}.
 #' 
-#' The function \code{.create_df_with_template} takes the \code{template}
+#' The function \code{.create_list_with_template} takes the \code{template}
 #' and replaces the \code{"reactionFormula"} by the substrates/products from
 #' \code{df_reaction}.
 #' 
@@ -19,7 +19,7 @@
 #' @param template \code{df_template}
 #' @param reaction \code{character(1)}
 #' 
-#' @return data.frame
+#' @return list
 #' 
 #' @importFrom stringi stri_replace_all_fixed stri_replace_first_fixed
 #' @importFrom stringi stri_replace_all_regex
@@ -46,42 +46,60 @@
 #'     reaction = reaction)
 #'     
 #' ## make new data.frame with reaction template
-#' LipidNetworkPredictR:::.create_df_with_template(
+#' LipidNetworkPredictR:::.create_list_with_template(
 #'     df_reaction = df_reaction,
 #'     template = template, reaction = reaction)
-.create_df_with_template <- function(df_reaction, template, 
+.create_list_with_template <- function(df_reaction, template, 
     reaction = "RHEA:15421") {
  
     .check_reaction(reaction)
     
     ## create a data.frame and will with ""
-    .char <- character(nrow(df_reaction))
+    # .char <- character(nrow(df_reaction))
+    # 
+    # 
+    #     .char <- c(.char, .char)
+    
+    # l <- list(
+    #     reaction_RHEA = .char,
+    #     reaction_name = .char,
+    #     reaction_isReversible = .char,
+    #     reaction_geneAssociation = .char,
+    #     reaction_pathway = .char,
+    #     reaction_constraints = .char,
+    #     reaction_constraints = logical(length(.char)),
+    #     reaction_formula = .char,
+    #     reaction_formula_chebi = .char
+    # )
+    # 
+    ## fill with data
+    l <- template
+    # l[["reaction_RHEA"]] <- template[["reaction_RHEA"]]
+    # l[["reaction_name"]] <- template[["reaction_name"]]
+    # l[["reaction_isReversible"]] <- template[["reaction_isReversible"]]
+    # l[["reaction_geneAssociation"]] <- template[["reaction_geneAssociation"]]
+    # l[["reaction_pathway"]] <- template[["reaction_pathway"]]
+    # l[["reaction_constraints"]] <- template[["reaction_constraints"]]
+    # l[["reaction_constraints_negate"]] <- template[["reaction_constraints_negate"]] 
+    # l[["reaction_formula"]] <- template[["reaction_formula"]]
+    # l[["reaction_formula_chebi"]] <- template[["reaction_formula_chebi"]]
     
     if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",
-            "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")) 
-        .char <- c(.char, .char)
-    
-    df <- data.frame(
-        reaction_RHEA = .char,
-        reaction_name = .char, 
-        reaction_isReversible = .char,
-        reaction_geneAssociation = .char, 
-        reaction_pathway = .char,
-        reaction_formula = .char,
-        reaction_formula_chebi = .char
-    )
-    
-    ## fill with data
-    df[["reaction_RHEA"]] <- template[["reaction_RHEA"]]
-    df[["reaction_name"]] <- template[["reaction_name"]]
-    df[["reaction_isReversible"]] <- template[["reaction_isReversible"]]
-    df[["reaction_geneAssociation"]] <- template[["reaction_geneAssociation"]]
-    df[["reaction_pathway"]] <- template[["reaction_pathway"]]
-    df[["reaction_formula"]] <- template[["reaction_formula"]]
-    df[["reaction_formula_chebi"]] <- template[["reaction_formula_chebi"]]
+        "RHEA:44864", "RHEA:44865", "RHEA:44866", "RHEA:44867")) {
+        .times <- 2
+        l[["reaction_RHEA"]] <- rep(l[["reaction_RHEA"]], .times)
+        l[["reaction_name"]] <- rep(l[["reaction_name"]], .times)
+        l[["reaction_isReversible"]] <- rep(l[["reaction_isReversible"]], .times)
+        l[["reaction_geneAssociation"]] <- rep(l[["reaction_geneAssociation"]], .times)
+        l[["reaction_pathway"]] <- rep(l[["reaction_pathway"]], .times)
+        l[["reaction_constraints"]] <- rep(l[["reaction_constraints"]], .times)
+        l[["reaction_constraints_negate"]] <- rep(l[["reaction_constraints_negate"]], .times) 
+        l[["reaction_formula"]] <- rep(l[["reaction_formula"]], .times)
+        l[["reaction_formula_chebi"]] <- rep(l[["reaction_formula_chebi"]], .times)
+    }
     
     ## get the (reaction) formula
-    .formula <- df$reaction_formula
+    .formula <- l$reaction_formula
     
     ## depending on the reaction, adjust fixed and variable substrates and 
     ## products
@@ -1047,30 +1065,30 @@
         pattern = "M_PC$", replacement = "PC")
 
     ## write back to entry reaction_formula
-    df$reaction_formula <- .formula
+    l[["reaction_formula"]] <- .formula
     
     ## split the df$reaction_formula into substrates and products 
-    .formula_tmp <- stringi::stri_replace_all_regex(str = df$reaction_formula, 
-        pattern = ">|<", replacement = "")
+    .formula_tmp <- stringi::stri_replace_all_regex(
+        str = l[["reaction_formula"]], pattern = ">|<", replacement = "")
     .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = " = ")
     .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
     .formula_product <- unlist(lapply(.formula_tmp, "[", 2))
 
-    ## write the substrates and products to the df
-    df$reaction_substrate <- .formula_substrate
-    df$reaction_product <- .formula_product
+    ## write the substrates and products to the list
+    l[["reaction_substrate"]] <- .formula_substrate
+    l[["reaction_product"]] <- .formula_product
     
-    ## split the df$reaction_formula_chebi into substrates and products 
-    .formula_tmp <- stringi::stri_replace_all_regex(str = df$reaction_formula_chebi, 
+    ## split the l$reaction_formula_chebi into substrates and products 
+    .formula_tmp <- stringi::stri_replace_all_regex(str = l[["reaction_formula_chebi"]], 
         pattern = ">|<", replacement = "")
     .formula_tmp <- stringi::stri_split(str = .formula_tmp, fixed = " = ")
     .formula_substrate <- unlist(lapply(.formula_tmp, "[", 1))
     .formula_product <- unlist(lapply(.formula_tmp, "[", 2))
     
-    ## write the substrates and products to the df
-    df$reaction_substrate_chebi <- .formula_substrate
-    df$reaction_product_chebi <- .formula_product
+    ## write the substrates and products to l
+    l[["reaction_substrate_chebi"]] <- .formula_substrate
+    l[["reaction_product_chebi"]] <- .formula_product
     
-    ## return the data.frame
-    df
+    ## return the list
+    l
 }
