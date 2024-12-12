@@ -12,8 +12,7 @@
 #' The function will internally \code{expand.grid} to create the combinations.
 #' 
 #' @param substrates list of character vector(s)
-#' @param constraints character vector with same length as \code{length(substrates)}
-#' @param negate logical vector with same length as \code{length(substrates)}
+#' @param template \code{list}
 #' 
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de} and 
 #'     Thomas Naake, \email{thomasnaake@@googlemail.com}
@@ -27,23 +26,37 @@
 #' substrates <- list(FA = FA)
 #' 
 #' ## create data.frame of substrates
+#' template <- .create_template(template = NULL, reaction = "RHEA:15421")
 #' LipidNetworkPredictR:::.create_substrates_combinations(
-#'     substrates = substrates, 
-#'     constraints = "", negate = FALSE)
+#'     substrates = substrates, template = template)
 .create_substrates_combinations <- function(substrates = substrates, 
-    constraints = character(length(substrates)), 
-    negate = logical(length(substrates))) {
+    template = template) {
     
-    ## check if constraints has correct lengths and adjust brackets format
-    ## that it can be used by grep
-    if (length(constraints) != length(substrates))
-        stop("'length(constraints)' has to be the same as 'length(substrates)'")
-    #constraints <- gsub(x = constraints, pattern = "[(]", replacement = "[(]")
-    #constraints <- gsub(x = constraints, pattern = "[)]", replacement = "[)]")
+    ## obtain constraints and negate from template
+    constraints <- template[["reaction_constraints"]]
+    negate <- template[["reaction_constraints_negate"]]
     
-    ## check if negate has correct length
-    if (length(negate) != length(substrates)) 
-        stop("'length(negate)' has to be the same as 'length(substrates)'")
+    ## check if constraints has correct length, this can also happen when 
+    ## the constraints vector is recycable (length of vector substrates is a
+    ## multiple of vector constraints)
+    if (length(substrates) %% length(constraints) != 0)
+        stop("'length(constraints)' has to be the same as 'length(substrates) or 'substrate' be recycable'")
+
+    ## check if negate has correct length, this can also happen when 
+    ## the negate vector is recycable (length of vector substrates is a
+    ## multiple of vector negate)
+    if (length(substrates) %% length(negate) != 0)
+        stop("'length(negate)' has to be the same as 'length(substrates)' or 'negate' be recycable")
+    
+    ## if length(substrates) != length(constraints) make sure that constraints
+    ## has the same length as substrates
+    if (length(substrates) != length(constraints)) 
+        constraints <- rep_len(constraints, length(substrates))
+    
+    ## if length(substrates) != length(negate) make sure that negate
+    ## has the same length as substrates
+    if (length(substrates) != length(negate)) 
+        negate <- rep_len(negate, length(substrates))
     
     ## constrain variable substrates
     substrates_l <- lapply(seq_along(substrates), function(i)
@@ -92,9 +105,10 @@
 #' substrates <- list(FA = FA)
 #' 
 #' ## create data.frame of substrates
+#' template <- LipidNetworkPredictR:::.create_template(template = NULL, 
+#'     reaction = "RHEA:15421")
 #' df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
-#'     substrates = substrates, 
-#'     constraints = "", negate = FALSE)
+#'     substrates = substrates, template = template)
 #' LipidNetworkPredictR:::.check_colnames_substrates_combinations(
 #'     substrates = df_substrates, reaction = "RHEA:15421")
 .check_colnames_substrates_combinations <- function(substrates, reaction = "RHEA:15421") {
@@ -445,7 +459,7 @@
     
     ## sphinga_to_dhcer
     if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427"))
-        cols <- c("AcylCoA")
+        cols <- c("AcylCoA", "SPH")
     
     ## tg_to_dg
     if (reaction %in% c("RHEA:33271", "RHEA:33272", "RHEA:33273", "RHEA:33274",
