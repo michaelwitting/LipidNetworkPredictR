@@ -34,9 +34,10 @@ FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",
 substrates <- list(FA = FA)
 
 ## create data.frame of substrates
+template <- LipidNetworkPredictR:::.create_template(template = NULL, 
+    reaction = "RHEA:15421")
 df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
-    substrates = substrates, 
-    constraints = "", negate = FALSE)
+    substrates = substrates, template = template)
 LipidNetworkPredictR:::.check_colnames_substrates_combinations(
     substrates = df_substrates, reaction = "RHEA:15421")
 }

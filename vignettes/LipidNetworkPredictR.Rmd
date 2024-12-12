@@ -185,7 +185,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["AcylCoA"]])
 CoA_GPGL <- results[[1]][["AcylCoA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CoA_GPGL)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -210,7 +210,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["AcylCoA"]])
 CoA_SPH <- results[[1]][["AcylCoA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CoA_SPH)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -258,7 +258,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPA"]])
 LPA <- results[[1]][["sn1LPA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPA)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -297,7 +297,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PA"]])
 PA <- results[[1]][["PA"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PA)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -333,7 +333,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["DG"]])
 DG <- results[[1]][["DG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -363,7 +363,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 
 }
 ```
@@ -394,7 +394,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1MG"]])
 sn1MG <- results[[1]][["sn1MG"]]
 
 ## add new reactions
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 ```
 
 DG are degraded by the activity of different lipases yielding mono 
@@ -424,7 +424,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2MG"]])
 sn2MG <- results[[1]][["sn2MG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2MG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -450,7 +450,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1MG"]])
 sn1MG <- results[[1]][["sn1MG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1MG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -479,7 +479,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -503,7 +503,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -533,7 +533,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -558,7 +558,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -582,7 +582,7 @@ if (all(results[[1]][["LPA"]] %in% LPA)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -618,7 +618,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["TG"]])
 TG <- results[[1]][["TG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(TG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -647,7 +647,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -680,7 +680,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PC"]])
 PC <- results[[1]][["PC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -709,7 +709,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PE"]])
 PE <- results[[1]][["PE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -740,7 +740,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PS"]])
 PS <- results[[1]][["PS"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PS)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -768,7 +768,7 @@ if (all(results[[1]][["PS"]] %in% PS)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -796,7 +796,7 @@ if (all(results[[1]][["PE"]] %in% PE)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -828,7 +828,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2LPC"]])
 sn2LPC <- results[[1]][["sn2LPC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2LPC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -857,7 +857,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPC"]])
 sn1LPC <- results[[1]][["sn1LPC"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1LPC)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -885,7 +885,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -914,7 +914,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -941,7 +941,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -971,7 +971,7 @@ if (all(results[[1]][["PC"]] %in% PC)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1001,7 +1001,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn2LPE"]])
 sn2LPE <- results[[1]][["sn2LPE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn2LPE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1029,7 +1029,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPE"]])
 sn1LPE <- results[[1]][["sn1LPE"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(sn1LPE)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1056,7 +1056,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1085,7 +1085,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1111,7 +1111,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1143,7 +1143,7 @@ if (all(results[[1]][["PE"]] %in% PE)) {
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1174,7 +1174,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["CDPDG"]])
 CDPDG <- results[[1]][["CDPDG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CDPDG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1203,7 +1203,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PI"]])
 PI <- results[[1]][["PI"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PI)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1234,7 +1234,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PGP"]])
 PGP <- results[[1]][["PGP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PGP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1262,7 +1262,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PG"]])
 PG <- results[[1]][["PG"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PG)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1293,7 +1293,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["CL"]])
 CL <- results[[1]][["CL"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CL)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1327,7 +1327,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["FATOH"]])
 FATOH <- results[[1]][["FATOH"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(FATOH)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1356,7 +1356,7 @@ lipid_abbrev <- c(lipid_abbrev,  results[[1]][["AcylDHAP"]])
 AcylDHAP <- results[[1]][["AcylDHAP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(AcylDHAP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1385,7 +1385,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["ALKYLDHAP"]])
 ALKYLDHAP <- results[[1]][["ALKYLDHAP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(ALKYLDHAP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1416,7 +1416,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPAO"]])
 LPAO <- results[[1]][["LPAO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPAO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1448,7 +1448,7 @@ Same genes as for LPA to PA --\> substrate specificity not known yet...
 ##PAO <- results[[1]][["PAO"]]
 
 ## add new reactions and add lipids to data frame
-##lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+##lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 ##lipid_info <- rgoslin::parseLipidNames(PAO)
 ##lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1477,7 +1477,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["DGO"]])
 DGO <- results[[1]][["DGO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DGO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1508,7 +1508,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PEO"]])
 PEO <- results[[1]][["PEO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PEO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1539,7 +1539,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PEP"]])
 PEP <- results[[1]][["PEP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PEP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1570,7 +1570,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["PCO"]])
 PCO <- results[[1]][["PCO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(PCO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1600,7 +1600,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPEO"]])
 LPEO <- results[[1]][["LPEO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPEO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1628,7 +1628,7 @@ if (all(results[[1]][["PEO"]] %in% PEO)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1656,7 +1656,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["LPEP"]])
 LPEP <- results[[1]][["sn1LPEP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPEP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1684,7 +1684,7 @@ if (all(results[[1]][["PEP"]] %in% PEP)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1712,7 +1712,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["sn1LPCO"]])
 LPCO <- results[[1]][["sn1LPCO"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(LPCO)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1757,7 +1757,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["DhCER"]])
 DhCER <- results[[1]][["DhCER"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DhCER)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1786,7 +1786,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["DhSM"]])
 DhSM <- results[[1]][["DhSM"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(DhSM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1814,7 +1814,7 @@ if (all(results[[1]][["DhCER"]] %in% DhCER)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1842,7 +1842,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["Cer"]])
 Cer <- results[[1]][["Cer"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(Cer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1871,7 +1871,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["SM"]])
 SM <- results[[1]][["SM"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(SM)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1898,7 +1898,7 @@ if (all(results[[1]][["Cer"]] %in% Cer)) {
   print("all fine...")
   
   ## add new reactions and add lipids to data frame
-  lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+  lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1926,7 +1926,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["CerP"]])
 CerP <- results[[1]][["CerP"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(CerP)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -1956,7 +1956,7 @@ if (all(results[[1]][["Cer"]] %in% Cer)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -1984,7 +1984,7 @@ lipid_abbrev <- c(lipid_abbrev, results[[1]][["GlcCer"]])
 GlcCer <- results[[1]][["GlcCer"]]
 
 ## add new reactions and add lipids to data frame
-lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 lipid_info <- rgoslin::parseLipidNames(GlcCer)
 lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 ```
@@ -2027,7 +2027,7 @@ if (all(results[[1]][["LPC"]] %in% sn2LPC)) {
     NAPE <- results[[1]][["NAPE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2059,7 +2059,7 @@ if (all(results[[1]][["LPC"]] %in% sn2LPC)) {
     NAPEO <- results[[1]][["NAPEO"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPEO)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2091,7 +2091,7 @@ if (all(results[[1]][["sn2LPC"]] %in% sn2LPC)) {
     NAPEP <- results[[1]][["NAPEP"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAPEP)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2120,7 +2120,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) & all(results[[1]][["NAPE"]] %in% 
     print("all fine...")
 
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2148,7 +2148,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) &
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2176,7 +2176,7 @@ if (all(results[[1]][["sn1LPC"]] %in% sn1LPC) &
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2208,7 +2208,7 @@ if (all(results[[1]][["PA"]] %in% PA)) {
     NAE <- results[[1]][["NAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(NAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2237,7 +2237,7 @@ if (all(results[[1]][["PAO"]] %in% PAO) & all(results[[1]][["NAE"]] %in% NAE)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```
 
@@ -2281,7 +2281,7 @@ if (all(results[[1]][["DG"]] %in% DG)) {
     PNAE <- results[[1]][["PNAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(PNAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2319,7 +2319,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     LNAPE <- results[[1]][["LNAPE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(LNAPE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2351,7 +2351,7 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     GPNAE <- results[[1]][["GPNAE"]]
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
     lipid_info <- rgoslin::parseLipidNames(GPNAE)
     lipid_df <- dplyr::bind_rows(lipid_df, lipid_info)
 }
@@ -2382,6 +2382,6 @@ if (all(results[[1]][["FA"]] %in% FA_GPGL)) {
     print("all fine...")
   
     ## add new reactions and add lipids to data frame
-    lipid_reactions <- rbind.data.frame(lipid_reactions, results[[2]])
+    lipid_reactions <- c(lipid_reactions, results[[2]][["reaction_formula"]])
 }
 ```

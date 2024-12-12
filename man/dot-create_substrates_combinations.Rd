@@ -4,18 +4,12 @@
 \alias{.create_substrates_combinations}
 \title{Create substrates combinations}
 \usage{
-.create_substrates_combinations(
-  substrates = substrates,
-  constraints = character(length(substrates)),
-  negate = logical(length(substrates))
-)
+.create_substrates_combinations(substrates = substrates, template = template)
 }
 \arguments{
 \item{substrates}{list of character vector(s)}
 
-\item{constraints}{character vector with same length as \code{length(substrates)}}
-
-\item{negate}{logical vector with same length as \code{length(substrates)}}
+\item{template}{\code{list}}
 }
 \value{
 data.frame
@@ -36,9 +30,9 @@ The function will internally \code{expand.grid} to create the combinations.
 substrates <- list(FA = FA)
 
 ## create data.frame of substrates
+template <- .create_template(template = NULL, reaction = "RHEA:15421")
 LipidNetworkPredictR:::.create_substrates_combinations(
-    substrates = substrates, 
-    constraints = "", negate = FALSE)
+    substrates = substrates, template = template)
 }
 \author{
 Michael Witting, \email{michael.witting@helmholtz-muenchen.de} and 

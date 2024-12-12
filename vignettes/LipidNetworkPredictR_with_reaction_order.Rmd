@@ -521,7 +521,9 @@ reactions <- data.frame(order = as.numeric(reactions[, 1]),
     reaction_RHEA = reactions[, 2], reaction_formula = reactions[, 3])
 
 ## run the function
-reactions_GPGL <- create_reactions(substrates = list(FA = FA_GPGL), reactions = reactions)
+reactions_GPGL <- create_reactions(
+    substrates = list(FA = FA_GPGL, SPH = "SPH(d16:0(1OH,3OH)(15Me))"), 
+    reactions = reactions)
 
 ## show the first entry of reactions_GPGL
 reactions_GPGL[[1]]
@@ -605,7 +607,7 @@ reactions <- data.frame(order = as.numeric(reactions[, 1]),
     reaction_RHEA = reactions[, 2], reaction_formula = reactions[, 3])
  
 ## run the function
-reactions_SPH <- create_reactions(substrates = list(FA = FA_SPH), reactions = reactions)
+reactions_SPH <- create_reactions(substrates = list(FA = FA_SPH, SPH = "SPH(d16:0(1OH,3OH)(15Me))"), reactions = reactions)
 
 ## show the first entry of reactions_SPH
 reactions_SPH[[1]]

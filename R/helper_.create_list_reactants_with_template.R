@@ -33,8 +33,7 @@
 #' 
 #' ## create data.frame of substrates
 #' df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
-#'     substrates = substrates, 
-#'     constraints = "", negate = FALSE)
+#'     substrates = substrates, template = template)
 #'     
 #' ## add products to data.frame
 #' df_reaction <- LipidNetworkPredictR:::.add_products(

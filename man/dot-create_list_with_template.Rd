@@ -9,7 +9,7 @@
 \arguments{
 \item{df_reaction}{\code{data.frame}}
 
-\item{template}{\code{df_template}}
+\item{template}{\code{list}}
 
 \item{reaction}{\code{character(1)}}
 }
@@ -39,8 +39,7 @@ template <- LipidNetworkPredictR:::.create_template(template = NA,
 
 ## create data.frame of substrates
 df_substrates <- LipidNetworkPredictR:::.create_substrates_combinations(
-    substrates = substrates, 
-    constraints = "", negate = FALSE)
+    substrates = substrates, template = template)
     
 ## add products to data.frame
 df_reaction <- LipidNetworkPredictR:::.add_products(
