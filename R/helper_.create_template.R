@@ -71,7 +71,11 @@
         template[["reaction_geneAssociation"]] <- ""
     if (!"reaction_pathway" %in% names(template))
         template[["reaction_pathway"]] <- ""
-        
+    if (!"reaction_constraints" %in% names(template))
+        template[["reaction_constraints"]] <- ""
+    if (!"reaction_constraints_negate" %in% names(template))
+        template[["reaction_constraints_negate"]] <- FALSE
+    
     ## all entries are of mode character
     if (!is.vector(template$reaction_name, "character"))
         stop("entry 'reaction_name' is not of mode 'character'")
