@@ -5421,8 +5421,9 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:15378 + CHEBI:72959 + CHEBI:295975"))
     
     ## sphinga_to_dhcer
-    acylcoa <- "CoA(12:0)" ###############################################################
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    acylcoa <- "CoA(12:0)" ############################################################### ?????
+    sph <- "SPH(d16:0(1OH,3OH)(15Me))"
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa, SPH = sph), 
         template = list(), reaction = "RHEA:53424")
     expect_equal(reaction_l[[1]]$AcylCoA, "CoA(12:0)")
     expect_equal(reaction_l[[1]]$DhCer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
