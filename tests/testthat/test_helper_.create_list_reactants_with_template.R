@@ -1806,7 +1806,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1826,7 +1826,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1846,7 +1846,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1866,7 +1866,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")

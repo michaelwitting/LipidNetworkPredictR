@@ -200,8 +200,8 @@
     
     ## dhcer_to_cer
     if (reaction %in% c("RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547")) { ######## ????
-        .s$Cer <- stringi::stri_replace_all_fixed(str = .s$DhCer, 
-                            pattern = ":0", replacement = ":1")
+        .s$Cer <- stringi::stri_replace_all_regex(str = .s$DhCer, 
+                            pattern = "(?<=\\b[dD]?\\d{1,2}):0", replacement = ":1")
             ## pattern = "Cer\\(d16:0\\(3OH,4OH\\)\\(15Me\\)\\/",
             ## replacement = "Cer(d16:1(4E)(3OH,4OH)(15Me)/")
     }

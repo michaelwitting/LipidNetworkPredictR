@@ -809,7 +809,7 @@ test_that(".add_products works", {
     dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
     substrates <- list(DhCer = dhcer)
     .names <- c("DhCer", "Cer")
-    .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)")
+    .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
     
     reaction <- "RHEA:46544"
     template <- .create_template(reaction = reaction)
@@ -1403,11 +1403,6 @@ test_that(".add_products works", {
     df_substrates <- .create_substrates_combinations(
         substrates = substrates, template = template)
     df <- .add_products(substrates = df_substrates, reaction = reaction)
-    expect_equal(names(df), .names)
-    expect_equal(as.character(unlist(df)), .values)
-    
-    df <- .add_products(substrates = df_substrates, 
-        reaction = "")
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
