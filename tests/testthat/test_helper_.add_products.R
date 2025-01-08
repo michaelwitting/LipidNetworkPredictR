@@ -87,10 +87,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## cerp_to_cer
-    cerp <- "CerP(16:0(3OH,4OH,15Me)/18:0)"
+    cerp <- "CerP(d16:1(3OH,4OH)(15Me)/18:0)"
     substrates <- list(CerP = cerp)
     .names <- c("CerP", "Cer")
-    .values <- c("CerP(16:0(3OH,4OH,15Me)/18:0)", "Cer(16:0(3OH,4OH,15Me)/18:0)")
+    .values <- c("CerP(d16:1(3OH,4OH)(15Me)/18:0)", "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     
     reaction <- "RHEA:33743"
     template <- .create_template(reaction = reaction)
@@ -201,9 +201,9 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## cer_to_cerp
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     .names <- c("Cer", "CerP")
-    .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "CerP(16:0(3OH,4OH,15Me)/18:0)")
+    .values <- c("Cer(d16:1(3OH,4OH)(15Me)/18:0)", "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
     substrates <- list(Cer = cer)
     
     reaction <- "RHEA:17929"
@@ -239,10 +239,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## cer_to_glccer
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     substrates <- list(Cer = cer)
     .names <- c("Cer", "GlcCer")
-    .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    .values <- c("Cer(d16:1(3OH,4OH)(15Me)/18:0)", "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
     
     reaction <- "RHEA:12088"
     template <- .create_template(reaction = reaction)
@@ -277,10 +277,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## cer_to_sm
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     substrates <- list(Cer = cer)
     .names <- c("Cer", "SM")
-    .values <- c("Cer(16:0(3OH,4OH,15Me)/18:0)", "SM(16:0(3OH,4OH,15Me)/18:0)")
+    .values <- c("Cer(d16:1(3OH,4OH)(15Me)/18:0)", "SM(d16:1(3OH,4OH)(15Me)/18:0)")
     
     reaction <- "RHEA:18765"
     template <- .create_template(reaction = reaction)
@@ -844,10 +844,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(16:1(3OH,4OH,15Me)/12:0)"
+    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
     substrates <- list(DhCer = dhcer)
     .names <- c("DhCer", "DhSM")
-    .values <- c("Cer(16:1(3OH,4OH,15Me)/12:0)", "SM(16:1(3OH,4OH,15Me)/12:0)")
+    .values <- c("Cer(d16:0(3OH,4OH)(15Me)/12:0)", "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     
     reaction <- "RHEA:44620"
     template <- .create_template(reaction = reaction)
@@ -882,10 +882,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## dhsm_to_dhcer
-    dhsm <- "SM(16:1(3OH,4OH,15Me)/12:0)" ###################################################
+    dhsm <- "SM(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
     substrates <- list(DhSM = dhsm)
     .names <- c("DhSM", "DhCer")
-    .values <- c("SM(16:1(3OH,4OH,15Me)/12:0)", "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    .values <- c("SM(d16:0(3OH,4OH)(15Me)/12:0)", "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     
     reaction <- "RHEA:45300"
     template <- .create_template(reaction = reaction)
@@ -3067,10 +3067,10 @@ test_that(".add_products works", {
     expect_equal(as.character(unlist(df)), .values)
     
     ## sm_to_cer
-    sm <- "SM(16:0(3OH,4OH,15Me)/12:0)"
+    sm <- "SM(d16:1(3OH,4OH)(15Me)/12:0)"
     substrates <- list(SM = sm)
     .names <- c("SM", "Cer")
-    .values <- c("SM(16:0(3OH,4OH,15Me)/12:0)", "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    .values <- c("SM(d16:1(3OH,4OH)(15Me)/12:0)", "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
     
     reaction <- "RHEA:45644"
     template <- .create_template(reaction = reaction)
@@ -3106,10 +3106,10 @@ test_that(".add_products works", {
     
     ## sphinga_to_dhcer
     acylcoa <- "CoA(12:0)"
-    sph <- "SPH(16:0(3OH,4OH,15Me))"
+    sph <- "SPH(d16:0(3OH,4OH)(15Me))"
     substrates <- list(AcylCoA = acylcoa, SPH = sph)
     .names <- c("AcylCoA", "SPH", "DhCer")
-    .values <- c("CoA(12:0)", "SPH(16:0(3OH,4OH,15Me))", "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    .values <- c("CoA(12:0)", "SPH(d16:0(3OH,4OH)(15Me))", "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     
     reaction <- "RHEA:53424"
     template <- .create_template(reaction = reaction)
