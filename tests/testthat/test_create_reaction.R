@@ -135,63 +135,63 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:58014 + CHEBI:58349"))
     
     ## cerp_to_cer
-    cerp <- "CerP(16:0(3OH,4OH,15Me)/18:0)"
+    cerp <- "CerP(d16:1(3OH,4OH)(15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(CerP = cerp),
         template = list(), reaction =  "RHEA:33743")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) = Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0) = Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 = CHEBI:43474 + CHEBI:52639")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:57674"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:43474 + CHEBI:52639"))
     
     reaction_l <- .create_reaction(substrates = list(CerP = cerp),
         template = list(), reaction =  "RHEA:33744")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) => Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0) => Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 => CHEBI:43474 + CHEBI:52639")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:57674"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:43474 + CHEBI:52639"))
     
     reaction_l <- .create_reaction(substrates = list(CerP = cerp),
         template = list(), reaction =  "RHEA:33745")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) <= Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0) <= Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 <= CHEBI:43474 + CHEBI:52639")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:57674"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:43474 + CHEBI:52639"))
     
     reaction_l <- .create_reaction(substrates = list(CerP = cerp),
         template = list(), reaction =  "RHEA:33746")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(16:0(3OH,4OH,15Me)/18:0) <=> Pi + Cer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0) <=> Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + CerP(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Pi + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:57674 <=> CHEBI:43474 + CHEBI:52639")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:57674"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:43474 + CHEBI:52639"))
@@ -321,187 +321,187 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:57880 + CHEBI:60377 + CHEBI:15378"))
     
     ## cer_to_cerp
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17929")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP = ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP = ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + ATP"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 = CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:30616"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:456216 + CHEBI:57674 + CHEBI:15378"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17930")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP => ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP => ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + ATP"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 => CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:30616"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:456216 + CHEBI:57674 + CHEBI:15378"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17931")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP <= ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP <= ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + ATP"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <= CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:30616"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:456216 + CHEBI:57674 + CHEBI:15378"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:17932")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$CerP, "CerP(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + ATP <=> ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP <=> ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + ATP"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(16:0(3OH,4OH,15Me)/18:0) + H+"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + ATP"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("ADP + CerP(d16:1(3OH,4OH)(15Me)/18:0) + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:30616 <=> CHEBI:456216 + CHEBI:57674 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:30616"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:456216 + CHEBI:57674 + CHEBI:15378"))
     
     ## cer_to_glccer
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12088")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose = GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose = GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:58885 = CHEBI:22801 + CHEBI:15378 + CHEBI:58223")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:58885"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:22801 + CHEBI:15378 + CHEBI:58223"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12089")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose => GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose => GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:58885 => CHEBI:22801 + CHEBI:15378 + CHEBI:58223")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:58885"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:22801 + CHEBI:15378 + CHEBI:58223"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12090")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose <= GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose <= GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:58885 <= CHEBI:22801 + CHEBI:15378 + CHEBI:58223")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:58885"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:22801 + CHEBI:15378 + CHEBI:58223"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:12091")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose <=> GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP")
+    expect_equal(reaction_l[[2]]$reaction_formula, "Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose <=> GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(16:0(3OH,4OH,15Me)/18:0) + UDP-Glucose"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(16:0(3OH,4OH,15Me)/18:0) + H+ + UDP"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("Cer(d16:1(3OH,4OH)(15Me)/18:0) + UDP-Glucose"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("GlcCer(d16:1(3OH,4OH)(15Me)/18:0) + H+ + UDP"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:52639 + CHEBI:58885 <=> CHEBI:22801 + CHEBI:15378 + CHEBI:58223")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:52639 + CHEBI:58885"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:22801 + CHEBI:15378 + CHEBI:58223"))
     
     ## cer_to_sm
-    cer <- "Cer(16:0(3OH,4OH,15Me)/18:0)"
+    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18765")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(16:0(3OH,4OH,15Me)/18:0) = DG + SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(d16:1(3OH,4OH)(15Me)/18:0) = DG + SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:52639 = CHEBI:17815 + CHEBI:17636")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:52639"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:17636"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18766")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(16:0(3OH,4OH,15Me)/18:0) => DG + SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(d16:1(3OH,4OH)(15Me)/18:0) => DG + SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:52639 => CHEBI:17815 + CHEBI:17636")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:52639"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:17636"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18767")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(16:0(3OH,4OH,15Me)/18:0) <= DG + SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(d16:1(3OH,4OH)(15Me)/18:0) <= DG + SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:52639 <= CHEBI:17815 + CHEBI:17636")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:52639"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:17636"))
     
     reaction_l <- .create_reaction(substrates = list(Cer = cer),
         template = list(), reaction =  "RHEA:18768")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/18:0)")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
-    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(16:0(3OH,4OH,15Me)/18:0) <=> DG + SM(16:0(3OH,4OH,15Me)/18:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula, "PC + Cer(d16:1(3OH,4OH)(15Me)/18:0) <=> DG + SM(d16:1(3OH,4OH)(15Me)/18:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(16:0(3OH,4OH,15Me)/18:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(16:0(3OH,4OH,15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:1(3OH,4OH)(15Me)/18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:1(3OH,4OH)(15Me)/18:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:52639 <=> CHEBI:17815 + CHEBI:17636")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:52639"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:17636"))
@@ -1417,133 +1417,133 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("2 CHEBI:57540 + CHEBI:52639 + 2 CHEBI:15377"))
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
     reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = list(), reaction =  "RHEA:44620")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PC + Cer(d16:0(3OH,4OH,15Me)/12:0) = DG + SM(d16:0(3OH,4OH,15Me)/12:0)")
+        "PC + Cer(d16:0(3OH,4OH)(15Me)/12:0) = DG + SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH,15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH)(15Me)/12:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:31488 = CHEBI:17815 + CHEBI:67090")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:31488"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:67090"))
     
     reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = list(), reaction =  "RHEA:44621")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PC + Cer(d16:0(3OH,4OH,15Me)/12:0) => DG + SM(d16:0(3OH,4OH,15Me)/12:0)")
+        "PC + Cer(d16:0(3OH,4OH)(15Me)/12:0) => DG + SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH,15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH)(15Me)/12:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:31488 => CHEBI:17815 + CHEBI:67090")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:31488"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:67090"))
     
     reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = list(), reaction =  "RHEA:44622")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PC + Cer(d16:0(3OH,4OH,15Me)/12:0) <= DG + SM(d16:0(3OH,4OH,15Me)/12:0)")
+        "PC + Cer(d16:0(3OH,4OH)(15Me)/12:0) <= DG + SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH,15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH)(15Me)/12:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:31488 <= CHEBI:17815 + CHEBI:67090")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:31488"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:67090"))
     
     reaction_l <- .create_reaction(substrates = list(DhCer = dhcer),
         template = list(), reaction =  "RHEA:44623")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PC + Cer(d16:0(3OH,4OH,15Me)/12:0) <=> DG + SM(d16:0(3OH,4OH,15Me)/12:0)")
+        "PC + Cer(d16:0(3OH,4OH)(15Me)/12:0) <=> DG + SM(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH,15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("PC + Cer(d16:0(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("DG + SM(d16:0(3OH,4OH)(15Me)/12:0)"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:57643 + CHEBI:31488 <=> CHEBI:17815 + CHEBI:67090")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:57643 + CHEBI:31488"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17815 + CHEBI:67090"))
     
     ## dhsm_to_dhcer
-    dhsm <- "SM(16:1(3OH,4OH,15Me)/12:0)" ###################################################
+    dhsm <- "SM(d16:0(3OH,4OH)(15Me)/12:0)"
     reaction_l <- .create_reaction(substrates = list(DhSM = dhsm), 
         template = list(), reaction =  "RHEA:45300")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "SM(16:1(3OH,4OH,15Me)/12:0) + H2O = Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine")
+        "SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O = Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(16:1(3OH,4OH,15Me)/12:0) + H2O"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:64583 + CHEBI:15377 = CHEBI:83273 + CHEBI:15378 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64583 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:15378 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(DhSM = dhsm), 
         template = list(), reaction =  "RHEA:45301")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "SM(16:1(3OH,4OH,15Me)/12:0) + H2O => Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine")
+        "SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O => Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(16:1(3OH,4OH,15Me)/12:0) + H2O"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:64583 + CHEBI:15377 => CHEBI:83273 + CHEBI:15378 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64583 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:15378 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(DhSM = dhsm), 
         template = list(), reaction =  "RHEA:45302")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "SM(16:1(3OH,4OH,15Me)/12:0) + H2O <= Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine")
+        "SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O <= Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(16:1(3OH,4OH,15Me)/12:0) + H2O"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:64583 + CHEBI:15377 <= CHEBI:83273 + CHEBI:15378 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64583 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:15378 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(DhSM = dhsm), 
         template = list(), reaction =  "RHEA:45303")
-    expect_equal(reaction_l[[1]]$DhSM, "SM(16:1(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(16:1(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "SM(16:1(3OH,4OH,15Me)/12:0) + H2O <=> Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine")
+        "SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O <=> Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(16:1(3OH,4OH,15Me)/12:0) + H2O"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(16:1(3OH,4OH,15Me)/12:0) + H+ + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("SM(d16:0(3OH,4OH)(15Me)/12:0) + H2O"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(3OH,4OH)(15Me)/12:0) + H+ + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:64583 + CHEBI:15377 <=> CHEBI:83273 + CHEBI:15378 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64583 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:15378 + CHEBI:295975"))
@@ -5359,63 +5359,63 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:64612 + CHEBI:16526"))
     
     ## sm_to_cer
-    sm <- "SM(16:0(3OH,4OH,15Me)/12:0)"
+    sm <- "SM(d16:1(3OH,4OH)(15Me)/12:0)"
     reaction_l <- .create_reaction(substrates = list(SM = sm), 
         template = list(), reaction = "RHEA:45644")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "H2O + SM(16:0(3OH,4OH,15Me)/12:0) = H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine")
+        "H2O + SM(d16:1(3OH,4OH)(15Me)/12:0) = H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(d16:1(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:78646 = CHEBI:15378 + CHEBI:72959 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:78646"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:15378 + CHEBI:72959 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(SM = sm), 
         template = list(), reaction = "RHEA:45645")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "H2O + SM(16:0(3OH,4OH,15Me)/12:0) => H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine")
+        "H2O + SM(d16:1(3OH,4OH)(15Me)/12:0) => H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(d16:1(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:78646 => CHEBI:15378 + CHEBI:72959 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:78646"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:15378 + CHEBI:72959 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(SM = sm), 
         template = list(), reaction = "RHEA:45646")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "H2O + SM(16:0(3OH,4OH,15Me)/12:0) <= H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine")
+        "H2O + SM(d16:1(3OH,4OH)(15Me)/12:0) <= H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(d16:1(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:78646 <= CHEBI:15378 + CHEBI:72959 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:78646"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:15378 + CHEBI:72959 + CHEBI:295975"))
     
     reaction_l <- .create_reaction(substrates = list(SM = sm), 
         template = list(), reaction = "RHEA:45647")
-    expect_equal(reaction_l[[1]]$SM, "SM(16:0(3OH,4OH,15Me)/12:0)")
-    expect_equal(reaction_l[[1]]$Cer, "Cer(16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "H2O + SM(16:0(3OH,4OH,15Me)/12:0) <=> H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine")
+        "H2O + SM(d16:1(3OH,4OH)(15Me)/12:0) <=> H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
-    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(16:0(3OH,4OH,15Me)/12:0)"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(16:0(3OH,4OH,15Me)/12:0) + Phosphocholine"))
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("H2O + SM(d16:1(3OH,4OH)(15Me)/12:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("H+ + Cer(d16:1(3OH,4OH)(15Me)/12:0) + Phosphocholine"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:78646 <=> CHEBI:15378 + CHEBI:72959 + CHEBI:295975")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:15377 + CHEBI:78646"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:15378 + CHEBI:72959 + CHEBI:295975"))
@@ -5428,43 +5428,58 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$AcylCoA, "CoA(12:0)")
     expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(1OH,3OH)(15Me)/12:0)") ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) = Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+") ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) = Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
     expect_equal(reaction_l[[2]]$reaction_substrate, c("CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")) ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:77636 + CHEBI:84410 = CHEBI:83273 + CHEBI:57287 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:77636 + CHEBI:84410"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:57287 + CHEBI:15378"))
     
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa, SPH = sph), 
         template = list(), reaction = "RHEA:53425")
     expect_equal(reaction_l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(1OH,3OH)(15Me)/12:0)") ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(1OH,3OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) => Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+") ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) => Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
     expect_equal(reaction_l[[2]]$reaction_substrate, c("CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")) ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:77636 + CHEBI:84410 => CHEBI:83273 + CHEBI:57287 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:77636 + CHEBI:84410"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:57287 + CHEBI:15378"))
     
-    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa), 
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa, SPH = sph), 
         template = list(), reaction = "RHEA:53426")
     expect_equal(reaction_l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(3OH,4OH,15Me)/12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(1OH,3OH)(15Me)/12:0)")
     expect_equal(reaction_l[[2]]$reaction_formula,
-        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <= Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+") ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <= Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
     expect_equal(reaction_l[[2]]$reaction_substrate, c("CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")) ## was: "Cer(d16:0(3OH,4OH,15Me)/12:0)"
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:77636 + CHEBI:84410 <= CHEBI:83273 + CHEBI:57287 + CHEBI:15378")
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:77636 + CHEBI:84410"))
+    expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:57287 + CHEBI:15378"))
+    
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa, SPH = sph), 
+        template = list(), reaction = "RHEA:53427")
+    expect_equal(reaction_l[[1]]$AcylCoA, "CoA(12:0)")
+    expect_equal(reaction_l[[1]]$DhCer, "Cer(d16:0(1OH,3OH)(15Me)/12:0)")
+    expect_equal(reaction_l[[2]]$reaction_formula,
+        "CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me)) <=> Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+")
+    expect_equal(reaction_l[[2]]$reaction_isReversible, "")
+    expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
+    expect_equal(reaction_l[[2]]$reaction_pathway, "")
+    expect_equal(reaction_l[[2]]$reaction_substrate, c("CoA(12:0) + SPH(d16:0(1OH,3OH)(15Me))"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("Cer(d16:0(1OH,3OH)(15Me)/12:0) + CoA + H+"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:77636 + CHEBI:84410 <=> CHEBI:83273 + CHEBI:57287 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:77636 + CHEBI:84410"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:83273 + CHEBI:57287 + CHEBI:15378"))
     
@@ -5720,7 +5735,6 @@ test_that("create_reactions works.", {
     ## run the function
     reactions_l <- create_reactions(substrates = list(FA = FA), 
         reactions = reactions)
-    
     expect_equal(length(reactions_l), 4)
     
     ## first entry
@@ -5729,26 +5743,28 @@ test_that("create_reactions works.", {
         c("FA(16:0)", "FA(12:0)", "FA(14:0)"))
     expect_equal(reactions_l[[1]][[1]]$AcylCoA, 
         c("CoA(16:0)", "CoA(12:0)", "CoA(14:0)"))
-    expect_equal(colnames(reactions_l[[1]][[2]]), 
-        c("reaction_RHEA", "reaction_name", "reaction_isReversible",
+    expect_equal(names(reactions_l[[1]][[2]]), 
+        c("order", "reaction_name", "reaction_RHEA", "reaction_formula", 
+            "directed", "reaction_isReversible",
             "reaction_geneAssociation", "reaction_pathway", 
-            "reaction_formula", "reaction_formula_chebi",
+            "reaction_constraints", "reaction_constraints_negate", 
             "reaction_substrate", "reaction_product", 
-            "reaction_substrate_chebi", "reaction_product_chebi"))
-    expect_equal(nrow(reactions_l[[1]][[2]]), 3)
-    expect_equal(reactions_l[[1]][[2]]$reaction_formula[1:3],
+            "reaction_formula_chebi", "reaction_substrate_chebi", 
+            "reaction_product_chebi"))
+    expect_equal(length(reactions_l[[1]][[2]]$reaction_formula), 3)
+    expect_equal(reactions_l[[1]][[2]]$reaction_formula,
         c("ATP + CoA + FA(16:0) = PPi + AMP + CoA(16:0)",
             "ATP + CoA + FA(12:0) = PPi + AMP + CoA(12:0)",
             "ATP + CoA + FA(14:0) = PPi + AMP + CoA(14:0)"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_isReversible[1:3], 
-        c("unknown", "unknown", "unknown"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation[1:3],
-        c("gene_1", "gene_1", "gene_1"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_pathway[1:3],
-        c("pathway_1", "pathway_1", "pathway_1"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_substrate[1:3],
+    expect_equal(reactions_l[[1]][[2]]$reaction_isReversible, 
+        "unknown")
+    expect_equal(reactions_l[[1]][[2]]$reaction_geneAssociation,
+        "gene_1")
+    expect_equal(reactions_l[[1]][[2]]$reaction_pathway,
+        "pathway_1")
+    expect_equal(reactions_l[[1]][[2]]$reaction_substrate,
         c("ATP + CoA + FA(16:0)", "ATP + CoA + FA(12:0)", "ATP + CoA + FA(14:0)"))
-    expect_equal(reactions_l[[1]][[2]]$reaction_product[1:3],
+    expect_equal(reactions_l[[1]][[2]]$reaction_product,
         c("PPi + AMP + CoA(16:0)", "PPi + AMP + CoA(12:0)", "PPi + AMP + CoA(14:0)"))
     
     ## second entry
@@ -5757,27 +5773,29 @@ test_that("create_reactions works.", {
         c("CoA(16:0)", "CoA(12:0)", "CoA(14:0)"))
     expect_equal(reactions_l[[2]][[1]]$sn1LPA, 
         c("PA(16:0/0:0)", "PA(12:0/0:0)", "PA(14:0/0:0)"))
-    expect_equal(colnames(reactions_l[[2]][[2]]), 
-        c("reaction_RHEA", "reaction_name", "reaction_isReversible",
+    expect_equal(names(reactions_l[[2]][[2]]), 
+        c("order", "reaction_name", "reaction_RHEA", "reaction_formula", 
+            "directed", "reaction_isReversible",
             "reaction_geneAssociation", "reaction_pathway", 
-            "reaction_formula", "reaction_formula_chebi",
+            "reaction_constraints", "reaction_constraints_negate", 
             "reaction_substrate", "reaction_product", 
-            "reaction_substrate_chebi", "reaction_product_chebi"))
-    expect_equal(nrow(reactions_l[[2]][[2]]), 3)
-    expect_equal(reactions_l[[2]][[2]]$reaction_formula[1:3],
+            "reaction_formula_chebi", "reaction_substrate_chebi", 
+            "reaction_product_chebi"))
+    expect_equal(length(reactions_l[[2]][[2]]$reaction_formula), 3)
+    expect_equal(reactions_l[[2]][[2]]$reaction_formula,
         c("Glycerol-3-P + CoA(16:0) = CoA + PA(16:0/0:0)",
             "Glycerol-3-P + CoA(12:0) = CoA + PA(12:0/0:0)",
             "Glycerol-3-P + CoA(14:0) = CoA + PA(14:0/0:0)"))
-    expect_equal(reactions_l[[2]][[2]]$reaction_isReversible[1:3], 
-        c("unknown", "unknown", "unknown"))
-    expect_equal(reactions_l[[2]][[2]]$reaction_geneAssociation[1:3], 
-        c("gene_2", "gene_2", "gene_2"))
-    expect_equal(reactions_l[[2]][[2]]$reaction_pathway[1:3], 
-        c("pathway_2", "pathway_2", "pathway_2"))
-    expect_equal(reactions_l[[2]][[2]]$reaction_substrate[1:3],
+    expect_equal(reactions_l[[2]][[2]]$reaction_isReversible, 
+        "unknown")
+    expect_equal(reactions_l[[2]][[2]]$reaction_geneAssociation, 
+        "gene_2")
+    expect_equal(reactions_l[[2]][[2]]$reaction_pathway, 
+        "pathway_2")
+    expect_equal(reactions_l[[2]][[2]]$reaction_substrate,
         c("Glycerol-3-P + CoA(16:0)", "Glycerol-3-P + CoA(12:0)",
             "Glycerol-3-P + CoA(14:0)"))
-    expect_equal(reactions_l[[2]][[2]]$reaction_product[1:3],
+    expect_equal(reactions_l[[2]][[2]]$reaction_product,
         c("CoA + PA(16:0/0:0)", "CoA + PA(12:0/0:0)", "CoA + PA(14:0/0:0)"))
     
     ## third entry
@@ -5790,28 +5808,41 @@ test_that("create_reactions works.", {
         c("PA(16:0/16:0)", "PA(12:0/16:0)", "PA(14:0/16:0)", "PA(16:0/12:0)",
             "PA(12:0/12:0)", "PA(14:0/12:0)", "PA(16:0/14:0)", "PA(12:0/14:0)",
             "PA(14:0/14:0)"))
-    expect_equal(colnames(reactions_l[[3]][[2]]), 
-        c("reaction_RHEA", "reaction_name", "reaction_isReversible",
+    expect_equal(names(reactions_l[[3]][[2]]), 
+          c("order", "reaction_name", "reaction_RHEA", "reaction_formula", 
+            "directed", "reaction_isReversible",
             "reaction_geneAssociation", "reaction_pathway", 
-            "reaction_formula", "reaction_formula_chebi",
+            "reaction_constraints", "reaction_constraints_negate", 
             "reaction_substrate", "reaction_product", 
-            "reaction_substrate_chebi", "reaction_product_chebi"))
-    expect_equal(nrow(reactions_l[[3]][[2]]), 9)
-    expect_equal(reactions_l[[3]][[2]]$reaction_formula[1:3],
+            "reaction_formula_chebi", "reaction_substrate_chebi", 
+            "reaction_product_chebi"))
+    expect_equal(length(reactions_l[[3]][[2]]$reaction_formula), 9)
+    expect_equal(reactions_l[[3]][[2]]$reaction_formula,
         c("PA(16:0/0:0) + CoA(16:0) = CoA + PA(16:0/16:0)",
             "PA(12:0/0:0) + CoA(16:0) = CoA + PA(12:0/16:0)",
-            "PA(14:0/0:0) + CoA(16:0) = CoA + PA(14:0/16:0)"))
-    expect_equal(reactions_l[[3]][[2]]$reaction_isReversible[1:3], 
-        c("unknown", "unknown", "unknown"))
-    expect_equal(reactions_l[[3]][[2]]$reaction_geneAssociation[1:3], 
-        c("gene_3", "gene_3", "gene_3"))
-    expect_equal(reactions_l[[3]][[2]]$reaction_pathway[1:3], 
-        c("pathway_3", "pathway_3", "pathway_3"))
-    expect_equal(reactions_l[[3]][[2]]$reaction_substrate[1:3],
+            "PA(14:0/0:0) + CoA(16:0) = CoA + PA(14:0/16:0)", 
+            "PA(16:0/0:0) + CoA(12:0) = CoA + PA(16:0/12:0)",
+            "PA(12:0/0:0) + CoA(12:0) = CoA + PA(12:0/12:0)", 
+            "PA(14:0/0:0) + CoA(12:0) = CoA + PA(14:0/12:0)",
+            "PA(16:0/0:0) + CoA(14:0) = CoA + PA(16:0/14:0)", 
+            "PA(12:0/0:0) + CoA(14:0) = CoA + PA(12:0/14:0)",
+            "PA(14:0/0:0) + CoA(14:0) = CoA + PA(14:0/14:0)"))
+    expect_equal(reactions_l[[3]][[2]]$reaction_isReversible, 
+        "unknown")
+    expect_equal(reactions_l[[3]][[2]]$reaction_geneAssociation, 
+        "gene_3")
+    expect_equal(reactions_l[[3]][[2]]$reaction_pathway, 
+        "pathway_3")
+    expect_equal(reactions_l[[3]][[2]]$reaction_substrate,
         c("PA(16:0/0:0) + CoA(16:0)", "PA(12:0/0:0) + CoA(16:0)",
-            "PA(14:0/0:0) + CoA(16:0)"))
-    expect_equal(reactions_l[[3]][[2]]$reaction_product[1:3],
-        c("CoA + PA(16:0/16:0)", "CoA + PA(12:0/16:0)", "CoA + PA(14:0/16:0)"))
+            "PA(14:0/0:0) + CoA(16:0)", "PA(16:0/0:0) + CoA(12:0)",
+            "PA(12:0/0:0) + CoA(12:0)", "PA(14:0/0:0) + CoA(12:0)",
+            "PA(16:0/0:0) + CoA(14:0)", "PA(12:0/0:0) + CoA(14:0)",
+            "PA(14:0/0:0) + CoA(14:0)"))
+    expect_equal(reactions_l[[3]][[2]]$reaction_product,
+        c("CoA + PA(16:0/16:0)", "CoA + PA(12:0/16:0)", "CoA + PA(14:0/16:0)",
+            "CoA + PA(16:0/12:0)", "CoA + PA(12:0/12:0)", "CoA + PA(14:0/12:0)",
+            "CoA + PA(16:0/14:0)", "CoA + PA(12:0/14:0)", "CoA + PA(14:0/14:0)"))
     
     ## fourth entry
     expect_equal(names(reactions_l[[4]][[1]]), c("PA", "DG"))
@@ -5823,28 +5854,41 @@ test_that("create_reactions works.", {
         c("DG(16:0/16:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/16:0/0:0)",
             "DG(16:0/12:0/0:0)", "DG(12:0/12:0/0:0)", "DG(14:0/12:0/0:0)",
             "DG(16:0/14:0/0:0)", "DG(12:0/14:0/0:0)", "DG(14:0/14:0/0:0)"))
-    expect_equal(colnames(reactions_l[[4]][[2]]), 
-        c("reaction_RHEA", "reaction_name", "reaction_isReversible",
+    expect_equal(names(reactions_l[[4]][[2]]), 
+       c("order", "reaction_name", "reaction_RHEA", "reaction_formula", 
+            "directed", "reaction_isReversible",
             "reaction_geneAssociation", "reaction_pathway", 
-            "reaction_formula", "reaction_formula_chebi",
+            "reaction_constraints", "reaction_constraints_negate", 
             "reaction_substrate", "reaction_product", 
-            "reaction_substrate_chebi", "reaction_product_chebi"))
-    expect_equal(nrow(reactions_l[[4]][[2]]), 9)
-    expect_equal(reactions_l[[4]][[2]]$reaction_formula[1:3],
-        c("H2O + PA(16:0/16:0) = Pi + DG(16:0/16:0/0:0)", 
-            "H2O + PA(12:0/16:0) = Pi + DG(12:0/16:0/0:0)",
-            "H2O + PA(14:0/16:0) = Pi + DG(14:0/16:0/0:0)"))
-    expect_equal(reactions_l[[4]][[2]]$reaction_isReversible[1:3], 
-        c("unknown", "unknown", "unknown"))
-    expect_equal(reactions_l[[4]][[2]]$reaction_geneAssociation[1:3], 
-        c("gene_4", "gene_4", "gene_4"))
-    expect_equal(reactions_l[[4]][[2]]$reaction_pathway[1:3], 
-        c("pathway_4", "pathway_4", "pathway_4"))
-    expect_equal(reactions_l[[4]][[2]]$reaction_substrate[1:3],
-        c("H2O + PA(16:0/16:0)", "H2O + PA(12:0/16:0)", "H2O + PA(14:0/16:0)"))
-    expect_equal(reactions_l[[4]][[2]]$reaction_product[1:3],
+            "reaction_formula_chebi", "reaction_substrate_chebi", 
+            "reaction_product_chebi"))
+    expect_equal(length(reactions_l[[1]][[2]]$reaction_formula), 3)
+    expect_equal(reactions_l[[4]][[2]]$reaction_formula,
+        c("H2O + PA(16:0/16:0) = Pi + DG(16:0/16:0/0:0)",
+          "H2O + PA(12:0/16:0) = Pi + DG(12:0/16:0/0:0)",
+          "H2O + PA(14:0/16:0) = Pi + DG(14:0/16:0/0:0)",
+          "H2O + PA(16:0/12:0) = Pi + DG(16:0/12:0/0:0)",
+          "H2O + PA(12:0/12:0) = Pi + DG(12:0/12:0/0:0)",
+          "H2O + PA(14:0/12:0) = Pi + DG(14:0/12:0/0:0)",
+          "H2O + PA(16:0/14:0) = Pi + DG(16:0/14:0/0:0)",
+          "H2O + PA(12:0/14:0) = Pi + DG(12:0/14:0/0:0)",
+          "H2O + PA(14:0/14:0) = Pi + DG(14:0/14:0/0:0)"))
+    expect_equal(reactions_l[[4]][[2]]$reaction_isReversible, 
+        "unknown")
+    expect_equal(reactions_l[[4]][[2]]$reaction_geneAssociation, 
+        "gene_4")
+    expect_equal(reactions_l[[4]][[2]]$reaction_pathway, 
+        "pathway_4")
+    expect_equal(reactions_l[[4]][[2]]$reaction_substrate,
+        c("H2O + PA(16:0/16:0)", "H2O + PA(12:0/16:0)", "H2O + PA(14:0/16:0)",
+            "H2O + PA(16:0/12:0)", "H2O + PA(12:0/12:0)", "H2O + PA(14:0/12:0)",
+            "H2O + PA(16:0/14:0)", "H2O + PA(12:0/14:0)", "H2O + PA(14:0/14:0)"))
+    expect_equal(reactions_l[[4]][[2]]$reaction_product,
         c("Pi + DG(16:0/16:0/0:0)", "Pi + DG(12:0/16:0/0:0)",
-            "Pi + DG(14:0/16:0/0:0)"))
+          "Pi + DG(14:0/16:0/0:0)", "Pi + DG(16:0/12:0/0:0)",
+          "Pi + DG(12:0/12:0/0:0)", "Pi + DG(14:0/12:0/0:0)",
+          "Pi + DG(16:0/14:0/0:0)", "Pi + DG(12:0/14:0/0:0)",
+          "Pi + DG(14:0/14:0/0:0)"))
 })
 
 ## function create_reaction_adjacency_matrix
