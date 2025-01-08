@@ -200,10 +200,17 @@
     
     ## dhcer_to_cer
     if (reaction %in% c("RHEA:46544", "RHEA:46545", "RHEA:46546", "RHEA:46547")) { ######## ????
-        .s$Cer <- stringi::stri_replace_all_regex(str = .s$DhCer, 
-                            pattern = "(?<=\\b[dD]?\\d{1,2}):0", replacement = ":1")
+        .s$Cer <- lapply(strsplit(.s$DhCer, split = "/"), "[", 1) |>
+            unlist() |>
+            stringi::stri_replace_all_fixed(pattern = ":0", replacement = ":1")
+        .s$AcylCoA <- lapply(strsplit(.s$DhCer, split = "/"), "[", 2) |>
+            unlist()
+        .s$Cer <- paste0(.s$Cer, "/", .s$AcylCoA)
             ## pattern = "Cer\\(d16:0\\(3OH,4OH\\)\\(15Me\\)\\/",
             ## replacement = "Cer(d16:1(4E)(3OH,4OH)(15Me)/")
+        
+        ## remove the AcylCoA helper entries
+        .s$AcylCoA <- NULL
     }
 
     ## dhcer_to_dhsm
@@ -722,8 +729,7 @@
     if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427")) { ########## ???????
         .s$SPHs2 <- stringi::stri_replace_all_regex(str = .s$SPH, pattern = "SPH\\(", 
             replacement = "") |>
-            stringi::stri_replace_all_regex(pattern = "\\)$", replacement = "") |>
-            stringi::stri_replace_all_fixed(pattern = ":0", replacement = ":1")
+            stringi::stri_replace_all_regex(pattern = "\\)$", replacement = "")
         .s$AcylCoAs2 <- stringi::stri_replace_all_regex(str = .s$AcylCoA, 
             pattern = "CoA\\(", replacement = "") |>
             stringi::stri_replace_all_regex(pattern = "\\)$", replacement = "")
