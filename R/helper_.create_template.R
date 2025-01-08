@@ -58,7 +58,7 @@
     if (is.data.frame(template)) {
         template <- as.list(template)
     }
-        
+
     ## write reaction to reation_RHEA entry
     template[["reaction_RHEA"]] <- reaction
         
