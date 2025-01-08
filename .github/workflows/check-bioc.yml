@@ -147,10 +147,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           ## Edit below if you have any Windows system dependencies
-          choco install libxml2
-          choco install curl
-          choco install openssl
-        shell: bash ##Rscript {0}
+        shell: Rscript {0}
 
       - name: Install BiocManager
         run: |
@@ -178,7 +175,7 @@ jobs:
 
           ## Pass #1 at installing dependencies
           message(paste('****', Sys.time(), 'pass number 1 at installing dependencies: local dependencies ****'))
-          install.packages(c("XVector"), type = "source", dependencies = TRUE)
+          BiocManager::install("XVector") ##install.packages(c("XVector"), type = "source", dependencies = TRUE)
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = FALSE, upgrade = TRUE)
         continue-on-error: true
         shell: Rscript {0}
