@@ -147,7 +147,10 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           ## Edit below if you have any Windows system dependencies
-        shell: Rscript {0}
+          choco install libxml2
+          choco install curl
+          choco install openssl
+        shell: bash ##Rscript {0}
 
       - name: Install BiocManager
         run: |
