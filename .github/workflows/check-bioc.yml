@@ -147,6 +147,8 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           ## Edit below if you have any Windows system dependencies
+          install.packages(c("XVector", "metaboliteIDmapping"), dependencies = TRUE)
+	  remotes::install_local(dependencies = TRUE, build_vignettes = TRUE, upgrade = TRUE, force = TRUE)
         shell: Rscript {0}
 
       - name: Install BiocManager
