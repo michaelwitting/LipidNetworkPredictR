@@ -147,11 +147,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           ## Edit below if you have any Windows system dependencies
-          choco install rtools
-          echo "::add-path::C:/rtools44/bin"
-          echo "::add-path::C:/rtools44/mingw64/bin"
-          echo "::add-path::C:/rtools44/usr/bin"
-        shell: bash ##Rscript {0}
+        shell: Rscript {0}
 
       - name: Install BiocManager
         run: |
