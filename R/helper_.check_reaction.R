@@ -36,6 +36,7 @@
         "RHEA:18765", "RHEA:18766", "RHEA:18767", "RHEA:18768", ## cer_to_sm
         "RHEA:32935", "RHEA:32936", "RHEA:32937", "RHEA:32938", ## cl_to_lcl
         "RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660", ## coa_to_acyldhap
+        "RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732", ## coa_to_ce
         "RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719", ## coa_to_fao
         "RHEA:15325", "RHEA:15326", "RHEA:15327", "RHEA:15328", ## coa_to_lpa
         "RHEA:44712", "RHEA:44713", "RHEA:44714", "RHEA:44715", ## dg_to_sn1mg

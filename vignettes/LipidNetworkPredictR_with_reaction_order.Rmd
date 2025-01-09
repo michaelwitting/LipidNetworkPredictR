@@ -557,7 +557,7 @@ adj_GPGL <- create_reaction_adjacency_matrix(reactions_GPGL)
 
 ### Biosynthesis from FA to CoA (RHEA:15421)
 
-Likewise, the fatty acyls for the synthesis of sphingolipids are
+The fatty acyls for the synthesis of sphingolipids are
 required as acyl-CoA. The main differences are that fatty acyls in
 sphingolipids are generally saturated and longer compared to glycero-
 and glycerophospholipids and often contain a hydroxygroup at the second
@@ -588,6 +588,7 @@ Gene is unknown.
 
 
 ## Run the function
+
 ```{r, message=FALSE, warning=FALSE}
 reactions <- rbind(
     c(1, "RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), 
@@ -888,6 +889,14 @@ Please find here a list of the implemented reactions.
 - `"RHEA:17659"`: `"M_AcylCoA + M_Dihydroxyacetone-P <= M_AcylDHAP + M_CoA"`
 - `"RHEA:17660"`: `"M_AcylCoA + M_Dihydroxyacetone-P <=> M_AcylDHAP + M_CoA"`
     
+`coa_to_ce`:
+- `"RHEA:17229"`: `"M_Cholesterol + M_AcylCoA = M_CE + M_CoA"`
+- `"RHEA:17230"`: `"M_Cholesterol + M_AcylCoA => M_CE + M_CoA"`
+- `"RHEA:17231"`: `"M_Cholesterol + M_AcylCoA <= M_CE + M_CoA"`
+- `"RHEA:17232"`: `"M_Cholesterol + M_AcylCoA <=> M_CE + M_CoA"`
+
+
+
 `coa_to_fao`:
 - `"RHEA:52716"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP`"
 - `"RHEA:52717"`: `"M_AcylCoA + 2 M_H+ + 2 M_NADPH => M_FAO + M_CoA + 2 M_NADP"`

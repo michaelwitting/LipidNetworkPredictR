@@ -189,6 +189,14 @@
             pattern = "M_AcylDHAP", replacement = df_reaction[["AcylDHAP"]])
     }
     
+    ## coa_to_ce
+    if (reaction %in% c("RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_CE", replacement = df_reaction[["CE"]])
+    }
+    
     ## coa_to_fao
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) { 
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
@@ -881,6 +889,47 @@
     
     ## adjust fixed substrates and products
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+         pattern = "M_ADP ", replacement = "ADP ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+         pattern = "M_ADP$", replacement = "ADP")
+    
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_AMP ", replacement = "AMP ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_AMP$", replacement = "AMP")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_ATP ", replacement = "ATP ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_ATP$", replacement = "ATP")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_CDP-Choline ", replacement = "CDP-Choline ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_CDP-Choline$", replacement = "CDP-Choline")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_CDP-Ethanolamine ", replacement = "CDP-Ethanolamine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_CDP-Ethanolamine$", replacement = "CDP-Ethanolamine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula,
+        pattern = "M_Cholesterol ", replacement = "Cholesterol ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula,
+        pattern = "M_Cholesterol$", replacement = "Cholesterol")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula,
+        pattern = "M_Choline ", replacement = "Choline ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Choline$", replacement = "Choline")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_Choline_c ", replacement = "Choline_c ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Choline_c$", replacement = "Choline_c")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_CMP ", replacement = "CMP ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_CMP$", replacement = "CMP")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_CO2 ", replacement = "CO2 ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_CO2$", replacement = "CO2")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_CoA ", replacement = "CoA ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_CoA$", replacement = "CoA")
@@ -889,85 +938,21 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_CoA_c$", replacement = "CoA_c")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_CMP ", replacement = "CMP ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_CMP$", replacement = "CMP")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_CTP ", replacement = "CTP ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_CTP$", replacement = "CTP")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_AMP ", replacement = "AMP ")
+        pattern = "M_Dihydroxyacetone-P ", replacement = "Dihydroxyacetone-P ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_AMP$", replacement = "AMP")
+        pattern = "M_Dihydroxyacetone-P$", replacement = "Dihydroxyacetone-P")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_ADP ", replacement = "ADP ")
+        pattern = "M_Ethanolamine ", replacement = "Ethanolamine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_ADP$", replacement = "ADP")
+        pattern = "M_Ethanolamine$", replacement = "Ethanolamine")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_ATP ", replacement = "ATP ")
+        pattern = "M_Ethanolamine_c ", replacement = "Ethanolamine_c ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_ATP$", replacement = "ATP")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_ADP ", replacement = "ADP ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_ADP$", replacement = "ADP")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_UDP ", replacement = "UDP ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_UDP$", replacement = "UDP")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_UDP-Glucose ", replacement = "UDP-Glucose ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_UDP-Glucose$", replacement = "UDP-Glucose")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_NADH ", replacement = "NADH ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_NADH$", replacement = "NADH")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_NAD ", replacement = "NAD+ ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_NAD$", replacement = "NAD+")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_NADPH ", replacement = "NADPH ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_NADPH$", replacement = "NADPH")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_NADP ", replacement = "NADP+ ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_NADP$", replacement = "NADP+")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_O2 ", replacement = "O2 ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_O2$", replacement = "O2")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_H2O ", replacement = "H2O ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H2O_c$", replacement = "H2O_c")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_H2O_c ", replacement = "H2O_c ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H2O$", replacement = "H2O")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_CO2 ", replacement = "CO2 ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_CO2$", replacement = "CO2")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_H+ ", replacement = "H+ ")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_H+_c ", replacement = "H+_c ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H[+]$", replacement = "H+")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_H[+]_c$", replacement = "H+_c")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Pi ", replacement = "Pi ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Pi$", replacement = "Pi")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_PPi ", replacement = "PPi ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_PPi$", replacement = "PPi")
+        pattern = "M_Ethanolamine_c$", replacement = "Ethanolamine_c")
     .formula <- stringi::stri_replace_all_fixed(str = .formula,
         pattern = "M_Fe2+-cytochrome_b5 ", replacement = "Fe2+-cytochrome b5 ")
     .formula <- stringi::stri_replace_all_regex(str = .formula,
@@ -985,6 +970,38 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_Glycerol-3-P$", replacement = "Glycerol-3-P")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_Glycerophosphocholine ", replacement = "Glycerophosphocholine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Glycerophosphocholine$", replacement = "Glycerophosphocholine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_Glycerophosphoethanolamine ", replacement = "Glycerophosphoethanolamine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Glycerophosphoethanolamine$", replacement = "Glycerophosphoethanolamine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_H+ ", replacement = "H+ ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_H[+]$", replacement = "H+")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_H+_c ", replacement = "H+_c ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_H[+]_c$", replacement = "H+_c")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_H2O ", replacement = "H2O ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_H2O$", replacement = "H2O")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_H2O_c ", replacement = "H2O_c ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_H2O_c$", replacement = "H2O_c")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_L-Serine ", replacement = "L-Serine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_L-Serine$", replacement = "L-Serine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_L-Serine_c ", replacement = "L-Serine_c ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_L-Serine_c$", replacement = "L-Serine_c")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_myo-Inositol ", replacement = "myo-Inositol ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_myo-Inositol$", replacement = "myo-Inositol")
@@ -993,49 +1010,25 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_myo-Inositol-1-P$", replacement = "myo-Inositol-1-P")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Dihydroxyacetone-P ", replacement = "Dihydroxyacetone-P ")
+        pattern = "M_NAD ", replacement = "NAD+ ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Dihydroxyacetone-P$", replacement = "Dihydroxyacetone-P")
+        pattern = "M_NAD$", replacement = "NAD+")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_CDP-Choline ", replacement = "CDP-Choline ")
+        pattern = "M_NADH ", replacement = "NADH ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_CDP-Choline$", replacement = "CDP-Choline")
+        pattern = "M_NADH$", replacement = "NADH")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_L-Serine_c ", replacement = "L-Serine_c ")
+        pattern = "M_NADP ", replacement = "NADP+ ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_L-Serine_c$", replacement = "L-Serine_c")
+        pattern = "M_NADP$", replacement = "NADP+")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_L-Serine ", replacement = "L-Serine ")
+        pattern = "M_NADPH ", replacement = "NADPH ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_L-Serine$", replacement = "L-Serine")
+        pattern = "M_NADPH$", replacement = "NADPH")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Ethanolamine ", replacement = "Ethanolamine ")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Ethanolamine_c ", replacement = "Ethanolamine_c ")
+        pattern = "M_O2 ", replacement = "O2 ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Ethanolamine$", replacement = "Ethanolamine")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Ethanolamine_c$", replacement = "Ethanolamine_c")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_P-Ethanolamine ", replacement = "P-Ethanolamine ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_P-Ethanolamine$", replacement = "P-Ethanolamine")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_CDP-Ethanolamine ", replacement = "CDP-Ethanolamine ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_CDP-Ethanolamine$", replacement = "CDP-Ethanolamine")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Sphinganine ", replacement = "SPH(d16:0(1OH,3OH)(15Me)) ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Sphinganine$", replacement = "SPH(d16:0(1OH,3OH)(15Me))")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Choline_c ", replacement = "Choline_c ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Choline_c$", replacement = "Choline_c")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula,
-        pattern = "M_Choline ", replacement = "Choline ")
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Choline$", replacement = "Choline")
+        pattern = "M_O2$", replacement = "O2")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_Phosphocholine ", replacement = "Phosphocholine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
@@ -1045,14 +1038,30 @@
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_Phosphoethanolamine$", replacement = "Phosphoethanolamine")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Glycerophosphoethanolamine ", replacement = "Glycerophosphoethanolamine ")
+        pattern = "M_Pi ", replacement = "Pi ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Glycerophosphoethanolamine$", replacement = "Glycerophosphoethanolamine")
+        pattern = "M_Pi$", replacement = "Pi")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Glycerophosphocholine ", replacement = "Glycerophosphocholine ")
+        pattern = "M_PPi ", replacement = "PPi ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Glycerophosphocholine$", replacement = "Glycerophosphocholine")
-    
+        pattern = "M_PPi$", replacement = "PPi")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_P-Ethanolamine ", replacement = "P-Ethanolamine ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_P-Ethanolamine$", replacement = "P-Ethanolamine")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_Sphinganine ", replacement = "SPH(d16:0(1OH,3OH)(15Me)) ") ######### ?
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_Sphinganine$", replacement = "SPH(d16:0(1OH,3OH)(15Me))")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_UDP ", replacement = "UDP ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_UDP$", replacement = "UDP")
+    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+        pattern = "M_UDP-Glucose ", replacement = "UDP-Glucose ")
+    .formula <- stringi::stri_replace_all_regex(str = .formula, 
+        pattern = "M_UDP-Glucose$", replacement = "UDP-Glucose")
+
     ## replace existing lipid backbones (DG, PC)
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_1,2-DG ", replacement = "DG ")

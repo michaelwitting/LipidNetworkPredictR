@@ -118,6 +118,12 @@
             pattern = "CoA", replacement = "DHAP")
     }
     
+    ## coa_to_ce
+    if (reaction %in% c("RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732")) {
+        .s$CE <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, 
+            pattern = "CoA", replacement = "CE")
+    }
+    
     ## coa_to_FAO
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) {
         .s$FAO <- stringi::stri_replace_all_fixed(str = .s$AcylCoA, 

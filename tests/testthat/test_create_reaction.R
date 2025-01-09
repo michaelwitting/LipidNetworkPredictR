@@ -650,6 +650,73 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:58342 + CHEBI:57642"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:57534 + CHEBI:57287"))
     
+    ## coa_to_ce
+    acylcoa <- "CoA(18:0)"
+    
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
+        template = list(), reaction =  "RHEA:17729")
+    expect_equal(reaction_l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(reaction_l[[1]]$CE, "CE(18:0)")
+    expect_equal(reaction_l[[2]]$reaction_name, "")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "Cholesterol + CoA(18:0) = CE(18:0) + CoA")
+    expect_equal(reaction_l[[2]]$reaction_isReversible, "")
+    expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
+    expect_equal(reaction_l[[2]]$reaction_pathway, "")
+    expect_equal(reaction_l[[2]]$reaction_substrate, c( "Cholesterol + CoA(18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("CE(18:0) + CoA"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:16113 + CHEBI:58342 = CHEBI:17002 + CHEBI:57287")
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:16113 + CHEBI:58342"))
+    expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17002 + CHEBI:57287"))
+    
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
+        template = list(), reaction =  "RHEA:17730")
+    expect_equal(reaction_l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(reaction_l[[1]]$CE, "CE(18:0)")
+    expect_equal(reaction_l[[2]]$reaction_name, "")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "Cholesterol + CoA(18:0) => CE(18:0) + CoA")
+    expect_equal(reaction_l[[2]]$reaction_isReversible, "")
+    expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
+    expect_equal(reaction_l[[2]]$reaction_pathway, "")
+    expect_equal(reaction_l[[2]]$reaction_substrate, c( "Cholesterol + CoA(18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("CE(18:0) + CoA"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:16113 + CHEBI:58342 => CHEBI:17002 + CHEBI:57287")
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:16113 + CHEBI:58342"))
+    expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17002 + CHEBI:57287"))
+    
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
+        template = list(), reaction =  "RHEA:17731")
+    expect_equal(reaction_l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(reaction_l[[1]]$CE, "CE(18:0)")
+    expect_equal(reaction_l[[2]]$reaction_name, "")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "Cholesterol + CoA(18:0) <= CE(18:0) + CoA")
+    expect_equal(reaction_l[[2]]$reaction_isReversible, "")
+    expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
+    expect_equal(reaction_l[[2]]$reaction_pathway, "")
+    expect_equal(reaction_l[[2]]$reaction_substrate, c( "Cholesterol + CoA(18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("CE(18:0) + CoA"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:16113 + CHEBI:58342 <= CHEBI:17002 + CHEBI:57287")
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:16113 + CHEBI:58342"))
+    expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17002 + CHEBI:57287"))
+    
+    reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),
+        template = list(), reaction =  "RHEA:17732")
+    expect_equal(reaction_l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(reaction_l[[1]]$CE, "CE(18:0)")
+    expect_equal(reaction_l[[2]]$reaction_name, "")
+    expect_equal(reaction_l[[2]]$reaction_formula, 
+        "Cholesterol + CoA(18:0) <=> CE(18:0) + CoA")
+    expect_equal(reaction_l[[2]]$reaction_isReversible, "")
+    expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
+    expect_equal(reaction_l[[2]]$reaction_pathway, "")
+    expect_equal(reaction_l[[2]]$reaction_substrate, c( "Cholesterol + CoA(18:0)"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("CE(18:0) + CoA"))
+    expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:16113 + CHEBI:58342 <=> CHEBI:17002 + CHEBI:57287")
+    expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:16113 + CHEBI:58342"))
+    expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:17002 + CHEBI:57287"))
+    
     ## coa_to_fao
     acylcoa <- "CoA(18:0)"
     reaction_l <- .create_reaction(substrates = list(AcylCoA = acylcoa),

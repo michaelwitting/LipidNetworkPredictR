@@ -392,6 +392,44 @@ test_that(".add_products works", {
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
+    ## coa_to_ce
+    acylcoa <- "CoA(18:0)"
+    substrates <- list(AcylCoA = acylcoa)
+    .names <- c("AcylCoA", "CE")
+    .values <- c("CoA(18:0)", "CE(18:0)")
+    
+    reaction <- "RHEA:17729"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:17730"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:17731"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:17732"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
     ## coa_to_FAO
     acylcoa <- "CoA(18:0)"
     substrates <- list(AcylCoA = acylcoa)

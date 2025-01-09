@@ -192,6 +192,16 @@
         if (reaction == "RHEA:17660")
             .formula <- "M_AcylCoA + M_Dihydroxyacetone-P <=> M_AcylDHAP + M_CoA"
     
+        ## coa_to_ce
+        if (reaction == "RHEA:17729")
+            .formula <- "M_Cholesterol + M_AcylCoA = M_CE + M_CoA"
+        if (reaction == "RHEA:17730")
+            .formula <- "M_Cholesterol + M_AcylCoA => M_CE + M_CoA"
+        if (reaction == "RHEA:17731")
+            .formula <- "M_Cholesterol + M_AcylCoA <= M_CE + M_CoA"
+        if (reaction == "RHEA:17732")
+            .formula <- "M_Cholesterol + M_AcylCoA <=> M_CE + M_CoA"
+        
         ## coa_to_fao
         if (reaction == "RHEA:52716") 
             .formula <- "M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP"

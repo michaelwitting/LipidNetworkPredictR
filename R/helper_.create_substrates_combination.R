@@ -161,6 +161,10 @@
     if (reaction %in% c("RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660"))
         cols <- c("AcylCoA")
     
+    ## coa_to_ce
+    if (reaction %in% c("RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732"))
+        cols <- c("AcylCoA")
+    
     ## coa_to_fao
     if (reaction %in% c("RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719")) 
         cols <- c("AcylCoA")

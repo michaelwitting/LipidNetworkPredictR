@@ -88,6 +88,12 @@ mappingTable <- function() {
     c("M_AcylDHAP",           "a 1-acylglycerone 3-phosphate", "CHEBI:57534", "RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660"),
     c("M_CoA",                "CoA",                           "CHEBI:57287", "RHEA:17657", "RHEA:17658", "RHEA:17659", "RHEA:17660"),
     
+    ## coa_to_ce
+    c("M_Cholesterol", "cholesterol",         "CHEBI:16113", "RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732"),
+    c("M_AcylCoA",     "an acyl-CoA",         "CHEBI:58342", "RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732"),
+    c("M_CE",          "a cholesterol ester", "CHEBI:17002", "RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732"),
+    c("M_CoA",         "CoA",                 "CHEBI:57287", "RHEA:17729", "RHEA:17730", "RHEA:17731", "RHEA:17732"),
+    
     ## coa_to_fao
     c("M_AcylCoA", "a long-chain fatty acyl-CoA",        "CHEBI:83139", "RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719"),
     c("M_H+",      "H(+)",                               "CHEBI:15378", "RHEA:52716", "RHEA:52717", "RHEA:52718", "RHEA:52719"),
