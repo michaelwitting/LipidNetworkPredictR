@@ -223,7 +223,7 @@ create_reactions <- function(substrates, reactions) {
 #' reaction_l <- create_reactions(substrates = list(FA = FA), reactions = reactions)
 #' 
 #' ## create the adjacency matrix
-#' create_reaction_adjacency_matrix(reaction_l)
+#' create_reaction_adjacency_matrix(reaction_l = reaction_l)
 create_reaction_adjacency_matrix <- function(reaction_l) {
     
     if (!is.list(reaction_l)) 
