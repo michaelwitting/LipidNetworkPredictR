@@ -40,7 +40,6 @@ create_via_chebi <- function(rhea_reactions_order, rhea_reactions) {
     
     ## only keep the entries of interest
     rhea_reactions <- rhea_reactions |>
-        ##dplyr::filter(V1 != "///") |>
         dplyr::filter(grepl(x = !!rlang::sym("V1"), pattern = "ENTRY|DEFINITION|EQUATION"))
     
     ## split the dataset into columns
