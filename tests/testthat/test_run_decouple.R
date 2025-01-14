@@ -203,7 +203,7 @@ test_that("plot_scores works", {
     
     ## run the function
     g <- plot_scores(scores)
-    expect_equal(g, "gg")
+    expect_equal(is(g), "gtable")
     expect_error(plot_scores(scores = NULL), "column 'run_id' not in 'scores'")
     expect_error(plot_scores(scores = scores[, 1, drop = FALSE]),
         "column 'statistic' not in 'scores'")

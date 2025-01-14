@@ -4,17 +4,22 @@
 #' 
 #' @description 
 #' The function \code{run_decouple} runs \code{decouple} on \code{scores}
-#' of lipid features. The scores can be e.g. logFC- or t-values.
-#'
+#' of lipid features. The scores can be e.g. logFC- or t-values. Mappings 
+#' between the metabolites and ChEBI ids will be done via the data structure
+#' of \code{reaction_l}, as returned by \code{create_reactions}. The function
+#' \code{run_decouple} will run the following models from \code{decoupleR}:
+#' \code{ulm}, \code{mlm}, \code{wsum}, and \code{wmean}.  
 #' 
 #' @details
 #' The function \code{run_decouple} accepts the output of 
-#' the \code{create_reactions} function. From \code{create_reactions}
+#' the \code{create_reactions} function. From \code{create_reactions}, the
+#' ChEBI ids will be inferred.
 #'
 #' The function returns different type of values as results depending on the
 #' model: 
 #' \itemize{
-#'     \item{mlm, ulm: t-values of the fitted model}
+#'     \item{ulm: t-values of the fitted linear model}
+#'     \item{mlm: t-values of the fitted linear model}
 #'     \item{wsum: scores of each target are multiplied
 #'         by its associated weight and then summed}
 #'     \item{norm_wsum: z-scores from a null distribution obtained by permutation 
@@ -40,7 +45,7 @@
 #' 
 #' @export
 #' 
-#' @return matrix
+#' @return tibble
 #' 
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #'
@@ -159,12 +164,13 @@ run_decouple <- function(reaction_l, scores, ...) {
 
 #' @name plot_scores
 #' 
-#' @title Plot the scores of ChEBI identifiers
+#' @title Plot the deregulation scores of ChEBI identifiers
 #' 
 #' @description
 #' The function \code{plot_scores} creates a barplot  that 
-#' visualizes the score values obtained by 
-#' \code{run_decouple}.
+#' visualizes the score values returned by 
+#' \code{run_decouple}. The function will return a \code{gtable} object that 
+#' shows a barplot for each model returned by \code{run_decouple}. 
 #' 
 #' @details
 #' The function requires the argument \code{scores} that can be created via 
@@ -172,7 +178,7 @@ run_decouple <- function(reaction_l, scores, ...) {
 #' 
 #' @param scores tibble, output from \code{run_decouple}
 #' 
-#' @return \code{gg}
+#' @return gtable
 #' 
 #' @export
 #' 

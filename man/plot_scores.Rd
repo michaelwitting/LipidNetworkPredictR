@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_decouple.R
 \name{plot_scores}
 \alias{plot_scores}
-\title{Plot the scores of ChEBI identifiers}
+\title{Plot the deregulation scores of ChEBI identifiers}
 \usage{
 plot_scores(scores)
 }
@@ -10,12 +10,13 @@ plot_scores(scores)
 \item{scores}{tibble, output from \code{run_decouple}}
 }
 \value{
-\code{gg}
+gtable
 }
 \description{
 The function \code{plot_scores} creates a barplot  that 
-visualizes the score values obtained by 
-\code{run_decouple}.
+visualizes the score values returned by 
+\code{run_decouple}. The function will return a \code{gtable} object that 
+shows a barplot for each model returned by \code{run_decouple}.
 }
 \details{
 The function requires the argument \code{scores} that can be created via 

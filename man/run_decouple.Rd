@@ -11,22 +11,30 @@ run_decouple(reaction_l, scores, ...)
 
 \item{scores}{data.frame containing statistics for each feature}
 
-\item{...}{further arguments passed to \code{args} in \code{decouple}}
+\item{...}{further arguments passed to \code{args} in \code{decouple} for 
+the models \code{mlm}, \code{ulm}, \code{wsum}, \code{wmean}}
 }
 \value{
-matrix
+tibble
 }
 \description{
-The function \code{run_decouple} runs
+The function \code{run_decouple} runs \code{decouple} on \code{scores}
+of lipid features. The scores can be e.g. logFC- or t-values. Mappings 
+between the metabolites and ChEBI ids will be done via the data structure
+of \code{reaction_l}, as returned by \code{create_reactions}. The function
+\code{run_decouple} will run the following models from \code{decoupleR}:
+\code{ulm}, \code{mlm}, \code{wsum}, and \code{wmean}.
 }
 \details{
 The function \code{run_decouple} accepts the output of 
-the \code{create_reactions} function. From \code{create_reactions}
+the \code{create_reactions} function. From \code{create_reactions}, the
+ChEBI ids will be inferred.
 
 The function returns different type of values as results depending on the
 model: 
 \itemize{
-    \item{mlm, ulm: t-values of the fitted model}
+    \item{ulm: t-values of the fitted linear model}
+    \item{mlm: t-values of the fitted linear model}
     \item{wsum: scores of each target are multiplied
         by its associated weight and then summed}
     \item{norm_wsum: z-scores from a null distribution obtained by permutation 
@@ -42,7 +50,8 @@ model:
         multiplying wmean scores by the -log10(obtained empirical p-values)}
 }
 
-The values correspond to the (de)regulation values of the lipid classes.
+The values correspond to the (de)regulation values for the lipid classes
+represented as ChEBI ids.
 }
 \examples{
 FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
