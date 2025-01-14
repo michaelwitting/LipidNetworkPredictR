@@ -9,18 +9,22 @@ Description: The packages uses WormJam related lipid reactions and predicts
     possible lipids. The package will use pre-defined reaction templates to
 	build the lipid reaction network. Users need to supply a reaction order 
 	list of lipid reactions to build the network.
-Depends: 
-	AnnotationHub (>= 3.13.0),
-	dplyr (>= 1.1.4),
-	metaboliteIDmapping (>= 1.0.0),
+Depends:
 	R (>= 4.1.2),
-	rlang (>= 1.1.4),
-	stringi (>= 1.7.6),
 	utils (>= 4.1.2)	
 Imports:
+        AnnotationHub (>= 3.13.0),
+        decoupleR (>= 2.11.0),
+        dplyr (>= 1.1.4),
+        ggplot2 (>= 3.5.1),
+        gridExtra (>= 2.3),
 	httr (>= 1.4.2),
         igraph (>= 2.0.3),
 	jsonlite (>= 1.8.8),
+        metaboliteIDmapping (>= 1.0.0),
+        rlang (>= 1.1.4),
+        stringi (>= 1.7.6),
+        tibble (>= 3.2.1),
         tidyr (>= 1.3.1)
 Suggests: 
 	BiocStyle (>= 2.33.1),

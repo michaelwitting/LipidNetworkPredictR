@@ -43,7 +43,7 @@ reactions$directed <- as.logical(reactions$directed)
 reaction_l <- create_reactions(substrates = list(FA = FA), reactions = reactions)
 
 ## create the adjacency matrix
-create_reaction_adjacency_matrix(reaction_l)
+create_reaction_adjacency_matrix(reaction_l = reaction_l)
 }
 \author{
 Thomas Naake, \email{thomasnaake@googlemail.com}
