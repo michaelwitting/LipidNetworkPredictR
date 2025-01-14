@@ -175,7 +175,7 @@ jobs:
 
           ## Pass #1 at installing dependencies
           message(paste('****', Sys.time(), 'pass number 1 at installing dependencies: local dependencies ****'))
-          BiocManager::install("XVector", update = TRUE, ask = FALSE) ##install.packages(c("XVector"), type = "source", dependencies = TRUE)
+          BiocManager::install(c("XVector", "XML"), update = TRUE, ask = FALSE, dependencies = TRUE)
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = FALSE, upgrade = TRUE)
         continue-on-error: true
         shell: Rscript {0}
