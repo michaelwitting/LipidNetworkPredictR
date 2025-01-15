@@ -1,0 +1,149 @@
+#' @name collapse_network
+#' 
+#' @title Collapse network by eliminating vertices with unmeasured values
+#' 
+#' @description
+#' The function \code{collapse_network} will remove vertices without data by
+#' collapsing their paths while preserving connections between measured nodes.
+#' 
+#' 
+#' @details
+#' As an example, in the graph \code{A <-> B <-> C <-> D}. The vertices
+#' \code{B} and \code{C} are not measured. The resulting graph after 
+#' applying the function will be \code{A <-> D}.
+#'  
+#' @param g \code{igraph} object
+#' @param .vertex_attr_names character of length 1, defining the 
+#' \code{vertex_attr_names} of \code{graph} to use for specifying if there 
+#' is a measurement available for the given vertex
+#'
+#' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
+#' 
+#' @export
+#' 
+#' @importFrom methods is
+#' @importFrom igraph vertex_attr_names V all_shortest_paths graph_from_edgelist
+#' 
+#' @examples
+#' FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+#' 
+#' ## create data.frame with reactions and reaction order
+#' reactions <- rbind(
+#'     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
+#'     c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
+#'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE),
+#'     c(4, "RHEA:27429", "M_H2O + M_PA = M_Pi + M_1,2-DG", FALSE)
+#' )
+#' reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
+#'     reaction_formula = reactions[, 3], directed = reactions[, 4])
+#' reactions$order <- as.numeric(reactions$order)
+#' reactions$directed <- as.logical(reactions$directed)
+#' 
+#' ## create the list with reactions
+#' reaction_l <- create_reactions(substrates = list(FA = FA), reactions = reactions)
+#' 
+#' ## create the adjacency matrix
+#' reaction_adj <- create_reaction_adjacency_matrix(reaction_l)
+#' 
+#' g <- igraph::graph_from_adjacency_matrix(reaction_adj, weighted = TRUE, 
+#'     diag = FALSE)
+#' 
+#' ## attribute_type: vertex
+#' attributes_df <- data.frame(
+#'    name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", "DG(12:0/12:0/0:0)",
+#'        "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/12:0/0:0)",
+#'        "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)", "DG(16:0/12:0/0:0)",
+#'        "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)", "FA(12:0)", "FA(14:0)",
+#'        "FA(16:0)", "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)",
+#'        "PA(12:0/16:0)", "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", 
+#'        "PA(14:0/16:0)", "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)",
+#'        "PA(16:0/16:0)"),
+#'    logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
+#'        -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
+#'        -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
+#'        -0.11),
+#'    logFC_cond2 = c(-2.73,  6.14,  1.98,  0.09,  1.57,  1.77,  3.08,  4.04,
+#'        -3.01, 1.22, -4.25, 0.39, 0.53, 3.30, 7.10, 2.81, -0.99, -0.09,
+#'        -8.25, 4.94, -3.54, -7.74, -1.98, 0.73,  2.36,  2.53, -0.62))
+#'        
+#' ## add vertex attributes to g
+#' g <- add_attributes(g, attribute_type = "vertex", attributes = attributes_df, 
+#'     cols_vertex = "name")
+#'
+#' ## collapse the network
+#' g_collapsed <- collapse_network(g = g, .vertex_attr_names = "logFC_cond1")
+#'
+#' ## plot the original and collapsed graphs
+#' par(mfrow = c(1, 2))
+#' plot(g, main = "Original Graph")
+#' plot(g_collapsed, main = "Collapsed Graph")
+collapse_network <- function(g, .vertex_attr_names) {
+    
+    if (methods::is(g) != "igraph")
+        stop("'g' has to be an 'igraph' object.")
+    
+    if (length(.vertex_attr_names) != 1) 
+        stop("'.vertex_attr_names' has to be of length 1.")
+    
+    if (!(.vertex_attr_names %in% igraph::vertex_attr_names(g)))
+        stop("'.vertex_attr_names' has to be in 'vertex_attr_names(g)'.")
+    
+    ## obtain the vertex attributes and create a vector, vertex_attr_logical,
+    ## that stores information if a measurement is available (TRUE) or
+    ## not (FALSE)
+    vertex_attr <- igraph::vertex_attr(graph = g, name = .vertex_attr_names)
+    vertex_attr_logical <- logical(length(vertex_attr))
+    
+    if (is.numeric(vertex_attr) | is.character(vertex_attr))
+        vertex_attr_logical[!is.na(vertex_attr)] <- TRUE
+    if (is.logical(vertex_attr))
+        vertex_attr_logical[vertex_attr] <- TRUE
+    
+    ## obtain the vertices where information is available
+    vertices_measured <- igraph::V(g)[vertex_attr_logical]
+    
+    ## set the mode for all_shortest_paths according to if g is directed or not
+    if (igraph::is_directed(g)) {
+        .mode <- "in"
+    } else {
+        .mode <- "all"
+    }
+    
+    ## initialize new edges
+    new_edges <- list()
+    
+    ## loop through pairs of measured nodes
+    for (i in 1:(length(vertices_measured) - 1)) {
+        for (j in (i + 1):length(vertices_measured)) {
+            
+            vertex_1 <- vertices_measured[i]
+            vertex_2 <- vertices_measured[j]
+            
+            ## check if there is a path through unmeasured vertices
+            path <- igraph::all_shortest_paths(graph = g, 
+                from = vertex_1, to = vertex_2, mode = .mode)$res
+            
+            for (p in path) {
+                if (all(!vertex_attr_logical[match(p, igraph::V(g))][-c(1, length(p))])) {
+                    new_edges <- append(new_edges, 
+                        list(
+                            c(igraph::V(g)[p[1]]$name, 
+                                igraph::V(g)[p[length(p)]]$name)))
+                }
+            }
+        }
+    }
+    
+    ## create a simplified/collapsed graph with only measured vertices
+    edges_collapsed <- do.call(what = "rbind", args = new_edges)
+    
+    ## avoid duplicate edges
+    edges_unique <- unique(edges_collapsed)
+    
+    ## create a graph from the edgelist
+    g_collapsed <- igraph::graph_from_edgelist(el = as.matrix(edges_unique), 
+        directed = is_directed(g))
+    
+    ## return the object
+    g_collapsed
+}

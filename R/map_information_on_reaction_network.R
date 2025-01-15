@@ -140,7 +140,7 @@ add_attributes <- function(g, attribute_type = c("edges", "vertex"),
     
     ## for attribute_type == "edges"
     if (attribute_type == "edges") 
-        g <- add_edge_attributes(g = g, attributes = attributes, 
+        g <- add_edge_attributes(g = g, attributes = attributes,
             cols_vertex = cols_vertex)
     
     ## for attribute_type == "vertex"

@@ -10,8 +10,9 @@ Description: The packages uses WormJam related lipid reactions and predicts
 	build the lipid reaction network. Users need to supply a reaction order 
 	list of lipid reactions to build the network.
 Depends:
-	R (>= 4.1.2),
-	utils (>= 4.1.2)	
+	R (>= 4.4.1),
+        methods (>= 4.4.1),
+	utils (>= 4.4.1)	
 Imports:
         AnnotationHub (>= 3.13.0),
         decoupleR (>= 2.11.0),
