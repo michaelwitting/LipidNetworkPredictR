@@ -23,6 +23,7 @@
 #' 
 #' @importFrom methods is
 #' @importFrom igraph vertex_attr_names V all_shortest_paths graph_from_edgelist
+#' @importFrom igraph is_directed
 #' 
 #' @examples
 #' FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
@@ -88,6 +89,9 @@ collapse_network <- function(g, .vertex_attr_names) {
     if (!(.vertex_attr_names %in% igraph::vertex_attr_names(g)))
         stop("'.vertex_attr_names' has to be in 'vertex_attr_names(g)'.")
     
+    ## check if graph is directed
+    is_directed <- igraph::is_directed(graph = g)
+    
     ## obtain the vertex attributes and create a vector, vertex_attr_logical,
     ## that stores information if a measurement is available (TRUE) or
     ## not (FALSE)
@@ -102,13 +106,6 @@ collapse_network <- function(g, .vertex_attr_names) {
     ## obtain the vertices where information is available
     vertices_measured <- igraph::V(g)[vertex_attr_logical]
     
-    ## set the mode for all_shortest_paths according to if g is directed or not
-    if (igraph::is_directed(g)) {
-        .mode <- "in"
-    } else {
-        .mode <- "all"
-    }
-    
     ## initialize new edges
     new_edges <- list()
     
@@ -119,19 +116,31 @@ collapse_network <- function(g, .vertex_attr_names) {
             vertex_1 <- vertices_measured[i]
             vertex_2 <- vertices_measured[j]
             
-            ## check if there is a path through unmeasured vertices
-            path <- igraph::all_shortest_paths(graph = g, 
-                from = vertex_1, to = vertex_2, mode = .mode)$res
+            ## find the shortest path from vertex_1 to vertex_2
+            path_1 <- suppressWarnings(igraph::shortest_paths(graph = g, 
+                from = vertex_1, to = vertex_2, output = "vpath")$vpath[[1]])
             
-            for (p in path) {
-                if (all(!vertex_attr_logical[match(p, igraph::V(g))][-c(1, length(p))])) {
+            ## find the shortest path from vertex_2 to vertex_1
+            path_2 <- suppressWarnings(igraph::shortest_paths(graph = g, 
+                from = vertex_2, to = vertex_1, output = "vpath")$vpath[[1]])
+            
+            ## check and add paths if valid
+            for (path in list(path_1, path_2)) {
+                if (!is.null(path) && length(path) > 1 &&
+                    all(!vertex_attr_logical[match(path, igraph::V(g))][-c(1, length(path))])) {
+                    
+                    ## add the edge between the measured nodes
                     new_edges <- append(new_edges, 
-                        list(
-                            c(igraph::V(g)[p[1]]$name, 
-                                igraph::V(g)[p[length(p)]]$name)))
+                        list(c(igraph::V(g)[path[1]]$name, igraph::V(g)[path[length(path)]]$name)))
                 }
             }
         }
+    }
+    
+    ## if !is_directed the matrix contains e.g. both A -- B and B -- A, remove 
+    ## the redundant information
+    if (!is_directed) {
+        new_edges <- lapply(new_edges, sort)
     }
     
     ## create a simplified/collapsed graph with only measured vertices
@@ -142,7 +151,7 @@ collapse_network <- function(g, .vertex_attr_names) {
     
     ## create a graph from the edgelist
     g_collapsed <- igraph::graph_from_edgelist(el = as.matrix(edges_unique), 
-        directed = is_directed(g))
+        directed = is_directed)
     
     ## return the object
     g_collapsed
