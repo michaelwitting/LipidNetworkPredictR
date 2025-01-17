@@ -130,12 +130,15 @@ run_decouple <- function(reaction_l, scores, col_feature = "feature",
     ## species and lipid classes
     network <- lapply(seq_len(length(reaction_l)), function(i) {
         feature <- reaction_l[[i]][[2]][["reaction_formula"]] |>
-            ## split when h
-            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", perl = TRUE) |>
+            ## split only + when it is not precided by H, Fe2 or Fe3
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
+                perl = TRUE) |>
             unlist() |>
             stringi::stri_trim()
         chebi <- reaction_l[[i]][[2]][["reaction_formula_chebi"]] |>
-            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", perl = TRUE) |>
+            ## split only + when it is not precided by H, Fe2 or Fe3
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
+                perl = TRUE) |>
             unlist() |>
             stringi::stri_trim()
         data.frame(target = feature, source = chebi)
