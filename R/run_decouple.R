@@ -40,6 +40,10 @@
 #' 
 #' @param reaction_l list as obtained from \code{create_reactions}
 #' @param scores data.frame containing statistics for each feature
+#' @param col_feature character of length 1, specifying the column in 
+#' \code{scores} that contains the feature names
+#' @param col_score character of length 1, specifying the column in 
+#' \code{scores} that contains the scores
 #' @param ... further arguments passed to \code{args} in \code{decouple} for 
 #' the models \code{mlm}, \code{ulm}, \code{wsum}, \code{wmean}
 #' 
@@ -104,7 +108,8 @@
 #' 
 #' ## run the function
 #' run_decouple(reaction_l = reaction_l, scores = scores)
-run_decouple <- function(reaction_l, scores, ...) {
+run_decouple <- function(reaction_l, scores, col_feature = "feature", 
+    col_score = "score", ...) {
     
     if (!is.list(reaction_l)) 
         stop("'reaction_l' has to be a list")
@@ -116,8 +121,8 @@ run_decouple <- function(reaction_l, scores, ...) {
     args_fct <- list(...)
     
     ## assign rownames and only keep the column "score"
-    rownames(scores) <- scores[["feature"]]
-    scores <- scores[, "score", drop = FALSE]
+    rownames(scores) <- scores[[col_feature]]
+    scores <- scores[, col_score, drop = FALSE]
     
     ## lipid species are attributed to classes, these can be identified via 
     ## the ChEBI ids in reactions_l, obtain the corresponding CheBI ids for the 
@@ -125,16 +130,21 @@ run_decouple <- function(reaction_l, scores, ...) {
     ## species and lipid classes
     network <- lapply(seq_len(length(reaction_l)), function(i) {
         feature <- reaction_l[[i]][[2]][["reaction_formula"]] |>
-            strsplit(, split = "[+]|[=]|[=>]|[<=]|[<=>]") |>
+            ## split when h
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", perl = TRUE) |>
             unlist() |>
             stringi::stri_trim()
         chebi <- reaction_l[[i]][[2]][["reaction_formula_chebi"]] |>
-            strsplit(, split = "[+]|[=]|[=>]|[<=]|[<=>]") |>
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", perl = TRUE) |>
             unlist() |>
             stringi::stri_trim()
         data.frame(target = feature, source = chebi)
     }) |>
         do.call(what = "rbind")
+    
+    ## remove empty rows
+    network <- network[
+        !(network[["target"]] == "" & network[["source"]] == ""), ]
     
     ## order according (first priority) to column target and (with second
     ## priority) to column source, then remove the duplicate values

@@ -4,12 +4,24 @@
 \alias{run_decouple}
 \title{Run decouple}
 \usage{
-run_decouple(reaction_l, scores, ...)
+run_decouple(
+  reaction_l,
+  scores,
+  col_feature = "feature",
+  col_score = "score",
+  ...
+)
 }
 \arguments{
 \item{reaction_l}{list as obtained from \code{create_reactions}}
 
 \item{scores}{data.frame containing statistics for each feature}
+
+\item{col_feature}{character of length 1, specifying the column in 
+\code{scores} that contains the feature names}
+
+\item{col_score}{character of length 1, specifying the column in 
+\code{scores} that contains the scores}
 
 \item{...}{further arguments passed to \code{args} in \code{decouple} for 
 the models \code{mlm}, \code{ulm}, \code{wsum}, \code{wmean}}
