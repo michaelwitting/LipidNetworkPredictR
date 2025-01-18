@@ -445,6 +445,7 @@ From NAPE.
 reactions <- rbind(
     ## Block 0
     c(1, "RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), ## FA_GPGL + ATP + CoA = CoA_GPGL + AMP + PPi
+    
     ## Block 1
     c(2, "RHEA:15325", "M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA"), ## CoA_GPGL + G3P = LPA + CoA
     c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_PA + M_CoA"), ## LPA + CoA_GPGL = PA + CoA
@@ -502,6 +503,10 @@ reactions <- rbind(
     c(49, "RHEA:36195", "M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+"), ## PEP + H2O = LPE-P + FA + H+
     c(50, "RHEA:16245", "M_LPE-P + M_AcylCoA = M_PE-P + M_CoA"), ## LPEP + CoA_GPGL = PEP + CoA
     c(51, "RHEA:36231", "M_PC-O + M_H2O = M_LPC-O + M_FA + M_H"), ## PCO + H2O = LPCO + FA_GPGL + H+
+    
+    ## Block 8
+    c(52, "RHEA:17730", "M_Cholesterol + M_AcylCoA = M_CE + M_CoA"), ## Cholesterol + AcylCoA = CE + CoA
+    
     ## Block Y
     c(52, "RHEA:45188", "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"), ## PC + PE = sn2LPC + H+ + NAPE
     c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
