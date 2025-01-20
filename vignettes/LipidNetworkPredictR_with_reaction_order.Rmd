@@ -444,86 +444,89 @@ From NAPE.
 ```{r, message=FALSE, warning=FALSE}
 reactions <- rbind(
     ## Block 0
-    c(1, "RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), ## FA_GPGL + ATP + CoA = CoA_GPGL + AMP + PPi
+    c("RHEA:15421", "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi"), ## FA_GPGL + ATP + CoA = CoA_GPGL + AMP + PPi
     
     ## Block 1
-    c(2, "RHEA:15325", "M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA"), ## CoA_GPGL + G3P = LPA + CoA
-    c(3, "RHEA:19709", "M_LPA + M_AcylCoA = M_PA + M_CoA"), ## LPA + CoA_GPGL = PA + CoA
-    c(4, "RHEA:27429", "M_PA + M_H2O = M_1,2-DG + M_Pi"), ## PA + H2O = DG + Pi
-    c(5, "RHEA:10272", "M_1,2-DG + M_ATP = M_PA + M_ADP + M_H+"), ## DG + ATP = PA + ADP + H+
-    c(6, "RHEA:44712", "M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+"), ## DG + H2O = sn1MG + FA + H+
-    c(7, "RHEA:33275", "M_1,2-DG + M_H2O = M_2-MG + M_FA + M_H+"), ## DG + H2O = sn2MG + FA + H+
-    c(8, "sn2mg_to_sn1mg", "M_2-MG <=> M_1-MG"), ## sn1MG <=> sn2MG
-    c(9, "RHEA:34019", "M_1-MG + M_H2O = M_FA + M_Glycerol + M_H+"), ## sn1MG + H2O = FA + Glycerol + H+
-    c(10, "RHEA:32871", "M_H2O + M_2-MG = M_FA + M_Glycerol + M_H+"), ## H2O + sn2MG = FA + Glycerol + H+
-    c(11, "RHEA:38463", "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn1MG + CoA_GPGL = DG + CoA
-    c(12, "RHEA:32947", "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn2MG + CoA_GPGL = DG + CoA
-    c(13, "RHEA:33747", "M_1-MG + M_ATP = M_LPA + M_ADP + M_H+"), ## 1-MG + ATP = LPA + ADP + H+
+    c("RHEA:15325", "M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA"), ## CoA_GPGL + G3P = LPA + CoA
+    c("RHEA:19709", "M_LPA + M_AcylCoA = M_PA + M_CoA"), ## LPA + CoA_GPGL = PA + CoA
+    c("RHEA:27429", "M_PA + M_H2O = M_1,2-DG + M_Pi"), ## PA + H2O = DG + Pi
+    c("RHEA:10272", "M_1,2-DG + M_ATP = M_PA + M_ADP + M_H+"), ## DG + ATP = PA + ADP + H+
+    c("RHEA:44712", "M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+"), ## DG + H2O = sn1MG + FA + H+
+    c("RHEA:33275", "M_1,2-DG + M_H2O = M_2-MG + M_FA + M_H+"), ## DG + H2O = sn2MG + FA + H+
+    c("sn2mg_to_sn1mg", "M_2-MG <=> M_1-MG"), ## sn1MG <=> sn2MG
+    c("RHEA:34019", "M_1-MG + M_H2O = M_FA + M_Glycerol + M_H+"), ## sn1MG + H2O = FA + Glycerol + H+
+    c("RHEA:32871", "M_H2O + M_2-MG = M_FA + M_Glycerol + M_H+"), ## H2O + sn2MG = FA + Glycerol + H+
+    c("RHEA:38463", "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn1MG + CoA_GPGL = DG + CoA
+    c("RHEA:32947", "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA"), ## sn2MG + CoA_GPGL = DG + CoA
+    c("RHEA:33747", "M_1-MG + M_ATP = M_LPA + M_ADP + M_H+"), ## 1-MG + ATP = LPA + ADP + H+
+    
     ## Block 2
-    c(14, "RHEA:10868", "M_1,2-DG + M_AcylCoA = M_TG + M_CoA"), ## DG + CoA_GPGL = TG + CoA
-    c(15, "RHEA:33271", "M_TG + M_H2O = M_1,2-DG + M_FA + M_H+"), ## TG + H2O = DG + FA + H+
+    c("RHEA:10868", "M_1,2-DG + M_AcylCoA = M_TG + M_CoA"), ## DG + CoA_GPGL = TG + CoA
+    c("RHEA:33271", "M_TG + M_H2O = M_1,2-DG + M_FA + M_H+"), ## TG + H2O = DG + FA + H+
+    
     ## Block 3
-    c(16, "RHEA:32939", "M_1,2-DG + M_CDP-Choline = M_PC + M_CMP + M_H+"), ## DG + CDP-Choline = PC + CMP + H+
-    c(17, "RHEA:32943", "M_1,2-DG + M_CDP-Ethanolamine = M_PE + M_CMP + M_H+"), ## DG + CDP-Ethanolamine = PE + CMP + H+
-    c(18, "RHEA:45088", "M_PC + M_L-Serine = M_PS + M_Choline"), ## PC + L-Serine = PS + Choline
-    c(19, "RHEA:27606", "M_PE + M_L-Serine = M_PS + M_Ethanolamine"), ## PE + L-Serine = PS + Ethanolamine
-    c(20, "RHEA:20828", "M_PS + M_H+ = M_PE + M_CO2"), ## PS + H+ = PE + CO2
+    c("RHEA:32939", "M_1,2-DG + M_CDP-Choline = M_PC + M_CMP + M_H+"), ## DG + CDP-Choline = PC + CMP + H+
+    c("RHEA:32943", "M_1,2-DG + M_CDP-Ethanolamine = M_PE + M_CMP + M_H+"), ## DG + CDP-Ethanolamine = PE + CMP + H+
+    c("RHEA:45088", "M_PC + M_L-Serine = M_PS + M_Choline"), ## PC + L-Serine = PS + Choline
+    c("RHEA:27606", "M_PE + M_L-Serine = M_PS + M_Ethanolamine"), ## PE + L-Serine = PS + Ethanolamine
+    c("RHEA:20828", "M_PS + M_H+ = M_PE + M_CO2"), ## PS + H+ = PE + CO2
+    
     ## Block 4
-    c(21, "RHEA:18689", "M_PC_c + M_H2O_c = M_2-LPC_c + M_FA_c + M_H+_c"), ## PC + H2O = sn2LPC + FA_GPGL
-    c(22, "RHEA:15801", "M_PC + M_H2O  = M_1-LPC + M_FA + M_H+"), ## PC + H2O  = sn1LPC + FA_GPGL + H+
-    c(23, "RHEA:14445", "M_PC + M_H2O = M_PA + M_Choline + M_H+"), ## PC + H2O = PA + Choline + H+
-    c(24, "RHEA:15177", "M_1-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn1LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
-    c(25, "RHEA:44696", "M_2-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn2LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
-    c(26, "RHEA:12937", "M_1-LPC_c + M_AcylCoA_c = M_PC_c + M_CoA_c"), ## sn1LPC + CoA_GPGL = PC + CoA_GPGL
-    c(27, "RHEA:44408", "M_PE + M_H2O = M_2-LPE + M_FA + M_H+"), ## PE + H2O = sn2LPE + FA_GPGL + H+
-    c(28, "RHEA:44604", "M_PE + M_H2O = M_1-LPE + M_FA + M_H+"), ## PE + H2O = sn1LPE + FA_GPGL + H+
-    c(29, "pe_to_pa", "M_PE + M_H2O <=> M_PA + M_Ethanolamine + M_H+"), ## PE + H2O <=> PA + Ethanolamine + H+
-    c(30, "RHEA:32967", "M_1-LPE + M_H2O = M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn1LPE + H2O = FA_GPGL + H+ + Glycerophosphoethanolamine
-    c(31, "sn2lpe_to_fa", "M_2-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn2LPE + H2O <=> FA_GPGL + H+ + Glycerophosphoethanolamine
-    c(32, "RHEA:32995", "M_1-LPE + M_AcylCoA = M_PE + M_CoA"), ## sn1LPE + CoA_GPGL = PE + CoA
+    c("RHEA:18689", "M_PC_c + M_H2O_c = M_2-LPC_c + M_FA_c + M_H+_c"), ## PC + H2O = sn2LPC + FA_GPGL
+    c("RHEA:15801", "M_PC + M_H2O  = M_1-LPC + M_FA + M_H+"), ## PC + H2O  = sn1LPC + FA_GPGL + H+
+    c("RHEA:14445", "M_PC + M_H2O = M_PA + M_Choline + M_H+"), ## PC + H2O = PA + Choline + H+
+    c("RHEA:15177", "M_1-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn1LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
+    c("RHEA:44696", "M_2-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine"), ## sn2LPC + H2O = FA_GPGL + H+ + Glycerophosphocholine
+    c("RHEA:12937", "M_1-LPC_c + M_AcylCoA_c = M_PC_c + M_CoA_c"), ## sn1LPC + CoA_GPGL = PC + CoA_GPGL
+    c("RHEA:44408", "M_PE + M_H2O = M_2-LPE + M_FA + M_H+"), ## PE + H2O = sn2LPE + FA_GPGL + H+
+    c("RHEA:44604", "M_PE + M_H2O = M_1-LPE + M_FA + M_H+"), ## PE + H2O = sn1LPE + FA_GPGL + H+
+    c("pe_to_pa", "M_PE + M_H2O <=> M_PA + M_Ethanolamine + M_H+"), ## PE + H2O <=> PA + Ethanolamine + H+
+    c("RHEA:32967", "M_1-LPE + M_H2O = M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn1LPE + H2O = FA_GPGL + H+ + Glycerophosphoethanolamine
+    c("sn2lpe_to_fa", "M_2-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine"), ## sn2LPE + H2O <=> FA_GPGL + H+ + Glycerophosphoethanolamine
+    c("RHEA:32995", "M_1-LPE + M_AcylCoA = M_PE + M_CoA"), ## sn1LPE + CoA_GPGL = PE + CoA
     ## Block 5
-    c(33, "RHEA:16229", "M_PA + M_CTP + M_H+ = M_CDP-DG + M_PPi"), ## PA + CTP + H+ = CDP-DG + PPi
-    c(34, "RHEA:11580", "M_CDP-DG + M_myo-Inositol = M_PI + M_CMP + M_H+"), ## CDP-DG + myo-Inositol = PI + CMP + H+
-    c(35, "RHEA:12593", "M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+"), ## CDP-DG + Glycerol-3-P = PGP + CMP + M_H+
-    c(36, "RHEA:33751", "M_PGP + M_H2O = M_PG + M_Pi"), ## PGP + H2O = PG + Pi
-    c(37, "RHEA:32931", "M_PG + M_CDP-DG = M_CL + M_CMP + M_H+"), ## PG + CDP-DG = CL + CMP + H+
+    c("RHEA:16229", "M_PA + M_CTP + M_H+ = M_CDP-DG + M_PPi"), ## PA + CTP + H+ = CDP-DG + PPi
+    c("RHEA:11580", "M_CDP-DG + M_myo-Inositol = M_PI + M_CMP + M_H+"), ## CDP-DG + myo-Inositol = PI + CMP + H+
+    c("RHEA:12593", "M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+"), ## CDP-DG + Glycerol-3-P = PGP + CMP + M_H+
+    c("RHEA:33751", "M_PGP + M_H2O = M_PG + M_Pi"), ## PGP + H2O = PG + Pi
+    c("RHEA:32931", "M_PG + M_CDP-DG = M_CL + M_CMP + M_H+"), ## PG + CDP-DG = CL + CMP + H+
     ## Block 6
-    c(38, "RHEA:52716", "M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP"), ## AcylCoA_GPGL + 2 H+ + 2 NADPH = FAO + CoA + 2 NADP
-    c(39, "RHEA:17657", "M_AcylCoA + M_Dihydroxyacetone-P = M_AcylDHAP + M_CoA"), ##CoA_GPGL + Dihydroxyacetone-P = AcylDHAP + CoA
-    c(40, "RHEA:36171", "M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+"), ##AcylDHAP + FAO = AlkylDHAP + FA_GPGL + H+
-    c(41, "RHEA:36175", "M_AlkylDHAP + M_H+ + M_NADPH = M_LPA-O + M_NADP"), ## AlkylDHAP + H+ + NADPH = LPAO + NADP
-    c(42, "RHEA:36235", "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"), ## LPAO + CoA_GPGL = PAO + CoA
-    c(43, "RHEA:36239", "M_PA-O + M_H2O = M_DG-O + M_Pi"), ## PAO + H2O = DGO + Pi
-    c(44, "RHEA:36187", "M_DG-O + M_CDP-Ethanolamine =  M_PE-O + M_CMP + M_H+"), ## DGO + CDP-Ethanolamine =  PEO + CMP + H+
-    c(45, "RHEA:22956", "M_PE-O + M_Fe2+cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+cytochrome_b5 + 2 M_H2O"), ## PEO + Fe2+cytochrome_b5 + 2 H+ + O2 = PEP + Fe3+cytochrome_b5 + 2 H2O
-    c(46, "RHEA:36179", "M_DG-O + M_CDP-Choline = M_PC-O + M_CMP + M_H+"), ## DGO + CDP-Choline = PCO + CMP + H+
+    c("RHEA:52716", "M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP"), ## AcylCoA_GPGL + 2 H+ + 2 NADPH = FAO + CoA + 2 NADP
+    c("RHEA:17657", "M_AcylCoA + M_Dihydroxyacetone-P = M_AcylDHAP + M_CoA"), ##CoA_GPGL + Dihydroxyacetone-P = AcylDHAP + CoA
+    c("RHEA:36171", "M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+"), ##AcylDHAP + FAO = AlkylDHAP + FA_GPGL + H+
+    c("RHEA:36175", "M_AlkylDHAP + M_H+ + M_NADPH = M_LPA-O + M_NADP"), ## AlkylDHAP + H+ + NADPH = LPAO + NADP
+    c("RHEA:36235", "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA"), ## LPAO + CoA_GPGL = PAO + CoA
+    c("RHEA:36239", "M_PA-O + M_H2O = M_DG-O + M_Pi"), ## PAO + H2O = DGO + Pi
+    c("RHEA:36187", "M_DG-O + M_CDP-Ethanolamine =  M_PE-O + M_CMP + M_H+"), ## DGO + CDP-Ethanolamine =  PEO + CMP + H+
+    c("RHEA:22956", "M_PE-O + M_Fe2+cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+cytochrome_b5 + 2 M_H2O"), ## PEO + Fe2+cytochrome_b5 + 2 H+ + O2 = PEP + Fe3+cytochrome_b5 + 2 H2O
+    c("RHEA:36179", "M_DG-O + M_CDP-Choline = M_PC-O + M_CMP + M_H+"), ## DGO + CDP-Choline = PCO + CMP + H+
     ## Block 7
-    c(47, "peo_to_lpeo", "M_PE-O + M_H2O <=> M_LPE-O + M_FA + M_H+"), ## PEO + H2O <=> LPEO + FA_GPGL + H+
-    c(48, "lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
-    c(49, "RHEA:36195", "M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+"), ## PEP + H2O = LPE-P + FA + H+
-    c(50, "RHEA:16245", "M_LPE-P + M_AcylCoA = M_PE-P + M_CoA"), ## LPEP + CoA_GPGL = PEP + CoA
-    c(51, "RHEA:36231", "M_PC-O + M_H2O = M_LPC-O + M_FA + M_H"), ## PCO + H2O = LPCO + FA_GPGL + H+
+    c("peo_to_lpeo", "M_PE-O + M_H2O <=> M_LPE-O + M_FA + M_H+"), ## PEO + H2O <=> LPEO + FA_GPGL + H+
+    c("lpeo_to_peo", "M_AcylCoA + M_LPE-O = M_CoA + M_PE-O"), ## CoA_GPGL + LPEO = CoA + M_PEO
+    c("RHEA:36195", "M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+"), ## PEP + H2O = LPE-P + FA + H+
+    c("RHEA:16245", "M_LPE-P + M_AcylCoA = M_PE-P + M_CoA"), ## LPEP + CoA_GPGL = PEP + CoA
+    c("RHEA:36231", "M_PC-O + M_H2O = M_LPC-O + M_FA + M_H"), ## PCO + H2O = LPCO + FA_GPGL + H+
     
     ## Block 8
-    c(52, "RHEA:17730", "M_Cholesterol + M_AcylCoA = M_CE + M_CoA"), ## Cholesterol + AcylCoA = CE + CoA
+    c("RHEA:17730", "M_Cholesterol + M_AcylCoA = M_CE + M_CoA"), ## Cholesterol + AcylCoA = CE + CoA
     
     ## Block Y
-    c(52, "RHEA:45188", "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"), ## PC + PE = sn2LPC + H+ + NAPE
-    c(53, "peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
-    c(54, "RHEA:63596", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
-    c(55, "RHEA:45192", "M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE"), ## ## PC + PE = sn1LPC + H+ + NAPE
-    c(56, "peo_to_napeo_sn2", "M_PE-O + M_PC = M_NAPEO + M_1-LPC"), ## PEO + PC = NAPEO + sn1LPC
-    c(57, "pep_to_napep_sn2", "M_PE-P + M_PC = M_NAPEP + M_1-LPC"), ## PEP + PC = NAPEP + sn1LPC
-    c(58, "RHEA:33159", "M_NAPE + M_H2O = M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
-    c(59, "napeo_to_nae", "M_NAPEO + M_H2O <=> M_NAE + M_PA-O"), ## akac2nape + H2O <=> NAE + PAO
-    c(60, "nape_to_pnae", "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"), ## NAPE + H2O <=> PNAE + DG
-    c(61, "RHEA:45460", "M_NAPE + M_H2O = M_LNAPE + M_FA + M_H+"), ## NAPE + H2O <=> LNAPE + FA_GPGL
-    c(62, "RHEA:45420", "M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE"), ## H2O + LNAPE = FA_GPGL + H+ + GPNAE
-    c(63, "RHEA:17505", "M_H2O + M_NAE = M_FA + M_Ethanolamine") ## H2O + NAE = FA_GPGL + Ethanolamine
+    c("RHEA:45188", "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE"), ## PC + PE = sn2LPC + H+ + NAPE
+    c("peo_to_napeo_sn1", "M_PE-O + M_PC = M_NAPEO + M_2-LPC"), ## PEO + PC = NAPEO + sn2LPC
+    c("RHEA:63596", "M_PE-P + M_PC = M_NAPEP + M_2-LPC"), ## PEP + PC = NAPEP + sn2LPC
+    c("RHEA:45192", "M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE"), ## ## PC + PE = sn1LPC + H+ + NAPE
+    c("peo_to_napeo_sn2", "M_PE-O + M_PC = M_NAPEO + M_1-LPC"), ## PEO + PC = NAPEO + sn1LPC
+    c("pep_to_napep_sn2", "M_PE-P + M_PC = M_NAPEP + M_1-LPC"), ## PEP + PC = NAPEP + sn1LPC
+    c("RHEA:33159", "M_NAPE + M_H2O = M_NAE + M_PA"), ## NAPE + H2O <=> NAE + PA
+    c("napeo_to_nae", "M_NAPEO + M_H2O <=> M_NAE + M_PA-O"), ## akac2nape + H2O <=> NAE + PAO
+    c("nape_to_pnae", "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG"), ## NAPE + H2O <=> PNAE + DG
+    c("RHEA:45460", "M_NAPE + M_H2O = M_LNAPE + M_FA + M_H+"), ## NAPE + H2O <=> LNAPE + FA_GPGL
+    c("RHEA:45420", "M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE"), ## H2O + LNAPE = FA_GPGL + H+ + GPNAE
+    c("RHEA:17505", "M_H2O + M_NAE = M_FA + M_Ethanolamine") ## H2O + NAE = FA_GPGL + Ethanolamine
 )
 
-reactions <- data.frame(order = as.numeric(reactions[, 1]), 
-    reaction_RHEA = reactions[, 2], reaction_formula = reactions[, 3])
+reactions <- data.frame(order = seq_len(nrow(reactions)), 
+    reaction_RHEA = reactions[, 1], reaction_formula = reactions[, 2])
 
 ## run the function
 reactions_GPGL <- create_reactions(
