@@ -1302,8 +1302,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(l[[2]]$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 = CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 = CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33276"
@@ -1323,8 +1323,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(l[[2]]$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 => CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 => CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33277"
@@ -1344,8 +1344,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(l[[2]]$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 <= CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 <= CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33278"
@@ -1365,8 +1365,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_pathway, "")
     expect_equal(l[[2]]$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(l[[2]]$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 <=> CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 <=> CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     ## dg_to_pa

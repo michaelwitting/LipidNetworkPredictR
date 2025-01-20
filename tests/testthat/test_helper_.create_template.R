@@ -988,8 +988,8 @@ test_that(".create_template works", {
     expect_equal(template$reaction_constraints_negate, FALSE)
     expect_equal(template$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(template$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 = CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 = CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33276"
@@ -1004,8 +1004,8 @@ test_that(".create_template works", {
     expect_equal(template$reaction_constraints_negate, FALSE)
     expect_equal(template$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(template$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 => CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 => CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33277"
@@ -1020,8 +1020,8 @@ test_that(".create_template works", {
     expect_equal(template$reaction_constraints_negate, FALSE)
     expect_equal(template$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(template$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 <= CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 <= CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     reaction <- "RHEA:33278"
@@ -1036,8 +1036,8 @@ test_that(".create_template works", {
     expect_equal(template$reaction_constraints_negate, FALSE)
     expect_equal(template$reaction_substrate, c("M_1,2-DG", "M_H2O"))
     expect_equal(template$reaction_product, c("M_2-MG", "M_FA", "M_H+"))
-    expect_equal(template$reaction_formula_chebi, "CHEBI:15377 + CHEBI:17815 <=> CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
-    expect_equal(template$reaction_substrate_chebi, c("CHEBI:15377", "CHEBI:17815"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:17815 + CHEBI:15377 <=> CHEBI:17389 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:17815", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     ## dg_to_pa
