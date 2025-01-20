@@ -1,3 +1,89 @@
+#' @name obtain_ChEBI_of_feature
+#' 
+#' @title Obtain ChEBI ids of features
+#' 
+#' @description
+#' Lipid species are attributed to classes. These classes can be identified via 
+#' the ChEBI ids in \code{reactions_l}. The function  obtains the corresponding
+#' ChEBI ids for the features and returns a \code{data.frame} that contains 
+#' the mappings between lipid species and lipid classes.
+#' 
+#' Mappings between the metabolites and ChEBI ids will be done via the data 
+#' structure of \code{reaction_l}, as returned by \code{create_reactions}. 
+#' 
+#' @details
+#' The function \code{obtain_ChEBI_of_feature} accepts the output of 
+#' the \code{create_reactions} function. From \code{create_reactions}, the
+#' ChEBI ids will be inferred.
+#' 
+#' @param reaction_l list as obtained from \code{create_reactions}
+#' 
+#' @export
+#' 
+#' @return data.frame
+#' 
+#' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
+#'
+#' @importFrom stringi stri_trim
+#'
+#' @examples 
+#' FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+#' 
+#' ## create data.frame with reactions and reaction order
+#' reactions <- rbind(
+#'     c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
+#'     c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
+#'     c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE)
+#' )
+#' reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
+#'     reaction_formula = reactions[, 3], directed = reactions[, 4])
+#' reactions$order <- as.numeric(reactions$order)
+#' reactions$directed <- as.logical(reactions$directed)
+#' 
+#' ## create the list with reactions
+#' reaction_l <- create_reactions(substrates = list(FA = FA), reactions = reactions)
+#' 
+#' ## run the function
+#' obtain_ChEBI_of_feature(reaction_l = reaction_l)
+obtain_ChEBI_of_feature <- function(reaction_l) {
+    network <- lapply(seq_len(length(reaction_l)), function(i) {
+        feature <- reaction_l[[i]][[2]][["reaction_formula"]] |>
+            ## split only + when it is not precided by H, Fe2 or Fe3
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
+                perl = TRUE) |>
+            unlist() |>
+            strsplit(split = "^2 ") |>
+            unlist() |>
+            stringi::stri_trim()
+        chebi <- reaction_l[[i]][[2]][["reaction_formula_chebi"]] |>
+            ## split only + when it is not precided by H, Fe2 or Fe3
+            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
+                perl = TRUE) |>
+            unlist() |>
+            strsplit(split = "^2 ") |>
+            unlist() |>
+            stringi::stri_trim()
+        data.frame(target = feature, source = chebi)
+    }) |>
+        do.call(what = "rbind")
+    
+    ## remove empty rows
+    network <- network[
+        !(network[["target"]] == "" & network[["source"]] == ""), ]
+    
+    ## order according (first priority) to column target and (with second
+    ## priority) to column source, then remove the duplicate values
+    network <- network[order(network[["target"]], network[["source"]]), ] 
+    
+    ## remove duplicated entries
+    target_source <- paste(network[["target"]], network[["source"]])
+    network <- network[!duplicated(target_source), ]
+    
+    ## return the object
+    network
+}
+
+
 #' @name run_decouple
 #' 
 #' @title Run decouple
@@ -127,31 +213,10 @@ run_decouple <- function(reaction_l, scores, col_feature = "feature",
     ## lipid species are attributed to classes, these can be identified via 
     ## the ChEBI ids in reactions_l, obtain the corresponding CheBI ids for the 
     ## features, create a data.frame that contains the mappings between lipid
-    ## species and lipid classes
-    network <- lapply(seq_len(length(reaction_l)), function(i) {
-        feature <- reaction_l[[i]][[2]][["reaction_formula"]] |>
-            ## split only + when it is not precided by H, Fe2 or Fe3
-            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
-                perl = TRUE) |>
-            unlist() |>
-            stringi::stri_trim()
-        chebi <- reaction_l[[i]][[2]][["reaction_formula_chebi"]] |>
-            ## split only + when it is not precided by H, Fe2 or Fe3
-            strsplit(split = "(?<!H)(?<!Fe2)(?<!Fe3)\\+|[=]|[=>]|[<=]|[<=>]", 
-                perl = TRUE) |>
-            unlist() |>
-            stringi::stri_trim()
-        data.frame(target = feature, source = chebi)
-    }) |>
-        do.call(what = "rbind")
-    
-    ## remove empty rows
-    network <- network[
-        !(network[["target"]] == "" & network[["source"]] == ""), ]
-    
-    ## order according (first priority) to column target and (with second
-    ## priority) to column source, then remove the duplicate values
-    network <- network[order(network[["target"]], network[["source"]]), ] |>
+    ## species and lipid classes;
+    ## create mapping between feature and ChEBI ids and add columns likelihood 
+    ## and mor
+    network <- obtain_ChEBI_of_feature(reaction_l = reaction_l) |>
         dplyr::filter(!duplicated(!!rlang::sym("target"))) |>
         tibble::add_column(likelihood = 1, mor = 1)
     
