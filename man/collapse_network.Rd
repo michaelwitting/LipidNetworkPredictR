@@ -15,7 +15,8 @@ is a measurement available for the given vertex}
 }
 \description{
 The function \code{collapse_network} will remove vertices without data by
-collapsing their paths while preserving connections between measured nodes.
+collapsing their paths while preserving connections between measured 
+vertices.
 }
 \details{
 As an example, in the graph \code{A <-> B <-> C <-> D}. The vertices
