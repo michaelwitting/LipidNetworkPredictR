@@ -121,8 +121,8 @@ mappingTable <- function() {
     c("M_H+",     "H(+)",                     "CHEBI:15378", "RHEA:35663", "RHEA:35664", "RHEA:35665", "RHEA:35666"),
 
     ## dg_to_sn2mg
-    c("M_H2O",    "H2O",                      "CHEBI:17815", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
-    c("M_1,2-DG", "a 1,2-diacyl-sn-glycerol", "CHEBI:15377", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
+    c("M_H2O",    "H2O",                      "CHEBI:15377", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
+    c("M_1,2-DG", "a 1,2-diacyl-sn-glycerol", "CHEBI:17815", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
     c("M_2-MG",   "a 2-acylglycerol",         "CHEBI:17389", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
     c("M_FA",     "a fatty acid",             "CHEBI:28868", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
     c("M_H+",     "H(+)",                     "CHEBI:15378", "RHEA:33275", "RHEA:33276", "RHEA:33277", "RHEA:33278"),
