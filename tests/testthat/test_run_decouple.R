@@ -1,4 +1,44 @@
-## function run_redouple
+## function obtain_ChEBI_of_feature
+test_that("obtain_ChEBI_of_feature works", {
+    
+    FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+    
+    ## create data.frame with reactions and reaction order
+    reactions <- rbind(
+        c(1, "RHEA:15421", "M_ATP + M_CoA + M_FA = M_PPi + M_AMP + M_AcylCoA", FALSE),
+        c(2, "RHEA:15325", "M_Glycerol-3-P + M_AcylCoA = M_CoA + M_LPA", FALSE),
+        c(3, "RHEA:19709", "M_AcylCoA + M_LPA = M_CoA + M_PA", FALSE)
+    )
+    reactions <- data.frame(order = reactions[, 1], reaction_RHEA = reactions[, 2],
+        reaction_formula = reactions[, 3], directed = reactions[, 4])
+    reactions$order <- as.numeric(reactions$order)
+    reactions$directed <- as.logical(reactions$directed)
+    
+    ## create the list with reactions
+    reaction_l <- create_reactions(substrates = list(FA = FA), reactions = reactions)
+    
+    df <- obtain_ChEBI_of_feature(reaction_l = reaction_l)
+    
+    expect_equal(dim(df), c(26, 2))
+    expect_equal(df[["target"]], 
+        c("AMP", "ATP", "CoA", "CoA(12:0)", "CoA(12:0)", "CoA(14:0)",   
+            "CoA(14:0)", "CoA(16:0)", "CoA(16:0)", "FA(12:0)", "FA(14:0)",
+            "FA(16:0)", "Glycerol-3-P",  "PA(12:0/0:0)",  "PA(12:0/12:0)",
+            "PA(12:0/14:0)", "PA(12:0/16:0)", "PA(14:0/0:0)",
+            "PA(14:0/12:0)", "PA(14:0/14:0)", "PA(14:0/16:0)", "PA(16:0/0:0)",
+            "PA(16:0/12:0)", "PA(16:0/14:0)", "PA(16:0/16:0)", "PPi"))
+    expect_equal(df[["source"]], 
+        c("CHEBI:456215", "CHEBI:30616", "CHEBI:57287", "CHEBI:58342", 
+            "CHEBI:83139", "CHEBI:58342", "CHEBI:83139", "CHEBI:58342",
+            "CHEBI:83139", "CHEBI:57560", "CHEBI:57560", "CHEBI:57560",
+            "CHEBI:57597", "CHEBI:57970", "CHEBI:58608", "CHEBI:58608",
+            "CHEBI:58608", "CHEBI:57970", "CHEBI:58608", "CHEBI:58608",
+            "CHEBI:58608", "CHEBI:57970", "CHEBI:58608", "CHEBI:58608",
+            "CHEBI:58608", "CHEBI:33019"))
+    expect_error(obtain_ChEBI_of_feature(list()), "argument 1 is not a vector")
+})
+
+## function run_decouple
 test_that("run_decouple works", {
     
     FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
