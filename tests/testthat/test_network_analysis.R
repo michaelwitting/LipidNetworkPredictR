@@ -55,7 +55,7 @@ test_that("collapse_network works", {
     
     ## check vertex names
     expect_equal(names(V(g)), c("A", "B", "C", "D", "H", "I", "E"))
-    expect_equal(names(V(collapsed_g)), c("A", "D", "I", "E"))
+    expect_equal(names(V(collapsed_g)), c("A", "D", "E", "I"))
     
     ## check adjacency matrix (edges)
     adj <- igraph::as_adjacency_matrix(graph = g, sparse = FALSE)
@@ -71,11 +71,11 @@ test_that("collapse_network works", {
     
     adj <- igraph::as_adjacency_matrix(graph = collapsed_g, sparse = FALSE)
     expect_equal(dim(adj), c(4, 4))
-    expect_equal(rownames(adj), c("A", "D", "I", "E"))
+    expect_equal(rownames(adj), c("A", "D", "E", "I"))
     expect_equal(as.vector(adj[, 1]), c(0, 0, 0, 0))
-    expect_equal(as.vector(adj[, 2]), c(1, 0, 1, 0))
-    expect_equal(as.vector(adj[, 3]), c(0, 0, 0, 0))
-    expect_equal(as.vector(adj[, 4]), c(0, 1, 0, 0))
+    expect_equal(as.vector(adj[, 2]), c(1, 0, 0, 1))
+    expect_equal(as.vector(adj[, 3]), c(0, 1, 0, 0))
+    expect_equal(as.vector(adj[, 4]), c(0, 0, 0, 0))
     
     ## directed graph (example 2)
     ## create an example graph

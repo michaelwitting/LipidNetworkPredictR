@@ -1,12 +1,12 @@
-#' @name add_valid_edges
+#' @name get_valid_edges
 #' 
-#' @title Add valid edges to \code{new_edges}
+#' @title Get valid edges
 #' 
 #' @description
-#' The function \code{add_valid_edges} adds valid edges to the \code{new_edges}
-#' list. A valid edge is defined as follows:
+#' The function \code{get_valid_edges} gets valid edges from a graph.
+#' A valid edge is defined as follows:
 #' (1) take from a graph g the two measured vertices with indices i, j; 
-#' (2) obtain all shortest pathsbetween the measured vertices;
+#' (2) obtain all shortest paths between the measured vertices;
 #' (3) assign edge = 1 (valid), if there is/are ONLY one/multiple unmeasured  
 #' intermediate vertex/vertices or ZERO intermediate vertices within the shortest
 #' paths
@@ -16,21 +16,18 @@
 #' @details 
 #' Measured vertices will be denoted via \code{vertex_attr_logical}.
 #' 
-#' The function \code{add_valid_edges} is a helper function for 
+#' The function \code{get_valid_edges} is a helper function for 
 #' \code{collapse_network}.
 #' 
 #'  
-#' @param g \code{igraph} object
+#' @param vertices vertices of \code{igraph} object
 #' @param paths list of \code{igraph.vs} objects
-#' @param new_edges list storing the information on valid edges between vertices
 #' @param vertex_attr_logical logical vector storing information if a vertex is
 #' measured
 #'
 #' @author Thomas Naake, \email{thomasnaake@@googlemail.com}
 #' 
 #' @export
-#' 
-#' @importFrom igraph V
 #' 
 #' @examples
 #' edges <- data.frame(from = c("A", "A", "B", "C", "E", "F"), 
@@ -56,9 +53,6 @@
 #' ## obtain the vertices where information is available
 #' vertices_measured <- igraph::V(g)[vertex_attr_logical]
 #' 
-#' ## initialize new edges
-#' new_edges <- list()
-#' 
 #' vertex_1 <- vertices_measured[1]
 #' vertex_2 <- vertices_measured[3]
 #' 
@@ -73,23 +67,18 @@
 #' ## check and add paths if valid, add a valid path when between 
 #' ## shortest paths there are only "unmeasured" vertices
 #' ## apply the helper function add_valid_edges for path_1 and path_2
-#' new_edges <- add_valid_edges(g = g, paths = path_1, 
-#'     new_edges = new_edges, vertex_attr_logical = vertex_attr_logical)
-#' new_edges <- add_valid_edges(g = g, paths = path_2,
-#'     new_edges = new_edges, vertex_attr_logical = vertex_attr_logical)
-#' new_edges
-add_valid_edges <- function(g, paths, new_edges, vertex_attr_logical) {
-    for (path in paths) {
-        if (length(path) > 1 &&
-            all(!vertex_attr_logical[match(path, igraph::V(g))][-c(1, length(path))])) { 
-            ## add the edge between the measured vertices
-            new_edges <- append(new_edges, 
-                    list(c(igraph::V(g)[path[1]]$name, igraph::V(g)[path[length(path)]]$name)))
+#' get_valid_edges(vertices = igraph::V(g), paths = path_1, 
+#'     vertex_attr_logical = vertex_attr_logical)
+#' get_valid_edges(vertices = igraph::V(g), paths = path_2,
+#'     vertex_attr_logical = vertex_attr_logical)
+get_valid_edges <- function(vertices, paths, vertex_attr_logical) {
+    lapply(paths, function(path) {
+        len_path <- length(path)
+        if (len_path > 1 && 
+            all(!vertex_attr_logical[match(path, vertices)][-c(1, len_path)])) {
+            c(vertices[path[1]]$name, vertices[path[len_path]]$name)
         }
-    }
-    
-    ## return new_edges
-    new_edges
+    })
 }
 
 #' @name collapse_network
@@ -116,6 +105,7 @@ add_valid_edges <- function(g, paths, new_edges, vertex_attr_logical) {
 #' @export
 #' 
 #' @importFrom methods is
+#' @importFrom utils combn
 #' @importFrom igraph vertex_attr_names V all_shortest_paths graph_from_edgelist
 #' @importFrom igraph is_directed
 #' 
@@ -198,35 +188,40 @@ collapse_network <- function(g, .vertex_attr_names) {
         vertex_attr_logical[vertex_attr] <- TRUE
     
     ## obtain the vertices where information is available
-    vertices_measured <- igraph::V(g)[vertex_attr_logical]
+    vertices <- igraph::V(g)
+    vertices_measured <- vertices[vertex_attr_logical]
     
-    ## initialize new edges
-    new_edges <- list()
+    ## generate all pairs of measured vertices
+    measured_pairs <- utils::combn(vertices_measured$name, 2, simplify = FALSE)
     
-    ## loop through pairs of measured vertices
-    for (i in 1:(length(vertices_measured) - 1)) {
-        for (j in (i + 1):length(vertices_measured)) {
-            
-            vertex_1 <- vertices_measured[i]
-            vertex_2 <- vertices_measured[j]
-            
-            ## find the shortest path from vertex_1 to vertex_2
-            path_1 <- suppressWarnings(igraph::all_shortest_paths(graph = g, 
-                from = vertex_1, to = vertex_2)$res)
-            
-            ## find the shortest path from vertex_2 to vertex_1
-            path_2 <- suppressWarnings(igraph::all_shortest_paths(graph = g, 
-                from = vertex_2, to = vertex_1)$res)
-            
-            ## check and add paths if valid, add a valid path when between 
-            ## shortest paths there are only "unmeasured" vertices
-            ## apply the helper function add_valid_edges for path_1 and path_2
-            new_edges <- add_valid_edges(g = g, paths = path_1, 
-                new_edges = new_edges, vertex_attr_logical = vertex_attr_logical)
-            new_edges <- add_valid_edges(g = g, paths = path_2,
-                new_edges = new_edges, vertex_attr_logical = vertex_attr_logical)
-        }
+    ## if the network is directed also check in the opposite direction, i.e.
+    ## check the path A to B and B to A (if existing)
+    if (is_directed) {
+        measured_pairs <- c(measured_pairs, 
+            lapply(measured_pairs, function(pair) c(pair[2], pair[1])))
     }
+    
+    ## loop through pairs of measured vertices, find shortest paths and 
+    ## validate edges
+    new_edges <- lapply(measured_pairs, function(pair) {
+        
+        vertex_1 <- pair[1]
+        vertex_2 <- pair[2]
+        
+        ## find the shortest path from vertex_1 to vertex_2 / vertex_2 to vertex_1
+        paths <- suppressWarnings(
+            igraph::all_shortest_paths(g, from = vertex_1, to = vertex_2)$res)
+        
+        ## check and add paths if valid, add a valid path when between 
+        ## shortest paths there are only "unmeasured" vertices
+        ## apply the helper function get_valid_edges for path_1 and path_2
+        get_valid_edges(paths = paths, vertices = vertices, 
+            vertex_attr_logical = vertex_attr_logical)
+    })
+    
+    ## remove NULL values
+    new_edges <- unlist(new_edges, recursive = FALSE) |>
+        Filter(f = Negate(is.null))
     
     ## if !is_directed the matrix contains e.g. both A -- B and B -- A, remove 
     ## the redundant information
@@ -234,14 +229,13 @@ collapse_network <- function(g, .vertex_attr_names) {
         new_edges <- lapply(new_edges, sort)
     }
     
-    ## create a simplified/collapsed graph with only measured vertices
-    edges_collapsed <- do.call(what = "rbind", args = new_edges)
+    ## avoid duplicate edges and rbind
+    edges_unique <- unique(new_edges) |>
+        do.call(what = "rbind")
     
-    ## avoid duplicate edges
-    edges_unique <- unique(edges_collapsed)
-    
+    ## create a simplified/collapsed graph with only measured vertices, 
     ## create a graph from the edgelist
-    g_collapsed <- igraph::graph_from_edgelist(el = as.matrix(edges_unique), 
+    g_collapsed <- igraph::graph_from_edgelist(el = edges_unique, 
         directed = is_directed)
     
     ## return the object
