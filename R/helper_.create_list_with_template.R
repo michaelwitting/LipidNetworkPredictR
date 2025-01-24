@@ -437,6 +437,16 @@
             pattern = "M_PE-P", replacement = df_reaction[["PEP"]])
     }
     
+    ## lpg_to_pg
+    if (reaction %in% c("RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_1-LPG", replacement = df_reaction[["sn1LPG"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_PG", replacement = df_reaction[["PG"]])
+    }
+    
     ## sn1mg_to_dg
     if (reaction %in% c("RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466",
             "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946")) {
