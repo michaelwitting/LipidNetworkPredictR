@@ -470,6 +470,16 @@
         if (reaction == "RHEA:16248")
             .formula <- "M_LPE-P + M_AcylCoA <=> M_PE-P + M_CoA"
         
+        ## lpg_to_pg
+        if (reaction == "RHEA:33203")
+            .formula <- "M_1-LPG + M_AcylCoA = M_PG + M_CoA"
+        if (reaction == "RHEA:33204")
+            .formula <- "M_1-LPG + M_AcylCoA => M_PG + M_CoA"
+        if (reaction == "RHEA:33205")
+            .formula <- "M_1-LPG + M_AcylCoA <= M_PG + M_CoA"
+        if (reaction == "RHEA:33206")
+            .formula <- "M_1-LPG + M_AcylCoA <=> M_PG + M_CoA"
+        
         ## sn1mg_to_dg
         if (reaction %in% c("RHEA:38463", "RHEA:39943"))
             .formula <- "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"
