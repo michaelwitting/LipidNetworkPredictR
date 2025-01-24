@@ -348,6 +348,14 @@
                 function(f) {paste0("/", f)})))
     }
 
+    ## lpg_to_pg
+    if (reaction %in% c("RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206")) {
+        .s$PG <- stringi::stri_replace_all_fixed(str = .s$sn1LPG,
+            pattern = "/0:0",
+            replacement = unlist(lapply(isolate_radyls(.s$AcylCoA),
+                function(f) {paste0("/", f)})))
+    }
+    
     ## sn1mg_to_dg
     if (reaction %in% c("RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466",
             "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946")) {
