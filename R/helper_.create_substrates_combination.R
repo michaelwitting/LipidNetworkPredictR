@@ -275,6 +275,10 @@
     if (reaction %in% c("RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248"))
         cols <- c("sn1LPEP", "AcylCoA")
     
+    ## lpg_to_pg
+    if (reaction %in% c("RHEA:33203", "RHEA:33204", "RHEA:33204", "RHEA:33205"))
+        cols <- c("sn1LPG", "AcylCoA")
+    
     ## sn1mg_to_dg
     if (reaction %in% c("RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466",
             "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946"))
