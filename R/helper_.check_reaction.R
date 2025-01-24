@@ -66,6 +66,7 @@
         "RHEA:33195", "RHEA:33196", "RHEA:33197", "RHEA:33198", ## sn1lpi_to_pi
         "lpeo_to_peo", 
         "RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248", ## lpep_to_pep 
+        "RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206", ## lpg_to_pg
         "RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466", ## sn1mg_to_dg
         "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946", ## sn1mg_to_dg
         "RHEA:32947", "RHEA:32948", "RHEA:32949", "RHEA:32950", ## sn2mg_to_dg
