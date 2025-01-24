@@ -296,6 +296,12 @@ mappingTable <- function() {
     c("M_PE-P",    "1-O-(1Z-alkenyl)-2-acyl-sn-glycero-3-phosphoethanolamine", "CHEBI:77290", "RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248"),
     c("M_CoA",     "CoA",                                                      "CHEBI:57287", "RHEA:16245", "RHEA:16246", "RHEA:16247", "RHEA:16248"),
     
+    ## sn1lpg_to_pg
+    c("M_1-LPG",   "1-acyl-sn-glycero-3-phospho-(1'-sn-glycerol)",       "CHEBI:64840", "RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206"),
+    c("M_AcylCoA", "an acyl-CoA",                                        "CHEBI:58342", "RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206"),
+    c("M_PG",      "a 1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)", "CHEBI:64716", "RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206"),
+    c("M_CoA",     "CoA",                                                "CHEBI:57287", "RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206"),
+    
     ## sn1mg_to_dg
     c("M_1-MG",    "a 1-acyl-sn-glycerol",     "CHEBI:64683", "RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466"),
     c("M_AcylCoA", "an acyl-CoA",              "CHEBI:58342", "RHEA:38463", "RHEA:38464", "RHEA:38465", "RHEA:38466"),
