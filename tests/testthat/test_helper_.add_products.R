@@ -1393,6 +1393,7 @@ test_that(".add_products works", {
     ## sn1lpg_to_pg
     sn1lpg <- "PG(16:0/0:0)"
     acylcoa <- "CoA(14:0)"
+    substrates <- list(sn1LPG = sn1lpg, AcylCoA = acylcoa)
     .names <- c("sn1LPG", "AcylCoA", "PG")
     .values <- c("PG(16:0/0:0)", "CoA(14:0)", "PG(16:0/14:0)")
     

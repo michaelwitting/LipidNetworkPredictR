@@ -480,16 +480,6 @@
         if (reaction == "RHEA:33206")
             .formula <- "M_1-LPG + M_AcylCoA <=> M_PG + M_CoA"
         
-        ## sn1mg_to_dg
-        if (reaction %in% c("RHEA:38463", "RHEA:39943"))
-            .formula <- "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"
-        if (reaction %in% c("RHEA:38464", "RHEA:39944"))
-            .formula <- "M_1-MG + M_AcylCoA => M_1,2-DG + M_CoA"
-        if (reaction %in% c("RHEA:38465", "RHEA:39945"))
-            .formula <- "M_1-MG + M_AcylCoA <= M_1,2-DG + M_CoA"
-        if (reaction %in% c("RHEA:38466", "RHEA:39946"))
-            .formula <- "M_1-MG + M_AcylCoA <=> M_1,2-DG + M_CoA"
-        
         ## sn2mg_to_dg
         if (reaction %in% c("RHEA:32947", "RHEA:16741"))
             .formula <- "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA"
@@ -499,6 +489,16 @@
             .formula <- "M_2-MG + M_AcylCoA <= M_1,2-DG + M_CoA"
         if (reaction %in% c("RHEA:32950", "RHEA:16744"))
             .formula <- "M_2-MG + M_AcylCoA <=> M_1,2-DG + M_CoA"
+        
+        ## sn1mg_to_dg
+        if (reaction %in% c("RHEA:38463", "RHEA:39943"))
+            .formula <- "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA"
+        if (reaction %in% c("RHEA:38464", "RHEA:39944"))
+            .formula <- "M_1-MG + M_AcylCoA => M_1,2-DG + M_CoA"
+        if (reaction %in% c("RHEA:38465", "RHEA:39945"))
+            .formula <- "M_1-MG + M_AcylCoA <= M_1,2-DG + M_CoA"
+        if (reaction %in% c("RHEA:38466", "RHEA:39946"))
+            .formula <- "M_1-MG + M_AcylCoA <=> M_1,2-DG + M_CoA"
         
         ## sn1mg_to_fa
         if (reaction == "RHEA:34019")

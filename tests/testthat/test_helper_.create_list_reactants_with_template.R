@@ -5171,7 +5171,6 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:30909", "CHEBI:15377"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58014", "CHEBI:15354", "CHEBI:15378"))
     
-    
     ## sn1lpg_to_pg
     sn1lpg <- "PG(16:0/0:0)"
     acylcoa <- "CoA(14:0)"
@@ -5185,14 +5184,14 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCOO, "AcylCoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_sn1LPC + M_AcylCoA = M_PG + M_CoA")
+    expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA = M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_sn1LPC", "M_AcylCoA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_1-LPG", "M_AcylCoA"))
     expect_equal(l[[2]]$reaction_product, c("M_PG", "M_CoA"))
     expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 = CHEBI:64716 + CHEBI:57287")
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:64840", "CHEBI:58342"))
@@ -5206,16 +5205,16 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCOO, "AcylCoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_sn1LPC + M_AcylCoA = M_PG + M_CoA")
+    expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA => M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_sn1LPC", "M_AcylCoA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_1-LPG", "M_AcylCoA"))
     expect_equal(l[[2]]$reaction_product, c("M_PG", "M_CoA"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 = CHEBI:64716 + CHEBI:57287")
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 => CHEBI:64716 + CHEBI:57287")
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:64840", "CHEBI:58342"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64716", "CHEBI:57287"))
     
@@ -5227,16 +5226,16 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCOO, "AcylCoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_sn1LPC + M_AcylCoA = M_PG + M_CoA")
+    expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA <= M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_sn1LPC", "M_AcylCoA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_1-LPG", "M_AcylCoA"))
     expect_equal(l[[2]]$reaction_product, c("M_PG", "M_CoA"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 = CHEBI:64716 + CHEBI:57287")
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 <= CHEBI:64716 + CHEBI:57287")
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:64840", "CHEBI:58342"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64716", "CHEBI:57287"))
     
@@ -5248,16 +5247,16 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCOO, "AcylCoA(14:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
     expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
     expect_equal(l[[2]]$reaction_name, "")
-    expect_equal(l[[2]]$reaction_formula, "M_sn1LPC + M_AcylCoA = M_PG + M_CoA")
+    expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA <=> M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
     expect_equal(l[[2]]$reaction_geneAssociation, "")
     expect_equal(l[[2]]$reaction_pathway, "")
-    expect_equal(l[[2]]$reaction_substrate, c("M_sn1LPC", "M_AcylCoA"))
+    expect_equal(l[[2]]$reaction_substrate, c("M_1-LPG", "M_AcylCoA"))
     expect_equal(l[[2]]$reaction_product, c("M_PG", "M_CoA"))
-    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 = CHEBI:64716 + CHEBI:57287")
+    expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:64840 + CHEBI:58342 <=> CHEBI:64716 + CHEBI:57287")
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:64840", "CHEBI:58342"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64716", "CHEBI:57287"))
     

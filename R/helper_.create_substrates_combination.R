@@ -276,7 +276,7 @@
         cols <- c("sn1LPEP", "AcylCoA")
     
     ## lpg_to_pg
-    if (reaction %in% c("RHEA:33203", "RHEA:33204", "RHEA:33204", "RHEA:33205"))
+    if (reaction %in% c("RHEA:33203", "RHEA:33204", "RHEA:33205", "RHEA:33206"))
         cols <- c("sn1LPG", "AcylCoA")
     
     ## sn1mg_to_dg
