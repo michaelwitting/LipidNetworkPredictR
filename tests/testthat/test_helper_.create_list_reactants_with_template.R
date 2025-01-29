@@ -5863,7 +5863,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PE(14:0/0:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
     expect_equal(l[[1]]$FA, "FA(16:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O = M_1-LPG + M_FA + M_H+")
@@ -5884,7 +5884,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PE(14:0/0:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
     expect_equal(l[[1]]$FA, "FA(16:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O => M_1-LPG + M_FA + M_H+")
@@ -5905,7 +5905,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PE(14:0/0:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
     expect_equal(l[[1]]$FA, "FA(16:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O <= M_1-LPG + M_FA + M_H+")
@@ -5926,7 +5926,7 @@ test_that(".create_list_reactions_with_template works", {
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
     expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PE(14:0/0:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
     expect_equal(l[[1]]$FA, "FA(16:0)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O <=> M_1-LPG + M_FA + M_H+")
