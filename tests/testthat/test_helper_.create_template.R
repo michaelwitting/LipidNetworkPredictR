@@ -4288,6 +4288,71 @@ test_that(".create_template works", {
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:30909", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:58014", "CHEBI:15354", "CHEBI:15378"))
     
+    ## ps_to_sn2lps
+    reaction <- "RHEA:42212"
+    template <- .create_template(template = list(), reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_PS + M_H2O = M_2-LPS + M_FA + M_H+")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_constraints, "")
+    expect_equal(template$reaction_constraints_negate, FALSE)
+    expect_equal(template$reaction_substrate, c("M_PS", "M_H2O"))
+    expect_equal(template$reaction_product, c("M_2-LPS", "M_FA", "M_H+"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:57262 + CHEBI:15377 = CHEBI:65214 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:57262", "CHEBI:15377"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:65214", "CHEBI:28868", "CHEBI:15378"))
+    
+    reaction <- "RHEA:42213"
+    template <- .create_template(template = list(), reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_PS + M_H2O => M_2-LPS + M_FA + M_H+")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_constraints, "")
+    expect_equal(template$reaction_constraints_negate, FALSE)
+    expect_equal(template$reaction_substrate, c("M_PS", "M_H2O"))
+    expect_equal(template$reaction_product, c("M_2-LPS", "M_FA", "M_H+"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:57262 + CHEBI:15377 => CHEBI:65214 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:57262", "CHEBI:15377"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:65214", "CHEBI:28868", "CHEBI:15378"))
+    
+    reaction <- "RHEA:42214"
+    template <- .create_template(template = list(), reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_PS + M_H2O <= M_2-LPS + M_FA + M_H+")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_constraints, "")
+    expect_equal(template$reaction_constraints_negate, FALSE)
+    expect_equal(template$reaction_substrate, c("M_PS", "M_H2O"))
+    expect_equal(template$reaction_product, c("M_2-LPS", "M_FA", "M_H+"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:57262 + CHEBI:15377 <= CHEBI:65214 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:57262", "CHEBI:15377"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:65214", "CHEBI:28868", "CHEBI:15378"))
+    
+    reaction <- "RHEA:42215"
+    template <- .create_template(template = list(), reaction = reaction)
+    expect_equal(template$reaction_name, "")
+    expect_equal(template$reaction_formula, "M_PS + M_H2O <=> M_2-LPS + M_FA + M_H+")
+    expect_equal(template$reaction_RHEA, reaction)
+    expect_equal(template$reaction_isReversible, "")
+    expect_equal(template$reaction_geneAssociation, "")
+    expect_equal(template$reaction_pathway, "")
+    expect_equal(template$reaction_constraints, "")
+    expect_equal(template$reaction_constraints_negate, FALSE)
+    expect_equal(template$reaction_substrate, c("M_PS", "M_H2O"))
+    expect_equal(template$reaction_product, c("M_2-LPS", "M_FA", "M_H+"))
+    expect_equal(template$reaction_formula_chebi, "CHEBI:57262 + CHEBI:15377 <=> CHEBI:65214 + CHEBI:28868 + CHEBI:15378")
+    expect_equal(template$reaction_substrate_chebi, c("CHEBI:57262", "CHEBI:15377"))
+    expect_equal(template$reaction_product_chebi, c("CHEBI:65214", "CHEBI:28868", "CHEBI:15378"))
+    
     ## pi_to_dg
     reaction <- "RHEA:43484"
     template <- .create_template(template = list(), reaction = reaction)
@@ -4482,6 +4547,7 @@ test_that(".create_template works", {
     expect_equal(template$reaction_formula_chebi, "CHEBI:64716 + CHEBI:15377 <=> CHEBI:64840 + CHEBI:28868 + CHEBI:15378")
     expect_equal(template$reaction_substrate_chebi, c("CHEBI:64716", "CHEBI:15377"))
     expect_equal(template$reaction_product_chebi, c("CHEBI:64840", "CHEBI:28868", "CHEBI:15378"))
+    
     ## pe_to_sn1lpe
     reaction <- "RHEA:44604"
     template <- .create_template(template = list(), reaction = reaction)

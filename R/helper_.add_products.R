@@ -522,6 +522,14 @@
             pattern = "PC(O-", replacement = "PA(O-")   
     }
     
+    ## ps_to_sn2lps
+    if (reaction %in% c("RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215")) {
+        .s$sn2LPS <- unlist(lapply(isolate_radyls(.s$PS), 
+            function(f) {paste0("PS(0:0/", f[2], ")")}))
+        .s$FA <- unlist(lapply(isolate_radyls(.s$PS), 
+            function(f) {paste0("FA(", f[1], ")")}))
+    }
+    
     ## pi_to_dg
     if (reaction %in% c("RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487")) {
         .s$DG <- stringi::stri_replace_all_fixed(str = .s$PI, pattern = "PI",
@@ -532,9 +540,9 @@
     if (reaction %in% c("RHEA:44408", "RHEA:44409", "RHEA:44410", "RHEA:44411")) {
         ## "sn1" loss
         .s$sn2LPE <- unlist(lapply(isolate_radyls(.s$PE), 
-            function(f) {paste0("PE(0:0/", f[1], ")")}))
+            function(f) {paste0("PE(0:0/", f[2], ")")}))
         .s$FA <- unlist(lapply(isolate_radyls(.s$PE), 
-            function(f) {paste0("FA(", f[2], ")")}))
+            function(f) {paste0("FA(", f[1], ")")}))
     }
     
     ## pg_to_lpg
@@ -610,8 +618,6 @@
         .s$DhCer <- stringi::stri_replace_all_fixed(str = .s$DhSM, 
             pattern = "SM", replacement = "Cer")
     }
-    
-    
     
     ## lnape_to_gpnae
     if (reaction %in% c("RHEA:45420", "RHEA:45421", "RHEA:45422", "RHEA:45423")) { 

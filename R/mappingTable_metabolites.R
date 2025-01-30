@@ -450,6 +450,13 @@ mappingTable <- function() {
     c("M_Choline", "choline",                               "CHEBI:15354", "RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930"),
     c("M_H+",      "H(+)",                                  "CHEBI:15378", "RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930"),
     
+    ## ps_to_sn2lps
+    c("M_PS",    "a 1,2-diacyl-sn-glycero-3-phospho-L-serine", "CHEBI:57262", "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"),
+    c("M_H2O",   "H2O",                                        "CHEBI:15377", "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"),
+    c("M_2-LPS", "a 2-acyl-sn-glycero-3-phospho-L-serine",     "CHEBI:65214", "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"),
+    c("M_FA",    "a fatty acid",                               "CHEBI:28868", "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"),
+    c("M_H+",    "H(+)",                                       "CHEBI:15378", "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"),
+    
     ## pi_to_dg
     c("M_PI",               "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol)", "CHEBI:57880", "RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487"),
     c("M_H2O",              "H2O",                                                 "CHEBI:15377", "RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487"),

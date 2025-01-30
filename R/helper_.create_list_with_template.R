@@ -644,6 +644,16 @@
             pattern = "M_1-LPA-O", replacement = df_reaction[["sn1LPAO"]])
     }
     
+    ## ps_to_sn2lps
+    if (reaction %in% c("RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215")) {
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_PS", replacement = df_reaction[["PS"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_2-LPS", replacement = df_reaction[["sn2LPS"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula,
+            pattern = "M_FA", replacement = df_reaction[["FA"]])
+    }
+    
     ## pi_to_dg
     if (reaction %in% c("RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula,

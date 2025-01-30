@@ -692,6 +692,18 @@
         if (reaction == "RHEA:39930")
             .formula <- "M_1-LPC-O + M_H2O <=> M_1-LPA-O + M_Choline + M_H+"
         
+        ## sn2lps_to_sn2lpg
+        
+        ## ps_to_sn2lps
+        if (reaction == "RHEA:42212")
+            .formula <- "M_PS + M_H2O = M_2-LPS + M_FA + M_H+"
+        if (reaction == "RHEA:42213")
+            .formula <- "M_PS + M_H2O => M_2-LPS + M_FA + M_H+"
+        if (reaction == "RHEA:42214")
+            .formula <- "M_PS + M_H2O <= M_2-LPS + M_FA + M_H+"
+        if (reaction == "RHEA:42215")
+            .formula <- "M_PS + M_H2O <=> M_2-LPS + M_FA + M_H+"
+        
         ## pi_to_dg
         if (reaction == "RHEA:43484")
             .formula <- "M_PI + M_H2O = M_myo-Inositol-1-P + M_1,2-DG + M_H+"

@@ -2504,6 +2504,44 @@ test_that(".add_products works", {
     expect_equal(names(df), .names)
     expect_equal(as.character(unlist(df)), .values)
     
+    ## ps_to_sn2lps
+    ps <- "PS(14:0/16:0)"
+    substrates = list(PS = ps)
+    .names <- c("PS", "sn2LPS", "FA")
+    .values <- c("PS(14:0/16:0)", "PS(0:0/16:0)", "FA(14:0)")
+    
+    reaction <- "RHEA:42212"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:42213"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:42214"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
+    reaction <- "RHEA:42215"
+    template <- .create_template(reaction = reaction)
+    df_substrates <- .create_substrates_combinations(
+        substrates = substrates, template = template)
+    df <- .add_products(substrates = df_substrates, reaction = reaction)
+    expect_equal(names(df), .names)
+    expect_equal(as.character(unlist(df)), .values)
+    
     ## pi_to_dg
     pi <- "PI(16:0/18:1(9Z))"
     substrates <- list(PI = pi)
@@ -2546,7 +2584,7 @@ test_that(".add_products works", {
     pe <- "PE(14:0/16:0)"
     substrates = list(PE = pe)
     .names <- c("PE", "sn2LPE", "FA")
-    .values <- c("PE(14:0/16:0)", "PE(0:0/14:0)", "FA(16:0)")
+    .values <- c("PE(14:0/16:0)", "PE(0:0/16:0)", "FA(14:0)")
     
     reaction <- "RHEA:44408"
     template <- .create_template(reaction = reaction)

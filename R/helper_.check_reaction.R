@@ -90,6 +90,7 @@
         "RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930", ## lpco_to_lpao
         "RHEA:39943", "RHEA:39944", "RHEA:39945", "RHEA:39946", ## sn1mg_to_dg
         "RHEA:39995", "RHEA:39996", "RHEA:39997", "RHEA:39998", ## nae_to_fa
+        "RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215", ## ps_to_sn2lps
         "RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487", ## pi_to_dg
         "RHEA:44408", "RHEA:44409", "RHEA:44410", "RHEA:44411", ## pe_to_sn2lpe
         "RHEA:44416", "RHEA:44417", "RHEA:44418", "RHEA:44419", ## pg_to_sn1lpg

@@ -369,6 +369,14 @@
     if (reaction %in% c("RHEA:39927", "RHEA:39928", "RHEA:39929", "RHEA:39930"))
         cols <- c("sn1LPCO")
     
+    ## sn2lps_to_sn2lpg
+    if (reaction %in% c("RHEA:41718", "RHEA:41719", "RHEA:41720", "RHEA:41721"))
+        cols <- c("PS")
+    
+    ## ps_to_sn2lps
+    if (reaction %in% c("RHEA:42212", "RHEA:42213", "RHEA:42214", "RHEA:42215"))
+        cols <- c("PS")
+    
     ## pi_to_dg
     if (reaction %in% c("RHEA:43484", "RHEA:43485", "RHEA:43486", "RHEA:43487"))
         cols <- "PI"
