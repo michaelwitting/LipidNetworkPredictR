@@ -4687,7 +4687,7 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PE(14:0/16:0) + H2O = PE(0:0/14:0) + FA(16:0) + H+")
+        "PE(14:0/16:0) + H2O = PE(0:0/16:0) + FA(14:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
@@ -4704,7 +4704,7 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PE(14:0/16:0) + H2O => PE(0:0/14:0) + FA(16:0) + H+")
+        "PE(14:0/16:0) + H2O => PE(0:0/16:0) + FA(14:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
@@ -4721,7 +4721,7 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PE(14:0/16:0) + H2O <= PE(0:0/14:0) + FA(16:0) + H+")
+        "PE(14:0/16:0) + H2O <= PE(0:0/16:0) + FA(14:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
@@ -4738,12 +4738,12 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[1]]$FA, "FA(14:0)")
     expect_equal(reaction_l[[2]]$reaction_name, "")
     expect_equal(reaction_l[[2]]$reaction_formula, 
-        "PE(14:0/16:0) + H2O <=> PE(0:0/14:0) + FA(16:0) + H+")
+        "PE(14:0/16:0) + H2O <=> PE(0:0/16:0) + FA(14:0) + H+")
     expect_equal(reaction_l[[2]]$reaction_isReversible, "")
     expect_equal(reaction_l[[2]]$reaction_geneAssociation, "")
     expect_equal(reaction_l[[2]]$reaction_pathway, "")
     expect_equal(reaction_l[[2]]$reaction_substrate, c("PE(14:0/16:0) + H2O"))
-    expect_equal(reaction_l[[2]]$reaction_product, c("PE(0:0/14:0) + FA(16:0) + H+"))
+    expect_equal(reaction_l[[2]]$reaction_product, c("PE(0:0/16:0) + FA(14:0) + H+"))
     expect_equal(reaction_l[[2]]$reaction_formula_chebi, "CHEBI:64612 + CHEBI:15377 <=> CHEBI:65213 + CHEBI:28868 + CHEBI:15378")
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64612 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:65213 + CHEBI:28868 + CHEBI:15378"))
