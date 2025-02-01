@@ -4697,7 +4697,7 @@ test_that(".create_reaction works", {
     expect_equal(reaction_l[[2]]$reaction_substrate_chebi, c("CHEBI:64612 + CHEBI:15377"))
     expect_equal(reaction_l[[2]]$reaction_product_chebi, c("CHEBI:65213 + CHEBI:28868 + CHEBI:15378"))
     
-    reaction_l <- .create_reaction(substrates = list(PE = pe), 
+    reaction_l <- .create_reaction(substrates = list(PE = pe),
         template = list(), reaction = "RHEA:44409")
     expect_equal(reaction_l[[1]]$PE, "PE(14:0/16:0)")
     expect_equal(reaction_l[[1]]$sn2LPE, "PE(0:0/16:0)")
