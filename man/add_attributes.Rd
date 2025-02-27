@@ -71,7 +71,7 @@ The \code{character} of length 1 will specify the column
 containing the vertices of the graph.
 }
 \examples{
-FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
 
 ## create data.frame with reactions and reaction order
 reactions <- rbind(
@@ -96,14 +96,14 @@ g <- igraph::graph_from_adjacency_matrix(reaction_adj, weighted = TRUE,
 
 ## attribute_type: vertex
 attributes_df <- data.frame(
-   name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", "DG(12:0/12:0/0:0)",
-       "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/12:0/0:0)",
-       "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)", "DG(16:0/12:0/0:0)",
-       "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)", "FA(12:0)", "FA(14:0)",
-       "FA(16:0)", "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)",
-       "PA(12:0/16:0)", "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", 
-       "PA(14:0/16:0)", "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)",
-       "PA(16:0/16:0)"),
+   name = c("CoA 12:0", "CoA 14:0", "CoA 16:0", "DG 12:0/12:0/0:0",
+       "DG 12:0/14:0/0:0", "DG 12:0/16:0/0:0", "DG 14:0/12:0/0:0",
+       "DG 14:0/14:0/0:0", "DG 14:0/16:0/0:0", "DG 16:0/12:0/0:0",
+       "DG 16:0/14:0/0:0", "DG 16:0/16:0/0:0", "FA 12:0", "FA 14:0",
+       "FA 16:0", "PA 12:0/0:0", "PA 12:0/12:0", "PA 12:0/14:0",
+       "PA 12:0/16:0", "PA 14:0/0:0", "PA 14:0/12:0", "PA 14:0/14:0", 
+       "PA 14:0/16:0", "PA 16:0/0:0", "PA 16:0/12:0", "PA 16:0/14:0",
+       "PA 16:0/16:0"),
    logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
        -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
        -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
@@ -119,8 +119,8 @@ add_attributes(g, attribute_type = "vertex", attributes = attributes_df,
 ## attribute_type: edges, attributes: data.frame
 attributes <- data.frame(
     rbind(
-        c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-        c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+        c("CoA 12:0", "PA 12:0/0:0", 0.5),
+        c("CoA 12:0", "PA 14:0/12:0", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
 attributes$weight <- as.numeric(attributes$weight)
@@ -131,8 +131,8 @@ add_attributes(g, attribute_type = "edges", attributes = attributes, cols_vertex
 ## attribute_type:edges, attributes: matrix
 attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
     dimnames = list(
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)"),
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)")))
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0"),
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0")))
 
 ## apply the function
 add_attributes(g, attribute_type = "edges", attributes = attributes)

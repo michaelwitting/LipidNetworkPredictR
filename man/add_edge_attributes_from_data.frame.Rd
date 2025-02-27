@@ -47,7 +47,7 @@ The \code{character} of length 2 will specify the columns
 containing the out- and ingoing vertices of the graph.
 }
 \examples{
-FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
 
 ## create data.frame with reactions and reaction order
 reactions <- rbind(
@@ -73,8 +73,8 @@ g <- igraph::graph_from_adjacency_matrix(reaction_adj, mode = "directed", weight
 ## attributes: data.frame
 attributes <- data.frame(
     rbind(
-        c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-        c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+        c("CoA 12:0", "PA 12:0/0:0", 0.5),
+        c("CoA 12:0", "PA 14:0/12:0", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
 attributes$weight <- as.numeric(attributes$weight)

@@ -46,7 +46,7 @@ In case of \code{attributes} is a \code{matrix}, the matrix entries will be
 stored in \code{E(g)$value}
 }
 \examples{
-FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
 
 ## create data.frame with reactions and reaction order
 reactions <- rbind(
@@ -72,8 +72,8 @@ g <- igraph::graph_from_adjacency_matrix(reaction_adj, mode = "directed", weight
 ## attributes: data.frame
 attributes <- data.frame(
     rbind(
-        c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-        c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+        c("CoA 12:0", "PA 12:0/0:0", 0.5),
+        c("CoA 12:0", "PA 14:0/12:0", 0.8)
 ))
 names(attributes) <- c("from", "to", "weight")
 attributes$weight <- as.numeric(attributes$weight)
@@ -84,8 +84,8 @@ add_edge_attributes(g, attributes, cols_vertex = c("from", "to"))
 ## attributes: matrix
 attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
     dimnames = list(
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)"),
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)")))
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0"),
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0")))
 
 ## apply the function
 add_edge_attributes(g, attributes)

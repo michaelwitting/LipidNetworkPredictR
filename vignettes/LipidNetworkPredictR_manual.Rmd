@@ -126,7 +126,7 @@ FA_GPGL <- fatty_acid_gl_gp_df$shorthand
 
 ## take only a subset of those to speed things up
 FA_GPGL <- FA_GPGL[FA_GPGL %in%
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+    c("FA 12:0", "FA 14:0", "FA 15:0", "FA 16:0", "FA 17:0", "FA 18:0", "FA 19:0", "FA 20:0")]
 lipid_info <- rgoslin::parseLipidNames(FA_GPGL)
 
 ## add lipids to data frame
@@ -150,7 +150,7 @@ FA_SPH <- fatty_acid_sph_df$shorthand
 
 ## take only a subset of those to speed things up
 FA_SPH <- FA_SPH[FA_SPH %in%
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+    c("FA 12:0", "FA 14:0", "FA 15:0", "FA 16:0", "FA 17:0", "FA 18:0", "FA 19:0", "FA 20:0")]
 lipid_info <- rgoslin::parseLipidNames(FA_SPH)
 
 ## add lipids to data frame

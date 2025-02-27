@@ -127,7 +127,7 @@ FA_GPGL <- fatty_acid_gl_gp_df$shorthand
 
 ## take only a subset of those to speed things up
 FA_GPGL <- FA_GPGL[FA_GPGL %in%
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)")]
+    c("FA 12:0", "FA 14:0", "FA 15:0", "FA 16:0", "FA 17:0", "FA 18:0", "FA 19:0", "FA 20:0")]
 lipid_info <- rgoslin::parseLipidNames(FA_GPGL)
 
 ## add lipids to data frame
@@ -151,7 +151,7 @@ FA_SPH <- fatty_acid_sph_df$shorthand
 
 ## take only a subset of those to speed things up
 FA_SPH <- FA_SPH[FA_SPH %in%
-    c("FA(12:0)", "FA(14:0)", "FA(15:0)", "FA(16:0)", "FA(17:0)", "FA(18:0)", "FA(19:0)", "FA(20:0)" )]
+    c("FA 12:0", "FA 14:0", "FA 15:0", "FA 16:0", "FA 17:0", "FA 18:0", "FA 19:0", "FA 20:0")]
 lipid_info <- rgoslin::parseLipidNames(FA_SPH)
 
 ## add lipids to data frame
@@ -530,7 +530,7 @@ reactions <- data.frame(order = seq_len(nrow(reactions)),
 
 ## run the function
 reactions_GPGL <- create_reactions(
-    substrates = list(FA = FA_GPGL, SPH = "SPH(d16:0(1OH,3OH)(15Me))"), 
+    substrates = list(FA = FA_GPGL, SPH = "SPH d16:0(1OH,3OH)(15Me"), 
     reactions = reactions)
 
 ## show the first entry of reactions_GPGL
@@ -616,7 +616,7 @@ reactions <- data.frame(order = as.numeric(reactions[, 1]),
     reaction_RHEA = reactions[, 2], reaction_formula = reactions[, 3])
  
 ## run the function
-reactions_SPH <- create_reactions(substrates = list(FA = FA_SPH, SPH = "SPH(d16:0(1OH,3OH)(15Me))"), reactions = reactions)
+reactions_SPH <- create_reactions(substrates = list(FA = FA_SPH, SPH = "SPH d16:0(1OH,3OH)(15Me)"), reactions = reactions)
 
 ## show the first entry of reactions_SPH
 reactions_SPH[[1]]
@@ -717,19 +717,19 @@ The `logFC_cond1` and `logFC_cond2` were previously simulated using `rnorm`.
 
 ```{r}
 attributes <- data.frame(
-    name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", 
-        "Cer(16:0(3OH,4OH,15Me)/12:0)", "Cer(16:0(3OH,4OH,15Me)/14:0)",
-        "Cer(16:0(3OH,4OH,15Me)/15:0)", "Cer(16:0(3OH,4OH,15Me)/16:0)",
-        "Cer(16:0(3OH,4OH,15Me)/17:0)", "Cer(16:0(3OH,4OH,15Me)/18:0)",
-        "Cer(16:0(3OH,4OH,15Me)/19:0)", "Cer(16:0(3OH,4OH,15Me)/20:0)",
-        "CerP(16:0(3OH,4OH,15Me)/12:0)", "FA(12:0)", "FA(14:0)",
-        "FA(16:0)", "SM(16:0(3OH,4OH,15Me)/12:0)", 
-        "SM(16:0(3OH,4OH,15Me)/14:0)", "SM(16:0(3OH,4OH,15Me)/15:0)", 
-        "SM(16:0(3OH,4OH,15Me)/16:0)", "SM(16:0(3OH,4OH,15Me)/17:0)", 
-        "SM(16:0(3OH,4OH,15Me)/18:0)", "SM(16:0(3OH,4OH,15Me)/19:0)", 
-        "SM(16:0(3OH,4OH,15Me)/20:0)", "SPH(d16:0(1OH,3OH)(15Me))",
-        "GlcCer(16:0(3OH,4OH,15Me)/17:0)", "GlcCer(16:0(3OH,4OH,15Me)/18:0)",
-        "PA(16:0/16:0)"),
+    name = c("CoA 12:0", "CoA 14:0", "CoA 16:0", 
+        "Cer 16:0(3OH,4OH,15Me)/12:0", "Cer 16:0(3OH,4OH,15Me)/14:0",
+        "Cer 16:0(3OH,4OH,15Me)/15:0", "Cer 16:0(3OH,4OH,15Me)/16:0",
+        "Cer 16:0(3OH,4OH,15Me)/17:0", "Cer 16:0(3OH,4OH,15Me)/18:0",
+        "Cer 16:0(3OH,4OH,15Me)/19:0", "Cer 16:0(3OH,4OH,15Me)/20:0",
+        "CerP(16:0(3OH,4OH,15Me)/12:0", "FA 12:0", "FA 14:0",
+        "FA 16:0", "SM 16:0(3OH,4OH,15Me)/12:0", 
+        "SM 16:0(3OH,4OH,15Me)/14:0", "SM 16:0(3OH,4OH,15Me)/15:0", 
+        "SM 16:0(3OH,4OH,15Me)/16:0", "SM 16:0(3OH,4OH,15Me)/17:0", 
+        "SM 16:0(3OH,4OH,15Me)/18:0", "SM 16:0(3OH,4OH,15Me)/19:0", 
+        "SM 16:0(3OH,4OH,15Me)/20:0", "SPH d16:0(1OH,3OH)(15Me",
+        "GlcCer 16:0(3OH,4OH,15Me)/17:0", "GlcCer 16:0(3OH,4OH,15Me)/18:0",
+        "PA 16:0/16:0"),
     logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
         -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
         -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
@@ -1067,10 +1067,10 @@ RHEA id).
 - `"RHEA:33198"`: `"M_1-LPI + M_AcylCoA <=> M_PI + M_CoA"`
 
 `lpg_to_pg`
-- `"RHEA:33203"`: `"PG(14:0/0:0) + CoA(16:0) = PG(14:0/16:0) + CoA"`
-- `"RHEA:33204"`: `"PG(14:0/0:0) + CoA(16:0) => PG(14:0/16:0) + CoA"`
-- `"RHEA:33205"`: `"PG(14:0/0:0) + CoA(16:0) <= PG(14:0/16:0) + CoA"`
-- `"RHEA:33206"`: `"PG(14:0/0:0) + CoA(16:0) <=> PG(14:0/16:0) + CoA"`
+- `"RHEA:33203"`: `"M_1-LPG + M_AcylCoA + AcylCoA = M_PG + M_CoA"`
+- `"RHEA:33204"`: `"M_1-LPG + M_AcylCoA => M_PG + M_CoA"`
+- `"RHEA:33205"`: `"M_1-LPG + M_AcylCoA <= M_PG + M_CoA"`
+- `"RHEA:33206"`: `"M_1-LPG + M_AcylCoA <=> M_PG + M_CoA"`
 
 `tg_to_dg`:
 - `"RHEA:33271"`/`"RHEA:44864"`: `"M_TG + M_H2O = M_1,2-DG + M_FA + M_H+"`
@@ -1262,7 +1262,7 @@ RHEA id).
 - `"RHEA:45460"`: `"M_H2O + M_NAPE = M_FA + M_H+ + M_LNAPE"`
 - `"RHEA:45461"`: `"M_H2O + M_NAPE => M_FA + M_H+ + M_LNAPE"`
 - `"RHEA:45462"`: `"M_H2O + M_NAPE <= M_FA + M_H+ + M_LNAPE"`
-- `"RHEA:45463"`: "M_H2O + M_NAPE <=> M_FA + M_H+ + M_LNAPE"`
+- `"RHEA:45463"`: `"M_H2O + M_NAPE <=> M_FA + M_H+ + M_LNAPE"`
 
 `dhcer_to_cer`:
 - `"RHEA:46544"`: `"M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O"`

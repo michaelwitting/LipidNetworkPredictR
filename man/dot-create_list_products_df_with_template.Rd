@@ -27,9 +27,9 @@ Depending on the \code{reaction}, the first list entry will contain one or
 multiple entries.
 }
 \examples{
-FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
-    "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
-    "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
+FA <- c("FA 14:0(12Me)", "FA 16:0(14Me)", "FA 15:1(9Z)(14Me)",        
+    "FA 17:0(16Me)", "FA 12:0(11Me)", "FA 13:0(12Me))", "FA 14:0(13Me)",
+    "FA 15:0(14Me)", "FA 16:0(15Me)", "FA 12:0)", "FA 14:0")
 substrates <- list(FA = FA)
 reaction <- "RHEA:15421"
 

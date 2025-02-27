@@ -25,9 +25,9 @@
 #' @importFrom stringi stri_replace_all_regex
 #' 
 #' @examples 
-#' FA <- c("FA(14:0(12Me))", "FA(16:0(14Me))", "FA(15:1(9Z)(14Me))",        
-#'     "FA(17:0(16Me))", "FA(12:0(11Me))", "FA(13:0(12Me))", "FA(14:0(13Me))",
-#'     "FA(15:0(14Me))", "FA(16:0(15Me))", "FA(12:0)", "FA(14:0)")
+#' FA <- c("FA 14:0(12Me)", "FA 16:0(14Me)", "FA 15:1(9Z)(14Me)",        
+#'     "FA 17:0(16Me)", "FA 12:0(11Me)", "FA 13:0(12Me)", "FA 14:0(13Me)",
+#'     "FA 15:0(14Me)", "FA 16:0(15Me)", "FA 12:0", "FA 14:0")
 #' substrates <- list(FA = FA)
 #' reaction <- "RHEA:15421"
 #' 
@@ -792,10 +792,12 @@
             pattern = "M_FAO",  replacement = df_reaction[["FAO"]])
     }
     
-    ## sphinga_to_dhcer
+    ## sphinga_to_dhcer ###########
     if (reaction %in% c("RHEA:53424", "RHEA:53425", "RHEA:53426", "RHEA:53427")) {
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_AcylCoA", replacement = df_reaction[["AcylCoA"]])
+        .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+            pattern = "M_Sphinganine", replacement = df_reaction[["SPH"]])
         .formula <- stringi::stri_replace_all_fixed(str = .formula, 
             pattern = "M_DhCer", replacement = df_reaction[["DhCer"]])
     }
@@ -1083,10 +1085,10 @@
         pattern = "M_P-Ethanolamine ", replacement = "P-Ethanolamine ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 
         pattern = "M_P-Ethanolamine$", replacement = "P-Ethanolamine")
-    .formula <- stringi::stri_replace_all_fixed(str = .formula, 
-        pattern = "M_Sphinganine ", replacement = "SPH(d16:0(1OH,3OH)(15Me)) ") ######### ?
-    .formula <- stringi::stri_replace_all_regex(str = .formula, 
-        pattern = "M_Sphinganine$", replacement = "SPH(d16:0(1OH,3OH)(15Me))")
+    ## .formula <- stringi::stri_replace_all_fixed(str = .formula, 
+    ##     pattern = "M_Sphinganine ", replacement = "SPH d16:0(1OH,3OH)(15Me) ") ######### ?
+    ## .formula <- stringi::stri_replace_all_regex(str = .formula, 
+    ##     pattern = "M_Sphinganine$", replacement = "SPH d16:0(1OH,3OH)(15Me)")
     .formula <- stringi::stri_replace_all_fixed(str = .formula, 
         pattern = "M_UDP ", replacement = "UDP ")
     .formula <- stringi::stri_replace_all_regex(str = .formula, 

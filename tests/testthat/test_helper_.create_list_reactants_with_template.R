@@ -2,7 +2,7 @@
 test_that(".create_list_reactions_with_template works", {
     
     ## dg_to_pa
-    dg <- "DG(18:0/16:0/0:0)"
+    dg <- "DG 18:0/16:0/0:0"
     substrates <- list(DG = dg)
     
     reaction <- "RHEA:10272"
@@ -12,8 +12,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_ATP = M_PA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -32,8 +32,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_ATP => M_PA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -52,8 +52,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_ATP <= M_PA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -72,8 +72,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_ATP <=> M_PA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -86,7 +86,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58608", "CHEBI:456216", "CHEBI:15378"))
     
     ## pc_to_dg
-    pc <- "PC(20:0/18:0)"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PC = pc)
     
     reaction <- "RHEA:10604"
@@ -96,8 +96,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$DG, "DG(20:0/18:0/0:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$DG, "DG 20:0/18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O = M_1,2-DG + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -116,8 +116,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$DG, "DG(20:0/18:0/0:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$DG, "DG 20:0/18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O => M_1,2-DG + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -136,8 +136,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$DG, "DG(20:0/18:0/0:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$DG, "DG 20:0/18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <= M_1,2-DG + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -156,8 +156,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$DG, "DG(20:0/18:0/0:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$DG, "DG 20:0/18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <=> M_1,2-DG + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -170,8 +170,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17815", "CHEBI:15378", "CHEBI:295975"))
     
     ## dg_to_tg
-    dg <- "DG(18:0/16:0/0:0)"
-    acylcoa <- "CoA(14:0)"
+    dg <- "DG 18:0/16:0/0:0"
+    acylcoa <- "CoA 14:0"
     substrates <- list(DG = dg, AcylCoA = acylcoa)
     
     reaction <- "RHEA:10868"
@@ -181,9 +181,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_AcylCoA = M_TG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -202,9 +202,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_AcylCoA => M_TG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -223,9 +223,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_AcylCoA <= M_TG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -244,9 +244,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_AcylCoA <=> M_TG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -259,7 +259,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64615", "CHEBI:57287"))
     
     ## cdpdg_to_pi
-    cdpdg <- "CDP-DG(12:0(11Me)/14:0)"
+    cdpdg <- "CDP-DG 12:0(11Me)/14:0"
     substrates <- list(CDPDG = cdpdg)
     
     reaction <- "RHEA:11580"
@@ -269,8 +269,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PI, "PI(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PI, "PI 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_myo-Inositol = M_PI + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -289,8 +289,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PI, "PI(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PI, "PI 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_myo-Inositol => M_PI + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -309,8 +309,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PI, "PI(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PI, "PI 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_myo-Inositol <= M_PI + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -329,8 +329,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PI, "PI(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PI, "PI 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_myo-Inositol <=> M_PI + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -343,7 +343,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57880", "CHEBI:60377", "CHEBI:15378"))
     
     ## cer_to_glccer
-    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
+    cer <- "Cer d16:1(3OH,4OH)(15Me)/18:0"
     substrates <- list(Cer = cer)
     
     reaction <- "RHEA:12088"
@@ -353,8 +353,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$GlcCer, "GlcCer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_UDP-Glucose = M_GlcCer + M_H+ + M_UDP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -373,8 +373,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$GlcCer, "GlcCer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_UDP-Glucose => M_GlcCer + M_H+ + M_UDP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -393,8 +393,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$GlcCer, "GlcCer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_UDP-Glucose <= M_GlcCer + M_H+ + M_UDP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -413,8 +413,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$GlcCer, "GlcCer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$GlcCer, "GlcCer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_UDP-Glucose <=> M_GlcCer + M_H+ + M_UDP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -427,7 +427,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:22801", "CHEBI:15378", "CHEBI:58223"))
     
     ## cdpdg_to_pgp
-    cdpdg <- "CDP-DG(12:0(11Me)/14:0)"
+    cdpdg <- "CDP-DG 12:0(11Me)/14:0"
     substrates <- list(CDPDG = cdpdg)
     
     reaction <- "RHEA:12593"
@@ -437,8 +437,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PGP, "PGP(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PGP, "PGP 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_Glycerol-3-P = M_PGP + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -457,8 +457,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PGP, "PGP(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PGP, "PGP 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_Glycerol-3-P => M_PGP + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -477,8 +477,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PGP, "PGP(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PGP, "PGP 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_Glycerol-3-P <= M_PGP + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -497,8 +497,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(12:0(11Me)/14:0)")
-    expect_equal(l[[1]]$PGP, "PGP(12:0(11Me)/14:0)")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 12:0(11Me)/14:0")
+    expect_equal(l[[1]]$PGP, "PGP 12:0(11Me)/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CDP-DG + M_Glycerol-3-P <=> M_PGP + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -511,8 +511,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:60110", "CHEBI:60377", "CHEBI:15378"))
     
     ## sn1lpc_to_pc
-    sn1lpc <- "PC(14:0/0:0)"
-    acylcoa <- "CoA(18:0)"
+    sn1lpc <- "PC 14:0/0:0"
+    acylcoa <- "CoA 18:0"
     substrates <- list(sn1LPC = sn1lpc, AcylCoA = acylcoa)
     
     reaction <- "RHEA:12937"
@@ -522,9 +522,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PC, "PC 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA = M_PC + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -543,9 +543,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PC, "PC 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA => M_PC + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -564,9 +564,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PC, "PC 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA <= M_PC + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -585,9 +585,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PC, "PC(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PC, "PC 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_AcylCoA <=> M_PC + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -600,7 +600,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57643", "CHEBI:57287"))
     
     ## pc_to_pa
-    pc <- "PC(20:0/18:0)"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PC = pc)
     
     reaction <- "RHEA:14445"
@@ -610,8 +610,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PA, "PA(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PA, "PA 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O = M_PA + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -630,8 +630,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PA, "PA(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PA, "PA 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O => M_PA + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -650,8 +650,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PA, "PA(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PA, "PA 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <= M_PA + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -670,8 +670,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PA, "PA(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PA, "PA 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <=> M_PA + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -684,7 +684,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58608", "CHEBI:15354", "CHEBI:15378"))
     
     ## sn1lpc_to_fa
-    sn1lpc <- "PC(14:0/0:0)"
+    sn1lpc <- "PC 14:0/0:0"
     substrates <- list(sn1LPC = sn1lpc)
     
     reaction <- "RHEA:15177"
@@ -694,8 +694,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -714,8 +714,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_H2O => M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -734,8 +734,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_H2O <= M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -754,8 +754,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPC, "PC(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPC, "PC 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC + M_H2O <=> M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -768,7 +768,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:16870"))
     
     ## coa_to_lpa
-    acylcoa <- "CoA(18:0)"
+    acylcoa <- "CoA 18:0"
     substrates <- list(AcylCoA = acylcoa)
     
     reaction <- "RHEA:15325"
@@ -778,8 +778,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Glycerol-3-P = M_LPA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -798,8 +798,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Glycerol-3-P => M_LPA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -818,8 +818,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Glycerol-3-P <= M_LPA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -838,8 +838,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Glycerol-3-P <=> M_LPA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -852,7 +852,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57970", "CHEBI:57287"))
     
     ## fa_to_coa
-    fa <- "FA(18:0)"
+    fa <- "FA 18:0"
     substrates = list(FA = fa)
     
     reaction <- "RHEA:15421"
@@ -862,8 +862,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -882,8 +882,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA => M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -902,8 +902,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA <= M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -922,8 +922,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA <=> M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -942,8 +942,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA = M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -962,8 +962,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA => M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -982,8 +982,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA <= M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1002,8 +1002,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_FA + M_ATP + M_CoA <=> M_AcylCoA + M_AMP + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1016,7 +1016,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77636", "CHEBI:456215", "CHEBI:33019"))
     
     ## pc_to_sn1lpc
-    pc <- "PC(20:0/18:0)"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PC = pc)
     
     reaction <- "RHEA:15801"
@@ -1026,9 +1026,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O = M_1-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1047,9 +1047,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O => M_1-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1068,9 +1068,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <= M_1-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1089,9 +1089,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <=> M_1-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1104,7 +1104,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58168", "CHEBI:28868", "CHEBI:15378"))
     
     ## pa_to_cdpdg
-    pa <- "PA(14:0/16:0)"
+    pa <- "PA 14:0/16:0"
     substrates <- list(PA = pa)
     
     reaction <- "RHEA:16229"
@@ -1114,8 +1114,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(14:0/16:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_CTP + M_H+ = M_CDP-DG + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1134,8 +1134,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(14:0/16:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_CTP + M_H+ => M_CDP-DG + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1154,8 +1154,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(14:0/16:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_CTP + M_H+ <= M_CDP-DG + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1174,8 +1174,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(14:0/16:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_CTP + M_H+ <=> M_CDP-DG + M_PPi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1188,8 +1188,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58332", "CHEBI:33019"))
     
     ## lpep_to_pep
-    lpep <- "PE(P-16:0/0:0)"
-    acylcoa <- "CoA(18:0)"
+    lpep <- "PE P-16:0/0:0"
+    acylcoa <- "CoA 18:0"
     substrates <- list(sn1LPEP = lpep, AcylCoA = acylcoa)
     
     reaction <- "RHEA:16245"
@@ -1199,9 +1199,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_LPE-P + M_AcylCoA = M_PE-P + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1220,9 +1220,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_LPE-P + M_AcylCoA => M_PE-P + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1241,9 +1241,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_LPE-P + M_AcylCoA <= M_PE-P + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1262,9 +1262,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_LPE-P + M_AcylCoA <=> M_PE-P + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1277,8 +1277,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77290", "CHEBI:57287"))
     
     ## sn2mg_to_dg
-    sn2mg <- "MG(0:0/14:0/0:0)"
-    acylcoa <- "CoA(16:0)"
+    sn2mg <- "MG 0:0/14:0/0:0"
+    acylcoa <- "CoA 16:0"
     substrates <- list(sn2MG = sn2mg, AcylCoA = acylcoa)
     
     reaction <- "RHEA:16741"
@@ -1288,9 +1288,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1309,9 +1309,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA => M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1330,9 +1330,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA <= M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1351,9 +1351,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA <=> M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1372,9 +1372,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA = M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1393,9 +1393,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA => M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1414,9 +1414,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA <= M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1435,9 +1435,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(16:0/14:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 16:0/14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG + M_AcylCoA <=> M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1450,7 +1450,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17815", "CHEBI:57287"))
     
     ## lpep_to_fal
-    sn1lpep <- "PE(P-16:0/0:0)"
+    sn1lpep <- "PE P-16:0/0:0"
     substrates = list(sn1LPEP = sn1lpep)
     
     reaction <- "RHEA:16905"
@@ -1460,8 +1460,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FAL, "FAL(16:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FAL, "FAL 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,"M_1-LPE-P + M_H2O = M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1480,8 +1480,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FAL, "FAL(16:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FAL, "FAL 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,"M_1-LPE-P + M_H2O => M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1500,8 +1500,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FAL, "FAL(16:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FAL, "FAL 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,"M_1-LPE-P + M_H2O <= M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1520,8 +1520,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FAL, "FAL(16:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FAL, "FAL 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,"M_1-LPE-P + M_H2O <=> M_FAL + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1534,7 +1534,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:73359", "CHEBI:143890"))
     
     ## nae_to_fa
-    nae <- "NAE(18:0)"
+    nae <- "NAE 18:0"
     substrates <- list(NAE = nae)
     
     reaction <- "RHEA:17505"
@@ -1544,8 +1544,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE = M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1564,8 +1564,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE => M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1584,8 +1584,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE <= M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1604,8 +1604,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE <=> M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1624,8 +1624,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE = M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1644,8 +1644,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE => M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1664,8 +1664,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE <= M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1684,8 +1684,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAE <=> M_FA + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1698,7 +1698,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:57603"))
     
     ## coa_to_acyldhap
-    acylcoa <- "CoA(18:0)"
+    acylcoa <- "CoA 18:0"
     substrates <- list(AcylCoA = acylcoa)
     
     reaction <- "RHEA:17657"
@@ -1708,8 +1708,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Dihydroxyacetone-P = M_AcylDHAP + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1728,8 +1728,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Dihydroxyacetone-P => M_AcylDHAP + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1748,8 +1748,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Dihydroxyacetone-P <= M_AcylDHAP + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1768,8 +1768,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Dihydroxyacetone-P <=> M_AcylDHAP + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1782,7 +1782,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57534", "CHEBI:57287"))
     
     ## coa_to_ce
-    acylcoa <- "CoA(18:0)"
+    acylcoa <- "CoA 18:0"
     substrates <- list(AcylCoA = acylcoa) 
     
     reaction <- "RHEA:17729"
@@ -1792,8 +1792,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$CE, "CE(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$CE, "CE 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cholesterol + M_AcylCoA = M_CE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1812,8 +1812,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$CE, "CE(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$CE, "CE 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cholesterol + M_AcylCoA => M_CE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1832,8 +1832,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$CE, "CE(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$CE, "CE 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cholesterol + M_AcylCoA <= M_CE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1852,8 +1852,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$CE, "CE(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$CE, "CE 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cholesterol + M_AcylCoA <=> M_CE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1866,7 +1866,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17002", "CHEBI:57287"))
     
     ## cer_to_cerp
-    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
+    cer <- "Cer d16:1(3OH,4OH)(15Me)/18:0"
     substrates <- list(Cer = cer)
     
     reaction <- "RHEA:17929"
@@ -1876,8 +1876,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_ATP = M_ADP + M_CerP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1896,8 +1896,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_ATP => M_ADP + M_CerP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1916,8 +1916,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_ATP <= M_ADP + M_CerP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1936,8 +1936,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_Cer + M_ATP <=> M_ADP + M_CerP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1950,7 +1950,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:456216", "CHEBI:57674", "CHEBI:15378"))
     
     ## pi_to_sn1lpi
-    pi <- "PI(16:0/18:1(9Z))"
+    pi <- "PI 16:0/18:1(9Z)"
     substrates <- list(PI = pi)
     
     reaction <- "RHEA:18001"
@@ -1960,9 +1960,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O = M_1-LPI + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -1981,9 +1981,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O => M_1-LPI + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2002,9 +2002,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O <= M_1-LPI + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2023,9 +2023,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O <=> M_1-LPI + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2038,7 +2038,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64771", "CHEBI:28868", "CHEBI:15378"))
     
     ## pc_to_sn2lpc
-    pc <- "PC(20:0/18:0)"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PC = pc)
     
     reaction <- "RHEA:18689"
@@ -2048,9 +2048,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(20:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O = M_2-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2069,9 +2069,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(20:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O => M_2-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2090,9 +2090,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(20:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <= M_2-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2111,9 +2111,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(20:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_H2O <=> M_2-LPC + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2126,7 +2126,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57875", "CHEBI:28868", "CHEBI:15378"))
     
     ## cer_to_sm
-    cer <- "Cer(d16:1(3OH,4OH)(15Me)/18:0)"
+    cer <- "Cer d16:1(3OH,4OH)(15Me)/18:0"
     substrates <- list(Cer = cer)
     
     reaction <-  "RHEA:18765"
@@ -2136,8 +2136,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_Cer = M_1,2-DG + M_SM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2156,8 +2156,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_Cer => M_1,2-DG + M_SM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2176,8 +2176,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_Cer <= M_1,2-DG + M_SM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2196,8 +2196,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_Cer <=> M_1,2-DG + M_SM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2210,8 +2210,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17815", "CHEBI:17636"))
     
     ## lpa_to_pa
-    lpa <- "PA(18:0/0:0)"
-    acylcoa <- "CoA(14:0)"
+    lpa <- "PA 18:0/0:0"
+    acylcoa <- "CoA 14:0"
     substrates <- list(sn1LPA = lpa, AcylCoA = acylcoa)
     
     reaction <- "RHEA:19709"
@@ -2221,9 +2221,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA + M_AcylCoA = M_PA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2242,9 +2242,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA + M_AcylCoA => M_PA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2263,9 +2263,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA + M_AcylCoA <= M_PA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2284,9 +2284,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPA, "PA(18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PA, "PA(18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPA, "PA 18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PA, "PA 18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA + M_AcylCoA <=> M_PA + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2299,7 +2299,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58608", "CHEBI:57287"))
     
     ## ps_to_pe
-    ps <- "PS(14:0/14:0)"
+    ps <- "PS 14:0/14:0"
     substrates = list(PS = ps)
     
     reaction <- "RHEA:20828"
@@ -2309,8 +2309,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/14:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/14:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H+ = M_PE + M_CO2")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2329,8 +2329,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/14:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/14:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H+ => M_PE + M_CO2")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2349,8 +2349,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/14:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/14:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H+ <= M_PE + M_CO2")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2369,8 +2369,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/14:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/14:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H+ <=> M_PE + M_CO2")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2383,7 +2383,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64612", "CHEBI:16526"))
     
     ## peo_to_pep
-    peo <- "PE(O-16:0/14:0)"
+    peo <- "PE O-16:0/14:0"
     substrates <- list(PEO = peo)
     
     reaction <- "RHEA:22956"
@@ -2393,8 +2393,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2413,8 +2413,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2433,8 +2433,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2453,8 +2453,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> M_PE-P + M_Fe3+-cytochrome_b5 + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2467,8 +2467,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77290", "CHEBI:29034", "2 CHEBI:15377"))
     
     ## lpco_to_pco
-    sn1lpco <- "PC(O-16:0/0:0)"
-    acylcoa <- "CoA(18:0)"
+    sn1lpco <- "PC O-16:0/0:0"
+    acylcoa <- "CoA 18:0"
     substrates <- list(sn1LPCO = sn1lpco, AcylCoA = acylcoa)
     
     reaction <- "RHEA:23992"
@@ -2478,9 +2478,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_AcylCoA = M_PC-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2499,9 +2499,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_AcylCoA => M_PC-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2520,9 +2520,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_AcylCoA <= M_PC-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2541,9 +2541,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_AcylCoA <=> M_PC-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2556,7 +2556,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:36702", "CHEBI:57287"))
     
     ## pa_to_dg
-    pa <- "PA(14:0/16:0)"
+    pa <- "PA 14:0/16:0"
     substrates = list(PA = pa)
     
     reaction <- "RHEA:27429"
@@ -2566,8 +2566,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_H2O = M_1,2-DG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2586,8 +2586,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_H2O => M_1,2-DG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2606,8 +2606,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_H2O <= M_1,2-DG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2626,8 +2626,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA + M_H2O <=> M_1,2-DG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2640,7 +2640,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17815", "CHEBI:43474"))
     
     ## pe_to_ps
-    pe <- "PE(14:0/16:0)"
+    pe <- "PE 14:0/16:0"
     substrates <- list(PE = pe)
     
     reaction <- "RHEA:27606" 
@@ -2650,8 +2650,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_L-Serine = M_PS + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2670,8 +2670,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_L-Serine => M_PS + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2690,8 +2690,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_L-Serine <= M_PS + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2710,8 +2710,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_L-Serine <=> M_PS + M_Ethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2724,7 +2724,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57262", "CHEBI:57603"))
     
     ## sn2mg_to_fa
-    sn2mg <- "MG(0:0/14:0/0:0)"
+    sn2mg <- "MG 0:0/14:0/0:0"
     substrates <- list(sn2MG = sn2mg)
     
     reaction <- "RHEA:32871"
@@ -2734,8 +2734,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_2-MG = M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2754,8 +2754,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_2-MG => M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2774,8 +2774,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_2-MG <= M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2794,8 +2794,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_2-MG <=> M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2808,8 +2808,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:29067", "CHEBI:17754", "CHEBI:15378"))
     
     ## pg_to_cl
-    pg <- "PG(18:4(6Z,9Z,12Z,15Z)/14:0)"
-    cdpdg <- "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)"
+    pg <- "PG 18:4(6Z,9Z,12Z,15Z)/14:0"
+    cdpdg <- "CDP-DG 18:4(6Z,9Z,12Z,15Z)/14:0"
     substrates = list(PG = pg, CDPDG = cdpdg)
     
     reaction <- "RHEA:32931"
@@ -2819,11 +2819,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(l[[1]]$PG, "PG 18:4(6Z,9Z,12Z,15Z)/14:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 18:4(6Z,9Z,12Z,15Z)/14:0")
     expect_equal(l[[1]]$PGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
     expect_equal(l[[1]]$CDPDGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(l[[1]]$CL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_CDP-DG = M_CL + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2842,11 +2842,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(l[[1]]$PG, "PG 18:4(6Z,9Z,12Z,15Z)/14:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 18:4(6Z,9Z,12Z,15Z)/14:0")
     expect_equal(l[[1]]$PGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
     expect_equal(l[[1]]$CDPDGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(l[[1]]$CL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_CDP-DG => M_CL + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2865,11 +2865,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(l[[1]]$PG, "PG 18:4(6Z,9Z,12Z,15Z)/14:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 18:4(6Z,9Z,12Z,15Z)/14:0")
     expect_equal(l[[1]]$PGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
     expect_equal(l[[1]]$CDPDGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(l[[1]]$CL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_CDP-DG <= M_CL + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2888,11 +2888,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(18:4(6Z,9Z,12Z,15Z)/14:0)")
-    expect_equal(l[[1]]$CDPDG, "CDP-DG(18:4(6Z,9Z,12Z,15Z)/14:0)")
+    expect_equal(l[[1]]$PG, "PG 18:4(6Z,9Z,12Z,15Z)/14:0")
+    expect_equal(l[[1]]$CDPDG, "CDP-DG 18:4(6Z,9Z,12Z,15Z)/14:0")
     expect_equal(l[[1]]$PGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
     expect_equal(l[[1]]$CDPDGs2, "18:4(6Z,9Z,12Z,15Z)/14:0") ##
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0])")
+    expect_equal(l[[1]]$CL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/14:0],3'-[18:4(6Z,9Z,12Z,15Z)/14:0]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_CDP-DG <=> M_CL + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2905,7 +2905,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:62237", "CHEBI:60377", "CHEBI:15378"))
     
     ## cl_to_lcl
-    cl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])"
+    cl <- "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]"
     substrates <- list(CL = cl)
     
     reaction <- "RHEA:32935"
@@ -2915,9 +2915,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$FA, "FA 18:4(6Z,9Z,12Z,15Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CL + M_H2O = M_1,2,4-LCL + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2936,9 +2936,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$FA, "FA 18:4(6Z,9Z,12Z,15Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CL + M_H2O => M_1,2,4-LCL + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2957,9 +2957,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$FA, "FA 18:4(6Z,9Z,12Z,15Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CL + M_H2O <= M_1,2,4-LCL + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2978,9 +2978,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$FA, "FA(18:4(6Z,9Z,12Z,15Z))")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$FA, "FA 18:4(6Z,9Z,12Z,15Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_CL + M_H2O <=> M_1,2,4-LCL + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -2993,7 +2993,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64743", "CHEBI:28868", "CHEBI:15378"))
     
     ## dg_to_pc
-    dg <- "DG(18:0/16:0/0:0)"
+    dg <- "DG 18:0/16:0/0:0"
     substrates <- list(DG = dg)
     
     reaction <- "RHEA:32939"
@@ -3003,8 +3003,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Choline = M_PC + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3023,8 +3023,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Choline => M_PC + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3043,8 +3043,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Choline <= M_PC + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3063,8 +3063,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Choline <=> M_PC + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3077,7 +3077,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57643", "CHEBI:60377", "CHEBI:15378"))
     
     ## dg_to_pe
-    dg <- "DG(18:0/16:0/0:0)"
+    dg <- "DG 18:0/16:0/0:0"
     substrates <- list(DG = dg)
     
     reaction <- "RHEA:32943"
@@ -3087,8 +3087,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PE, "PE(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PE, "PE 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Ethanolamine = M_PE + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3107,8 +3107,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PE, "PE(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PE, "PE 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Ethanolamine => M_PE + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3127,8 +3127,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PE, "PE(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PE, "PE 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Ethanolamine <= M_PE + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3147,8 +3147,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PE, "PE(18:0/16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$PE, "PE 18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_CDP-Ethanolamine <=> M_PE + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3161,7 +3161,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64612", "CHEBI:60377", "CHEBI:15378"))
     
     ## sn1lpe_to_fa
-    pe <- "PE(14:0/0:0)"
+    pe <- "PE 14:0/0:0"
     substrates <- list(sn1LPE = pe)
     
     reaction <- "RHEA:32967"
@@ -3171,8 +3171,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_H2O = M_FA + M_H+ + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3191,8 +3191,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_H2O => M_FA + M_H+ + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3211,8 +3211,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_H2O <= M_FA + M_H+ + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3231,8 +3231,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3245,8 +3245,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:143890"))
     
     ## sn1lpe_to_pe
-    pe <- "PE(14:0/0:0)"
-    acylcoa <- "CoA(18:0)"
+    pe <- "PE 14:0/0:0"
+    acylcoa <- "CoA 18:0"
     substrates <- list(sn1LPE = pe, AcylCoA = acylcoa)
     
     reaction <- "RHEA:32995"
@@ -3256,9 +3256,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_AcylCoA = M_PE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3277,9 +3277,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_AcylCoA => M_PE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3298,9 +3298,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_AcylCoA <= M_PE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3319,9 +3319,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PE, "PE(14:0/18:0)")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PE, "PE 14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE + M_AcylCoA <=> M_PE + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3334,7 +3334,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64612", "CHEBI:57287"))
     
     ## nape_to_nae
-    nape <- "NAPE(14:0/16:0/18:0)"
+    nape <- "NAPE 14:0/16:0/18:0"
     substrates = list(NAPE = nape)
     
     reaction <- "RHEA:33159"
@@ -3344,9 +3344,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE = M_PA + M_NAE + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3365,9 +3365,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE => M_PA + M_NAE + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3386,9 +3386,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE <= M_PA + M_NAE + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3407,9 +3407,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$NAE, "NAE(18:0)")
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$NAE, "NAE 18:0")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE <=> M_PA + M_NAE + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3422,8 +3422,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58608", "CHEBI:52640", "CHEBI:15378"))
     
     ## sn1lpi_to_pi
-    sn1lpi <- "PI(16:0/0:0)"
-    acylcoa <- "CoA(18:1(9Z))"
+    sn1lpi <- "PI 16:0/0:0"
+    acylcoa <- "CoA 18:1(9Z)"
     substrates = list(sn1LPI = sn1lpi, AcylCoA = acylcoa)
     
     reaction <- "RHEA:33195"
@@ -3433,9 +3433,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:1(9Z))")
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:1(9Z)")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPI + M_AcylCoA = M_PI + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3454,9 +3454,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:1(9Z))")
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:1(9Z)")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPI + M_AcylCoA => M_PI + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3475,9 +3475,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:1(9Z))")
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:1(9Z)")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPI + M_AcylCoA <= M_PI + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3496,9 +3496,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPI, "PI(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:1(9Z))")
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$sn1LPI, "PI 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:1(9Z)")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPI + M_AcylCoA <=> M_PI + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3511,8 +3511,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57880", "CHEBI:57287"))
     
     ## sn1lpg_to_pg
-    sn1lpg <- "PG(16:0/0:0)"
-    acylcoa <- "CoA(14:0)"
+    sn1lpg <- "PG 16:0/0:0"
+    acylcoa <- "CoA 14:0"
     substrates <- list(sn1LPG = sn1lpg, AcylCoA = acylcoa)
     
     reaction <- "RHEA:33203"
@@ -3522,9 +3522,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA = M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3543,9 +3543,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA => M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3564,9 +3564,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA <= M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3585,9 +3585,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPG, "PG(16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$sn1LPG, "PG 16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPG + M_AcylCoA <=> M_PG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3600,7 +3600,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64716", "CHEBI:57287"))
     
     ## tg_to_dg
-    tg <- "TG(18:0/16:0/14:0)"
+    tg <- "TG 18:0/16:0/14:0"
     substrates = list(TG = tg)
     
     reaction <- "RHEA:33271"
@@ -3610,11 +3610,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O = M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3633,11 +3633,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O => M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3656,11 +3656,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O <= M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3679,11 +3679,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O <=> M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3702,11 +3702,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O = M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3725,11 +3725,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O => M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3748,11 +3748,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O <= M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3771,11 +3771,11 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$TG, "TG(18:0/16:0/14:0)")
-    expect_equal(l[[1]]$sn1Loss_DG, "DG(14:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1Loss_FA, "FA(18:0)")
-    expect_equal(l[[1]]$sn3Loss_DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn3Loss_FA, "FA(14:0)")
+    expect_equal(l[[1]]$TG, "TG 18:0/16:0/14:0")
+    expect_equal(l[[1]]$sn1Loss_DG, "DG 14:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1Loss_FA, "FA 18:0")
+    expect_equal(l[[1]]$sn3Loss_DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn3Loss_FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_TG + M_H2O <=> M_1,2-DG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3788,7 +3788,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:49172", "CHEBI:28868", "CHEBI:15378"))
     
     ## dg_to_sn2mg
-    dg <- "DG(18:0/16:0/0:0)"
+    dg <- "DG 18:0/16:0/0:0"
     substrates <- list(DG = dg)
     
     reaction <- "RHEA:33275"
@@ -3798,9 +3798,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O = M_2-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3819,9 +3819,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O => M_2-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3840,9 +3840,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <= M_2-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3861,9 +3861,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <=> M_2-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3876,7 +3876,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389", "CHEBI:28868", "CHEBI:15378"))
     
     ## cerp_to_cer
-    cerp <- "CerP(d16:1(3OH,4OH)(15Me)/18:0)"
+    cerp <- "CerP d16:1(3OH,4OH)(15Me)/18:0"
     substrates <- list(CerP = cerp)
     
     reaction <- "RHEA:33743"
@@ -3886,8 +3886,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_CerP = M_Pi + M_Cer")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3906,8 +3906,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_CerP => M_Pi + M_Cer")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3926,8 +3926,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_CerP <= M_Pi + M_Cer")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3946,8 +3946,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$CerP, "CerP(d16:1(3OH,4OH)(15Me)/18:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/18:0)")
+    expect_equal(l[[1]]$CerP, "CerP d16:1(3OH,4OH)(15Me)/18:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_CerP <=> M_Pi + M_Cer")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3960,7 +3960,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:43474", "CHEBI:52639"))
     
     ## sn1mg_to_lpa
-    sn1mg <- "MG(14:0/0:0/0:0)"
+    sn1mg <- "MG 14:0/0:0/0:0"
     substrates <- list(sn1MG = sn1mg)
     
     reaction <- "RHEA:33747"
@@ -3970,8 +3970,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(14:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_ATP = M_LPA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -3990,8 +3990,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(14:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_ATP => M_LPA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4010,8 +4010,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(14:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_ATP <= M_LPA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4030,8 +4030,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$sn1LPA, "PA(14:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$sn1LPA, "PA 14:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_ATP <=> M_LPA + M_ADP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4044,7 +4044,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57970", "CHEBI:456216", "CHEBI:15378"))
     
     ## pgp_to_pg
-    pgp <- "PGP(16:0/14:0)"
+    pgp <- "PGP 16:0/14:0"
     substrates <- list(PGP = pgp)
     
     reaction <- "RHEA:33751"
@@ -4054,8 +4054,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PGP, "PGP(16:0/14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$PGP, "PGP 16:0/14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PGP + M_H2O = M_PG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4074,8 +4074,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PGP, "PGP(16:0/14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$PGP, "PGP 16:0/14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PGP + M_H2O => M_PG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4094,8 +4094,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PGP, "PGP(16:0/14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$PGP, "PGP 16:0/14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PGP + M_H2O <= M_PG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4114,8 +4114,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PGP, "PGP(16:0/14:0)")
-    expect_equal(l[[1]]$PG, "PG(16:0/14:0)")
+    expect_equal(l[[1]]$PGP, "PGP 16:0/14:0")
+    expect_equal(l[[1]]$PG, "PG 16:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PGP + M_H2O <=> M_PG + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4128,7 +4128,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64716", "CHEBI:43474"))
     
     ## sn1mg_to_fa
-    sn1mg <- "MG(14:0/0:0/0:0)"
+    sn1mg <- "MG 14:0/0:0/0:0"
     substrates <- list(sn1MG = sn1mg)
     
     reaction <- "RHEA:34019"
@@ -4138,8 +4138,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_H2O = M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4158,8 +4158,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_H2O => M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4178,8 +4178,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_H2O <= M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4198,8 +4198,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_H2O <=> M_FA + M_Glycerol + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4212,7 +4212,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:17754", "CHEBI:15378"))
     
     ## dg_to_sn1mg
-    dg <- "DG(18:0/16:0/0:0)"
+    dg <- "DG 18:0/16:0/0:0"
     substrates <- list(DG = dg)
     
     reaction <- "RHEA:35663"
@@ -4222,9 +4222,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4243,9 +4243,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O => M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4264,9 +4264,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <= M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4285,9 +4285,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <=> M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4306,9 +4306,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O = M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4327,9 +4327,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O => M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4348,9 +4348,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <= M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4369,9 +4369,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DG, "DG(18:0/16:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(18:0/0:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$DG, "DG 18:0/16:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 18:0/0:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1,2-DG + M_H2O <=> M_1-MG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4384,8 +4384,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:35759", "CHEBI:28868", "CHEBI:15378"))
     
     ## lcl_to_cl
-    lcl <- "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])"
-    acylcoa <- "CoA(18:4(6Z,9Z,12Z,15Z))"
+    lcl <- "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]"
+    acylcoa <- "CoA 18:4(6Z,9Z,12Z,15Z)"
     substrates <- list(LCL = lcl, AcylCoA = acylcoa)
     
     reaction <- "RHEA:35839"
@@ -4395,9 +4395,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:4(6Z,9Z,12Z,15Z)")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA = M_CL + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4416,9 +4416,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:4(6Z,9Z,12Z,15Z)")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA => M_CL + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4437,9 +4437,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:4(6Z,9Z,12Z,15Z)")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <= M_CL + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4458,9 +4458,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LCL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)])")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:4(6Z,9Z,12Z,15Z))")
-    expect_equal(l[[1]]$CL, "CL(1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)])")
+    expect_equal(l[[1]]$LCL, "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[0:0/18:4(6Z,9Z,12Z,15Z)]")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:4(6Z,9Z,12Z,15Z)")
+    expect_equal(l[[1]]$CL,  "CL 1'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)],3'-[18:4(6Z,9Z,12Z,15Z)/18:4(6Z,9Z,12Z,15Z)]")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_1,2,4-LCL + M_AcylCoA <=> M_CL + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4473,7 +4473,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:62237", "CHEBI:57287"))
     
     ## lpco_to_mgo
-    sn1lpco <- "PC(O-16:0/0:0)"
+    sn1lpco <- "PC O-16:0/0:0"
     substrates <- list(sn1LPCO = sn1lpco)
     
     reaction <- "RHEA:36083"
@@ -4483,8 +4483,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGO, "MG(O-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGO, "MG O-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O = M_1-MG-O + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4503,8 +4503,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGO, "MG(O-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGO, "MG O-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O => M_1-MG-O + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4523,8 +4523,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGO, "MG(O-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGO, "MG O-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O <= M_1-MG-O + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4543,8 +4543,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGO, "MG(O-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGO, "MG O-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O <=> M_1-MG-O + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4557,8 +4557,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:15850", "CHEBI:15378", "CHEBI:295975"))
     
     ## acyldhap_to_alkyldhap
-    acyldhap <- "DHAP(18:0)"
-    fao <- "FAO(16:0)"
+    acyldhap <- "DHAP 18:0"
+    fao <- "FAO 16:0"
     substrates <- list(AcylDHAP = acyldhap, FAO = fao)
     
     reaction <- "RHEA:36171"
@@ -4569,10 +4569,10 @@ test_that(".create_list_reactions_with_template works", {
         reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(16:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 16:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylDHAP + M_FAO = M_AlkylDHAP + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4592,10 +4592,10 @@ test_that(".create_list_reactions_with_template works", {
         reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(16:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 16:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylDHAP + M_FAO => M_AlkylDHAP + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4615,10 +4615,10 @@ test_that(".create_list_reactions_with_template works", {
         reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(16:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 16:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylDHAP + M_FAO <= M_AlkylDHAP + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4637,10 +4637,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylDHAP, "DHAP(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(16:0)")
-    expect_equal(l[[1]]$FA, "FA(18:0)")
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-16:0)")
+    expect_equal(l[[1]]$AcylDHAP, "DHAP 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 16:0")
+    expect_equal(l[[1]]$FA, "FA 18:0")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylDHAP + M_FAO <=> M_AlkylDHAP + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4653,7 +4653,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:73315", "CHEBI:57560", "CHEBI:15378"))
     
     ## alkyldhap_to_lpao
-    alkyldhap <- "DHAP(O-18:0)"
+    alkyldhap <- "DHAP O-18:0"
     substrates = list(AlkylDHAP = alkyldhap)
     
     reaction <- "RHEA:36175"
@@ -4663,8 +4663,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-18:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-18:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AlkylDHAP + M_H+ + M_NADPH = M_LPA-O + M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4683,8 +4683,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-18:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-18:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AlkylDHAP + M_H+ + M_NADPH => M_LPA-O + M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4703,8 +4703,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-18:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-18:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AlkylDHAP + M_H+ + M_NADPH <= M_LPA-O + M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4723,8 +4723,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AlkylDHAP, "DHAP(O-18:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
+    expect_equal(l[[1]]$AlkylDHAP, "DHAP O-18:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AlkylDHAP + M_H+ + M_NADPH <=> M_LPA-O + M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4736,9 +4736,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:73315", "CHEBI:15378", "CHEBI:57783"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58014", "CHEBI:58349"))
     
-    
     ## dgo_to_pco
-    dgo <- "DG(O-18:0/16:0/0:0)"
+    dgo <- "DG O-18:0/16:0/0:0"
     substrates <- list(DGO = dgo)
     
     reaction <- "RHEA:36179"
@@ -4748,8 +4747,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PCO, "PC O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Choline = M_PC-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4768,8 +4767,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PCO, "PC O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Choline => M_PC-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4788,8 +4787,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PCO, "PC O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Choline <= M_PC-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4808,8 +4807,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PCO, "PC(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PCO, "PC O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Choline <=> M_PC-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4822,7 +4821,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:36702", "CHEBI:60377", "CHEBI:15378"))
     
     ## dgo_to_peo
-    dgo <- "DG(O-18:0/16:0/0:0)"
+    dgo <- "DG O-18:0/16:0/0:0"
     substrates <- list(DGO = dgo)
     
     reaction <- "RHEA:36187"
@@ -4832,8 +4831,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PEO, "PE(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PEO, "PE O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Ethanolamine = M_PE-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4852,8 +4851,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PEO, "PE(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PEO, "PE O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Ethanolamine => M_PE-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4872,8 +4871,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PEO, "PE(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PEO, "PE O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Ethanolamine <= M_PE-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4892,8 +4891,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DGO, "DG(O-18:0/16:0/0:0)")
-    expect_equal(l[[1]]$PEO, "PE(O-18:0/16:0)")
+    expect_equal(l[[1]]$DGO, "DG O-18:0/16:0/0:0")
+    expect_equal(l[[1]]$PEO, "PE O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DG-O + M_CDP-Ethanolamine <=> M_PE-O + M_CMP + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4906,7 +4905,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:60520", "CHEBI:60377", "CHEBI:15378"))
     
     ## pep_to_lpep
-    pep <- "PE(P-16:0/14:0)"
+    pep <- "PE P-16:0/14:0"
     substrates <- list(PEP = pep)
     
     reaction <- "RHEA:36195"
@@ -4916,9 +4915,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-P + M_H2O = M_LPE-P + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4937,9 +4936,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-P + M_H2O => M_LPE-P + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4958,9 +4957,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-P + M_H2O <= M_LPE-P + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4979,9 +4978,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-P + M_H2O <=> M_LPE-P + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -4994,7 +4993,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77288", "CHEBI:29067", "CHEBI:15378"))
     
     ## lpep_to_mgp
-    sn1lpep <- "PE(P-16:0/0:0)"
+    sn1lpep <- "PE P-16:0/0:0"
     substrates <- list(sn1LPEP = sn1lpep)
     
     reaction <- "RHEA:36199"
@@ -5004,8 +5003,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGP, "MG(P-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGP, "MG P-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O = M_1-MG-P + M_H+ + M_Phosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5024,8 +5023,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGP, "MG(P-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGP, "MG P-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O => M_1-MG-P + M_H+ + M_Phosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5044,8 +5043,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGP, "MG(P-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGP, "MG P-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O <= M_1-MG-P + M_H+ + M_Phosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5064,8 +5063,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1MGP, "MG(P-16:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1MGP, "MG P-16:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O <=> M_1-MG-P + M_H+ + M_Phosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5078,7 +5077,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77297", "CHEBI:15378", "CHEBI:58190"))
     
     ## lpep_to_lpap
-    sn1lpep <- "PE(P-16:0/0:0)"
+    sn1lpep <- "PE P-16:0/0:0"
     substrates <- list(sn1LPEP = sn1lpep)
     
     reaction <- "RHEA:36203"
@@ -5088,8 +5087,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAP, "PA(P-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAP, "PA P-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O = M_LPA-P + M_Ethanolamine + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5108,8 +5107,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAP, "PA(P-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAP, "PA P-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O => M_LPA-P + M_Ethanolamine + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5128,8 +5127,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAP, "PA(P-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAP, "PA P-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O <= M_LPA-P + M_Ethanolamine + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5148,8 +5147,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEP, "PE(P-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAP, "PA(P-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPEP, "PE P-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAP, "PA P-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPE-P + M_H2O <=> M_LPA-P + M_Ethanolamine + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5162,7 +5161,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77283", "CHEBI:57603", "CHEBI:15378"))
     
     ## pco_to_lpco
-    pco <- "PC(O-16:0/14:0)"
+    pco <- "PC O-16:0/14:0"
     substrates <- list(PCO = pco)
     
     reaction <- "RHEA:36231"
@@ -5172,9 +5171,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC-O + M_H2O = M_LPC-O + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5193,9 +5192,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC-O + M_H2O => M_LPC-O + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5214,9 +5213,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC-O + M_H2O <= M_LPC-O + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5235,9 +5234,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PCO, "PC(O-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PCO, "PC O-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC-O + M_H2O <=> M_LPC-O + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5250,8 +5249,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:30909", "CHEBI:28868", "CHEBI:15378"))
     
     ## lpao_to_pao
-    lpao <- "PA(O-18:0/0:0)"
-    acylcoa <- "CoA(14:0)"
+    lpao <- "PA O-18:0/0:0"
+    acylcoa <- "CoA 14:0"
     substrates <- list(sn1LPAO = lpao, AcylCoA = acylcoa)
     
     reaction <- "RHEA:36235"
@@ -5261,9 +5260,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PAO, "PA O-18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA-O + M_AcylCoA = M_PA-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5282,9 +5281,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PAO, "PA O-18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA-O + M_AcylCoA => M_PA-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5303,9 +5302,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PAO, "PA O-18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA-O + M_AcylCoA <= M_PA-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5324,9 +5323,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-18:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(14:0)")
-    expect_equal(l[[1]]$PAO, "PA(O-18:0/14:0)")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-18:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 14:0")
+    expect_equal(l[[1]]$PAO, "PA O-18:0/14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_LPA-O + M_AcylCoA <=> M_PA-O + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5339,7 +5338,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:73332", "CHEBI:57287"))
     
     ## pao_to_dgo
-    pao <- "PA(O-14:0/16:0)"
+    pao <- "PA O-14:0/16:0"
     substrates = list(PAO = pao)
     
     reaction <- "RHEA:36239"
@@ -5349,8 +5348,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PAO, "PA(O-14:0/16:0)")
-    expect_equal(l[[1]]$DGO, "DG(O-14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PAO, "PA O-14:0/16:0")
+    expect_equal(l[[1]]$DGO, "DG O-14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA-O + M_H2O = M_DG-O + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5369,8 +5368,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PAO, "PA(O-14:0/16:0)")
-    expect_equal(l[[1]]$DGO, "DG(O-14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PAO, "PA O-14:0/16:0")
+    expect_equal(l[[1]]$DGO, "DG O-14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA-O + M_H2O => M_DG-O + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5389,8 +5388,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PAO, "PA(O-14:0/16:0)")
-    expect_equal(l[[1]]$DGO, "DG(O-14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PAO, "PA O-14:0/16:0")
+    expect_equal(l[[1]]$DGO, "DG O-14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA-O + M_H2O <= M_DG-O + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5409,8 +5408,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PAO, "PA(O-14:0/16:0)")
-    expect_equal(l[[1]]$DGO, "DG(O-14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PAO, "PA O-14:0/16:0")
+    expect_equal(l[[1]]$DGO, "DG O-14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PA-O + M_H2O <=> M_DG-O + M_Pi")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5423,8 +5422,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:52595", "CHEBI:43474"))
     
     ## sn1mg_to_dg
-    sn1mg <- "MG(14:0/0:0/0:0)"
-    acylcoa <- "CoA(16:0)"
+    sn1mg <- "MG 14:0/0:0/0:0"
+    acylcoa <- "CoA 16:0"
     substrates <- list(sn1MG = sn1mg, AcylCoA = acylcoa)
     
     reaction <- "RHEA:38463"
@@ -5434,9 +5433,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5455,9 +5454,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA => M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5476,9 +5475,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA <= M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5497,9 +5496,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA <=> M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5518,9 +5517,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA = M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5539,9 +5538,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA => M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5560,9 +5559,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA <= M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5581,9 +5580,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-MG + M_AcylCoA <=> M_1,2-DG + M_CoA")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5596,7 +5595,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:49172", "CHEBI:57287"))
     
     ## lpco_to_lpao
-    sn1lpco <- "PC(O-16:0/0:0)"
+    sn1lpco <- "PC O-16:0/0:0"
     substrates <- list(sn1LPCO = sn1lpco)
     
     reaction <- "RHEA:39927"
@@ -5606,8 +5605,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O = M_1-LPA-O + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5626,8 +5625,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O => M_1-LPA-O + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5646,8 +5645,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O <= M_1-LPA-O + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5666,8 +5665,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPCO, "PC(O-16:0/0:0)")
-    expect_equal(l[[1]]$sn1LPAO, "PA(O-16:0/0:0)")
+    expect_equal(l[[1]]$sn1LPCO, "PC O-16:0/0:0")
+    expect_equal(l[[1]]$sn1LPAO, "PA O-16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_1-LPC-O + M_H2O <=> M_1-LPA-O + M_Choline + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5680,7 +5679,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58014", "CHEBI:15354", "CHEBI:15378"))
     
     ## ps_to_sn2lps
-    ps <- "PS(14:0/16:0)"
+    ps <- "PS 14:0/16:0"
     substrates = list(PS = ps)
     
     reaction <- "RHEA:42212"
@@ -5690,9 +5689,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPS, "PS(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPS, "PS 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H2O = M_2-LPS + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5711,9 +5710,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPS, "PS(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPS, "PS 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H2O => M_2-LPS + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5732,9 +5731,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPS, "PS(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPS, "PS 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H2O <= M_2-LPS + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5753,9 +5752,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PS, "PS(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPS, "PS(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PS, "PS 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPS, "PS 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PS + M_H2O <=> M_2-LPS + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5769,7 +5768,7 @@ test_that(".create_list_reactions_with_template works", {
     
     
     ## pi_to_dg
-    pi <- "PI(16:0/18:1(9Z))"
+    pi <- "PI 16:0/18:1(9Z)"
     substrates <- list(PI = pi)
     
     reaction <- "RHEA:43484"
@@ -5779,8 +5778,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$DG, "DG(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$DG, "DG 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O = M_myo-Inositol-1-P + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5799,8 +5798,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$DG, "DG(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$DG, "DG 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O => M_myo-Inositol-1-P + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5819,8 +5818,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$DG, "DG(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$DG, "DG 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O <= M_myo-Inositol-1-P + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5839,8 +5838,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PI, "PI(16:0/18:1(9Z))")
-    expect_equal(l[[1]]$DG, "DG(16:0/18:1(9Z))")
+    expect_equal(l[[1]]$PI, "PI 16:0/18:1(9Z)")
+    expect_equal(l[[1]]$DG, "DG 16:0/18:1(9Z)")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PI + M_H2O <=> M_myo-Inositol-1-P + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5853,7 +5852,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58433", "CHEBI:17815", "CHEBI:15378"))
     
     ## pe_to_sn2lpe
-    pe <- "PE(14:0/16:0)"
+    pe <- "PE 14:0/16:0"
     substrates = list(PE = pe)
     
     reaction <- "RHEA:44408"
@@ -5863,9 +5862,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPE, "PE(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPE, "PE 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O = M_2-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5884,9 +5883,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPE, "PE(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPE, "PE 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O => M_2-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5905,9 +5904,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPE, "PE(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPE, "PE 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O <= M_2-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5926,9 +5925,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn2LPE, "PE(0:0/16:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn2LPE, "PE 0:0/16:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O <=> M_2-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5941,7 +5940,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:65213", "CHEBI:28868", "CHEBI:15378"))
     
     ## pg_to_sn1lpg
-    pg <- "PG(14:0/16:0)"
+    pg <- "PG 14:0/16:0"
     substrates = list(PG = pg)
     
     reaction <- "RHEA:44416"
@@ -5951,9 +5950,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PG, "PG 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPG, "PG 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O = M_1-LPG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5972,9 +5971,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PG, "PG 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPG, "PG 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O => M_1-LPG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -5993,9 +5992,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PG, "PG 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPG, "PG 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O <= M_1-LPG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6014,9 +6013,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PG, "PG(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPG, "PG(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PG, "PG 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPG, "PG 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PG + M_H2O <=> M_1-LPG + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6029,7 +6028,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64840", "CHEBI:28868", "CHEBI:15378"))
     
     ## pe_to_sn1lpe
-    pe <- "PE(14:0/16:0)"
+    pe <- "PE 14:0/16:0"
     substrates = list(PE = pe)
     
     reaction <- "RHEA:44604"
@@ -6039,9 +6038,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O = M_1-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6060,9 +6059,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O => M_1-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6081,9 +6080,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O <= M_1-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6102,9 +6101,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$sn1LPE, "PE(14:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$sn1LPE, "PE 14:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O <=> M_1-LPE + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6117,7 +6116,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:64381", "CHEBI:28868", "CHEBI:15378"))
     
     ## dhcer_to_dhsm
-    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)"
+    dhcer <- "Cer d16:0(3OH,4OH)(15Me)/12:0"
     substrates <- list(DhCer = dhcer)
     
     reaction <- "RHEA:44620"
@@ -6127,8 +6126,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_DhCer = M_1,2-DG + M_DhSM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6147,8 +6146,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_DhCer => M_1,2-DG + M_DhSM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6167,8 +6166,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_DhCer <= M_1,2-DG + M_DhSM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6187,8 +6186,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_DhCer <=> M_1,2-DG + M_DhSM")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6201,7 +6200,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17815", "CHEBI:67090"))
     
     ## sn2lpc_to_fa
-    sn2lpc <- "PC(0:0/14:0)"
+    sn2lpc <- "PC 0:0/14:0"
     substrates <- list(sn2LPC = sn2lpc)
     
     reaction <- "RHEA:44696"
@@ -6211,8 +6210,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/14:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/14:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-LPC + M_H2O = M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6231,8 +6230,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/14:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/14:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-LPC + M_H2O => M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6251,8 +6250,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/14:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/14:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-LPC + M_H2O <= M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6271,8 +6270,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/14:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/14:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-LPC + M_H2O <=> M_FA + M_H+ + M_Glycerophosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6285,7 +6284,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:16870"))
     
     ## pc_to_ps
-    pc <- "PC(20:0/18:0)"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PC = pc)
     
     reaction <- "RHEA:45088"
@@ -6295,8 +6294,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PS, "PS(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PS, "PS 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_L-Serine = M_PS + M_Choline")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6315,8 +6314,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PS, "PS(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PS, "PS 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_L-Serine => M_PS + M_Choline")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6335,8 +6334,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PS, "PS(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PS, "PS 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_L-Serine <= M_PS + M_Choline")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6355,8 +6354,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$PS, "PS(20:0/18:0)")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$PS, "PS 20:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_L-Serine <=> M_PS + M_Choline")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6369,8 +6368,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57262", "CHEBI:15354"))
     
     ## pe_to_nape_sn1
-    pe <- "PE(14:0/16:0)"
-    pc <- "PC(18:0/20:0)"
+    pe <- "PE 14:0/16:0"
+    pc <- "PC 18:0/20:0"
     substrates <- list(PE = pe, PC = pc)
     
     reaction <- "RHEA:45188"
@@ -6380,10 +6379,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/20:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/20:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE = M_2-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6402,10 +6401,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/20:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/20:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE => M_2-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6424,10 +6423,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/20:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/20:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE <= M_2-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6446,10 +6445,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/20:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/20:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE <=> M_2-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6462,8 +6461,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57875", "CHEBI:15378", "CHEBI:62537"))
     
     ## pe_to_nape_sn2
-    pe <- "PE(14:0/16:0)"
-    pc <- "PC(18:0/20:0)"
+    pe <- "PE 14:0/16:0"
+    pc <- "PC 18:0/20:0"
     substrates <- list(PE = pe, PC = pc)
     
     reaction <- "RHEA:45192"
@@ -6473,10 +6472,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(18:0/0:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/20:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 18:0/0:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE = M_1-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6495,10 +6494,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(18:0/0:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/20:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 18:0/0:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE => M_1-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6517,10 +6516,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(18:0/0:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/20:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 18:0/0:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE <= M_1-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6539,10 +6538,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PC, "PC(18:0/20:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(18:0/0:0)")
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/20:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PC, "PC 18:0/20:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 18:0/0:0")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PC + M_PE <=> M_1-LPC + M_H+ + M_NAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6555,7 +6554,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58168", "CHEBI:15378", "CHEBI:62537"))
     
     ## dhsm_to_dhcer
-    dhsm <- "SM(d16:0(3OH,4OH)(15Me)/12:0)"
+    dhsm <- "SM d16:0(3OH,4OH)(15Me)/12:0"
     substrates <- list(DhSM = dhsm)
     
     reaction <- "RHEA:45300"
@@ -6565,8 +6564,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhSM + M_H2O = M_DhCer + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6585,8 +6584,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhSM + M_H2O => M_DhCer + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6605,8 +6604,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhSM + M_H2O <= M_DhCer + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6625,8 +6624,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhSM, "SM(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$DhSM, "SM d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhSM + M_H2O <=> M_DhCer + M_H+ + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6639,7 +6638,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:83273", "CHEBI:15378", "CHEBI:295975"))
     
     ## lnape_to_gpnae
-    lnape <- "NAPE(14:0/0:0/0:0)"
+    lnape <- "NAPE 14:0/0:0/0:0"
     substrates <- list(LNAPE = lnape)
     
     reaction <- "RHEA:45420"
@@ -6649,9 +6648,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$GPNAE, "GPNAE(0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/0:0")
+    expect_equal(l[[1]]$GPNAE, "GPNAE 0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_H2O + M_LNAPE = M_FA + M_H+ + M_GPNAE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6670,9 +6669,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$GPNAE, "GPNAE(0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/0:0")
+    expect_equal(l[[1]]$GPNAE, "GPNAE 0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_H2O + M_LNAPE => M_FA + M_H+ + M_GPNAE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6691,9 +6690,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$GPNAE, "GPNAE(0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/0:0")
+    expect_equal(l[[1]]$GPNAE, "GPNAE 0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_H2O + M_LNAPE <= M_FA + M_H+ + M_GPNAE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6712,9 +6711,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/0:0)")
-    expect_equal(l[[1]]$GPNAE, "GPNAE(0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/0:0")
+    expect_equal(l[[1]]$GPNAE, "GPNAE 0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_H2O + M_LNAPE <=> M_FA + M_H+ + M_GPNAE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6727,7 +6726,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:85225"))
     
     ## nape_to_lnape
-    nape <- "NAPE(14:0/16:0/18:0)"
+    nape <- "NAPE 14:0/16:0/18:0"
     substrates = list(NAPE = nape)
     
     reaction <- "RHEA:45460"
@@ -6737,9 +6736,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE = M_FA + M_H+ + M_LNAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6758,9 +6757,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE => M_FA + M_H+ + M_LNAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6779,9 +6778,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE <= M_FA + M_H+ + M_LNAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6800,9 +6799,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$LNAPE, "NAPE(14:0/0:0/18:0)")
-    expect_equal(l[[1]]$FA, "FA(16:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$LNAPE, "NAPE 14:0/0:0/18:0")
+    expect_equal(l[[1]]$FA, "FA 16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_NAPE <=> M_FA + M_H+ + M_LNAPE")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6815,7 +6814,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:85216"))
     
     ## sm_to_cer
-    sm <- "SM(d16:1(3OH,4OH)(15Me)/12:0)"
+    sm <- "SM d16:1(3OH,4OH)(15Me)/12:0"
     substrates <- list(SM = sm)
     
     reaction <- "RHEA:45644"
@@ -6825,8 +6824,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_SM = M_H+ + M_Cer + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6845,8 +6844,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_SM => M_H+ + M_Cer + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6865,8 +6864,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_SM <= M_H+ + M_Cer + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6885,8 +6884,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$SM, "SM(d16:1(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$SM, "SM d16:1(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_SM <=> M_H+ + M_Cer + M_Phosphocholine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6900,7 +6899,7 @@ test_that(".create_list_reactions_with_template works", {
     
     
     ## dhcer_to_cer
-    dhcer <- "Cer(d16:0(3OH,4OH)(15Me)/12:0)" ###################################################
+    dhcer <- "Cer d16:0(3OH,4OH)(15Me)/12:0" ###################################################
     substrates <- list(DhCer = dhcer)
     
     reaction <- "RHEA:46544"
@@ -6910,8 +6909,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0") ## was: "Cer d16:1(4E)(3OH,4OH)(15Me)/12:0"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 = 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6930,8 +6929,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0") ## was: "Cer d16:1(4E)(3OH,4OH)(15Me)/12:0"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 => 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6950,8 +6949,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0") ## was: "Cer d16:1(4E)(3OH,4OH)(15Me)/12:0"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <= 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6970,8 +6969,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
-    expect_equal(l[[1]]$Cer, "Cer(d16:1(3OH,4OH)(15Me)/12:0)") ## was: "Cer(d16:1(4E)(3OH,4OH)(15Me)/12:0)"
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
+    expect_equal(l[[1]]$Cer, "Cer d16:1(3OH,4OH)(15Me)/12:0") ## was: "Cer d16:1(4E)(3OH,4OH)(15Me)/12:0"
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_DhCer + 2 M_Fe2+-cytochrome_b5 + 2 M_H+ + M_O2 <=> 2 M_Fe3+-cytochrome_b5 + M_Cer + 2 M_H2O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -6984,7 +6983,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("2 CHEBI:57540", "CHEBI:52639", "2 CHEBI:15377"))
     
     ## coa_to_FAO
-    acylcoa <- "CoA(18:0)"
+    acylcoa <- "CoA 18:0"
     substrates <- list(AcylCoA = acylcoa)
     
     reaction <- "RHEA:52716"
@@ -6994,8 +6993,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + 2 M_H+ + 2 M_NADPH = M_FAO + M_CoA + 2 M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7014,8 +7013,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + 2 M_H+ + 2 M_NADPH => M_FAO + M_CoA + 2 M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7034,8 +7033,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + 2 M_H+ + 2 M_NADPH <= M_FAO + M_CoA + 2 M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7054,8 +7053,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$FAO, "FAO(18:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$FAO, "FAO 18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + 2 M_H+ + 2 M_NADPH <=> M_FAO + M_CoA + 2 M_NADP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7068,8 +7067,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:77396", "CHEBI:57287", "2 CHEBI:58349"))
     
     ## sphinga_to_dhcer
-    acylcoa <- "CoA(12:0)"
-    sph <- "SPH(d16:0(3OH,4OH)(15Me))"
+    acylcoa <- "CoA 12:0"
+    sph <- "SPH d16:0(3OH,4OH)(15Me)"
     substrates <- list(AcylCoA = acylcoa, SPH = sph)
     
     reaction <- "RHEA:53424"
@@ -7079,8 +7078,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Sphinganine = M_DhCer + M_CoA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7099,8 +7098,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Sphinganine => M_DhCer + M_CoA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7119,8 +7118,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Sphinganine <= M_DhCer + M_CoA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7139,8 +7138,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$AcylCoA, "CoA(12:0)")
-    expect_equal(l[[1]]$DhCer, "Cer(d16:0(3OH,4OH)(15Me)/12:0)")
+    expect_equal(l[[1]]$AcylCoA, "CoA 12:0")
+    expect_equal(l[[1]]$DhCer, "Cer d16:0(3OH,4OH)(15Me)/12:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_Sphinganine <=> M_DhCer + M_CoA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7153,8 +7152,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:83273", "CHEBI:57287", "CHEBI:15378"))
     
     ## pep_to_napep_sn1
-    pep <- "PE(P-16:0/14:0)"
-    pc <- "PC(20:0/18:0)"
+    pep <- "PE P-16:0/14:0"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PEP = pep, PC = pc)
     
     reaction <- "RHEA:63596"
@@ -7164,10 +7163,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$NAPEP, "NAPE(P-16:0/14:0/20:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$NAPEP, "NAPE P-16:0/14:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_PE-P + M_PC = M_2-LPC + M_H+ + M_NAPEP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7186,10 +7185,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$NAPEP, "NAPE(P-16:0/14:0/20:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$NAPEP, "NAPE P-16:0/14:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_PE-P + M_PC => M_2-LPC + M_H+ + M_NAPEP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7208,10 +7207,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$NAPEP, "NAPE(P-16:0/14:0/20:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$NAPEP, "NAPE P-16:0/14:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_PE-P + M_PC <= M_2-LPC + M_H+ + M_NAPEP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7230,10 +7229,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$NAPEP, "NAPE(P-16:0/14:0/20:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$NAPEP, "NAPE P-16:0/14:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula,  "M_PE-P + M_PC <=> M_2-LPC + M_H+ + M_NAPEP")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7246,7 +7245,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:57875", "CHEBI:15378", "CHEBI:140451"))
     
     ## pe_to_dg
-    pe <- "PE(14:0/16:0)"
+    pe <- "PE 14:0/16:0"
     substrates <- list(PE = pe)
     
     reaction <- "RHEA:78951"
@@ -7256,8 +7255,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PE = M_P-Ethanolamine + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7276,8 +7275,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PE => M_P-Ethanolamine + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7296,8 +7295,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PE <= M_P-Ethanolamine + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7316,8 +7315,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_H2O + M_PE <=> M_P-Ethanolamine + M_1,2-DG + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7330,7 +7329,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58190", "CHEBI:17815", "CHEBI:15378"))
     
     ## sn2lpe_to_fa
-    pe <- "PE(0:0/14:0)"
+    pe <- "PE 0:0/14:0"
     substrates <- list(sn2LPE = pe)
     
     reaction <- "sn2lpe_to_fa"
@@ -7340,8 +7339,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2LPE, "PE(0:0/14:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$sn2LPE, "PE 0:0/14:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-LPE + M_H2O <=> M_FA + M_H+ + M_Glycerophosphoethanolamine")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7354,8 +7353,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:28868", "CHEBI:15378", "CHEBI:143890"))
     
     ## lpeo_to_peo
-    lpeo <- "PE(O-16:0/0:0)"
-    acylcoa <- "CoA(18:0)"
+    lpeo <- "PE O-16:0/0:0"
+    acylcoa <- "CoA 18:0"
     substrates <- list(sn1LPEO = lpeo, AcylCoA = acylcoa)
     
     reaction <- "lpeo_to_peo"
@@ -7365,9 +7364,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn1LPEO, "PE(O-16:0/0:0)")
-    expect_equal(l[[1]]$AcylCoA, "CoA(18:0)")
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/18:0)")
+    expect_equal(l[[1]]$sn1LPEO, "PE O-16:0/0:0")
+    expect_equal(l[[1]]$AcylCoA, "CoA 18:0")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_AcylCoA + M_LPE-O <=> M_CoA + M_PE-O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7381,7 +7380,7 @@ test_that(".create_list_reactions_with_template works", {
     
     
     ## sn2mg_to_sn1mg
-    sn2mg <- "MG(0:0/14:0/0:0)"
+    sn2mg <- "MG 0:0/14:0/0:0"
     substrates = list(sn2MG = sn2mg)
     
     reaction <- "sn2mg_to_sn1mg"
@@ -7391,8 +7390,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$sn2MG, "MG(0:0/14:0/0:0)")
-    expect_equal(l[[1]]$sn1MG, "MG(14:0/0:0/0:0)")
+    expect_equal(l[[1]]$sn2MG, "MG 0:0/14:0/0:0")
+    expect_equal(l[[1]]$sn1MG, "MG 14:0/0:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_2-MG <=> M_1-MG")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7405,7 +7404,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:17389"))
     
     ## nape_to_pnae
-    nape <- "NAPE(14:0/16:0/18:0)"
+    nape <- "NAPE 14:0/16:0/18:0"
     substrates <- list(NAPE = nape)
     
     reaction <- "nape_to_pnae"
@@ -7415,9 +7414,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPE, "NAPE(14:0/16:0/18:0)")
-    expect_equal(l[[1]]$PNAE, "PNAE(18:0)")
-    expect_equal(l[[1]]$DG, "DG(14:0/16:0/0:0)")
+    expect_equal(l[[1]]$NAPE, "NAPE 14:0/16:0/18:0")
+    expect_equal(l[[1]]$PNAE, "PNAE 18:0")
+    expect_equal(l[[1]]$DG, "DG 14:0/16:0/0:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_NAPE + M_H2O <=> M_PNAE + M_1,2-DG")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7430,7 +7429,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:145538", "CHEBI:17815"))
     
     ## napeo_to_nae
-    napeo <- "NAPE(O-18:0/16:0/14:0)"
+    napeo <- "NAPE O-18:0/16:0/14:0"
     substrates = list(NAPEO = napeo)
     
     reaction <- "napeo_to_nae"
@@ -7440,9 +7439,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$NAPEO, "NAPE(O-18:0/16:0/14:0)")
-    expect_equal(l[[1]]$NAE, "NAE(14:0)")
-    expect_equal(l[[1]]$PAO, "PA(O-18:0/16:0)")
+    expect_equal(l[[1]]$NAPEO, "NAPE O-18:0/16:0/14:0")
+    expect_equal(l[[1]]$NAE, "NAE 14:0")
+    expect_equal(l[[1]]$PAO, "PA O-18:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_NAPEO + M_H2O <=> M_NAE + M_PA-O")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7455,7 +7454,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:52640", "CHEBI:73332"))
    
     ## pe_to_pa
-    pe <- "PE(14:0/16:0)"
+    pe <- "PE 14:0/16:0"
     substrates <- list(PE = pe)
     
     reaction <- "pe_to_pa"
@@ -7465,8 +7464,8 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PE, "PE(14:0/16:0)")
-    expect_equal(l[[1]]$PA, "PA(14:0/16:0)")
+    expect_equal(l[[1]]$PE, "PE 14:0/16:0")
+    expect_equal(l[[1]]$PA, "PA 14:0/16:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE + M_H2O <=> M_PA + M_Ethanolamine + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7479,7 +7478,7 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:58608", "CHEBI:57603", "CHEBI:15378"))
     
     ## peo_to_lpeo
-    peo <- "PE(O-16:0/14:0)"
+    peo <- "PE O-16:0/14:0"
     substrates <- list(PEO = peo)
     
     reaction <- "peo_to_lpeo"
@@ -7489,9 +7488,9 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$sn1LPEO, "PE(O-16:0/0:0)")
-    expect_equal(l[[1]]$FA, "FA(14:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$sn1LPEO, "PE O-16:0/0:0")
+    expect_equal(l[[1]]$FA, "FA 14:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_H2O <=> M_LPE-O + M_FA + M_H+")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7504,8 +7503,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("", "CHEBI:28868", "CHEBI:15378"))
     
     ## peo_to_napeo_sn1
-    peo <- "PE(O-16:0/14:0)"
-    pc <- "PC(20:0/18:0)"
+    peo <- "PE O-16:0/14:0"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PEO = peo, PC = pc)
     
     reaction <- "peo_to_napeo_sn1"
@@ -7515,10 +7514,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn2LPC, "PC(0:0/18:0)")
-    expect_equal(l[[1]]$NAPEO, "NAPE(O-16:0/14:0/20:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn2LPC, "PC 0:0/18:0")
+    expect_equal(l[[1]]$NAPEO, "NAPE O-16:0/14:0/20:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_PC <=> M_NAPEO + M_2-LPC")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7531,8 +7530,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("", "CHEBI:58168"))
     
     ## peo_to_napeo_sn2
-    peo <- "PE(O-16:0/14:0)"
-    pc <- "PC(20:0/18:0)"
+    peo <- "PE O-16:0/14:0"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PEO = peo, PC = pc)
     
     reaction <- "peo_to_napeo_sn2"
@@ -7542,10 +7541,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEO, "PE(O-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$NAPEO, "NAPE(O-16:0/14:0/18:0)")
+    expect_equal(l[[1]]$PEO, "PE O-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$NAPEO, "NAPE O-16:0/14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-O + M_PC <=> M_NAPEO + M_1-LPC")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7558,8 +7557,8 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_product_chebi, c("", "CHEBI:58168"))
     
     ## pep_to_napep_sn2
-    pep <- "PE(P-16:0/14:0)"
-    pc <- "PC(20:0/18:0)"
+    pep <- "PE P-16:0/14:0"
+    pc <- "PC 20:0/18:0"
     substrates <- list(PEP = pep, PC = pc)
     
     reaction <- "pep_to_napep_sn2"
@@ -7569,10 +7568,10 @@ test_that(".create_list_reactions_with_template works", {
     df_reaction <- .add_products(substrates = df_substrates, reaction = reaction)
     l <- .create_list_reactants_with_template(df_reaction = df_reaction,
         template = template)
-    expect_equal(l[[1]]$PEP, "PE(P-16:0/14:0)")
-    expect_equal(l[[1]]$PC, "PC(20:0/18:0)")
-    expect_equal(l[[1]]$sn1LPC, "PC(20:0/0:0)")
-    expect_equal(l[[1]]$NAPEP, "NAPE(P-16:0/14:0/18:0)")
+    expect_equal(l[[1]]$PEP, "PE P-16:0/14:0")
+    expect_equal(l[[1]]$PC, "PC 20:0/18:0")
+    expect_equal(l[[1]]$sn1LPC, "PC 20:0/0:0")
+    expect_equal(l[[1]]$NAPEP, "NAPE P-16:0/14:0/18:0")
     expect_equal(l[[2]]$reaction_name, "")
     expect_equal(l[[2]]$reaction_formula, "M_PE-P + M_PC <=> M_NAPEP + M_1-LPC")
     expect_equal(l[[2]]$reaction_isReversible, "")
@@ -7583,18 +7582,6 @@ test_that(".create_list_reactions_with_template works", {
     expect_equal(l[[2]]$reaction_formula_chebi, "CHEBI:77290 + CHEBI:57643 <=> CHEBI:140451 + CHEBI:58168")
     expect_equal(l[[2]]$reaction_substrate_chebi, c("CHEBI:77290", "CHEBI:57643"))
     expect_equal(l[[2]]$reaction_product_chebi, c("CHEBI:140451", "CHEBI:58168"))
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 })
 

@@ -1,6 +1,6 @@
 ## function add_attributes
 test_that("add_attributes works", {
-    FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+    FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
     
     ## create data.frame with reactions and reaction order
     reactions <- rbind(
@@ -29,14 +29,14 @@ test_that("add_attributes works", {
 
     ## attribute_type: vertex
     attributes_df <- data.frame(
-        name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", "DG(12:0/12:0/0:0)",
-            "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/12:0/0:0)",
-            "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)", "DG(16:0/12:0/0:0)",
-            "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)", "FA(12:0)", "FA(14:0)",
-            "FA(16:0)", "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)",
-            "PA(12:0/16:0)", "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", 
-            "PA(14:0/16:0)", "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)",
-            "PA(16:0/16:0)"),
+        name = c("CoA 12:0", "CoA 14:0", "CoA 16:0", "DG 12:0/12:0/0:0",
+            "DG 12:0/14:0/0:0", "DG 12:0/16:0/0:0", "DG 14:0/12:0/0:0",
+            "DG 14:0/14:0/0:0", "DG 14:0/16:0/0:0", "DG 16:0/12:0/0:0",
+            "DG 16:0/14:0/0:0", "DG 16:0/16:0/0:0", "FA 12:0", "FA 14:0",
+            "FA 16:0", "PA 12:0/0:0", "PA 12:0/12:0", "PA 12:0/14:0",
+            "PA 12:0/16:0", "PA 14:0/0:0", "PA 14:0/12:0", "PA 14:0/14:0", 
+            "PA 14:0/16:0", "PA 16:0/0:0", "PA 16:0/12:0", "PA 16:0/14:0",
+            "PA 16:0/16:0"),
         logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
             -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
             -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
@@ -64,15 +64,15 @@ test_that("add_attributes works", {
     ## attribute_type: edges, attributes: data.frame
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-            c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+            c("CoA 12:0", "PA 12:0/0:0", 0.5),
+            c("CoA 12:0", "PA 14:0/12:0", 0.8)
     ))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
     
     ## some vertex names not in g
     attributes_df <- data.frame(
-        name = c("foo_1", "foo_2", "CoA(16:0)"),
+        name = c("foo_1", "foo_2", "CoA 16:0"),
         logFC_cond1 = c(-5.08,  0.75,  5.43),
         logFC_cond2 = c(-2.73,  6.14,  1.98))
     g_new <- add_attributes(g, attribute_type = "vertex", 
@@ -109,9 +109,9 @@ test_that("add_attributes works", {
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$weight[12], 0.5)
-    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA(12:0)|PA(14:0/12:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA 12:0|PA 14:0/12:0")
     expect_equal(igraph::E(g_new)$weight[14], 0.8)
     expect_error(
         add_attributes(g, attribute_type = "edges", attributes = attributes, 
@@ -125,20 +125,20 @@ test_that("add_attributes works", {
     ## attribute_type: edges, attributes: matrix
     attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
         dimnames = list(
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)"),
-        c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)")))
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0"),
+        c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0")))
     
     ## apply the function
     g_new <- add_attributes(g, attribute_type = "edges", attributes = attributes)
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$value[12], 0.5)
-    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA(12:0)|PA(14:0/12:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA 12:0|PA 14:0/12:0")
     expect_equal(igraph::E(g_new)$value[14], 0.8)
 })
 
 ## function add_edge_attributes_from_data.frame
 test_that("add_edge_attributes_from_data.frame works", {
-    FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+    FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
     
     ## create data.frame with reactions and reaction order
     reactions <- rbind(
@@ -164,8 +164,8 @@ test_that("add_edge_attributes_from_data.frame works", {
     ## attributes: data.frame
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-            c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+            c("CoA 12:0", "PA 12:0/0:0", 0.5),
+            c("CoA 12:0", "PA 14:0/12:0", 0.8)
     ))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
@@ -180,9 +180,9 @@ test_that("add_edge_attributes_from_data.frame works", {
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$weight[12], 0.5)
-    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA(12:0)|PA(14:0/12:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA 12:0|PA 14:0/12:0")
     expect_equal(igraph::E(g_new)$weight[14], 0.8)
     expect_error(
         LipidNetworkPredictR:::add_edge_attributes_from_data.frame(g, attributes = attributes, 
@@ -196,9 +196,9 @@ test_that("add_edge_attributes_from_data.frame works", {
     ## some vertex names not in g
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-            c("CoA(12:0)", "foo", 0.8),
-            c("foo", "PA(14:0/12:0)", 0.8)))
+            c("CoA 12:0", "PA 12:0/0:0", 0.5),
+            c("CoA 12:0", "foo", 0.8),
+            c("foo", "PA 14:0/12:0", 0.8)))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
     
@@ -211,14 +211,14 @@ test_that("add_edge_attributes_from_data.frame works", {
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$weight[12], 0.5)
     
     ## all vertex names not in g
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "foo", 0.8),
-            c("foo", "PA(14:0/12:0)", 0.8)))
+            c("CoA 12:0", "foo", 0.8),
+            c("foo", "PA 14:0/12:0", 0.8)))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
     
@@ -236,7 +236,7 @@ test_that("add_edge_attributes_from_data.frame works", {
 ## function add_edge_attributes
 test_that("add_edge_attributes works", {
     
-    FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+    FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
      
     ## create data.frame with reactions and reaction order
     reactions <- rbind(
@@ -262,8 +262,8 @@ test_that("add_edge_attributes works", {
     ## attributes: data.frame
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-            c("CoA(12:0)", "PA(14:0/12:0)", 0.8)
+            c("CoA 12:0", "PA 12:0/0:0", 0.5),
+            c("CoA 12:0", "PA 14:0/12:0", 0.8)
     ))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
@@ -277,9 +277,9 @@ test_that("add_edge_attributes works", {
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$weight[12], 0.5)
-    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA(12:0)|PA(14:0/12:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA 12:0|PA 14:0/12:0")
     expect_equal(igraph::E(g_new)$weight[14], 0.8)
     expect_error(
         add_edge_attributes(g = g, attributes = attributes, 
@@ -289,9 +289,9 @@ test_that("add_edge_attributes works", {
     ## some vertex names not in g
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "PA(12:0/0:0)", 0.5),
-            c("CoA(12:0)", "foo", 0.8),
-            c("foo", "PA(14:0/12:0)", 0.8)))
+            c("CoA 12:0", "PA 12:0/0:0", 0.5),
+            c("CoA 12:0", "foo", 0.8),
+            c("foo", "PA 14:0/12:0", 0.8)))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
     
@@ -304,14 +304,14 @@ test_that("add_edge_attributes works", {
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
             NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$weight[12], 0.5)
     
     ## all vertex names not in g
     attributes <- data.frame(
         rbind(
-            c("CoA(12:0)", "foo", 0.8),
-            c("foo", "PA(14:0/12:0)", 0.8)))
+            c("CoA 12:0", "foo", 0.8),
+            c("foo", "PA 14:0/12:0", 0.8)))
     names(attributes) <- c("from", "to", "weight")
     attributes$weight <- as.numeric(attributes$weight)
     
@@ -327,21 +327,21 @@ test_that("add_edge_attributes works", {
     ## attributes: matrix
     attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
         dimnames = list(
-            c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)"),
-            c("CoA(12:0)", "PA(12:0/0:0)", "PA(14:0/12:0)")))
+            c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0"),
+            c("CoA 12:0", "PA 12:0/0:0", "PA 14:0/12:0")))
     
     ## apply the function
     g_new <- add_edge_attributes(g = g, attributes = attributes)
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$value[12], 0.5)
-    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA(12:0)|PA(14:0/12:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[14], "CoA 12:0|PA 14:0/12:0")
     expect_equal(igraph::E(g_new)$value[14], 0.8)
     
     ## some vertex names not in g
     attributes <- matrix(c(0, 0.5, 0.8, 0, 0, 0, 0, 0, 0), ncol = 3, byrow = TRUE, 
         dimnames = list(
-            c("CoA(12:0)", "foo", "PA(14:0/12:0)"),
-            c("CoA(12:0)", "PA(12:0/0:0)", "foo")))
+            c("CoA 12:0", "foo", "PA 14:0/12:0"),
+            c("CoA 12:0", "PA 12:0/0:0", "foo")))
 
     ## apply the function
     g_new <- add_edge_attributes(g = g, attributes = attributes)
@@ -351,7 +351,7 @@ test_that("add_edge_attributes works", {
            NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
            NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
            NA, NA, NA, NA, NA, NA, NA, NA, NA, NA))
-    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA(12:0)|PA(12:0/0:0)")
+    expect_equal(attr(igraph::E(g_new), "vnames")[12], "CoA 12:0|PA 12:0/0:0")
     expect_equal(igraph::E(g_new)$value[12], 0.5)
     
     ## all vertex names not in g
@@ -372,7 +372,7 @@ test_that("add_edge_attributes works", {
 
 ## function add_vertex_attributes
 test_that("add_vertex_attributes works", {
-    FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+    FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
      
     ## create data.frame with reactions and reaction order
     reactions <- rbind(
@@ -397,14 +397,14 @@ test_that("add_vertex_attributes works", {
     
     ## attributes: data.frame
     attributes_df <- data.frame(
-        name = c("CoA(12:0)", "CoA(14:0)", "CoA(16:0)", "DG(12:0/12:0/0:0)",
-            "DG(12:0/14:0/0:0)", "DG(12:0/16:0/0:0)", "DG(14:0/12:0/0:0)",
-            "DG(14:0/14:0/0:0)", "DG(14:0/16:0/0:0)", "DG(16:0/12:0/0:0)",
-            "DG(16:0/14:0/0:0)", "DG(16:0/16:0/0:0)", "FA(12:0)", "FA(14:0)",
-            "FA(16:0)", "PA(12:0/0:0)", "PA(12:0/12:0)", "PA(12:0/14:0)",
-            "PA(12:0/16:0)", "PA(14:0/0:0)", "PA(14:0/12:0)", "PA(14:0/14:0)", 
-            "PA(14:0/16:0)", "PA(16:0/0:0)", "PA(16:0/12:0)", "PA(16:0/14:0)",
-            "PA(16:0/16:0)"),
+        name = c("CoA 12:0", "CoA 14:0", "CoA 16:0", "DG 12:0/12:0/0:0",
+            "DG 12:0/14:0/0:0", "DG 12:0/16:0/0:0", "DG 14:0/12:0/0:0",
+            "DG 14:0/14:0/0:0", "DG 14:0/16:0/0:0", "DG 16:0/12:0/0:0",
+            "DG 16:0/14:0/0:0", "DG 16:0/16:0/0:0", "FA 12:0", "FA 14:0",
+            "FA 16:0", "PA 12:0/0:0", "PA 12:0/12:0", "PA 12:0/14:0",
+            "PA 12:0/16:0", "PA 14:0/0:0", "PA 14:0/12:0", "PA 14:0/14:0", 
+            "PA 14:0/16:0", "PA 16:0/0:0", "PA 16:0/12:0", "PA 16:0/14:0",
+            "PA 16:0/16:0"),
         logFC_cond1 = c(-5.08,  0.75,  5.43, -0.62,  2.35, 1.39, 2.91,  0.26, 
             -4.14,  0.19,  6.18, 0.78, -1.81,  4.66, -0.10,  2.84, -0.81,
             -0.81, -0.32,  0.17,  2.25, -1.94,  0.80, 4.21,  0.20, -3.29, 
@@ -431,7 +431,7 @@ test_that("add_vertex_attributes works", {
     
     ## some vertex names not in g
     attributes_df <- data.frame(
-        name = c("foo_1", "foo_2", "CoA(16:0)"),
+        name = c("foo_1", "foo_2", "CoA 16:0"),
         logFC_cond1 = c(-5.08,  0.75,  5.43),
         logFC_cond2 = c(-2.73,  6.14,  1.98))
     g_new <- add_vertex_attributes(g, attributes = attributes_df, 

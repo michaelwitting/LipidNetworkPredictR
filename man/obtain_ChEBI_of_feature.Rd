@@ -27,7 +27,7 @@ the \code{create_reactions} function. From \code{create_reactions}, the
 ChEBI ids will be inferred.
 }
 \examples{
-FA <- c("FA(12:0)", "FA(14:0)", "FA(16:0)")
+FA <- c("FA 12:0", "FA 14:0", "FA 16:0")
 
 ## create data.frame with reactions and reaction order
 reactions <- rbind(
